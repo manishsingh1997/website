@@ -1,0 +1,53 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "@ergeon/ergeon/alternate"
+  ],
+  "root": true,
+  "plugins": [],
+  "rules": {
+    "react/sort-comp": [2, {
+      "order": [
+        "type-annotations",
+        "static-methods",
+        "lifecycle",
+        "everything-else",
+        "/^render.+$/",
+        "render"
+      ]
+    }],
+    "react/display-name": 0,
+    "react/prefer-stateless-function": 0,
+    "react/jsx-space-before-closing": 0,
+    "react/no-multi-comp": 0,
+    "react/no-unused-prop-types": 0,
+    "react/no-string-refs": 0,
+    "react/jsx-handler-names": 0,
+    "react/self-closing-comp": 0,
+    "react/jsx-indent": 0,
+    "react/jsx-boolean-value": 0,
+    "no-multiple-empty-lines": [2, { "max": 1 }],
+    "quotes": [2, "single", "avoid-escape"],
+    "max-len": [2, {
+      "code": 120,
+      "tabWidth": 2,
+      "ignoreUrls": true
+    }],
+    "keyword-spacing": 2,
+    "no-multi-spaces": 0,
+    "import-order/import-order": 0,
+    "operator-linebreak": 0,
+    "no-useless-escape": 0,
+    "no-nested-ternary": 0,
+    "prefer-const": 0,
+    "eol-last": 0,
+    "no-duplicate-imports": 0
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}

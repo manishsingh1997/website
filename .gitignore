@@ -1,0 +1,6 @@
+logs
+*.log
+dist
+node_modules
+.idea
+credentials.json
