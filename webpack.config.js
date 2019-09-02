@@ -2,6 +2,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const {dependencies} = require('./package.json');
 
@@ -71,6 +72,9 @@ var config = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         }),
+        new CopyPlugin([
+            {from: './node_modules/@ergeon/core-components/dist/assets', to: 'assets'}
+        ]),
     ],
     optimization: {
         splitChunks: {
