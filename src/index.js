@@ -13,7 +13,7 @@ import reducers from 'reducers/index';
 import Layout from 'pages/layout';
 import HomePage from 'pages/home-page';
 
-import './components/main.scss';
+import '@ergeon/core-components/src/components/main.scss';
 
 const history = createHashHistory();
 const middlewares = [];
