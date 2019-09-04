@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Footer} from '@ergeon/core-components';
+import {Footer, TopPanel} from '@ergeon/core-components';
 
 class Layout extends React.Component {
     static propTypes = {
@@ -11,7 +11,7 @@ class Layout extends React.Component {
     render() {
       return (
         <div>
-          <div>Header</div>
+          <TopPanel />
           <div>{this.props.children}</div>
           <Footer />
         </div>

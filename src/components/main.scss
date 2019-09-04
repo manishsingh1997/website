@@ -1,0 +1,36 @@
+@import "variables";
+.subheader {
+  font-weight: 400;
+  font-family: $font-content;
+  &__h1 {
+    font-size: $h1-size;
+    line-height: $h1-line-height;
+  }
+  &__h2 {
+    font-size: $h2-size;
+    line-height: $h2-line-height;
+  }
+  &__h3 {
+    font-size: $h3-size;
+    line-height: $h3-line-height;
+  }
+  &__h4 {
+    font-size: $h4-size;
+    line-height: $h4-line-height;
+  }
+  &__h5 {
+    font-size: $h5-size;
+    line-height: $h5-line-height;
+  }
+  &__h6 {
+    font-size: $h6-size;
+    line-height: $h6-line-height;
+  }
+}
+.white {
+  color: $white;
+}
+
+.center {
+  text-align: center;
+}

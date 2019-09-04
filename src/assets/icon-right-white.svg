@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="16px" viewBox="0 0 10 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>icon-right-white</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icons/simple-arrow" transform="translate(-13.000000, -8.000000)">
+            <g id="icons/arrow">
+                <g id="ic_keyboard_arrow_right">
+                    <g id="Icon-24px">
+                        <polygon id="Shape" points="0 0 32 0 32 32 0 32"></polygon>
+                        <path d="M13.4867093,22.4867093 C13.1000864,22.1000864 13.0978926,21.4747612 13.487179,21.0846248 L18.8933333,15.6666667 L13.487179,10.2487085 C13.1002967,9.86098149 13.0971104,9.2362229 13.4867093,8.84662406 L13.9666241,8.36670928 C14.3532469,7.98008642 14.9901845,7.99018447 15.3766133,8.3766133 L21.95672,14.95672 C22.3488127,15.3488127 22.3431489,15.9901845 21.95672,16.3766133 L15.3766133,22.95672 C14.9845206,23.3488127 14.3562229,23.3562229 13.9666241,22.9666241 L13.4867093,22.4867093 Z" id="Shape" fill="#FFFFFF"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
