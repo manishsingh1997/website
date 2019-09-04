@@ -1,0 +1,95 @@
+@import 'variables';
+.review-hero {
+  &__flex-wrapper {
+    display: flex;
+    @include phone() {
+      flex-direction: column;
+    }
+  }
+  background-image: url('../assets/abstract-shape.svg'), linear-gradient(180deg, $white, $gray-5);
+  background-repeat: no-repeat;
+  background-position-x: 120%;
+  background-position-y: 80px;
+  padding: 90px 0;
+  border-bottom: 1px solid rgba($gray-1, 0.4);
+  @include phone() {
+    padding: 40px 0;
+  }
+  &__customer-reviews {
+    padding-right: 60px;
+    border-right: 1px solid rgba($gray-4, 0.6);
+    min-width: 230px;
+    @include tablet() {
+      padding-right: 40px;
+      h4 {
+        font-family: $font-content;
+        font-size: $font-label-size;
+        line-height: $line-height-label;
+        font-weight: normal;
+        color: $gray-1;
+        text-transform: uppercase;
+      }
+    }
+    @include phone() {
+      border-right: none;
+      padding-right: 0px;
+    }
+    &__home-advisor-section {
+      @include phone() {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+    }
+    &__home-advisor-logo {
+      width: 157px;
+      height: 32px;
+    }
+    &__rating {
+      margin: 12px 0;
+      @include phone() {
+        display: flex;
+        align-items: center;
+        margin: 6px 6px 10px 0;
+        .stars-group {
+          margin-right: 10px;
+          .icon {
+            width: 16px;
+            height: 16px;
+            background-size: 16px 16px;
+          }
+        }
+      }
+      &__numbers {
+        margin-top: 6px;
+      }
+    }
+  }
+  &__main-review {
+    margin-left: 68px;
+    padding-left: 62px;
+    background-image: url('../assets/quote.svg');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    max-width: 620px;
+    @include tablet() {
+      margin-left: 38px;
+    }
+    @include phone() {
+      background-image: none;
+      margin-left: 0;
+      padding-left: 0;
+      margin-top: 24px;
+    }
+    &__bottom {
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+    p {
+      margin-top: 12px;
+    }
+  }
+
+}
