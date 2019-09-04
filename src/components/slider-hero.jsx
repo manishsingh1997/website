@@ -26,10 +26,6 @@ class SliderHero extends React.Component {
       <Slider className="slider-hero">
         {this.renderSlide({title: 'Fence Installation Service', name: 'fence'})}
         {this.renderSlide({title: 'Driveway Installation Service', name: 'driveway'})}
-        {this.renderSlide({title: 'Driveway Installation Service', name: 'driveway'})}
-        {this.renderSlide({title: 'Driveway Installation Service', name: 'driveway'})}
-        {this.renderSlide({title: 'Driveway Installation Service', name: 'driveway'})}
-        {this.renderSlide({title: 'Driveway Installation Service', name: 'driveway'})}
       </Slider>
     );
   }
