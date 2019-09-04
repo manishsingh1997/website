@@ -6,12 +6,12 @@
       flex-direction: column;
     }
   }
-  background-image: url('../assets/abstract-shape.svg'), linear-gradient(180deg, $white, $gray-5);
+  background-image: url('../assets/abstract-shape.svg'), linear-gradient(180deg, $white, $gray-6);
   background-repeat: no-repeat;
   background-position-x: 120%;
   background-position-y: 80px;
   padding: 90px 0;
-  border-bottom: 1px solid rgba($gray-1, 0.4);
+  border-bottom: 1px solid rgba($gray-1, 0.1);
   @include phone() {
     padding: 40px 0;
   }

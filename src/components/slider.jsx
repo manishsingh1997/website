@@ -18,7 +18,6 @@ class Slider extends React.Component {
     this.switchSlide = this.switchSlide.bind(this);
   }
   switchSlide(event) {
-    console.log(event);
     const targetClass = event.target
       ? event.target.className
       : event.dir // event has dir (direction) if was called by swipe

@@ -1,6 +1,7 @@
 import React from 'react';
 import SliderHero from '../components/slider-hero';
 import ReviewHero from '../components/review-hero';
+import ProjectsSection from '../components/projects-section';
 
 class HomePage extends React.Component {
   render() {
@@ -8,6 +9,7 @@ class HomePage extends React.Component {
       <div>
         <SliderHero/>
         <ReviewHero/>
+        <ProjectsSection/>
       </div>
     );
   }
