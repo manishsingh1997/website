@@ -54,18 +54,22 @@ ol li {
     padding-bottom: 0;
   }
 }
-.ordered-list li::before {
-  content: counter(step-counter);
-  position: absolute;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  font-size: 14px;
-  color: #09a873;
-  line-height: 20px;
-  border: 2px solid #09a873;
-  font-weight: 600;
-  background-color: white;
-  border-radius: 100%;
-  text-align: center;
+.ordered-list {
+  li {
+    &:before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    color: #09a873;
+    line-height: 20px;
+    border: 2px solid #09a873;
+    font-weight: 600;
+    background-color: white;
+    border-radius: 100%;
+    text-align: center;
+    }
+  }
 }
