@@ -3,6 +3,7 @@ import SliderHero from '../components/slider-hero';
 import ReviewHero from '../components/review-hero';
 import ProjectsSection from '../components/projects-section';
 import PromoBlock from '../components/promo-block';
+import GetStartedSection from '../components/get-started-section';
 import imgCalc from '../assets/calc_promo.png';
 import imgMap from '../assets/map_image.png';
 class HomePage extends React.Component {
@@ -19,6 +20,7 @@ class HomePage extends React.Component {
             img={imgCalc}
             subtitle="Build your dream fence and get an estimate instantly"
             title="Try Our Fence Calculator"/>
+          <GetStartedSection/>
           <PromoBlock
             btnLink="https://app.ergeon.com/projects-gallery/#/map"
             btnName="Open Map"

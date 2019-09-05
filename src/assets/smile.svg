@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>smile</title>
+    <desc>Created with Sketch.</desc>
+    <g id="fences" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-1158.000000, -2405.000000)" fill="#09A873" id="cards">
+            <g transform="translate(130.000000, 2381.000000)">
+                <g id="block-copy-4" transform="translate(900.000000, 0.000000)">
+                    <g id="Excellent-communication" transform="translate(128.000000, 24.000000)">
+                        <g id="smile">
+                            <path d="M8,11 C8.551,11 9,10.553 9,10 C9,9.448 8.551,9 8,9 C7.449,9 7,9.448 7,10 C7,10.553 7.449,11 8,11" id="Fill-1883"></path>
+                            <path d="M16,11 C16.551,11 17,10.553 17,10 C17,9.448 16.551,9 16,9 C15.449,9 15,9.448 15,10 C15,10.553 15.449,11 16,11" id="Fill-1883-Copy"></path>
+                            <path d="M12,21 C7.589,21 4,17.411 4,13 C4,12.725 4.224,12.5 4.5,12.5 C4.776,12.5 5,12.725 5,13 C5,16.86 8.14,20 12,20 C15.86,20 19,16.86 19,13 C19,12.725 19.224,12.5 19.5,12.5 C19.776,12.5 20,12.725 20,13 C20,17.411 16.411,21 12,21 M8,8 C9.103,8 10,8.896 10,10 C10,11.103 9.103,12 8,12 C6.897,12 6,11.103 6,10 C6,8.896 6.897,8 8,8 M16,8 C17.103,8 18,8.896 18,10 C18,11.103 17.103,12 16,12 C14.897,12 14,11.103 14,10 C14,8.896 14.897,8 16,8 M12,0 C5.383,0 0,5.383 0,12 C0,18.617 5.383,24 12,24 C18.617,24 24,18.617 24,12 C24,5.383 18.617,0 12,0" id="Fill-1884"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -34,3 +34,38 @@
 .center {
   text-align: center;
 }
+
+ol {
+  list-style-type: none;
+  position: relative;
+}
+ol li {
+  counter-increment: step-counter;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  @include phone() {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  &:first-child {
+    padding-top: 0;
+  }
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+.ordered-list li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  color: #09a873;
+  line-height: 20px;
+  border: 2px solid #09a873;
+  font-weight: 600;
+  background-color: white;
+  border-radius: 100%;
+  text-align: center;
+}
