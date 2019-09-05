@@ -5,6 +5,7 @@ import ProjectsSection from '../components/projects-section';
 import PromoBlock from '../components/promo-block';
 import GetStartedSection from '../components/get-started-section';
 import QASection from '../components/qa-section';
+import BadgesSection from '../components/badges-section';
 import imgCalc from '../assets/calc_promo.png';
 import imgMap from '../assets/map_image.png';
 class HomePage extends React.Component {
@@ -29,6 +30,7 @@ class HomePage extends React.Component {
             img={imgMap}
             subtitle="Find fence projects near your house"
             title="Browse Projects In Your Area"/>
+          <BadgesSection/>
         </div>
       </div>
     );
