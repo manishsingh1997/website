@@ -12,15 +12,13 @@ class QASection extends React.Component {
             <div className="qa-section__questions-wrapper">
               <div className="qa-section__question">
                 <h6>Why should I replace my fence vs repairing it?</h6>
-                <p>
-                  <ul>
-                    <li>It’s very hard to just repair parts of a fence since the panels are structurally connected.
+                <ul>
+                  <li>It’s very hard to just repair parts of a fence since the panels are structurally connected.
                      If someone offers you a repair, they may break other parts of the fence as they are removing
                       panels and then it may end up costing you more.</li>
-                    <li>If you only repair parts of the fence, you’ll have mismatched panels that have aged differently.
+                  <li>If you only repair parts of the fence, you’ll have mismatched panels that have aged differently.
                        This creates a generally undesirable appearance.</li>
-                  </ul>
-                </p>
+                </ul>
               </div>
               <div className="qa-section__question">
                 <h6>How much should I expect to spend on my fence installation?</h6>
