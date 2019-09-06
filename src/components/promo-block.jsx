@@ -25,7 +25,7 @@ class PromoBlock extends React.Component {
           <div className="promo-block__content">
             <h3 className="additional-header h1">{title}</h3>
             <h3 className="additional-header h3">{subtitle}</h3>
-            <Button href={btnLink}>{btnName}</Button>
+            <Button asAnchor={true} href={btnLink}>{btnName}</Button>
           </div>
         </div>
       );
