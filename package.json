@@ -52,7 +52,7 @@
     "webpack-dev-server": "^3.5.1"
   },
   "dependencies": {
-    "@ergeon/core-components": "^1.0.8",
+    "@ergeon/core-components": "^1.0.13",
     "classnames": "^2.2.6",
     "history": "^4.9.0",
     "lodash": "^4.17.15",

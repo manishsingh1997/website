@@ -1,5 +1,4 @@
-@import 'variables';
-
+@import '@ergeon/core-components/src/components/variables.scss';
 .badges-section {
   margin-top: 60px;
   @include phone() {

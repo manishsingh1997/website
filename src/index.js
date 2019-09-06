@@ -14,7 +14,6 @@ import Layout from 'pages/layout';
 import HomePage from 'pages/home-page';
 
 import '@ergeon/core-components/src/components/main.scss';
-import './components/main.scss';
 
 const history = createHashHistory();
 const middlewares = [];
