@@ -15,11 +15,9 @@ class PaneSwitcher extends React.Component {
         currentPane: props.currentPane || 0,
         tabNames: props.children && props.children.map(child => child.props['data-name']),
       };
-      this.switchPane = this.switchPane.bind(this);
     }
-    switchPane(event) {
-      let nextPane = Number(event.target? event.target.getAttribute('data-key') : 0) || 0;
-      this.setState({currentPane: nextPane});
+    switchPane(paneIndex) {
+      this.setState({currentPane: paneIndex});
     }
     renderTabs(state) {
       let tabs = [];
@@ -28,7 +26,13 @@ class PaneSwitcher extends React.Component {
           tab: true,
           active: state.currentPane === i,
         });
-        tabs.push(<div className={tabClasses} data-key={i} key={i} onClick={this.switchPane}>{state.tabNames[i]}</div>);
+        tabs.push(
+          <div
+            className={tabClasses}
+            key={i}
+            onClick={this.switchPane.bind(this, i)}>
+            {state.tabNames[i]}
+          </div>);
       }
       return (
         <div className="tab-switcher bottom-line">
