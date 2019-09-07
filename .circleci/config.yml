@@ -1,0 +1,48 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:11.15.0-stretch
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v3-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Install Dependencies
+          command: |
+            echo "//npm.ergeon.in/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+            printf "[default]\naccess_key = $AWS_ACCESS_KEY_ID\nsecret_key = $AWS_SECRET_ACCESS_KEY" >> ~/.s3cfg
+            mkdir ~/.aws
+            printf "[default]\naws_access_key_id = $AWS_ACCESS_KEY_ID\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
+            printf "{\"accessKeyId\": \"$AWS_ACCESS_KEY_ID\", \"secretAccessKey\": \"$AWS_SECRET_ACCESS_KEY\"}" >> credentials.json
+            sudo apt-get update
+            sudo apt install s3cmd -y
+            npm set registry https://npm.ergeon.in
+            make install
+            npm rebuild node-sass
+
+      - save_cache:
+          paths:
+            - node_modules
+            - ~/.yarn-cache
+            - ~/.cache
+          key: v3-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Run tests
+          command: |
+            make test
+
+      - deploy:
+          name: Deploy
+          command: |
+            if [ "$CIRCLE_BRANCH" = "develop" ]; then make deploy-staging; fi
+            if [ "$CIRCLE_BRANCH" = "master" ]; then make deploy-production; fi
