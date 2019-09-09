@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>icons/phone/green</title>
+    <desc>Created with Sketch.</desc>
+    <g id="pro.com-copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ergeon.com/driveway" transform="translate(-623.000000, -539.000000)">
+            <g id="Group" transform="translate(335.000000, 214.000000)">
+                <g id="phone" transform="translate(288.000000, 322.000000)">
+                    <g id="icons/phone/white-dark-green" transform="translate(0.000000, 3.000000)">
+                        <g id="icons/phone/gray">
+                            <circle id="Oval" fill="#FFFFFF" cx="12" cy="12" r="12"></circle>
+                            <path d="M16.127,13.442 L13.981,13.441 C13.682,13.441 13.441,13.682 13.441,13.979 L13.442,15.026 C10.849,14.887 8.777,12.815 8.641,10.222 L9.685,10.222 C9.981,10.222 10.223,9.982 10.223,9.685 L10.222,7.537 C10.223,7.241 9.981,7.002 9.685,7.001 L7.538,7 C7.241,7.002 7.001,7.241 7,7.538 L7.001,10.222 L7.017,10.222 C7.153,13.707 9.957,16.51 13.443,16.649 L13.443,16.664 L16.126,16.664 C16.422,16.663 16.663,16.422 16.664,16.126 L16.663,13.978 C16.663,13.682 16.423,13.442 16.127,13.442" id="Fill-1619" fill="#09A873"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

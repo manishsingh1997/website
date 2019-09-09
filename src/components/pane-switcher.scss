@@ -1,0 +1,45 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+.panes {
+  .pane {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+  .tab-switcher {
+    padding-left: 0;
+    font-family: $font-title;
+    font-size: $font-regular-size;
+    font-weight: 600;
+    margin: 24px 0;
+    &.bottom-line {
+      box-shadow: inset 0 -2px 0 0 $gray-5;
+    }
+    .tab {
+      display: inline-block;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      margin-right: 20px;
+      margin-left: 5px;
+      color: $black-3;
+      text-decoration: none;
+      transition: $transition-1;
+      padding-bottom: 10px;
+      &:hover {
+        color: $orange-1;
+        cursor: pointer;
+        transition: $transition-1;
+      }
+      &:first-child {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      &.active {
+        box-shadow: inset 0 -2px 0 0 $orange-1;
+        color: $orange-1;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+      }
+    }
+  }
+}

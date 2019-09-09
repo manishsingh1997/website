@@ -1,0 +1,49 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+.projects-section {
+  margin-top: 60px;
+  &__project-cards {
+    display: flex;
+    @include phone() {
+      flex-direction: column;
+    }
+  }
+  .card {
+    background: $white;
+    border: 1px solid $gray-5;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 380px;
+    margin: 0 10px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+    @include phone() {
+      max-width: 100%;
+      display: flex;
+      margin: 10px 0;
+    }
+    &__img-container {
+      position: relative;
+      @include phone() {
+        margin-right: 20px;
+        max-width: 30%;
+      }
+      img {
+        width: 100%;
+        border-radius: 2px;
+      }
+    }
+    &__content {
+      margin-top: 24px;
+      @include phone() {
+        margin-top: 0;
+      }
+      p {
+        padding-bottom: 6px
+      }
+    }
+  }
+}

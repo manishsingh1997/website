@@ -1,0 +1,64 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+.slider-hero {
+
+}
+.form-wrapper {
+  height: 84px;
+  width: 620px;
+  display: block;
+  background-color: rgba($white, 0.5);
+  border-radius: 4px;
+  margin-bottom: 24px;
+  @include phone() {
+    width: 95%;
+    height: 64px;
+    max-width: 620px;
+  }
+}
+.title-wrapper {
+  margin-bottom: 60px;
+  text-align: center;
+  @include phone() {
+    margin-bottom: 30px;
+  }
+}
+.phone-link {
+  background-image: url('../assets/icons-phone-green.svg');
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+  background-position: 10px center;
+  padding: 10px 10px 10px 44px;
+  font-size: $h4-size;
+  font-weight: 700;
+  border-radius: 6px;
+  transition: $transition-2;
+  background-color: rgba($white, 0.0);
+  color: white;
+  &:hover {
+    background-color: rgba($white, 0.2);
+    cursor: pointer;
+    transition: $transition-2;
+    color: white;
+  }
+}
+.content {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  &.driveway {
+    background-image: url('../assets/img-hero-driveway.jpg');
+    background-size: cover;
+    background-position: top;
+  }
+
+  &.fence {
+    background-image: url('../assets/img-hero-fence.jpg');
+    background-size: cover;
+    background-position: top;
+  }
+}
