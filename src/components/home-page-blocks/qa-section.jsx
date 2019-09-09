@@ -1,6 +1,6 @@
 import './qa-section.scss';
 import React from 'react';
-import PaneSwitcher from './pane-switcher';
+import PaneSwitcher from '../pane-switcher';
 
 class QASection extends React.Component {
   render() {

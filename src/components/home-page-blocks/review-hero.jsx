@@ -1,6 +1,6 @@
 import './review-hero.scss';
 import React from 'react';
-import homeAdvisorLogo from '../assets/home_advisor@2x.png';
+import homeAdvisorLogo from '../../assets/home_advisor@2x.png';
 
 class ReviewHero extends React.Component {
   render() {

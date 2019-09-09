@@ -1,10 +1,10 @@
 import './badges-section.scss';
 import React from 'react';
-import imgHAbest from '../assets/ha-best.png';
-import imgHAApprove from '../assets/ha-approved.png';
-import imgBBB from '../assets/bbb.png';
-import imgYelp from '../assets/yelp.png';
-import imgCert from '../assets/certified.png';
+import imgHAbest from '../../assets/ha-best.png';
+import imgHAApprove from '../../assets/ha-approved.png';
+import imgBBB from '../../assets/bbb.png';
+import imgYelp from '../../assets/yelp.png';
+import imgCert from '../../assets/certified.png';
 
 class BadgesSection extends React.Component {
   renderBadge({title, subtitle, img}) {

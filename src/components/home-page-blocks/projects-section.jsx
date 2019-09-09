@@ -1,13 +1,13 @@
 import './projects-section.scss';
 import React from 'react';
-import PaneSwitcher from './pane-switcher';
+import PaneSwitcher from '../pane-switcher';
 
-import photoNailUpProject from '../assets/promo-projects/dog-ear-fence@2x.png';
-import photoPictureFrame from '../assets/promo-projects/goood-neighbor_updated.jpg';
-import photoPictureFrameLattice from '../assets/promo-projects/goood-neighbor-lattice_updated.jpg';
-import photoBrushed from '../assets/promo-projects/brushed_concrete.jpg';
-import photoStamped from '../assets/promo-projects/stumped_concrete.jpg';
-import photoPavers from '../assets/promo-projects/pavers.jpg';
+import photoNailUpProject from '../../assets/promo-projects/dog-ear-fence@2x.png';
+import photoPictureFrame from '../../assets/promo-projects/goood-neighbor_updated.jpg';
+import photoPictureFrameLattice from '../../assets/promo-projects/goood-neighbor-lattice_updated.jpg';
+import photoBrushed from '../../assets/promo-projects/brushed_concrete.jpg';
+import photoStamped from '../../assets/promo-projects/stumped_concrete.jpg';
+import photoPavers from '../../assets/promo-projects/pavers.jpg';
 
 class ProjectsSection extends React.Component {
   renderCard({img, title, content, link}) {

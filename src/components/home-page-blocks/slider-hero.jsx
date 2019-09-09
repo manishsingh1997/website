@@ -1,6 +1,6 @@
 import './slider-hero.scss';
 import React from 'react';
-import Slider from './slider';
+import Slider from '../slider';
 import ClassNames from 'classnames';
 class SliderHero extends React.Component {
   renderSlide(data) {
