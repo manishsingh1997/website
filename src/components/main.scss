@@ -1,0 +1,21 @@
+@import "~@ergeon/core-components/src/components/variables";
+
+.section-title {
+  padding-top: 60px;
+  padding-bottom: 48px;
+  @include phone() {
+    padding-top: 30px;
+    padding-bottom: 18px;
+  }
+}
+
+.restricted-620 {
+  max-width: 620px;
+  &.center {
+    margin: 0 auto;
+  }
+}
+.restricted-940 {
+  max-width: 940px;
+  margin: 0 auto;
+}

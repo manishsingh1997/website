@@ -12,8 +12,10 @@ import reducers from 'reducers/index';
 
 import Layout from 'pages/layout';
 import HomePage from 'pages/home-page';
+import CareersPage from './pages/careers-page';
 
 import '@ergeon/core-components/src/components/main.scss';
+import './components/main.scss';
 
 const history = createHashHistory();
 const middlewares = [];
@@ -37,6 +39,7 @@ render(
       <Layout>
         <Switch>
           <Route component={HomePage} exact path="/"/>
+          <Route component={CareersPage} exact path="/careers"/>
         </Switch>
       </Layout>
     </Router>
