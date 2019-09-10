@@ -12,6 +12,7 @@ import reducers from 'reducers/index';
 
 import Layout from 'pages/layout';
 import HomePage from 'pages/home-page';
+import AboutPage from 'pages/about-page';
 
 import '@ergeon/core-components/src/components/main.scss';
 
@@ -37,6 +38,7 @@ render(
       <Layout>
         <Switch>
           <Route component={HomePage} exact path="/"/>
+          <Route component={AboutPage} exact path="/about-ergeon"/>
         </Switch>
       </Layout>
     </Router>
