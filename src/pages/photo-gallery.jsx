@@ -21,19 +21,19 @@ const PRODUCTS = {
 
 const BANNERS = {
   FENCE_BANNER: {
-    imageSrc: 'https://assets-global.website-files.com/5ad551c41ca0c56eeabe6c56/5beedbd6bbf0a3417b93b4c1_fence_preview.jpg',
+    imageSrc: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/previews/banner_fence.jpg',
     header: 'Fence Photos',
     description: 'Picture Frame, Nail Up, Horizontal, Gates, Before & After',
     url: '/gallery/fence/picture-frame',
   },
   GATE_BANNER: {
-    imageSrc: 'https://assets-global.website-files.com/5ad551c41ca0c56eeabe6c56/5d4beafc313d9a74535986b8_gate.jpg',
+    imageSrc: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/previews/banner_gate.jpg',
     header: 'Gate Photos',
     description: 'Picture Frame, Nail Up, Horizontal, Gates, Before & After',
     url: '/gallery/gate/picture-frame',
   },
   DRIVEWAY_BANNER: {
-    imageSrc: 'https://assets-global.website-files.com/5ad551c41ca0c56eeabe6c56/5beed4e587c172b1c886b601_img.jpg',
+    imageSrc: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/previews/banner_driveway.jpg',
     header: 'Driveway Photos',
     description: 'Stamped & Stained Concrete, Brushed Concrete, Pavers',
     url: '/gallery/driveway/stamped',
@@ -124,12 +124,12 @@ class PhotoGallery extends React.Component {
 
       return (
         <div className="photo-gallery__photos">
-          {photos.map(({caption, url}, index) => (
+          {photos.map((photoProps, index) => (
             <div
               className="photo-gallery__photo"
-              key={url}
+              key={photoProps.slug}
               onClick={() => this.setState({modalOpened: true, imageIndex: index})}>
-              <ImageCard caption={caption} url={url} />
+              <ImageCard {...photoProps} />
             </div>
           ))}
         </div>

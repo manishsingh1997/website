@@ -772,10 +772,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@ergeon/core-components@^1.0.16":
-  version "1.0.16"
-  resolved "https://npm.ergeon.in/@ergeon%2fcore-components/-/core-components-1.0.16.tgz#3b4444d439ccdc13ef54dd299c4ad49e22210202"
-  integrity sha512-5xeCpMo7r6xgqeRuVPmbk2ohQ0eupfXeVVUwzEk8YxYEb93zY7m8DmtVncbstzykhpicIHxA3EMb/q9BpYIAFQ==
+"@ergeon/core-components@^1.0.17":
+  version "1.0.17"
+  resolved "https://npm.ergeon.in/@ergeon%2fcore-components/-/core-components-1.0.17.tgz#fd996ab6a9f423b2c4df0b323c610c82ca351789"
+  integrity sha512-lHWb5OWrxyW4/p6bPCXQJt8OpMSJs8q0OyrGt/l1A0iARFoM6e2Vb6/N74h+igf50pLfainm2urz7acG/x9ofg==
   dependencies:
     classnames "^2.2.6"
     lodash "^4.17.15"
