@@ -1,0 +1,278 @@
+@import "@ergeon/core-components/src/components/variables.scss";
+.first_section_about {
+  margin-top: 60px;
+}
+.short_line {
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin: 12px auto;
+  background-color: $gray-4;
+}
+.values-container {
+  display: flex;
+  max-width: 940px;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: space-between;
+  background-image: url('../assets/skew_bg.png');
+  background-position: 0px 0px;
+  background-size: 940px;
+  background-repeat: no-repeat;
+  margin-top: 40px;
+
+  .values-item {
+    display: flex;
+    width: 300px;
+    height: 200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-image: none;
+    text-align: center;
+
+    .image-24 {
+      margin-bottom: 12px;
+    }
+
+    &__title {
+      font-weight: bold;
+    }
+
+    &__subtitle {
+      font-size: $font-mobile-size;
+      font-style: italic;
+      max-width: 220px;
+    }
+  }
+}
+.about-section {
+  max-width: 940px;
+  margin-top: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 60px 120px;
+  border-radius: 20px;
+  background-image: linear-gradient(180deg, $gray-6, rgba(252, 253, 251, 0.31));
+  font-family: $font-content;
+  font-size: $font-regular-size;
+  line-height: $line-height-regular;
+
+  .about__title {
+    margin-bottom: 12px;
+    font-family: 'Hind Vadodara', sans-serif;
+    font-size: $h4-size;
+    line-height: $h4-line-height;
+  }
+}
+
+@media (max-width: 991px) {
+  .values-container {
+    align-items: center;
+    justify-content: space-between;
+    background-position: 0px 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    .values-item {
+      position: relative;
+      z-index: 2;
+      margin-right: 10px;
+      margin-left: 10px;
+      padding: 20px;
+    }
+  }
+
+  .career-section {
+    display: flex;
+    margin-bottom: 0px;
+    float: none;
+    justify-content: center;
+
+    .tile {
+      position: static;
+      float: none;
+      clear: none;
+    }
+  }
+}
+
+@include tablet {
+  .values-container {
+    flex-direction: row;
+    align-items: stretch;
+    background-image: none;
+    background-size: auto;
+    background-repeat: repeat;
+
+    .values-item {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      flex: 0 auto;
+      background-image: linear-gradient(180deg, #f2fdf7, #e1f9eb);
+    }
+  }
+
+  .about-section {
+    margin-top: 30px;
+    padding: 30px 40px;
+    font-size: $font-mobile-size;
+    line-height: $line-height-mobile;
+
+    &__title {
+      font-size: $h4-size;
+      line-height: $h4-line-height;
+    }
+  }
+
+  .career-section {
+    .tile {
+      display: flex;
+      max-width: 520px;
+      margin-top: 60px;
+      margin-right: auto;
+      margin-left: auto;
+      padding: 40px;
+      float: none;
+    }
+  }
+}
+
+@include phone {
+  .values-container {
+    flex-direction: column;
+    align-items: center;
+
+    .values-item {
+      max-width: 100%;
+      padding-bottom: 36px;
+    }
+  }
+
+  .about-section {
+    padding: 20px;
+
+    &__title {
+      margin-top: 0px;
+    }
+  }
+
+  .profile {
+    margin-top: 24px;
+
+    .linkedin-link {
+      height: 22px;
+      margin-top: 4px;
+      padding-left: 26px;
+      background-size: 20px 20px;
+      line-height: 22px;
+    }
+  }
+
+  .career-section {
+    .tile {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      padding: 20px;
+
+      .button {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+.special-section {
+
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  @include tablet() {
+    flex-direction: column;
+  }
+}
+
+.profiles {
+  min-width: 270px;
+  @include tablet() {
+    display: flex;
+    justify-content: flex-start;
+  }
+  @include phone() {
+    flex-direction: column;
+  }
+}
+.profile {
+  display: flex;
+  margin-top: 40px;
+  align-items: flex-start;
+  @include tablet() {
+    margin-right: 40px;
+  }
+  @include phone() {
+    margin-right: unset;
+  }
+  .profile__info {
+    margin-left: 20px;
+
+    .profile__name {
+      font-weight: 700;
+    }
+
+    .profile__title {
+      color: #787e75;
+      font-size: $font-mobile-size;
+      line-height: $line-height-mobile;
+      font-style: italic;
+    }
+
+    .linkedin-link {
+      display: block;
+      height: 26px;
+      margin-top: 12px;
+      padding-left: 29px;
+      background-image: url('../assets/linkedin.svg');
+      background-position: 0px 50%;
+      background-repeat: no-repeat;
+      color: #187fb8;
+      line-height: 26px;
+    }
+  }
+}
+.tile {
+  z-index: 2;
+  position: relative;
+  min-width: 620px;
+  margin-left: 30px;
+  display: flex;
+  margin-top: 40px;
+  padding: 47px 60px 60px;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid $gray-4;
+  border-radius: 12px;
+  background-color: $white;
+  box-shadow: 0 5px 15px 0 rgba(black, 0.1);
+  text-align: left;
+  @include tablet() {
+    width: 100%;
+    margin-left: unset;
+  }
+  @include phone() {
+    min-width: unset;
+    padding: 30px;
+  }
+  &__description {
+    display: block;
+    max-width: 320px;
+    margin: 17px auto 30px;
+    font-size: $h5-size;
+    text-align: center;
+    @include phone() {
+      min-width: unset;
+      font-size: $font-mobile-size;
+    }
+  }
+}
