@@ -44,8 +44,6 @@ class Spinner extends React.Component {
       'green': color === 'green',
       'white': color === 'white',
     });
-    console.log('active');
-    console.log(active);
     if (active) {
       return (
         <div className="loaderWrapper" style={{width: `${size}px`, height: `${size}px`}}>
