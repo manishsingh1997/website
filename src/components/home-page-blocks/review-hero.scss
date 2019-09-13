@@ -6,7 +6,7 @@
       flex-direction: column;
     }
   }
-  background-image: url('../assets/abstract-shape.svg'), linear-gradient(180deg, $white, $gray-6);
+  background-image: url('../../assets/abstract-shape.svg'), linear-gradient(180deg, $white, $gray-6);
   background-repeat: no-repeat;
   background-position-x: 120%;
   background-position-y: 80px;
@@ -69,7 +69,7 @@
   &__main-review {
     margin-left: 68px;
     padding-left: 62px;
-    background-image: url('../assets/quote.svg');
+    background-image: url('../../assets/quote.svg');
     background-repeat: no-repeat;
     background-position: 0 0;
     max-width: 620px;

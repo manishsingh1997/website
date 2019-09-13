@@ -1,10 +1,10 @@
 import React from 'react';
 import './get-started-section.scss';
-import imgGetStarted from '../assets/easy-to-use.jpg';
-import imgTrusted from '../assets/trusted provider.svg';
-import imgCard from '../assets/card.svg';
-import imgBuck from '../assets/buck.svg';
-import imgSmile from '../assets/smile.svg';
+import imgGetStarted from '../../assets/easy-to-use.jpg';
+import imgTrusted from '../../assets/trusted provider.svg';
+import imgCard from '../../assets/card.svg';
+import imgBuck from '../../assets/buck.svg';
+import imgSmile from '../../assets/smile.svg';
 class GetStartedSection extends React.Component {
   render() {
     return (
