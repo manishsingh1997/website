@@ -1,0 +1,31 @@
+@import "@ergeon/core-components/src/components/variables.scss";
+
+.faq-page {
+
+  &__header {
+    height: 30vh;
+    background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.3)), url('../assets/img-hero-faq.jpg');
+    background-position: 0px 0px, 50% 50%;
+    background-size: auto, cover;
+    background-repeat: repeat, no-repeat;
+  }
+
+  &__header-title {
+    &-container {
+      display: flex;
+      height: 100%;
+      margin: 0 auto;
+      width: 100%;
+      align-items: flex-end;
+    }
+  }
+
+  &__content {
+    margin: 0 auto;
+  }
+
+  p {
+    margin-bottom: $v-12;
+    text-align: left;
+  }
+}

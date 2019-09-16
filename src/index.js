@@ -20,6 +20,7 @@ import HomePage from 'pages/home-page';
 import CareersPage from './pages/careers-page';
 import AboutPage from 'pages/about-page';
 import PhotoGallery from 'pages/photo-gallery';
+import FAQPage from 'pages/faq-page';
 
 import '@ergeon/core-components/src/components/main.scss';
 import './components/main.scss';
@@ -68,6 +69,7 @@ render(
           <Route component={AboutPage} exact path="/about-ergeon"/>
           <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug"/>
           <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug/:groupSlug"/>
+          <Route component={FAQPage} exact path="/faq"/>
         </Switch>
       </Layout>
     </Router>
