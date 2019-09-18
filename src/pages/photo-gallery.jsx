@@ -4,8 +4,7 @@ import {find} from 'lodash';
 import Carousel, {Modal, ModalGateway} from 'react-images';
 import {NavLink} from 'react-router-dom';
 
-import Heading from 'components/heading';
-import {Tabs, Breadcrumb, ImageCard} from '@ergeon/core-components';
+import {Tabs, Breadcrumb, Button, ImageCard} from '@ergeon/core-components';
 
 import {
   FencePhotoData,
@@ -126,7 +125,7 @@ class PhotoGallery extends React.Component {
         <div className="photo-gallery__photos">
           {photos.map((photoProps, index) => (
             <div
-              className="photo-gallery__photo"
+              className="photo-gallery__photo spacing after__is-24"
               key={photoProps.slug}
               onClick={() => this.setState({modalOpened: true, imageIndex: index})}>
               <ImageCard {...photoProps} />
@@ -138,16 +137,21 @@ class PhotoGallery extends React.Component {
 
     renderBanner({imageSrc, header, description, url}, key) {
       return (
-        <div className="photo-gallery__banner" key={key}>
+        <div className="photo-gallery__banner card soft-border" key={key}>
           <img className="photo-gallery__banner-photo" src={imageSrc} />
           <div className="photo-gallery__banner-data">
-            <h4 className="photo-gallery__banner-header">{header}</h4>
-            <div className="label photo-gallery__banner-description">
+            <h4 className="spacing after__is-6">{header}</h4>
+            <p className="subheader h4 spacing after__is-12">
               {description}
-            </div>
-            <NavLink className="photo-gallery__banner-button" to={url}>
+            </p>
+            <Button
+              asAnchor={true}
+              className=""
+              flavor="regular"
+              href={url}
+              taste="line">
               Open Gallery
-            </NavLink>
+            </Button>
           </div>
         </div>
       );
@@ -195,29 +199,42 @@ class PhotoGallery extends React.Component {
       }[productSlug];
 
       return (
-        <div className="photo-gallery wrapper-1180">
-          <Heading title={this.getProductGalleryName()}/>
-          <div className="photo-gallery__categories">
-            <Tabs items={this.getCategoryTabs()} useNavLinks />
+        <div className="photo-gallery">
+          <div className="wrapper-1180">
+            <span className="breadcrumbs">
+              <NavLink><span className="icon home"/></NavLink>
+              <ul>
+                <li><NavLink to="/">Photo gallery</NavLink></li>
+              </ul>
+            </span>
+            <h2>{this.getProductGalleryName()}</h2>
           </div>
-          <div className="photo-gallery__groups">
-            <Breadcrumb
-              items={[this.getBreadcrumbGroups()]} secondary/>
+          <div className="header-border spacing after__is-24">
+            <div className="photo-gallery__categories wrapper-1180">
+              <Tabs items={this.getCategoryTabs()} useNavLinks />
+            </div>
           </div>
-          {this.renderPhotos()}
-          <div className="photo-gallery__banners">
-            {banners.map((banner, index) => this.renderBanner(banner, index))}
+          <div className="wrapper-1180">
+            <div className="photo-gallery__groups spacing after__is-24">
+              <Breadcrumb
+                items={[this.getBreadcrumbGroups()]} secondary/>
+            </div>
+            {this.renderPhotos()}
+            <div className="photo-gallery__banners">
+              {banners.map((banner, index) => this.renderBanner(banner, index))}
+            </div>
+            {category.partners && this.renderPartners(category.partners)}
+            <ModalGateway>
+              {modalOpened ? (
+                <Modal onClose={() => this.setState({modalOpened: false})}>
+                  <Carousel
+                    currentIndex={imageIndex}
+                    views={this.getPhotos().map(({caption, url}) => ({caption, src: url}))}/>
+                </Modal>
+              ) : null}
+            </ModalGateway>
           </div>
-          {category.partners && this.renderPartners(category.partners)}
-          <ModalGateway>
-            {modalOpened ? (
-              <Modal onClose={() => this.setState({modalOpened: false})}>
-                <Carousel
-                  currentIndex={imageIndex}
-                  views={this.getPhotos().map(({caption, url}) => ({caption, src: url}))}/>
-              </Modal>
-            ) : null}
-          </ModalGateway>
+
         </div>
       );
     }

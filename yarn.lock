@@ -784,10 +784,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.1.tgz#e93c13942592cf5ef01aa8297444dc192beee52f"
   integrity sha512-Qv4LTqO11jepd5Qmlp3M1YEjBumoTHcHFdgPTQ+sFlIL5myi/7xu/POwP7IRu6odBdmLXdtIs1D6TuW6kbwbbg==
 
-"@ergeon/core-components@^1.0.20":
-  version "1.0.20"
-  resolved "https://npm.ergeon.in/@ergeon%2fcore-components/-/core-components-1.0.20.tgz#f796cd97a8a801aed0f31d0ba9fb827fd1df6fb6"
-  integrity sha512-zAwAaRY3RVYGSFP61SzVgQPlWyBBVU4DgxYxwC9XchzIVIbzUEZSC+5uhM1OsGD7KbWeOD0/9RLW4uiCy2PDiw==
+"@ergeon/core-components@^1.0.22":
+  version "1.0.22"
+  resolved "https://npm.ergeon.in/@ergeon%2fcore-components/-/core-components-1.0.22.tgz#08d1a84d8adb9c351245b42eed9fd34a9fcf7571"
+  integrity sha512-SR7A8MxSJidI1HX/rF33ix8Dz3l/+1XpDQ0s/JqJSiS7xjQ8wr1WeEM9qTdua9SRslYXMfQ5tTxJ35JBqRomKQ==
   dependencies:
     classnames "^2.2.6"
     lodash "^4.17.15"
