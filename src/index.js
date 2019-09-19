@@ -17,10 +17,11 @@ import {
 
 import Layout from 'pages/layout';
 import HomePage from 'pages/home-page';
-import CareersPage from './pages/careers-page';
+import CareersPage from 'pages/careers-page';
 import AboutPage from 'pages/about-page';
 import PhotoGallery from 'pages/photo-gallery';
 import FAQPage from 'pages/faq-page';
+import WarrantiesPage from 'pages/warranties-page';
 
 import '@ergeon/core-components/src/components/main.scss';
 import './components/main.scss';
@@ -70,6 +71,7 @@ render(
           <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug"/>
           <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug/:groupSlug"/>
           <Route component={FAQPage} exact path="/faq"/>
+          <Route component={WarrantiesPage} exact path="/licenses-warranties"/>
         </Switch>
       </Layout>
     </Router>

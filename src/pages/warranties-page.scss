@@ -1,0 +1,123 @@
+@import "@ergeon/core-components/src/components/variables.scss";
+
+.warranties-page {
+
+  &__header {
+    height: 480px;
+    background-image: radial-gradient(circle farthest-corner at 100% 0%, transparent, rgba(82, 86, 80, 0.75)), url('../assets/img-hero-warranties.jpg');
+    background-position: 0px 0px, 100% 0px;
+    background-size: auto, 1024px;
+    background-repeat: repeat, no-repeat;
+
+    .subheader {
+      width: 80%;
+      max-width: 700px;
+      margin-bottom: 60px;
+      text-align: left;
+    }
+  }
+
+  &__content {
+    padding-top: 60px;
+
+    .licenses {
+      display: flex;
+      flex: 0 auto;
+      padding-bottom: 60px;
+      margin-top: 30px;
+
+      @include tablet {
+        justify-content: space-between;
+      }
+
+      @include phone {
+        flex-direction: column;
+        padding-top: 0px;
+      }
+
+      @include phone-small {
+        padding: 0px;
+      }
+    }
+
+    .certifications {
+      display: flex;
+      width: 80%;
+      min-width: 580px;
+      flex: 0 auto;
+
+      @include tablet {
+        min-width: 380px;
+      }
+
+      @include phone {
+        width: 100%;
+        margin-bottom: 20px;
+        min-width: auto;
+      }
+    }
+
+    .certification-item {
+      padding-top: 30px;
+      border-radius: 20px;
+      background-image: linear-gradient(180deg, #ebf2f7, hsla(0, 0%, 100%, 0));
+      font-size: 16px;
+      text-align: center;
+      margin-right: 20px;
+      width: 100%;
+
+      .certified-icon {
+        display: block;
+        margin-right: auto;
+        margin-bottom: 20px;
+        margin-left: auto;
+        width: 100px;
+      }
+    }
+
+    .certification-image-link {
+      @include border();
+      border-radius: 12px;
+      padding: 10px;
+      width: 100%;
+      display: inline-block;
+
+      &:hover {
+        box-shadow: 0 10px 14px 0 rgba(black, 0.08);
+      }
+    }
+
+    .certification-image {
+      width: 100%;
+    }
+  }
+}
+
+.warranties {
+    display: flex;
+    margin-bottom: 30px;
+    flex-flow: wrap;
+    min-height: 278px;
+  }
+
+.warranty {
+    padding: 10px;
+    border: 1px solid rgba(120, 126, 117, 0.14);
+    border-radius: 12px;
+    transition: all 200ms ease;
+
+    &:hover {
+      box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    &__canvas {
+      vertical-align: bottom;
+      max-width: 100%;
+    }
+}
+
+.heading-16 {
+  margin-bottom: 6px;
+  font-size: 16px;
+  text-align: center;
+}

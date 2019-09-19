@@ -19,3 +19,13 @@
   max-width: 940px;
   margin: 0 auto;
 }
+
+.full-width-block {
+  display: flex;
+  height: 100%;
+  margin: 0 auto;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}

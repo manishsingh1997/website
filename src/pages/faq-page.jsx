@@ -24,7 +24,7 @@ class FAQPage extends React.Component {
       <div className="faq-page">
         <div className="faq-page__header">
           <div className="wrapper-1180">
-            <div className="faq-page__header-title-container width-restricted to-620">
+            <div className="full-width-block width-restricted to-620">
               <h2 className="white spacing after__is-48">
                 Frequently Asked Questions
               </h2>
