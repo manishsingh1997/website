@@ -23,9 +23,11 @@ class PromoBlock extends React.Component {
             <img src={img}/>
           </div>
           <div className="promo-block__content">
-            <h3 className="additional-header h1">{title}</h3>
-            <h3 className="additional-header h3">{subtitle}</h3>
-            <Button className="spacing before__is-24" href={btnLink} size="large">{btnName}</Button>
+            <div className="promot-block__content__wrapper">
+              <h3 className="spacing after__is-6">{title}</h3>
+              <p>{subtitle}</p>
+              <Button className="spacing before__is-24" href={btnLink} size="large">{btnName}</Button>
+            </div>
           </div>
         </div>
       );

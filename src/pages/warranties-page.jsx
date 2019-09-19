@@ -83,9 +83,8 @@ class WarrantiesPage extends React.Component {
         href={warrantyUrl}
         key={`warranty-${slug}`}
         rel="noopener noreferrer"
-        style={{padding: 10}}
         target="_blank">
-        <div className="warranty">
+        <div className="card soft-border padding-20 shadow__z1 warranty">
           <canvas
             className="warranty__canvas"
             height="250"
@@ -104,35 +103,44 @@ class WarrantiesPage extends React.Component {
       <div className="warraties-page">
         <div className="warranties-page__header">
           <div className="full-width-block wrapper-1180">
-            <h1 className="white">Licenses & warranty</h1>
-            <p className="subheader h2 white">
-              We are licensed, bonded and insured contractors and promise you&apos;ll be happy with our work.
-            </p>
+            <div className="spacing after__is-48">
+              <h1 className="white spacing after__is-12">
+                Licenses & Warranty
+              </h1>
+              <p className="subheader h2 white width-restricted to-620">
+                We are licensed, bonded and insured contractors and promise you&apos;ll be happy with our work.
+              </p>
+            </div>
+
           </div>
         </div>
         <div className="warranties-page__content wrapper-1180">
-          <h4>Our Licenses</h4>
+          <h3>Our Licenses</h3>
           <div className="licenses">
             <div className="certifications">
               <div className="certification-item">
                 <img className="certified-icon" src={certifiedIcon} />
-                <h4 className="heading-16">C13 - Fencing</h4>
+                <h4 className="">C13 - Fencing</h4>
                 <p>Ergeon inc</p>
                 <p>License #1040925</p>
               </div>
               <div className="certification-item">
                 <img className="certified-icon" src={certifiedIcon} />
-                <h4 className="heading-16">C27 - Landscaping</h4>
+                <h4 className="">C27 - Landscaping</h4>
                 <p>Ergeon inc</p>
                 <p>License #1040925</p>
               </div>
             </div>
-            <a className="certification-image-link" href={licenseImage}>
+            <a
+              className="certification-image-link card padding-20 soft-border shadow__z2"
+              href={licenseImage}
+              rel="noopener noreferrer"
+              target="_blank">
               <img className="certification-image" src={licenseImage} />
             </a>
           </div>
-          <h4>Warranty</h4>
-          <div className="warranties">
+          <h3 className="spacing after__is-30">Warranty</h3>
+          <div className="warranties cards three-columns">
             {warranties.map(this.renderWarranty.bind(this))}
           </div>
         </div>

@@ -55,7 +55,7 @@ class JobBoard extends React.Component {
             return (
               <div className={jobListClasses} key={i}>
                 <div className="job-list__department">
-                  <h4 className="additional-header h4">{department.name}</h4>
+                  <span className="additional-header h2">{department.name}</span>
                 </div>
                 {this.renderPositions(department.jobs)}
               </div>

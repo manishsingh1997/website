@@ -3,15 +3,18 @@
 .faq-page {
 
   &__header {
-    height: 50vh;
+    height: 480px;
     background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.3)), url('../assets/img-hero-faq.jpg');
     background-position: 0px 0px, 50% 50%;
     background-size: auto, cover;
     background-repeat: repeat, no-repeat;
   }
-
-  &__content {
-    margin: 0 auto;
+  &__call-us {
+    color: $white;
+    font-weight: bold;
+    &:hover {
+      color: rgba($white, 0.8);
+    }
   }
 
   p {

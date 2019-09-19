@@ -6,7 +6,7 @@ class QASection extends React.Component {
   render() {
     return (
       <div className="qa-section">
-        <h2 className="additional-header h1">Questions & Answers</h2>
+        <h3 className="">Questions & Answers</h3>
         <PaneSwitcher>
           <div data-name="Fence 101">
             <div className="qa-section__questions-wrapper">

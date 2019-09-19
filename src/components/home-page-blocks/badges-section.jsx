@@ -14,7 +14,7 @@ class BadgesSection extends React.Component {
           <img src={img}/>
         </div>
         <div className="badges-section__badge__txt">
-          <div>{title}</div>
+          <h6 className="spacing after__is-6">{title}</h6>
           <div className="label">{subtitle}</div>
         </div>
       </a>
