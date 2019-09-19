@@ -68,6 +68,7 @@ render(
           <Route component={HomePage} exact path="/"/>
           <Route component={CareersPage} exact path="/careers"/>
           <Route component={AboutPage} exact path="/about-ergeon"/>
+          <Route component={PhotoGallery} exact path="/gallery/"/>
           <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug"/>
           <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug/:groupSlug"/>
           <Route component={FAQPage} exact path="/faq"/>

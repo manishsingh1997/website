@@ -4,7 +4,6 @@ import {find} from 'lodash';
 import Carousel, {Modal, ModalGateway} from 'react-images';
 import {NavLink} from 'react-router-dom';
 
-import Heading from 'components/heading';
 import {Tabs, Breadcrumb, ImageCard} from '@ergeon/core-components';
 
 import {
@@ -30,7 +29,7 @@ const BANNERS = {
     imageSrc: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/previews/banner_gate.jpg',
     header: 'Gate Photos',
     description: 'Picture Frame, Nail Up, Horizontal, Gates, Before & After',
-    url: '/gallery/gate/picture-frame',
+    url: '/gallery/gate/nail-up',
   },
   DRIVEWAY_BANNER: {
     imageSrc: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/previews/banner_driveway.jpg',
@@ -48,7 +47,7 @@ class PhotoGallery extends React.Component {
         params: PropTypes.shape({
           categorySlug: PropTypes.string,
           groupSlug: PropTypes.string,
-          productSlug: PropTypes.oneOf(Object.values(PRODUCTS)).isRequired,
+          productSlug: PropTypes.oneOf(Object.values(PRODUCTS)),
         }),
       }),
     };
@@ -123,10 +122,10 @@ class PhotoGallery extends React.Component {
       let photos = this.getPhotos();
 
       return (
-        <div className="photo-gallery__photos">
+        <div className="cards three-columns">
           {photos.map((photoProps, index) => (
             <div
-              className="photo-gallery__photo"
+              className="card"
               key={photoProps.slug}
               onClick={() => this.setState({modalOpened: true, imageIndex: index})}>
               <ImageCard {...photoProps} />
@@ -138,14 +137,16 @@ class PhotoGallery extends React.Component {
 
     renderBanner({imageSrc, header, description, url}, key) {
       return (
-        <div className="photo-gallery__banner" key={key}>
+        <div className="card soft-border photo-gallery__banner" key={key}>
           <img className="photo-gallery__banner-photo" src={imageSrc} />
           <div className="photo-gallery__banner-data">
-            <h4 className="photo-gallery__banner-header">{header}</h4>
-            <div className="label photo-gallery__banner-description">
+            <h4 className="additional-header h2 spacing after__is-6">{header}</h4>
+            <p className="spacing after__is-12">
               {description}
-            </div>
-            <NavLink className="photo-gallery__banner-button" to={url}>
+            </p>
+            <NavLink
+              className="button button--regular taste__line button--size__medium"
+              to={url}>
               Open Gallery
             </NavLink>
           </div>
@@ -156,11 +157,13 @@ class PhotoGallery extends React.Component {
     renderPartners(partners = []) {
       return (
         <div className="photo-gallery__partners-area">
-          <h4 className="label_uppercase ">FOR ADDITIONAL CUSTOMIZED OPTIONS VISIT OUR PARTNER LINKS</h4>
+          <label className="label uppercase spacing after__is-12">
+            FOR ADDITIONAL CUSTOMIZED OPTIONS VISIT OUR PARTNER LINKS
+          </label>
           <div className="photo-gallery__partners">
             {partners.map(({name, slug, url, imageSrc}) => (
               <a
-                className="photo-gallery__partner"
+                className="photo-gallery__partner card soft-border shadow__z1"
                 href={url}
                 key={`partner-${slug}`}
                 rel="noopener noreferrer"
@@ -168,9 +171,9 @@ class PhotoGallery extends React.Component {
                 <div className="photo-gallery__partner-image" style={{backgroundImage: `url(${imageSrc})`}} />
                 <div className="photo-gallery__partner-description">
                   <div>
-                    <div className="photo-gallery__partner-name">
+                    <h4 className="additional-header h4">
                       {name}
-                    </div>
+                    </h4>
                     <div className="photo-gallery__partner-site">
                       {url}
                     </div>
@@ -185,6 +188,30 @@ class PhotoGallery extends React.Component {
 
     render() {
       const {productSlug} = this.props.match.params;
+      if (!productSlug) return (
+        <div className="photo-gallery">
+          <div className="wrapper-1180">
+            <span className="breadcrumbs">
+              <NavLink to="/"><span className="icon home"/></NavLink>
+              <ul>
+                <li><NavLink to="/gallery/">Photo gallery</NavLink></li>
+              </ul>
+            </span>
+            <h2>Photo gallery</h2>
+          </div>
+          <div className="header-border spacing after__is-24">
+          </div>
+          <div className="wrapper-1180">
+            <div className="cards two-columns">
+              {[BANNERS.GATE_BANNER, BANNERS.DRIVEWAY_BANNER, BANNERS.FENCE_BANNER].map(
+                (banner, index) => this.renderBanner(banner, index)
+              )}
+            </div>
+
+          </div>
+
+        </div>
+      );
       const {modalOpened, imageIndex} = this.state;
       const category = this.getCategoryData();
 
@@ -195,29 +222,42 @@ class PhotoGallery extends React.Component {
       }[productSlug];
 
       return (
-        <div className="photo-gallery wrapper-1180">
-          <Heading title={this.getProductGalleryName()}/>
-          <div className="photo-gallery__categories">
-            <Tabs items={this.getCategoryTabs()} useNavLinks />
+        <div className="photo-gallery">
+          <div className="wrapper-1180">
+            <span className="breadcrumbs">
+              <NavLink to="/"><span className="icon home"/></NavLink>
+              <ul>
+                <li><NavLink to="/gallery/">Photo gallery</NavLink></li>
+              </ul>
+            </span>
+            <h2>{this.getProductGalleryName()}</h2>
           </div>
-          <div className="photo-gallery__groups">
-            <Breadcrumb
-              items={[this.getBreadcrumbGroups()]} secondary/>
+          <div className="header-border spacing after__is-24">
+            <div className="photo-gallery__categories wrapper-1180">
+              <Tabs items={this.getCategoryTabs()} useNavLinks />
+            </div>
           </div>
-          {this.renderPhotos()}
-          <div className="photo-gallery__banners">
-            {banners.map((banner, index) => this.renderBanner(banner, index))}
+          <div className="wrapper-1180">
+            <div className="photo-gallery__groups spacing after__is-24">
+              <Breadcrumb
+                items={[this.getBreadcrumbGroups()]} secondary/>
+            </div>
+            {this.renderPhotos()}
+            <div className="cards two-columns spacing before__is-64">
+              {banners.map((banner, index) => this.renderBanner(banner, index))}
+            </div>
+            {category.partners && this.renderPartners(category.partners)}
+            <ModalGateway>
+              {modalOpened ? (
+                <Modal onClose={() => this.setState({modalOpened: false})}>
+                  <Carousel
+                    currentIndex={imageIndex}
+                    views={this.getPhotos().map(({caption, url}) => ({caption, src: url}))}/>
+                </Modal>
+              ) : null}
+            </ModalGateway>
           </div>
-          {category.partners && this.renderPartners(category.partners)}
-          <ModalGateway>
-            {modalOpened ? (
-              <Modal onClose={() => this.setState({modalOpened: false})}>
-                <Carousel
-                  currentIndex={imageIndex}
-                  views={this.getPhotos().map(({caption, url}) => ({caption, src: url}))}/>
-              </Modal>
-            ) : null}
-          </ModalGateway>
+
         </div>
       );
     }
