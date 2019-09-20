@@ -120,13 +120,13 @@ class WarrantiesPage extends React.Component {
             <div className="certifications">
               <div className="certification-item">
                 <img className="certified-icon" src={certifiedIcon} />
-                <h4 className="">C13 - Fencing</h4>
+                <h4>C13 - Fencing</h4>
                 <p>Ergeon inc</p>
                 <p>License #1040925</p>
               </div>
               <div className="certification-item">
                 <img className="certified-icon" src={certifiedIcon} />
-                <h4 className="">C27 - Landscaping</h4>
+                <h4>C27 - Landscaping</h4>
                 <p>Ergeon inc</p>
                 <p>License #1040925</p>
               </div>

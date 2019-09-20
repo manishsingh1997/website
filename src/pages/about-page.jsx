@@ -21,7 +21,7 @@ class HomePage extends React.Component {
           <div className="values-container">
             <div className="values-item">
               <img alt="" className="image-24" src={imgHeart} />
-              <h5 className="">We invest in people</h5>
+              <h5>We invest in people</h5>
               <p className="values-item__subtitle">Making long term commitments to customers and team members.<br /></p>
             </div>
             <div className="values-item">
@@ -54,7 +54,7 @@ class HomePage extends React.Component {
                 <div className="profile">
                   <img alt="" className="profile__image" src={imgJenny} width="96" />
                   <div className="profile__info">
-                    <h5 className="">Jenny He</h5>
+                    <h5>Jenny He</h5>
                     <div className="label"><i>Founder and CEO</i></div>
                     <a className="linkedin-link" href="https://www.linkedin.com/in/jiayue-jenny-he-5a10762" rel="noopener noreferrer" target="_blank" >Linkedin</a>
                   </div>
@@ -62,7 +62,7 @@ class HomePage extends React.Component {
                 <div className="profile">
                   <img alt="" className="profile__image" src={imgOdysseas} width="96" />
                   <div className="profile__info">
-                    <h5 className="">Odysseas Tsatalos</h5>
+                    <h5>Odysseas Tsatalos</h5>
                     <div className="label"><i>Founder and CTO</i></div>
                     <a className="linkedin-link" href="https://www.linkedin.com/in/tsatalos" rel="noopener noreferrer" target="_blank">Linkedin</a>
                   </div>
