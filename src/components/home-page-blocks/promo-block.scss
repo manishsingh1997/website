@@ -1,14 +1,16 @@
 @import '@ergeon/core-components/src/components/variables.scss';
 .promo-block {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-gap: $h-60;
+  align-items: start;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   margin-top: 90px;
   @include phone() {
-    flex-direction: column;
-    align-items: start;
+    margin-top: $v-48;
+    grid-gap: $v-24;
   }
   &__img-container {
-    max-width: 540px;
     border-radius: 12px;
     border: 1px solid $gray-5;
     overflow: hidden;
@@ -20,12 +22,10 @@
     }
   }
   &__content {
-    margin-left: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
     a {
-      margin-top: 24px;
-    }
-    @include phone() {
-      margin-left: 0;
       margin-top: 24px;
     }
   }

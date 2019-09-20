@@ -12,12 +12,12 @@ import photoPavers from 'assets/promo-projects/pavers.jpg';
 class ProjectsSection extends React.Component {
   renderCard({img, title, content, link}) {
     return (
-      <div className="card">
+      <div className="card padding-20 soft-border">
         <div className="card__img-container">
           <img src={img}/>
         </div>
         <div className="card__content">
-          <h3 className="additional-header h3">{title}</h3>
+          <h2 className="additional-header h2 spacing after__is-6">{title}</h2>
           <p>{content}</p>
           <a href={link}>View more</a>
         </div>
@@ -27,7 +27,7 @@ class ProjectsSection extends React.Component {
   render() {
     return (
       <div className="projects-section">
-        <h2 className="additional-header h1"> Professional Installation Services</h2>
+        <h3 className=""> Professional Installation Services</h3>
         <PaneSwitcher>
           <div className="projects-section__project-cards" data-name="Fence projects">
             {this.renderCard({

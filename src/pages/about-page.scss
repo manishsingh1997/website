@@ -1,7 +1,4 @@
 @import "@ergeon/core-components/src/components/variables.scss";
-.first_section_about {
-  margin-top: 60px;
-}
 .short_line {
   display: block;
   width: 60px;
@@ -41,7 +38,9 @@
     }
 
     &__subtitle {
+      margin-top: $v-6;
       font-size: $font-mobile-size;
+      line-height: $line-height-mobile;
       font-style: italic;
       max-width: 220px;
     }
@@ -54,7 +53,7 @@
   margin-left: auto;
   padding: 60px 120px;
   border-radius: 20px;
-  background-image: linear-gradient(180deg, $gray-6, rgba(252, 253, 251, 0.31));
+  background-image: linear-gradient(180deg, $gray-6, rgba($white, 0));
   font-family: $font-content;
   font-size: $font-regular-size;
   line-height: $line-height-regular;
@@ -216,10 +215,6 @@
   }
   .profile__info {
     margin-left: 20px;
-
-    .profile__name {
-      font-weight: 700;
-    }
 
     .profile__title {
       color: #787e75;

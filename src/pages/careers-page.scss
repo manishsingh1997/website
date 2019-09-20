@@ -18,13 +18,14 @@
     flex-direction: column;
   }
   &__card {
+    height: 100%;
     padding: 40px;
-    border-radius: 12px;
+    border-radius: $corner-soft;
     border: 1px solid $gray-5;
     margin-bottom: 24px;
     background-color: $gray-6;
     position: relative;
-    width: calc(50% - 10px);
+    z-index: 1;
     @include phone() {
       width: 100%;
       margin-bottom: 12px;
@@ -32,7 +33,7 @@
     &__title {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 12px;
+      margin-bottom: 0px;
     }
   }
 }

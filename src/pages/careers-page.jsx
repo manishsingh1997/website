@@ -14,80 +14,80 @@ class CareersPage extends React.Component {
   render() {
     return (
       <div className="careers-page wrapper-1180">
-        <div className="section-title">
-          <h2 className="center">Join Us In Changing The Home Services Industry</h2>
-          <p className="additional-header h2 center">
-              We’re using technology to democratize the way consumers improve their home.
+        <div className="spacing before__is-48 after__is-48">
+          <h1 className="center spacing after__is-12">Join Us In Changing The Home Services Industry</h1>
+          <p className="subheader h2 center">
+            We’re using technology to democratize the way consumers improve their home.
             <br/>Simpler.  Faster.  Better Value.
           </p>
         </div>
         <div className="careers-page__img-container">
           <img src={ergeonTeam}/>
         </div>
-        <div className="section-title">
-          <h2 className="center">Our Team</h2>
-          <p className="additional-header h2 center">
+        <div className="spacing before__is-48 after__is-48">
+          <h2 className="center spacing after__is-12">Our Team</h2>
+          <p className="subheader h2 center">
               The Ergeon team is global and diverse.
           </p>
         </div>
         <StaffMap/>
         <JobBoard/>
-        <div className="section-title">
-          <h2 className="center">Company Benefits</h2>
-          <p className="additional-header h2 center restricted-620">
+        <div className="spacing before__is-48 after__is-48">
+          <h2 className="center spacing after__is-12">Company Benefits</h2>
+          <p className="subheader h2 center restricted-620">
             In addition to flexible work hours, remote happy hours and team events
             here are a few of the perks we offer.
           </p>
         </div>
-        <div className="cards">
-          <div className="cards__card">
-            <div className="cards__card__title">
-              <h4 className="additional-header h4">Positively Affect Lives</h4>
+        <div className="cards two-columns">
+          <div className="card cards__card">
+            <div className="cards__card__title spacing after__is-6">
+              <span className="additional-header h2">Positively Affect Lives</span>
               <img src={imgPositiv}/>
             </div>
             <p>
               Help reinvent a legacy industry and improve the lives of both consumers and contractors.
             </p>
           </div>
-          <div className="cards__card">
-            <div className="cards__card__title">
-              <h4 className="additional-header h4">Competitive Compensation</h4>
+          <div className="card cards__card">
+            <div className="cards__card__title spacing after__is-6">
+              <span className="additional-header h2">Competitive Compensation</span>
               <img src={imgSalary}/>
             </div>
             <p>
               We offer globally competitive salary and stock options.
             </p>
           </div>
-          <div className="cards__card">
-            <div className="cards__card__title">
-              <h4 className="additional-header h4">Exponential Growth</h4>
+          <div className="card cards__card">
+            <div className="cards__card__title spacing after__is-6">
+              <span className="additional-header h2">Exponential Growth</span>
               <img src={imgGrowth}/>
             </div>
             <p>
               We’re growing even faster than we anticipated. We have big ambitions for where we want to go.
             </p>
           </div>
-          <div className="cards__card">
-            <div className="cards__card__title">
-              <h4 className="additional-header h4">Interesting problems</h4>
+          <div className="card cards__card">
+            <div className="cards__card__title spacing after__is-6">
+              <span className="additional-header h2">Interesting problems</span>
               <img src={imgLamp}/>
             </div>
             <p>
               Solve interesting problems that directly impact customer happiness and company growth.
             </p>
           </div>
-          <div className="cards__card">
-            <div className="cards__card__title">
-              <h4 className="additional-header h4">Work from the Beach</h4>
+          <div className="card cards__card">
+            <div className="cards__card__title spacing after__is-6">
+              <span className="additional-header h2">Work from the Beach</span>
               <img src={imgBeach}/>
             </div>
             <p>
               You have the freedom to work from anywhere (including the Bahamas)!
             </p>
           </div>
-          <div className="cards__card">
-            <div className="cards__card__title">
-              <h4 className="additional-header h4">Reimbursements</h4>
+          <div className="card cards__card">
+            <div className="cards__card__title spacing after__is-6">
+              <span className="additional-header h2">Reimbursements</span>
               <img src={imgReimbursements}/>
             </div>
             <p>

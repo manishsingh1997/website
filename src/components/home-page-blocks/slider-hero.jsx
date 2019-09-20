@@ -12,8 +12,8 @@ class SliderHero extends React.Component {
     return (
       <div className={slideClasses}>
         <span className="title-wrapper">
-          <h1 className="white center">{data.title}</h1>
-          <span className="subheader__h4 white center">Servicing the Bay Area and Sacramento. License #1040925.</span>
+          <h1 className="h0 white center">{data.title}</h1>
+          <span className="subheader h2 white center">Servicing the Bay Area and Sacramento. License #1040925.</span>
         </span>
 
         <div className="form-wrapper"/>
