@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>warning</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icons/status/warning" transform="translate(-2.000000, -2.000000)">
+            <g id="warning">
+                <rect id="Rectangle-352" opacity="0.250408116" x="0" y="0" width="24" height="24"></rect>
+                <g id="Fill-2108-+-Fill-2109-+-Fill-2110" transform="translate(2.000000, 2.000000)">
+                    <path d="M19.0002,20 L1.0002,20 C0.6532,20 0.3312,19.82 0.1492,19.526 C-0.0328,19.231 -0.0488,18.863 0.1052,18.553 L9.1052,0.553 C9.4442,-0.125 10.5552,-0.125 10.8942,0.553 L19.8942,18.553 C20.0492,18.863 20.0332,19.231 19.8502,19.526 C19.6682,19.82 19.3472,20 19.0002,20 L19.0002,20 Z" id="Fill-2108" fill="#FFBE4E"></path>
+                    <path d="M10,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,9 C9,8.44771525 9.44771525,8 10,8 L10,8 C10.5522847,8 11,8.44771525 11,9 L11,13 C11,13.5522847 10.5522847,14 10,14 Z" id="Fill-2109" fill="#FFFFFF"></path>
+                    <path d="M11.25,16 C11.25,16.69 10.69,17.25 10,17.25 C9.31,17.25 8.75,16.69 8.75,16 C8.75,15.31 9.31,14.75 10,14.75 C10.69,14.75 11.25,15.31 11.25,16" id="Fill-2110" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

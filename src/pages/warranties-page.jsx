@@ -1,15 +1,14 @@
 import React from 'react';
 import {find} from 'lodash';
+
+import config from 'libs/config';
+
 import certifiedIcon from 'assets/certified@2x.png';
 import licenseImage from 'assets/license.jpg';
 import './warranties-page.scss';
 
 const pdfjsLib = window.pdfjsLib || {};
-const WARRANTIES_URL_DEV = 'https://apidev.ergeon.in/api/store/product-descriptions/';
-const WARRANTIES_URL_PROD = 'https://api.ergeon.in/api/store/product-descriptions/';
-const WARRANTIES_URL = (document.location.host || '').includes('www.ergeon.com') ?
-  WARRANTIES_URL_PROD :
-  WARRANTIES_URL_DEV;
+const WARRANTIES_URL = `${config.myErgeonURL}/api/store/product-descriptions/`;
 const DEFAULT_PRODUCTS = [
   {
     name: 'Driveway Installation',
@@ -58,6 +57,7 @@ class WarrantiesPage extends React.Component {
   }
 
   generatePdfPreview(canvas, url) {
+    if (!canvas) return;
     const canvasContext = canvas.getContext('2d');
 
     return pdfjsLib.getDocument({url})

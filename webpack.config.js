@@ -19,7 +19,7 @@ var config = {
     output: {
         path: BUILD_DIR,
         filename: 'assets/[name]-[hash].js',
-        publicPath: '',
+        publicPath: '/',
     },
     module: {
         rules: [

@@ -8,8 +8,8 @@
     "build-production": "rimraf dist && NODE_ENV=production webpack -p --devtool none",
     "build-staging": "rimraf dist && NODE_ENV=staging webpack -d",
     "build-development": "rimraf dist && NODE_ENV=development webpack -d",
-    "lint": "./node_modules/eslint/bin/eslint.js ./src --ext .jsx",
-    "lint-fix": "./node_modules/eslint/bin/eslint.js ./src --ext .jsx --fix"
+    "lint": "./node_modules/eslint/bin/eslint.js ./src",
+    "lint-fix": "./node_modules/eslint/bin/eslint.js ./src --fix"
   },
   "repository": {
     "type": "git",
@@ -52,22 +52,31 @@
     "webpack-dev-server": "^3.5.1"
   },
   "dependencies": {
-    "@ergeon/core-components": "^1.0.25",
+    "@ergeon/core-components": "^1.0.29",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
+    "clean-deep": "^3.0.5",
     "history": "^4.9.0",
+    "is-plain-object": "^3.0.0",
+    "js-cookie": "^2.2.1",
+    "local-storage": "^2.0.0",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
+    "raven-js": "^3.27.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-images": "^1.0.0",
+    "react-portal": "^4.2.0",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.1",
     "react-router-redux": "^4.0.8",
+    "react-select": "^3.0.4",
     "react-swipeable": "^5.4.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-promise-middleware": "^6.1.0"
+    "redux-promise-middleware": "^6.1.0",
+    "ua-parser-js": "^0.7.20",
+    "vanilla-text-mask": "^5.1.1"
   },
   "bugs": {
     "url": "https://github.com/ergeon/website/issues"

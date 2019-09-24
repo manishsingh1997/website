@@ -21,6 +21,7 @@
   width: 100%;
   transition: $transition-3;
   &.active {
+    position: relative;
     transition: $transition-3;
     opacity: 1;
     display: flex;

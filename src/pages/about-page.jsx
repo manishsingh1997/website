@@ -77,7 +77,7 @@ class HomePage extends React.Component {
                   asAnchor
                   className="min-width__is-120"
                   flavor="secondary"
-                  href="/#/careers"
+                  href="/careers"
                   size="large">Join us!
                 </Button>
               </div>

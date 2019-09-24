@@ -1,0 +1,411 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+.Popup {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  padding: 10px;
+  overflow-y: auto;
+  bottom: 0;
+  left: 0;
+  z-index: 9999999990;
+  font-family: open-sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+
+  .Popup-content {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    background: #FFF;
+    padding: 60px;
+    max-width: 480px;
+    box-shadow: 0 5px 50px #666;
+    overflow: auto;
+    animation: fs-zoom .4s forwards ease 1;
+    border-radius: 4px;
+  }
+
+  .Popup-overlay {
+    background: rgba(8,34,20,.4);
+    position: fixed;
+    animation: fs-fadein .4s forwards ease 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .Popup-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    &:hover {
+      color: #FF7D59;
+    }
+  }
+
+  @include phone {
+    .Popup-content {
+      margin-top: 0;
+      padding: 30px;
+    }
+    .Popup-close {
+      font-size: 22px;
+      top: 8px;
+      right: 8px;
+    }
+  }
+  @include phone-small {
+    .Popup-content {
+      margin-top: 0;
+      padding: 30px 20px;
+    }
+  }
+}
+
+.Form {
+  h4 {
+    font-size: 22px;
+    line-height: 30px;
+    color: #1d1e1c;
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-family: 'Hind Vadodara', sans-serif;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  button {
+    background: #09A873;
+    border-radius: 4px;
+    font-family: 'Hind Vadodara', sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+    width: 100%;
+    display: flex;
+    margin-left: auto;
+    letter-spacing: 0;
+    line-height: 24px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    margin-top: 30px;
+    transition: all 0.2s ease-out;
+
+    &:focus {
+      outline: 0;
+    }
+    &:hover {
+      background-color: #088F62;
+    }
+  }
+
+  .Form-Note {
+    color: #09A873;
+    font-weight: bolder;
+    text-decoration: none;
+    cursor: pointer;
+    background: url(../../assets/icon-plus.svg) no-repeat left center;
+    padding-left: 18px;
+
+    &:hover {
+      color: #088F62;
+      text-decoration: none;
+    }
+  }
+
+  .Form-field {
+    height: auto;
+    position: relative;
+
+    &.is-error {
+      input {
+        border-color: #FF7D59;
+        background-color: #FFFFFF;
+        color: #FF7D59;
+      }
+      .react-select__control {
+        border-color: #FF7D59;
+        background-color: #FFFFFF;
+      }
+    }
+
+    & + .Form-field {
+      margin-top: 32px;
+    }
+  }
+  .Form-actions {
+    border-top: 1px solid #E4E9E2;
+    margin-top: 30px;
+    position: relative;
+
+    .Form-error {
+      margin-top: 6px;
+    }
+  }
+  .Form-error {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #FF7D59;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 0;
+    line-height: 16px;
+    position: absolute;
+    text-align: left;
+  }
+  .Form-footer {
+    text-align: center;
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 30px;
+
+    a {
+      color: #00A870;
+      font-weight: bolder;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        color: #01D35A;
+        text-decoration: underline;
+      }
+
+    }
+  }
+
+
+  @include phone-small {
+    h1 {
+      font-size: 6vw;
+    }
+    input {
+      height: 48px;
+    }
+    .Form-field {
+       height: 56px;
+    }
+
+    .Form-actions {
+      margin-top: 24px;
+    }
+  }
+}
+
+.NoScroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+
+  & > * {
+    //position: relative;
+  }
+}
+
+@keyframes fs-zoom {
+  from { opacity:0; transform:translateY(20%) scale(0); }
+}
+@keyframes fs-fadein {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+.LeadForm {
+  h1 + p {
+    margin-top: -20px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}
+
+.ThankYou {
+  h1 {
+    font-size: 22px;
+    line-height: 30px;
+    color: #1d1e1c;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    font-family: 'Hind Vadodara', sans-serif;
+    font-weight: 700;
+    text-align: center;
+
+  }
+  p {
+    font-size: 16px;
+    color: #4A4A49;
+    letter-spacing: 0;
+    line-height: 24px;
+    text-align: center;
+  }
+}
+
+.Success {
+  $green: #09A873;
+  $green-light: rgba(#088F62, 0.3);
+  border-color: #09A873;
+
+  width: 80px;
+  height: 80px;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 50%;
+  padding: 0;
+  position: relative;
+  box-sizing: content-box;
+  margin: 20px auto;
+  &:first-child {
+    margin-top: 32px;
+  }
+
+
+  /* Moving circular line */
+  &::before,
+  &::after {
+    content: '';
+    border-radius: 50%;
+    position: absolute;
+    width: 60px;
+    height: 120px;
+    background: white;
+    transform: rotate(45deg);
+  }
+
+  &::before {
+    border-radius: 120px 0 0 120px;
+    top: -7px;
+    left: -33px;
+    transform: rotate(-45deg);
+    transform-origin: 60px 60px;
+  }
+
+  &::after {
+    border-radius: 0 120px 120px 0;
+    top: -11px;
+    left: 30px;
+    transform: rotate(-45deg);
+    transform-origin: 0px 60px;
+    animation: rotatePlaceholder 4.25s ease-in;
+  }
+
+  /* Ring */
+  &-ring {
+    width: 80px;
+    height: 80px;
+    border: 4px solid $green-light;
+    border-radius: 50%;
+    box-sizing: content-box;
+    position: absolute;
+    left: -4px;
+    top: -4px;
+    z-index: 2;
+  }
+
+  /* Hide corners left from animation */
+  &-hideCorners {
+    width: 5px;
+    height: 90px;
+    background-color: white;
+    padding: 1px;
+    position: absolute;
+    left: 28px;
+    top: 8px;
+    z-index: 1;
+    transform: rotate(-45deg);
+  }
+
+  &-line {
+    height: 5px;
+    background-color: $green;
+    display: block;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 2;
+
+    &Tip {
+      width: 25px;
+      left: 14px;
+      top: 46px;
+      transform: rotate(45deg);
+      animation: animateSuccessTip 0.75s;
+    }
+    &Long {
+      width: 47px;
+      right: 8px;
+      top: 38px;
+      transform: rotate(-45deg);
+      animation: animateSuccessLong 0.75s;
+    }
+  }
+}
+
+@keyframes rotatePlaceholder {
+  0% {
+    transform: rotate(-45deg);
+  }
+  5% {
+    transform: rotate(-45deg);
+  }
+  12% {
+    transform: rotate(-405deg);
+  }
+  100% {
+    transform: rotate(-405deg);
+  }
+}
+
+@keyframes animateSuccessTip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 19px;
+  }
+  70% {
+    width: 50px;
+    left: -8px;
+    top: 37px;
+  }
+  84% {
+    width: 17px;
+    left: 21px;
+    top: 48px;
+  }
+  100% {
+    width: 25px;
+    left: 14px;
+    top: 45px;
+  }
+}
+
+@keyframes animateSuccessLong {
+  0% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+  65% {
+    width: 0;
+    right: 46px;
+    top: 54px;
+  }
+  84% {
+    width: 55px;
+    right: 0px;
+    top: 35px;
+  }
+  100% {
+    width: 47px;
+    right: 8px;
+    top: 38px;
+  }
+}

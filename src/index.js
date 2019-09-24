@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 import {createStore, applyMiddleware, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import {logger} from 'redux-logger';
-import {createHashHistory} from 'history';
+import {createBrowserHistory} from 'history';
 import {Router, Route, Switch, Redirect} from 'react-router-dom';
 import {routerMiddleware, routerReducer} from 'react-router-redux';
 import promise from 'redux-promise-middleware';
@@ -14,6 +14,7 @@ import {
   GatePhotoData,
   DrivewayPhotoData,
 } from 'data/photo-gallery';
+import customScripts from 'libs/custom-scripts';
 
 import Layout from 'pages/layout';
 import HomePage from 'pages/home-page';
@@ -26,7 +27,7 @@ import WarrantiesPage from 'pages/warranties-page';
 import '@ergeon/core-components/src/components/main.scss';
 import './components/main.scss';
 
-const history = createHashHistory();
+const history = createBrowserHistory();
 const middlewares = [];
 
 middlewares.push(promise);
@@ -78,4 +79,5 @@ render(
     </Router>
   </Provider>,
   document.getElementById('root'),
+  customScripts(),
 );

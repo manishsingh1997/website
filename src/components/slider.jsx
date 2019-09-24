@@ -37,7 +37,7 @@ class Slider extends React.Component {
     const children = this.props.children;
     const {currentSlide} = this.state;
     const swipeConfig = {
-      delta: 10,
+      // delta: 10,
       preventDefaultTouchmoveEvent: false,
       trackTouch: true,
       trackMouse: true,

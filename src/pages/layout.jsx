@@ -13,9 +13,9 @@ class Layout extends React.Component {
       return (
         <div>
           <NavLinkContext.Provider value={NavLink}>
-            <TopPanel ergeonUrl="/#/" />
+            <TopPanel ergeonUrl="/" />
             <div>{this.props.children}</div>
-            <Footer ergeonUrl="/#/" />
+            <Footer ergeonUrl="/" />
           </NavLinkContext.Provider>
         </div>
       );

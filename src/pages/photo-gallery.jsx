@@ -57,6 +57,18 @@ class PhotoGallery extends React.Component {
       imageIndex: 0,
     };
 
+    updateLocationHash(slug) {
+      const pathname = document.location.hash;
+      const hashes = pathname.split('#');
+      hashes[2] = slug;
+      document.location.hash = hashes.join('#');
+    }
+
+    handlePhotoClick(photoProps, index) {
+      this.updateLocationHash(photoProps.slug);
+      this.setState({modalOpened: true, imageIndex: index});
+    }
+
     getProductData() {
       const {productSlug} = this.props.match.params;
       const dataByProduct = {
@@ -126,8 +138,9 @@ class PhotoGallery extends React.Component {
           {photos.map((photoProps, index) => (
             <div
               className="card"
+              gallery-link-id={photoProps.slug}
               key={photoProps.slug}
-              onClick={() => this.setState({modalOpened: true, imageIndex: index})}>
+              onClick={this.handlePhotoClick.bind(this, photoProps, index)}>
               <ImageCard {...photoProps} />
             </div>
           ))}
@@ -252,12 +265,14 @@ class PhotoGallery extends React.Component {
                 <Modal onClose={() => this.setState({modalOpened: false})}>
                   <Carousel
                     currentIndex={imageIndex}
+                    trackProps={{
+                      onViewChange: index => this.updateLocationHash(this.getPhotos()[index].slug),
+                    }}
                     views={this.getPhotos().map(({caption, url}) => ({caption, src: url}))}/>
                 </Modal>
               ) : null}
             </ModalGateway>
           </div>
-
         </div>
       );
     }
