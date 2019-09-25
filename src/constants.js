@@ -1,1 +1,0 @@
-export const PHONE_NUMBER = '+1-855-903-56-88';
