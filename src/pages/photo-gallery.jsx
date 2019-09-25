@@ -1,4 +1,5 @@
 import React from 'react';
+import MetaTags from 'react-meta-tags';
 import PropTypes from 'prop-types';
 import {find} from 'lodash';
 import Carousel, {Modal, ModalGateway} from 'react-images';
@@ -203,6 +204,9 @@ class PhotoGallery extends React.Component {
       const {productSlug} = this.props.match.params;
       if (!productSlug) return (
         <div className="photo-gallery">
+          <MetaTags>
+            <title>Photo Gallery</title>
+          </MetaTags>
           <div className="wrapper-1180">
             <span className="breadcrumbs">
               <NavLink to="/"><span className="icon home"/></NavLink>
@@ -234,8 +238,26 @@ class PhotoGallery extends React.Component {
         [PRODUCTS.DRIVEWAY]: [BANNERS.FENCE_BANNER, BANNERS.GATE_BANNER],
       }[productSlug];
 
+      const metadata = {
+        title: {
+          [PRODUCTS.FENCE]: 'Fence Photo Gallery',
+          [PRODUCTS.GATE]: 'Gate Photo Gallery',
+          [PRODUCTS.DRIVEWAY]: 'Drive Photo Gallery',
+        }[productSlug],
+        description: {
+          [PRODUCTS.FENCE]: 'Picture Frame, Nail Up, Horizontal, Gates, Before & After',
+          [PRODUCTS.GATE]: 'Gates, Nail Up, Picture Frame single, Picture Frame Double',
+          [PRODUCTS.DRIVEWAY]: 'Stamped & Stained Concrete, Brushed Concrete, Pavers',
+        }[productSlug],
+      };
+
       return (
         <div className="photo-gallery">
+          <MetaTags>
+            <title>{metadata.title}</title>
+            <meta content={metadata.description} name="description"/>
+            <meta content={metadata.description} property="og:description"/>
+          </MetaTags>
           <div className="wrapper-1180">
             <span className="breadcrumbs">
               <NavLink to="/"><span className="icon home"/></NavLink>

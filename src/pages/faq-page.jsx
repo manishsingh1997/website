@@ -1,4 +1,6 @@
 import React from 'react';
+import MetaTags from 'react-meta-tags';
+
 import {Accordion} from '@ergeon/core-components';
 import faqData from 'data/faq-data';
 import {PHONE_NUMBER} from '../constants';
@@ -22,6 +24,15 @@ class FAQPage extends React.Component {
   render() {
     return (
       <div className="faq-page">
+        <MetaTags>
+          <title>FAQ | ergeon.com</title>
+          <meta
+            content="Frequently Asked Questions. Pricing & Payment, Service Policies, Warranty, Split billing, etc."
+            name="description"/>
+          <meta
+            content="Frequently Asked Questions. Pricing & Payment, Service Policies, Warranty, Split billing, etc."
+            property="og:description"/>
+        </MetaTags>
         <div className="faq-page__header">
           <div className="wrapper-1180">
             <div className="full-width-block">

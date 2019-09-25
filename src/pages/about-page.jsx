@@ -1,14 +1,30 @@
 import React from 'react';
+import MetaTags from 'react-meta-tags';
+
 import {Button} from '@ergeon/core-components';
 import imgHeart from '../assets/about-page/ergeon_heart.svg';
 import imgJenny from '../assets/about-page/jenny@2x.jpg';
 import imgOdysseas from '../assets/about-page/odysseas@2x.jpg';
 import imgLogoMark from '../assets/about-page/logo_mark.png';
 import './about-page.scss';
-class HomePage extends React.Component {
+class AboutPage extends React.Component {
   render() {
     return (
       <div>
+        <MetaTags>
+          <title>Company Mission</title>
+          <meta
+            content={`Ergeon is a tech-enabled general contractor that provides consumers a simpler,
+            faster and better value home improvement experience. Ergeon is founded by two CS PhD serial entrepreneurs
+            that share a passion for shaping the Future of Work.`}
+            name="description"/>
+          <meta
+            content={`Ergeon is a tech-enabled general contractor that provides consumers a simpler,
+            faster and better value home improvement experience. Ergeon is founded by two CS PhD serial entrepreneurs
+            that share a passion for shaping the Future of Work.`}
+            property="og:description"/>
+        </MetaTags>
+
         <div className="wrapper-1180">
           <div className="spacing before__is-48 after__is-48">
             <h1 className="center spacing after__is-12">
@@ -89,4 +105,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+export default AboutPage;

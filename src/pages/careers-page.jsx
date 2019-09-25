@@ -1,4 +1,6 @@
 import React from 'react';
+import MetaTags from 'react-meta-tags';
+
 import './careers-page.scss';
 import StaffMap from '../components/staff-map';
 import JobBoard from '../components/greenhouse-job-board';
@@ -14,6 +16,18 @@ class CareersPage extends React.Component {
   render() {
     return (
       <div className="careers-page wrapper-1180">
+        <MetaTags>
+          <title>Ergeon Careers</title>
+          <meta
+            content={`We’re using technology to revolutionize the way home owners maintain and improve
+             their properties. Better communication. Better customer experience. Better results.`}
+            name="description"/>
+          <meta
+            content={`We’re using technology to revolutionize the way home owners maintain and improve
+            their properties. Better communication. Better customer experience. Better results.`}
+            property="og:description"/>
+        </MetaTags>
+
         <div className="spacing before__is-48 after__is-48">
           <h1 className="center spacing after__is-12">Join Us In Changing The Home Services Industry</h1>
           <p className="subheader h2 center">

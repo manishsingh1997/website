@@ -23,6 +23,7 @@ import AboutPage from 'pages/about-page';
 import PhotoGallery from 'pages/photo-gallery';
 import FAQPage from 'pages/faq-page';
 import WarrantiesPage from 'pages/warranties-page';
+import LocationsPage from 'pages/locations-page';
 
 import '@ergeon/core-components/src/components/main.scss';
 import './components/main.scss';
@@ -74,6 +75,7 @@ render(
           <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug/:groupSlug"/>
           <Route component={FAQPage} exact path="/faq"/>
           <Route component={WarrantiesPage} exact path="/licenses-warranties"/>
+          <Route component={LocationsPage} exact path="/locations"/>
         </Switch>
       </Layout>
     </Router>

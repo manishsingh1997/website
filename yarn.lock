@@ -868,10 +868,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.4.tgz#622a72bebd1e3f48d921563b4b60a762295a81fc"
   integrity sha512-6PYY5DVdAY1ifaQW6XYTnOMihmBVT27elqSjEoodchsGjzYlEsTQMcEhSud99kVawatyTZRTiVkJ/c6lwbQ7nA==
 
-"@ergeon/core-components@^1.0.29":
-  version "1.0.29"
-  resolved "https://npm.ergeon.in/@ergeon%2fcore-components/-/core-components-1.0.29.tgz#791df5164bf04f874d2970de30aec1b3eb4bcffb"
-  integrity sha512-KlzC+SsQc7ph9NtFNFQidc5UOfn3nH/2W1ABwqIbebRuBy/SEAlGYIFySHYWvqV6U3w90ySUCVj9TWZ/FgtmjQ==
+"@ergeon/core-components@^1.0.30":
+  version "1.0.30"
+  resolved "https://npm.ergeon.in/@ergeon%2fcore-components/-/core-components-1.0.30.tgz#f7ef4e71ccef5c512c1d3b444b0d8fee85e04673"
+  integrity sha512-e5WXhjV3ZF9sP/T+Gva3NWQrKlG0G8CvgWUI0RnXYY7aJdgiPZGSFyP9EvvHsmoCcxZ7a8iqfW5Sdx/0YmegAQ==
   dependencies:
     classnames "^2.2.6"
     google-maps "^3.3.0"
@@ -6218,6 +6218,13 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-meta-tags@^0.7.4:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/react-meta-tags/-/react-meta-tags-0.7.4.tgz#c506b453e7f89e006d8053afcf47a1f747240e43"
+  integrity sha512-ZSnZeEx+OVE5x6EK9oX6Qg3yGCCcxbnscQGu6S+ewglIi38KqEspcAgShggFSOZd5+5jgQB91OiRA+GX7zbrOA==
+  dependencies:
+    prop-types "^15.6.0"
 
 react-motion@^0.5.0:
   version "0.5.2"
