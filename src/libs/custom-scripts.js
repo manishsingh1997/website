@@ -80,39 +80,11 @@ export default function () {
   function handleClick(slug) {
     initialSlug = slug;
   }
-  // window.lightbox.option({
-  //   'resizeDuration': 200,
-  //   'wrapAround': true,
-  // })
-  // window.lightbox.changeImage = (function() {
-  //     let cached_function = lightbox.changeImage;
-  //     return function() {
-  //       let result = cached_function.apply(this, arguments);
-  //       document.location.hash = (lightbox.album.length > 0)? 
-  //         (lightbox.album[lightbox.currentImageIndex])? 
-  //           (lightbox.album[lightbox.currentImageIndex]).alt
-  //           :
-  //           initialSlug
-  //         : 
-  //         initialSlug;
-  //       return result;
-  //     };
-  // })();
-
-  // window.lightbox.end = (function() {
-  //     let cached_function = lightbox.end;
-  //     return function() {
-  //       let result = cached_function.apply(this, arguments);
-  //         document.location.hash = "";
-  //       return result;
-  //     };
-  // })();
 
   document.addEventListener('DOMContentLoaded', function(){
-    const pathname = document.location.hash;
-    const hashes = pathname.split('#');
-    if(hashes.length !== 3) return;
-    let imageSlug = hashes[2];
+    const hash = document.location.hash;
+    if(!hash.length) return;
+    let imageSlug = hash.slice(1);
     if (imageSlug && (counter===0)) {
       counter++;
       document.querySelector("div[gallery-link-id='"+imageSlug+"']").click();

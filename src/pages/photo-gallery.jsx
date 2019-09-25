@@ -59,10 +59,7 @@ class PhotoGallery extends React.Component {
     };
 
     updateLocationHash(slug) {
-      const pathname = document.location.hash;
-      const hashes = pathname.split('#');
-      hashes[2] = slug;
-      document.location.hash = hashes.join('#');
+      document.location.hash = `#${slug}`;
     }
 
     handlePhotoClick(photoProps, index) {
