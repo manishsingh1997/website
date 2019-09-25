@@ -38,9 +38,9 @@ deploy-staging:
 	LEVEL=staging make build
 	HOST=dev.ergeon.com make s3upload
 
-# deploy-production:
-	# LEVEL=production make build
-	# HOST=app.ergeon.com make s3upload
+deploy-production:
+	LEVEL=production make build
+	HOST=www.ergeon.com make s3upload
 
 s3upload:
 	@if [ -z "$(HOST)" ]; then >&2 echo HOST must be supplied; exit 1; fi;
