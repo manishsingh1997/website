@@ -3,7 +3,7 @@ import MetaTags from 'react-meta-tags';
 
 import {Accordion} from '@ergeon/core-components';
 import faqData from 'data/faq-data';
-import {PHONE_NUMBER} from '../constants';
+import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import './faq-page.scss';
 
 class FAQPage extends React.Component {

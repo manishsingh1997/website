@@ -2,7 +2,8 @@ import './slider-hero.scss';
 import React from 'react';
 import Slider from '../slider';
 import ClassNames from 'classnames';
-// import {AddressInput} from '@ergeon/core-components';
+import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
+import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import AddressForm from './address-form';
 import {FENCE_SLUG, DRIVEWAY_SLUG} from 'libs/constants';
 
@@ -25,7 +26,7 @@ class SliderHero extends React.Component {
         <div className="form-wrapper">
           <AddressForm product={product} showProductField />
         </div>
-        <a className="phone-link white" href="tel:+18559035688">855-903-5688</a>
+        <a className="phone-link white" href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a>
       </div>
     );
   }
