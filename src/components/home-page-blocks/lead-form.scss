@@ -9,17 +9,17 @@
   bottom: 0;
   left: 0;
   z-index: 9999999990;
-  font-family: open-sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-family: $font-content;
 
   .Popup-content {
     position: relative;
     margin-left: auto;
     margin-right: auto;
     margin-top: 60px;
-    background: #FFF;
+    background: $white;
     padding: 60px;
     max-width: 480px;
-    box-shadow: 0 5px 50px #666;
+    box-shadow: 0 5px 50px $gray-1;
     overflow: auto;
     animation: fs-zoom .4s forwards ease 1;
     border-radius: 4px;
@@ -44,9 +44,10 @@
     font-size: 24px;
     line-height: 20px;
     cursor: pointer;
+    color: $gray-2;
     transition: all 0.2s ease-out;
     &:hover {
-      color: #FF7D59;
+      color: $gray-1;
     }
   }
 
@@ -70,55 +71,13 @@
 }
 
 .Form {
-  h4 {
-    font-size: 22px;
-    line-height: 30px;
-    color: #1d1e1c;
-    margin-top: 0;
-    margin-bottom: 24px;
-    font-family: 'Hind Vadodara', sans-serif;
-    font-weight: 700;
-    text-align: center;
-  }
-
   button {
-    background: #09A873;
-    border-radius: 4px;
-    font-family: 'Hind Vadodara', sans-serif;
-    font-size: 16px;
-    color: #FFFFFF;
     width: 100%;
-    display: flex;
-    margin-left: auto;
-    letter-spacing: 0;
-    line-height: 24px;
-    height: 60px;
-    justify-content: center;
-    align-items: center;
-    border: 0;
-    margin-top: 30px;
-    transition: all 0.2s ease-out;
-
-    &:focus {
-      outline: 0;
-    }
-    &:hover {
-      background-color: #088F62;
-    }
   }
 
   .Form-Note {
-    color: #09A873;
-    font-weight: bolder;
-    text-decoration: none;
-    cursor: pointer;
     background: url(../../assets/icon-plus.svg) no-repeat left center;
     padding-left: 18px;
-
-    &:hover {
-      color: #088F62;
-      text-decoration: none;
-    }
   }
 
   .Form-field {
@@ -127,13 +86,13 @@
 
     &.is-error {
       input {
-        border-color: #FF7D59;
-        background-color: #FFFFFF;
-        color: #FF7D59;
+        border-color: $red;
+        background-color: $white;
+        color: $red;
       }
       .react-select__control {
-        border-color: #FF7D59;
-        background-color: #FFFFFF;
+        border-color: $red;
+        background-color: $white;
       }
     }
 
@@ -142,7 +101,7 @@
     }
   }
   .Form-actions {
-    border-top: 1px solid #E4E9E2;
+    border-top: 1px solid $gray-4;
     margin-top: 30px;
     position: relative;
 
@@ -151,33 +110,20 @@
     }
   }
   .Form-error {
-    margin-top: 4px;
-    font-size: 12px;
-    color: #FF7D59;
-    font-family: 'Open Sans', sans-serif;
-    letter-spacing: 0;
-    line-height: 16px;
-    position: absolute;
-    text-align: left;
+      margin-top: 4px;
+      font-size: $font-label-size;
+      color: $red;
+      font-family: $font-content;
+      letter-spacing: 0;
+      line-height: $line-height-label;
+      position: absolute;
+      text-align: left;
   }
   .Form-footer {
     text-align: center;
     font-size: 12px;
     line-height: 18px;
     margin-top: 30px;
-
-    a {
-      color: #00A870;
-      font-weight: bolder;
-      text-decoration: none;
-      cursor: pointer;
-
-      &:hover {
-        color: #01D35A;
-        text-decoration: underline;
-      }
-
-    }
   }
 
 
@@ -224,31 +170,10 @@
   }
 }
 
-.ThankYou {
-  h1 {
-    font-size: 22px;
-    line-height: 30px;
-    color: #1d1e1c;
-    margin-top: 32px;
-    margin-bottom: 16px;
-    font-family: 'Hind Vadodara', sans-serif;
-    font-weight: 700;
-    text-align: center;
-
-  }
-  p {
-    font-size: 16px;
-    color: #4A4A49;
-    letter-spacing: 0;
-    line-height: 24px;
-    text-align: center;
-  }
-}
-
 .Success {
-  $green: #09A873;
-  $green-light: rgba(#088F62, 0.3);
-  border-color: #09A873;
+  $green: $green-1;
+  $green-light: $green-4;
+  border-color: $green-1;
 
   width: 80px;
   height: 80px;

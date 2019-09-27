@@ -257,12 +257,12 @@ export default class LeadForm extends React.Component {
 
     return (
       <form className="Form LeadForm" onSubmit={this.handleSubmit}>
-        <h4>Get your free quote!</h4>
+        <h4 className="center spacing after__is-24">Get your free quote!</h4>
         {
           this.renderAvailabilityMessage(productAvailability, product)
         }
         {this.props.showProductField && <div className={`Form-field ${errors && errors.product && 'is-error'}`}>
-          <label>Ergeon services:</label>
+          <label className="label spacing after__is-12">Ergeon services:</label>
           <MultiProductSelect
             isMulti={false}
             name="product"
@@ -336,6 +336,7 @@ export default class LeadForm extends React.Component {
           <Button
             className={`AddressButton ${loading && 'is-loading'}`}
             disabled={loading}
+            size="large"
             type="submit">{loading ? <Spinner active={true} borderWidth={0.10} size={25} /> : 'Get a quote'}</Button>
         </div>
         <div className="Form-footer">
@@ -358,8 +359,8 @@ export default class LeadForm extends React.Component {
           <div className="Success-ring" />
           <div className="Success-hideCorners" />
         </div>
-        <h1>We’ll be in touch shortly</h1>
-        <p>Our team will reach out within 24 hours to give you a quote</p>
+        <h2 className="center spacing after__is-12">We’ll be in touch shortly</h2>
+        <p className="subheader h2 center">Our team will reach out within 24 hours to give you a quote</p>
       </div>
     );
   };
