@@ -28,9 +28,6 @@ export default class AddressForm extends React.Component {
   }
 
   showModal(lead) {
-    // const body = jQuery('html, body');
-    // body.stop().animate({scrollTop: 0}, 500, 'swing');
-
     this.setState({
       lead,
       showLeadForm: true,
