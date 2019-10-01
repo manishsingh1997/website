@@ -1,10 +1,16 @@
 @import "@ergeon/core-components/src/components/variables.scss";
 .header-border {
- box-shadow: 0 50px 50px 0 $gray-6, inset 0 -2px 0 0 $gray-5;
+ box-shadow: 0 50px 50px 0 $gray-6, 0 2px 0 0 $gray-5;
+ margin-bottom: $v-24;
+  @include phone() {
+    margin-bottom: $v-12;
+  }
 }
 .photo-gallery {
   &__categories {
-    margin-bottom: 20px;
+    @include phone() {
+      padding-bottom: $v-12;
+    }
   }
 
   &__banner {
@@ -13,7 +19,6 @@
     display: flex;
     padding: 20px;
     background-color: white;
-    position: relative;
     &-photo {
       max-width: 172px;
       max-height: 172px;
