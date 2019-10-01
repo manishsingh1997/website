@@ -264,7 +264,7 @@ class PhotoGallery extends React.Component {
             </span>
             <h2>{this.getProductGalleryName()}</h2>
           </div>
-          <div className="header-border spacing after__is-24">
+          <div className="header-border">
             <div className="photo-gallery__categories wrapper-1180">
               <Tabs items={this.getCategoryTabs()} useNavLinks />
             </div>
