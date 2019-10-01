@@ -6,6 +6,7 @@ import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import AddressForm from './address-form';
 import {FENCE_SLUG, DRIVEWAY_SLUG} from 'libs/constants';
+import {getParameterByName} from 'libs/utils/utils';
 
 class SliderHero extends React.Component {
   renderSlide(data) {
@@ -32,7 +33,7 @@ class SliderHero extends React.Component {
   }
   render() {
     return (
-      <Slider className="slider-hero">
+      <Slider className="slider-hero" defaultSlide={getParameterByName('utm_content') === 'driveway' ? 1 : 0}>
         {this.renderSlide({title: 'Fence Installation Service', name: 'fence'})}
         {this.renderSlide({title: 'Driveway Installation Service', name: 'driveway'})}
       </Slider>

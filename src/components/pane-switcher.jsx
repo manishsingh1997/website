@@ -6,13 +6,13 @@ import classNames from 'classnames';
 class PaneSwitcher extends React.Component {
     static propTypes = {
       children: PropTypes.node,
-      currentPane: PropTypes.number,
+      defaultPane: PropTypes.number,
     };
     constructor(props) {
       super();
       this.state = {
         tabsCount: props.children && props.children.length || 0,
-        currentPane: props.currentPane || 0,
+        currentPane: props.defaultPane || 0,
         tabNames: props.children && props.children.map(child => child.props['data-name']),
       };
     }

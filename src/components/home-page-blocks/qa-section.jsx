@@ -1,13 +1,14 @@
 import './qa-section.scss';
 import React from 'react';
 import PaneSwitcher from '../pane-switcher';
+import {getParameterByName} from 'libs/utils/utils';
 
 class QASection extends React.Component {
   render() {
     return (
       <div className="qa-section">
         <h3 className="">Questions & Answers</h3>
-        <PaneSwitcher>
+        <PaneSwitcher defaultPane={getParameterByName('utm_content') === 'driveway' ? 1 : 0}>
           <div data-name="Fence 101">
             <div className="qa-section__questions-wrapper">
               <div className="qa-section__question">

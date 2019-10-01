@@ -1,6 +1,7 @@
 import './projects-section.scss';
 import React from 'react';
 import PaneSwitcher from 'components/pane-switcher';
+import {getParameterByName} from 'libs/utils/utils';
 
 import photoNailUpProject from 'assets/promo-projects/dog-ear-fence@2x.png';
 import photoPictureFrame from 'assets/promo-projects/goood-neighbor_updated.jpg';
@@ -28,7 +29,7 @@ class ProjectsSection extends React.Component {
     return (
       <div className="projects-section">
         <h3 className=""> Professional Installation Services</h3>
-        <PaneSwitcher>
+        <PaneSwitcher defaultPane={getParameterByName('utm_content') === 'driveway' ? 1 : 0}>
           <div className="projects-section__project-cards" data-name="Fence projects">
             {this.renderCard({
               img: photoNailUpProject,

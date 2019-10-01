@@ -7,13 +7,13 @@ import classNames from 'classnames';
 class Slider extends React.Component {
   static propTypes = {
     children: PropTypes.node,
-    currentSlide: PropTypes.number,
+    defaultSlide: PropTypes.number,
   };
   constructor(props) {
     super();
     this.state = {
       slidesCount: props.children.length,
-      currentSlide: props.currentSlide || 0,
+      currentSlide: props.defaultSlide || 0,
     };
     this.switchSlide = this.switchSlide.bind(this);
   }
