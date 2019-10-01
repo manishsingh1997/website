@@ -60,9 +60,10 @@
         color: #787E75;
       }
       & +label {
-        transform: translate(0, 0px) scale(.75);
-        -webkit-transform: translate(0, 8px) scale(.75);
-        -moz-transform: translate(0, 0px) scale(.75);
+        line-height: 10px;
+        transform: scale(.75);
+        transform-origin: top left;
+        top: 10px;
       }
     }
   }
@@ -76,15 +77,19 @@
     line-height: 20px;
     position: absolute;
     transform-origin: top left;
-    transform: translate(0, 10px) scale(1);
+    transform: scale(1);
     transition: all .1s ease-in-out;  //speed
     pointer-events: none;
     left: 0;
+    top: 14px;
   }
   &.is-hasValue {
     label {
       //move the x coordinate and reduce size
-      transform: translate(0, 46px) scale(.75);
+      line-height: 10px;
+      top: 10px;
+      transform-origin: top left;
+      transform: scale(.75);
     }
   }
 }
