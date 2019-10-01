@@ -46,7 +46,7 @@ class QASection extends React.Component {
               </div>
             </div>
 
-            <a href="">Read more →</a>
+            <a href="/faq">Read more →</a>
           </div>
           <div data-name="Driveway 101">
             <div className="qa-section__questions-wrapper">
@@ -94,7 +94,7 @@ class QASection extends React.Component {
               </div>
             </div>
 
-            <a href="">Read more →</a>
+            <a href="/faq">Read more →</a>
           </div>
         </PaneSwitcher>
       </div>

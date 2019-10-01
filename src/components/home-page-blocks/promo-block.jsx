@@ -26,7 +26,7 @@ class PromoBlock extends React.Component {
             <div className="promot-block__content__wrapper">
               <h3 className="spacing after__is-6">{title}</h3>
               <p>{subtitle}</p>
-              <Button className="spacing before__is-24" href={btnLink} size="large">{btnName}</Button>
+              <Button asAnchor className="spacing before__is-24" href={btnLink} size="large">{btnName}</Button>
             </div>
           </div>
         </div>
