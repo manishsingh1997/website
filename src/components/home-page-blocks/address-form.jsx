@@ -4,7 +4,7 @@ import Raven from 'raven-js';
 import {UAParser} from 'ua-parser-js';
 
 import {getParameterByName} from 'libs/utils/utils';
-import {getUTM, track} from 'libs/utils/analytics';
+import {getUTM, getUserUuid, track} from 'libs/utils/analytics';
 import {ADDRESS_ENTERED} from 'libs/utils/events';
 import {DEFAULT_SOURCE_VALUE} from 'libs/constants';
 import {submitAddressEntered, getCheckedZIP} from 'libs/api';
@@ -63,6 +63,7 @@ export default class AddressForm extends React.Component {
 
     const address = data.address;
     const enteredAddressData = {};
+    enteredAddressData['uuid'] = getUserUuid();
     enteredAddressData['formatted_address'] = address.formatted_address;
     enteredAddressData['place_types'] = address.place_types;
     enteredAddressData['raw_address'] = address.raw_address;
