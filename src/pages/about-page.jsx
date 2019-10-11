@@ -54,16 +54,24 @@ class AboutPage extends React.Component {
           <div className="about-section">
             <h3 className="spacing after__is-24">About Ergeon</h3>
             <p>
-              We set out in 2018 to disrupt the multi trillion dollar construction space with technology.&nbsp;
-              Ergeon is a tech-enabled general contractor that provides consumers a simpler, faster and better
-              value home improvement experience.&nbsp; We create custom and transparent solution for each project
-              leveraging multiple large data sets and deep construction expertise. &nbsp;Ergeon also empowers local
-              skilled contractors to scale by taking on their front &amp; back office operations.<br /><br />
-              Ergeon is founded by two CS PhD serial entrepreneurs that share a passion for using technology to
-              change how work is performed.&nbsp; We embrace being an all-remote company, read more&nbsp;
-              <a href="https://medium.com/ergeon">here</a>.&nbsp; Ergeon has been growing extremely fast, and we
-              have already helped over 500 customers. We are looking for top talent to be part of our world class
-              team — join us in democratizing&nbsp; the $250B+ home improvement market!&nbsp;<br />
+              We set out in 2018 to disrupt the multi trillion dollar construction space with technology.
+              Using proprietary technology coupled with operational excellence we are building the largest,
+              most customer-friendly construction company in the world. We own the consumer-contractor relationship
+              end-to-end. Our ‘tech stack’ delivers a seamless experience for consumers and contractors.
+              As a result, we increase the build capacity of our contractors and deliver projects 3x faster
+              at competitive prices. Starting with outdoor home improvement, we install the highest quality
+              fence and hardscape. In time, we will scale to larger and more complex building projects.
+              <br/><br/>
+              Ergeon was founded and is run today by two CS PhD serial entrepreneurs that share a deep passion for
+              utilizing technology to improve how people work. Our innovative technologies help consumers,
+              contractors and our all-remote staff excel.
+              <br/><br/>
+              We believe amazing companies start with amazing people. As an all-remote company (read more &nbsp;
+              <a href="https://medium.com/ergeon">here</a>) we know those people come from all over the world.
+              We have a fast growing and diverse team spread
+              across 20+ countries today. We go to great lengths to ensure that our workforce, everywhere in the
+              world, has access to career growth, an amazing work culture and great benefits.
+              Come join us to transform the construction industry.<br/><br/>
             </p>
             <div className="special-section">
               <div className="profiles">
