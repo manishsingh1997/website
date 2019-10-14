@@ -46,6 +46,10 @@ class LocationsPage extends React.Component {
               <p className="p_location">1007 West College Ave. #419, Santa Rosa, CA 95401</p>
             </address>
             <address className="location_item">
+              <h5 className="header_with_map_icon">Napa</h5>
+              <p className="p_location">952 School St. #324, Napa, CA 94559</p>
+            </address>
+            <address className="location_item">
               <h5 className="header_with_map_icon">Watsonville</h5>
               <p className="p_location">1961 Main St. #345, Watsonville, CA 95076</p>
             </address>
