@@ -359,8 +359,8 @@ export default class LeadForm extends React.Component {
           <div className="Success-ring" />
           <div className="Success-hideCorners" />
         </div>
-        <h2 className="center spacing after__is-12">We’ll be in touch shortly</h2>
-        <p className="subheader h2 center">Our team will reach out within 24 hours to give you a quote</p>
+        <h3 className="center spacing after__is-12">We’ll be in touch shortly</h3>
+        <p className="subheader h3 center">Our team will reach out within 24 hours to give you a quote</p>
       </div>
     );
   };
