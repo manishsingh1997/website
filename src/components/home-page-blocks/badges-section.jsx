@@ -55,7 +55,7 @@ class BadgesSection extends React.Component {
           url: 'https://www2.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1040925',
         })}
         {this.renderBadge({
-          title: 'C13 Landscaping License',
+          title: 'C27 Landscaping License',
           subtitle: 'Ergeon Inc License #1040925',
           img: imgCert,
           url: 'https://www2.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1040925',
