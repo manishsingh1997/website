@@ -39,7 +39,7 @@ deploy-production:
 
 s3upload:
 	@if [ -z "$(S3_BUCKET)" ]; then >&2 echo S3_BUCKET must be supplied; exit 1; fi;
-	$(AWS_CLI) s3 sync dist/assets s3://$(S3_BUCKET)/  # use default cloudfront cache ttl
+	$(AWS_CLI) s3 sync dist s3://$(S3_BUCKET)/  # use default cloudfront cache ttl
 
 invalidate-cloudfront:
 	@if [ -z "$(DOMAIN)" ]; then >&2 echo DOMAIN must be supplied; exit 1; fi;
