@@ -19,12 +19,9 @@ jobs:
           name: Install Dependencies
           command: |
             echo "//npm.ergeon.in/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-            printf "[default]\naccess_key = $AWS_ACCESS_KEY_ID\nsecret_key = $AWS_SECRET_ACCESS_KEY" >> ~/.s3cfg
-            mkdir ~/.aws
-            printf "[default]\naws_access_key_id = $AWS_ACCESS_KEY_ID\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
-            printf "{\"accessKeyId\": \"$AWS_ACCESS_KEY_ID\", \"secretAccessKey\": \"$AWS_SECRET_ACCESS_KEY\"}" >> credentials.json
-            sudo apt-get update
-            sudo apt install s3cmd -y
+            curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+            sudo python get-pip.py
+            sudo pip install awscli
             npm set registry https://npm.ergeon.in
             make install
             npm rebuild node-sass

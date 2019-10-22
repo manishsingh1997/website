@@ -1,16 +1,9 @@
 .PHONY: all build clean install run setup-local-domain test s3upload
 
 LEVEL ?= development
-CURRENT_BRANCH = $(shell git symbolic-ref --short -q HEAD)
-LOCAL_DOMAIN="ergeon.local"
-
-ifneq ($(STACK),)
-	host := $(STACK).dev.ergeon.in
-else ifeq ($(LEVEL),staging)
-	host := dev.ergeon.in
-else ifeq ($(LEVEL),production)
-	host := ergeon.com
-endif
+LOCAL_DOMAIN ?= "ergeon.local"
+S3_REGION ?= us-west-2
+AWS_CLI ?= aws --region $(S3_REGION)
 
 all: install run
 
@@ -36,14 +29,19 @@ test: lint
 
 deploy-staging:
 	LEVEL=staging make build
-	HOST=dev.ergeon.com make s3upload
+	S3_BUCKET=dev.ergeon.com make s3upload
+	DOMAIN=dev.ergeon.com make invalidate-cloudfront
 
 deploy-production:
 	LEVEL=production make build
-	HOST=www.ergeon.com make s3upload
+	S3_BUCKET=www.ergeon.com make s3upload
+	DOMAIN=prod.ergeon.com make invalidate-cloudfront
 
 s3upload:
-	@if [ -z "$(HOST)" ]; then >&2 echo HOST must be supplied; exit 1; fi;
-	s3cmd sync dist/assets s3://$(HOST)/ --no-mime-magic --guess-mime-type --add-header='Expires:Thu, 01 Oct 2030 07:04:44 GMT' --add-header='Cache-Control:max-age=3600, public' && \
-	s3cmd put dist/index.html s3://$(HOST)/ --no-mime-magic --guess-mime-type --add-header='Cache-Control:max-age=0' && \
-	s3cmd put dist/favicon.png s3://$(HOST)/ --no-mime-magic --guess-mime-type --add-header='Cache-Control:max-age=3600'
+	@if [ -z "$(S3_BUCKET)" ]; then >&2 echo S3_BUCKET must be supplied; exit 1; fi;
+	$(AWS_CLI) s3 sync dist/assets s3://$(S3_BUCKET)/  # use default cloudfront cache ttl
+
+invalidate-cloudfront:
+	@if [ -z "$(DOMAIN)" ]; then >&2 echo DOMAIN must be supplied; exit 1; fi;
+	$(AWS_CLI) cloudfront create-invalidation --distribution-id `$(AWS_CLI) cloudfront list-distributions --query "DistributionList.Items[?contains(Aliases.Items, '$(DOMAIN)')].Id" --output text` --paths /index.html
+
