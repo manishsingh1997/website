@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Raven from 'raven-js';
 import {UAParser} from 'ua-parser-js';
 
-import {getParameterByName} from 'libs/utils/utils';
 import {getUTM, getUserUuid, track} from 'libs/utils/analytics';
 import {ADDRESS_ENTERED} from 'libs/utils/events';
 import {DEFAULT_SOURCE_VALUE} from 'libs/constants';
@@ -35,29 +34,16 @@ export default class AddressForm extends React.Component {
   }
 
   trackAddressEntered(lead) {
-    const utmSource = getParameterByName('utm_source');
-    const utmCampaign = getParameterByName('utm_campaign');
-    const utmMedium = getParameterByName('utm_medium');
+    const {...utms} = getUTM();
 
     const data = {
       address: lead.address,
       'product_slug': lead['product_slug'],
     };
 
-    data['utm_source'] = utmSource || DEFAULT_SOURCE_VALUE;
-
-    if (utmCampaign) {
-      data['utm_campaign'] = utmCampaign;
-    }
-    if (utmMedium) {
-      data['utmMedium'] = utmMedium;
-    }
-
     track(ADDRESS_ENTERED, {
+      ...utms,
       address: data.address,
-      'utm_source': utmSource,
-      'utm_campaign': utmCampaign,
-      'utm_medium': utmMedium,
       source: DEFAULT_SOURCE_VALUE,
     });
 
@@ -74,19 +60,10 @@ export default class AddressForm extends React.Component {
     enteredAddressData['state'] = address.state_abbreviation;
     enteredAddressData['product_slug'] = data.product_slug;
     enteredAddressData['source'] = DEFAULT_SOURCE_VALUE;
-    const obj = {};
+    const obj = {...utms};
     obj['arrival_time'] = Date.now();
     obj['path'] = window.location.pathname;
     obj['href'] = window.location.href;
-    obj['document_referrer'] = document.referrer;
-    obj['utm_source'] = data.utm_source;
-    obj['initial_referrer'] = '';
-    obj['initial_landing_page'] = '';
-    const currentUTM = getUTM();
-    if (currentUTM) {
-      obj['initial_referrer'] = currentUTM.initial_referrer;
-      obj['initial_landing_page'] = currentUTM.initial_landing_page;
-    }
     const result = new UAParser().getResult();
     obj['ua'] = result.ua;
     obj['browser_name'] = result.browser.name;
