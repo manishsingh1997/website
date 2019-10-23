@@ -35,7 +35,7 @@ deploy-staging:
 deploy-production:
 	LEVEL=production make build
 	S3_BUCKET=www.ergeon.com make s3upload
-	DOMAIN=prod.ergeon.com make invalidate-cloudfront
+	DOMAIN=www.ergeon.com make invalidate-cloudfront
 
 s3upload:
 	@if [ -z "$(S3_BUCKET)" ]; then >&2 echo S3_BUCKET must be supplied; exit 1; fi;
