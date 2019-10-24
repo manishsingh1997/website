@@ -81,27 +81,7 @@ render(
             from="/gallery/driveway"
             key="gallery-driveway-redirect"
             to="/gallery/driveway/stamped/casual" />
-          <Redirect
-            exact
-            from="/dec50"
-            key="dec50-direct-mail-redirect"
-            to="/?utm_content=fence&utm_source=direct_mail&utm_campaign=2018_12_06Blast" />
-          <Redirect
-            exact
-            from="/50off"
-            key="50off-direct-mail-redirect"
-            to="/?utm_content=fence&utm_source=direct_mail&utm_campaign=2018_12_12LLHolidayPC" />
-          <Redirect
-            exact
-            from="/DWY100"
-            key="DWY100-direct-mail-redirect"
-            to="/?utm_content=driveway&utm_source=direct_mail&utm_campaign=2019_02_05CMPLeadCustomBP" />
-          <Redirect
-            exact
-            from="/fence50"
-            key="fence50-direct-mail-redirect"
-            to="/?utm_source=direct-mail&utm_campaign=fence" />
-          {/* Redirects to another domains are defined at S3 bucket level (terraform) */}
+          {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
         </Switch>
       </Layout>
     </Router>
