@@ -23,7 +23,7 @@
     position: relative;
     z-index: 2;
     height: auto;
-    max-width: 520px;
+    min-width: 520px;
     margin-right: 20px;
     padding: 60px;
     float: left;
@@ -85,6 +85,7 @@
     }
 
     .locations_tile {
+      min-width: 540px;
       float: left;
       clear: none;
     }
@@ -120,13 +121,13 @@
 
     .locations {
       flex-direction: column;
+      padding: 20px;
     }
 
     .locations_tile {
-      max-width: none;
+      min-width: 100%;
+      max-width: unset;
       margin-top: -220px;
-      margin-right: 20px;
-      margin-left: 20px;
       padding: 40px;
     }
 
