@@ -60,21 +60,21 @@ class ProjectsSection extends React.Component {
               content: 'Brushed Concrete This style of paving features poured concrete finished by pulling ' +
                     'a brush over the fresh concrete surface. Brushed Concrete is suitable for high vehicular ' +
                     'and foot traffic areas.',
-              link: '',
+              link: '/gallery/driveway/brushed/natural',
             })}
             {this.renderCard({
               img: photoStamped,
               title: 'Stamped Concrete',
               content: 'This style of paving features poured concrete, then patterned stamped on top of the fresh ' +
                     'concrete surface. This finish will create patterns and textures that looks like natural stone.',
-              link: '',
+              link: '/gallery/driveway/stamped/casual',
             })}
             {this.renderCard({
               img: photoPavers,
               title: 'Pavers',
               content: 'This style of paving features precast concrete and natural stone pavers that can come in ' +
                     'various modular sizes and shapes. This finish will create natural and geometric patterns.',
-              link: '',
+              link: '/gallery/driveway/pavers/casual',
             })}
           </div>
         </PaneSwitcher>

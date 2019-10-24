@@ -15,8 +15,7 @@ class SliderHero extends React.Component {
       fence: data.name === 'fence',
       driveway: data.name === 'driveway',
     });
-    const product = data.name ? FENCE_SLUG : DRIVEWAY_SLUG;
-
+    const product = (data.name === 'fence') ? FENCE_SLUG : DRIVEWAY_SLUG;
     return (
       <div className={slideClasses}>
         <span className="title-wrapper">

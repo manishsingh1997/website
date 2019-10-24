@@ -34,7 +34,7 @@ class ReviewHero extends React.Component {
               <div className="review-hero__main-review__bottom">
                 <span className="label">Taylor K.</span>
                 <span>
-                More reviews on <a href="">Project Showcase</a>
+                More reviews on <a href="https://app.ergeon.com/projects-gallery/#/tags/feedback">Project Showcase</a>
                 </span>
               </div>
             </div>
