@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="29px" viewBox="0 0 36 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>icon-fence-installation</title>
+    <desc>Created with Sketch.</desc>
+    <g id="help-center" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="help_center_root" transform="translate(-631.000000, -322.000000)">
+            <g id="Group-2" transform="translate(611.000000, 302.000000)">
+                <g id="icon-fence-installation" transform="translate(20.000000, 20.000000)">
+                    <rect id="Rectangle" x="0" y="0" width="36" height="36"></rect>
+                    <g id="Fill-2552-+-Fill-2553" fill="#A3A9A0">
+                        <path d="M21,17.25 L21,15 L22.6485,15 L23.148,17.25 L21,17.25 Z M36,7.5 C36,3.3645 32.6355,0 28.5,0 L15.75,0 C14.094,0 12.75,1.344 12.75,3.006 L12.8265,11.3235 C12.8265,13.35 14.4735,15 16.5,15 L19.5,15 L19.5,18 C19.5,18.4125 19.836,18.75 20.25,18.75 L23.481,18.75 L25.314,27 L21.75,27 C21.336,27 21,27.336 21,27.75 C21,28.1625 21.336,28.5 21.75,28.5 L30.75,28.5 L30.765,28.5 C31.179,28.5 31.515,28.1625 31.515,27.75 C31.515,27.642 31.491,27.5385 31.4505,27.4455 L28.683,14.991 C32.733,14.892 36,11.5725 36,7.5 L36,7.5 Z" id="Fill-2552"></path>
+                        <path d="M7.5,3 C7.086,3 6.75,3.336 6.75,3.75 L6.75,5.9798584 L0.75,5.9798584 C0.336,5.9798584 0,7.0875 0,7.5 C0,7.917 0.336,8.988 0.75,8.988 L6.75,8.988 L6.75,11.25 C6.75,11.6625 7.086,12 7.5,12 L11.25,12 C11.6625,12 12,11.6625 12,11.25 L12,3.75 C12,3.336 11.6625,3 11.25,3 L7.5,3 Z" id="Fill-2553"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

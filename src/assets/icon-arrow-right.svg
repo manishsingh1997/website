@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="20px" viewBox="0 0 13 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>icon-arrow-right</title>
+    <desc>Created with Sketch.</desc>
+    <g id="projects-gallery" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Slider" transform="translate(-821.000000, -508.000000)" fill="#A3A9A0">
+            <g id="gallery" transform="translate(200.000000, 200.000000)">
+                <g id="drop_down-copy" transform="translate(626.000000, 318.000000) scale(-1, 1) rotate(90.000000) translate(-626.000000, -318.000000) translate(602.000000, 294.000000)">
+                    <path d="M27.0194948,24.8994949 L27.0194948,16.8994949 C27.0194948,15.7949254 27.9149253,14.8994949 29.0194948,14.8994949 C30.1240643,14.8994949 31.0194948,15.7949254 31.0194948,16.8994949 L31.0194948,28.8994949 L19.0194948,28.8994949 C17.9149253,28.8994949 17.0194948,28.0040644 17.0194948,26.8994949 C17.0194948,25.7949254 17.9149253,24.8994949 19.0194948,24.8994949 L27.0194948,24.8994949 Z" id="icon-arrow-right" transform="translate(24.019495, 21.899495) rotate(45.000000) translate(-24.019495, -21.899495) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

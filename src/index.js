@@ -24,6 +24,8 @@ import PhotoGallery from 'pages/photo-gallery';
 import FAQPage from 'pages/faq-page';
 import WarrantiesPage from 'pages/warranties-page';
 import LocationsPage from 'pages/locations-page';
+import HelpPage from 'pages/help-page';
+import HelpLandingPage from 'pages/help-landing-page';
 
 import '@ergeon/core-components/src/components/main.scss';
 import './components/main.scss';
@@ -76,6 +78,9 @@ render(
           <Route component={FAQPage} exact path="/faq"/>
           <Route component={WarrantiesPage} exact path="/licenses-warranties"/>
           <Route component={LocationsPage} exact path="/locations"/>
+          <Route component={HelpLandingPage} exact path="/help"/>
+          <Route component={HelpPage} exact path="/help/search"/>
+          <Route component={HelpPage} exact path="/help/:nodeGid"/>
           <Redirect
             exact
             from="/gallery/driveway"

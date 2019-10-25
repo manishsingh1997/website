@@ -67,3 +67,25 @@ export const getCheckedZIP = (zipcode) => {
     headers: {'Content-Type': 'application/json'},
   });
 };
+
+export const getHelpNode = (nodeGid = config.HELP_ROOT_NODE) => {
+  const query = `/c/api/v1/help/node/${nodeGid}/`;
+  return axios({
+    method: 'get',
+    url: config.myErgeonURL + query,
+    data: JSON.stringify(nodeGid),
+    responseType: 'json',
+    headers: {'Content-Type': 'application/json'},
+  }).then(result => result.data);
+};
+
+export const getHelpResults = (search) => {
+  const query = `/c/api/v1/help/node/?search=${search}`;
+  return axios({
+    method: 'get',
+    url: config.myErgeonURL + query,
+    data: JSON.stringify(search),
+    responseType: 'json',
+    headers: {'Content-Type': 'application/json'},
+  });
+};

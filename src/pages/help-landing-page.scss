@@ -1,0 +1,65 @@
+@import "@ergeon/core-components/src/components/variables.scss";
+
+.help-landing-page {
+
+  .shadow-block {
+    box-shadow: 0 50px 50px 0 $gray-6, 0 2px 0 0 $gray-5;
+    border-bottom: 1px solid $gray-5;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    margin: 24px 0;
+
+    .subtext {
+      margin-top: 10px;
+      font-size: 20px;
+    }
+  }
+
+  &__body {
+  }
+
+  &__categories {
+    padding-top: $v-36;
+    display: grid;
+    grid-gap: $h-20;
+    align-items: start;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+
+  &__category {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: all .2s;
+    cursor: pointer;
+    padding: $h-20;
+    height: 200px;
+    @include border-soft();
+    &:hover {
+      box-shadow: 0 3px 23px -21px black;
+    }
+
+    &.fences {
+      grid-area: a;
+    }
+
+    .category-icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .category-name {
+      font-size: 18px;
+      font-weight: bold;
+      color: $black-1;
+    }
+  }
+}
