@@ -19,7 +19,7 @@ class ReviewHero extends React.Component {
                     <div className="icon star"/>
                     <div className="icon star half"/>
                   </div>
-                  <div className="review-hero__customer-reviews__rating__numbers">4.79 / 35 Verified Ratings</div>
+                  <div className="review-hero__customer-reviews__rating__numbers">4.8 / 38 Verified Reviews</div>
                 </div>
                 <img className="review-hero__customer-reviews__home-advisor-logo" src={homeAdvisorLogo}/>
               </div>

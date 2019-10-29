@@ -32,7 +32,7 @@ class BadgesSection extends React.Component {
         })}
         {this.renderBadge({
           title: 'HomeAdvisor',
-          subtitle: '4.79 rating with 35 reviews',
+          subtitle: '4.8 rating with 38 reviews',
           img: imgHAApprove,
           url: 'https://www.homeadvisor.com/rated.ErgeonPaloAlto.66624661.html',
         })}
