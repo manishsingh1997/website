@@ -94,10 +94,9 @@ class HelpPage extends React.Component {
     }
   }
 
-  redirectHome() {
+  redirectNode(gid) {
     this.props.history.push({
-      pathname: '/help',
-      search: '',
+      pathname: `/help/${gid}`,
     });
   }
 
@@ -216,14 +215,21 @@ class HelpPage extends React.Component {
       },
     } = this.state;
 
-    const parentChildren = parent && parent.children || [];
+    let parentChildren = parent && parent.children || [];
+    let parentTitle = parent && parent.title || 'All topics';
+    let parentGid = parent && parent.gid || '';
+
+    if (parentTitle === 'Home') {
+      parentTitle = 'All topics';
+      parentGid = '';
+    }
 
     return (
       <div className="sidebar">
         <div className="sidebar__menu">
           <div className="sidebar__parent-title">
-            <i className="icon-arrow-left" onClick={this.redirectHome.bind(this)} />
-            All topics
+            <i className="icon-arrow-left" onClick={this.redirectNode.bind(this, parentGid)} />
+            {parentTitle}
           </div>
           <ul className="siblings-list">
             {parentChildren.map(
