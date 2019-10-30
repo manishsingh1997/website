@@ -138,6 +138,42 @@
       .help-page__node-content {
         font-size: $font-content;
         line-height: $line-height-regular;
+
+        hr {
+          border: none;
+          border-bottom: 1px solid $gray-4;
+          margin: 30px 0;
+        }
+
+        ul {
+          padding: 0;
+
+          lh {
+            float: left;
+
+            a {
+              color: $black-1;
+            }
+          }
+
+          lh ~ li {
+            margin-left: 200px;
+          }
+
+          li {
+            list-style-type: none;
+            margin-bottom: 8px;
+            
+            a {
+              color: $black-1;
+              font-weight: normal;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
       }
     }
 
