@@ -171,11 +171,14 @@ class HelpPage extends React.Component {
 
     const onContentClick = event => {
       if (event.target.nodeName === 'A') {
-        event.preventDefault();
-        event.stopPropagation();
+        const url = event.target.getAttribute('href');
 
-        const path = event.target.getAttribute('href');
-        this.props.history.push({pathname: path});
+        if (url[0] === '/') {
+          event.preventDefault();
+          event.stopPropagation();
+
+          this.props.history.push({pathname: url});
+        }
       }
     };
 
