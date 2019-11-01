@@ -43,6 +43,7 @@ class HelpPage extends React.Component {
     error: null,
     search: '',
     searchResults: null,
+    expandedSidebar: false,
   };
 
   componentDidMount() {
@@ -178,6 +179,7 @@ class HelpPage extends React.Component {
           event.stopPropagation();
 
           this.props.history.push({pathname: url});
+          window.scrollTo(0, 0);
         }
       }
     };
@@ -216,6 +218,7 @@ class HelpPage extends React.Component {
         gid: currentGid,
         parent,
       },
+      expandedSidebar,
     } = this.state;
 
     let parentChildren = parent && parent.children || [];
@@ -227,12 +230,18 @@ class HelpPage extends React.Component {
       parentGid = '';
     }
 
+    const classes = {
+      'sidebar': true,
+      'sidebar--expanded': expandedSidebar,
+    };
+
     return (
-      <div className="sidebar">
+      <div className={classNames(classes)}>
         <div className="sidebar__menu">
           <div className="sidebar__parent-title">
             <i className="icon-arrow-left" onClick={this.redirectNode.bind(this, parentGid)} />
             {parentTitle}
+            <i className="icon-arrow-down" onClick={() => this.setState({expandedSidebar: !expandedSidebar})} />
           </div>
           <ul className="siblings-list">
             {parentChildren.map(

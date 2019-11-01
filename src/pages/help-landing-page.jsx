@@ -74,8 +74,10 @@ class HelpLandingPage extends React.Component {
           <div className="help-landing-page__header wrapper-1180">
             <div>
               <h2>Help & Customer Service</h2>
-              <div className="subtext">Feel free to <b>call us</b> if you don&apos;t find your answer here</div>
-              <div className="spacing before__is-24 width-restricted to-280">
+              <div className="subheader h2 spacing before__is-6">
+                Feel free to <b>call us</b> if you don&apos;t find your answer here
+              </div>
+              <div className="spacing before__is-24 search-field-container">
                 <SearchField onSubmit={this.searchRedirect.bind(this)} />
               </div>
             </div>

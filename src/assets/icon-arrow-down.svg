@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="7px" viewBox="0 0 10 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>drop_down</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="top_panel" transform="translate(-1032.000000, -27.000000)">
+            <g id="drop_down">
+                <g transform="translate(1025.000000, 18.000000)">
+                    <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                    <path d="M13.5097474,12.4497475 L13.5097474,8.44974747 C13.5097474,7.89746272 13.9574627,7.44974747 14.5097474,7.44974747 C15.0620322,7.44974747 15.5097474,7.89746272 15.5097474,8.44974747 L15.5097474,14.4497475 L9.50974741,14.4497475 C8.95746266,14.4497475 8.50974741,14.0020322 8.50974741,13.4497475 C8.50974741,12.8974627 8.95746266,12.4497475 9.50974741,12.4497475 L13.5097474,12.4497475 Z" id="cross/white" fill="#A3A9A0" transform="translate(12.009747, 10.949747) rotate(45.000000) translate(-12.009747, -10.949747) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
