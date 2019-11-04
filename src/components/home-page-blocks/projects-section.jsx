@@ -15,10 +15,14 @@ class ProjectsSection extends React.Component {
     return (
       <div className="card padding-20 soft-border">
         <div className="card__img-container">
-          <img src={img}/>
+          <a href={link}>
+            <img src={img}/>
+          </a>
         </div>
         <div className="card__content">
-          <h2 className="additional-header h2 spacing after__is-6">{title}</h2>
+          <a href={link}>
+            <h2 className="additional-header h2 spacing after__is-6">{title}</h2>
+          </a>
           <p>{content}</p>
           <a href={link}>View more</a>
         </div>
