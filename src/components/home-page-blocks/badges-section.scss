@@ -1,11 +1,34 @@
 @import '@ergeon/core-components/src/components/variables.scss';
 .badges-section {
-  margin-top: 60px;
+  margin-top: $v-64;
+  margin-bottom: $v-124;
+  padding-top: $v-36;
+  display: flex;
+  flex-wrap: wrap;
   @include phone() {
     margin-top: 30px;
   }
-  display: flex;
-  flex-wrap: wrap;
+  &__row {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: $v-20;
+    margin-bottom: $v-20;
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    @include phone() {
+      flex-direction: column;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+  }
   a {
     color: $black-1;
     &:hover {
@@ -15,7 +38,7 @@
   }
   &__badge {
     display: flex;
-    width: 33.33%;
+    width: 33%;
     align-items: center;
     padding: 20px;
     @include tablet() {
