@@ -568,12 +568,6 @@ export const DrivewayPhotoData = [
             'description': 'A trending concrete application is the use of substantially sized pebbles between the slabs or pavers. Shown here large poured concrete slabs are punctuated with three to four inch gaps filled with smooth pebbles. When the base is prepared properly, these slabs hold up astonishingly well to wear and tear. A look that is sure to garnish compliments!',
           },
           {
-            'title': 'Poured Concrete Pavers with Artificial Turf',
-            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/driveway/5c3e5775ed6af51eb0c8c05c_stamped%2520color2.jpg',
-            'slug': 'poured-concrete-pavers-with-grass',
-            'description': 'One of the most highly requested paving styles is the large poured concrete paver. This concrete can be installed with a variety of finishes or colors. The addition of artificial turf or groundcover between the pavers creates a desirable, modern look.',
-          },
-          {
             'title': 'Brushed Concrete with Color',
             'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/driveway/5c410042d8bf8e0e5967817c_stamped%2520colored2.jpg',
             'slug': 'brushed-concrete-with-color',
