@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Raven from 'raven-js';
+import * as Sentry from '@sentry/browser';
 import {UAParser} from 'ua-parser-js';
 
 import {getUTM, getUserUuid, track} from 'libs/utils/analytics';
@@ -78,7 +78,7 @@ export default class AddressForm extends React.Component {
     obj['inner_height'] = window.innerHeight;
     enteredAddressData['object'] = obj;
     submitAddressEntered(enteredAddressData);
-    Raven.captureBreadcrumb({
+    Sentry.addBreadcrumb({
       message: 'Address submit',
       category: 'action',
       data,

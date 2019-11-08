@@ -24,12 +24,12 @@ if (includes(EREGON_PRODUCTION, host)) {
   myErgeonURL = 'https://api.ergeon.in';
   leadArrivedApi = 'https://tchin24eg6.execute-api.us-west-2.amazonaws.com/production/website-lead-arrived';
   addressEnteredApi = 'https://90oksb1qq9.execute-api.us-west-2.amazonaws.com/production/landing-address-submitted';
-  sentryDSN = 'https://62f1b6784b2749d387a175c2788909ec@sentry.io/1246220';
+  sentryDSN = 'https://f0fe1cc5aa2e4422bec8bbd637bba091@sentry.io/1794736';
   env = PRODUCTION;
 } else if (includes(ERGEON_STAGING, host)) {
   myErgeonURL = 'https://apidev.ergeon.in';
   leadArrivedApi = 'https://8ijvlqff7l.execute-api.us-west-2.amazonaws.com/staging/website-lead-arrived';
-  sentryDSN = 'https://7670ed9802c84e549804212b0ee00a6a@sentry.io/1246236';
+  sentryDSN = 'https://f0fe1cc5aa2e4422bec8bbd637bba091@sentry.io/1794736';
   addressEnteredApi = 'https://wvt5gxjul1.execute-api.us-west-2.amazonaws.com/staging/landing-address-submitted';
   env = STAGING;
 } else if (includes(ERGEON_DEVELOPMENT, host)) {

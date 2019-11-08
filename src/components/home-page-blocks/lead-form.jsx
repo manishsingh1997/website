@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Portal} from 'react-portal';
-import Raven from 'raven-js';
+import * as Sentry from '@sentry/browser';
 import cleanDeep from 'clean-deep';
 
 import {AddressInput, Button, Spinner} from '@ergeon/core-components';
@@ -165,7 +165,7 @@ export default class LeadForm extends React.Component {
         source: DEFAULT_SOURCE_VALUE,
       };
       submitData = cleanDeep(submitData);
-      Raven.captureBreadcrumb({
+      Sentry.addBreadcrumb({
         message: 'Lead submit',
         category: 'action',
         data: submitData,

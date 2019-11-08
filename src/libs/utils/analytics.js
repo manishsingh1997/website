@@ -1,7 +1,7 @@
 /* eslint-disable */
 import cookies from 'js-cookie';
 import ls from 'local-storage';
-import Raven from 'raven-js';
+import * as Sentry from '@sentry/browser';
 import UAparser from 'ua-parser-js';
 import isPlainObject from 'is-plain-object';
 import cleanDeep from 'clean-deep';
@@ -126,9 +126,11 @@ export const identify = (_gidOrTraits, _traits) => {
   }
 
   try {
-    Raven.setUserContext({
-      ...traits,
-      uuid: getUserUuid(),
+    Sentry.configureScope(scope => {
+        scope.setUser({
+          ...traits,
+          uuid: getUserUuid(),
+        });
     });
   } catch (e) {
     trackError(e);
@@ -136,7 +138,10 @@ export const identify = (_gidOrTraits, _traits) => {
 };
 
 export const trackError = (error, data) => {
-  Raven.captureException(error, data);
+  Sentry.withScope(scope => {
+    scope.setExtra('data', data);
+    Sentry.captureException(error);
+  });
   console.log(error && error.stack || error, data && data.stack);
 };
 
@@ -219,7 +224,14 @@ export const getUTM = () => {
 
 export const init = () => {
   if (config.sentryDSN) {
-    Raven.config(config.sentryDSN).install();
+    Sentry.init({
+      'dsn': config.sentryDSN,
+      'environment': config.env,
+    });
+  
+    Sentry.configureScope((scope) => {
+      scope.setTag('service_name', 'website');
+    });
   }
   cacheUTM();
   identify(getUserUuid());
