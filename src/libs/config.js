@@ -46,6 +46,7 @@ const configuration = configs[env];
 export default {
   ...configs.common,
   level: env,
+  env,
   myErgeonURL,
   leadArrivedApi,
   addressEnteredApi,
