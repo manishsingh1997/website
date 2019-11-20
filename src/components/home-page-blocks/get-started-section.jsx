@@ -19,7 +19,7 @@ class GetStartedSection extends React.Component {
                 <li>Enter your address and we’ll call you within 24 hours</li>
                 <li>Get custom quote after onsite consultation</li>
                 <li>Schedule your installation</li>
-                <li>Get your project installed within 2 weeks</li>
+                <li>Get your project installed</li>
               </ol>
             </div>
 
