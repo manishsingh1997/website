@@ -868,10 +868,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.4.tgz#622a72bebd1e3f48d921563b4b60a762295a81fc"
   integrity sha512-6PYY5DVdAY1ifaQW6XYTnOMihmBVT27elqSjEoodchsGjzYlEsTQMcEhSud99kVawatyTZRTiVkJ/c6lwbQ7nA==
 
-"@ergeon/core-components@^1.0.38":
-  version "1.0.38"
-  resolved "https://npm.ergeon.in/@ergeon%2fcore-components/-/core-components-1.0.38.tgz#1f6bc86d4cf650ce22d7bf0fd201570a0775a217"
-  integrity sha512-O/Pd0HStXGbHYSJqba1lAweFrAkaOwdxS1ozvQmtP2YBGzkZsW6YowMEJo7bO0IUy6RpCs7uPIn3k73BbLrRzg==
+"@ergeon/core-components@^1.0.40":
+  version "1.0.40"
+  resolved "https://npm.ergeon.in/@ergeon%2fcore-components/-/core-components-1.0.40.tgz#f5fe2dd022a04c4f2b7e3adcffe6dc5f658b5db7"
+  integrity sha512-Z+9jTv/6pOIoKcSPEw+7menoONjMzV9jyqsdiZkmT3YM0Hbq8yXM9kC9o73rYBhezbUx3Y0q2M21fr71Hc9lOw==
   dependencies:
     classnames "^2.2.6"
     google-maps "^3.3.0"

@@ -1,6 +1,7 @@
 import './review-hero.scss';
 import React from 'react';
 import homeAdvisorLogo from '../../assets/home_advisor@2x.png';
+import {Rating} from '@ergeon/core-components';
 
 class ReviewHero extends React.Component {
   render() {
@@ -12,13 +13,7 @@ class ReviewHero extends React.Component {
               <h4>Customer reviews</h4>
               <div className="review-hero__customer-reviews__home-advisor-section">
                 <div className="review-hero__customer-reviews__rating">
-                  <div className="stars-group">
-                    <div className="icon star"/>
-                    <div className="icon star"/>
-                    <div className="icon star"/>
-                    <div className="icon star"/>
-                    <div className="icon star half"/>
-                  </div>
+                  <Rating value={4.5}/>
                   <div className="review-hero__customer-reviews__rating__numbers">4.8 / 38 Verified Reviews</div>
                 </div>
                 <img className="review-hero__customer-reviews__home-advisor-logo" src={homeAdvisorLogo}/>

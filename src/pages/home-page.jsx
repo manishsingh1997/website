@@ -5,7 +5,7 @@ import ProjectsSection from '../components/home-page-blocks/projects-section';
 import PromoBlock from '../components/home-page-blocks/promo-block';
 import GetStartedSection from '../components/home-page-blocks/get-started-section';
 import QASection from '../components/home-page-blocks/qa-section';
-import BadgesSection from '../components/home-page-blocks/badges-section';
+import {BadgesSection} from '@ergeon/core-components';
 import imgCalc from '../assets/calc_promo.png';
 import imgMap from '../assets/map_image.png';
 class HomePage extends React.Component {
