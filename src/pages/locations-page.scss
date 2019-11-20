@@ -58,6 +58,18 @@
     padding-left: 34px;
   }
 
+  .p_phone {
+    padding-left: 34px;
+    a {
+      color: $black-2;
+      &:hover {
+        color: $black-1;
+      }
+    }
+
+  }
+
+
   .nice_view {
     position: relative;
     left: 40%;
