@@ -52,5 +52,11 @@
     "ecmaFeatures": {
       "jsx": true
     }
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "16.8.6"
+    }
   }
 }

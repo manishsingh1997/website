@@ -2,7 +2,7 @@
 
 ### Requirements
 ```
-node v6.17.1
+node v11.15.0
 yarn v1.16.0
 ```
 

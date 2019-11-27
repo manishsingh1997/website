@@ -1,19 +1,23 @@
 import './staff-map.scss';
 import React from 'react';
+import config from '../libs/config';
+import MapComponent from '@ergeon/map-component';
+import {Spinner} from '@ergeon/core-components';
+import markers from '../data/map-employees.js';
 
 class StaffMap extends React.Component {
-
   render() {
+    const loadingPlaceholder = <Spinner active={true} color="green" size={32} />;
+    const controls = {disableDefaultUI: true};
     return (
       <div className="staff-map">
-        <iframe
-          frameBorder="0"
-          height="630px"
-          src="https://s3-us-west-2.amazonaws.com/ergeon.com/staff-map/index.html"
-          style={{padding: 0, margin:0}}
-          width="100%"/>
+        <MapComponent
+          apiKey={config.googleMapsApiKey}
+          controls={controls}
+          loadingPlaceholder={loadingPlaceholder}
+          markers={markers}
+          popupBehaviour="close" />
       </div>
-
     );
   }
 }
