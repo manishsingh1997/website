@@ -3,27 +3,32 @@ import MetaTags from 'react-meta-tags';
 
 import './locations-page.scss';
 class LocationsPage extends React.Component {
+
   renderPhoneNumber(phone) {
     return (
       <p className="p_phone">Phone: <a href={`tel:+1${phone}`}>{phone}</a></p>
     );
   }
+
   render() {
+    const locationsContent = (
+      'We provide service to over 3.5 million households in the Bay Area, Sacramento and Fresno.'
+    );
     return (
       <div className="locations-page wrapper-1180">
         <MetaTags>
           <title>Ergeon Locations</title>
           <meta
-            content="We provide service to over 3.5 million households in the Bay Area and Sacramento."
+            content="{locationsContent}"
             name="description" />
           <meta
-            content="We provide service to over 3.5 million households in the Bay Area and Sacramento."
+            content="{locationsContent}"
             name="og:description" />
         </MetaTags>
         <div className="locations__header">
           <h2>Our Locations</h2>
           <p className="paragraph-3">
-            We provide service to over 3.5 million households in the Bay Area and Sacramento.
+            {locationsContent}
           </p>
         </div>
         <div className="nice_view_map"></div>
