@@ -1,0 +1,67 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.address-update-popup {
+  &.Popup .Popup-content {
+    padding: 20px;
+  }
+
+  h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .AddressInput {
+    input {
+      height: 48px;
+      padding-left: 10px;
+      font-size: 13px;
+
+      &:focus {
+        & + label {
+          transform: translate(0, -9px);
+          font-size: 11px;
+        }
+      }
+    }
+
+    label {
+      top: 10px;
+      font-size: 14px;
+      left: 10px;
+    }
+
+    &.is-hasValue {
+      label {
+        transform: translate(0, -9px);
+        font-size: 11px;  
+      }
+    }
+  }
+
+  .Separator {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #D8D8D8;
+  }
+
+  .Buttons {
+    display: flex;
+    justify-content: flex-end;
+
+    .button {
+      margin-left: 10px;
+    }
+  }
+
+  .submit-button {
+    min-width: 140px;
+
+    &[disabled] {
+      cursor: default;
+
+      &:hover {
+        background-color: $gray-4;
+      }
+    }
+  }
+}

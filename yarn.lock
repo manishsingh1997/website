@@ -864,7 +864,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.4.tgz#622a72bebd1e3f48d921563b4b60a762295a81fc"
   integrity sha512-6PYY5DVdAY1ifaQW6XYTnOMihmBVT27elqSjEoodchsGjzYlEsTQMcEhSud99kVawatyTZRTiVkJ/c6lwbQ7nA==
 
-"@ergeon/core-components@^1.0.47":
+"@ergeon/core-components@^1.0.48":
   version "1.0.48"
   resolved "https://npm.ergeon.in/@ergeon%2fcore-components/-/core-components-1.0.48.tgz#3e4a1b232e4b73c5f97e9c8038781de137d82342"
   integrity sha512-vckmPTfhF7H7if3GrRyADGsSvgPt2dx/RGelsf8q9+mdsJf2NDmyEmeTO69ULmlwkdzpCE5EMumCWpprfLaGSw==
@@ -888,7 +888,7 @@
     eslint-plugin-import-order "2.1.4"
     eslint-plugin-react "6.4.1"
 
-"@ergeon/map-component@1.3.1":
+"@ergeon/map-component@^1.3.1":
   version "1.3.1"
   resolved "https://npm.ergeon.in/@ergeon%2fmap-component/-/map-component-1.3.1.tgz#0ed7326c10dce1df8dc835081641247c3f23e51d"
   integrity sha512-K3mff1bs0oEIMmzk+Ir8GWz5lT1ee5Rsnmi4RMv7QQKQ+7QtZpTX0gYTzpLWpB4QutyuRDheMeD9Vhldotrn3Q==
@@ -909,7 +909,7 @@
     style-value-types "^3.1.7"
     tslib "^1.10.0"
 
-"@sentry/browser@^5.7.1":
+"@sentry/browser@^5.9.0":
   version "5.9.1"
   resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-5.9.1.tgz#b2ec27ead501a49f26807a9c0774f44f4292f236"
   integrity sha512-7AOabwp9yAH9h6Xe6TfDwlLxHbUSWs+SPWHI7bPlht2yDSAqkXYGSzRr5X0XQJX9oBQdx2cEPMqHyJrbNaP/og==

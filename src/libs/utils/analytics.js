@@ -2,18 +2,20 @@
 import cookies from 'js-cookie';
 import ls from 'local-storage';
 import * as Sentry from '@sentry/browser';
-import UAparser from 'ua-parser-js';
+import UAParser from 'ua-parser-js';
 import isPlainObject from 'is-plain-object';
 import cleanDeep from 'clean-deep';
 
 const MILLISECONDS_IN_MONTH = 2592000000;
 
-import {UUID_COOKIE_NAME, isProduction} from 'libs/constants';
+import {DEFAULT_SOURCE_VALUE, UUID_COOKIE_NAME, isProduction} from 'libs/constants';
 import config from 'libs/config';
 import {
   getParameterByName,
   isObject,
 } from 'libs/utils/utils';
+import {submitAddressEntered} from 'libs/api';
+import {ADDRESS_ENTERED} from 'libs/utils/events';
 
 export const LS_KEY = 'ergeon-utms';
 
@@ -239,7 +241,7 @@ export const init = () => {
 };
 
 export const getUserAgent = () => {
-  const ua = UAparser(window.navigator.userAgent);
+  const ua = UAParser(window.navigator.userAgent);
   const res = {};
   for (const key in ua) {
     if (isPlainObject(ua[key])) {
@@ -253,5 +255,67 @@ export const getUserAgent = () => {
     }
   }
   return cleanDeep(res);
+};
+
+export const trackAddressEntered = (lead) => {
+  const {...utms} = getUTM();
+
+  const data = {
+    address: lead.address,
+    'product_slug': lead['product_slug'],
+  };
+
+  track(ADDRESS_ENTERED, {
+    ...utms,
+    address: data.address,
+    source: DEFAULT_SOURCE_VALUE,
+  });
+
+  const address = data.address;
+  const enteredAddressData = {};
+  enteredAddressData['uuid'] = getUserUuid();
+  enteredAddressData['formatted_address'] = address.formatted_address;
+  enteredAddressData['place_types'] = address.place_types;
+  enteredAddressData['raw_address'] = address.raw_address;
+  enteredAddressData['zip_code'] = address.zipcode;
+  enteredAddressData['address1'] = `${address.primary_number} ${address.street_name}`;
+  enteredAddressData['city'] = address.city_name;
+  if (typeof address.location.lat === "function") {
+    enteredAddressData['location'] = {
+      lat: address.location.lat(),
+      lng: address.location.lng(),
+    };
+  } else {
+    enteredAddressData['location'] = {
+      lat: address.location? address.location.lat : null,
+      lng: address.location? address.location.lng : null,
+    };
+  }
+  enteredAddressData['state'] = address.state_abbreviation;
+  enteredAddressData['product_slug'] = data.product_slug;
+  enteredAddressData['source'] = DEFAULT_SOURCE_VALUE;
+  const obj = {...utms};
+  obj['arrival_time'] = Date.now();
+  obj['path'] = window.location.pathname;
+  obj['href'] = window.location.href;
+  const result = new UAParser().getResult();
+  obj['ua'] = result.ua;
+  obj['browser_name'] = result.browser.name;
+  obj['browser_version'] = result.browser.version;
+  obj['browser_major'] = result.browser.major;
+  obj['cpu_architecture'] = result.cpu.architecture;
+  obj['engine_name'] = result.engine.name;
+  obj['engine_version'] = result.engine.version;
+  obj['os_name'] = result.os.name;
+  obj['os_version'] = result.os.version;
+  obj['inner_width'] = window.innerWidth;
+  obj['inner_height'] = window.innerHeight;
+  enteredAddressData['object'] = obj;
+  submitAddressEntered(enteredAddressData);
+  Sentry.addBreadcrumb({
+    message: 'Address submit',
+    category: 'action',
+    data,
+  });
 };
 

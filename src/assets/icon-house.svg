@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="18px" viewBox="0 0 20 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>icons/step/done copy 12</title>
+    <desc>Created with Sketch.</desc>
+    <g id="landing-address-input" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="top_panels" transform="translate(-762.000000, -462.000000)">
+            <g id="iphone" transform="translate(740.000000, 326.000000)">
+                <g id="top_panel">
+                    <g id="links" transform="translate(10.000000, 54.000000)">
+                        <g id="address" transform="translate(10.000000, 78.000000)">
+                            <g id="icons/house/gray">
+                                <g id="house">
+                                    <rect id="Rectangle-1-Copy-142" x="0" y="0" width="24" height="24"></rect>
+                                    <g id="Fill-1070" transform="translate(2.000000, 4.000000)" fill="#BFC4BD">
+                                        <path d="M16,14 L11,14 L11,11 L16,11 L16,14 Z M19.707,9.293 L18,7.586 L18,3 L15,3 L15,4.586 L10.707,0.293 C10.316,-0.098 9.684,-0.098 9.293,0.293 L0.293,9.293 C0.007,9.579 -0.079,10.009 0.076,10.383 C0.231,10.757 0.596,11 1,11 L2,11 L2,18 L5,18 L5,13 L8,13 L8,18 L18,18 L18,11 L19,11 C19.404,11 19.769,10.757 19.924,10.383 C20.079,10.009 19.993,9.579 19.707,9.293 L19.707,9.293 Z"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

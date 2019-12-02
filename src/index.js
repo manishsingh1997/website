@@ -26,11 +26,12 @@ import WarrantiesPage from 'pages/warranties-page';
 import LocationsPage from 'pages/locations-page';
 import HelpPage from 'pages/help-page';
 import HelpLandingPage from 'pages/help-landing-page';
+import RequestQuotePage from 'pages/request-quote-page';
 
 import '@ergeon/core-components/src/components/main.scss';
 import './components/main.scss';
 
-const history = createBrowserHistory();
+export const history = createBrowserHistory();
 const middlewares = [];
 
 middlewares.push(promise);
@@ -81,6 +82,7 @@ render(
           <Route component={HelpLandingPage} exact path="/help"/>
           <Route component={HelpPage} exact path="/help/search"/>
           <Route component={HelpPage} exact path="/help/:nodeGid"/>
+          <Route component={RequestQuotePage} exact path="/request-quote"/>
           <Redirect
             exact
             from="/gallery/driveway"

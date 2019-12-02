@@ -4,7 +4,7 @@ import Slider from '../slider';
 import ClassNames from 'classnames';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
-import AddressForm from './address-form';
+import AddressForm from './address-form_old'; // TODO: Use new address form once tested
 import {FENCE_SLUG, DRIVEWAY_SLUG} from 'libs/constants';
 import {getParameterByName} from 'libs/utils/utils';
 

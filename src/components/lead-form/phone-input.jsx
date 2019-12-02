@@ -7,11 +7,11 @@ const phoneMask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\
 import './floating-input.scss';
 export default class FloatingPhoneInput extends React.Component {
   static propTypes = {
-    labelName: PropTypes.func,
-    name: PropTypes.func,
+    labelName: PropTypes.string,
+    name: PropTypes.string,
     onChange: PropTypes.func,
-    placeholder: PropTypes.func,
-    value: PropTypes.func,
+    placeholder: PropTypes.string,
+    value: PropTypes.string,
   };
 
   constructor(props) {
