@@ -3,7 +3,7 @@
 ### Requirements
 ```
 node v11.15.0
-yarn v1.16.0
+npm v6.13.1
 ```
 
 ### Installation
@@ -43,7 +43,10 @@ make build
 ```
 
 ### Deployment
-First you need to install `s3cmd` and have aws credentials for the s3 servers.
+
+Deployment will happen automatically by CI/CD scripts. Manual deployment is not recommended, it should be done only in exceptional cases.
+
+First you need to install [`awscli`](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv1.html) and have aws credentials for the s3 servers.
 
 * `make deploy-staging` will try to upload the build into the bucket for `dev.ergeon.com`
 * `make deploy-production` will try to upload the build into the bucket for `ergeon.com`

@@ -22,14 +22,13 @@ jobs:
             curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
             sudo python get-pip.py
             sudo pip install awscli
-            npm set registry https://npm.ergeon.in
+            sudo npm install -g npm@6.13.1
             make install
-            npm rebuild node-sass
 
       - save_cache:
           paths:
             - node_modules
-            - ~/.yarn-cache
+            - ~/.npm
             - ~/.cache
           key: v3-dependencies-{{ checksum "package.json" }}
 

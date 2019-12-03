@@ -7,8 +7,8 @@ AWS_CLI ?= aws --region $(S3_REGION)
 
 all: install run
 
-build:
-	yarn run build-$(LEVEL)
+build: clean
+	npm run build-$(LEVEL)
 
 clean:
 	rm -rf dist/
@@ -16,16 +16,18 @@ clean:
 setup-local-domain:
 	grep -n $(LOCAL_DOMAIN) /etc/hosts >> /dev/null && echo "Domain is already set up. Terminating.." || echo "127.0.0.1	$(LOCAL_DOMAIN)" | sudo tee -a /etc/hosts > /dev/null | echo "Successfull. Happy ezcoding."
 
-install:
-	yarn install
+install: .install
+.install: package.json
+	npm install
+	touch $@
 
-lint:
-	yarn run lint
+lint: install
+	npm run lint
 
-run:
-	yarn run start
+run: install
+	npm run start
 
-test: lint
+test: install lint
 
 deploy-staging:
 	LEVEL=staging make build
