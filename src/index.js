@@ -1,14 +1,9 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {createStore, applyMiddleware, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
-import {logger} from 'redux-logger';
 import {createBrowserHistory} from 'history';
 import {Router, Route, Switch, Redirect} from 'react-router-dom';
-import {routerMiddleware, routerReducer} from 'react-router-redux';
-import promise from 'redux-promise-middleware';
 
-import reducers from 'reducers/index';
 import {
   FencePhotoData,
   GatePhotoData,
@@ -27,25 +22,12 @@ import LocationsPage from 'pages/locations-page';
 import HelpPage from 'pages/help-page';
 import HelpLandingPage from 'pages/help-landing-page';
 import RequestQuotePage from 'new-containers/RequestQuote';
+import store from 'store';
 
 import '@ergeon/core-components/src/components/main.scss';
 import './components/main.scss';
 
 export const history = createBrowserHistory();
-const middlewares = [];
-
-middlewares.push(promise);
-middlewares.push(routerMiddleware(history));
-
-if (process.env.NODE_ENV !== 'production') middlewares.push(logger);
-
-const store = createStore(
-  combineReducers({
-    ...reducers,
-    routing: routerReducer,
-  }),
-  applyMiddleware(...middlewares),
-);
 
 const renderPhotoGalleryRedirect = (productSlug, category) => {
   const groupSlug = category.categoryGroups ? category.categoryGroups[0].groupSlug : null;

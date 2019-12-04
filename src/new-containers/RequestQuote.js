@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
 import {actionTriggers as addressActionTriggers} from 'actions/address-actions';
-import RequestQuote from '../new-components/RequestQuote';
+import RequestQuote from 'new-components/RequestQuote';
 
 const mapStateToProps = ({address}) => {
   return {
