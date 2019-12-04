@@ -26,7 +26,7 @@ import WarrantiesPage from 'pages/warranties-page';
 import LocationsPage from 'pages/locations-page';
 import HelpPage from 'pages/help-page';
 import HelpLandingPage from 'pages/help-landing-page';
-import RequestQuotePage from 'pages/request-quote-page';
+import RequestQuotePage from 'new-containers/RequestQuote';
 
 import '@ergeon/core-components/src/components/main.scss';
 import './components/main.scss';

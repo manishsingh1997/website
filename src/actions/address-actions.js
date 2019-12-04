@@ -7,10 +7,16 @@ export const actionTypes = {
 };
 
 export const actionTriggers = {
+  // TODO: something wrong here, 'updateAddress' accept 'lead', why no address?
+  // Looks like some circular flow: address has lead, lead has address.
+  // Better to clean it up.
   updateAddress: (lead) => ({
     type: actionTypes.ADDRESS_UPDATED,
     payload: lead,
   }),
+  // TODO: is it really should be placed in redux store (popup state) ?
+  // Why not just use component's state?
+  // https://goshakkk.name/should-i-put-form-state-into-redux/
   openAddressUpdatePopup: () => ({
     type: actionTypes.OPEN_POPUP,
     payload: null,

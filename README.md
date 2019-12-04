@@ -26,6 +26,10 @@ Run development webpack server
 make run
 ```
 
+### Coding rules
+
+The rules are inspired from this [doc](https://github.com/airbnb/javascript/tree/master/react).
+
 ### Run tests
 Run tests and lint.
 

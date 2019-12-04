@@ -1,25 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 import {Button, Places, Spinner} from '@ergeon/core-components';
 import MapComponent from '@ergeon/map-component';
 
 import Marker from 'assets/marker.svg';
 import config from 'libs/config';
-import {actionTriggers as addressActionTriggers} from 'actions/address-actions';
 import {getParameterByName} from 'libs/utils/utils';
 import {getCheckedZIP} from 'libs/api';
-import LeadForm from 'components/home-page-blocks/lead-form';
+import LeadForm from './LeadForm';
+
+import './index.scss';
+
 const {GoogleMapsLoader, parsePlace} = Places;
 
-import './request-quote-page.scss';
-class RequestQuotePage extends React.Component {
+export default class RequestQuote extends React.Component {
 
   static propTypes = {
     address: PropTypes.string,
-    dispatch: PropTypes.func,
     lead: PropTypes.object,
+    openAddressUpdatePopup: PropTypes.func.isRequired,
     product: PropTypes.string,
+    updateAddress: PropTypes.func.isRequired,
   };
 
   state = {
@@ -37,11 +38,11 @@ class RequestQuotePage extends React.Component {
           if (results.length) {
             const placeData = parsePlace(results[0]);
             getCheckedZIP(placeData.zipcode).then(response => {
-              this.props.dispatch(addressActionTriggers.updateAddress({
+              this.props.updateAddress({
                 address: placeData,
                 'product_slug': product,
                 productAvailability: response.data,
-              }));
+              });
             }, error => {
               console.log(error);
               this.setState({
@@ -76,7 +77,7 @@ class RequestQuotePage extends React.Component {
   }
 
   openAddressUpdatePopup() {
-    this.props.dispatch(addressActionTriggers.openAddressUpdatePopup());
+    this.props.openAddressUpdatePopup();
   }
 
   getStreetAddress() {
@@ -256,11 +257,3 @@ class RequestQuotePage extends React.Component {
     );
   }
 }
-
-export default connect(state => {
-  return {
-    address: state.address.address,
-    lead: state.address.lead,
-    product: state.address.product,
-  };
-})(RequestQuotePage);

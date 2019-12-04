@@ -4,10 +4,10 @@ import * as Sentry from '@sentry/browser';
 import cleanDeep from 'clean-deep';
 
 import {AddressInput, Button, Spinner} from '@ergeon/core-components';
-import TextInput from 'components/lead-form/text-input';
-import FloatingPhoneInput from 'components/lead-form/phone-input';
-import MultiProductSelect from 'components/lead-form/multi-product-select';
-import TextArea from 'components/lead-form/text-area';
+import TextInput from './TextInput';
+import PhoneInput from './PhoneInput';
+import MultiProductSelect from './MultiProductSelect';
+import TextArea from './TextArea';
 
 import {
   createValidator,
@@ -36,6 +36,8 @@ import {
   CUSTOMER_LEAD_CREATED,
 } from 'libs/utils/events';
 import {products, DEFAULT_SOURCE_VALUE} from 'libs/constants';
+
+import './LeadForm.scss';
 
 const stringifyAddress = (address) => {
   if (address !== null && address !== undefined) {
@@ -70,7 +72,6 @@ const getInitialState = (showNoteField = false, props = {}) => {
   };
 };
 
-import './lead-form.scss';
 export default class LeadForm extends React.Component {
   static propTypes = {
     lead: PropTypes.object,
@@ -218,7 +219,7 @@ export default class LeadForm extends React.Component {
           {errors && <div className="Form-error">{errors.name}</div>}
         </div>
         <div className={`Form-field ${errors && errors.phone && 'is-error'}`}>
-          <FloatingPhoneInput
+          <PhoneInput
             disabled={loading}
             labelName="Your phone number"
             name="phone"

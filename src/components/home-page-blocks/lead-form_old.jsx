@@ -72,7 +72,7 @@ const getInitialSate = (showThankYou = false, showNoteField = false, props = {})
   };
 };
 
-import './lead-form.scss';
+import './lead-form_old.scss';
 export default class LeadForm extends React.Component {
   static propTypes = {
     lead: PropTypes.object,
