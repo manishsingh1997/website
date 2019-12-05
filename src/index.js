@@ -11,21 +11,21 @@ import {
 } from 'data/photo-gallery';
 import customScripts from 'libs/custom-scripts';
 
-import Layout from 'pages/layout';
-import HomePage from 'pages/home-page';
-import CareersPage from 'pages/careers-page';
-import AboutPage from 'pages/about-page';
-import PhotoGallery from 'pages/photo-gallery';
-import FAQPage from 'pages/faq-page';
-import WarrantiesPage from 'pages/warranties-page';
-import LocationsPage from 'pages/locations-page';
-import HelpPage from 'pages/help-page';
-import HelpLandingPage from 'pages/help-landing-page';
-import RequestQuotePage from 'new-containers/RequestQuote';
+import Layout from 'containers/Layout';
+import HomePage from 'components/HomePage';
+import CareersPage from 'components/CareersPage';
+import AboutPage from 'components/AboutPage';
+import PhotoGallery from 'components/PhotoGallery';
+import FAQPage from 'components/FAQPage';
+import WarrantiesPage from 'components/WarrantiesPage';
+import LocationsPage from 'components/LocationsPage';
+import HelpPage from 'components/HelpPage';
+import HelpLandingPage from 'components/HelpLandingPage';
+import RequestQuotePage from 'containers/RequestQuotePage';
 import store from 'store';
 
 import '@ergeon/core-components/src/components/main.scss';
-import './components/main.scss';
+import './main.scss';
 
 export const history = createBrowserHistory();
 
