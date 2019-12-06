@@ -8,27 +8,27 @@ const helpDefaultCategories = [
   {
     title: 'About Ergeon',
     icon: IconErgeon,
-    gid: '7oi863xrO2px23Xp',
+    nodeId: '201900002',
   },
   {
     title: 'Driveways',
     icon: IconDriveway,
-    gid: '7oiH7vpoKHwRogjj',
+    nodeId: '201900003',
   },
   {
     title: 'Fences',
     icon: IconFence,
-    gid: '7oiKY-I_pEYrl2WL',
+    nodeId: '201900004',
   },
   {
     title: 'Service Policies',
     icon: IconService,
-    gid: '7oiLA3t8dSrhF267',
+    nodeId: '201900005',
   },
   {
     title: 'Pricing & Payment',
     icon: IconPricing,
-    gid: '7oiLRFt5WZULKcaG',
+    nodeId: '201900006',
   },
 ];
 

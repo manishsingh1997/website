@@ -26,7 +26,7 @@ class HelpPage extends React.Component {
     }),
     match: PropTypes.shape({
       params: PropTypes.shape({
-        nodeGid: PropTypes.string,
+        nodeId: PropTypes.string,
       }),
     }),
   };
@@ -49,11 +49,11 @@ class HelpPage extends React.Component {
   };
 
   componentDidMount() {
-    const nodeGid = this.props.match.params.nodeGid;
+    const nodeId = this.props.match.params.nodeId;
     const query = getParameterByName('q');
 
-    if (nodeGid) {
-      this.retrieveHelpNode(nodeGid);
+    if (nodeId) {
+      this.retrieveHelpNode(nodeId);
     }
 
     if (query) {
@@ -62,14 +62,14 @@ class HelpPage extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const nodeGid = this.props.match.params.nodeGid;
+    const nodeId = this.props.match.params.nodeId;
     const search = this.props.location.search;
-    const prevNodeGid = prevProps.match.params.nodeGid;
+    const prevNodeId = prevProps.match.params.nodeId;
     const prevSearch = prevProps.location.search;
     const query = getParameterByName('q');
 
-    if (nodeGid !== prevNodeGid && nodeGid) {
-      this.retrieveHelpNode(nodeGid);
+    if (nodeId !== prevNodeId && nodeId) {
+      this.retrieveHelpNode(nodeId);
     }
 
     if (query && prevSearch !== search) {
@@ -97,9 +97,9 @@ class HelpPage extends React.Component {
     }
   }
 
-  redirectNode(gid) {
+  redirectNode(nodeId) {
     this.props.history.push({
-      pathname: `/help/${gid}`,
+      pathname: `/help/${nodeId}`,
     });
   }
 
@@ -194,9 +194,9 @@ class HelpPage extends React.Component {
             <NavLink className="help-breadcrumb__link" to="/help"><img src={HomeIcon} /></NavLink>
           </span>
           {[...breadcrumb].reverse().slice(1).map(
-            ({title, gid}) => (
-              <span className="help-breadcrumb__item" key={`header-breadcrumb-${gid}`}>
-                <NavLink className="help-breadcrumb__link" to={`/help/${gid}`}>{title}</NavLink>
+            ({title, nodeId}) => (
+              <span className="help-breadcrumb__item" key={`header-breadcrumb-${nodeId}`}>
+                <NavLink className="help-breadcrumb__link" to={`/help/${nodeId}`}>{title}</NavLink>
               </span>
             )
           )}
@@ -217,7 +217,7 @@ class HelpPage extends React.Component {
   renderSidebar() {
     const {
       helpNode: {
-        gid: currentGid,
+        nodeId: currentNodeId,
         parent,
       },
       expandedSidebar,
@@ -225,11 +225,11 @@ class HelpPage extends React.Component {
 
     let parentChildren = parent && parent.children || [];
     let parentTitle = parent && parent.title || 'All topics';
-    let parentGid = parent && parent.gid || '';
+    let parentNodeId = parent && parent.nodeId || '';
 
     if (parentTitle === 'Home') {
       parentTitle = 'All topics';
-      parentGid = '';
+      parentNodeId = '';
     }
 
     const classes = {
@@ -241,18 +241,18 @@ class HelpPage extends React.Component {
       <div className={classNames(classes)}>
         <div className="sidebar__menu">
           <div className="sidebar__parent-title">
-            <i className="icon-arrow-left" onClick={this.redirectNode.bind(this, parentGid)} />
+            <i className="icon-arrow-left" onClick={this.redirectNode.bind(this, parentNodeId)} />
             {parentTitle}
             <i className="icon-arrow-down" onClick={() => this.setState({expandedSidebar: !expandedSidebar})} />
           </div>
           <ul className="siblings-list">
             {parentChildren.map(
-              ({gid, title}) => (
-                <NavLink key={`sidemenu-${gid}`} to={`/help/${gid}`}>
+              ({nodeId, title}) => (
+                <NavLink key={`sidemenu-${nodeId}`} to={`/help/${nodeId}`}>
                   <li
                     className={classNames({
                       'siblings-list-item': true,
-                      'active': currentGid === gid,
+                      'active': currentNodeId === nodeId,
                     })}>
                     <div className="siblings-list-item__wrapper">
                       {title}

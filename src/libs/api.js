@@ -1,5 +1,6 @@
 import config from 'libs/config';
 import axios from 'axios';
+import camelcaseKeys from 'camelcase-keys';
 
 export const submitLeadArrived = (data) => {
   return axios({
@@ -32,14 +33,17 @@ export const getCheckedZIP = (zipcode) => {
   });
 };
 
-export const getHelpNode = (nodeGid = config.HELP_ROOT_NODE) => {
-  const query = `/c/api/v1/help/node/${nodeGid}/`;
+export const getHelpNode = (nodeId = config.HELP_ROOT_NODE) => {
+  const query = `/c/api/v1/help/node/${nodeId}/`;
   return axios({
     method: 'get',
     url: config.myErgeonURL + query,
-    data: JSON.stringify(nodeGid),
+    data: JSON.stringify(nodeId),
     responseType: 'json',
     headers: {'Content-Type': 'application/json'},
+    transformResponse: [(data) => {
+      return camelcaseKeys(data, {deep: true});
+    }],
   }).then(result => result.data);
 };
 
@@ -51,5 +55,8 @@ export const getHelpResults = (search) => {
     data: JSON.stringify(search),
     responseType: 'json',
     headers: {'Content-Type': 'application/json'},
+    transformResponse: [(data) => {
+      return camelcaseKeys(data, {deep: true});
+    }],
   });
 };

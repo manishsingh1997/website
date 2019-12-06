@@ -63,7 +63,7 @@ render(
           <Route component={LocationsPage} exact path="/locations"/>
           <Route component={HelpLandingPage} exact path="/help"/>
           <Route component={HelpPage} exact path="/help/search"/>
-          <Route component={HelpPage} exact path="/help/:nodeGid"/>
+          <Route component={HelpPage} exact path="/help/:nodeId"/>
           <Route component={RequestQuotePage} exact path="/request-quote"/>
           <Redirect
             exact

@@ -28,9 +28,9 @@ class HelpLandingPage extends React.Component {
     }
   }
 
-  redirectNode(gid) {
+  redirectNode(nodeId) {
     this.props.history.push({
-      pathname: `/help/${gid}`,
+      pathname: `/help/${nodeId}`,
     });
   }
 
@@ -55,7 +55,7 @@ class HelpLandingPage extends React.Component {
         <div className="help-landing-page__body wrapper-1180">
           <div className="help-landing-page__categories">
             {categories.map(category => (
-              <NavLink key={category.gid} to={`/help/${category.gid}`}>
+              <NavLink key={category.nodeId} to={`/help/${category.nodeId}`}>
                 <div
                   className="help-landing-page__category">
                   <img className="category-icon" src={category.icon} />

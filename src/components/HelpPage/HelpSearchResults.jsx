@@ -11,10 +11,10 @@ class HelpSearchResults extends React.Component {
     results: PropTypes.arrayOf(PropTypes.object),
   };
 
-  renderResult({gid, title, short_memo: shortMemo, breadcrumb}) {
+  renderResult({nodeId, title, short_memo: shortMemo, breadcrumb}) {
     return (
-      <div className="search-result" key={`result-${gid}`}>
-        <NavLink className="search-result__title" to={`/help/${gid}`}>
+      <div className="search-result" key={`result-${nodeId}`}>
+        <NavLink className="search-result__title" to={`/help/${nodeId}`}>
           {title}
           <div className="search-result__description">{shortMemo}</div>
         </NavLink>
@@ -23,8 +23,8 @@ class HelpSearchResults extends React.Component {
             <NavLink to="/help"><img src={HomeIcon} /></NavLink>
           </span>
           {[...breadcrumb].reverse().slice(1).map(item => (
-            <span className="breadcrumb-item" key={`result-${gid}-${item.gid}`}>
-              <NavLink to={`/help/${item.gid}`}>{item.title}</NavLink>
+            <span className="breadcrumb-item" key={`result-${nodeId}-${item.nodeId}`}>
+              <NavLink to={`/help/${item.nodeId}`}>{item.title}</NavLink>
             </span>
           ))}
         </div>

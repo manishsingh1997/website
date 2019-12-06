@@ -3,7 +3,7 @@ const configs = {
   common: {
     FENCE_REPLACEMENT: 'fence-replacement',
     FENCE_REPLACEMENT_NAME: 'Fence Installation',
-    HELP_ROOT_NODE: '7ogSo9cm210otrVI',
+    HELP_ROOT_NODE: '201900001',
   },
   'development': {},
   'staging': {},
