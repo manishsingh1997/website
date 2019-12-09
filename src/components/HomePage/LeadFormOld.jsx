@@ -16,14 +16,14 @@ import {
   email,
   required,
   fullAddress,
-} from 'libs/utils/validation';
+} from 'website/utils/validation';
 import ls from 'local-storage';
 import {
   submitLeadArrived,
-} from 'libs/api';
+} from 'api/lead';
 import {
   parseError,
-} from 'libs/utils/utils';
+} from 'website/utils/utils';
 import {
   identify,
   track,
@@ -32,11 +32,11 @@ import {
   getUserAgent,
   getUserUuid,
   LS_KEY,
-} from 'libs/utils/analytics';
+} from 'website/utils/analytics';
 import {
   CUSTOMER_LEAD_CREATED,
-} from 'libs/utils/events';
-import {products, FENCE_SLUG, DRIVEWAY_SLUG, DEFAULT_SOURCE_VALUE} from 'libs/constants';
+} from 'website/utils/events';
+import {products, FENCE_SLUG, DRIVEWAY_SLUG, DEFAULT_SOURCE_VALUE} from 'website/constants';
 
 import './LeadFormOld.scss';
 

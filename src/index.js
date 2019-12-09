@@ -9,7 +9,7 @@ import {
   GatePhotoData,
   DrivewayPhotoData,
 } from 'data/photo-gallery';
-import customScripts from 'libs/custom-scripts';
+import customScripts from 'website/custom-scripts';
 
 import Layout from 'containers/Layout';
 import HomePage from 'components/HomePage';

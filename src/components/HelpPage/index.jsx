@@ -4,12 +4,12 @@ import classNames from 'classnames';
 import {withRouter, NavLink} from 'react-router-dom';
 
 import {Spinner} from '@ergeon/core-components';
+import helpDefaultCategories from 'data/help-categories';
 import HelpSearchField from '../common/HelpSearchField';
-import helpDefaultCategories from '../common/helpDefaultCategories';
 import HelpSearchResults from './HelpSearchResults';
 
-import {getParameterByName} from 'libs/utils/utils';
-import {getHelpNode, getHelpResults} from 'libs/api';
+import {getParameterByName} from 'website/utils/utils';
+import {getHelpNode, getHelpResults} from 'api/help';
 
 import HomeIcon from 'assets/icon-home-black.svg';
 

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
 import {UAParser} from 'ua-parser-js';
 
-import {getUTM, getUserUuid, track} from 'libs/utils/analytics';
-import {ADDRESS_ENTERED} from 'libs/utils/events';
-import {DEFAULT_SOURCE_VALUE} from 'libs/constants';
-import {submitAddressEntered, getCheckedZIP} from 'libs/api';
+import {getUTM, getUserUuid, track} from 'website/utils/analytics';
+import {ADDRESS_ENTERED} from 'website/utils/events';
+import {DEFAULT_SOURCE_VALUE} from 'website/constants';
+import {submitAddressEntered, getCheckedZIP} from 'api/lead';
 
 import {AddressInput} from '@ergeon/core-components';
 import LeadForm from './LeadFormOld';

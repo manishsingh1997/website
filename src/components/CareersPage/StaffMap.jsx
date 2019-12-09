@@ -1,5 +1,5 @@
 import React from 'react';
-import config from 'libs/config';
+import config from 'website/config';
 import MapComponent from '@ergeon/map-component';
 import {Spinner} from '@ergeon/core-components';
 import markers from 'data/map-employees.js';

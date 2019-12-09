@@ -8,14 +8,14 @@ import cleanDeep from 'clean-deep';
 
 const MILLISECONDS_IN_MONTH = 2592000000;
 
-import {DEFAULT_SOURCE_VALUE, UUID_COOKIE_NAME, isProduction} from 'libs/constants';
-import config from 'libs/config';
+import {DEFAULT_SOURCE_VALUE, UUID_COOKIE_NAME} from 'website/constants';
+import config from 'website/config';
 import {
   getParameterByName,
   isObject,
-} from 'libs/utils/utils';
-import {submitAddressEntered} from 'libs/api';
-import {ADDRESS_ENTERED} from 'libs/utils/events';
+} from 'website/utils/utils';
+import {submitAddressEntered} from 'api/lead';
+import {ADDRESS_ENTERED} from 'website/utils/events';
 
 export const LS_KEY = 'ergeon-utms';
 
@@ -64,7 +64,7 @@ export const track = (eventName, data) => {
   }
   // END: Google Tag manager
 
-  if (!isProduction) {
+  if (config.level !== config.PRODUCTION) {
     console.log(`%cEvent %c ${eventName}`,
       'color: #FF8118; font-size:24px;',
       'color: #00B9F3; font-size:24px;',
@@ -164,7 +164,7 @@ export const page = () => {
     trackError(e);
   }
 
-  if (!isProduction) {
+  if (config.level !== config.PRODUCTION) {
     console.log(`%cPage %c ${window.location.pathname}`,
       'color: #FF8118; font-size:24px;',
       'color: #00B9F3; font-size:24px;');

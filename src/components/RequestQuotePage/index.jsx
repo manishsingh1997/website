@@ -4,9 +4,9 @@ import {Button, Places, Spinner} from '@ergeon/core-components';
 import MapComponent from '@ergeon/map-component';
 
 import Marker from 'assets/marker.svg';
-import config from 'libs/config';
-import {getParameterByName} from 'libs/utils/utils';
-import {getCheckedZIP} from 'libs/api';
+import config from 'website/config';
+import {getParameterByName} from 'website/utils/utils';
+import {getCheckedZIP} from 'api/lead';
 import LeadForm from './LeadForm';
 
 import './index.scss';

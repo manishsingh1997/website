@@ -1,7 +1,4 @@
 export const UUID_COOKIE_NAME = 'fences-uuid';
-import config, {PRODUCTION} from './config';
-
-export const isProduction = config.level === PRODUCTION;
 
 export const DEFAULT_SOURCE_VALUE = 'website';
 export const FENCE_SLUG = 'fence-replacement';

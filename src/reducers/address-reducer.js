@@ -1,4 +1,4 @@
-import {FENCE_SLUG} from 'libs/constants';
+import {FENCE_SLUG} from 'website/constants';
 import {actionTypes} from 'actions/address-actions';
 import ls from 'local-storage';
 

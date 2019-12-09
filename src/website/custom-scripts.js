@@ -1,5 +1,5 @@
 /* eslint-disable */
-import {init, track} from "libs/utils/analytics";
+import {init, track} from "website/utils/analytics";
 
 export default function () {
   // <!--Start of Tawk.to Script-->

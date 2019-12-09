@@ -1,4 +1,4 @@
-import config from 'libs/config';
+import config from 'website/config';
 
 export const parseError = (error) => {
   try {

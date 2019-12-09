@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
 
+import helpDefaultCategories from 'data/help-categories';
 import HelpSearchField from '../common/HelpSearchField';
-import helpDefaultCategories from '../common/helpDefaultCategories';
 
 import './index.scss';
 

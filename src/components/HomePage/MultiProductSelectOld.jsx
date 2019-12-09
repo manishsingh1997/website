@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select, {components} from 'react-select';
-import {products} from 'libs/constants';
+import {products} from 'website/constants';
 import DropdownImg from 'assets/drop_down.svg';
 import ClearImg from 'assets/cross.svg';
 

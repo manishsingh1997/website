@@ -2,7 +2,7 @@ import React from 'react';
 import {find} from 'lodash';
 import MetaTags from 'react-meta-tags';
 
-import config from 'libs/config';
+import config from 'website/config';
 
 import certifiedIcon from 'assets/certified@2x.png';
 import licenseImage from 'assets/license.jpg';

@@ -36,8 +36,8 @@ if (includes(EREGON_PRODUCTION, host)) {
   env = STAGING;
 } else if (includes(ERGEON_DEVELOPMENT, host)) {
   myErgeonURL = 'http://api.ergeon.local:8000';
-  leadArrivedApi = 'https://8ijvlqff7l.execute-api.us-west-2.amazonaws.com/staging/website-lead-arrived';
-  addressEnteredApi = 'https://wvt5gxjul1.execute-api.us-west-2.amazonaws.com/staging/landing-address-submitted';
+  leadArrivedApi = 'http://localhost:8080/website-lead-arrived';
+  addressEnteredApi = 'http://localhost:8080/landing-address-submitted';
   googleMapsApiKey = 'AIzaSyCJfEriZ61E_-iggE4PfQd5rs0IRSao2oI';
   env = DEVELOPMENT;
 } else {
