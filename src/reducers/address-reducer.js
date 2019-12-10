@@ -1,10 +1,12 @@
 import {FENCE_SLUG} from 'website/constants';
 import {actionTypes} from 'actions/address-actions';
 import ls from 'local-storage';
+import {constants} from '@ergeon/3d-lib';
 
 let initialState = {
   address: null,
   lead: null,
+  zipcode: constants.DEFAULT_ZIP,
   product: FENCE_SLUG,
   updateModalLead: null,
   updateModalOpened: false,
@@ -16,6 +18,7 @@ const getStateFromLead = function(state, lead) {
     ...state,
     address: lead ? lead.address['formatted_address'] : '',
     lead,
+    zipcode: lead.zipcode || state.zipcode,
     product: (lead && lead['product_slug']) || state.product,
     updateModalLead: null,
     updateModalOpened: false,

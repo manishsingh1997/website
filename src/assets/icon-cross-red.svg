@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>icon-cross-red</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-cross-red" transform="translate(-5.000000, -5.000000)" fill="#FF7D59">
+            <path d="M12,4 C12.7363797,4 13.3333333,4.59695367 13.3333333,5.33333333 L13.333,10.666 L18.6666667,10.6666667 C19.4030463,10.6666667 20,11.2636203 20,12 C20,12.7363797 19.4030463,13.3333333 18.6666667,13.3333333 L13.333,13.333 L13.3333333,18.6666667 C13.3333333,19.4030463 12.7363797,20 12,20 C11.2636203,20 10.6666667,19.4030463 10.6666667,18.6666667 L10.666,13.333 L5.33333333,13.3333333 C4.59695367,13.3333333 4,12.7363797 4,12 C4,11.2636203 4.59695367,10.6666667 5.33333333,10.6666667 L10.666,10.666 L10.6666667,5.33333333 C10.6666667,4.59695367 11.2636203,4 12,4 Z" id="cross/white" transform="translate(12.000000, 12.000000) rotate(45.000000) translate(-12.000000, -12.000000) "></path>
+        </g>
+    </g>
+</svg>

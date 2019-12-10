@@ -1,3 +1,4 @@
+import {snapshot} from '@ergeon/3d-lib';
 import config from 'website/config';
 
 export const parseError = (error) => {
@@ -44,4 +45,11 @@ export const getParameterByName = (name, url) => {
 export const isObject = (value) => {
   const type = typeof value;
   return value != null && (type === 'object' || type === 'function');
+};
+
+export const getPreviewImage = (data) => {
+  const imgData = snapshot.getFrontImgDataURL(120, 120, data, [], []);
+  return imgData.then(data => {
+    return data;
+  });
 };

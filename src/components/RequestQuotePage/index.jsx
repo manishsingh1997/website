@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {random, some} from 'lodash';
+
 import {Button, Places, Spinner} from '@ergeon/core-components';
+import {calcUtils, constants} from '@ergeon/3d-lib';
 import MapComponent from '@ergeon/map-component';
 
 import Marker from 'assets/marker.svg';
 import config from 'website/config';
 import {getParameterByName} from 'website/utils/utils';
-import {getCheckedZIP} from 'api/lead';
+import {getCheckedZIP, getPriceAndDescription} from 'api/lead';
 import LeadForm from './LeadForm';
+import ConfigCart from 'components/RequestQuotePage/ConfigCart';
 
 import './index.scss';
 
@@ -16,42 +20,63 @@ const {GoogleMapsLoader, parsePlace} = Places;
 export default class RequestQuotePage extends React.Component {
 
   static propTypes = {
+    addConfig: PropTypes.func.isRequired,
     address: PropTypes.string,
+    configs: PropTypes.array,
     lead: PropTypes.object,
     openAddressUpdatePopup: PropTypes.func.isRequired,
     product: PropTypes.string,
     updateAddress: PropTypes.func.isRequired,
+    zipcode: PropTypes.string,
   };
 
   state = {
     showThankYou: false,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    let {zipcode, configs} = this.props;
     const address = getParameterByName('address');
     const product = getParameterByName('product') || this.props.product;
+    const schema = getParameterByName('schema');
+    const code = getParameterByName('code');
+    const length = getParameterByName('length');
 
     if (address) {
-      GoogleMapsLoader.load(google => {
-        const geocode = new google.maps.Geocoder();
-        geocode.geocode({address}, results => {
-          if (results.length) {
-            const placeData = parsePlace(results[0]);
-            getCheckedZIP(placeData.zipcode).then(response => {
-              this.props.updateAddress({
-                address: placeData,
-                'product_slug': product,
-                productAvailability: response.data,
-              });
-            }, error => {
-              console.log(error);
-              this.setState({
-                error: 'Server is not responding',
-              });
-            });
-          }
-        });
+      const {DEFAULT_ZIP} = constants;
+      const placeData = await this.getPlaceData(address);
+      const checkedZipResponse = await getCheckedZIP(placeData.zipcode);
+      zipcode = checkedZipResponse.data.supported ? placeData.zipcode : DEFAULT_ZIP;
+      this.props.updateAddress({
+        address: placeData,
+        'product_slug': product,
+        productAvailability: checkedZipResponse.data,
+        zipcode,
       });
+    }
+
+    if (schema && code) {
+      const {TYPES, CATALOG_TYPE_FENCE, CATALOG_TYPE_GATE} = constants;
+      const data = calcUtils.getValueFromUrl(window.location.href);
+      const schemaCode = calcUtils.getSchemaCodeFromState(data);
+
+      if (some(configs, config => config.code == schemaCode)) return;
+
+      const priceAndDescription = await getPriceAndDescription(data, zipcode);
+      // const preview = await getPreviewImage(data);
+      const preview = null; // TODO: Use generated preview image once the function is working
+      const itemId = random(0, 1, true).toString(36).slice(2);
+      const item = {
+        id: itemId,
+        'catalog_type': data[TYPES] ? CATALOG_TYPE_FENCE : CATALOG_TYPE_GATE,
+        code: schemaCode,
+        product: data,
+        preview,
+        description: priceAndDescription['description'],
+        price: priceAndDescription['unit_price'],
+        units: length || 1,
+      };
+      this.props.addConfig(item);
     }
   }
 
@@ -59,6 +84,22 @@ export default class RequestQuotePage extends React.Component {
     if (prevProps.address !== this.props.address) {
       window.onInitMap && window.onInitMap();
     }
+  }
+
+  getPlaceData(address) {
+    return new Promise((resolve, reject) => {
+      GoogleMapsLoader.load(google => {
+        const geocode = new google.maps.Geocoder();
+        geocode.geocode({address}, (results, status) => {
+          if (results.length) {
+            resolve(parsePlace(results[0]));
+          } else if (status !== google.maps.GeocoderStatus.OK) {
+            console.error('Google Geocoder error:', status);
+            reject(results, status);
+          }
+        });
+      });
+    });
   }
 
   isItSupportedArea() {
@@ -253,6 +294,7 @@ export default class RequestQuotePage extends React.Component {
           </div>
           {this.renderSignupMap()}
         </div>
+        <ConfigCart />
       </div>
     );
   }

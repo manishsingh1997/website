@@ -51,6 +51,7 @@
     "webpack-dev-server": "^3.5.1"
   },
   "dependencies": {
+    "@ergeon/3d-lib": "^1.2.7",
     "@ergeon/core-components": "^1.0.49",
     "@ergeon/map-component": "^1.3.2",
     "@sentry/browser": "^5.9.0",
