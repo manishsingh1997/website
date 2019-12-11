@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import {Button, Spinner} from '@ergeon/core-components';
-import LockIcon from '@ergeon/core-components/src/assets/icon-home-black.svg';  // TODO: use correct icon
+import LockIcon from '@ergeon/core-components/src/assets/icon-lock.svg';
 
 import TextInput from 'components/common/TextInput';
 
