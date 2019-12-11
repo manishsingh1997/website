@@ -378,14 +378,6 @@ export default [{
   icon,
 },
 {
-  'info': '<p><strong>Roman Blinov</strong> is Software Engineer I<br>Department: R&D</p>',
-  'position': {
-    'lng' : 105.318756,
-    'lat' : 61.52401,
-  },
-  icon,
-},
-{
   'info': '<p><strong>Shaagufta Tareen</strong> is Scalability Support<br>Department: Scalability</p>',
   'position': {
     'lng' : 78.96288,
