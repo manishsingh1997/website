@@ -67,7 +67,7 @@ class LocationsPage extends React.Component {
             </address>
             <address className="location_item">
               <h5 className="header_with_map_icon">Fresno</h5>
-              <p className="p_location">7726 N First St. #375. Fresno, CA 93720</p>
+              <p className="p_location">7726 N First St. #375, Fresno, CA 93720</p>
               {this.renderPhoneNumber('559-236-5266')}
             </address>
           </div>
