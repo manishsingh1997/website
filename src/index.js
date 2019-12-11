@@ -22,6 +22,7 @@ import LocationsPage from 'components/LocationsPage';
 import HelpPage from 'components/HelpPage';
 import HelpLandingPage from 'components/HelpLandingPage';
 import RequestQuotePage from 'containers/RequestQuotePage';
+import AuthSignInPage from 'components/AuthSignInPage';
 import store from 'store';
 
 import '@ergeon/core-components/src/components/main.scss';
@@ -65,6 +66,7 @@ render(
           <Route component={HelpPage} exact path="/help/search"/>
           <Route component={HelpPage} exact path="/help/:nodeId"/>
           <Route component={RequestQuotePage} exact path="/request-quote"/>
+          <Route component={AuthSignInPage} exact path="/app/sign-in"/>
           <Redirect
             exact
             from="/gallery/driveway"
