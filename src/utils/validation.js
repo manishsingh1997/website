@@ -74,7 +74,7 @@ export const createValidator = (rules) => {
         const error = rule(values[fieldName], values);
         if (error) {
           empry = false;
-          errors[fieldName] = error;
+          errors[fieldName] = [error];
         }
       }
     }

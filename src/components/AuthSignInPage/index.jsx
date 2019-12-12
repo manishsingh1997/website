@@ -6,37 +6,77 @@ import LockIcon from '@ergeon/core-components/src/assets/icon-lock.svg';
 
 import TextInput from 'components/common/TextInput';
 import Success from 'components/common/Success';
+import {
+  createValidator,
+  email,
+  required,
+} from 'utils/validation';
 
 import './index.scss';
 
 class AuthSignInPage extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.validator = createValidator({
+      email: [required, email],
+    });
+  }
+
   state = {
     isFormSuccess: false,
+    data: {
+      email: null,
+    },
+    validateOnChange: false,
+    errors: null,
   };
 
   handleSubmit = (e) => {
     // TODO: implement me
+    console.log('handelSubmit', e);
     e.preventDefault();
     this.setState({isFormSuccess: true});
-    console.log('handelSubmit', e);
+
+    const {data} = this.state;
+    const errors = this.validator(data);
+    if (errors) {
+      this.setState({
+        errors,
+        validateOnChange: true,
+      });
+    }
   }
 
   handleFieldChange = (name, value) => {
-    // TODO: implement me
-    console.log('handleFieldChange');
-    console.log('name', name);
-    console.log('value', value);
+    const {data, validateOnChange} = this.state;
+    const newState = {
+      data: {
+        ...data,
+        [name]: value,
+      },
+    };
+
+    if (validateOnChange) {
+      newState.errors = this.validator(newState.data);
+    }
+    this.setState(newState);
   };
 
+  renderErrors(fieldName) {
+    const {errors} = this.state;
+    return (
+      <div className="spacing after__is-6">
+        {errors && errors[fieldName] && errors[fieldName].map((error, i) =>
+          <div className="signin-form-error" key={i}>{error}</div>)
+        }
+      </div>
+    );
+  }
+
   renderForm() {
-    // TODO: assign correct values
-    const errors = {
-      // email: 'Incorrect email',
-      // global: 'Something wrong',
-    };
     const loading = false;
-    const email = '';
+    const {data: {email}, errors} = this.state;
 
     return (
       <div>
@@ -57,10 +97,10 @@ class AuthSignInPage extends React.Component {
               placeholder="e.g. username@mail.com"
               type="email"
               value={email} />
-            {errors && <div className="signin-form-error">{errors.email}</div>}
+            {this.renderErrors('email')}
           </div>
           <div className="signin-form-actions">
-            {errors && <div className="signin-form-error">{errors.global}</div>}
+            {this.renderErrors('global')}
             <Button
               className={`${loading && 'is-loading'}`}
               disabled={loading}
