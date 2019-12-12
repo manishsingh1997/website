@@ -13,9 +13,9 @@ import config from 'website/config';
 import {
   getParameterByName,
   isObject,
-} from 'website/utils/utils';
+} from 'utils/utils';
 import {submitAddressEntered} from 'api/lead';
-import {ADDRESS_ENTERED} from 'website/utils/events';
+import {ADDRESS_ENTERED} from 'utils/events';
 
 export const LS_KEY = 'ergeon-utms';
 

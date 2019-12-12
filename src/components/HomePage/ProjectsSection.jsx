@@ -1,5 +1,5 @@
 import React from 'react';
-import {getParameterByName} from 'website/utils/utils';
+import {getParameterByName} from 'utils/utils';
 
 import photoNailUpProject from 'assets/promo-projects/dog-ear-fence@2x.png';
 import photoPictureFrame from 'assets/promo-projects/goood-neighbor_updated.jpg';

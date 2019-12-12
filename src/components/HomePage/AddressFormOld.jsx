@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
 import {UAParser} from 'ua-parser-js';
 
-import {getUTM, getUserUuid, track} from 'website/utils/analytics';
-import {ADDRESS_ENTERED} from 'website/utils/events';
+import {getUTM, getUserUuid, track} from 'utils/analytics';
+import {ADDRESS_ENTERED} from 'utils/events';
 import {DEFAULT_SOURCE_VALUE} from 'website/constants';
 import {submitAddressEntered, getCheckedZIP} from 'api/lead';
 

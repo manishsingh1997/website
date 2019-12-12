@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {AddressInput, Button} from '@ergeon/core-components';
 import {actionTriggers} from 'actions/address-actions';
 import {getCheckedZIP} from 'api/lead';
-import {trackAddressEntered} from 'website/utils/analytics';
+import {trackAddressEntered} from 'utils/analytics';
 
 import './AddressUpdatePopup.scss';
 

@@ -8,7 +8,7 @@ import helpDefaultCategories from 'data/help-categories';
 import HelpSearchField from '../common/HelpSearchField';
 import HelpSearchResults from './HelpSearchResults';
 
-import {getParameterByName} from 'website/utils/utils';
+import {getParameterByName} from 'utils/utils';
 import {getHelpNode, getHelpResults} from 'api/help';
 
 import HomeIcon from 'assets/icon-home-black.svg';

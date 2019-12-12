@@ -6,7 +6,7 @@ import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import AddressForm from './AddressFormOld'; // TODO: Use new address form once tested
 import Slider from './Slider';
 import {FENCE_SLUG, DRIVEWAY_SLUG} from 'website/constants';
-import {getParameterByName} from 'website/utils/utils';
+import {getParameterByName} from 'utils/utils';
 
 import './SliderHero.scss';
 

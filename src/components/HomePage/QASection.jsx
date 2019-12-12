@@ -1,6 +1,6 @@
 import React from 'react';
 import PaneSwitcher from './PaneSwitcher';
-import {getParameterByName} from 'website/utils/utils';
+import {getParameterByName} from 'utils/utils';
 
 import './QASection.scss';
 
