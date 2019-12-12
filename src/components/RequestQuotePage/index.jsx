@@ -10,8 +10,9 @@ import Marker from 'assets/marker.svg';
 import config from 'website/config';
 import {getParameterByName} from 'utils/utils';
 import {getCheckedZIP, getPriceAndDescription} from 'api/lead';
+import Success from 'components/common/Success';
 import LeadForm from './LeadForm';
-import ConfigCart from 'components/RequestQuotePage/ConfigCart';
+import ConfigCart from './ConfigCart';
 
 import './index.scss';
 
@@ -176,21 +177,6 @@ export default class RequestQuotePage extends React.Component {
     };
   }
 
-  renderThankYou() {
-    return (
-      <div className="ThankYou">
-        <div className="Success">
-          <div className="Success-line Success-lineLong" />
-          <div className="Success-line Success-lineTip" />
-          <div className="Success-ring" />
-          <div className="Success-hideCorners" />
-        </div>
-        <h3 className="center spacing after__is-12">We’ll be in touch shortly</h3>
-        <p className="subheader h3 center">Our team will reach out within 24 hours to give you a quote</p>
-      </div>
-    );
-  }
-
   renderHeaderMessage() {
     if (!this.props.lead) {
       return (
@@ -276,7 +262,9 @@ export default class RequestQuotePage extends React.Component {
     if (this.state.showThankYou) {
       return (
         <div className="request-quote-page">
-          {this.renderThankYou()}
+          <Success
+            header="We’ll be in touch shortly"
+            text="Our team will reach out within 24 hours to give you a quote" />
         </div>
       );
     }
