@@ -6,7 +6,7 @@ export const getHelpNode = (nodeId = config.HELP_ROOT_NODE) => {
   const query = `/c/api/v1/help/node/${nodeId}/`;
   return axios({
     method: 'get',
-    url: config.myErgeonURL + query,
+    url: config.apiHost + query,
     data: JSON.stringify(nodeId),
     responseType: 'json',
     headers: {'Content-Type': 'application/json'},
@@ -20,7 +20,7 @@ export const getHelpResults = (search) => {
   const query = `/c/api/v1/help/node/?search=${search}`;
   return axios({
     method: 'get',
-    url: config.myErgeonURL + query,
+    url: config.apiHost + query,
     data: JSON.stringify(search),
     responseType: 'json',
     headers: {'Content-Type': 'application/json'},

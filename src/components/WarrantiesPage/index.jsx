@@ -9,7 +9,7 @@ import licenseImage from 'assets/license.jpg';
 import './index.scss';
 
 const pdfjsLib = window.pdfjsLib || {};
-const WARRANTIES_URL = `${config.myErgeonURL}/api/store/product-descriptions/`;
+const WARRANTIES_URL = `${config.apiHost}/api/store/product-descriptions/`;
 const DEFAULT_PRODUCTS = [
   {
     name: 'Driveway Installation',

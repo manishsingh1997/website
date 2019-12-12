@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+import authService from 'utils/auth';
 import {Button, Spinner} from '@ergeon/core-components';
 import LockIcon from '@ergeon/core-components/src/assets/icon-lock.svg';
 
@@ -30,22 +31,45 @@ class AuthSignInPage extends React.Component {
     },
     validateOnChange: false,
     errors: null,
+    loading: false,
   };
 
-  handleSubmit = (e) => {
-    // TODO: implement me
-    console.log('handelSubmit', e);
+  async handleSubmit(e) {
     e.preventDefault();
-    this.setState({isFormSuccess: true});
 
     const {data} = this.state;
-    const errors = this.validator(data);
-    if (errors) {
-      this.setState({
-        errors,
-        validateOnChange: true,
-      });
+    let errors = this.validator(data);
+    if (!errors) {
+      errors = await this.requestSignIn.bind(this)(data.email);
     }
+    if (errors) {
+      this.setState({errors, validateOnChange: true});
+    } else {
+      this.setState({isFormSuccess: true});
+    }
+  }
+
+  async requestSignIn(email) {
+    this.setState({loading: true});
+    let errors = null;
+    try {
+      await authService.requestOTP(email, 'email');
+    } catch (signInError) {
+      // TODO: move response formatting to erg-customer-auth-js
+      if (signInError.response && signInError.response.status < 500 && signInError.response.data) {
+        errors = {
+          email: signInError.response.data.identifier,
+          global: signInError.response.data['non_field_errors'],
+          ...signInError.response.data,
+        };
+      } else {
+        console.error(signInError);
+        errors = {global: ['Unexpected error, we are already notified about this.']};
+      }
+    } finally {
+      this.setState({loading: false});
+    }
+    return errors;
   }
 
   handleFieldChange = (name, value) => {
@@ -75,8 +99,7 @@ class AuthSignInPage extends React.Component {
   }
 
   renderForm() {
-    const loading = false;
-    const {data: {email}, errors} = this.state;
+    const {data: {email}, errors, loading} = this.state;
 
     return (
       <div>
@@ -87,7 +110,7 @@ class AuthSignInPage extends React.Component {
         <p className="center signin-page__form-header small-text spacing after__is-24">
           <i>New to ergeon?</i> <Link to="/request-quote">Request a quote</Link>.
         </p>
-        <form className="signin-form" onSubmit={this.handleSubmit}>
+        <form className="signin-form" onSubmit={this.handleSubmit.bind(this)}>
           <div className={`signin-form-field ${errors && errors.email && 'is-error'}`}>
             <TextInput
               disabled={loading}
