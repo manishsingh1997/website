@@ -17,6 +17,7 @@ import ConfigCart from './ConfigCart';
 import './index.scss';
 
 const {GoogleMapsLoader, parsePlace} = Places;
+GoogleMapsLoader.LIBRARIES = ['places', 'geometry'];
 
 export default class RequestQuotePage extends React.Component {
 
@@ -42,6 +43,8 @@ export default class RequestQuotePage extends React.Component {
     const schema = getParameterByName('schema');
     const code = getParameterByName('code');
     const length = getParameterByName('length');
+
+    GoogleMapsLoader.load(google => window.google = google);
 
     if (address) {
       const {DEFAULT_ZIP} = constants;
@@ -248,6 +251,7 @@ export default class RequestQuotePage extends React.Component {
             apiKey={config.googleMapsApiKey}
             aspectRatio="4:3"
             controls={this.getMapControls()}
+            loadGoogleMapsLibrary={false}
             loadingPlaceholder={<Spinner active={true} color="green" size={32} />}
             markers={[this.getLocationMarker()]}
             popupBehaviour="close"
