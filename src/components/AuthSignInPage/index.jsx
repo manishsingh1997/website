@@ -7,6 +7,7 @@ import LockIcon from '@ergeon/core-components/src/assets/icon-lock.svg';
 
 import TextInput from 'components/common/TextInput';
 import Success from 'components/common/Success';
+import BackToHomeLink from 'components/common/BackToHomeLink';
 import {
   createValidator,
   email,
@@ -152,9 +153,7 @@ class AuthSignInPage extends React.Component {
         <div className="signin-page__form">
           {isFormSuccess ? this.renderSuccess() : this.renderForm()}
         </div>
-        <div className="center small-text spacing before__is-24">
-          <Link to="/">Back to home page</Link>
-        </div>
+        <BackToHomeLink />
       </div>
     );
   }
