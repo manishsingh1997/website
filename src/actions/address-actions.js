@@ -1,5 +1,9 @@
+import {constants} from '@ergeon/3d-lib';
+
+import {getPlaceData, getCheckedZIP} from 'api/lead';
+
 export const actionTypes = {
-  'ADDRESS_UPDATED': 'ADDRESS_UPDATED',
+  'LEAD_UPDATED': 'LEAD_UPDATED',
   'MODAL_LEAD_UPDATED': 'MODAL_LEAD_UPDATED',
   'OPEN_POPUP': 'OPEN_POPUP',
   'CLOSE_POPUP': 'CLOSE_POPUP',
@@ -7,13 +11,37 @@ export const actionTypes = {
 };
 
 export const actionTriggers = {
-  // TODO: something wrong here, 'updateAddress' accept 'lead', why no address?
-  // Looks like some circular flow: address has lead, lead has address.
-  // Better to clean it up.
-  updateAddress: (lead) => ({
-    type: actionTypes.ADDRESS_UPDATED,
+  updateLead: (lead) => ({
+    type: actionTypes.LEAD_UPDATED,
     payload: lead,
   }),
+  // eslint-disable-next-line object-shorthand
+  updateLeadFromAddress: function({address, product, zipcode}) {
+    const {DEFAULT_ZIP} = constants;
+
+    return (dispatch) => {
+      return getPlaceData(address)
+        .then(
+          placeData => getCheckedZIP(placeData.zipcode).then(
+            checkedZipResponse => {
+              zipcode = checkedZipResponse.data.supported ? placeData.zipcode : DEFAULT_ZIP;
+              dispatch(this.updateLead({
+                address: placeData,
+                'product_slug': product,
+                productAvailability: checkedZipResponse.data,
+                zipcode,
+              }));
+
+              return zipcode;
+            }
+          )
+        )
+        .catch(error => {
+          console.error('error trying to update lead', error);
+          return zipcode;
+        });
+    };
+  },
   // TODO: is it really should be placed in redux store (popup state) ?
   // Why not just use component's state?
   // https://goshakkk.name/should-i-put-form-state-into-redux/

@@ -32,7 +32,7 @@ if (ls.get('LS_ERGEON_LOCATION_DATA')) {
 
 export default function addressReducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.ADDRESS_UPDATED:
+    case actionTypes.LEAD_UPDATED:
       ls.set('LS_ERGEON_LOCATION_DATA', action.payload);
       return getStateFromLead(state, action.payload);
     case actionTypes.MODAL_LEAD_UPDATED:

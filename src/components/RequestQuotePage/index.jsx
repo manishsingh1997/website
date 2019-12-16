@@ -1,22 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {random, some} from 'lodash';
 
 import {Button, Places, Spinner} from '@ergeon/core-components';
-import {calcUtils, constants} from '@ergeon/3d-lib';
+import {calcUtils} from '@ergeon/3d-lib';
 import MapComponent from '@ergeon/map-component';
 
 import Marker from 'assets/marker.svg';
 import config from 'website/config';
 import {getParameterByName} from 'utils/utils';
-import {getCheckedZIP, getPriceAndDescription} from 'api/lead';
 import Success from 'components/common/Success';
 import LeadForm from './LeadForm';
 import ConfigCart from './ConfigCart';
 
 import './index.scss';
 
-const {GoogleMapsLoader, parsePlace} = Places;
+const {GoogleMapsLoader} = Places;
 GoogleMapsLoader.LIBRARIES = ['places', 'geometry'];
 
 export default class RequestQuotePage extends React.Component {
@@ -28,7 +26,7 @@ export default class RequestQuotePage extends React.Component {
     lead: PropTypes.object,
     openAddressUpdatePopup: PropTypes.func.isRequired,
     product: PropTypes.string,
-    updateAddress: PropTypes.func.isRequired,
+    updateLeadAndConfig: PropTypes.func.isRequired,
     zipcode: PropTypes.string,
   };
 
@@ -36,7 +34,7 @@ export default class RequestQuotePage extends React.Component {
     showThankYou: false,
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     let {zipcode, configs} = this.props;
     const address = getParameterByName('address');
     const product = getParameterByName('product') || this.props.product;
@@ -45,65 +43,24 @@ export default class RequestQuotePage extends React.Component {
     const length = getParameterByName('length');
 
     GoogleMapsLoader.load(google => window.google = google);
+    const data = (schema && code) ? calcUtils.getValueFromUrl(window.location.href) : null;
+    const schemaCode = (schema && code) ? calcUtils.getSchemaCodeFromState(data) : null;
 
-    if (address) {
-      const {DEFAULT_ZIP} = constants;
-      const placeData = await this.getPlaceData(address);
-      const checkedZipResponse = await getCheckedZIP(placeData.zipcode);
-      zipcode = checkedZipResponse.data.supported ? placeData.zipcode : DEFAULT_ZIP;
-      this.props.updateAddress({
-        address: placeData,
-        'product_slug': product,
-        productAvailability: checkedZipResponse.data,
-        zipcode,
-      });
-    }
-
-    if (schema && code) {
-      const {TYPES, CATALOG_TYPE_FENCE, CATALOG_TYPE_GATE} = constants;
-      const data = calcUtils.getValueFromUrl(window.location.href);
-      const schemaCode = calcUtils.getSchemaCodeFromState(data);
-
-      if (some(configs, config => config.code == schemaCode)) return;
-
-      const priceAndDescription = await getPriceAndDescription(data, zipcode);
-      // const preview = await getPreviewImage(data);
-      const preview = null; // TODO: Use generated preview image once the function is working
-      const itemId = random(0, 1, true).toString(36).slice(2);
-      const item = {
-        id: itemId,
-        'catalog_type': data[TYPES] ? CATALOG_TYPE_FENCE : CATALOG_TYPE_GATE,
-        code: schemaCode,
-        product: data,
-        preview,
-        description: priceAndDescription['description'],
-        price: priceAndDescription['unit_price'],
-        units: length || 1,
-      };
-      this.props.addConfig(item);
-    }
+    this.props.updateLeadAndConfig({
+      address,
+      product,
+      zipcode,
+      data,
+      schemaCode,
+      length,
+      configs,
+    });
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.address !== this.props.address) {
       window.onInitMap && window.onInitMap();
     }
-  }
-
-  getPlaceData(address) {
-    return new Promise((resolve, reject) => {
-      GoogleMapsLoader.load(google => {
-        const geocode = new google.maps.Geocoder();
-        geocode.geocode({address}, (results, status) => {
-          if (results.length) {
-            resolve(parsePlace(results[0]));
-          } else if (status !== google.maps.GeocoderStatus.OK) {
-            console.error('Google Geocoder error:', status);
-            reject(results, status);
-          }
-        });
-      });
-    });
   }
 
   isItSupportedArea() {

@@ -1,3 +1,8 @@
+
+import {some, random} from 'lodash';
+import {getPriceAndDescription} from 'api/lead';
+import {constants} from '@ergeon/3d-lib';
+
 export const actionTypes = {
   'ADD_CONFIG': 'ADD_CONFIG',
   'REMOVE_CONFIG': 'REMOVE_CONFIG',
@@ -22,4 +27,30 @@ export const actionTriggers = {
     type: actionTypes.CLEAR_CONFIGS,
     payload: lead,
   }),
+  // eslint-disable-next-line object-shorthand
+  addConfigFromSchema: function({zipcode, data, schemaCode, length, configs}) {
+    return dispatch => {
+      const {TYPES, CATALOG_TYPE_FENCE, CATALOG_TYPE_GATE} = constants;
+
+      if (some(configs, config => config.code == schemaCode)) return;
+
+      return getPriceAndDescription(data, zipcode)
+        .then(priceAndDescription => {
+          // const preview = await calcUtils.getPreviewImage(data);
+          const preview = null; // TODO: Use generated preview image once the function is working
+          const itemId = random(0, 1, true).toString(36).slice(2);
+          const item = {
+            id: itemId,
+            'catalog_type': data[TYPES] ? CATALOG_TYPE_FENCE : CATALOG_TYPE_GATE,
+            code: schemaCode,
+            product: data,
+            preview,
+            description: priceAndDescription['description'],
+            price: priceAndDescription['unit_price'],
+            units: length || 1,
+          };
+          return dispatch(this.addConfig(item));
+        });
+    };
+  },
 };

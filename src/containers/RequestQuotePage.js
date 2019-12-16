@@ -16,14 +16,43 @@ const mapStateToProps = ({address, cart}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateAddress: (lead) => {
-      dispatch(addressActionTriggers.updateAddress(lead));
+    updateLead: (lead) => {
+      dispatch(addressActionTriggers.updateLead(lead));
     },
     openAddressUpdatePopup: () => {
       dispatch(addressActionTriggers.openAddressUpdatePopup());
     },
     addConfig: (item) => {
       dispatch(cartActionTriggers.addConfig(item));
+    },
+    updateLeadAndConfig: ({address, product, zipcode, data, schemaCode, length, configs}) => {
+      let updateLead = null;
+      if (address) {
+        updateLead = dispatch(addressActionTriggers.updateLeadFromAddress({
+          address,
+          product,
+          zipcode,
+        }));
+      }
+
+      if (data && schemaCode) {
+        if (updateLead) {
+          updateLead.then(zipcode => dispatch(cartActionTriggers.addConfigFromSchema({
+            zipcode,
+            data,
+            schemaCode,
+            configs,
+          })));
+        } else {
+          dispatch(cartActionTriggers.addConfigFromSchema({
+            zipcode,
+            data,
+            schemaCode,
+            length,
+            configs,
+          }));
+        }
+      }
     },
   };
 };

@@ -32,7 +32,7 @@ class AddressUpdatePopup extends React.Component {
     const {lead, dispatch} = this.props;
     if (!lead) return;
     trackAddressEntered(lead);
-    dispatch(actionTriggers.updateAddress(lead));
+    dispatch(actionTriggers.updateLead(lead));
   }
 
   handleClose() {
