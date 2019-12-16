@@ -11,19 +11,20 @@ import {
 } from 'data/photo-gallery';
 import customScripts from 'website/custom-scripts';
 
-import Layout from 'containers/Layout';
-import HomePage from 'components/HomePage';
-import CareersPage from 'components/CareersPage';
 import AboutPage from 'components/AboutPage';
-import PhotoGallery from 'components/PhotoGallery';
-import FAQPage from 'components/FAQPage';
-import WarrantiesPage from 'components/WarrantiesPage';
-import LocationsPage from 'components/LocationsPage';
-import HelpPage from 'components/HelpPage';
-import HelpLandingPage from 'components/HelpLandingPage';
-import RequestQuotePage from 'containers/RequestQuotePage';
+import AppOrderListPage from 'containers/AppOrderListPage';
+import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
 import AuthSignInPage from 'components/AuthSignInPage';
-import AuthConfirmSignInPage from 'components/AuthConfirmSignInPage';
+import CareersPage from 'components/CareersPage';
+import FAQPage from 'components/FAQPage';
+import HelpLandingPage from 'components/HelpLandingPage';
+import HelpPage from 'components/HelpPage';
+import HomePage from 'components/HomePage';
+import Layout from 'containers/Layout';
+import LocationsPage from 'components/LocationsPage';
+import PhotoGallery from 'components/PhotoGallery';
+import RequestQuotePage from 'containers/RequestQuotePage';
+import WarrantiesPage from 'components/WarrantiesPage';
 import store from 'store';
 
 import '@ergeon/core-components/src/components/main.scss';
@@ -69,6 +70,7 @@ render(
           <Route component={RequestQuotePage} exact path="/request-quote"/>
           <Route component={AuthSignInPage} exact path="/app/sign-in"/>
           <Route component={AuthConfirmSignInPage} exact path="/app/confirm-sign-in"/>
+          <Route component={AppOrderListPage} exact path="/app/orders"/>
           <Redirect
             exact
             from="/gallery/driveway"

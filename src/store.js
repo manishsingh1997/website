@@ -5,10 +5,10 @@ import thunk from 'redux-thunk';
 
 import combinedReducers from './reducers';
 
-const middlewares = [];
-
-middlewares.push(routerMiddleware(history));
-middlewares.push(thunk);
+const middlewares = [
+  thunk,
+  routerMiddleware(history),
+];
 
 if (process.env.NODE_ENV !== 'production') middlewares.push(logger);
 

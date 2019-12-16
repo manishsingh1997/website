@@ -15,27 +15,20 @@ import './index.scss';
 class AuthConfirmSignInPage extends React.Component {
 
   static propTypes = {
+    auth: PropTypes.object.isRequired,
+    authenticateUserWithCode: PropTypes.func.isRequired,
     location: PropTypes.object.isRequired,
   };
 
   state = {
-    isCodeValid: false,
-    loading: false,
     redirectNow: false,
   };
 
   componentDidMount() {
     const parsedQuery = queryString.parse(this.props.location.search);
     if (parsedQuery.code) {
-      this.confirmCode(parsedQuery.code);
+      this.props.authenticateUserWithCode(parsedQuery.code);
     }
-  }
-
-  confirmCode(code) {
-    // TODO: add real call instead of mock timeout
-    console.log(code);
-    this.setState({loading: true});
-    setTimeout(() => this.setState({loading: false, isCodeValid: true}), 5000);
   }
 
   renderSuccess() {
@@ -77,17 +70,18 @@ class AuthConfirmSignInPage extends React.Component {
   }
 
   render() {
-    const {isCodeValid, redirectNow, loading} = this.state;
+    const {redirectNow} = this.state;
+    const {auth} = this.props;
 
     if (redirectNow) {
       return <Redirect to="/app/orders"/>;
     }
 
     let content = null;
-    if (loading) {
+    if (auth.isLoading) {
       content = this.renderLoader();
     } else {
-      if (isCodeValid) {
+      if (!auth.error && auth.user) {
         content = this.renderSuccess();
       } else {
         content = this.renderInvalidCode();
