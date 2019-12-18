@@ -6,6 +6,7 @@ import {reduce} from 'lodash';
 import {Button} from '@ergeon/core-components';
 import {constants} from '@ergeon/3d-lib';
 
+import config from 'website/config';
 import {actionTriggers} from 'actions/cart-actions';
 import TextCollapse from 'components/RequestQuotePage/TextCollapse';
 
@@ -135,6 +136,16 @@ class ConfigCart extends React.Component {
           }
         </div>
         <div className="config-cart__resume">
+          {
+            !configs.length && <Button
+              asAnchor
+              class="AddConfigButton"
+              flavor="regular"
+              href={`${config.fencequotingHost}/calculator` /* TODO: Button should show inline editor */}
+              taste="line">
+              Add a config
+            </Button>
+          }
           <div className="config-cart__total">
             Total estimate: ~${Math.round(this.getTotal())}
           </div>

@@ -75,6 +75,7 @@ var config = {
         new CopyPlugin([
             {from: './node_modules/@ergeon/core-components/dist/assets', to: 'assets'}
         ]),
+        new CopyPlugin([{ from: './node_modules/@ergeon/3d-lib/assets/3d-data', to: '3d-data' }]),
     ],
     optimization: {
         splitChunks: {

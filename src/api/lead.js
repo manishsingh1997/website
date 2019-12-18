@@ -39,7 +39,7 @@ export const getPriceAndDescription = (modelState, zipcode) => {
   const {GATE_TYPE, CATALOG_TYPE_FENCE, CATALOG_TYPE_GATE} = constants;
   const schemaCode = calcUtils.getSchemaCodeFromState(modelState);
   const catalogType = modelState[GATE_TYPE] ? CATALOG_TYPE_GATE : CATALOG_TYPE_FENCE;
-  const query = `/c/api/v1/product/catalog-price/${schemaCode}&zipcode=${zipcode}&catalog_type=${catalogType}`;
+  const query = `/c/api/v1/product/catalog-price/?${schemaCode}&zipcode=${zipcode}&catalog_type=${catalogType}`;
   const request = config.apiHost + query;
   return axios
     .get(request)
