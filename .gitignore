@@ -84,5 +84,5 @@ typings/
 dist/
 .idea
 .DS_Store
-.TODO
+*.TODO
 .install

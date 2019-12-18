@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
+import queryString from 'query-string';
 
 import {Footer, TopPanel, DropdownMenu, NavLinkContext} from '@ergeon/core-components';
 import houseIcon from 'assets/icon-house.svg';
@@ -11,9 +12,20 @@ export default class Layout extends React.Component {
   static propTypes = {
     address: PropTypes.string,
     children: PropTypes.node,
+    isShowUpcomingFeatures: PropTypes.bool.isRequired,
     logout: PropTypes.func.isRequired,
     openAddressUpdatePopup: PropTypes.func.isRequired,
+    showUpcomingFeatures: PropTypes.func.isRequired,
   };
+
+  componentDidMount() {
+    // this.props.location is not available in Layout, using window instead
+    if (window.location && window.location.search) {
+      if ('upcoming-features' in queryString.parse(window.location.search)) {
+        this.props.showUpcomingFeatures();
+      }
+    }
+  }
 
   getStreetAddress() {
     const {address} = this.props;
@@ -50,13 +62,13 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    const {address} = this.props;
+    const {address, isShowUpcomingFeatures} = this.props;
 
     return (
-      <div>
+      <div className="app-layout">
         <NavLinkContext.Provider value={NavLink}>
           <TopPanel ergeonUrl="/">
-            {address ? this.renderDropdownMenu() : null}
+            {address || isShowUpcomingFeatures ? this.renderDropdownMenu() : null}
           </TopPanel>
           <div>{this.props.children}</div>
           <Footer ergeonUrl="/" />
