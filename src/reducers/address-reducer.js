@@ -52,9 +52,6 @@ export default function addressReducer(state = initialState, action) {
         updateModalLead: null,
         updateModalOpened: false,
       };
-    case actionTypes.CLEAR_ADDRESS:
-      ls.remove('LS_ERGEON_LOCATION_DATA');
-      return getStateFromLead(initialState);
   }
 
   return state;

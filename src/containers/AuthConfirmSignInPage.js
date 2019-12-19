@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {actionTriggers as authActionTriggers} from 'actions/auth';
+import {authenticateUserWithCode} from 'actions/auth';
 import AuthConfirmSignInPage from 'components/AuthConfirmSignInPage';
 
 const mapStateToProps = ({auth}) => {
@@ -10,7 +10,7 @@ const mapStateToProps = ({auth}) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     authenticateUserWithCode: (code) => {
-      return dispatch(authActionTriggers.authenticateUserWithCode(code));
+      return dispatch(authenticateUserWithCode(code));
     },
   };
 };

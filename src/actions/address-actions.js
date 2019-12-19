@@ -7,7 +7,6 @@ export const actionTypes = {
   'MODAL_LEAD_UPDATED': 'MODAL_LEAD_UPDATED',
   'OPEN_POPUP': 'OPEN_POPUP',
   'CLOSE_POPUP': 'CLOSE_POPUP',
-  'CLEAR_ADDRESS': 'CLEAR_ADDRESS',
 };
 
 export const actionTriggers = {
@@ -56,9 +55,5 @@ export const actionTriggers = {
   updateModalLead: (lead) => ({
     type: actionTypes.MODAL_LEAD_UPDATED,
     payload: lead,
-  }),
-  logout: () => ({
-    type: actionTypes.CLEAR_ADDRESS,
-    payload: null,
   }),
 };

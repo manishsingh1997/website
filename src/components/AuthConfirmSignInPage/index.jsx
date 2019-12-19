@@ -74,7 +74,7 @@ class AuthConfirmSignInPage extends React.Component {
     const {auth} = this.props;
 
     if (redirectNow) {
-      return <Redirect to="/app/orders"/>;
+      return <Redirect to={`/app/${auth.user.gid}/orders`} />;
     }
 
     let content = null;

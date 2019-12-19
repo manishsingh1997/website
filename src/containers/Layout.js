@@ -1,26 +1,23 @@
 import {connect} from 'react-redux';
 
-import {actionTriggers} from 'actions/address-actions';
+import {getCurrentUser} from 'actions/auth';
 import {showUpcomingFeatures} from 'actions/upcoming-features';
 import Layout from 'components/Layout';
 
-const mapStateToProps = ({upcomingFeatures}) => {
+const mapStateToProps = ({auth, upcomingFeatures}) => {
   return {
-    address: null,
     isShowUpcomingFeatures: upcomingFeatures.isShow,
+    auth,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: () => {
-      dispatch(actionTriggers.logout());
-    },
-    openAddressUpdatePopup: () => {
-      dispatch(actionTriggers.openAddressUpdatePopup());
-    },
     showUpcomingFeatures: () => {
       dispatch(showUpcomingFeatures());
+    },
+    getCurrentUser: () => {
+      dispatch(getCurrentUser());
     },
   };
 };

@@ -1,0 +1,27 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.app-layout {
+  .dropdown-menu {
+    vertical-align: middle;
+    min-width: 150px;
+    max-width: 300px;
+
+    .special {
+      border-bottom: 1px solid $gray-4;
+    }
+  }
+
+  .sign-in-link {
+    vertical-align: middle;
+  }
+
+  .sign-in-icon {
+    vertical-align: bottom;
+    margin-right: 5px;
+  }
+
+  .loaderWrapper {
+    padding-top: 2px;
+  }
+
+}

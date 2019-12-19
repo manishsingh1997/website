@@ -4,9 +4,12 @@ export const actionTypes = {
   'AUTH_CODE_ACTIVATION_START': 'AUTH_CODE_ACTIVATION_START',
   'AUTH_CODE_ACTIVATION_DONE': 'AUTH_CODE_ACTIVATION_DONE',
   'AUTH_CODE_ACTIVATION_ERROR': 'AUTH_CODE_ACTIVATION_ERROR',
+  'AUTH_GET_USER_START': 'AUTH_GET_USER_START',
+  'AUTH_GET_USER_DONE': 'AUTH_GET_USER_DONE',
+  'AUTH_GET_USER_ERROR': 'AUTH_GET_USER_ERROR',
 };
 
-const authenticateUserWithCode = (code) => {
+export const authenticateUserWithCode = (code) => {
   return async function(dispatch) {
     dispatch({
       type: actionTypes.AUTH_CODE_ACTIVATION_START,
@@ -23,16 +26,37 @@ const authenticateUserWithCode = (code) => {
     } catch (otpError) {
       dispatch({
         type: actionTypes.AUTH_CODE_ACTIVATION_ERROR,
-        error: {
-          response: otpError.response,
-          statusCode: otpError.response && otpError.response.status,
-          data: otpError.response && otpError.response.data,
-        },
+        error: _parseAuthError(otpError),
       });
     }
   };
 };
 
-export const actionTriggers = {
-  authenticateUserWithCode,
+export const getCurrentUser = () => {
+  return async function(dispatch) {
+    dispatch({
+      type: actionTypes.AUTH_GET_USER_START,
+    });
+
+    try {
+      const user = await authService.getUser();
+      dispatch({
+        type: actionTypes.AUTH_GET_USER_DONE,
+        user,
+      });
+    } catch (userError) {
+      dispatch({
+        type: actionTypes.AUTH_GET_USER_ERROR,
+        error: _parseAuthError(userError),
+      });
+    }
+  };
+};
+
+const _parseAuthError = (error) => {
+  return {
+    response: error.response,
+    statusCode: error.response && error.response.status,
+    data: error.response && error.response.data,
+  };
 };

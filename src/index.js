@@ -70,7 +70,7 @@ render(
           <Route component={RequestQuotePage} exact path="/request-quote"/>
           <Route component={AuthSignInPage} exact path="/app/sign-in"/>
           <Route component={AuthConfirmSignInPage} exact path="/app/confirm-sign-in"/>
-          <Route component={AppOrderListPage} exact path="/app/orders"/>
+          <Route component={AppOrderListPage} exact path="/app/:customerGid/orders"/>
           <Redirect
             exact
             from="/gallery/driveway"

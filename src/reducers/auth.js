@@ -14,6 +14,14 @@ const authReducer = (state=initialAuthState, action) => {
       return {...initialAuthState, isLoading: false, user: action.user};
     case actionTypes.AUTH_CODE_ACTIVATION_ERROR:
       return {...initialAuthState, isLoading: false, error: action.error};
+
+    case actionTypes.AUTH_GET_USER_START:
+      return {...state, isLoading: true};
+    case actionTypes.AUTH_GET_USER_DONE:
+      return {...initialAuthState, isLoading: false, user: action.user};
+    case actionTypes.AUTH_GET_USER_ERROR:
+      return {...initialAuthState, isLoading: false, error: action.error};
+
     default:
       return state;
   }

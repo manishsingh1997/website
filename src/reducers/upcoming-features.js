@@ -1,7 +1,8 @@
 import {actionTypes} from 'actions/upcoming-features';
+import config, {DEVELOPMENT} from 'website/config';
 
 const initialAuthState = {
-  isShow: false,
+  isShow: config.env === DEVELOPMENT,
 };
 
 const upcomingFeaturesReducer = (state=initialAuthState, action) => {
