@@ -3,7 +3,7 @@ import ClassNames from 'classnames';
 
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
-import AddressForm from './AddressFormOld'; // TODO: Use new address form once tested
+import AddressForm from 'containers/AddressForm';
 import Slider from './Slider';
 import {FENCE_SLUG, DRIVEWAY_SLUG} from 'website/constants';
 import {getParameterByName} from 'utils/utils';

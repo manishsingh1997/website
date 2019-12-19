@@ -6,7 +6,6 @@ import Layout from 'components/Layout';
 
 const mapStateToProps = ({upcomingFeatures}) => {
   return {
-    // address: state.address.address, // TODO: Show address in top header once tested.
     address: null,
     isShowUpcomingFeatures: upcomingFeatures.isShow,
   };

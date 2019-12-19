@@ -75,6 +75,7 @@ const getInitialState = (showNoteField = false, props = {}) => {
 export default class LeadForm extends React.Component {
   static propTypes = {
     lead: PropTypes.object,
+    onProductChange: PropTypes.func,
     onSubmit: PropTypes.func,
     showAddressInput: PropTypes.bool,
     showProductField: PropTypes.bool,
@@ -183,6 +184,10 @@ export default class LeadForm extends React.Component {
     }
 
     this.setState(newState);
+
+    if (name === 'product' && this.props.onProductChange) {
+      this.props.onProductChange(value);
+    }
   };
 
   render() {
