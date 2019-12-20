@@ -39,7 +39,8 @@ export default class Layout extends React.Component {
     children: PropTypes.node,
     getCurrentUser: PropTypes.func.isRequired,
     isShowUpcomingFeatures: PropTypes.bool.isRequired,
-    showUpcomingFeatures: PropTypes.func.isRequired,
+    showChristmasFeaturesIfReady: PropTypes.func.isRequired,
+    showUpcomingFeaturesIfRequested: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -47,10 +48,9 @@ export default class Layout extends React.Component {
     // this.props.location is not available in Layout, using window instead
     const location = window.location || (window.document && window.document.location);
     if (location && location.search) {
-      if ('upcoming-features' in queryString.parse(location.search)) {
-        this.props.showUpcomingFeatures();
-      }
+      this.props.showUpcomingFeaturesIfRequested(queryString.parse(location.search));
     }
+    this.props.showChristmasFeaturesIfReady(new Date());
   }
 
   renderDropdownMenu() {

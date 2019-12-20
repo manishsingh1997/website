@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {BadgesSection} from '@ergeon/core-components';
 
@@ -13,10 +14,18 @@ import imgCalc from 'assets/calc_promo.png';
 import imgMap from 'assets/map_image.png';
 
 class HomePage extends React.Component {
+
+  static propTypes = {
+    isShowChristmasFeatures: PropTypes.bool.isRequired,
+    isShowUpcomingFeatures: PropTypes.bool.isRequired,
+  };
+
   render() {
+    const {isShowChristmasFeatures, isShowUpcomingFeatures} = this.props;
+
     return (
       <div>
-        <SliderHero/>
+        <SliderHero isShowChristmasFeatures={isShowChristmasFeatures} isShowUpcomingFeatures={isShowUpcomingFeatures}/>
         <ReviewHero/>
         <div className="wrapper-1180">
           <ProjectsSection/>

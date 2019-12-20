@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
@@ -11,6 +12,12 @@ import {getParameterByName} from 'utils/utils';
 import './SliderHero.scss';
 
 class SliderHero extends React.Component {
+
+  static propTypes = {
+    isShowChristmasFeatures: PropTypes.bool.isRequired,
+    isShowUpcomingFeatures: PropTypes.bool.isRequired,
+  };
+
   renderSlide(data) {
     const slideClasses = ClassNames({
       content: true,
@@ -34,12 +41,19 @@ class SliderHero extends React.Component {
       </div>
     );
   }
+
   render() {
+    const {isShowChristmasFeatures, isShowUpcomingFeatures} = this.props;
+    const additionalClassNames = isShowChristmasFeatures && isShowUpcomingFeatures ? 'snow-bg' : '';
     return (
-      <Slider className="slider-hero" defaultSlide={getParameterByName('utm_content') === 'driveway' ? 1 : 0}>
-        {this.renderSlide({title: 'Fence Installation Service', name: 'fence'})}
-        {this.renderSlide({title: 'Driveway Installation Service', name: 'driveway'})}
-      </Slider>
+      <div className="slider-hero">
+        <Slider
+          additionalClassNames={additionalClassNames}
+          defaultSlide={getParameterByName('utm_content') === 'driveway' ? 1 : 0}>
+          {this.renderSlide({title: 'Fence Installation Service', name: 'fence'})}
+          {this.renderSlide({title: 'Driveway Installation Service', name: 'driveway'})}
+        </Slider>
+      </div>
     );
   }
 }

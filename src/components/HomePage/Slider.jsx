@@ -7,6 +7,7 @@ import './Slider.scss';
 
 class Slider extends React.Component {
   static propTypes = {
+    additionalClassNames: PropTypes.string,
     children: PropTypes.node,
     defaultSlide: PropTypes.number,
   };
@@ -35,7 +36,7 @@ class Slider extends React.Component {
     this.setState({currentSlide: nextSlide});
   }
   render() {
-    const children = this.props.children;
+    const {children, additionalClassNames} = this.props;
     const {currentSlide} = this.state;
     const swipeConfig = {
       // delta: 10,
@@ -43,8 +44,10 @@ class Slider extends React.Component {
       trackTouch: true,
       trackMouse: true,
     };
+
     return (
-      <div className="slider-wrapper">
+
+      <div className={`slider-wrapper ${additionalClassNames || ''}`}>
         <div className="slider">
           {children.map((slide, index) => {
             const slideClasses = classNames({

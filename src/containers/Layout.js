@@ -1,20 +1,23 @@
 import {connect} from 'react-redux';
 
 import {getCurrentUser} from 'actions/auth';
-import {showUpcomingFeatures} from 'actions/upcoming-features';
+import {showChristmasFeaturesIfReady, showUpcomingFeaturesIfRequested} from 'actions/conditional-features';
 import Layout from 'components/Layout';
 
-const mapStateToProps = ({auth, upcomingFeatures}) => {
+const mapStateToProps = ({auth, conditionalFeatures}) => {
   return {
-    isShowUpcomingFeatures: upcomingFeatures.isShow,
+    isShowUpcomingFeatures: conditionalFeatures.isShowUpcomingFeatures,
     auth,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showUpcomingFeatures: () => {
-      dispatch(showUpcomingFeatures());
+    showUpcomingFeaturesIfRequested: (parsedQuery) => {
+      dispatch(showUpcomingFeaturesIfRequested(parsedQuery));
+    },
+    showChristmasFeaturesIfReady: (date) => {
+      dispatch(showChristmasFeaturesIfReady(date));
     },
     getCurrentUser: () => {
       dispatch(getCurrentUser());
