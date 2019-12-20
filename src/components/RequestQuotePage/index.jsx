@@ -7,7 +7,6 @@ import MapComponent from '@ergeon/map-component';
 
 import Marker from 'assets/marker.svg';
 import config from 'website/config';
-import {FENCE_SLUG} from 'website/constants';
 import {getParameterByName} from 'utils/utils';
 import Success from 'components/common/Success';
 import LeadForm from './LeadForm';
@@ -23,7 +22,6 @@ export default class RequestQuotePage extends React.Component {
   static propTypes = {
     addConfig: PropTypes.func.isRequired,
     address: PropTypes.string,
-    changeProduct: PropTypes.func,
     configs: PropTypes.array,
     lead: PropTypes.object,
     openAddressUpdatePopup: PropTypes.func.isRequired,
@@ -34,13 +32,12 @@ export default class RequestQuotePage extends React.Component {
 
   state = {
     showThankYou: false,
-    product: this.props.product,
   };
 
   componentDidMount() {
     let {zipcode, configs} = this.props;
     const address = getParameterByName('address');
-    const product = getParameterByName('product') || this.state.product;
+    const product = getParameterByName('product') || this.props.product;
     const schema = getParameterByName('schema');
     const code = getParameterByName('code');
     const length = getParameterByName('length');
@@ -67,8 +64,7 @@ export default class RequestQuotePage extends React.Component {
   }
 
   isItSupportedArea() {
-    const {lead} = this.props;
-    const {product} = this.state;
+    const {product, lead} = this.props;
 
     if (
       lead &&
@@ -241,14 +237,13 @@ export default class RequestQuotePage extends React.Component {
           <div className="request-quote-page__lead-form">
             <LeadForm
               lead={this.props.lead || {}}
-              onProductChange={product => this.setState({product})}
               onSubmit={() => this.setState({showThankYou: true})}
-              product={this.state.product}
+              product={this.props.product}
               showProductField/>
           </div>
           {this.renderSignupMap()}
         </div>
-        {this.state.product === FENCE_SLUG && <ConfigCart />}
+        <ConfigCart />
       </div>
     );
   }

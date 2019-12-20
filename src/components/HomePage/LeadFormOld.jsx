@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Portal} from 'react-portal';
 import * as Sentry from '@sentry/browser';
 import cleanDeep from 'clean-deep';
 
 import {AddressInput, Button, Spinner} from '@ergeon/core-components';
-import TextInput from './TextInput';
-import PhoneInput from './PhoneInput';
-import MultiProductSelect from './MultiProductSelect';
-import TextArea from './TextArea';
+import TextInput from './TextInputOld';
+import FloatingPhoneInput from './PhoneInputOld';
+import MultiProductSelect from './MultiProductSelectOld';
+import TextArea from './TextAreaOld';
 
 import {
   createValidator,
@@ -35,9 +36,9 @@ import {
 import {
   CUSTOMER_LEAD_CREATED,
 } from 'utils/events';
-import {products, DEFAULT_SOURCE_VALUE} from 'website/constants';
+import {products, FENCE_SLUG, DRIVEWAY_SLUG, DEFAULT_SOURCE_VALUE} from 'website/constants';
 
-import './LeadForm.scss';
+import './LeadFormOld.scss';
 
 const stringifyAddress = (address) => {
   if (address !== null && address !== undefined) {
@@ -54,10 +55,11 @@ const stringifyAddress = (address) => {
 
 };
 
-const getInitialState = (showNoteField = false, props = {}) => {
+const getInitialSate = (showThankYou = false, showNoteField = false, props = {}) => {
 
   return {
     validateOnChange: false,
+    showThankYou,
     showNoteField,
     data: {
       email: '',
@@ -72,13 +74,14 @@ const getInitialState = (showNoteField = false, props = {}) => {
   };
 };
 
-export default class LeadForm extends React.Component {
+export default class LeadFormOld extends React.Component {
   static propTypes = {
     lead: PropTypes.object,
-    onSubmit: PropTypes.func,
+    onClose: PropTypes.func,
+    open: PropTypes.bool,
     showAddressInput: PropTypes.bool,
     showProductField: PropTypes.bool,
-  };
+  }
 
   constructor(props) {
     super(props);
@@ -92,13 +95,45 @@ export default class LeadForm extends React.Component {
       validateField.address = [required, fullAddress];
     }
     this.validator = createValidator(validateField);
-    this.state = getInitialState(false, props);
+    this.state = getInitialSate(false, false, props);
   }
+
+  UNSAFE_componentWillMount() { // eslint-disable-line camelcase
+    const {open} = this.props;
+
+    if (open) {
+      this.addScrollBlock();
+    }
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    const {open} = this.props;
+
+    if (nextProps.open && !open) {
+      this.addScrollBlock();
+    } else if (!nextProps.open && open) {
+      this.removeScrollBlock();
+    }
+  }
+
+  componentWillUnmount() { // eslint-disable-line camelcase
+    this.removeScrollBlock();
+  }
+
+  addScrollBlock = () => {
+    document.documentElement.className = `${document.documentElement.className } NoScroll`;
+    document.body.className = `${document.body.className } NoScroll`;
+  };
+
+  removeScrollBlock = () => {
+    document.documentElement.className = document.documentElement.className.replace(/NoScroll/g, '');
+    document.body.className = document.body.className.replace(/NoScroll/g, '');
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const {lead, onSubmit} = this.props;
+    const {lead} = this.props;
     const {data} = this.state;
     const errors = this.validator(data);
     if (errors) {
@@ -146,8 +181,7 @@ export default class LeadForm extends React.Component {
           product: data.product,
           source: DEFAULT_SOURCE_VALUE,
         });
-        this.setState(getInitialState(false, this.props));
-        onSubmit && onSubmit();
+        this.setState(getInitialSate(true, this.props));
         ls.remove(LS_KEY);
         return res;
       }, (error) => {
@@ -185,8 +219,34 @@ export default class LeadForm extends React.Component {
     this.setState(newState);
   };
 
-  render() {
-    const {showAddressInput} = this.props;
+  handleClose = () => {
+    const {loading, showThankYou} = this.state;
+    const {onClose} = this.props;
+    if (loading) {
+      return;
+    }
+
+    this.setState({
+      showThankYou: false,
+    });
+    onClose(showThankYou);
+  };
+
+  renderAvailabilityMessage = (data, product) => {
+    if (data && ('products' in data)) {
+      return (
+        <span>
+          {(!data.products[FENCE_SLUG] && product === FENCE_SLUG) &&
+          <span className="warning-msg">Unfortunately we don&apos;t provide fence service in your area yet.</span>}
+          {(!data.products[DRIVEWAY_SLUG] && product === DRIVEWAY_SLUG) &&
+          <span className="warning-msg">Unfortunately we don&apos;t provide driveway service in your area yet.</span>}
+        </span>
+      );
+    }
+  };
+  renderForm = () => {
+
+    const {lead: {productAvailability}, showAddressInput} = this.props;
     const {data: {email, name, phone, product, comment}, errors, loading, showNoteField} = this.state;
     const multiselectProducts = products.map(function(productItem) {
       return {value: productItem.slug, label: productItem.name};
@@ -198,6 +258,10 @@ export default class LeadForm extends React.Component {
 
     return (
       <form className="Form LeadForm" onSubmit={this.handleSubmit}>
+        <h4 className="center spacing after__is-24">Get your free quote!</h4>
+        {
+          this.renderAvailabilityMessage(productAvailability, product)
+        }
         {this.props.showProductField && <div className={`Form-field ${errors && errors.product && 'is-error'}`}>
           <label className="label spacing after__is-12">Ergeon services:</label>
           <MultiProductSelect
@@ -219,7 +283,7 @@ export default class LeadForm extends React.Component {
           {errors && <div className="Form-error">{errors.name}</div>}
         </div>
         <div className={`Form-field ${errors && errors.phone && 'is-error'}`}>
-          <PhoneInput
+          <FloatingPhoneInput
             disabled={loading}
             labelName="Your phone number"
             name="phone"
@@ -282,6 +346,43 @@ export default class LeadForm extends React.Component {
             href="https://s3-us-west-2.amazonaws.com/ergeon-terms/privacy-policy.pdf">Privacy Policy</a>
         </div>
       </form>
+    );
+
+  };
+
+  renderThankYou = () => {
+
+    return (
+      <div className="ThankYou">
+        <div className="Success">
+          <div className="Success-line Success-lineLong" />
+          <div className="Success-line Success-lineTip" />
+          <div className="Success-ring" />
+          <div className="Success-hideCorners" />
+        </div>
+        <h3 className="center spacing after__is-12">We’ll be in touch shortly</h3>
+        <p className="subheader h3 center">Our team will reach out within 24 hours to give you a quote</p>
+      </div>
+    );
+  };
+
+  render() {
+    const {open} = this.props;
+    const {showThankYou} = this.state;
+    if (!open) {
+      return null;
+    }
+
+    return (
+      <Portal into="body">
+        <div className="Popup">
+          <div className="Popup-overlay" onClick={this.handleClose} />
+          <div className="Popup-content">
+            <div className="Popup-close" onClick={this.handleClose}>×</div>
+            {showThankYou ? this.renderThankYou() : this.renderForm()}
+          </div>
+        </div>
+      </Portal>
     );
   }
 }
