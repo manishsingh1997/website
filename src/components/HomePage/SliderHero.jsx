@@ -14,8 +14,8 @@ import './SliderHero.scss';
 class SliderHero extends React.Component {
 
   static propTypes = {
-    isShowChristmasFeatures: PropTypes.bool.isRequired,
-    isShowUpcomingFeatures: PropTypes.bool.isRequired,
+    isChristmasTime: PropTypes.bool.isRequired,
+    isUpcomingFeaturesEnabled: PropTypes.bool.isRequired,
   };
 
   renderSlide(data) {
@@ -43,8 +43,8 @@ class SliderHero extends React.Component {
   }
 
   render() {
-    const {isShowChristmasFeatures, isShowUpcomingFeatures} = this.props;
-    const additionalClassNames = isShowChristmasFeatures && isShowUpcomingFeatures ? 'snow-bg' : '';
+    const {isChristmasTime, isUpcomingFeaturesEnabled} = this.props;
+    const additionalClassNames = isChristmasTime && isUpcomingFeaturesEnabled ? 'snow-bg' : '';
     return (
       <div className="slider-hero">
         <Slider

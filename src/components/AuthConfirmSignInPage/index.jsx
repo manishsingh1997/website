@@ -7,7 +7,7 @@ import queryString from 'query-string';
 import InvalidLockIcon from '@ergeon/core-components/src/assets/icon-link-is-not-valid.svg';
 import {Button, Spinner} from '@ergeon/core-components';
 
-import Success from 'components/common/Success';
+import Success from 'containers/common/Success';
 import BackToHomeLink from 'components/common/BackToHomeLink';
 
 import './index.scss';

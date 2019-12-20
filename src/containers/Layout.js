@@ -6,8 +6,8 @@ import Layout from 'components/Layout';
 
 const mapStateToProps = ({auth, conditionalFeatures}) => {
   return {
-    isShowUpcomingFeatures: conditionalFeatures.isShowUpcomingFeatures,
-    isShowChristmasFeatures: conditionalFeatures.isShowChristmasFeatures,
+    isUpcomingFeaturesEnabled: conditionalFeatures.isUpcomingFeaturesEnabled,
+    isChristmasTime: conditionalFeatures.isChristmasTime,
     auth,
   };
 };

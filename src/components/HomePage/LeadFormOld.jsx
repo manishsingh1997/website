@@ -5,6 +5,7 @@ import * as Sentry from '@sentry/browser';
 import cleanDeep from 'clean-deep';
 
 import {AddressInput, Button, Spinner} from '@ergeon/core-components';
+import Success from 'containers/common/Success';
 import TextInput from './TextInputOld';
 import FloatingPhoneInput from './PhoneInputOld';
 import MultiProductSelect from './MultiProductSelectOld';
@@ -354,14 +355,9 @@ export default class LeadFormOld extends React.Component {
 
     return (
       <div className="ThankYou">
-        <div className="Success">
-          <div className="Success-line Success-lineLong" />
-          <div className="Success-line Success-lineTip" />
-          <div className="Success-ring" />
-          <div className="Success-hideCorners" />
-        </div>
-        <h3 className="center spacing after__is-12">We’ll be in touch shortly</h3>
-        <p className="subheader h3 center">Our team will reach out within 24 hours to give you a quote</p>
+        <Success
+          header="We’ll be in touch shortly"
+          text="Our team will reach out within 24 hours to give you a quote" />
       </div>
     );
   };

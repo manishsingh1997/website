@@ -16,16 +16,16 @@ import imgMap from 'assets/map_image.png';
 class HomePage extends React.Component {
 
   static propTypes = {
-    isShowChristmasFeatures: PropTypes.bool.isRequired,
-    isShowUpcomingFeatures: PropTypes.bool.isRequired,
+    isChristmasTime: PropTypes.bool.isRequired,
+    isUpcomingFeaturesEnabled: PropTypes.bool.isRequired,
   };
 
   render() {
-    const {isShowChristmasFeatures, isShowUpcomingFeatures} = this.props;
+    const {isChristmasTime, isUpcomingFeaturesEnabled} = this.props;
 
     return (
       <div>
-        <SliderHero isShowChristmasFeatures={isShowChristmasFeatures} isShowUpcomingFeatures={isShowUpcomingFeatures}/>
+        <SliderHero isChristmasTime={isChristmasTime} isUpcomingFeaturesEnabled={isUpcomingFeaturesEnabled}/>
         <ReviewHero/>
         <div className="wrapper-1180">
           <ProjectsSection/>

@@ -1,10 +1,9 @@
 import {connect} from 'react-redux';
 
-import HomePage from 'components/HomePage';
+import Success from 'components/common/Success';
 
 const mapStateToProps = ({conditionalFeatures}) => {
   return {
-    isUpcomingFeaturesEnabled: conditionalFeatures.isUpcomingFeaturesEnabled,
     isChristmasTime: conditionalFeatures.isChristmasTime,
   };
 };
@@ -13,4 +12,4 @@ const mapDispatchToProps = () => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(Success);
