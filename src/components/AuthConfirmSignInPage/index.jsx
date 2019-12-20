@@ -78,10 +78,10 @@ class AuthConfirmSignInPage extends React.Component {
     }
 
     let content = null;
-    if (auth.isLoading) {
+    if (auth.isAuthLoading) {
       content = this.renderLoader();
     } else {
-      if (!auth.error && auth.user) {
+      if (!auth.authError && auth.user) {
         content = this.renderSuccess();
       } else {
         content = this.renderInvalidCode();

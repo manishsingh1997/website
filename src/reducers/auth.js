@@ -2,25 +2,32 @@ import {actionTypes} from 'actions/auth';
 
 const initialAuthState = {
   user: null,
-  error: null,
-  isLoading: false,
+  isAuthLoading: false,
+  authError: null,
+  isUserLoading: false,
+  userError: null,
+  userSetByCode: false,
 };
 
 const authReducer = (state=initialAuthState, action) => {
   switch (action.type) {
     case actionTypes.AUTH_CODE_ACTIVATION_START:
-      return {...state, isLoading: true};
+      return {...state, isAuthLoading: true};
     case actionTypes.AUTH_CODE_ACTIVATION_DONE:
-      return {...initialAuthState, isLoading: false, user: action.user};
+      return {...state, isAuthLoading: false, authError: null, user: action.user, userSetByCode: true};
     case actionTypes.AUTH_CODE_ACTIVATION_ERROR:
-      return {...initialAuthState, isLoading: false, error: action.error};
+      return {...state, isAuthLoading: false, authError: action.error};
 
     case actionTypes.AUTH_GET_USER_START:
-      return {...state, isLoading: true};
+      return {...state, isUserLoading: true};
     case actionTypes.AUTH_GET_USER_DONE:
-      return {...initialAuthState, isLoading: false, user: action.user};
+      if (!state.userSetByCode || !state.user) {
+        return {...state, isUserLoading: false, userError: null, user: action.user};
+      }
+      // Don't overwrite the user if it was set by code confirmation (possible race condition)
+      return {...state, isUserLoading: false, userError: null};
     case actionTypes.AUTH_GET_USER_ERROR:
-      return {...initialAuthState, isLoading: false, error: action.error};
+      return {...state, isUserLoading: false, userError: action.error};
 
     default:
       return state;

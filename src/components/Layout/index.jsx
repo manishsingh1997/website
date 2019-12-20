@@ -54,8 +54,8 @@ export default class Layout extends React.Component {
   }
 
   renderDropdownMenu() {
-    const {auth: {user, isLoading}} = this.props;
-    if (isLoading) {
+    const {auth: {isAuthLoading, isUserLoading, user}} = this.props;
+    if (isUserLoading || isAuthLoading) {
       return (
         <Link className="sign-in-link" to="/app/sign-in">
           <li className="link">
