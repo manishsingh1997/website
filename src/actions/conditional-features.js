@@ -1,3 +1,5 @@
+import {isChristmasTime} from '@ergeon/core-components';
+
 export const actionTypes = {
   'SHOW_UPCOMING_FEATURES': 'SHOW_UPCOMING_FEATURES',
   'SHOW_CHRISTMAS_FEATURES': 'SHOW_CHRISTMAS_FEATURES',
@@ -15,9 +17,7 @@ export const showUpcomingFeaturesIfRequested = function(parsedQuery) {
 
 export const showChristmasFeaturesIfReady = function(date) {
   return function(dispatch) {
-    const January = 0;
-    const December = 11;
-    if (date.getMonth() == December && date.getDate() >= 23 || date.getMonth() == January && date.getDate() <= 1) {
+    if (isChristmasTime(date)) {
       dispatch({
         type: actionTypes.SHOW_CHRISTMAS_FEATURES,
       });

@@ -38,6 +38,7 @@ export default class Layout extends React.Component {
     auth: PropTypes.object.isRequired,
     children: PropTypes.node,
     getCurrentUser: PropTypes.func.isRequired,
+    isShowChristmasFeatures: PropTypes.bool.isRequired,
     isShowUpcomingFeatures: PropTypes.bool.isRequired,
     showChristmasFeaturesIfReady: PropTypes.func.isRequired,
     showUpcomingFeaturesIfRequested: PropTypes.func.isRequired,
@@ -107,12 +108,12 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    const {isShowUpcomingFeatures} = this.props;
+    const {isShowChristmasFeatures, isShowUpcomingFeatures} = this.props;
 
     return (
       <div className="app-layout">
         <NavLinkContext.Provider value={NavLink}>
-          <TopPanel ergeonUrl="/">
+          <TopPanel ergeonUrl="/" showChristmasHat={isShowChristmasFeatures}>
             {isShowUpcomingFeatures ? this.renderDropdownMenu() : null}
           </TopPanel>
           <div>{this.props.children}</div>
