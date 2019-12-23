@@ -249,7 +249,6 @@ export default class LeadForm extends React.Component {
           <div className="Form-field">
             <a
               className="Form-Note"
-              href="#"
               onClick={this.handleAddNote}>
               Add a note
             </a>
