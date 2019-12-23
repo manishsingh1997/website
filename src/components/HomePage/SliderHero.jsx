@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
+import {isChristmasTime} from 'utils/utils';
 import AddressForm from './AddressFormOld'; // TODO: Use new address form once tested
 import Slider from './Slider';
 import {FENCE_SLUG, DRIVEWAY_SLUG} from 'website/constants';
@@ -13,9 +13,10 @@ import './SliderHero.scss';
 
 class SliderHero extends React.Component {
 
-  static propTypes = {
-    isChristmasTime: PropTypes.bool.isRequired,
-  };
+  constructor(props) {
+    super(props);
+    this.isChristmasTime = isChristmasTime();
+  }
 
   renderSlide(data) {
     const slideClasses = ClassNames({
@@ -42,8 +43,7 @@ class SliderHero extends React.Component {
   }
 
   render() {
-    const {isChristmasTime} = this.props;
-    const additionalClassNames = isChristmasTime ? 'snow-bg' : '';
+    const additionalClassNames = this.isChristmasTime ? 'snow-bg' : '';
     return (
       <div className="slider-hero">
         <Slider

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {BadgesSection} from '@ergeon/core-components';
 
@@ -15,16 +14,11 @@ import imgMap from 'assets/map_image.png';
 
 class HomePage extends React.Component {
 
-  static propTypes = {
-    isChristmasTime: PropTypes.bool.isRequired,
-  };
-
   render() {
-    const {isChristmasTime} = this.props;
 
     return (
       <div>
-        <SliderHero isChristmasTime={isChristmasTime}/>
+        <SliderHero/>
         <ReviewHero/>
         <div className="wrapper-1180">
           <ProjectsSection/>

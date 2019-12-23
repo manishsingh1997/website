@@ -19,7 +19,7 @@ import CareersPage from 'components/CareersPage';
 import FAQPage from 'components/FAQPage';
 import HelpLandingPage from 'components/HelpLandingPage';
 import HelpPage from 'components/HelpPage';
-import HomePage from 'containers/HomePage';
+import HomePage from 'components/HomePage';
 import Layout from 'containers/Layout';
 import LocationsPage from 'components/LocationsPage';
 import PhotoGallery from 'components/PhotoGallery';

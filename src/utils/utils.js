@@ -1,5 +1,9 @@
+import queryString from 'query-string';
+
 import {snapshot} from '@ergeon/3d-lib';
-import config from 'website/config';
+import {isChristmasTime as baseIsChristmasTime} from '@ergeon/core-components';
+
+import config, {DEVELOPMENT} from 'website/config';
 
 export const parseError = (error) => {
   try {
@@ -52,4 +56,19 @@ export const getPreviewImage = (data) => {
   return imgData.then(data => {
     return data;
   });
+};
+
+export const isChristmasTime = () => {
+  return baseIsChristmasTime(new Date);
+};
+
+export const showUpcomingFeatures = () => {
+  if (config.env === DEVELOPMENT) {
+    return true;
+  }
+  const location = window.location || (window.document && window.document.location);
+  if (location && location.search) {
+    return 'upcoming-features' in queryString.parse(location.search);
+  }
+  return false;
 };

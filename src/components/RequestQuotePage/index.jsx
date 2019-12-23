@@ -8,7 +8,7 @@ import MapComponent from '@ergeon/map-component';
 import Marker from 'assets/marker.svg';
 import config from 'website/config';
 import {getParameterByName} from 'utils/utils';
-import Success from 'containers/common/Success';
+import Success from 'components/common/Success';
 import LeadForm from './LeadForm';
 import ConfigCart from './ConfigCart';
 

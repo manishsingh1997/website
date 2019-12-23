@@ -5,7 +5,7 @@ import * as Sentry from '@sentry/browser';
 import cleanDeep from 'clean-deep';
 
 import {AddressInput, Button, Spinner} from '@ergeon/core-components';
-import Success from 'containers/common/Success';
+import Success from 'components/common/Success';
 import TextInput from './TextInputOld';
 import FloatingPhoneInput from './PhoneInputOld';
 import MultiProductSelect from './MultiProductSelectOld';

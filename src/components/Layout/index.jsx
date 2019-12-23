@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
-import queryString from 'query-string';
 import {Link} from 'react-router-dom';
 
 import {Footer, TopPanel, DropdownMenu, NavLinkContext, Spinner} from '@ergeon/core-components';
 import userIcon from '@ergeon/core-components/src/assets/icon-user.svg';
 
+import {isChristmasTime, showUpcomingFeatures} from 'utils/utils';
 // TODO: move AddressUpdatePopup to RequestQuotePage, it should be local popup for RequestQuotePage
 //       And we don't need redux for it.
 import AddressUpdatePopup from './AddressUpdatePopup';
@@ -34,24 +34,21 @@ class AppDropdownMenu extends DropdownMenu {
 }
 
 export default class Layout extends React.Component {
+
   static propTypes = {
     auth: PropTypes.object.isRequired,
     children: PropTypes.node,
     getCurrentUser: PropTypes.func.isRequired,
-    isChristmasTime: PropTypes.bool.isRequired,
-    isUpcomingFeaturesEnabled: PropTypes.bool.isRequired,
-    showChristmasFeaturesIfReady: PropTypes.func.isRequired,
-    showUpcomingFeaturesIfRequested: PropTypes.func.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+    this.isChristmasTime = isChristmasTime();
+    this.isUpcomingFeaturesEnabled = showUpcomingFeatures();
+  }
 
   componentDidMount() {
     this.props.getCurrentUser();
-    // this.props.location is not available in Layout, using window instead
-    const location = window.location || (window.document && window.document.location);
-    if (location && location.search) {
-      this.props.showUpcomingFeaturesIfRequested(queryString.parse(location.search));
-    }
-    this.props.showChristmasFeaturesIfReady(new Date());
   }
 
   renderDropdownMenu() {
@@ -108,13 +105,12 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    const {isChristmasTime, isUpcomingFeaturesEnabled} = this.props;
 
     return (
       <div className="app-layout">
         <NavLinkContext.Provider value={NavLink}>
-          <TopPanel ergeonUrl="/" showChristmasHat={isChristmasTime}>
-            {isUpcomingFeaturesEnabled ? this.renderDropdownMenu() : null}
+          <TopPanel ergeonUrl="/" showChristmasHat={this.isChristmasTime}>
+            {this.isUpcomingFeaturesEnabled ? this.renderDropdownMenu() : null}
           </TopPanel>
           <div>{this.props.children}</div>
           <Footer ergeonUrl="/" />

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {isChristmasTime} from 'utils/utils';
+
 import christmasSparkles from '../../assets/christmas-pics/sparkles.png';
 import './Success.scss';
 
@@ -8,12 +10,16 @@ class Success extends React.Component {
 
   static propTypes = {
     header: PropTypes.string,
-    isChristmasTime: PropTypes.bool,
     text: PropTypes.string,
   };
 
+  constructor(props) {
+    super(props);
+    this.isChristmasTime = isChristmasTime();
+  }
+
   render() {
-    const {header, isChristmasTime, text} = this.props;
+    const {header, text} = this.props;
     return (
       <div className="success-wrapper">
         <div className="success">
@@ -24,7 +30,7 @@ class Success extends React.Component {
         </div>
         <h4 className="center spacing after__is-12">{header}</h4>
         <p className="subheader h4 center">{text}</p>
-        {isChristmasTime && (
+        {this.isChristmasTime && (
           <div className="center spacing before__is-12">
             <img className="christmas-sparkles" src={christmasSparkles} />
           </div>

@@ -6,7 +6,7 @@ import {Button, Spinner} from '@ergeon/core-components';
 import LockIcon from '@ergeon/core-components/src/assets/icon-lock.svg';
 
 import TextInput from 'components/common/TextInput';
-import Success from 'containers/common/Success';
+import Success from 'components/common/Success';
 import BackToHomeLink from 'components/common/BackToHomeLink';
 import {
   createValidator,
