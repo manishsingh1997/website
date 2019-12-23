@@ -4,7 +4,6 @@ import HomePage from 'components/HomePage';
 
 const mapStateToProps = ({conditionalFeatures}) => {
   return {
-    isUpcomingFeaturesEnabled: conditionalFeatures.isUpcomingFeaturesEnabled,
     isChristmasTime: conditionalFeatures.isChristmasTime,
   };
 };

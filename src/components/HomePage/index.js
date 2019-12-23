@@ -17,15 +17,14 @@ class HomePage extends React.Component {
 
   static propTypes = {
     isChristmasTime: PropTypes.bool.isRequired,
-    isUpcomingFeaturesEnabled: PropTypes.bool.isRequired,
   };
 
   render() {
-    const {isChristmasTime, isUpcomingFeaturesEnabled} = this.props;
+    const {isChristmasTime} = this.props;
 
     return (
       <div>
-        <SliderHero isChristmasTime={isChristmasTime} isUpcomingFeaturesEnabled={isUpcomingFeaturesEnabled}/>
+        <SliderHero isChristmasTime={isChristmasTime}/>
         <ReviewHero/>
         <div className="wrapper-1180">
           <ProjectsSection/>
