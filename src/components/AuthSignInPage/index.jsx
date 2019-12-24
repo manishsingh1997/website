@@ -7,7 +7,7 @@ import LockIcon from '@ergeon/core-components/src/assets/icon-lock.svg';
 
 import TextInput from 'components/common/TextInput';
 import Success from 'components/common/Success';
-import BackToHomeLink from 'components/common/BackToHomeLink';
+import SingleCard from 'components/common/SingleCard';
 import {
   createValidator,
   email,
@@ -149,12 +149,7 @@ class AuthSignInPage extends React.Component {
     const {isFormSuccess} = this.state;
 
     return (
-      <div className="signin-page">
-        <div className="signin-page__form">
-          {isFormSuccess ? this.renderSuccess() : this.renderForm()}
-        </div>
-        <BackToHomeLink />
-      </div>
+      <SingleCard className="signin-page" content={isFormSuccess ? this.renderSuccess() : this.renderForm()} />
     );
   }
 

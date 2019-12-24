@@ -8,7 +8,7 @@ import InvalidLockIcon from '@ergeon/core-components/src/assets/icon-link-is-not
 import {Button, Spinner} from '@ergeon/core-components';
 
 import Success from 'components/common/Success';
-import BackToHomeLink from 'components/common/BackToHomeLink';
+import SingleCard from 'components/common/SingleCard';
 
 import './index.scss';
 
@@ -81,21 +81,14 @@ class AuthConfirmSignInPage extends React.Component {
     if (auth.isAuthLoading) {
       content = this.renderLoader();
     } else {
-      if (!auth.authError && auth.user) {
+      if (!auth.authError && auth.user && auth.userSetByCode) {
         content = this.renderSuccess();
       } else {
         content = this.renderInvalidCode();
       }
     }
 
-    return (
-      <div className="confirm-signin-page">
-        <div className="confirm-signin-page__content">
-          {content}
-        </div>
-        <BackToHomeLink />
-      </div>
-    );
+    return <SingleCard className="confirm-signin-page" content={content} />;
   }
 
 }

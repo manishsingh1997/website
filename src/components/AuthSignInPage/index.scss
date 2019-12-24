@@ -1,7 +1,6 @@
 @import '@ergeon/core-components/src/components/variables.scss';
 
 .signin-page {
-  margin: 60px auto 0;
 
   .icon-lock {
     width: 20px;
@@ -11,23 +10,8 @@
     color: $gray-1;
   }
 
-  &__form {
-    background: #fff;
-    border: 1px solid #e4e9e2;
-    border-radius: 12px;
-    max-width: 475px;
+  .single-card-page__content {
     padding: 50px 100px;
-    margin: auto;
-    width: 100%;
-    position: relative;
-
-    @include phone() {
-      padding: 25px;
-    }
-  }
-
-  a {
-    cursor: pointer;
   }
 }
 

@@ -14,6 +14,7 @@ import customScripts from 'website/custom-scripts';
 import AboutPage from 'components/AboutPage';
 import AppOrderListPage from 'containers/AppOrderListPage';
 import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
+import AuthLogoutPage from 'containers/AuthLogoutPage';
 import AuthSignInPage from 'components/AuthSignInPage';
 import CareersPage from 'components/CareersPage';
 import FAQPage from 'components/FAQPage';
@@ -70,6 +71,7 @@ render(
           <Route component={RequestQuotePage} exact path="/request-quote"/>
           <Route component={AuthSignInPage} exact path="/app/sign-in"/>
           <Route component={AuthConfirmSignInPage} exact path="/app/confirm-sign-in"/>
+          <Route component={AuthLogoutPage} exact path="/app/logout"/>
           <Route component={AppOrderListPage} exact path="/app/:customerGid/orders"/>
           <Redirect
             exact

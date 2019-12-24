@@ -7,6 +7,8 @@ const initialAuthState = {
   isUserLoading: false,
   userError: null,
   userSetByCode: false,
+  isUserLoggedOut: false,
+  logoutError: null,
 };
 
 const authReducer = (state=initialAuthState, action) => {
@@ -28,6 +30,13 @@ const authReducer = (state=initialAuthState, action) => {
       return {...state, isUserLoading: false, userError: null};
     case actionTypes.AUTH_GET_USER_ERROR:
       return {...state, isUserLoading: false, userError: action.error};
+
+    case actionTypes.AUTH_LOGOUT_START:
+      return {...state, isAuthLoading: true, isUserLoggedOut: false};
+    case actionTypes.AUTH_LOGOUT_DONE:
+      return {...state, isAuthLoading: false, logoutError: null, user: null, isUserLoggedOut: true};
+    case actionTypes.AUTH_LOGOUT_ERROR:
+      return {...state, isAuthLoading: false, logoutError: action.error};
 
     default:
       return state;

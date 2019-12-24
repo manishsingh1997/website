@@ -86,8 +86,7 @@ export default class Layout extends React.Component {
             },
             {
               content: 'Log out',
-              href: '/',
-              onClick: () => console.log('Log out STUB'),
+              href: '/app/logout',
             },
           ]}
           title={(

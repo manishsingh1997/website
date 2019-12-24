@@ -7,6 +7,9 @@ export const actionTypes = {
   'AUTH_GET_USER_START': 'AUTH_GET_USER_START',
   'AUTH_GET_USER_DONE': 'AUTH_GET_USER_DONE',
   'AUTH_GET_USER_ERROR': 'AUTH_GET_USER_ERROR',
+  'AUTH_LOGOUT_START': 'AUTH_LOGOUT_START',
+  'AUTH_LOGOUT_DONE': 'AUTH_LOGOUT_DONE',
+  'AUTH_LOGOUT_ERROR': 'AUTH_LOGOUT_ERROR',
 };
 
 export const authenticateUserWithCode = (code) => {
@@ -48,6 +51,26 @@ export const getCurrentUser = () => {
       dispatch({
         type: actionTypes.AUTH_GET_USER_ERROR,
         error: _parseAuthError(userError),
+      });
+    }
+  };
+};
+
+export const logout = () => {
+  return async function(dispatch) {
+    dispatch({
+      type: actionTypes.AUTH_LOGOUT_START,
+    });
+
+    try {
+      await authService.logout();
+      dispatch({
+        type: actionTypes.AUTH_LOGOUT_DONE,
+      });
+    } catch (otpError) {
+      dispatch({
+        type: actionTypes.AUTH_LOGOUT_ERROR,
+        error: _parseAuthError(otpError),
       });
     }
   };
