@@ -1,25 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 import {reduce} from 'lodash';
 
 import {Button} from '@ergeon/core-components';
 import {constants} from '@ergeon/3d-lib';
 
 import config from 'website/config';
-import {actionTriggers} from 'actions/cart-actions';
 import TextCollapse from 'components/RequestQuotePage/TextCollapse';
 
 import './ConfigCart.scss';
 class ConfigCart extends React.Component {
   static propTypes = {
+    address: PropTypes.string,
     configs: PropTypes.arrayOf(PropTypes.shape({
       preview: PropTypes.string,
       price: PropTypes.number,
       description: PropTypes.string,
       units: PropTypes.number,
     })),
-    dispatch: PropTypes.func,
+    removeConfig: PropTypes.func.isRequired,
+    updateConfig: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -40,17 +40,17 @@ class ConfigCart extends React.Component {
   }
 
   removeConfig(index) {
-    this.props.dispatch(actionTriggers.removeConfig(index));
+    this.props.removeConfig(index);
   }
 
   onUnitsChange(index, event) {
     const {value} = event.target;
     const {configs} = this.props;
 
-    this.props.dispatch(actionTriggers.updateConfig(index, {
+    this.props.updateConfig(index, {
       ...configs[index],
       units: value,
-    }));
+    });
   }
 
   renderDescription(config) {
@@ -121,7 +121,10 @@ class ConfigCart extends React.Component {
   }
 
   render() {
-    const {configs} = this.props;
+    const {configs, address} = this.props;
+    const addressParam = address ? `address=${address}` : '';
+    const addConfigHref = `${config.fencequotingHost}/calculator?${addressParam}`;
+
     return (
       <div className="config-cart">
         <div className="config-cart__list">
@@ -141,7 +144,7 @@ class ConfigCart extends React.Component {
               asAnchor
               class="AddConfigButton"
               flavor="regular"
-              href={`${config.fencequotingHost}/calculator` /* TODO: Button should show inline editor */}
+              href={addConfigHref /* TODO: Button should show inline editor */}
               taste="line">
               Add a config
             </Button>
@@ -160,8 +163,4 @@ class ConfigCart extends React.Component {
   }
 }
 
-export default connect(state => {
-  return {
-    configs: state.cart.configs,
-  };
-})(ConfigCart);
+export default ConfigCart;

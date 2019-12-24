@@ -11,7 +11,7 @@ import {FENCE_SLUG} from 'website/constants';
 import {getParameterByName} from 'utils/utils';
 import Success from 'components/common/Success';
 import LeadForm from './LeadForm';
-import ConfigCart from './ConfigCart';
+import ConfigCart from 'containers/ConfigCart';
 
 import './index.scss';
 
