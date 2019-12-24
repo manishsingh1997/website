@@ -83,6 +83,10 @@
   .Form-field {
     height: auto;
     position: relative;
+    
+    @include phone() {
+      margin-bottom: 28px;
+    }
 
     &.is-error {
       input {
@@ -98,6 +102,11 @@
 
     & + .Form-field {
       margin-top: 32px;
+
+      @include phone() {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
     }
   }
   .Form-actions {
@@ -136,10 +145,6 @@
     }
     .Form-field {
        height: 56px;
-    }
-
-    .Form-actions {
-      margin-top: 24px;
     }
   }
 }

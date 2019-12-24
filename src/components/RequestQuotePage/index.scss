@@ -40,6 +40,14 @@
     max-width: 500px;
     padding: 60px;
     width: 100%;
+
+    @include phone() {
+      padding: 0;
+      border: none;
+      z-index: 1;
+      max-width: none;
+      width: 100%;
+    }
   }
 
   &__signup-map {
