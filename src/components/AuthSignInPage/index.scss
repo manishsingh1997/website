@@ -12,6 +12,10 @@
 
   .single-card-page__content {
     padding: 50px 100px;
+
+    @include phone() {
+      padding: 25px;
+    }
   }
 }
 

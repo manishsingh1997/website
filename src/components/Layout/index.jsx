@@ -13,8 +13,10 @@ import AddressUpdatePopup from './AddressUpdatePopup';
 
 import './index.scss';
 
+const SIGN_IN_LINK_ID = 'app-sign-in-link';
+
 // TODO: Update DropdownMenu in core-components so it can render <Link to=""> instead of <a href="">
-class AppDropdownMenu extends DropdownMenu {
+class WebsiteDropdownMenu extends DropdownMenu {
 
   renderMenuItem({content, href, special, onClick}, index) {
     return (
@@ -31,6 +33,16 @@ class AppDropdownMenu extends DropdownMenu {
     );
   }
 
+}
+
+// TODO: Update TopPanel in core-components to hide mobile menu if custom link was pressed
+class WebsiteTopPanel extends TopPanel {
+  hideMenu = () => {
+    if (!this.navMenu.contains(event.target) || event.target.id === SIGN_IN_LINK_ID) {
+      this.setState({showMobileMenu: false});
+      document.removeEventListener('click', this.hideMenu);
+    }
+  };
 }
 
 export default class Layout extends React.Component {
@@ -65,7 +77,7 @@ export default class Layout extends React.Component {
     }
     if (user) {
       return (
-        <AppDropdownMenu
+        <WebsiteDropdownMenu
           items={[
             {
               content: 'Contacts',
@@ -96,7 +108,7 @@ export default class Layout extends React.Component {
     }
     return (
       <Link className="sign-in-link" to="/app/sign-in">
-        <li className="link">
+        <li className="link" id={SIGN_IN_LINK_ID}>
           <img className="sign-in-icon" src={userIcon}/>Sign In
         </li>
       </Link>
@@ -108,9 +120,9 @@ export default class Layout extends React.Component {
     return (
       <div className="app-layout">
         <NavLinkContext.Provider value={NavLink}>
-          <TopPanel ergeonUrl="/" showChristmasHat={this.isChristmasTime}>
+          <WebsiteTopPanel ergeonUrl="/" showChristmasHat={this.isChristmasTime}>
             {this.isUpcomingFeaturesEnabled ? this.renderDropdownMenu() : null}
-          </TopPanel>
+          </WebsiteTopPanel>
           <div>{this.props.children}</div>
           <Footer ergeonUrl="/" />
           <AddressUpdatePopup />

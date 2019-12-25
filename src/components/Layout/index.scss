@@ -18,6 +18,10 @@
   .sign-in-icon {
     vertical-align: bottom;
     margin-right: 5px;
+
+    @include phone() {
+      vertical-align: middle;
+    }
   }
 
   .loaderWrapper {
