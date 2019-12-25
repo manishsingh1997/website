@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
 
-import addressReducer from 'reducers/address-reducer';
-import cartReducer from 'reducers/cart-reducer';
-import authReducer from 'reducers/auth';
+import addressReducer from './address-reducer';
+import cartReducer from './cart-reducer';
+import authReducer from './auth';
 
 const combinedReducers = combineReducers({
   auth: authReducer,

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {authenticateUserWithCode} from 'actions/auth';
+import {authenticateUserWithCode} from 'flux/actions/auth';
 import AuthConfirmSignInPage from 'components/AuthConfirmSignInPage';
 
 const mapStateToProps = ({auth}) => {

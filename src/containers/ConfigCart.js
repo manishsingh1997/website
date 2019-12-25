@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {actionTriggers as cartActionTriggers} from 'actions/cart-actions';
+import {actionTriggers as cartActionTriggers} from 'flux/actions/cart-actions';
 import ConfigCart from 'components/RequestQuotePage/ConfigCart';
 
 const mapStateToProps = ({address, cart}) => {

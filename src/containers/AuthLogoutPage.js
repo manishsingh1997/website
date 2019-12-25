@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {logout} from 'actions/auth';
+import {logout} from 'flux/actions/auth';
 import AuthLogoutPage from 'components/AuthLogoutPage';
 
 const mapStateToProps = ({auth}) => {

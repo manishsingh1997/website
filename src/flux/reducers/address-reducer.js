@@ -1,7 +1,7 @@
 import {FENCE_SLUG} from 'website/constants';
-import {actionTypes} from 'actions/address-actions';
 import ls from 'local-storage';
 import {constants} from '@ergeon/3d-lib';
+import {actionTypes} from '../actions/address-actions';
 
 let initialState = {
   address: null,

@@ -4,7 +4,7 @@ import {Portal} from 'react-portal';
 import {connect} from 'react-redux';
 
 import {AddressInput, Button} from '@ergeon/core-components';
-import {actionTriggers} from 'actions/address-actions';
+import {actionTriggers} from 'flux/actions/address-actions';
 import {getCheckedZIP} from 'api/lead';
 import {trackAddressEntered} from 'utils/analytics';
 

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {actionTriggers} from 'actions/address-actions';
+import {actionTriggers} from 'flux/actions/address-actions';
 
 import AddressForm from 'components/HomePage/AddressForm';
 

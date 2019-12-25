@@ -26,7 +26,7 @@ import LocationsPage from 'components/LocationsPage';
 import PhotoGallery from 'components/PhotoGallery';
 import RequestQuotePage from 'containers/RequestQuotePage';
 import WarrantiesPage from 'components/WarrantiesPage';
-import store from 'store';
+import store from 'flux/store';
 
 import '@ergeon/core-components/src/components/main.scss';
 import './main.scss';

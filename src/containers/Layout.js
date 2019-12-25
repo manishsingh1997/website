@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {getCurrentUser} from 'actions/auth';
+import {getCurrentUser} from 'flux/actions/auth';
 import Layout from 'components/Layout';
 
 const mapStateToProps = ({auth}) => {
