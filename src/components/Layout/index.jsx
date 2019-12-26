@@ -7,6 +7,7 @@ import {Footer, TopPanel, DropdownMenu, NavLinkContext, Spinner} from '@ergeon/c
 import userIcon from '@ergeon/core-components/src/assets/icon-user.svg';
 
 import {isChristmasTime, showUpcomingFeatures} from 'utils/utils';
+import {getMenuItems} from 'data/customer-app.js';
 // TODO: move AddressUpdatePopup to RequestQuotePage, it should be local popup for RequestQuotePage
 //       And we don't need redux for it.
 import AddressUpdatePopup from './AddressUpdatePopup';
@@ -76,31 +77,20 @@ export default class Layout extends React.Component {
       );
     }
     if (user) {
+      const menuItems = getMenuItems(`/app/${user.gid}`).map(
+        menuItem => ({
+          content: menuItem.title,
+          href: menuItem.path,
+        })
+      );
+      menuItems[menuItems.length - 1].special = true;   // bottom line will be shown for special
+      menuItems.push({
+        content: 'Log out',
+        href: '/app/logout',
+      });
       return (
         <WebsiteDropdownMenu
-          items={[
-            {
-              content: 'Contacts',
-              href: `/app/${user.gid}/contacts`,
-            },
-            {
-              content: 'Houses',
-              href: `/app/${user.gid}/houses`,
-            },
-            {
-              content: 'Orders',
-              href: `/app/${user.gid}/orders`,
-            },
-            {
-              content: 'Appointments',
-              href: `/app/${user.gid}/appointments`,
-              special: true,  // bottom line will be drown for special
-            },
-            {
-              content: 'Log out',
-              href: '/app/logout',
-            },
-          ]}
+          items={menuItems}
           title={(
             <React.Fragment><img className="sign-in-icon" src={userIcon}/>{user.full_name}</React.Fragment>
           )} />

@@ -1,0 +1,71 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.customer-app-layout {
+  max-width: 1060px;
+  padding-left: $h-20;
+  padding-right: $h-20;
+  margin: $v-30 auto;
+
+  .customer-app-menu {
+    max-width: 260px;
+    padding: 5px;
+    margin: 10px;
+    width: 100%;
+
+    @include phone() {
+      display: none;
+    }
+
+    .siblings-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: $font-mobile-size;
+      color: $black-1;
+
+      .siblings-list-item {
+        display: flex;
+        align-items: center;
+
+        padding: 8px 20px;
+        margin: 2px 0px 2px 0px;
+        position: relative;
+        color: $black-1;
+        font-weight: normal;
+
+        &:hover {
+          background-color: $gray-6;
+          cursor: pointer;
+        }
+
+        &.active {
+          background-color: $gray-6;
+          font-weight: 600;
+        }
+
+        &__wrapper {
+          margin-right: 10px;
+        }
+
+        .menu-icon-wrapper {
+          min-width: 25px;
+          margin-right: 10px;
+          text-align: center;
+        }
+      }
+    }
+
+    .active-link {
+      svg path {
+        fill: $green-1;
+      }
+    }
+  }
+
+  .customer-app-content {
+    max-width: 700px;
+    padding: 30px;
+    margin: 10px;
+    width: 100%;
+  }
+}

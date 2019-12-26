@@ -4,14 +4,10 @@
   margin: 60px auto 0;
 
   &__content {
-    background: #fff;
-    border: 1px solid #e4e9e2;
-    border-radius: 12px;
     max-width: 475px;
     padding: 50px;
     margin: auto;
     width: 100%;
-    position: relative;
 
     @include phone() {
       padding: 25px;

@@ -17,7 +17,7 @@ class SingleCard extends React.Component {
 
     return (
       <div className={`single-card-page ${className ? className : ''}`}>
-        <div className="single-card-page__content">
+        <div className="single-card-page__content card shadow soft-border">
           {content}
         </div>
         <div className="center small-text spacing before__is-24">

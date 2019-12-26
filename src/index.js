@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {createBrowserHistory} from 'history';
@@ -12,6 +13,7 @@ import {
 import customScripts from 'website/custom-scripts';
 
 import AboutPage from 'components/AboutPage';
+import AppLayout from 'components/AppLayout';
 import AppOrderListPage from 'containers/AppOrderListPage';
 import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
 import AuthLogoutPage from 'containers/AuthLogoutPage';
@@ -47,6 +49,12 @@ const renderPhotoGalleryRedirect = (productSlug, category) => {
   );
 };
 
+const CustomerApp = ({match}) => (
+  <AppLayout match={match}>
+    <Route component={AppOrderListPage} path={`${match.url}/orders`} />
+  </AppLayout>
+);
+
 render(
   <Provider store={store}>
     <Router history={history}>
@@ -72,7 +80,7 @@ render(
           <Route component={AuthSignInPage} exact path="/app/sign-in"/>
           <Route component={AuthConfirmSignInPage} exact path="/app/confirm-sign-in"/>
           <Route component={AuthLogoutPage} exact path="/app/logout"/>
-          <Route component={AppOrderListPage} exact path="/app/:customerGid/orders"/>
+          <Route component={CustomerApp} path="/app/:customerGid" />
           <Redirect
             exact
             from="/gallery/driveway"
@@ -86,3 +94,7 @@ render(
   document.getElementById('root'),
   customScripts(),
 );
+
+CustomerApp.propTypes = {
+  match: PropTypes.object,
+};
