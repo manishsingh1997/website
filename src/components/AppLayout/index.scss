@@ -1,20 +1,46 @@
 @import '@ergeon/core-components/src/components/variables.scss';
 
+
 .customer-app-layout {
   max-width: 1060px;
   padding-left: $h-20;
   padding-right: $h-20;
   margin: $v-30 auto;
 
-  .customer-app-menu {
+  .cards-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include phone() {
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+
+    .card.soft-border {
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      box-shadow: 0 24px 24px 0 rgba($gray-6, 0.8), 0 2px 0 0 rgba($gray-6, 0.5);
+    }
+
+    .customer-app-content.card.soft-border {
+      border-top: none;
+      border-bottom: none;
+      background: none;
+    }
+
+    .cards-wrapper {
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  .customer-app-sidebar {
     max-width: 260px;
     padding: 5px;
     margin: 10px;
     width: 100%;
-
-    @include phone() {
-      display: none;
-    }
 
     .siblings-list {
       list-style: none;
@@ -55,6 +81,70 @@
       }
     }
 
+    .sidebar-title {
+      display: none;
+    }
+
+
+    @include phone() {
+      margin-top: 0;
+      max-width: 100%;
+
+      .sidebar-title {
+        display: block;
+        color: $gray-1;
+        margin-top: $v-6;
+        margin-bottom: $v-6;
+        text-transform: uppercase;
+        font-size: $font-label-size;
+        line-height: $line-height-label;
+        padding-left: 10px;
+        margin-right: 5px;
+
+        .icon-arrow-down {
+          float: right;
+          background-image: url('../../assets/icon-arrow-down.svg');
+          background-size: 11px;
+          background-repeat: no-repeat;
+          width: $v-24;
+          height: $v-24;
+          background-position: 50% 50%;
+          position: absolute;
+          right: 10px;
+          top: 7px;
+
+          &:hover {
+            background-color: $gray-5;
+            border-radius: $corner-default;
+            cursor: pointer;;
+          }
+        }
+
+      }
+
+      .siblings-list {
+        display: none;
+
+        .siblings-list-item {
+          padding: 8px 6px;
+        }
+      }
+
+      .sidebar--expanded {
+
+        .siblings-list {
+          display: block;
+          padding-bottom: $v-12;
+          z-index: -1;
+        }
+
+        .icon-arrow-down {
+          transform: scale(1, -1);
+        }
+      }
+
+    }
+
     .active-link {
       svg path {
         fill: $green-1;
@@ -67,5 +157,11 @@
     padding: 30px;
     margin: 10px;
     width: 100%;
+
+    @include phone() {
+      max-width: 100%;
+      margin: 0;
+      padding: 0 20px;
+    }
   }
 }
