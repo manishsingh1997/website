@@ -13,7 +13,7 @@ import {
 import customScripts from 'website/custom-scripts';
 
 import AboutPage from 'components/AboutPage';
-import AppLayout from 'components/AppLayout';
+import AppLayout from 'containers/AppLayout';
 import AppOrderListPage from 'containers/AppOrderListPage';
 import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
 import AuthLogoutPage from 'containers/AuthLogoutPage';
