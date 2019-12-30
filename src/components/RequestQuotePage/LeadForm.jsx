@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
-import cleanDeep from 'clean-deep';
 
 import {AddressInput, Button, Spinner} from '@ergeon/core-components';
 import TextInput from './TextInput';
 import PhoneInput from './PhoneInput';
 import MultiProductSelect from './MultiProductSelect';
-import TextArea from './TextArea';
+import TextArea from '../common/TextArea';
 
 import {
   createValidator,
@@ -27,9 +26,6 @@ import {
   identify,
   track,
   trackError,
-  getUTM,
-  getUserAgent,
-  getUserUuid,
   LS_KEY,
 } from 'utils/analytics';
 import {
@@ -38,6 +34,7 @@ import {
 import {products, DEFAULT_SOURCE_VALUE} from 'website/constants';
 
 import './LeadForm.scss';
+import {getEventData} from '../../utils/utils';
 
 const stringifyAddress = (address) => {
   if (address !== null && address !== undefined) {
@@ -112,26 +109,8 @@ export default class LeadForm extends React.Component {
         loading: true,
         errors: null,
       });
-      const {savedAt, ...utms} = getUTM();
-      let submitData = {
-        ...data,
-        uuid: getUserUuid(),
-        object: {
-          ...utms,
-          ...getUserAgent(),
-          'utm_source': utms['utm_source'] || 'website',
-          pathname: window.location.pathname,
-          'arrival_time': savedAt,
-          'user_ip': window.userip,
-          'inner_width': window.innerWidth,
-          'inner_height': window.innerHeight,
-          href: window.location.href,
-          search: window.location.search,
-        },
-        address: data.address || lead.address,
-        source: DEFAULT_SOURCE_VALUE,
-      };
-      submitData = cleanDeep(submitData);
+      const submitData = getEventData(data);
+      submitData['address'] = data.address || lead.address;
       Sentry.addBreadcrumb({
         message: 'Lead submit',
         category: 'action',

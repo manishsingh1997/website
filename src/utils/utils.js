@@ -1,9 +1,11 @@
 import queryString from 'query-string';
 
-import {snapshot} from '@ergeon/3d-lib';
 import {isChristmasTime as baseIsChristmasTime} from '@ergeon/core-components';
 
 import config, {DEVELOPMENT} from 'website/config';
+import {getUserAgent, getUserUuid, getUTM} from './analytics';
+import {DEFAULT_SOURCE_VALUE} from '../website/constants';
+import cleanDeep from 'clean-deep';
 
 export const parseError = (error) => {
   try {
@@ -15,24 +17,6 @@ export const parseError = (error) => {
     }
   } catch (e) {
     return error.statusText;
-  }
-};
-
-export const findComponentByTypes = (place, types) => {
-  for (let i = 0; i < place.address_components.length; i++) {
-    const component = place.address_components[i];
-    for (let j = 0; j < types.length; j++) {
-      if (component.types.indexOf(types[j]) !== -1) {
-        return component;
-      }
-    }
-  }
-  return null;
-};
-
-export const isFenceAvailable = (lead) => {
-  if (lead && lead.available_products && Array.isArray(lead.available_products)) {
-    return lead.available_products.indexOf(config.FENCE_REPLACEMENT) !== -1;
   }
 };
 
@@ -51,13 +35,6 @@ export const isObject = (value) => {
   return value != null && (type === 'object' || type === 'function');
 };
 
-export const getPreviewImage = (data) => {
-  const imgData = snapshot.getFrontImgDataURL(120, 120, data, [], []);
-  return imgData.then(data => {
-    return data;
-  });
-};
-
 export const isChristmasTime = () => {
   return baseIsChristmasTime(new Date);
 };
@@ -71,4 +48,27 @@ export const showUpcomingFeatures = () => {
     return 'upcoming-features' in queryString.parse(location.search);
   }
   return false;
+};
+
+export const getEventData = (data) => {
+  const {savedAt, ...utms} = getUTM();
+  let submitData = {
+    ...data,
+    uuid: getUserUuid(),
+    object: {
+      ...utms,
+      ...getUserAgent(),
+      'utm_source': utms['utm_source'] || 'website',
+      pathname: window.location.pathname,
+      'arrival_time': savedAt,
+      'user_ip': window.userip,
+      'inner_width': window.innerWidth,
+      'inner_height': window.innerHeight,
+      href: window.location.href,
+      search: window.location.search,
+    },
+    source: DEFAULT_SOURCE_VALUE,
+  };
+  submitData = cleanDeep(submitData);
+  return submitData;
 };

@@ -1,0 +1,105 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.Form {
+  margin: 0;
+
+  button {
+    width: 100%;
+  }
+
+  .Form-header {
+    padding-top: $h-10;
+    margin: 0 auto;
+  }
+
+  .Form-field {
+    height: auto;
+    position: relative;
+
+    @include phone() {
+      margin-bottom: 28px;
+    }
+
+    &.is-error {
+      input {
+        border-color: $red;
+        background-color: $white;
+        color: $red;
+      }
+    }
+
+    & + .Form-field {
+      margin-top: 32px;
+
+      @include phone() {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .Form-actions {
+    border-top: 1px solid $gray-4;
+    margin-top: 30px;
+    position: relative;
+
+    .Form-error {
+      margin-top: 6px;
+    }
+  }
+
+  .Form-error {
+    margin-top: 4px;
+    font-size: $font-label-size;
+    color: $red;
+    font-family: $font-content;
+    letter-spacing: 0;
+    line-height: $line-height-label;
+    position: absolute;
+    text-align: left;
+  }
+
+  .Form-footer {
+    text-align: center;
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 30px;
+  }
+
+
+  @include phone-small {
+    h1 {
+      font-size: 6vw;
+    }
+    input {
+      height: 48px;
+    }
+    .Form-field {
+      height: 56px;
+    }
+  }
+}
+
+@keyframes fs-zoom {
+  from {
+    opacity: 0;
+    transform: translateY(20%) scale(0);
+  }
+}
+
+@keyframes fs-fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ContactUsForm {
+  h1 + p {
+    margin-top: -20px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}

@@ -70,16 +70,10 @@ export default class RequestQuotePage extends React.Component {
     const {lead} = this.props;
     const {product} = this.state;
 
-    if (
-      lead &&
+    return !!(lead &&
       lead.productAvailability &&
       lead.productAvailability.supported &&
-      lead.productAvailability.products[product]
-    ) {
-      return true;
-    }
-
-    return false;
+      lead.productAvailability.products[product]);
   }
 
   openAddressUpdatePopup() {

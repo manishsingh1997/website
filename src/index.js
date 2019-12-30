@@ -19,6 +19,7 @@ import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
 import AuthLogoutPage from 'containers/AuthLogoutPage';
 import AuthSignInPage from 'components/AuthSignInPage';
 import CareersPage from 'components/CareersPage';
+import ContactUsPage from 'components/ContactUsPage';
 import FAQPage from 'components/FAQPage';
 import HelpLandingPage from 'components/HelpLandingPage';
 import HelpPage from 'components/HelpPage';
@@ -66,6 +67,7 @@ render(
 
           <Route component={HomePage} exact path="/"/>
           <Route component={CareersPage} exact path="/careers"/>
+          <Route component={ContactUsPage} exact path="/contacts"/>
           <Route component={AboutPage} exact path="/about-ergeon"/>
           <Route component={PhotoGallery} exact path="/gallery/"/>
           <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug"/>
