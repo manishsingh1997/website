@@ -1,7 +1,12 @@
 @import '@ergeon/core-components/src/components/variables.scss';
 
-.Form {
+.ContactUsForm {
   margin: 0;
+  h1 + p {
+    margin-top: -20px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
 
   button {
     width: 100%;
@@ -17,7 +22,8 @@
     position: relative;
 
     @include phone() {
-      margin-bottom: 28px;
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
     &.is-error {
@@ -93,13 +99,5 @@
   }
   to {
     opacity: 1;
-  }
-}
-
-.ContactUsForm {
-  h1 + p {
-    margin-top: -20px;
-    margin-bottom: 30px;
-    text-align: center;
   }
 }

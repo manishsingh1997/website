@@ -125,7 +125,7 @@ export default class ContactUsForm extends React.Component {
     const {data: {email, name, message}, errors, loading} = this.state;
 
     return (
-      <form className="Form ContactUsForm" onSubmit={this.handleSubmit}>
+      <form className="ContactUsForm" onSubmit={this.handleSubmit}>
         <h4 className="center spacing after__is-30">Send us a message</h4>
         <div className={`Form-field ${errors && errors.name && 'is-error'}`}>
           <TextInput

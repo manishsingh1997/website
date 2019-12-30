@@ -25,11 +25,19 @@
       margin-top: 10px;
       font-size: 20px;
     }
+
+    @include phone() {
+      flex-direction: column;
+    }
   }
 
   &__body {
     padding: $h-20;
     min-height: 400px;
+
+    @include phone() {
+      min-height: inherit;
+    }
   }
 
   .email {
@@ -55,9 +63,10 @@
     width: 100%;
 
     @include phone() {
-      padding: 0;
-      border: none;
-      z-index: 1;
+      margin: 20px 0 auto;
+      position: inherit !important;
+      padding: 30px 0 0 0;
+      border: none !important;
       max-width: none;
       width: 100%;
     }
