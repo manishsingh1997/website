@@ -27,7 +27,7 @@ if (includes(EREGON_PRODUCTION, host)) {
   fencequotingHost = 'https://fencequoting.com';
   leadArrivedApi = 'https://tchin24eg6.execute-api.us-west-2.amazonaws.com/production/website-lead-arrived';
   addressEnteredApi = 'https://90oksb1qq9.execute-api.us-west-2.amazonaws.com/production/landing-address-submitted';
-  contactMessageEnteredApi = 'some_url/production/contact-message-submitted';
+  contactMessageEnteredApi = 'https://90oksb1qq9.execute-api.us-west-2.amazonaws.com/production/contact-message-submitted';
   sentryDSN = 'https://f0fe1cc5aa2e4422bec8bbd637bba091@sentry.io/1794736';
   googleMapsApiKey = 'AIzaSyClO1qoZxVjVWmdNlNbl4W_XlAluWIb4mQ';
   env = PRODUCTION;
@@ -38,7 +38,7 @@ if (includes(EREGON_PRODUCTION, host)) {
   leadArrivedApi = 'https://8ijvlqff7l.execute-api.us-west-2.amazonaws.com/staging/website-lead-arrived';
   sentryDSN = 'https://f0fe1cc5aa2e4422bec8bbd637bba091@sentry.io/1794736';
   addressEnteredApi = 'https://wvt5gxjul1.execute-api.us-west-2.amazonaws.com/staging/landing-address-submitted';
-  contactMessageEnteredApi = 'some_url/staging/contact-message-submitted';
+  contactMessageEnteredApi = 'https://wvt5gxjul1.execute-api.us-west-2.amazonaws.com/staging/contact-message-submitted';
   googleMapsApiKey = 'AIzaSyCJfEriZ61E_-iggE4PfQd5rs0IRSao2oI';
   env = STAGING;
 } else if (includes(ERGEON_DEVELOPMENT, host)) {
