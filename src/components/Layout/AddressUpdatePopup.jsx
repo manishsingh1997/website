@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Portal} from 'react-portal';
-import {connect} from 'react-redux';
 
 import {AddressInput, Button} from '@ergeon/core-components';
-import {actionTriggers} from 'flux/actions/address-actions';
 import {getCheckedZIP} from 'api/lead';
 import {trackAddressEntered} from 'utils/analytics';
 
@@ -13,11 +11,15 @@ import './AddressUpdatePopup.scss';
 class AddressUpdatePopup extends React.Component {
 
   static propTypes = {
-    dispatch: PropTypes.func,
+    closeAddressUpdatePopup: PropTypes.func.isRequired,
     lead: PropTypes.object,
     onChange: PropTypes.func,
     open: PropTypes.bool,
     product: PropTypes.string,
+    updateLead: PropTypes.func.isRequired,
+    updateModalLead: PropTypes.func.isRequired,
+    updateModalValue: PropTypes.func.isRequired,
+    value: PropTypes.string,
   };
 
   state = {
@@ -25,22 +27,26 @@ class AddressUpdatePopup extends React.Component {
   };
 
   handleAddressSelected(lead) {
-    this.props.dispatch(actionTriggers.updateModalLead(lead));
+    this.props.updateModalLead(lead);
+  }
+
+  handleAddressChange(value) {
+    this.props.updateModalValue(value);
   }
 
   handleAddressSubmit() {
-    const {lead, dispatch} = this.props;
+    const {lead} = this.props;
     if (!lead) return;
     trackAddressEntered(lead);
-    dispatch(actionTriggers.updateLead(lead));
+    this.props.updateLead(lead);
   }
 
   handleClose() {
-    this.props.dispatch(actionTriggers.closeAddressUpdatePopup());
+    this.props.closeAddressUpdatePopup();
   }
 
   render() {
-    const {open, lead, product} = this.props;
+    const {open, lead, product, value} = this.props;
     const {loading} = this.state;
 
     if (!open) {
@@ -56,11 +62,15 @@ class AddressUpdatePopup extends React.Component {
             <AddressInput
               getCheckedZIP={getCheckedZIP}
               loading={loading}
-              onChange={this.handleAddressSelected.bind(this, null)}
+              onChange={this.handleAddressChange.bind(this)}
               onLoadEnds={() => this.setState({loading: false})}
-              onLoadStarts={() => this.setState({loading: true})}
+              onLoadStarts={(place) => {
+                this.setState({loading: true});
+                this.handleAddressChange(place['formated_address']);
+              }}
               onSubmit={this.handleAddressSelected.bind(this)}
-              product={product}/>
+              product={product}
+              value={value}/>
             <hr className="Separator" />
             <div className="Buttons">
               <Button flavor="regular" onClick={this.handleClose.bind(this)}>Cancel</Button>
@@ -80,9 +90,4 @@ class AddressUpdatePopup extends React.Component {
   }
 }
 
-export default connect(state => {
-  return {
-    open: state.address.updateModalOpened,
-    lead: state.address.updateModalLead,
-  };
-})(AddressUpdatePopup);
+export default AddressUpdatePopup;

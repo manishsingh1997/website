@@ -8,9 +8,8 @@ import userIcon from '@ergeon/core-components/src/assets/icon-user.svg';
 
 import {isChristmasTime, showUpcomingFeatures} from 'utils/utils';
 import {getMenuItems} from 'data/customer-app.js';
-// TODO: move AddressUpdatePopup to RequestQuotePage, it should be local popup for RequestQuotePage
-//       And we don't need redux for it.
-import AddressUpdatePopup from './AddressUpdatePopup';
+// TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
+import AddressUpdatePopup from 'containers/AddressUpdatePopup';
 
 import './index.scss';
 

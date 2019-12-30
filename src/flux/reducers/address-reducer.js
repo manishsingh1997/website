@@ -10,6 +10,7 @@ let initialState = {
   product: FENCE_SLUG,
   updateModalLead: null,
   updateModalOpened: false,
+  updateModalValue: '',
   error: null,
 };
 
@@ -22,6 +23,7 @@ const getStateFromLead = function(state, lead) {
     product: (lead && lead['product_slug']) || state.product,
     updateModalLead: null,
     updateModalOpened: false,
+    updateModalValue: lead ? lead.address['formatted_address'] : state.updateModalValue,
     error: null,
   };
 };
@@ -39,18 +41,27 @@ export default function addressReducer(state = initialState, action) {
       return {
         ...state,
         updateModalLead: action.payload,
+        updateModalValue: action.payload.address['formatted_address'],
       };
     case actionTypes.OPEN_POPUP:
       return {
         ...state,
-        updateModalLead: null,
+        updateModalLead: state.lead,
         updateModalOpened: true,
+        updateModalValue: state.address,
       };
     case actionTypes.CLOSE_POPUP:
       return {
         ...state,
         updateModalLead: null,
         updateModalOpened: false,
+        updateModalValue: state.address,
+      };
+    case actionTypes.MODAL_VALUE_UPDATED:
+      return {
+        ...state,
+        updateModalLead: null,
+        updateModalValue: action.payload,
       };
   }
 
