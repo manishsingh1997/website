@@ -31,6 +31,10 @@
   .lead-area {
     display: flex;
     justify-content: space-between;
+
+    @include phone() {
+      display: block;
+    }
   }
 
   &__lead-form {
@@ -62,7 +66,8 @@
     }
 
     @include phone() {
-      display: none;
+      margin-left: 0;
+      height: auto;
     }
   }
 
