@@ -86,6 +86,10 @@
     
     @include phone() {
       margin-bottom: 28px;
+
+      &:first-child {
+        margin-bottom: 44px;
+      }
     }
 
     &.is-error {
@@ -105,7 +109,7 @@
 
       @include phone() {
         margin-top: 0px;
-        margin-bottom: 0px;
+        margin-bottom: 15px;
       }
     }
   }
@@ -136,7 +140,7 @@
   }
 
 
-  @include phone-small {
+  @include phone {
     h1 {
       font-size: 6vw;
     }
