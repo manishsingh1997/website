@@ -176,6 +176,11 @@ class HelpPage extends React.Component {
       if (event.target.nodeName === 'A') {
         const url = event.target.getAttribute('href');
 
+        if (!url) {
+          console.warn('Help content has a link without href attribute');
+          return;
+        }
+
         if (url[0] === '/') {
           event.preventDefault();
           event.stopPropagation();
