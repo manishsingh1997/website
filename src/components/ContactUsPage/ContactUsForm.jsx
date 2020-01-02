@@ -9,6 +9,7 @@ import TextArea from '../common/TextArea';
 import {
   createValidator,
   email,
+  maxLengthFactory,
   required,
 } from 'utils/validation';
 import ls from 'local-storage';
@@ -52,7 +53,7 @@ export default class ContactUsForm extends React.Component {
     super(props);
     const validateField = {
       email: [required, email],
-      message: [required],
+      message: [required, maxLengthFactory(4096)],
       name: [required],
     };
     this.validator = createValidator(validateField);

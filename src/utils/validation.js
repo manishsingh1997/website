@@ -14,6 +14,15 @@ export const email = (value) => {
   }
 };
 
+export const maxLengthFactory = (lengthLimit) => {
+  const maxLength = (value) => {
+    if (!isEmpty(value) && value.length >= lengthLimit) {
+      return `Message length should be less than ${lengthLimit} symbols`;
+    }
+  };
+  return maxLength;
+};
+
 export const phone = (value) => {
   if (!isEmpty(value) && !phoneRe.test(value)) {
     return 'Phone number format: (555) 555-5555';
