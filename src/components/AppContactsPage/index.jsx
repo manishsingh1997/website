@@ -26,8 +26,8 @@ class AppContactsPage extends React.Component {
   static contextType = CustomerGIDContext;
 
   getAdditional(contact, type) {
-    const additionalInfos = contact && contact[type];
-    return additionalInfos && additionalInfos.map(info => info['formatted_identifier']);
+    const additionalInfos = (contact && contact[type]) || [];
+    return additionalInfos.map(info => info['formatted_identifier']);
   }
 
   renderError(error) {
@@ -87,7 +87,7 @@ class AppContactsPage extends React.Component {
           <div>Phone</div>
           <div>{primaryPhoneInfo && primaryPhoneInfo['formatted_identifier'] || '-'}</div>
         </div>
-        {(additionalEmails || additionalPhones) && (
+        {(additionalEmails.length || additionalPhones.length) ? (
           <div className="data-row">
             <div>Additional Contacts</div>
             <div>
@@ -95,7 +95,7 @@ class AppContactsPage extends React.Component {
               {additionalPhones && this.renderAdditionalIdentifiers('Phones', additionalPhones)}
             </div>
           </div>
-        )}
+        ): null}
       </div>
     );
   }
