@@ -1,10 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import AppLoader from 'components/common/AppLoader';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
+import withDataLoader from 'components/common/withDataLoader';
 
 import './index.scss';
+
+const withDataLoaderWrapper = withDataLoader({
+  fetchData: (props, context) => {
+    const {contacts, getContacts} = props;
+    const customerGID = context;
+    if (!contacts) {
+      getContacts(customerGID);
+    }
+  },
+  isLoading: (props) => props.isListLoading,
+  getError: (props) => props.listError,
+  contextType: CustomerGIDContext,
+});
 
 class AppContactsPage extends React.Component {
 
@@ -15,29 +28,9 @@ class AppContactsPage extends React.Component {
     listError: PropTypes.object,
   };
 
-  componentDidMount() {
-    const {contacts, getContacts} = this.props;
-    if (!contacts) {
-      const customerGID = this.context;
-      getContacts(customerGID);
-    }
-  }
-
-  static contextType = CustomerGIDContext;
-
   getAdditional(contact, type) {
     const additionalInfos = (contact && contact[type]) || [];
     return additionalInfos.map(info => info['formatted_identifier']);
-  }
-
-  renderError(error) {
-    console.warn(error);
-    return (
-      <div className="center error">
-        <p>Something unexpected happened, we are already notified about this.</p>
-        <p>Please try to reload the page.</p>
-      </div>
-    );
   }
 
   renderAdditionalIdentifiers(title, idenitifiers) {
@@ -54,15 +47,6 @@ class AppContactsPage extends React.Component {
   }
 
   render() {
-    const {isListLoading, listError} = this.props;
-    if (isListLoading) {
-      return <AppLoader />;
-    }
-
-    if (listError) {
-      return this.renderError(listError);
-    }
-
     const {contacts} = this.props;
 
     const primaryContact = contacts && contacts.find((contact => contact['is_primary']));
@@ -101,4 +85,4 @@ class AppContactsPage extends React.Component {
   }
 }
 
-export default AppContactsPage;
+export default withDataLoaderWrapper(AppContactsPage);
