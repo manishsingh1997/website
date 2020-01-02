@@ -1,4 +1,5 @@
 import authService from 'utils/auth';
+import {parseAPIError} from 'utils/api';
 
 export const actionTypes = {
   'AUTH_CODE_ACTIVATION_START': 'AUTH_CODE_ACTIVATION_START',
@@ -29,7 +30,7 @@ export const authenticateUserWithCode = (code) => {
     } catch (otpError) {
       dispatch({
         type: actionTypes.AUTH_CODE_ACTIVATION_ERROR,
-        error: _parseAuthError(otpError),
+        error: parseAPIError(otpError),
       });
     }
   };
@@ -50,7 +51,7 @@ export const getCurrentUser = () => {
     } catch (userError) {
       dispatch({
         type: actionTypes.AUTH_GET_USER_ERROR,
-        error: _parseAuthError(userError),
+        error: parseAPIError(userError),
       });
     }
   };
@@ -70,16 +71,8 @@ export const logout = () => {
     } catch (otpError) {
       dispatch({
         type: actionTypes.AUTH_LOGOUT_ERROR,
-        error: _parseAuthError(otpError),
+        error: parseAPIError(otpError),
       });
     }
-  };
-};
-
-const _parseAuthError = (error) => {
-  return {
-    response: error.response,
-    statusCode: error.response && error.response.status,
-    data: error.response && error.response.data,
   };
 };

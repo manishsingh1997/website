@@ -5,10 +5,12 @@ import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
 
 import {NavLinkContext} from '@ergeon/core-components';
-import {Button, Spinner} from '@ergeon/core-components';
+import {Button} from '@ergeon/core-components';
 
+import CustomerGIDContext from 'context-providers/CustomerGIDContext';
+import AppLoader from 'components/common/AppLoader';
 import SingleCard from 'components/common/SingleCard';
-import {getMenuItems} from 'data/customer-app.js';
+import {getMenuItems} from 'data/customer-app';
 
 import './index.scss';
 
@@ -23,14 +25,6 @@ export default class AppLayout extends React.Component {
   state = {
     expandedSidebar: false,
   };
-
-  renderLoader() {
-    return (
-      <div className="customer-app-loader">
-        <Spinner active={true} borderWidth={0.10} color="green" size={48}/>
-      </div>
-    );
-  }
 
   renderAnonymousUser() {
     const content = (
@@ -81,11 +75,12 @@ export default class AppLayout extends React.Component {
   }
 
   render() {
-    const {auth: {isAuthLoading, isUserLoading, user}} = this.props;
+    const {auth: {isAuthLoading, isUserLoading, user}, match} = this.props;
 
     const isLoading = isAuthLoading || isUserLoading;
 
     if (!isLoading && !user) {
+      // TODO: if auth has error - show message with error
       return this.renderAnonymousUser();
     }
 
@@ -96,7 +91,11 @@ export default class AppLayout extends React.Component {
             {this.renderSideBar()}
           </div>
           <div className="customer-app-content card shadow soft-border">
-            {isLoading ? this.renderLoader() : this.props.children}
+            {isLoading ? <AppLoader />: (
+              <CustomerGIDContext.Provider value={match.params.customerGid}>
+                {this.props.children}
+              </CustomerGIDContext.Provider>
+            )}
           </div>
         </div>
       </div>

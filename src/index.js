@@ -13,6 +13,7 @@ import {
 import customScripts from 'website/custom-scripts';
 
 import AboutPage from 'components/AboutPage';
+import AppContactsPage from 'containers/AppContactsPage';
 import AppLayout from 'containers/AppLayout';
 import AppOrderListPage from 'containers/AppOrderListPage';
 import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
@@ -52,6 +53,7 @@ const renderPhotoGalleryRedirect = (productSlug, category) => {
 
 const CustomerApp = ({match}) => (
   <AppLayout match={match}>
+    <Route component={AppContactsPage} path={`${match.url}/contacts`} />
     <Route component={AppOrderListPage} path={`${match.url}/orders`} />
   </AppLayout>
 );
