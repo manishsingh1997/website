@@ -23,11 +23,21 @@
 
     @include phone() {
       margin-top: 0;
-      margin-bottom: 0;
+      margin-bottom: 14px;
+
+      &:first-child {
+        margin-bottom: 44px;
+      }
     }
 
     &.is-error {
       input {
+        border-color: $red;
+        background-color: $white;
+        color: $red;
+      }
+
+      textarea {
         border-color: $red;
         background-color: $white;
         color: $red;
@@ -39,14 +49,14 @@
 
       @include phone() {
         margin-top: 0;
-        margin-bottom: 0;
+        margin-bottom: 15px;
       }
     }
   }
 
   .Form-actions {
     border-top: 1px solid $gray-4;
-    margin-top: 30px;
+    margin-top: 50px;
     position: relative;
 
     .Form-error {
@@ -72,8 +82,7 @@
     margin-top: 30px;
   }
 
-
-  @include phone-small {
+  @include phone() {
     h1 {
       font-size: 6vw;
     }
