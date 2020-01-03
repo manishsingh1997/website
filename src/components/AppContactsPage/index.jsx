@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import withDataLoader from 'components/common/withDataLoader';
+import DataRow from 'components/common/DataRow';
 
 import './index.scss';
 
@@ -56,30 +57,22 @@ class AppContactsPage extends React.Component {
     const additionalEmails = this.getAdditional(primaryContact, 'additional_emails');
     const additionalPhones = this.getAdditional(primaryContact, 'additional_phones');
 
+    const additionalIdentifiers = additionalEmails.length || additionalPhones.length ? (
+      <React.Fragment>
+        {additionalEmails.length > 0 ? this.renderAdditionalIdentifiers('Emails', additionalEmails): null}
+        {additionalPhones.length > 0 ? this.renderAdditionalIdentifiers('Phones', additionalPhones): null}
+      </React.Fragment>
+    ): null;
+
     return (
       <div className="contacts-page">
         <h4>Contacts</h4>
-        <div className="data-row">
-          <div>Full Name</div>
-          <div>{primaryContact && primaryContact.full_name || '-'}</div>
-        </div>
-        <div className="data-row">
-          <div>Email</div>
-          <div>{primaryEmailInfo && primaryEmailInfo['formatted_identifier'] || '-'}</div>
-        </div>
-        <div className="data-row">
-          <div>Phone</div>
-          <div>{primaryPhoneInfo && primaryPhoneInfo['formatted_identifier'] || '-'}</div>
-        </div>
-        {(additionalEmails.length || additionalPhones.length) ? (
-          <div className="data-row">
-            <div>Additional Contacts</div>
-            <div>
-              {additionalEmails && this.renderAdditionalIdentifiers('Emails', additionalEmails)}
-              {additionalPhones && this.renderAdditionalIdentifiers('Phones', additionalPhones)}
-            </div>
-          </div>
-        ): null}
+        <DataRow title="Full Name" value={primaryContact && primaryContact['full_name']}/>
+        <DataRow title="Email" value={primaryEmailInfo && primaryEmailInfo['formatted_identifier']}/>
+        <DataRow title="Phone" value={primaryPhoneInfo && primaryPhoneInfo['formatted_identifier']}/>
+        {additionalIdentifiers &&
+          <DataRow title="Additional Contacts" value={additionalIdentifiers} />
+        }
       </div>
     );
   }

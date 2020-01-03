@@ -1,0 +1,17 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.customer-app-data-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin: 10px;
+
+  > div:first-child {
+    margin-right: $h-20;
+    font-size: 14px;
+    color: $gray-1;
+    min-width: 100px;
+    max-width: 100px;
+    text-align: right;
+  }
+}
