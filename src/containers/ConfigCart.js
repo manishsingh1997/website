@@ -5,18 +5,30 @@ import ConfigCart from 'components/RequestQuotePage/ConfigCart';
 
 const mapStateToProps = ({address, cart}) => {
   return {
-    address: address.address,
+    zipcode: address.zipcode,
     configs: cart.configs,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateConfig: (index, item) => {
-      dispatch(cartActionTriggers.updateConfig(index, item));
+    addConfig: (item) => {
+      dispatch(cartActionTriggers.addConfig(item));
+    },
+    updateConfig: (index, config) => {
+      dispatch(cartActionTriggers.updateConfig(index, config));
     },
     removeConfig: (index) => {
       dispatch(cartActionTriggers.removeConfig(index));
+    },
+    addConfigFromSchema: ({zipcode, data, configs, schemaCode, length}, index) => {
+      dispatch(cartActionTriggers.addConfigFromSchema({
+        zipcode,
+        data,
+        schemaCode,
+        length,
+        configs,
+      }, index));
     },
   };
 };

@@ -25,9 +25,19 @@
       .config-item__content {
         display: flex;
         .config-item__preview {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           margin-right: 60px;
           min-width: 120px;
           height: 120px;
+          background-color: $gray-6;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+
           @include phone() {
             height: 60px;
             min-width: 60px;
@@ -208,5 +218,26 @@
     line-height: $line-height-label;
     margin-top: 20px;
     color: $gray-1;
+  }
+
+  .config-cart__editor {
+    height: 500px;
+    margin-bottom: 50px;
+    position: relative;
+
+    &-buttons {
+      position: absolute;
+      background-color: #F8FBF7;
+      padding: 10px;
+      top: 0;
+      right: 0;
+    }
+
+    &-cancel-button {
+      margin-right: 20px;
+    }
+
+    &-done-button {
+    }
   }
 }

@@ -41,6 +41,7 @@ const mapDispatchToProps = (dispatch) => {
             zipcode,
             data,
             schemaCode,
+            length,
             configs,
           })));
         } else {

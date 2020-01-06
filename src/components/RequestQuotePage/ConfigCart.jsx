@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {reduce} from 'lodash';
 
-import {Button} from '@ergeon/core-components';
-import {constants} from '@ergeon/3d-lib';
+import {Button, Spinner} from '@ergeon/core-components';
+import {constants, calcUtils} from '@ergeon/3d-lib';
 
-import config from 'website/config';
 import TextCollapse from 'components/RequestQuotePage/TextCollapse';
+import InlineEditor from 'components/RequestQuotePage/InlineEditor';
 
 import './ConfigCart.scss';
 class ConfigCart extends React.Component {
   static propTypes = {
-    address: PropTypes.string,
+    addConfigFromSchema: PropTypes.func,
     configs: PropTypes.arrayOf(PropTypes.shape({
       preview: PropTypes.string,
       price: PropTypes.number,
@@ -20,10 +20,16 @@ class ConfigCart extends React.Component {
     })),
     removeConfig: PropTypes.func.isRequired,
     updateConfig: PropTypes.func.isRequired,
+    zipcode: PropTypes.string,
   };
 
   static defaultProps = {
     configs: [],
+  };
+
+  state = {
+    showInlineEditor: false,
+    inlineEditorIndex: -1,
   };
 
   getTotal() {
@@ -37,6 +43,13 @@ class ConfigCart extends React.Component {
   isItFence(config) {
     const {CATALOG_TYPE_FENCE} = constants;
     return config.catalog_type === CATALOG_TYPE_FENCE;
+  }
+
+  editConfig(index) {
+    this.setState({
+      showInlineEditor: true,
+      inlineEditorIndex: index,
+    });
   }
 
   removeConfig(index) {
@@ -53,17 +66,69 @@ class ConfigCart extends React.Component {
     });
   }
 
+  onCloseEditorClick() {
+    this.setState({
+      showInlineEditor: false,
+    });
+  }
+
+  onDoneEditorClick(editorModel, index = -1) {
+    const {configs, zipcode} = this.props;
+    const data = calcUtils.getValueFromUrl(editorModel);
+    const schemaCode = calcUtils.getSchemaCodeFromState(data);
+
+    this.setState({
+      showInlineEditor: false,
+      inlineEditorIndex: -1,
+    });
+
+    this.props.addConfigFromSchema({
+      length: index !== -1 ? configs[index].units : 1,
+      data,
+      schemaCode,
+      configs,
+      zipcode,
+    }, index);
+  }
+
+  onAddConfigClick() {
+    this.setState({
+      showInlineEditor: true,
+      inlineEditorIndex: -1,
+    });
+  }
+
   renderDescription(config) {
     return <TextCollapse>{config.description}</TextCollapse>;
   }
 
   renderConfig(config, index) {
     const isFenceConfig = this.isItFence(config);
+    const {showInlineEditor, inlineEditorIndex} = this.state;
+
+    if (showInlineEditor && inlineEditorIndex === index) {
+      return (
+        <div key={config.id}>
+          <InlineEditor
+            initialConfig={`?${config.code}`}
+            onClose={this.onCloseEditorClick.bind(this)}
+            onDone={(editorModel) => this.onDoneEditorClick(editorModel, index)} />
+          <hr />
+        </div>
+      );
+    }
+
     return (
-      <div>
+      <div key={config.id}>
         <div className="config-item">
           <div className="config-item__content">
-            <img className="config-item__preview" src={config.preview}/>
+            <div className="config-item__preview">
+              {
+                config.preview ?
+                  <img src={config.preview}/> :
+                  <Spinner active={true} borderWidth={.15} color="green" size={64} />
+              }
+            </div>
             <div className="config-item__info">
               <div className="config-item__title">
                 <span>{isFenceConfig ? 'Fence' : 'Gate'}</span>
@@ -89,6 +154,7 @@ class ConfigCart extends React.Component {
               </div>
               <div className="config-item__actions">
                 <div className="config-item__buttons">
+                  <Button className="edit-config-button" onClick={this.editConfig.bind(this, index)}>Edit</Button>
                   <Button className="delete-config-button" onClick={this.removeConfig.bind(this, index)}>Delete</Button>
                 </div>
                 {
@@ -121,9 +187,8 @@ class ConfigCart extends React.Component {
   }
 
   render() {
-    const {configs, address} = this.props;
-    const addressParam = address ? `address=${address}` : '';
-    const addConfigHref = `${config.fencequotingHost}/calculator?${addressParam}`;
+    const {configs} = this.props;
+    const {showInlineEditor, inlineEditorIndex} = this.state;
 
     return (
       <div className="config-cart">
@@ -138,19 +203,20 @@ class ConfigCart extends React.Component {
             </div>
           }
         </div>
+        {(showInlineEditor && inlineEditorIndex === -1) ? <InlineEditor
+          onClose={this.onCloseEditorClick.bind(this)}
+          onDone={this.onDoneEditorClick.bind(this)} /> : null}
         <div className="config-cart__resume">
-          {
-            !configs.length && <Button
-              asAnchor
-              class="AddConfigButton"
-              flavor="regular"
-              href={addConfigHref /* TODO: Button should show inline editor */}
-              taste="line">
-              Add a config
-            </Button>
-          }
+          <Button
+            asAnchor
+            class="AddConfigButton"
+            flavor="regular"
+            onClick={this.onAddConfigClick.bind(this)}
+            taste="line">
+            Add a config
+          </Button>
           <div className="config-cart__total">
-            Total estimate: ~${Math.round(this.getTotal())}
+            Total: ~${Math.round(this.getTotal())}
           </div>
         </div>
         <div className="config-cart__disclaimer">

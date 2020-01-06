@@ -22,6 +22,7 @@ export default class RequestQuotePage extends React.Component {
 
   static propTypes = {
     addConfig: PropTypes.func.isRequired,
+    addConfigFromSchema: PropTypes.func.isRequired,
     address: PropTypes.string,
     changeProduct: PropTypes.func,
     configs: PropTypes.array,
@@ -218,6 +219,13 @@ export default class RequestQuotePage extends React.Component {
   }
 
   render() {
+    const {product} = this.state;
+    const {
+      addConfigFromSchema,
+      lead,
+      zipcode,
+    } = this.props;
+
     if (this.state.showThankYou) {
       return (
         <div className="request-quote-page">
@@ -234,15 +242,20 @@ export default class RequestQuotePage extends React.Component {
         <div className="lead-area">
           <div className="request-quote-page__lead-form">
             <LeadForm
-              lead={this.props.lead || {}}
+              lead={lead || {}}
               onProductChange={product => this.setState({product})}
               onSubmit={() => this.setState({showThankYou: true})}
-              product={this.state.product}
+              product={product}
               showProductField/>
           </div>
           {this.renderSignupMap()}
         </div>
-        {this.state.product === FENCE_SLUG && <ConfigCart />}
+        {
+          product === FENCE_SLUG &&
+          <ConfigCart
+            addConfigFromSchema={addConfigFromSchema}
+            zipcode={zipcode}/>
+        }
       </div>
     );
   }

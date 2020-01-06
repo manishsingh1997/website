@@ -28,29 +28,40 @@ export const actionTriggers = {
     payload: lead,
   }),
   // eslint-disable-next-line object-shorthand
-  addConfigFromSchema: function({zipcode, data, schemaCode, length, configs}) {
+  addConfigFromSchema: function({zipcode, data, schemaCode, length, configs}, index) {
     return dispatch => {
       const {TYPES, CATALOG_TYPE_FENCE, CATALOG_TYPE_GATE} = constants;
+      let item;
 
       if (some(configs, config => config.code == schemaCode)) return;
 
       return getPriceAndDescription(data, zipcode)
-        .then(priceAndDescription => calcUtils.getPreviewImage(data)
-          .then(preview => {
-            const itemId = random(0, 1, true).toString(36).slice(2);
-            const item = {
-              id: itemId,
-              'catalog_type': data[TYPES] ? CATALOG_TYPE_FENCE : CATALOG_TYPE_GATE,
-              code: schemaCode,
-              product: data,
-              preview,
-              description: priceAndDescription['description'],
-              price: priceAndDescription['unit_price'],
-              units: length || 1,
-            };
-            return dispatch(this.addConfig(item));
-          })
-        );
+        .then(priceAndDescription => {
+          const itemId = random(0, 1, true).toString(36).slice(2);
+          item = {
+            id: itemId,
+            'catalog_type': data[TYPES] ? CATALOG_TYPE_FENCE : CATALOG_TYPE_GATE,
+            code: schemaCode,
+            product: data,
+            preview: '',
+            description: priceAndDescription['description'],
+            price: priceAndDescription['unit_price'],
+            units: length || 1,
+          };
+
+          if (index !== -1) {
+            return dispatch(this.updateConfig(index, item));
+          }
+
+          return dispatch(this.addConfig(item));
+        })
+        .then(() => calcUtils.getPreviewImage(data))
+        .then(preview => {
+          dispatch(this.updateConfig((index !== -1 ? index : configs.length), {
+            ...item,
+            preview,
+          }));
+        });
     };
   },
 };
