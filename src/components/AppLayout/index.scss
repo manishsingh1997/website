@@ -162,4 +162,35 @@
       padding: 0 20px;
     }
   }
+
+  // TODO: create a reusable component with this class:
+  .app-subcard {
+    
+    &.card.shadow {
+      background: $gray-6;
+    }
+
+    h6 {
+      border-bottom: 1px solid $gray-4;
+      padding-bottom: $v-16;
+      margin-bottom: $v-16;
+
+      .flex-wrapper {
+
+        @include tablet() {
+          flex-direction: row;
+        }
+
+      }
+    }
+  }
+
+
+  // TODO: move below classes to erg-core-components/main.scss:
+  .flex-row {
+    &.align-center {
+      align-items: center;
+    }
+  }
+
 }

@@ -4,7 +4,6 @@ import {Link, NavLink} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
 
-import {NavLinkContext} from '@ergeon/core-components';
 import {Button} from '@ergeon/core-components';
 
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
@@ -49,28 +48,26 @@ export default class AppLayout extends React.Component {
     const {expandedSidebar} = this.state;
 
     return (
-      <NavLinkContext.Provider value={NavLink}>
-        <div className={classNames({'sidebar--expanded': expandedSidebar})} >
-          <div className="sidebar-title" onClick={() => this.setState({expandedSidebar: !expandedSidebar})}>
-            Menu
-            <i className="icon-arrow-down" />
-          </div>
-          <ul className="siblings-list">
-            {getMenuItems(match.url).map(
-              (menuItem => (
-                <NavLink activeClassName="active-link" key={`app-menu-${menuItem.title}`} to={menuItem.path}>
-                  <li className="siblings-list-item">
-                    <div className="menu-icon-wrapper">
-                      <ReactSVG src={menuItem.iconSVG} />
-                    </div>
-                    <div className="siblings-list-item__wrapper">{menuItem.title}</div>
-                  </li>
-                </NavLink>
-              ))
-            )}
-          </ul>
+      <div className={classNames({'sidebar--expanded': expandedSidebar})} >
+        <div className="sidebar-title" onClick={() => this.setState({expandedSidebar: !expandedSidebar})}>
+          Menu
+          <i className="icon-arrow-down" />
         </div>
-      </NavLinkContext.Provider>
+        <ul className="siblings-list">
+          {getMenuItems(match.url).map(
+            (menuItem => (
+              <NavLink activeClassName="active-link" key={`app-menu-${menuItem.title}`} to={menuItem.path}>
+                <li className="siblings-list-item">
+                  <div className="menu-icon-wrapper">
+                    <ReactSVG src={menuItem.iconSVG} />
+                  </div>
+                  <div className="siblings-list-item__wrapper">{menuItem.title}</div>
+                </li>
+              </NavLink>
+            ))
+          )}
+        </ul>
+      </div>
     );
   }
 

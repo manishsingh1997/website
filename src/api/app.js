@@ -19,3 +19,12 @@ export const getCustomerContacts = (customerGID) => {
     headers: getCommonHeaders(),
   });
 };
+
+export const getCustomerOrders = (customerGID) => {
+  return axios({
+    url: `${getBaseAPIURL(customerGID)}/orders`,
+    method: 'get',
+    responseType: 'json',
+    headers: getCommonHeaders(),
+  });
+};
