@@ -38,7 +38,7 @@ export const actionTriggers = {
         )
         .catch(error => {
           console.error('error trying to update lead', error);
-          return zipcode;
+          return DEFAULT_ZIP;
         });
     };
   },

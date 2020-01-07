@@ -28,7 +28,7 @@ export const actionTriggers = {
     payload: lead,
   }),
   // eslint-disable-next-line object-shorthand
-  addConfigFromSchema: function({zipcode, data, schemaCode, length, configs}, index) {
+  addConfigFromSchema: function({zipcode, data, schemaCode, length, configs}, index = -1) {
     return dispatch => {
       const {TYPES, CATALOG_TYPE_FENCE, CATALOG_TYPE_GATE} = constants;
       let item;
