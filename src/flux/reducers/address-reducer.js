@@ -15,12 +15,13 @@ let initialState = {
 };
 
 const getStateFromLead = function(state, lead) {
+  const product = (lead && lead['product_slug']) || state.product;
   return {
     ...state,
     address: lead ? lead.address['formatted_address'] : '',
     lead,
-    zipcode: lead.zipcode || state.zipcode,
-    product: (lead && lead['product_slug']) || state.product,
+    zipcode: (lead && lead.productAvailability.products[product]) ? lead.address.zipcode : constants.DEFAULT_ZIP,
+    product,
     updateModalLead: null,
     updateModalOpened: false,
     updateModalValue: lead ? lead.address['formatted_address'] : state.updateModalValue,
