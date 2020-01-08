@@ -208,8 +208,9 @@ class ConfigCart extends React.Component {
           onDone={this.onDoneEditorClick.bind(this)} /> : null}
         <div className="config-cart__resume">
           <Button
-            asAnchor
-            class="AddConfigButton"
+            asAnchor={!(showInlineEditor && inlineEditorIndex === -1)}
+            className="add-config-button"
+            disabled={showInlineEditor && inlineEditorIndex === -1}
             flavor="regular"
             onClick={this.onAddConfigClick.bind(this)}
             taste="line">

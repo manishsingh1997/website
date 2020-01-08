@@ -188,19 +188,11 @@
     align-items: center;
     flex-wrap: wrap;
 
-    .add-config-button {
-      display: inline-block;
-      width: 220px;
-      background-color: $gray-5;
-      margin: 0;
-        &:hover {
-          background-color: $gray-4;
-        }
-        @include phone() {
-            width: 100%;
-        }
-      img {
-        margin-right: 5px;
+    .add-config-button[disabled] {
+      cursor: default;
+
+      &:hover {
+        background-color: #DDD;
       }
     }
 
@@ -227,7 +219,6 @@
 
     &-buttons {
       position: absolute;
-      background-color: #F8FBF7;
       padding: 10px;
       top: 0;
       right: 0;
