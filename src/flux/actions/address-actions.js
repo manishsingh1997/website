@@ -24,7 +24,7 @@ export const actionTriggers = {
         .then(
           placeData => getCheckedZIP(placeData.zipcode).then(
             checkedZipResponse => {
-              zipcode = checkedZipResponse.data.supported ? placeData.zipcode : DEFAULT_ZIP;
+              zipcode = checkedZipResponse.data.products[product] ? placeData.zipcode : DEFAULT_ZIP;
               dispatch(this.updateLead({
                 address: placeData,
                 'product_slug': product,
