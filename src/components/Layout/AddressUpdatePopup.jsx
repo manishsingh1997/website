@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Portal} from 'react-portal';
 
 import {AddressInput, Button} from '@ergeon/core-components';
+import {constants} from '@ergeon/3d-lib';
 import {getCheckedZIP} from 'api/lead';
 import {trackAddressEntered} from 'utils/analytics';
 
@@ -27,7 +28,14 @@ class AddressUpdatePopup extends React.Component {
   };
 
   handleAddressSelected(lead) {
-    this.props.updateModalLead(lead);
+    const zipcode = (lead && lead.productAvailability.products[lead.product_slug]) ?
+      lead.address.zipcode :
+      constants.DEFAULT_ZIP;
+
+    this.props.updateModalLead({
+      ...lead,
+      zipcode,
+    });
   }
 
   handleAddressChange(value) {

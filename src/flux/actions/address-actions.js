@@ -1,6 +1,7 @@
 import {constants} from '@ergeon/3d-lib';
 
-import {getPlaceData, getCheckedZIP} from 'api/lead';
+import {getPlaceData, getCheckedZIP, getPriceAndDescription} from 'api/lead';
+import {actionTriggers as cartActionTriggers} from 'flux/actions/cart-actions';
 
 export const actionTypes = {
   'LEAD_UPDATED': 'LEAD_UPDATED',
@@ -11,10 +12,26 @@ export const actionTypes = {
 };
 
 export const actionTriggers = {
-  updateLead: (lead) => ({
-    type: actionTypes.LEAD_UPDATED,
-    payload: lead,
-  }),
+  updateLead: (lead) => {
+    return (dispatch, getState) => {
+      const {cart: {configs}} = getState();
+
+      const configUpdates = Promise.all(configs.map(
+        (config, index) => getPriceAndDescription(config.product, lead.zipcode).then(
+          priceAndDescription => dispatch(cartActionTriggers.updateConfig(index, {
+            ...config,
+            description: priceAndDescription['description'],
+            price: priceAndDescription['unit_price'],
+          }))
+        )
+      ));
+
+      return configUpdates.then(() => dispatch({
+        type: actionTypes.LEAD_UPDATED,
+        payload: lead,
+      }));
+    };
+  },
   // eslint-disable-next-line object-shorthand
   updateLeadFromAddress: function({address, product, zipcode}) {
     const {DEFAULT_ZIP} = constants;
