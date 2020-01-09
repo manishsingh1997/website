@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
+import {constants, calcUtils} from '@ergeon/3d-lib';
 
 import {AddressInput, Button, Spinner} from '@ergeon/core-components';
 import TextInput from './TextInput';
@@ -71,6 +72,7 @@ const getInitialState = (showNoteField = false, props = {}) => {
 
 export default class LeadForm extends React.Component {
   static propTypes = {
+    configs: PropTypes.array,
     lead: PropTypes.object,
     onProductChange: PropTypes.func,
     onSubmit: PropTypes.func,
@@ -116,7 +118,10 @@ export default class LeadForm extends React.Component {
         category: 'action',
         data: submitData,
       });
-      submitLeadArrived(submitData).then((res) => {
+      submitLeadArrived({
+        ...submitData,
+        order: this.getOrder(),
+      }).then((res) => {
         identify(data);
         track(CUSTOMER_LEAD_CREATED, {
           email: data.email,
@@ -168,6 +173,25 @@ export default class LeadForm extends React.Component {
       this.props.onProductChange(value);
     }
   };
+
+  getOrder() {
+    const {CATALOG_TYPE_FENCE, CATALOG_ID_FENCE, CATALOG_ID_GATE} = constants;
+
+    return this.props.configs.map(item => {
+      let schema = calcUtils.getParams(`?${item.code}`).schema.split(',');
+      schema = schema.map(number => parseInt(number, 10));
+      const code = calcUtils.getParams(`?${item.code}`).code.split(',');
+      return {
+        'catalog_type': item.catalog_type,
+        'catalog_id': item.catalog_type === CATALOG_TYPE_FENCE ? CATALOG_ID_FENCE : CATALOG_ID_GATE,
+        schema,
+        code,
+        description: item.description,
+        price: item.price,
+        units: item.units,
+      };
+    });
+  }
 
   render() {
     const {showAddressInput} = this.props;

@@ -224,6 +224,7 @@ export default class RequestQuotePage extends React.Component {
       addConfigFromSchema,
       lead,
       zipcode,
+      configs,
     } = this.props;
 
     if (this.state.showThankYou) {
@@ -242,6 +243,7 @@ export default class RequestQuotePage extends React.Component {
         <div className="lead-area">
           <div className="request-quote-page__lead-form">
             <LeadForm
+              configs={configs}
               lead={lead || {}}
               onProductChange={product => this.setState({product})}
               onSubmit={() => this.setState({showThankYou: true})}
