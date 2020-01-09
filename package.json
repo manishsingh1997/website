@@ -50,7 +50,7 @@
     "webpack-dev-server": "^3.5.1"
   },
   "dependencies": {
-    "@ergeon/3d-lib": "^1.8.3",
+    "@ergeon/3d-lib": "1.8.4",
     "@ergeon/core-components": "^1.8.0",
     "@ergeon/erg-customer-auth": "^0.2.0",
     "@ergeon/map-component": "^1.5.2",
