@@ -16,7 +16,10 @@
   .config-cart__list {
 
     hr {
-      margin: 20px 0;
+      margin: $v-24 0;
+      border: none;
+      height: 1px;
+      background-color: $gray-4;
     }
 
     .config-item {
@@ -28,13 +31,13 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          margin-right: 60px;
-          min-width: 120px;
+          margin-right: 40px;
+          width: 120px;
           height: 120px;
           background-color: $gray-6;
 
           img {
-            width: 100%;
+            width: auto;
             height: 100%;
           }
 
