@@ -115,9 +115,6 @@ export default class LeadForm extends React.Component {
       const order = this.getOrder();
       submitData['address'] = data.address || lead.address;
       submitData['object'] = {...submitData.object, order};
-      submitData['object']['advanceEditorUrl'] = order.length ?
-        getAdvancedEditorUrl(order[0], lead.address.zipcode)
-        : '';
       Sentry.addBreadcrumb({
         message: 'Lead submit',
         category: 'action',
@@ -173,6 +170,7 @@ export default class LeadForm extends React.Component {
   };
 
   getOrder() {
+    const {lead} = this.props;
     const {CATALOG_TYPE_FENCE, CATALOG_ID_FENCE, CATALOG_ID_GATE} = constants;
 
     return this.props.configs.map(item => {
@@ -180,6 +178,10 @@ export default class LeadForm extends React.Component {
       schema = schema.map(number => parseInt(number, 10));
       const code = calcUtils.getParams(`?${item.code}`).code.split(',');
       return {
+        getAdvancedEditorUrl: getAdvancedEditorUrl(
+          {schema, code, 'catalog_type': item.catalog_type},
+          lead.address.zipcode
+        ),
         'catalog_type': item.catalog_type,
         'catalog_id': item.catalog_type === CATALOG_TYPE_FENCE ? CATALOG_ID_FENCE : CATALOG_ID_GATE,
         schema,
