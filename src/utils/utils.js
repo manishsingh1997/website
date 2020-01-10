@@ -1,6 +1,7 @@
 import queryString from 'query-string';
 
 import {isChristmasTime as baseIsChristmasTime} from '@ergeon/core-components';
+import {constants} from '@ergeon/3d-lib/';
 
 import config, {DEVELOPMENT} from 'website/config';
 import {getUserAgent, getUserUuid, getUTM} from './analytics';
@@ -71,4 +72,27 @@ export const getEventData = (data) => {
   };
   submitData = cleanDeep(submitData);
   return submitData;
+};
+
+export const getAdvancedEditorUrl = (order, zipcode) => {
+  const {CATALOG_TYPE_FENCE} = constants;
+  const sep = ',';
+  let query = '';
+  if (order['catalog_type'] == CATALOG_TYPE_FENCE) {
+    query = '/fence3d?schema=';
+  } else {
+    query = '/gate3d?schema=';
+  }
+  order.schema.forEach(key => {
+    query += key + sep;
+  });
+  query = query.slice(0, -1);
+  query += '&code=';
+  order.code.forEach(key => {
+    query += key + sep;
+  });
+  query = query.slice(0, -1);
+  query += '&options=true&mode=3d';
+  query += `&zipcode=${zipcode}`;
+  return query;
 };

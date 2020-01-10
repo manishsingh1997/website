@@ -35,7 +35,7 @@ import {
 import {products, DEFAULT_SOURCE_VALUE} from 'website/constants';
 
 import './LeadForm.scss';
-import {getEventData} from '../../utils/utils';
+import {getEventData, getAdvancedEditorUrl} from '../../utils/utils';
 
 const stringifyAddress = (address) => {
   if (address !== null && address !== undefined) {
@@ -112,17 +112,18 @@ export default class LeadForm extends React.Component {
         errors: null,
       });
       const submitData = getEventData(data);
+      const order = this.getOrder();
       submitData['address'] = data.address || lead.address;
-      submitData['object'] = {...submitData.object, order: this.getOrder()};
+      submitData['object'] = {...submitData.object, order};
+      submitData['object']['advanceEditorUrl'] = order.length ?
+        getAdvancedEditorUrl(order[0], lead.address.zipcode)
+        : '';
       Sentry.addBreadcrumb({
         message: 'Lead submit',
         category: 'action',
         data: submitData,
       });
-      submitLeadArrived({
-        ...submitData,
-        order: this.getOrder(),
-      }).then((res) => {
+      submitLeadArrived(submitData).then((res) => {
         identify(data);
         track(CUSTOMER_LEAD_CREATED, {
           ...submitData,
