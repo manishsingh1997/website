@@ -113,6 +113,7 @@ export default class LeadForm extends React.Component {
       });
       const submitData = getEventData(data);
       submitData['address'] = data.address || lead.address;
+      submitData['object'] = {...submitData.object, order: this.getOrder()};
       Sentry.addBreadcrumb({
         message: 'Lead submit',
         category: 'action',
@@ -124,11 +125,7 @@ export default class LeadForm extends React.Component {
       }).then((res) => {
         identify(data);
         track(CUSTOMER_LEAD_CREATED, {
-          email: data.email,
-          name: data.name,
-          phone: data.phone,
-          comment: data.comment,
-          product: data.product,
+          ...submitData,
           source: DEFAULT_SOURCE_VALUE,
         });
         this.setState(getInitialState(false, this.props));
