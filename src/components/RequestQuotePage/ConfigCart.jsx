@@ -112,7 +112,8 @@ class ConfigCart extends React.Component {
           <InlineEditor
             initialConfig={`?${config.code}`}
             onClose={this.onCloseEditorClick.bind(this)}
-            onDone={(editorModel) => this.onDoneEditorClick(editorModel, index)} />
+            onDone={(editorModel) => this.onDoneEditorClick(editorModel, index)}
+            zipcode={this.props.zipcode}/>
           <hr />
         </div>
       );
@@ -205,7 +206,8 @@ class ConfigCart extends React.Component {
         </div>
         {(showInlineEditor && inlineEditorIndex === -1) ? <InlineEditor
           onClose={this.onCloseEditorClick.bind(this)}
-          onDone={this.onDoneEditorClick.bind(this)} /> : null}
+          onDone={this.onDoneEditorClick.bind(this)}
+          zipcode={this.props.zipcode} /> : null}
         <div className="config-cart__resume">
           <Button
             asAnchor={!(showInlineEditor && inlineEditorIndex === -1)}
@@ -217,7 +219,7 @@ class ConfigCart extends React.Component {
             Add a config
           </Button>
           <div className="config-cart__total">
-            Total: ~${Math.round(this.getTotal())}
+            {this.getTotal() ? `Total: ~$${Math.round(this.getTotal())}` : null}
           </div>
         </div>
         <div className="config-cart__disclaimer">

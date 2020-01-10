@@ -231,7 +231,10 @@
       margin-right: 20px;
     }
 
-    &-done-button {
+    &-estimate {
+      float: right;
+      color: $gray-1;
+      font-size: 13px;
     }
   }
 }
