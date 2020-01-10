@@ -178,7 +178,7 @@ export default class LeadForm extends React.Component {
       schema = schema.map(number => parseInt(number, 10));
       const code = calcUtils.getParams(`?${item.code}`).code.split(',');
       return {
-        getAdvancedEditorUrl: getAdvancedEditorUrl(
+        advancedEditorUrl: getAdvancedEditorUrl(
           {schema, code, 'catalog_type': item.catalog_type},
           lead.address.zipcode
         ),
