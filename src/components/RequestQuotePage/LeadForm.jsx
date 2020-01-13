@@ -285,8 +285,8 @@ export default class LeadForm extends React.Component {
         </div>
         <div className="Form-footer">
           By creating an account, you agree to the <br />
-          <a href="https://s3-us-west-2.amazonaws.com/ergeon-terms/terms-of-use.pdf">Terms of Use</a> and <a
-            href="https://s3-us-west-2.amazonaws.com/ergeon-terms/privacy-policy.pdf">Privacy Policy</a>
+          <a href="https://s3-us-west-2.amazonaws.com/ergeon-terms/terms-of-use.pdf" rel="noopener noreferrer" target="_blank" >Terms of Use</a> and <a
+            href="https://s3-us-west-2.amazonaws.com/ergeon-terms/privacy-policy.pdf" rel="noopener noreferrer" target="_blank">Privacy Policy</a>
         </div>
       </form>
     );
