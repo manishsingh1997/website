@@ -2,25 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
-import withDataLoader from 'components/common/withDataLoader';
 import DataRow from 'components/common/DataRow';
+
+import AppPage from 'components/common/AppPage';
 
 import './index.scss';
 
-const withDataLoaderWrapper = withDataLoader({
-  fetchData: (props, context) => {
-    const {contacts, getContacts} = props;
-    const customerGID = context;
-    if (!contacts) {
-      getContacts(customerGID);
-    }
-  },
-  isLoading: (props) => props.isListLoading,
-  getError: (props) => props.listError,
-  contextType: CustomerGIDContext,
-});
-
-class AppContactsPage extends React.Component {
+export default class AppContactsPage extends React.Component {
 
   static propTypes = {
     contacts: PropTypes.array,
@@ -28,6 +16,16 @@ class AppContactsPage extends React.Component {
     isListLoading: PropTypes.bool.isRequired,
     listError: PropTypes.object,
   };
+
+  static contextType = CustomerGIDContext;
+
+  fetchData() {
+    const {contacts, getContacts} = this.props;
+    const customerGID = this.context;
+    if (!contacts) {
+      getContacts(customerGID);
+    }
+  }
 
   getAdditional(contact, type) {
     const additionalInfos = (contact && contact[type]) || [];
@@ -47,7 +45,7 @@ class AppContactsPage extends React.Component {
     );
   }
 
-  render() {
+  renderContent() {
     const {contacts} = this.props;
 
     const primaryContact = contacts && contacts.find((contact => contact['is_primary']));
@@ -65,17 +63,27 @@ class AppContactsPage extends React.Component {
     ): null;
 
     return (
-      <div className="contacts-page">
-        <h4>Contacts</h4>
+      <React.Fragment>
         <DataRow title="Full Name" value={primaryContact && primaryContact['full_name']}/>
         <DataRow title="Email" value={primaryEmailInfo && primaryEmailInfo['formatted_identifier']}/>
         <DataRow title="Phone" value={primaryPhoneInfo && primaryPhoneInfo['formatted_identifier']}/>
         {additionalIdentifiers &&
           <DataRow title="Additional Contacts" value={additionalIdentifiers} />
         }
-      </div>
+      </React.Fragment>
+    );
+  }
+
+  render() {
+
+    return (
+      <AppPage
+        className="contacts-page"
+        error={this.props.listError}
+        fetchData={this.fetchData.bind(this)}
+        isLoading={this.props.isListLoading}
+        renderContent={this.renderContent.bind(this)}
+        renderHeader={() => 'Contacts'} />
     );
   }
 }
-
-export default withDataLoaderWrapper(AppContactsPage);

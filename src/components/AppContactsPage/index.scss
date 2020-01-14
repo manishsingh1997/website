@@ -1,12 +1,6 @@
 @import '@ergeon/core-components/src/components/variables.scss';
 
 .contacts-page {
-  h4 {
-    border-bottom: 1px solid $gray-4;
-    padding-bottom: $v-16;
-    margin-bottom: $v-16;
-    line-height: initial;  // fix text align in descendant button
-  }
 
   .additional-identifiers {
     display: flex;

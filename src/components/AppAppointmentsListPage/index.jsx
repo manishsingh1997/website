@@ -4,26 +4,12 @@ import {Link} from 'react-router-dom';
 
 import {formatDate, formatTime} from 'utils/date';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
-import withDataLoader from 'components/common/withDataLoader';
 import DataRow from 'components/common/DataRow';
 
-import './index.scss';
+import AppPage from 'components/common/AppPage';
+import AppSubCard from 'components/common/AppSubCard';
 
-const withDataLoaderWrapper = withDataLoader({
-  fetchData: (props, context) => {
-    const {appointments, getAppointments} = props;
-    const customerGID = context;
-    const startFromDate = new Date();
-    if (!appointments) {
-      getAppointments(customerGID, startFromDate);
-    }
-  },
-  isLoading: (props) => props.isListLoading,
-  getError: (props) => props.listError,
-  contextType: CustomerGIDContext,
-});
-
-class AppAppointmentsListPage extends React.Component {
+export default class AppAppointmentsListPage extends React.Component {
 
   static propTypes = {
     appointments: PropTypes.array,
@@ -33,6 +19,15 @@ class AppAppointmentsListPage extends React.Component {
   };
 
   static contextType = CustomerGIDContext;
+
+  fetchData() {
+    const {appointments, getAppointments} = this.props;
+    const customerGID = this.context;
+    const startFromDate = new Date();
+    if (!appointments) {
+      getAppointments(customerGID, startFromDate);
+    }
+  }
 
   getAddress(order) {
     return order['house']['address']['formatted_address'];
@@ -47,34 +42,43 @@ class AppAppointmentsListPage extends React.Component {
     );
   }
 
-  render() {
+  renderListElementContent(appointment) {
+    return (
+      <React.Fragment>
+        <DataRow title="Date" value={formatDate(appointment['ordered_at'])}/>
+        <DataRow title="Time Start" value={formatTime(appointment['time_start'])}/>
+        <DataRow title="Time End" value={formatTime(appointment['time_end'])}/>
+        <DataRow title="Address" value={this.getAddress(appointment['order'])}/>
+        <DataRow title="Order" value={this.getOrderDetailLink(appointment['order'])}/>
+        <DataRow title="Agent name" value={appointment['agent_name']}/>
+      </React.Fragment>
+    );
+  }
+
+  renderContent() {
     const {appointments} = this.props;
 
     return (
-      <div className="appointments-page">
-        <h4 className="flex-row align-center">
-          <div>Appointments</div>
-        </h4>
-        <div>
-          {appointments && appointments.map(appointment => (
-            <div
-              className="app-subcard card shadow border padding-20 spacing before__is-12"
-              key={`appointment-${appointment.id}`}>
-              <h6 className="flex-row align-center">
-                <div>{`${appointment['type']} for ${appointment['order']['product']['name']}`}</div>
-              </h6>
-              <DataRow title="Date" value={formatDate(appointment['ordered_at'])}/>
-              <DataRow title="Time Start" value={formatTime(appointment['time_start'])}/>
-              <DataRow title="Time End" value={formatTime(appointment['time_end'])}/>
-              <DataRow title="Address" value={this.getAddress(appointment['order'])}/>
-              <DataRow title="Order" value={this.getOrderDetailLink(appointment['order'])}/>
-              <DataRow title="Agent name" value={appointment['agent_name']}/>
-            </div>
-          ))}
-        </div>
-      </div>
+      <React.Fragment>
+        {appointments && appointments.map(appointment => (
+          <AppSubCard
+            key={`appointment-${appointment.id}`}
+            renderContent={this.renderListElementContent.bind(this, appointment)}
+            renderHeader={() => `${appointment['type']} for ${appointment['order']['product']['name']}`} />
+        ))}
+      </React.Fragment>
     );
   }
-}
 
-export default withDataLoaderWrapper(AppAppointmentsListPage);
+  render() {
+    return (
+      <AppPage
+        error={this.props.listError}
+        fetchData={this.fetchData.bind(this)}
+        isLoading={this.props.isListLoading}
+        renderContent={this.renderContent.bind(this)}
+        renderHeader={() => 'Appointments'} />
+    );
+  }
+
+}
