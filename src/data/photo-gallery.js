@@ -586,7 +586,7 @@ export const DrivewayPhotoData = [
     ],
   },
   {
-    categoryName: 'Staped Concrete',
+    categoryName: 'Stamped Concrete',
     categorySlug: 'stamped',
     categoryGroups: [
       {
