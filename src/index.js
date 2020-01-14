@@ -16,6 +16,7 @@ import AboutPage from 'components/AboutPage';
 import AppContactsPage from 'containers/AppContactsPage';
 import AppLayout from 'containers/AppLayout';
 import AppOrderListPage from 'containers/AppOrderListPage';
+import AppAppointmentsListPage from 'containers/AppAppointmentsListPage';
 import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
 import AuthLogoutPage from 'containers/AuthLogoutPage';
 import AuthSignInPage from 'components/AuthSignInPage';
@@ -55,6 +56,7 @@ const CustomerApp = ({match}) => (
   <AppLayout match={match}>
     <Route component={AppContactsPage} path={`${match.url}/contacts`} />
     <Route component={AppOrderListPage} path={`${match.url}/orders`} />
+    <Route component={AppAppointmentsListPage} path={`${match.url}/appointments`} />
   </AppLayout>
 );
 

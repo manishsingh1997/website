@@ -6,6 +6,7 @@ import cartReducer from './cart-reducer';
 import authReducer from './auth';
 import contactsReducer from './app-contacts';
 import ordersReducer from './app-orders';
+import appointmentsReducer from './app-appointments';
 
 const combinedReducers = combineReducers({
   auth: authReducer,
@@ -14,6 +15,7 @@ const combinedReducers = combineReducers({
   cart: cartReducer,
   contacts: contactsReducer,
   orders: ordersReducer,
+  appointments: appointmentsReducer,
 });
 
 export default combinedReducers;
