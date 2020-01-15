@@ -13,10 +13,11 @@ import {
 import customScripts from 'website/custom-scripts';
 
 import AboutPage from 'components/AboutPage';
+import AppAppointmentsListPage from 'containers/AppAppointmentsListPage';
 import AppContactsPage from 'containers/AppContactsPage';
+import AppHouseListPage from 'containers/AppHouseListPage';
 import AppLayout from 'containers/AppLayout';
 import AppOrderListPage from 'containers/AppOrderListPage';
-import AppAppointmentsListPage from 'containers/AppAppointmentsListPage';
 import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
 import AuthLogoutPage from 'containers/AuthLogoutPage';
 import AuthSignInPage from 'components/AuthSignInPage';
@@ -55,6 +56,7 @@ const renderPhotoGalleryRedirect = (productSlug, category) => {
 const CustomerApp = ({match}) => (
   <AppLayout match={match}>
     <Route component={AppContactsPage} path={`${match.url}/contacts`} />
+    <Route component={AppHouseListPage} path={`${match.url}/houses`} />
     <Route component={AppOrderListPage} path={`${match.url}/orders`} />
     <Route component={AppAppointmentsListPage} path={`${match.url}/appointments`} />
   </AppLayout>

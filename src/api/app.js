@@ -39,3 +39,12 @@ export const getCustomerAppointments = (customerGID, startFromDate) => {
     headers: getCommonHeaders(),
   });
 };
+
+export const getCustomerHouses = (customerGID) => {
+  return axios({
+    url: `${getBaseAPIURL(customerGID)}/houses`,
+    method: 'get',
+    responseType: 'json',
+    headers: getCommonHeaders(),
+  });
+};
