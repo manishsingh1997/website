@@ -4,8 +4,9 @@ import {reduce} from 'lodash';
 
 import {Button, Spinner} from '@ergeon/core-components';
 import {constants, calcUtils} from '@ergeon/3d-lib';
+import {ReactSVG} from 'react-svg';
+import iconPlus from '../../assets/icon-plus.svg';
 
-import TextCollapse from 'components/RequestQuotePage/TextCollapse';
 import InlineEditor from 'components/RequestQuotePage/InlineEditor';
 
 import './ConfigCart.scss';
@@ -99,7 +100,7 @@ class ConfigCart extends React.Component {
   }
 
   renderDescription(config) {
-    return <TextCollapse>{config.description}</TextCollapse>;
+    return config.description;
   }
 
   renderConfig(config, index) {
@@ -155,7 +156,11 @@ class ConfigCart extends React.Component {
               </div>
               <div className="config-item__actions">
                 <div className="config-item__buttons">
-                  <Button className="edit-config-button" onClick={this.editConfig.bind(this, index)}>Edit</Button>
+                  <Button
+                    flavor="regular"
+                    onClick={this.editConfig.bind(this, index)}
+                    size="small"
+                    taste="line">Edit</Button>
                   <Button className="delete-config-button" onClick={this.removeConfig.bind(this, index)}>Delete</Button>
                 </div>
                 {
@@ -215,8 +220,9 @@ class ConfigCart extends React.Component {
             disabled={showInlineEditor && inlineEditorIndex === -1}
             flavor="regular"
             onClick={this.onAddConfigClick.bind(this)}
+            size="large"
             taste="line">
-            Add a config
+            <ReactSVG className="spacing right__is-5"  src={iconPlus}/>Add a config
           </Button>
           <div className="config-cart__total">
             {this.getTotal() ? `Total: ~$${Math.round(this.getTotal())}` : null}

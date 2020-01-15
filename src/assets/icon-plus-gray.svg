@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>icon-plus-gray</title>
+    <desc>Created with Sketch.</desc>
+    <g id="customer-app" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="lead-form-copy-2" transform="translate(-344.000000, -1551.000000)" fill="#787E75">
+            <g id="Group-7" transform="translate(290.000000, 1533.000000)">
+                <path d="M63.75,25.15 L61.15,25.15 L61.15,27.75 L59.85,27.75 L59.85,25.15 L57.25,25.15 L57.25,23.85 L59.85,23.85 L59.85,21.25 L61.15,21.25 L61.15,23.85 L63.75,23.85 L63.75,25.15 Z M60.5,18 C56.9159,18 54,20.9159 54,24.5 C54,28.0841 56.9159,31 60.5,31 C64.0841,31 67,28.0841 67,24.5 C67,20.9159 64.0841,18 60.5,18 L60.5,18 Z" id="icon-plus-gray"></path>
+            </g>
+        </g>
+    </g>
+</svg>

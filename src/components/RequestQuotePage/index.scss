@@ -5,6 +5,9 @@
   padding-left: 20px;
   padding-right: 20px;
   margin: 60px auto 0;
+  @include phone() {
+    margin: 30px auto 0;
+  }
 
   &__header-message {
     .title {
@@ -16,7 +19,7 @@
       text-align: left;
       margin: 0 0 12px;
     }
-  
+
     .subtitle {
       font-size: 14px;
       color: #787e75;
@@ -25,7 +28,7 @@
       line-height: 18px;
       max-width: 480px;
       margin-bottom: 30px;
-    }  
+    }
   }
 
   .lead-area {
@@ -44,7 +47,9 @@
     max-width: 500px;
     padding: 60px;
     width: 100%;
-
+    @include tablet() {
+      padding: $h-40;
+    }
     @include phone() {
       padding: 0;
       border: none;
@@ -59,15 +64,16 @@
     max-width: 500px;
     height: 100%;
     width: 100%;
-
     hr {
       border: none;
       border-bottom: 1px solid #e4e9e2;
     }
 
     @include phone() {
-      margin-left: 0;
-      height: auto;
+     display: none;
+    }
+    &-wrapper {
+      margin-top: 24px;
     }
   }
 
@@ -79,15 +85,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
+
     .Address {
-  
+
       .AddressStreet {
         font: $font-title;
         font-size: $h6-size;
         font-weight: bold;
       }
-  
+
       .AddressCity {
         font: $font-content;
         font-size: $font-label-size;
@@ -95,7 +101,7 @@
         color: $gray-2;
       }
     }
-  
+
     .EditButton {
       width: 80px;
     }

@@ -51,6 +51,7 @@ export default class Layout extends React.Component {
     auth: PropTypes.object.isRequired,
     children: PropTypes.node,
     getCurrentUser: PropTypes.func.isRequired,
+    location: PropTypes.object,
   };
 
   constructor(props) {
@@ -61,6 +62,20 @@ export default class Layout extends React.Component {
 
   componentDidMount() {
     this.props.getCurrentUser();
+  }
+
+  checkTemplateWidth() {
+    const {location} = this.props;
+    const pathname = location? location.pathname : '/';
+    let isItNarrowTemplate = false;
+    const narrowTemplates = [
+      '/request-quote',
+      '/app/',
+    ];
+    narrowTemplates.forEach(path => {
+      if (pathname.includes(path)) isItNarrowTemplate = true;
+    });
+    return isItNarrowTemplate;
   }
 
   renderDropdownMenu() {
@@ -105,15 +120,15 @@ export default class Layout extends React.Component {
   }
 
   render() {
-
+    const widthClass = this.checkTemplateWidth()? 'wrapper-980' : 'wrapper-1180';
     return (
       <div className="app-layout">
         <NavLinkContext.Provider value={NavLink}>
-          <WebsiteTopPanel ergeonUrl="/" showChristmasHat={this.isChristmasTime}>
+          <WebsiteTopPanel ergeonUrl="/" showChristmasHat={this.isChristmasTime} widthClass={widthClass}>
             {this.isUpcomingFeaturesEnabled ? this.renderDropdownMenu() : null}
           </WebsiteTopPanel>
           <div>{this.props.children}</div>
-          <Footer ergeonUrl="/" />
+          <Footer ergeonUrl="/"  widthClass={widthClass}/>
           <AddressUpdatePopup />
         </NavLinkContext.Provider>
       </div>

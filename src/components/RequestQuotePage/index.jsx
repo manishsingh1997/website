@@ -197,7 +197,8 @@ export default class RequestQuotePage extends React.Component {
             className="EditButton"
             flavor="regular"
             onClick={this.openAddressUpdatePopup.bind(this)}
-            size="small">
+            size="small"
+            taste="line">
             Edit
           </Button>
         </div>

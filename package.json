@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "@ergeon/3d-lib": "^1.8.6",
-    "@ergeon/core-components": "^1.8.0",
+    "@ergeon/core-components": "1.9.2",
     "@ergeon/erg-customer-auth": "^0.2.0",
     "@ergeon/map-component": "^1.5.2",
     "@sentry/browser": "^5.9.0",
