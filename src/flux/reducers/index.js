@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
 
-import addressReducer from './address-reducer';
-import cartReducer from './cart-reducer';
+import addressReducer from './address';
+import cartReducer from './cart';
 import authReducer from './auth';
 import contactsReducer from './app-contacts';
 import ordersReducer from './app-orders';

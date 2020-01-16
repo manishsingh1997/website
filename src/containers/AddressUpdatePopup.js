@@ -1,6 +1,11 @@
 import {connect} from 'react-redux';
 
-import {actionTriggers as addressActionTriggers} from 'flux/actions/address-actions';
+import {
+  updateLead,
+  updateModalLead,
+  updateModalValue,
+  closeAddressUpdatePopup,
+} from '../flux/actions/address';
 
 import AddressUpdatePopup from 'components/Layout/AddressUpdatePopup';
 
@@ -16,16 +21,16 @@ const mapStateToProps = ({address}) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateLead: (lead) => {
-      dispatch(addressActionTriggers.updateLead(lead));
+      dispatch(updateLead(lead));
     },
     updateModalLead: (lead) => {
-      dispatch(addressActionTriggers.updateModalLead(lead));
+      dispatch(updateModalLead(lead));
     },
     updateModalValue: (value) => {
-      dispatch(addressActionTriggers.updateModalValue(value));
+      dispatch(updateModalValue(value));
     },
     closeAddressUpdatePopup: () => {
-      dispatch(addressActionTriggers.closeAddressUpdatePopup());
+      dispatch(closeAddressUpdatePopup());
     },
   };
 };

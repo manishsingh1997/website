@@ -1,8 +1,7 @@
 import {connect} from 'react-redux';
 
-import {actionTriggers} from 'flux/actions/address-actions';
-
 import AddressForm from 'components/HomePage/AddressForm';
+import {updateLead} from '../flux/actions/address';
 
 const mapStateToProps = () => {
   return {};
@@ -11,7 +10,7 @@ const mapStateToProps = () => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateLead: (lead) => {
-      dispatch(actionTriggers.updateLead(lead));
+      dispatch(updateLead(lead));
     },
   };
 };

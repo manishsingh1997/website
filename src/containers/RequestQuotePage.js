@@ -1,7 +1,14 @@
 import {connect} from 'react-redux';
 
-import {actionTriggers as addressActionTriggers} from 'flux/actions/address-actions';
-import {actionTriggers as cartActionTriggers} from 'flux/actions/cart-actions';
+import {
+  updateLead,
+  updateLeadFromAddress,
+  openAddressUpdatePopup,
+} from '../flux/actions/address';
+import {
+  addConfig,
+  addConfigFromSchema,
+} from '../flux/actions/cart';
 import RequestQuotePage from 'components/RequestQuotePage';
 
 const mapStateToProps = ({address, cart}) => {
@@ -17,18 +24,18 @@ const mapStateToProps = ({address, cart}) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateLead: (lead) => {
-      dispatch(addressActionTriggers.updateLead(lead));
+      dispatch(updateLead(lead));
     },
     openAddressUpdatePopup: () => {
-      dispatch(addressActionTriggers.openAddressUpdatePopup());
+      dispatch(openAddressUpdatePopup());
     },
     addConfig: (item) => {
-      dispatch(cartActionTriggers.addConfig(item));
+      dispatch(addConfig(item));
     },
     updateLeadAndConfig: ({address, product, zipcode, data, schemaCode, length, configs}) => {
       let updateLead = null;
       if (address) {
-        updateLead = dispatch(addressActionTriggers.updateLeadFromAddress({
+        updateLead = dispatch(updateLeadFromAddress({
           address,
           product,
           zipcode,
@@ -37,7 +44,7 @@ const mapDispatchToProps = (dispatch) => {
 
       if (data && schemaCode) {
         if (updateLead) {
-          updateLead.then(zipcode => dispatch(cartActionTriggers.addConfigFromSchema({
+          updateLead.then(zipcode => dispatch(addConfigFromSchema({
             zipcode,
             data,
             schemaCode,
@@ -45,7 +52,7 @@ const mapDispatchToProps = (dispatch) => {
             configs,
           })));
         } else {
-          dispatch(cartActionTriggers.addConfigFromSchema({
+          dispatch(addConfigFromSchema({
             zipcode,
             data,
             schemaCode,

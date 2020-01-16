@@ -1,7 +1,7 @@
 import ls from 'local-storage';
 
 import {LS_ERGEON_CART_DATA} from 'website/constants';
-import {actionTypes} from '../actions/cart-actions';
+import {actionTypes} from '../actions/cart';
 
 let initialState = {
   configs: ls.get(LS_ERGEON_CART_DATA) || [],
