@@ -23,6 +23,7 @@ import AuthLogoutPage from 'containers/AuthLogoutPage';
 import AuthSignInPage from 'components/AuthSignInPage';
 import CareersPage from 'components/CareersPage';
 import ContactUsPage from 'components/ContactUsPage';
+import NotFoundPage from './components/NotFoundPage';
 import FAQPage from 'components/FAQPage';
 import HelpLandingPage from 'components/HelpLandingPage';
 import HelpPage from 'components/HelpPage';
@@ -55,10 +56,13 @@ const renderPhotoGalleryRedirect = (productSlug, category) => {
 
 const CustomerApp = ({match}) => (
   <AppLayout match={match}>
-    <Route component={AppContactsPage} path={`${match.url}/contacts`} />
-    <Route component={AppHouseListPage} path={`${match.url}/houses`} />
-    <Route component={AppOrderListPage} path={`${match.url}/orders`} />
-    <Route component={AppAppointmentsListPage} path={`${match.url}/appointments`} />
+    <Switch>
+      <Route component={AppContactsPage} path={`${match.url}/contacts`} />
+      <Route component={AppHouseListPage} path={`${match.url}/houses`} />
+      <Route component={AppOrderListPage} path={`${match.url}/orders`} />
+      <Route component={AppAppointmentsListPage} path={`${match.url}/appointments`} />
+      <Route component={NotFoundPage} exact path="*"/>
+    </Switch>
   </AppLayout>
 );
 
@@ -89,6 +93,7 @@ render(
           <Route component={AuthConfirmSignInPage} exact path="/app/confirm-sign-in"/>
           <Route component={AuthLogoutPage} exact path="/app/logout"/>
           <Route component={CustomerApp} path="/app/:customerGid" />
+          <Route component={NotFoundPage} exact path="*"/>
           <Redirect
             exact
             from="/gallery/driveway"
