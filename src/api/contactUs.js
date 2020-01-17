@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const submitContactUs = (data) => {
   return axios({
-    url: config.contactMessageEnteredApi,
+    url: config.leadArrivedApi,
     method: 'post',
     data: JSON.stringify(data),
     responseType: 'json',

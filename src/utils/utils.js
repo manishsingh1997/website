@@ -59,7 +59,7 @@ export const getEventData = (data) => {
     object: {
       ...utms,
       ...getUserAgent(),
-      'utm_source': utms['utm_source'] || 'website',
+      'utm_source': utms['utm_source'] || DEFAULT_SOURCE_VALUE,
       pathname: window.location.pathname,
       'arrival_time': savedAt,
       'user_ip': window.userip,
