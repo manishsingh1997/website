@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import {Button} from '@ergeon/core-components';
 
 import {formatDate} from 'utils/date';
+import {getOrderDetailURL, getQuoteDetailURL} from 'utils/urls';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import DataRow from 'components/common/DataRow';
 
@@ -34,16 +35,11 @@ export default class AppOrdersListPage extends React.Component {
     return order['house']['address']['formatted_address'];
   }
 
-  getOrderDetailLink(order) {
-    const customerGID = this.context;
-    return `/app/${customerGID}/orders/${order['id']}`;
-  }
-
-  renderQuote(orderID, quote) {
+  renderQuote(quote) {
     const customerGID = this.context;
     return (
       <div>
-        <Link to={`/app/${customerGID}/orders/${orderID}/quotes/${quote['id']}`}>
+        <Link to={getQuoteDetailURL(customerGID, quote['order_id'], quote['id'])}>
           #{quote['id']}
         </Link> ({quote['status_display']})
       </div>
@@ -52,15 +48,17 @@ export default class AppOrdersListPage extends React.Component {
 
   renderQuotes(order) {
     const quotes = order['quotes'].filter(quote => quote['sent_to_customer_at']);
-    return quotes.length > 0 ? quotes.map(quote => this.renderQuote(order['id'], quote)): null;
+    return quotes.length > 0 ? quotes.map(quote => this.renderQuote(quote)): null;
   }
 
   renderListElementHeader(order) {
+    const customerGID = this.context;
+
     return (
       <React.Fragment>
         <div>{order['product']['name']}</div>
         <div>
-          <Link to={this.getOrderDetailLink(order)}>
+          <Link to={getOrderDetailURL(customerGID, order['id'])}>
             <Button
               flavor="cta"
               size="small"

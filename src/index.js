@@ -17,6 +17,7 @@ import AppAppointmentsListPage from 'containers/AppAppointmentsListPage';
 import AppContactsPage from 'containers/AppContactsPage';
 import AppHouseListPage from 'containers/AppHouseListPage';
 import AppLayout from 'containers/AppLayout';
+import AppOrderDetailPage from 'containers/AppOrderDetailPage';
 import AppOrderListPage from 'containers/AppOrderListPage';
 import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
 import AuthLogoutPage from 'containers/AuthLogoutPage';
@@ -57,6 +58,7 @@ const renderPhotoGalleryRedirect = (productSlug, category) => {
 const CustomerApp = ({match}) => (
   <AppLayout match={match}>
     <Switch>
+      <Route component={AppOrderDetailPage} path={`${match.url}/orders/:orderId`} />
       <Route component={AppContactsPage} path={`${match.url}/contacts`} />
       <Route component={AppHouseListPage} path={`${match.url}/houses`} />
       <Route component={AppOrderListPage} path={`${match.url}/orders`} />

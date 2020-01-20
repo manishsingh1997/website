@@ -1,0 +1,31 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.order-detail-page {
+
+  .order-title {
+    display: flex;
+    color: unset;
+    font-weight: unset;
+
+    > div:first-child {
+      display: inline-flex;
+      align-items: center;
+      margin-right: $h-20;
+    }
+
+    svg {
+      max-height: $v-12;
+    }
+
+    svg path {
+      fill: $gray-2;
+    }
+  }
+
+  .order-details {
+    border-bottom: 1px solid $gray-4;
+    padding-bottom: $v-16;
+    margin-bottom: $v-30;
+  }
+
+}
