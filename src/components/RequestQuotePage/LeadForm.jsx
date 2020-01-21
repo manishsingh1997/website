@@ -4,7 +4,7 @@ import * as Sentry from '@sentry/browser';
 import {constants, calcUtils} from '@ergeon/3d-lib';
 
 import {AddressInput, Button, Spinner} from '@ergeon/core-components';
-import TextInput from './TextInput';
+import TextInput from 'components/common/TextInput';
 import PhoneInput from './PhoneInput';
 import MultiProductSelect from './MultiProductSelect';
 import TextArea from '../common/TextArea';
