@@ -20,7 +20,7 @@ jobs:
           command: |
             echo "//npm.ergeon.in/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-            sudo python get-pip.py
+            sudo python get-pip.py pip==19.3.1
             sudo pip install awscli
             sudo npm install -g npm@6.13.1
             make install
