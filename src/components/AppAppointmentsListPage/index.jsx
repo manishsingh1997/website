@@ -45,7 +45,7 @@ export default class AppAppointmentsListPage extends React.Component {
   renderListElementContent(appointment) {
     return (
       <React.Fragment>
-        <DataRow title="Date" value={formatDate(appointment['ordered_at'])}/>
+        <DataRow title="Date" value={formatDate(appointment['date'])}/>
         <DataRow title="Time Start" value={formatTime(appointment['time_start'])}/>
         <DataRow title="Time End" value={formatTime(appointment['time_end'])}/>
         <DataRow title="Address" value={this.getAddress(appointment['order'])}/>
