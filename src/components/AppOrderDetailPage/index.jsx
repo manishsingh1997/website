@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
+import Select from 'react-select';
 
 import {Button} from '@ergeon/core-components';
 import contactIcon from '@ergeon/core-components/src/assets/icon-arrow-left.svg';
 
 import {formatDate, formatDateAndTime} from 'utils/date';
-import {filterQuotesSentToCustomer, formatPrice} from 'utils/app-order';
+import {filterQuotesSentToCustomer, formatPrice, QUOTE_FILTERS} from 'utils/app-order';
 import {getQuoteDetailURL} from 'utils/urls';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import DataRow from 'components/common/DataRow';
@@ -26,6 +27,10 @@ export default class AppOrderDetailPage extends React.Component {
     match: PropTypes.object,
     orders: PropTypes.array,
     ordersDict: PropTypes.object,
+  };
+
+  state = {
+    selectedOption: QUOTE_FILTERS[0],
   };
 
   static contextType = CustomerGIDContext;
@@ -48,6 +53,10 @@ export default class AppOrderDetailPage extends React.Component {
   getAddress(order) {
     return order['house']['address']['formatted_address'];
   }
+
+  handleChange = (selectedOption) => {
+    this.setState({selectedOption});
+  };
 
   renderListElementHeader(quote) {
     return (
@@ -91,6 +100,7 @@ export default class AppOrderDetailPage extends React.Component {
   }
 
   renderContent() {
+    const {selectedOption} = this.state;
     const order = this.getOrder();
     return order && (
       <React.Fragment>
@@ -100,7 +110,18 @@ export default class AppOrderDetailPage extends React.Component {
           <DataRow title="Ordered on" value={formatDate(order['ordered_at'])} />
           <DataRow title="Address" value={this.getAddress(order)} />
         </div>
-        {filterQuotesSentToCustomer(order['quotes']).map(quote => (
+        <div className="quote-filters">
+          <Select
+            className="react-select-container"
+            classNamePrefix="react-select"
+            isMulti={false}
+            isSearchable={false}
+            name="quote_filter"
+            onChange={this.handleChange}
+            options={QUOTE_FILTERS}
+            value={selectedOption} />
+        </div>
+        {filterQuotesSentToCustomer(order['quotes'], selectedOption).map(quote => (
           <AppSubCard
             key={`quote-${quote.id}`}
             renderContent={this.renderListElementContent.bind(this, quote)}

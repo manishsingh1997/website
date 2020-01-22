@@ -28,4 +28,12 @@
     margin-bottom: $v-30;
   }
 
+  .quote-filters {
+    display: flex;
+    justify-content: end;
+
+    .react-select-container {
+      width: 180px;
+    }
+  }
 }
