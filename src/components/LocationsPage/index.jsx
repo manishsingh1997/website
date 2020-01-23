@@ -42,7 +42,7 @@ class LocationsPage extends React.Component {
             </address>
             <address className="location_item">
               <h5 className="header_with_map_icon">San Jose</h5>
-              <p className="p_location">88 S. 3rd St. #253, San Jose, CA 95113</p>
+              <p className="p_location">7239 Glenview Dr. San Jose, CA 95120</p>
               {this.renderPhoneNumber('669-201-9553')}
             </address>
             <address className="location_item">
