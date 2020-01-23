@@ -95,12 +95,12 @@ render(
           <Route component={AuthConfirmSignInPage} exact path="/app/confirm-sign-in"/>
           <Route component={AuthLogoutPage} exact path="/app/logout"/>
           <Route component={CustomerApp} path="/app/:customerGid" />
-          <Route component={NotFoundPage} exact path="*"/>
           <Redirect
             exact
             from="/gallery/driveway"
             key="gallery-driveway-redirect"
             to="/gallery/driveway/stamped/casual" />
+          <Route component={NotFoundPage} exact path="*"/>
           {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
         </Switch>
       </Layout>
