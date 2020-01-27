@@ -70,6 +70,11 @@ class LocationsPage extends React.Component {
               <p className="p_location">7726 N First St. #375, Fresno, CA 93720</p>
               {this.renderPhoneNumber('559-236-5266')}
             </address>
+            <address className="location_item">
+              <h5 className="header_with_map_icon">San Rafael</h5>
+              <p className="p_location">1005 Northgate Dr #119 San Rafael, CA 94903</p>
+              {this.renderPhoneNumber('650-300-4854')}
+            </address>
           </div>
           <div className="nice_view"></div>
         </div>
