@@ -32,8 +32,19 @@
     display: flex;
     justify-content: end;
 
-    .react-select-container {
-      width: 180px;
+    .react-select-filter {
+      &__value-container {
+        width: 130px;
+        justify-content: flex-end;
+      }
+
+      &__indicator {
+        padding: 2px
+      }
+
+      &-container {
+        font-weight: normal;
+      }
     }
   }
 

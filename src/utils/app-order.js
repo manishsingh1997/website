@@ -7,7 +7,7 @@ export const QUOTE_FILTERS = [
 
 const QUOTE_ORDERING = ['APP', 'SNT', 'CAN'];
 
-export const filterQuotesSentToCustomer = (quotes, selectedOption) => {
+export const filterQuotesByStatus = (quotes, selectedOption) => {
   quotes = quotes.filter((quote) => {
     return selectedOption['statuses'].includes(quote['status']) && quote['sent_to_customer_at'];
   });
@@ -15,6 +15,10 @@ export const filterQuotesSentToCustomer = (quotes, selectedOption) => {
   quotes.sort((a, b) => (new Date(b['sent_to_customer_at']).getTime() - new Date(a['sent_to_customer_at']).getTime()));
   quotes.sort((a, b) => (QUOTE_ORDERING.indexOf(a['status']) - QUOTE_ORDERING.indexOf(b['status'])));
   return quotes;
+};
+
+export const filterQuotesSentToCustomer = (quotes) => {
+  return quotes.filter(quote => quote['sent_to_customer_at']);
 };
 
 export const formatPrice = (price) => {
