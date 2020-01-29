@@ -2,12 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
+import {SelectFilter} from '@ergeon/core-components';
+
 import {formatDate, formatTime} from 'utils/date';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import DataRow from 'components/common/DataRow';
 
 import AppPage from 'components/common/AppPage';
 import AppSubCard from 'components/common/AppSubCard';
+import {filterAppointmentsByDate, APPOINTMENT_FILTERS} from 'utils/app-appointments';
+
+import './index.scss';
 
 export default class AppAppointmentsListPage extends React.Component {
 
@@ -18,14 +23,17 @@ export default class AppAppointmentsListPage extends React.Component {
     listError: PropTypes.object,
   };
 
+  state = {
+    selectedOption: APPOINTMENT_FILTERS[0],
+  };
+
   static contextType = CustomerGIDContext;
 
   fetchData() {
     const {appointments, getAppointments} = this.props;
     const customerGID = this.context;
-    const startFromDate = new Date();
     if (!appointments) {
-      getAppointments(customerGID, startFromDate);
+      getAppointments(customerGID);
     }
   }
 
@@ -42,6 +50,14 @@ export default class AppAppointmentsListPage extends React.Component {
     );
   }
 
+  handleChange = (selectedOption) => {
+    this.setState({selectedOption});
+  };
+
+  isAppointmentsEmpty(appointments) {
+    return !(appointments && appointments.length > 0);
+  }
+
   renderListElementContent(appointment) {
     return (
       <React.Fragment>
@@ -55,12 +71,33 @@ export default class AppAppointmentsListPage extends React.Component {
     );
   }
 
+  renderHeader() {
+    const {selectedOption} = this.state;
+    const {appointments} = this.props;
+    return (
+      <React.Fragment>
+        <div>Appointments</div>
+        {!this.isAppointmentsEmpty(appointments) &&
+        <div className="appointment-filters">
+          <SelectFilter
+            className="react-select-filter-container"
+            classNamePrefix="react-select-filter"
+            name="appointment_filter"
+            onChange={this.handleChange}
+            options={APPOINTMENT_FILTERS}
+            value={selectedOption} />
+        </div>}
+      </React.Fragment>
+    );
+  }
+
   renderContent() {
+    const {selectedOption} = this.state;
     const {appointments} = this.props;
 
     return (
       <React.Fragment>
-        {appointments && appointments.map(appointment => (
+        {appointments && filterAppointmentsByDate(appointments, selectedOption).map(appointment => (
           <AppSubCard
             key={`appointment-${appointment.id}`}
             renderContent={this.renderListElementContent.bind(this, appointment)}
@@ -73,11 +110,12 @@ export default class AppAppointmentsListPage extends React.Component {
   render() {
     return (
       <AppPage
+        className="appointment-list-page"
         error={this.props.listError}
         fetchData={this.fetchData.bind(this)}
         isLoading={this.props.isListLoading}
         renderContent={this.renderContent.bind(this)}
-        renderHeader={() => 'Appointments'} />
+        renderHeader={this.renderHeader.bind(this)} />
     );
   }
 

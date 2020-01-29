@@ -1,0 +1,26 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.appointment-list-page {
+
+  .appointment-filters {
+    display: flex;
+    justify-content: end;
+
+    .react-select-filter {
+      width: 150px;
+
+      &__value-container {
+        width: 80px;
+        justify-content: flex-end;
+      }
+
+      &__indicator {
+        padding: 2px
+      }
+
+      &-container {
+        font-weight: normal;
+      }
+    }
+  }
+}

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import authService from 'utils/auth';
 import config from 'website/config';
-import {formatDate} from '../utils/date';
 
 const getBaseAPIURL = (customerGID) => {
   return `${config.apiHost}/c/api/v1/customer/${customerGID}`;
@@ -30,10 +29,9 @@ export const getCustomerOrders = (customerGID) => {
   });
 };
 
-export const getCustomerAppointments = (customerGID, startFromDate) => {
-  startFromDate = formatDate(startFromDate, 'YYYY-MM-DD');
+export const getCustomerAppointments = (customerGID) => {
   return axios({
-    url: `${getBaseAPIURL(customerGID)}/appointments?date__gte=${startFromDate}`,
+    url: `${getBaseAPIURL(customerGID)}/appointments`,
     method: 'get',
     responseType: 'json',
     headers: getCommonHeaders(),

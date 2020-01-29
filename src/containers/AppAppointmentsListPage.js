@@ -13,8 +13,8 @@ const mapStateToProps = ({appointments}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAppointments: (customerGID, startFromDate) => {
-      dispatch(getAppointments(customerGID, startFromDate));
+    getAppointments: (customerGID) => {
+      dispatch(getAppointments(customerGID));
     },
   };
 };

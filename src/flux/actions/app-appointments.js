@@ -7,14 +7,14 @@ export const actionTypes = {
   'GET_APPOINTMENTS_ERROR': 'GET_APPOINTMENTS_ERROR',
 };
 
-export const getAppointments = (customerGID, startFromDate) => {
+export const getAppointments = (customerGID) => {
   return async function(dispatch) {
     dispatch({
       type: actionTypes.GET_APPOINTMENTS_START,
     });
 
     try {
-      const response = await getCustomerAppointments(customerGID, startFromDate);
+      const response = await getCustomerAppointments(customerGID);
       dispatch({
         type: actionTypes.GET_APPOINTMENTS_DONE,
         data: response.data,
