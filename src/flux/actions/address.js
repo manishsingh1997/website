@@ -42,7 +42,7 @@ export const updateLeadFromAddress = function({address, product, zipcode}) {
         placeData => getCheckedZIP(placeData.zipcode).then(
           checkedZipResponse => {
             zipcode = checkedZipResponse.data.products[product] ? placeData.zipcode : DEFAULT_ZIP;
-            dispatch(this.updateLead({
+            dispatch(updateLead({
               address: placeData,
               'product_slug': product,
               productAvailability: checkedZipResponse.data,
