@@ -35,7 +35,7 @@ export const getCheckedZIP = (zipcode) => {
   });
 };
 
-export const getPriceAndDescription = (modelState, zipcode) => {
+export const getPriceAndDescription = (modelState, zipcode = constants.DEFAULT_ZIP) => {
   const {GATE_TYPE, CATALOG_TYPE_FENCE, CATALOG_TYPE_GATE} = constants;
   const schemaCode = calcUtils.getSchemaCodeFromState(modelState);
   const catalogType = modelState[GATE_TYPE] ? CATALOG_TYPE_GATE : CATALOG_TYPE_FENCE;
