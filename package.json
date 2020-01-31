@@ -53,7 +53,7 @@
     "@ergeon/3d-lib": "^1.11.3",
     "@ergeon/core-components": "1.14.1",
     "@ergeon/erg-customer-auth": "^0.2.0",
-    "@ergeon/map-component": "^1.5.2",
+    "@ergeon/map-component": "^1.5.5",
     "@sentry/browser": "^5.9.0",
     "axios": "^0.19.0",
     "camelcase-keys": "^6.1.1",
