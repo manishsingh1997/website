@@ -6,7 +6,7 @@ import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import AddressForm from 'containers/AddressForm';
 import {isChristmasTime} from 'utils/utils';
 import Slider from './Slider';
-import {FENCE_SLUG, DRIVEWAY_SLUG} from 'website/constants';
+import {FENCE_SLUG, DRIVEWAY_SLUG} from '@ergeon/core-components/src/constants';
 import {getParameterByName} from 'utils/utils';
 
 import './SliderHero.scss';

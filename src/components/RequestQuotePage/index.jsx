@@ -7,7 +7,7 @@ import MapComponent from '@ergeon/map-component';
 
 import Marker from 'assets/marker.svg';
 import config from 'website/config';
-import {FENCE_SLUG} from 'website/constants';
+import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import {getParameterByName} from 'utils/utils';
 import Success from 'components/common/Success';
 import LeadForm from './LeadForm';

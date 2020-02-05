@@ -1,0 +1,27 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.config-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 40px;
+  width: 150px;
+  height: 150px;
+  background-color: $white;
+
+  @include border();
+
+  img {
+
+    @include border();
+    border-color: $white;
+    width: 97%;
+    height: auto;
+
+  }
+
+  .preview-placeholder {
+    width: 25%;
+  }
+
+}

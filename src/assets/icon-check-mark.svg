@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>icon-check-mark</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icons/success_icon/green" transform="translate(-7.000000, -7.000000)" fill="#09A873">
+            <g id="success_icon">
+                <g id="Fill-1338-+-Fill-1339" transform="translate(2.000000, 2.000000)">
+                    <path d="M9.1597,14.9272 L5.9998093,11.7680907 C5.51158959,11.2799917 5.51149172,10.488529 5.99959071,10.0003093 C5.99962714,10.0002729 5.99966357,10.0002364 5.9997,10.0002 C6.48791972,9.51198028 7.27948028,9.51198028 7.7677,10.0002 L8.8407,11.0732 L8.8407,11.0732 L12.2564328,6.29100918 C12.65757,5.72939776 13.4379832,5.59921041 13.9997,6.0002 C14.5612557,6.40107458 14.6915135,7.18127849 14.2906389,7.74283421 C14.2905881,7.74290534 14.2905374,7.74297648 14.2904866,7.7430476 L9.1597,14.9272 L9.1597,14.9272 Z" id="icon-check-mark"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

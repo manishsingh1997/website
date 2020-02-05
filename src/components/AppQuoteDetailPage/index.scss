@@ -1,0 +1,128 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.quote-detail-page {
+
+  .quote-details {
+    padding: $h-40;
+    margin: $v-30 auto;
+
+    @include phone() {
+      padding: $h-20;
+      margin: 0 auto;
+    }
+  }
+
+  .quote-labels-map {
+    width: 100%;
+
+    .Map {
+
+      .MapContent {
+        &,
+        > * {
+          min-height: 300px;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .quote-details-wrapper {
+    margin: $h-10;
+    padding: $h-10;
+    max-width: 500px;
+  }
+
+  .quote-fields {
+    border-top: 1px solid $gray-4;
+    border-bottom: 1px solid $gray-4;
+  }
+
+  .quote-line {
+    padding-top: $h-10;
+    padding-bottom: $h-20;
+    border-bottom: 1px solid $gray-4;
+    margin-bottom: $h-20;
+  }
+
+  .quote-line-preview {
+    margin-top: 0;
+    margin-bottom: $v-12;
+  }
+
+  .quote-line-description {
+    width: 100%;
+    word-break: break-word;
+    white-space: pre-line;
+  }
+
+  .quote-line-price {
+    min-width: $h-120;
+    text-align: right;
+  }
+
+  .total-price {
+    text-align: right;
+  }
+
+  .asterisk {
+    color: $red;
+    margin-left: $h-5;
+  }
+
+  .asterisk-notes {
+    text-align: right;
+    font-size: $font-label-size;
+  }
+
+  .mobile-length {
+    display: none;
+
+    @include tablet() {
+      display: block;
+    }
+  }
+
+  .desktop-length {
+    display: block;
+
+    @include tablet() {
+      display: none;
+    }
+  }
+
+  .quote-notes {
+    @include phone() {
+      padding: $h-20;
+      margin: 0 auto;
+    }
+  }
+
+  .quote-projects-notes {
+    p {
+      margin-bottom: $v-12;
+    }
+    // TODO: reuse ul, li style from core-components
+    ul {
+      padding-left: $v-24;
+      list-style: none;
+
+      > li {
+        margin-bottom: $v-12;
+        position: relative;
+        &:before {
+          content: "";
+          width: $v-12;
+          height: $v-12;
+          position: absolute;
+          left: (-$v-24 / 2 - $v-16 / 2);
+          top: ($v-24 / 2 - $v-16 / 2);
+          background-repeat: no-repeat;
+          background-image: url('../../assets/icon-check-mark.svg');
+          background-size: $v-12 $v-12;
+          display: block;
+        }
+      }
+    }
+  }
+}

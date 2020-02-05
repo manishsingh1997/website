@@ -25,7 +25,8 @@ import {
   LS_KEY,
 } from 'utils/analytics';
 
-import {DEFAULT_SOURCE_VALUE, FENCE_SLUG} from 'website/constants';
+import {DEFAULT_SOURCE_VALUE} from 'website/constants';
+import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import {CONTACT_US_MESSAGE_ENTERED} from 'utils/events';
 
 import './ContactUsForm.scss';

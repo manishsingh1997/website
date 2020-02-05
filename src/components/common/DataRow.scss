@@ -15,4 +15,9 @@
     max-width: 100px;
     text-align: right;
   }
+
+  > div:nth-child(2) {
+    min-width: 0;  // allow element to shrink https://stackoverflow.com/a/36247448/821594
+    overflow-wrap: break-word;
+  }
 }

@@ -46,3 +46,12 @@ export const getCustomerHouses = (customerGID) => {
     headers: getCommonHeaders(),
   });
 };
+
+export const getQuoteDetails = (customerGID, quoteSecret) => {
+  return axios({
+    url: `${getBaseAPIURL(customerGID)}/quotes/${quoteSecret}/`,
+    method: 'get',
+    responseType: 'json',
+    headers: getCommonHeaders(),
+  });
+};

@@ -1,0 +1,41 @@
+.map-label {
+  background: #FF7D59;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #FFFFFF;
+  padding: 3px 8px;
+  display: inline-flex;
+
+  line-height: initial;
+  margin-right: 5px;
+}
+
+.map-label-yellow {
+  background: #F7C950;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #FFFFFF;
+  padding: 3px 8px;
+  display: inline-flex;
+
+  line-height: initial;
+  margin-right: 5px;
+}
+
+.map-circle {
+  background: #FFFFFF;
+  border: 2px solid #4DC4FF;
+  border-radius: 100px;
+  font-weight: bold;
+  width: 24px;
+  height: 24px;
+  font-size: 15px;
+  color: #4DC4FF;
+  text-align: center;
+
+  line-height: initial;
+  display: inline-block;
+  margin-right: 5px;
+}

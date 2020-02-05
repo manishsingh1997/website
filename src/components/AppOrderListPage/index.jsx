@@ -39,7 +39,7 @@ export default class AppOrdersListPage extends React.Component {
     const customerGID = this.context;
     return (
       <div>
-        <Link to={getQuoteDetailURL(customerGID, quote['order_id'], quote['id'])}>
+        <Link to={getQuoteDetailURL(customerGID, quote['secret'])}>
           #{quote['id']}
         </Link> ({quote['status_display']})
       </div>

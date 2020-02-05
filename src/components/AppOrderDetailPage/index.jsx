@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
 
-import {Button, SelectFilter, Spinner} from '@ergeon/core-components';
+import {Button, SelectFilter} from '@ergeon/core-components';
 import contactIcon from '@ergeon/core-components/src/assets/icon-arrow-left.svg';
-import {calcUtils} from '@ergeon/3d-lib';
 
 import {formatDate, formatDateAndTime} from 'utils/date';
 import {
@@ -20,6 +19,7 @@ import DataRow from 'components/common/DataRow';
 
 import AppPage from 'components/common/AppPage';
 import AppSubCard from 'components/common/AppSubCard';
+import AppConfigPreview from 'components/common/AppConfigPreview';
 
 import './index.scss';
 
@@ -36,7 +36,6 @@ export default class AppOrderDetailPage extends React.Component {
 
   state = {
     selectedOption: QUOTE_FILTERS[0],
-    previewImages: {},
   };
 
   static contextType = CustomerGIDContext;
@@ -64,23 +63,6 @@ export default class AppOrderDetailPage extends React.Component {
     this.setState({selectedOption});
   };
 
-  fetchQuotePreview(quote) {
-    const data = calcUtils.getValueFromUrl(`/?${quote['preview_quote_line']['config']['schema_code_url']}`);
-    calcUtils.getPreviewImage(data).then(
-      preview => {
-        this.setState(prevState => (
-          {previewImages: {...prevState.previewImages, [quote['id']]: preview}})
-        );
-      }
-    ).catch(error => {
-      // save `null` in case of error, so preview image will not be shown at all
-      this.setState(prevState => (
-        {previewImages: {...prevState.previewImages, [quote['id']]: null}})
-      );
-      throw error;  // re-raise an error so we'll be notified
-    });
-  }
-
   renderListElementHeader(quote) {
     return (
       <React.Fragment>
@@ -93,15 +75,6 @@ export default class AppOrderDetailPage extends React.Component {
     const customerGID = this.context;
 
     const schemaCodeUrl = quote['preview_quote_line'] && quote['preview_quote_line']['config']['schema_code_url'];
-    const previewImage = schemaCodeUrl ? this.state.previewImages[quote['id']]: null;
-    let quotePreviewComponent = null;
-
-    if (previewImage === undefined) {
-      this.fetchQuotePreview(quote);
-      quotePreviewComponent = <Spinner active={true} borderWidth={.15} color="green" size={64} />;
-    } else if (previewImage) {
-      quotePreviewComponent = <img src={previewImage} />;
-    }
 
     return (
       <React.Fragment>
@@ -114,15 +87,11 @@ export default class AppOrderDetailPage extends React.Component {
             {quote['cancelled_at'] && <DataRow title="Cancelled At" value={formatDateAndTime(quote['cancelled_at'])} />}
           </div>
           <div>
-            {previewImage !== null && (
-              <div className="quote-line-preview border">
-                {quotePreviewComponent}
-              </div>
-            )}
+            <AppConfigPreview className="quote-preview" schemaCodeUrl={schemaCodeUrl} />
           </div>
         </div>
         <div>
-          <Link className="spacing left__is-10" to={getQuoteDetailURL(customerGID, quote['order_id'], quote['id'])}>
+          <Link className="spacing left__is-10" to={getQuoteDetailURL(customerGID, quote['secret'])}>
             <Button
               size="large"
               type="submit">

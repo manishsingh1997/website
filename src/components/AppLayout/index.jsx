@@ -10,6 +10,7 @@ import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import AppLoader from 'components/common/AppLoader';
 import SingleCard from 'components/common/SingleCard';
 import {getMenuItems} from 'data/customer-app';
+import {isQuoteDetailURL} from 'utils/urls';
 
 import './index.scss';
 
@@ -18,6 +19,7 @@ export default class AppLayout extends React.Component {
   static propTypes = {
     auth: PropTypes.object,
     children: PropTypes.node,
+    location: PropTypes.object,
     match: PropTypes.object,
   };
 
@@ -71,30 +73,45 @@ export default class AppLayout extends React.Component {
     );
   }
 
+  renderChildren(isLoading) {
+    const {match} = this.props;
+
+    if (isLoading) {
+      return <AppLoader />;
+    }
+
+    return (
+      <CustomerGIDContext.Provider value={match.params.customerGid}>
+        {this.props.children}
+      </CustomerGIDContext.Provider>
+    );
+  }
+
   render() {
-    const {auth: {isAuthLoading, isUserLoading, user}, match} = this.props;
+    const {auth: {isAuthLoading, isUserLoading, user}, location} = this.props;
 
     const isLoading = isAuthLoading || isUserLoading;
 
-    if (!isLoading && !user) {
+    // Quote detail page is special case - don't show sidebar
+    const isQuotePage = isQuoteDetailURL(location.pathname);
+
+    if (!isLoading && !isQuotePage && !user) {
       // TODO: if auth has error - show message with error
       return this.renderAnonymousUser();
     }
 
     return (
       <div className="customer-app-layout">
-        <div className="cards-wrapper">
-          <div className="customer-app-sidebar card shadow soft-border">
-            {this.renderSideBar()}
+        {isQuotePage ? this.renderChildren(isLoading) : (
+          <div className="cards-wrapper">
+            <div className="customer-app-sidebar card shadow soft-border">
+              {this.renderSideBar()}
+            </div>
+            <div className="customer-app-content card shadow soft-border">
+              {this.renderChildren(isLoading)}
+            </div>
           </div>
-          <div className="customer-app-content card shadow soft-border">
-            {isLoading ? <AppLoader />: (
-              <CustomerGIDContext.Provider value={match.params.customerGid}>
-                {this.props.children}
-              </CustomerGIDContext.Provider>
-            )}
-          </div>
-        </div>
+        )}
       </div>
     );
   }

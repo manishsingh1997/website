@@ -32,7 +32,8 @@ import {
 import {
   CUSTOMER_LEAD_CREATED,
 } from 'utils/events';
-import {products, DEFAULT_SOURCE_VALUE} from 'website/constants';
+import {DEFAULT_SOURCE_VALUE} from 'website/constants';
+import {products} from '@ergeon/core-components/src/constants';
 
 import './LeadForm.scss';
 import {getEventData, getAdvancedEditorUrl} from '../../utils/utils';

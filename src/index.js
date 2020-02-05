@@ -19,6 +19,7 @@ import AppHouseListPage from 'containers/AppHouseListPage';
 import AppLayout from 'containers/AppLayout';
 import AppOrderDetailPage from 'containers/AppOrderDetailPage';
 import AppOrderListPage from 'containers/AppOrderListPage';
+import AppQuoteDetailPage from 'components/AppQuoteDetailPage';
 import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
 import AuthLogoutPage from 'containers/AuthLogoutPage';
 import AuthSignInPage from 'components/AuthSignInPage';
@@ -55,14 +56,15 @@ const renderPhotoGalleryRedirect = (productSlug, category) => {
   );
 };
 
-const CustomerApp = ({match}) => (
-  <AppLayout match={match}>
+const CustomerApp = ({match, location}) => (
+  <AppLayout location={location} match={match}>
     <Switch>
       <Route component={AppOrderDetailPage} path={`${match.url}/orders/:orderId`} />
       <Route component={AppContactsPage} path={`${match.url}/contacts`} />
       <Route component={AppHouseListPage} path={`${match.url}/houses`} />
       <Route component={AppOrderListPage} path={`${match.url}/orders`} />
       <Route component={AppAppointmentsListPage} path={`${match.url}/appointments`} />
+      <Route component={AppQuoteDetailPage} name="quoteDetail" path={`${match.url}/quotes/:secret`} />
       <Route component={NotFoundPage} exact path="*"/>
     </Switch>
   </AppLayout>
@@ -111,5 +113,6 @@ render(
 );
 
 CustomerApp.propTypes = {
+  location: PropTypes.object,
   match: PropTypes.object,
 };
