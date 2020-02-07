@@ -35,7 +35,7 @@ class SliderHero extends React.Component {
         </span>
 
         <div className="form-wrapper">
-          <AddressForm product={product} showProductField />
+          <AddressForm product={product} />
         </div>
         <a className="phone-link white" href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a>
       </div>

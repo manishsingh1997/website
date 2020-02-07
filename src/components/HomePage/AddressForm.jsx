@@ -10,7 +10,6 @@ import {history} from 'index';
 class AddressForm extends React.Component {
   static propTypes = {
     product: PropTypes.string,
-    showProductField: PropTypes.bool,
     updateLead: PropTypes.func,
   };
 

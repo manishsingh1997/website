@@ -63,7 +63,6 @@ const getInitialState = (showNoteField = false, props = {}) => {
       name: '',
       phone: '',
       comment: '',
-      product: props.product,
       'string_address': stringifyAddress(props.lead && props.lead.address),
     },
     errors: null,
@@ -77,6 +76,7 @@ export default class LeadForm extends React.Component {
     lead: PropTypes.object,
     onProductChange: PropTypes.func,
     onSubmit: PropTypes.func,
+    product: PropTypes.string,
     showAddressInput: PropTypes.bool,
     showProductField: PropTypes.bool,
   };
@@ -195,8 +195,8 @@ export default class LeadForm extends React.Component {
   }
 
   render() {
-    const {showAddressInput} = this.props;
-    const {data: {email, name, phone, product, comment}, errors, loading, showNoteField} = this.state;
+    const {showAddressInput, product} = this.props;
+    const {data: {email, name, phone, comment}, errors, loading, showNoteField} = this.state;
     const multiselectProducts = products.map(function(productItem) {
       return {value: productItem.slug, label: productItem.name};
     });
