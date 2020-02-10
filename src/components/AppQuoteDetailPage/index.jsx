@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
@@ -23,10 +24,19 @@ import '@ergeon/draw-map/styles.css';
 
 import './index.scss';
 
+const STATUS_CANCELLED = 'CAN';
+
 export default class AppQuoteDetailPage extends React.Component {
 
   static propTypes = {
-    match: PropTypes.object,
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
+    }),
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        secret: PropTypes.string,
+      }),
+    }),
   };
 
   state = {
@@ -55,6 +65,19 @@ export default class AppQuoteDetailPage extends React.Component {
     }
   }
 
+  isQuoteCancelled(quote = {}) {
+    return quote.status === STATUS_CANCELLED;
+  }
+
+  isQuoteReplaced(quote = {}) {
+    return quote['replaced_by_quote'] && quote['replaced_by_quote']['secret'];
+  }
+
+  getNewQuoteLink(quote) {
+    const {location, match} = this.props;
+    return location.pathname.replace(match.params.secret, quote['replaced_by_quote']['secret']);
+  }
+
   getQuoteLineForCalcInputItem(quoteLines, itemName) {
     return quoteLines.find((quoteLine) => quoteLine.label === itemName);
   }
@@ -71,6 +94,29 @@ export default class AppQuoteDetailPage extends React.Component {
         className="quote-line-preview"
         noPreview={noPreview}
         schemaCodeUrl={schemaCodeUrl} />
+    );
+  }
+
+  renderQuoteCancelledMessage(quote) {
+    if (this.isQuoteReplaced(quote)) {
+      return (
+        <Notice>
+          This quote has been revised. Click
+          <Link
+            className="link"
+            rel="noopener"
+            target={'_blank'}
+            to={this.getNewQuoteLink(quote)}>
+            &nbsp;here
+          </Link> to display the new revision
+        </Notice>
+      );
+    }
+
+    return (
+      <Notice>
+        This quote has been cancelled.
+      </Notice>
     );
   }
 
@@ -103,6 +149,7 @@ export default class AppQuoteDetailPage extends React.Component {
     return (
       <div className="quote-detail-page">
         <div className="quote-details card shadow soft-border">
+          {this.isQuoteCancelled(quote) && this.renderQuoteCancelledMessage(quote)}
           <div className="flex-wrapper spacing after__is-48">
             <div className="quote-details-wrapper">
               <h4>{quote.order.product.name} Quote #{quote.id}</h4>
