@@ -8,7 +8,7 @@ export default class MapLabel extends React.Component {
   static propTypes = {
     isInline: PropTypes.bool,
     name: PropTypes.string.isRequired,
-    type: PropTypes.oneOf('Label', 'LabelYellow', 'Circle'),
+    type: PropTypes.oneOf(['Label', 'LabelYellow', 'Circle']),
   };
 
   render() {

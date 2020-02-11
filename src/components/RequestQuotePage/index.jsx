@@ -22,7 +22,6 @@ export default class RequestQuotePage extends React.Component {
 
   static propTypes = {
     addConfig: PropTypes.func.isRequired,
-    addConfigFromSchema: PropTypes.func.isRequired,
     address: PropTypes.string,
     changeProduct: PropTypes.func,
     configs: PropTypes.array,
@@ -222,7 +221,6 @@ export default class RequestQuotePage extends React.Component {
   render() {
     const {product} = this.state;
     const {
-      addConfigFromSchema,
       lead,
       zipcode,
       configs,
@@ -255,9 +253,7 @@ export default class RequestQuotePage extends React.Component {
         </div>
         {
           product === FENCE_SLUG &&
-          <ConfigCart
-            addConfigFromSchema={addConfigFromSchema}
-            zipcode={zipcode}/>
+          <ConfigCart zipcode={zipcode}/>
         }
       </div>
     );
