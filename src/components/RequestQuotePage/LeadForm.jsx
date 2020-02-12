@@ -99,8 +99,11 @@ export default class LeadForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const {lead, onSubmit} = this.props;
-    const {data} = this.state;
+    const {lead, onSubmit, product} = this.props;
+    const data = {
+      ...this.state.data,
+      product,
+    };
     const errors = this.validator(data);
     if (errors) {
       this.setState({
