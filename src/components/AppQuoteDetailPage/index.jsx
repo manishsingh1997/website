@@ -210,7 +210,7 @@ export default class AppQuoteDetailPage extends React.Component {
                   </div>
                 </div>
                 <div className="quote-line-price">
-                  <div className="mobile-length spacing after__is-12">Length: {distance} ft.</div>
+                  <div className="mobile-length spacing before__is-12 after__is-12">Length: {distance} ft.</div>
                   <div><b>{formatPrice(price)}</b></div>
                   <div className="desktop-length spacing before__is-12">Length: {distance} ft.</div>
                 </div>
@@ -259,7 +259,7 @@ export default class AppQuoteDetailPage extends React.Component {
                   </div>
                 </div>
                 <div className="quote-line-price">
-                  <div className="mobile-length spacing after__is-12">Area: {area} sr.</div>
+                  <div className="mobile-length spacing before__is-12 after__is-12">Area: {area} sr.</div>
                   <div><b>{formatPrice(price)}</b></div>
                   <div className="desktop-length spacing before__is-12">Area: {area} sr.</div>
                 </div>
