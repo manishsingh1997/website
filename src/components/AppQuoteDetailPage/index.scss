@@ -28,9 +28,14 @@
   }
 
   .quote-details-wrapper {
-    margin: $h-10;
-    padding: $h-10;
-    max-width: 500px;
+    margin-right: $h-20;
+    min-width: 500px;
+
+    @include phone() {
+      min-width: initial;
+      margin: 0;
+      margin-bottom: $h-10;
+    }
   }
 
   .quote-fields {
