@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 
 import {
   updateLead,
+  updateProduct,
   updateLeadFromAddress,
   openAddressUpdatePopup,
 } from '../flux/actions/address';
@@ -25,6 +26,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     updateLead: (lead) => {
       dispatch(updateLead(lead));
+    },
+    updateProduct: (product) => {
+      dispatch(updateProduct(product));
     },
     openAddressUpdatePopup: () => {
       dispatch(openAddressUpdatePopup());

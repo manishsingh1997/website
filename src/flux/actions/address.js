@@ -5,11 +5,17 @@ import {updateConfig} from './cart';
 
 export const actionTypes = {
   'LEAD_UPDATED': 'LEAD_UPDATED',
+  'PRODUCT_UPDATED': 'PRODUCT_UPDATED',
   'MODAL_LEAD_UPDATED': 'MODAL_LEAD_UPDATED',
   'OPEN_POPUP': 'OPEN_POPUP',
   'CLOSE_POPUP': 'CLOSE_POPUP',
   'MODAL_VALUE_UPDATED': 'MODAL_VALUE_UPDATED',
 };
+
+export const updateProduct = (product) => ({
+  type: actionTypes.PRODUCT_UPDATED,
+  payload: product,
+});
 
 export const updateLead = function(lead) {
   return (dispatch, getState) => {

@@ -66,6 +66,7 @@ export default class MultiProductSelect extends React.Component {
 
     render() {
       const {selectedOption} = this.state;
+      const value = (this.props.value !== undefined) ? this.props.value : selectedOption;
 
       return (
         <Select
@@ -78,7 +79,7 @@ export default class MultiProductSelect extends React.Component {
           onChange={this.handleChange}
           options={options}
           placeholder={'Select services…'}
-          value={selectedOption} />
+          value={value} />
       );
     }
 }

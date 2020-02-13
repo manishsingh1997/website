@@ -23,24 +23,23 @@ export default class RequestQuotePage extends React.Component {
   static propTypes = {
     addConfig: PropTypes.func.isRequired,
     address: PropTypes.string,
-    changeProduct: PropTypes.func,
     configs: PropTypes.array,
     lead: PropTypes.object,
     openAddressUpdatePopup: PropTypes.func.isRequired,
     product: PropTypes.string,
     updateLeadAndConfig: PropTypes.func.isRequired,
+    updateProduct: PropTypes.func,
     zipcode: PropTypes.string,
   };
 
   state = {
     showThankYou: false,
-    product: this.props.product,
   };
 
   componentDidMount() {
     let {zipcode, configs} = this.props;
     const address = getParameterByName('address');
-    const product = getParameterByName('product') || this.state.product;
+    const product = getParameterByName('product') || this.props.product;
     const schema = getParameterByName('schema');
     const code = getParameterByName('code');
     const length = getParameterByName('length');
@@ -67,8 +66,7 @@ export default class RequestQuotePage extends React.Component {
   }
 
   isItSupportedArea() {
-    const {lead} = this.props;
-    const {product} = this.state;
+    const {lead, product} = this.props;
 
     return !!(lead &&
       lead.productAvailability &&
@@ -219,8 +217,9 @@ export default class RequestQuotePage extends React.Component {
   }
 
   render() {
-    const {product} = this.state;
     const {
+      updateProduct,
+      product,
       lead,
       zipcode,
       configs,
@@ -244,7 +243,7 @@ export default class RequestQuotePage extends React.Component {
             <LeadForm
               configs={configs}
               lead={lead || {}}
-              onProductChange={product => this.setState({product})}
+              onProductChange={product => updateProduct(product)}
               onSubmit={() => this.setState({showThankYou: true})}
               product={product}
               showProductField/>
