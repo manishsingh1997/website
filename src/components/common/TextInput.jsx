@@ -14,14 +14,14 @@ export default class TextInput extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {value: props.value || ''};
   }
 
     handleInputChange = (event) => {
       const value = event.target.value;
       this.setState({value});
       this.props.onChange(this.props.name, value);
-    }
+    };
 
     render() {
       return (

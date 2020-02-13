@@ -12,9 +12,10 @@ import {
 } from '../flux/actions/cart';
 import RequestQuotePage from 'components/RequestQuotePage';
 
-const mapStateToProps = ({address, cart}) => {
+const mapStateToProps = ({address, cart, auth}) => {
   return {
     address: address.address,
+    auth,
     lead: address.lead,
     product: address.product,
     zipcode: address.zipcode,

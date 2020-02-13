@@ -54,14 +54,13 @@ const stringifyAddress = (address) => {
 };
 
 const getInitialState = (showNoteField = false, props = {}) => {
-
   return {
     validateOnChange: false,
     showNoteField,
     data: {
-      email: '',
-      name: '',
-      phone: '',
+      email: props.user.email || '',
+      name: props.user.full_name || '',
+      phone: props.user.phone_number || '',
       comment: '',
       'string_address': stringifyAddress(props.lead && props.lead.address),
     },
@@ -79,6 +78,7 @@ export default class LeadForm extends React.Component {
     product: PropTypes.string,
     showAddressInput: PropTypes.bool,
     showProductField: PropTypes.bool,
+    user: PropTypes.object,
   };
 
   constructor(props) {

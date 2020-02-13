@@ -5,6 +5,7 @@ import {Button, Places, Spinner} from '@ergeon/core-components';
 import {calcUtils} from '@ergeon/3d-lib';
 import MapComponent from '@ergeon/map-component';
 
+import AppLoader from 'components/common/AppLoader';
 import Marker from 'assets/marker.svg';
 import config from 'website/config';
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
@@ -23,6 +24,8 @@ export default class RequestQuotePage extends React.Component {
   static propTypes = {
     addConfig: PropTypes.func.isRequired,
     address: PropTypes.string,
+    auth: PropTypes.object,
+    changeProduct: PropTypes.func,
     configs: PropTypes.array,
     lead: PropTypes.object,
     openAddressUpdatePopup: PropTypes.func.isRequired,
@@ -218,12 +221,17 @@ export default class RequestQuotePage extends React.Component {
 
   render() {
     const {
+      auth: {isAuthLoading, isUserLoading, user},
       updateProduct,
       product,
       lead,
       zipcode,
       configs,
     } = this.props;
+
+    if (isAuthLoading || isUserLoading) {
+      return <AppLoader/>;
+    }
 
     if (this.state.showThankYou) {
       return (
@@ -246,7 +254,8 @@ export default class RequestQuotePage extends React.Component {
               onProductChange={product => updateProduct(product)}
               onSubmit={() => this.setState({showThankYou: true})}
               product={product}
-              showProductField/>
+              showProductField
+              user={user || {}}/>
           </div>
           {this.renderSignupMap()}
         </div>
