@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link, NavLink} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
-import classNames from 'classnames';
 
 import {Button} from '@ergeon/core-components';
 
@@ -21,10 +20,6 @@ export default class AppLayout extends React.Component {
     children: PropTypes.node,
     location: PropTypes.object,
     match: PropTypes.object,
-  };
-
-  state = {
-    expandedSidebar: false,
   };
 
   renderAnonymousUser() {
@@ -47,14 +42,9 @@ export default class AppLayout extends React.Component {
 
   renderSideBar() {
     const {match} = this.props;
-    const {expandedSidebar} = this.state;
 
     return (
-      <div className={classNames({'sidebar--expanded': expandedSidebar})} >
-        <div className="sidebar-title" onClick={() => this.setState({expandedSidebar: !expandedSidebar})}>
-          Menu
-          <i className="icon-arrow-down" />
-        </div>
+      <div>
         <ul className="siblings-list">
           {getMenuItems(match.url).map(
             (menuItem => (

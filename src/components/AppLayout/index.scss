@@ -88,58 +88,7 @@
 
 
     @include phone() {
-      margin-top: 0;
-      max-width: 100%;
-
-      .sidebar-title {
-        display: block;
-        color: $gray-1;
-        padding: $v-6 5px $v-6 10px;
-        text-transform: uppercase;
-        font-size: $font-label-size;
-        line-height: $line-height-label;
-
-        &:hover {
-          background-color: $gray-5;
-          cursor: pointer;
-        }
-
-        .icon-arrow-down {
-          float: right;
-          background-image: url('../../assets/icon-arrow-down.svg');
-          background-size: 11px;
-          background-repeat: no-repeat;
-          width: $v-24;
-          height: $v-24;
-          background-position: 50% 50%;
-          position: absolute;
-          right: 10px;
-          top: 7px;
-        }
-
-      }
-
-      .siblings-list {
-        display: none;
-
-        .siblings-list-item {
-          padding: 8px 6px;
-        }
-      }
-
-      .sidebar--expanded {
-
-        .siblings-list {
-          display: block;
-          padding-bottom: $v-12;
-          z-index: -1;
-        }
-
-        .icon-arrow-down {
-          transform: scale(1, -1);
-        }
-      }
-
+      display: none;
     }
 
     .active-link {

@@ -9,23 +9,119 @@
     .special {
       border-bottom: 1px solid $gray-4;
     }
+    .icon {
+      margin-right: 10px;
+      height: 20px;
+      min-width: 25px;
+      text-align: center;
+    }
+
+    @include phone() {
+      min-width: 20px;
+
+      .link {
+        padding: 5px;
+      }
+    }
+  }
+
+  .menu {
+    .menu-item {
+      width: inherit;
+    }
+
+    .menu-title {
+      display: flex;
+      align-items: center;
+    }
+
+    @include phone() {
+      position: absolute;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: $white;
+      box-shadow: 0 5px 15px 0 rgba(0,0,0,0.10);
+      min-width: 200px;
+      right: -12;
+      margin-top: 6px;
+      margin-right: 10px;
+
+      .menu-item {
+        padding: 6px 12px;
+        line-height: 32px;
+        border-radius: unset;
+        font-weight: normal;
+        font-size: $font-mobile-size;
+      }
+    }
+  }
+
+  .flex-align-middle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .sign-in-link {
     vertical-align: middle;
+    &:hover {
+      color: #333631;
+    }
+    li {
+      padding: 7px;
+      border-radius: 4px;
+      margin: unset;
+      
+      @include phone {
+        line-height: 20px !important;
+      }
+    }
+    .sign-in-icon {
+      vertical-align: bottom;
+      margin-right: 5px;
+
+      @include phone() {
+        vertical-align: middle;
+        margin-right: 0;
+      }
+    }
   }
 
-  .sign-in-icon {
-    vertical-align: bottom;
-    margin-right: 5px;
+  .link {
+    .sign-in-icon {
+      vertical-align: bottom;
+      margin-right: 5px;
 
+      @include phone() {
+        vertical-align: middle;
+        margin-right: unset;
+      }
+    }
+  }
+
+  .user-full-name {
     @include phone() {
-      vertical-align: middle;
+      display: none;
     }
   }
 
   .loaderWrapper {
-    padding-top: 2px;
+    @include phone {
+      padding-top: unset;
+      padding-left: 5px;
+    }
+  }
+
+  .ergeon-logo {
+    position: relative;
+    left: calc(8px / 2);
+    width: 112px;
+    height: 16px;
+  }
+
+  .active-link {
+    svg path {
+      fill: $green-1;
+    }
   }
 
 }
