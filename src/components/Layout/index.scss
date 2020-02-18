@@ -112,10 +112,12 @@
   }
 
   .ergeon-logo {
-    position: relative;
-    left: calc(8px / 2);
-    width: 112px;
-    height: 16px;
+    @include phone {
+      position: relative;
+      left: calc(8px / 2);
+      width: 112px;
+      height: 16px;
+    }
   }
 
   .active-link {
