@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import {Link} from 'react-router-dom';
 
@@ -112,7 +113,7 @@ class AuthSignInPage extends React.Component {
           <i>New to ergeon?</i> <Link to="/request-quote">Request a quote</Link>.
         </p>
         <form className="signin-form" onSubmit={this.handleSubmit.bind(this)}>
-          <div className={`signin-form-field ${errors && errors.email && 'is-error'}`}>
+          <div className={classNames('signin-form-field', {'is-error': errors && errors.email})}>
             <TextInput
               disabled={loading}
               labelName="Email"
@@ -126,7 +127,7 @@ class AuthSignInPage extends React.Component {
           <div className="signin-form-actions">
             {this.renderErrors('global')}
             <Button
-              className={`${loading && 'is-loading'}`}
+              className={classNames({'is-loading': loading})}
               disabled={loading}
               size="large"
               type="submit">

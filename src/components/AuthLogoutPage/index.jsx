@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link, Redirect} from 'react-router-dom';
@@ -39,7 +40,7 @@ class AuthLogoutPage extends React.Component {
             </p>
           }
           <Button
-            className={`${isAuthLoading && 'is-loading'}`}
+            className={classNames({'is-loading': isAuthLoading})}
             disabled={isAuthLoading}
             size="large"
             type="submit">

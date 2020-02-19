@@ -1,3 +1,4 @@
+import classNames from 'classNames';
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
@@ -128,7 +129,7 @@ export default class ContactUsForm extends React.Component {
     return (
       <form className="ContactUsForm" onSubmit={this.handleSubmit}>
         <h4 className="center spacing after__is-30">Send us a message</h4>
-        <div className={`Form-field ${errors && errors.name && 'is-error'}`}>
+        <div className={classNames('Form-field', {'is-error': errors && errors.name})}>
           <TextInput
             disabled={loading}
             labelName="Your name"
@@ -139,7 +140,7 @@ export default class ContactUsForm extends React.Component {
             value={name} />
           {errors && <div className="Form-error">{errors.name}</div>}
         </div>
-        <div className={`Form-field ${errors && errors.email && 'is-error'}`}>
+        <div className={classNames('Form-field', {'is-error': errors && errors.email})}>
           <TextInput
             disabled={loading}
             labelName="Email"
@@ -150,7 +151,7 @@ export default class ContactUsForm extends React.Component {
             value={email} />
           {errors && <div className="Form-error">{errors.email}</div>}
         </div>
-        <div className={`Form-field ${errors && errors.comment && 'is-error'}`}>
+        <div className={classNames('Form-field', {'is-error': errors && errors.comment})}>
           <TextArea
             disabled={loading}
             labelName="Message"
@@ -164,7 +165,7 @@ export default class ContactUsForm extends React.Component {
         <div className="Form-actions">
           {errors && <div className="Form-error">{errors.global}</div>}
           <Button
-            className={`${loading && 'is-loading'}`}
+            className={classNames({'is-loading': loading})}
             disabled={loading}
             size="large"
             type="submit">{loading ? <Spinner active={true} borderWidth={0.10} size={25} /> : 'Submit'}</Button>

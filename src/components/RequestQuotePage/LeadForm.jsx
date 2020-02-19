@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
@@ -210,7 +211,8 @@ export default class LeadForm extends React.Component {
 
     return (
       <form className="Form LeadForm" onSubmit={this.handleSubmit}>
-        {this.props.showProductField && <div className={`Form-field ${errors && errors.product && 'is-error'}`}>
+        {this.props.showProductField &&
+        <div className={classNames('Form-field', {'is-error': errors && errors.product})}>
           <label className="label spacing after__is-12">Ergeon services:</label>
           <MultiProductSelect
             isMulti={false}
@@ -219,7 +221,7 @@ export default class LeadForm extends React.Component {
             value={multiselectChoosenProduct} />
           {errors && <div className="Form-error">{errors.product}</div>}
         </div>}
-        <div className={`Form-field ${errors && errors.name && 'is-error'}`}>
+        <div className={classNames('Form-field', {'is-error': errors && errors.name})}>
           <TextInput
             disabled={loading}
             labelName="Your name"
@@ -230,7 +232,7 @@ export default class LeadForm extends React.Component {
             value={name} />
           {errors && <div className="Form-error">{errors.name}</div>}
         </div>
-        <div className={`Form-field ${errors && errors.phone && 'is-error'}`}>
+        <div className={classNames('Form-field', {'is-error': errors && errors.phone})}>
           <PhoneInput
             disabled={loading}
             labelName="Your phone number"
@@ -241,7 +243,7 @@ export default class LeadForm extends React.Component {
             value={phone} />
           {errors && <div className="Form-error">{errors.phone}</div>}
         </div>
-        <div className={`Form-field ${errors && errors.email && 'is-error'}`}>
+        <div className={classNames('Form-field', {'is-error': errors && errors.email})}>
           <TextInput
             disabled={loading}
             labelName="Email"
@@ -261,7 +263,7 @@ export default class LeadForm extends React.Component {
             </a>
           </div>
         ) : (
-          <div className={`Form-field ${errors && errors.comment && 'is-error'}`}>
+          <div className={classNames('Form-field', {'is-error': errors && errors.comment})}>
             <TextArea
               disabled={loading}
               labelName="Note"
@@ -273,7 +275,7 @@ export default class LeadForm extends React.Component {
             {errors && <div className="Form-error">{errors.comment}</div>}
           </div>
         )}
-        {showAddressInput && <div className={`Form-field ${errors && errors.address && 'is-error'}`}>
+        {showAddressInput && <div className={classNames('Form-field', {'is-error': errors && errors.address})}>
           <AddressInput
             onChange={(address) => this.handleFieldChange('address', address)}
             showButton={false} />
@@ -282,7 +284,7 @@ export default class LeadForm extends React.Component {
         <div className="Form-actions">
           {errors && <div className="Form-error">{errors.global}</div>}
           <Button
-            className={`AddressButton ${loading && 'is-loading'}`}
+            className={classNames('AddressButton', {'is-loading': loading})}
             disabled={loading}
             size="large"
             type="submit">{loading ? <Spinner active={true} borderWidth={0.10} size={25} /> : 'Get a quote'}</Button>

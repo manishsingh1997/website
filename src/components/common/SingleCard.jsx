@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -16,7 +17,7 @@ class SingleCard extends React.Component {
     const {className, content} = this.props;
 
     return (
-      <div className={`single-card-page ${className ? className : ''}`}>
+      <div className={classNames('single-card-page', className)}>
         <div className="single-card-page__content card shadow soft-border">
           {content}
         </div>

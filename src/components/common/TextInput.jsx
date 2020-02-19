@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -25,7 +26,7 @@ export default class TextInput extends React.Component {
 
     render() {
       return (
-        <div className={`float-container ${!!this.props.value && 'is-hasValue'}`}>
+        <div className={classNames('float-container', {'is-hasValue': this.props.value})}>
           <input
             id={this.props.name} onChange={this.handleInputChange}
             placeholder={this.props.placeholder}

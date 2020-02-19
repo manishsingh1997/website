@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
@@ -24,7 +25,7 @@ class WebsiteDropdownMenu extends DropdownMenu {
     return (
       <NavLink
         activeClassName="active-link"
-        className={`menu-item ${special ? 'special' : ''}`}
+        className={classNames('menu-item', {special})}
         key={index}
         onClick={() => {
           this.setState({showMenu: false});

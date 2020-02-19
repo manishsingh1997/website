@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -25,7 +26,7 @@ export default class TextArea extends React.Component {
 
   render() {
     return (
-      <div className={`float-area-container ${!!this.props.value && 'is-hasValue'}`}>
+      <div className={classNames('float-area-container', {'is-hasValue': this.props.value})}>
         <textarea
           cols="50"
           id={this.props.name}

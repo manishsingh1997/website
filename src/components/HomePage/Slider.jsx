@@ -46,8 +46,7 @@ class Slider extends React.Component {
     };
 
     return (
-
-      <div className={`slider-wrapper ${additionalClassNames || ''}`}>
+      <div className={classNames('slider-wrapper', additionalClassNames)}>
         <div className="slider">
           {children.map((slide, index) => {
             const slideClasses = classNames({

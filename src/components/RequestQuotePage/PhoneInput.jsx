@@ -1,3 +1,4 @@
+import classNames from 'classNames';
 import React from 'react';
 import PropTypes from 'prop-types';
 import vanillaTextMask from 'vanilla-text-mask';
@@ -39,7 +40,7 @@ export default class PhoneInput extends React.Component {
 
   render() {
     return (
-      <div className={`float-container ${!!this.props.value && 'is-hasValue'}`}>
+      <div className={classNames('float-container', {'is-hasValue': this.props.value})}>
         <input
           id={this.props.name}
           onKeyUp={this.handleInputChange}
