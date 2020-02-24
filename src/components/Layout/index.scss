@@ -15,6 +15,11 @@
       min-width: 25px;
       text-align: center;
     }
+    .user-full-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
 
     @include phone() {
       min-width: 20px;
