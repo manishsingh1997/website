@@ -78,6 +78,17 @@ export default class AppQuoteDetailPage extends React.Component {
     return location.pathname.replace(match.params.secret, quote['replaced_by_quote']['secret']);
   }
 
+  getQuoteDesigns(quote = {}) {
+    let fenceDescription = {materials: [], styles: []};
+
+    if (quote['fence_description']) {
+      fenceDescription = quote['fence_description'];
+    }
+
+    const {materials, styles} = fenceDescription;
+    return [...materials, ...styles];
+  }
+
   getQuoteLineForCalcInputItem(quoteLines, itemName) {
     return quoteLines.find((quoteLine) => quoteLine.label === itemName);
   }
@@ -145,6 +156,8 @@ export default class AppQuoteDetailPage extends React.Component {
         {customer.phone_number}<br />
       </div>
     );
+
+    const designs = this.getQuoteDesigns(quote);
 
     return (
       <div className="quote-detail-page">
@@ -285,8 +298,25 @@ export default class AppQuoteDetailPage extends React.Component {
             </div>
           </div>
         )}
+        {designs.length > 0 &&
+          <div className="quote-design-notes">
+            <div>
+              <h4 className="quote-design-notes__title">Materials and design</h4>
+              <div className="quote-design-notes__content">
+                {designs.map(({name, description, image}, id) => (
+                  <div className="quote-design-notes__content-item" key={id}>
+                    <div className="quote-design-notes__img">
+                      <img src={image} />
+                    </div>
+                    <div className="quote-design-notes__name">{name}</div>
+                    {description && <p>{description}</p>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        }
       </div>
     );
   }
-
 }
