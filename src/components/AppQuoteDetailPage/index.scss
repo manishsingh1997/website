@@ -13,7 +13,19 @@
   }
 
   .quote-labels-map {
+    position: relative;
     width: 100%;
+
+    &__content {
+      opacity: 0;
+    }
+
+    .loaderWrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
     .Map {
 

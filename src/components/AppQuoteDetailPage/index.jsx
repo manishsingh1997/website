@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import classNames from 'classnames';
 
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
+import {Spinner} from '@ergeon/core-components';
 
 import DrawMap, {getLabelFromIndex} from '@ergeon/draw-map';
 
@@ -42,6 +44,7 @@ export default class AppQuoteDetailPage extends React.Component {
   state = {
     previewImages: {},
     isLoading: false,
+    isLoadingMap: false,
     quote: null,
   };
 
@@ -53,7 +56,7 @@ export default class AppQuoteDetailPage extends React.Component {
 
   async getQuoteDetailsFromAPI() {
     // We don't need this data in redux store for now, so calling API directly
-    this.setState({isLoading: true});
+    this.setState({isLoading: true, isLoadingMap: true});
     try {
       const data = await getQuoteDetails(this.context, this.props.match.params.secret);
       this.setState({quote: data.data});
@@ -132,10 +135,11 @@ export default class AppQuoteDetailPage extends React.Component {
   }
 
   render() {
-    if (this.state.isLoading) {
+    const {isLoadingMap, isLoading, quote} = this.state;
+
+    if (isLoading) {
       return <AppLoader />;
     }
-    const {quote} = this.state;
     if (!quote) {
       return null;
     }
@@ -158,6 +162,8 @@ export default class AppQuoteDetailPage extends React.Component {
     );
 
     const designs = this.getQuoteDesigns(quote);
+    const SPINNER_BORDER_WITH = 0.10;
+    const SPINNER_SIZE = 64;
 
     return (
       <div className="quote-detail-page">
@@ -181,10 +187,19 @@ export default class AppQuoteDetailPage extends React.Component {
               </div>
             </div>
             <div className="quote-labels-map">
+              <Spinner
+                active={isLoadingMap}
+                borderWidth={SPINNER_BORDER_WITH}
+                color="green"
+                size={SPINNER_SIZE} />
               <DrawMap
+                className={classNames({'quote-labels-map__content': isLoadingMap})}
                 disabled
                 disableMapUI={false}
                 location={location}
+                onTilesLoaded={() => {
+                  this.setState({isLoadingMap: false});
+                }}
                 restoreFrom={{gates, sides, polygons}}
                 showControls={false} />
             </div>
