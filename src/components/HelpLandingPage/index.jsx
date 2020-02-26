@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
+import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 
 import helpDefaultCategories from 'data/help-categories';
 import HelpSearchField from '../common/HelpSearchField';
@@ -44,7 +45,7 @@ class HelpLandingPage extends React.Component {
             <div>
               <h2>Help & Customer Service</h2>
               <div className="subheader h2 spacing before__is-6">
-                Feel free to <b>call us</b> if you don&apos;t find your answer here
+                Feel free to <b><a href={`tel:${PHONE_NUMBER}`}>call us</a></b> if you don&apos;t find your answer here
               </div>
               <div className="spacing before__is-24 search-field-container">
                 <HelpSearchField onSubmit={this.searchRedirect.bind(this)} />
