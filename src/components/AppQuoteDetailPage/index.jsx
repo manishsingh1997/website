@@ -18,13 +18,14 @@ import DataRow from 'components/common/DataRow';
 import {getQuoteDetails} from 'api/app';
 
 import AppLoader from 'components/common/AppLoader';
-import {ERGEON_LICENSE_NUMBER} from 'website/constants';
+import {DRIVEWAY_QUANTITY_UNIT, ERGEON_LICENSE_NUMBER} from 'website/constants';
 import MapLabel from './MapLabel';
 import Notice from './Notice';
 
 import '@ergeon/draw-map/styles.css';
 
 import './index.scss';
+import {FENCE_QUANTITY_UNIT} from '../../website/constants';
 
 const STATUS_CANCELLED = 'CAN';
 
@@ -238,9 +239,13 @@ export default class AppQuoteDetailPage extends React.Component {
                   </div>
                 </div>
                 <div className="quote-line-price">
-                  <div className="mobile-length spacing before__is-12 after__is-12">Length: {distance} ft.</div>
+                  <div className="mobile-length spacing before__is-12 after__is-12">
+                    Length: {distance} ${FENCE_QUANTITY_UNIT}
+                  </div>
                   <div><b>{formatPrice(price)}</b></div>
-                  <div className="desktop-length spacing before__is-12">Length: {distance} ft.</div>
+                  <div className="desktop-length spacing before__is-12">
+                    Length: {distance} ${FENCE_QUANTITY_UNIT}
+                  </div>
                 </div>
               </div>
             ))}
@@ -287,9 +292,13 @@ export default class AppQuoteDetailPage extends React.Component {
                   </div>
                 </div>
                 <div className="quote-line-price">
-                  <div className="mobile-length spacing before__is-12 after__is-12">Area: {area} sr.</div>
+                  <div className="mobile-length spacing before__is-12 after__is-12">
+                    Area: {area} ${DRIVEWAY_QUANTITY_UNIT}
+                  </div>
                   <div><b>{formatPrice(price)}</b></div>
-                  <div className="desktop-length spacing before__is-12">Area: {area} sr.</div>
+                  <div className="desktop-length spacing before__is-12">
+                    Area: {area} ${DRIVEWAY_QUANTITY_UNIT}
+                  </div>
                 </div>
               </div>
             ))}

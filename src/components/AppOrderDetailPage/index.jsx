@@ -15,6 +15,7 @@ import {
 } from 'utils/app-order';
 import {getQuoteDetailURL} from 'utils/urls';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
+import {DRIVEWAY_QUANTITY_UNIT, FENCE_QUANTITY_UNIT} from 'website/constants';
 import DataRow from 'components/common/DataRow';
 
 import AppPage from 'components/common/AppPage';
@@ -82,6 +83,10 @@ export default class AppOrderDetailPage extends React.Component {
           <div>
             <DataRow title="Status" value={quote['status_display']} />
             <DataRow title="Total Price" value={formatPrice(quote['total_price'])} />
+            {Boolean(quote['total_length']) &&
+            <DataRow title="Total length" value={`${quote['total_length']} ${FENCE_QUANTITY_UNIT}`} />}
+            {Boolean(quote['total_area']) &&
+            <DataRow title="Total area" value={`${quote['total_area']} ${DRIVEWAY_QUANTITY_UNIT}`} />}
             <DataRow title="Sent At" value={formatDateAndTime(quote['sent_to_customer_at'])} />
             {quote['approved_at'] && <DataRow title="Approved At" value={formatDateAndTime(quote['approved_at'])} />}
             {quote['cancelled_at'] && <DataRow title="Cancelled At" value={formatDateAndTime(quote['cancelled_at'])} />}
