@@ -219,25 +219,42 @@
   }
 
   .config-cart__editor {
-    height: 500px;
-    margin-bottom: 50px;
+    margin-bottom: $v-24;
     position: relative;
-
-    &-buttons {
-      position: absolute;
-      padding: 10px;
-      top: 0;
-      right: 0;
+    .viewer-wrapper {
+      height: 500px;
     }
-
+    &__control-panel {
+      background-color: $white;
+      border-radius: 0 0 $corner-soft $corner-soft;
+      border: 1px solid $gray-4;
+      box-shadow: 0 2px 10px 0 rgba($gray-1, 0.1);
+      padding: $h-20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include phone() {
+        display: block;
+      }
+    }
+    &-buttons {
+      display: flex;
+       button {
+         width: 100%;
+       }
+    }
+    &__info {
+      min-width: 0;
+      margin-right: $h-10;
+      @include phone() {
+        margin-bottom: $v-12;
+      }
+      .label {
+        overflow-wrap: break-word;
+      }
+    }
     &-cancel-button {
       margin-right: 20px;
-    }
-
-    &-estimate {
-      float: right;
-      color: $gray-1;
-      font-size: 13px;
     }
   }
 }

@@ -18,6 +18,7 @@ export default class InlineEditor extends React.Component {
 
   state = {
     editorModel: this.props.initialConfig || defaultModel,
+    showControlPanel: true,
     price: 0,
   };
 
@@ -37,7 +38,6 @@ export default class InlineEditor extends React.Component {
     this.setState({editorModel});
     this.updatePrice(editorModel);
   }
-
   render() {
     const {onDone, onClose} = this.props;
     const {price, editorModel} = this.state;
@@ -48,22 +48,26 @@ export default class InlineEditor extends React.Component {
           onModelChange={this.onEditorModelChange.bind(this)}
           showParameterSelector
           threeDModel={editorModel} />
-        <div className="config-cart__editor-buttons">
-          <Button
-            className="config-cart__editor-cancel-button"
-            flavor="regular"
-            onClick={onClose}
-            taste="line">
-            Cancel
-          </Button>
-          <Button
-            className="config-cart__editor-done-button"
-            onClick={() => onDone(editorModel)}>
-            Done
-          </Button>
-        </div>
-        <div className="config-cart__editor-estimate">
-          {price ? `Estimate ~$${price}` : null}
+        <div className="config-cart__editor__control-panel">
+          <div className="config-cart__editor__info">
+            <div className="label uppercase">
+              {price ? `Estimate price: ~$${price}` : null}
+            </div>
+          </div>
+          <div className="config-cart__editor-buttons">
+            <Button
+              className="config-cart__editor-cancel-button min-width__is-120"
+              flavor="regular"
+              onClick={onClose}
+              taste="line">
+              Cancel
+            </Button>
+            <Button
+              className="config-cart__editor-done-button min-width__is-120"
+              onClick={() => onDone(editorModel)}>
+              Done
+            </Button>
+          </div>
         </div>
       </div>
     );
