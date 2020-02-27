@@ -78,9 +78,9 @@
     width: 720px;
     height: 500px;
     float: none;
-    background-image: url('../../assets/img-locations.jpg');
+    background-image: url('../../assets/img-locations.png');
     background-position: 0px 0px;
-    background-size: 720px;
+    background-size: cover;
   }
 
   .nice_view_map {
@@ -127,8 +127,9 @@
     .nice_view_map {
       display: block;
       height: 400px;
-      background-image: url('../../assets/img-locations.jpg');
+      background-image: url('../../assets/img-locations.png');
       background-repeat: no-repeat;
+      background-size: cover;
     }
 
     .locations {
