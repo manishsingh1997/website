@@ -77,15 +77,18 @@ export default class AppOrderDetailPage extends React.Component {
 
     const schemaCodeUrl = quote['preview_quote_line'] && quote['preview_quote_line']['config']['schema_code_url'];
 
+    const showTotalLength = Boolean(quote['total_length']) && quote['total_length'] !== '0';
+    const showTotalArea = Boolean(quote['total_area']) && quote['total_area'] !== '0';
+
     return (
       <React.Fragment>
         <div className="flex-wrapper">
           <div>
             <DataRow title="Status" value={quote['status_display']} />
             <DataRow title="Total Price" value={formatPrice(quote['total_price'])} />
-            {Boolean(quote['total_length']) &&
+            {showTotalLength &&
             <DataRow title="Total length" value={`${quote['total_length']} ${FENCE_QUANTITY_UNIT}`} />}
-            {Boolean(quote['total_area']) &&
+            {showTotalArea &&
             <DataRow title="Total area" value={`${quote['total_area']} ${DRIVEWAY_QUANTITY_UNIT}`} />}
             <DataRow title="Sent At" value={formatDateAndTime(quote['sent_to_customer_at'])} />
             {quote['approved_at'] && <DataRow title="Approved At" value={formatDateAndTime(quote['approved_at'])} />}
