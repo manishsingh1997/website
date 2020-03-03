@@ -9,6 +9,10 @@ import {calcUtils} from '@ergeon/3d-lib';
 
 import './AppConfigPreview.scss';
 
+const USE_CACHE = true;
+const DEFAULT_PREVIEW_WIDTH = 150;
+const DEFAULT_PREVIEW_HEIGTH = 150;
+
 export default class AppConfigPreview extends React.Component {
 
   static propTypes = {
@@ -39,13 +43,16 @@ export default class AppConfigPreview extends React.Component {
     const data = calcUtils.getValueFromUrl(`/?${schemaCodeUrl}`);
     this.setState({isLoading: true});
     try {
-      const preview = await calcUtils.getPreviewImage(data);
+      const preview = await calcUtils.getPreviewImage(
+        data,
+        DEFAULT_PREVIEW_WIDTH,
+        DEFAULT_PREVIEW_HEIGTH,
+        USE_CACHE,
+      );
       this.setState({previewImage: preview});
     } catch (error) {
       this.setState({previewImage: previewPlaceholderIcon});
       throw error;  // re-raise an error so we'll be notified
-    } finally {
-      this.setState({isLoading: false});
     }
   }
 
@@ -56,12 +63,11 @@ export default class AppConfigPreview extends React.Component {
 
     return (
       <div className={classNames({'config-preview': true, 'border': true, [className]: !!className})}>
-        {isLoading ?
-          <Spinner active={true} borderWidth={.15} color="green" size={64} /> :
-          <img
-            className={classNames({'preview-placeholder': isPlaceholder})}
-            src={previewImage} />
-        }
+        {isLoading && <Spinner active={true} borderWidth={.15} color="green" size={64} />}
+        <img
+          className={classNames({'preview-placeholder': isPlaceholder, 'hidden-img': isLoading})}
+          onLoad={() => this.setState({'isLoading': false})}
+          src={previewImage} />
       </div>
     );
   }
