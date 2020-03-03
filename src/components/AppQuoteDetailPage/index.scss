@@ -10,6 +10,10 @@
       padding: $h-20;
       margin: 0 auto;
     }
+
+    &__sides {
+      page-break-before: always;
+    }
   }
 
   .quote-labels-map {
@@ -56,6 +60,7 @@
   }
 
   .quote-line {
+    page-break-inside: avoid;
     padding-top: $h-10;
     padding-bottom: $h-20;
     border-bottom: 1px solid $gray-4;
@@ -109,6 +114,8 @@
   }
 
   .quote-notes {
+    page-break-before: always;
+
     @include phone() {
       padding: $h-20;
       margin: 0 auto;
@@ -148,6 +155,7 @@
     background-color: white;
     box-shadow: none;
     padding: $v-20;
+    page-break-before: always;
 
     &__title {
       font-family: $font-title;
@@ -198,6 +206,56 @@
     &__name {
       font-weight: 700;
       margin: 18px 0 6px;
+    }
+  }
+}
+
+@media print {
+  * {
+    /*
+      The following lines forces browser to showcase background-images.
+      Without it, the Ergeon logo won't be visible. We can change logo
+      implementation to be an image and remove it in future.
+    */
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  .customer-app-layout {
+    padding: 0;
+  }
+
+  .quote {
+    &-line {
+      flex: 1;
+      position: relative;
+
+      &-preview {
+        margin: 10px;
+      }
+    }
+
+    &-details {
+      border: none !important;
+
+      &.flex-wrapper {
+        flex-direction: column;
+      }
+
+      &__description {
+        display: flex;
+        flex-direction: column !important;
+        position: relative;
+      }
+
+      &-wrapper {
+        flex: 1;
+      }
+    }
+
+    &-labels-map {
+      flex: 1;
+      padding-top: 20px;
     }
   }
 }

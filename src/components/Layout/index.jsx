@@ -6,10 +6,10 @@ import {Link} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
 
 import {Footer, TopPanel, DropdownMenu, NavLinkContext, Spinner} from '@ergeon/core-components';
-import userIcon from '@ergeon/core-components/src/assets/icon-user.svg';
 import logOutIcon from '@ergeon/core-components/src/assets/icon-logout.svg';
+import userIcon from '@ergeon/core-components/src/assets/icon-user.svg';
 
-import {isChristmasTime, showUpcomingFeatures} from 'utils/utils';
+import {getParameterByName, isChristmasTime, showUpcomingFeatures} from 'utils/utils';
 import {getMenuItems} from 'data/customer-app.js';
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
@@ -136,17 +136,20 @@ export default class Layout extends React.Component {
 
   render() {
     const widthClass = this.checkTemplateWidth()? 'wrapper-980' : 'wrapper-1180';
+    const asPDF = getParameterByName('asPDF');
+
     return (
       <div className="app-layout">
         <NavLinkContext.Provider value={NavLink}>
           <WebsiteTopPanel
             customerMenu={this.isUpcomingFeaturesEnabled ? this.renderDropdownMenu() : null}
             ergeonUrl="/"
+            pdfMode={asPDF}
             showChristmasHat={this.isChristmasTime}
-            widthClass={widthClass} >
+            widthClass={widthClass}>
           </WebsiteTopPanel>
           <div>{this.props.children}</div>
-          <Footer ergeonUrl="/"  widthClass={widthClass}/>
+          {!asPDF && <Footer ergeonUrl="/"  widthClass={widthClass}/>}
           <AddressUpdatePopup />
         </NavLinkContext.Provider>
       </div>

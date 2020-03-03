@@ -11,6 +11,7 @@ import DrawMap, {getLabelFromIndex} from '@ergeon/draw-map';
 
 import {formatDate, isPastDate} from 'utils/date';
 import {formatPrice} from 'utils/app-order';
+import {getParameterByName} from 'utils/utils';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import AppConfigPreview from 'components/common/AppConfigPreview';
 import DataRow from 'components/common/DataRow';
@@ -136,6 +137,7 @@ export default class AppQuoteDetailPage extends React.Component {
 
   render() {
     const {isLoadingMap, isLoading, quote} = this.state;
+    const asPDF = getParameterByName('asPDF');
 
     if (isLoading) {
       return <AppLoader />;
@@ -164,12 +166,13 @@ export default class AppQuoteDetailPage extends React.Component {
     const designs = this.getQuoteDesigns(quote);
     const SPINNER_BORDER_WITH = 0.10;
     const SPINNER_SIZE = 64;
+    const isPDFModeDisabled = !asPDF;
 
     return (
       <div className="quote-detail-page">
         <div className="quote-details card shadow soft-border">
-          {this.isQuoteCancelled(quote) && this.renderQuoteCancelledMessage(quote)}
-          <div className="flex-wrapper spacing after__is-48">
+          {isPDFModeDisabled && this.isQuoteCancelled(quote) && this.renderQuoteCancelledMessage(quote)}
+          <div className="quote-details__description flex-wrapper spacing after__is-48">
             <div className="quote-details-wrapper">
               <h4>{quote.order.product.name} Quote #{quote.id}</h4>
               <div className="spacing before__is-12 after__is-12">
@@ -195,7 +198,7 @@ export default class AppQuoteDetailPage extends React.Component {
               <DrawMap
                 className={classNames({'quote-labels-map__content': isLoadingMap})}
                 disabled
-                disableMapUI={false}
+                disableMapUI={Boolean(asPDF)}
                 location={location}
                 onTilesLoaded={() => {
                   this.setState({isLoadingMap: false});
@@ -204,7 +207,7 @@ export default class AppQuoteDetailPage extends React.Component {
                 showControls={false} />
             </div>
           </div>
-          {isPastDate(quote['expires_at']) && (
+          {isPDFModeDisabled && isPastDate(quote['expires_at']) && (
             <Notice>
               Oops, it looks like your quote has expired.
               Lumber and Labor prices can fluctuate depending on a number of
@@ -218,7 +221,7 @@ export default class AppQuoteDetailPage extends React.Component {
               </a>.
             </Notice>
           )}
-          <div>
+          <div className="quote-details__sides">
             {(sides || []).map(({description, distance, map_id: id, price}, index) => (
               <div className="flex-wrapper quote-line" key={`side-${id}`}>
                 <div>
