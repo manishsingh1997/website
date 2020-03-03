@@ -20,11 +20,9 @@ export default class AppContactsPage extends React.Component {
   static contextType = CustomerGIDContext;
 
   fetchData() {
-    const {contacts, getContacts} = this.props;
+    const {getContacts} = this.props;
     const customerGID = this.context;
-    if (!contacts) {
-      getContacts(customerGID);
-    }
+    getContacts(customerGID);
   }
 
   getAdditional(contact, type) {

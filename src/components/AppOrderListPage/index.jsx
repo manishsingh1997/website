@@ -24,11 +24,9 @@ export default class AppOrdersListPage extends React.Component {
   static contextType = CustomerGIDContext;
 
   fetchData() {
-    const {orders, getOrders} = this.props;
+    const {getOrders} = this.props;
     const customerGID = this.context;
-    if (!orders) {
-      getOrders(customerGID);
-    }
+    getOrders(customerGID);
   }
 
   getAddress(order) {

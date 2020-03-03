@@ -30,11 +30,9 @@ export default class AppAppointmentsListPage extends React.Component {
   static contextType = CustomerGIDContext;
 
   fetchData() {
-    const {appointments, getAppointments} = this.props;
+    const {getAppointments} = this.props;
     const customerGID = this.context;
-    if (!appointments) {
-      getAppointments(customerGID);
-    }
+    getAppointments(customerGID);
   }
 
   getAddress(order) {

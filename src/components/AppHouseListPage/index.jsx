@@ -29,11 +29,9 @@ export default class AppHouseListPage extends React.Component {
   static contextType = CustomerGIDContext;
 
   fetchData() {
-    const {houses, getHouses} = this.props;
+    const {getHouses} = this.props;
     const customerGID = this.context;
-    if (!houses) {
-      getHouses(customerGID);
-    }
+    getHouses(customerGID);
   }
 
   getAddress(house) {
