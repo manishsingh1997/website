@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
-import {Spinner} from '@ergeon/core-components';
+import {Spinner, Notification} from '@ergeon/core-components';
 
 import DrawMap, {getLabelFromIndex} from '@ergeon/draw-map';
 
@@ -21,7 +21,6 @@ import {getQuoteDetails} from 'api/app';
 import AppLoader from 'components/common/AppLoader';
 import {DRIVEWAY_QUANTITY_UNIT, ERGEON_LICENSE_NUMBER, FENCE_QUANTITY_UNIT} from 'website/constants';
 import MapLabel from './MapLabel';
-import Notice from './Notice';
 import ExplanationSection from './ExplanationSection';
 
 import '@ergeon/draw-map/styles.css';
@@ -116,7 +115,9 @@ export default class AppQuoteDetailPage extends React.Component {
   renderQuoteCancelledMessage(quote) {
     if (this.isQuoteReplaced(quote)) {
       return (
-        <Notice>
+        <Notification
+          mode="embed"
+          type="Information">
           This quote has been revised. Click
           <Link
             className="link"
@@ -125,14 +126,16 @@ export default class AppQuoteDetailPage extends React.Component {
             to={this.getNewQuoteLink(quote)}>
             &nbsp;here
           </Link> to display the new revision
-        </Notice>
+        </Notification>
       );
     }
 
     return (
-      <Notice>
+      <Notification
+        mode="embed"
+        type="Warning">
         This quote has been cancelled.
-      </Notice>
+      </Notification>
     );
   }
 
@@ -210,7 +213,9 @@ export default class AppQuoteDetailPage extends React.Component {
             </div>
           </div>
           {isPDFModeDisabled && isPastDate(quote['expires_at']) && (
-            <Notice>
+            <Notification
+              mode="embed"
+              type="Information">
               Oops, it looks like your quote has expired.
               Lumber and Labor prices can fluctuate depending on a number of
               factors throughout the year, therefore our quotes are only good
@@ -221,7 +226,7 @@ export default class AppQuoteDetailPage extends React.Component {
               simply contact us at <a href={`tel:${PHONE_NUMBER}`}>
                 {formatPhoneNumber(PHONE_NUMBER)}
               </a>.
-            </Notice>
+            </Notification>
           )}
           <div className="quote-details__sides">
             {(sides || []).map(({description, distance, map_id: id, price}, index) => (
@@ -327,22 +332,22 @@ export default class AppQuoteDetailPage extends React.Component {
           </div>
         )}
         {designs.length > 0 &&
-          <div className="quote-design-notes">
-            <div>
-              <h4 className="quote-design-notes__title">Materials and design</h4>
-              <div className="quote-design-notes__content">
-                {designs.map(({name, description, image}, id) => (
-                  <div className="quote-design-notes__content-item" key={id}>
-                    <div className="quote-design-notes__img">
-                      <img src={image} />
-                    </div>
-                    <div className="quote-design-notes__name">{name}</div>
-                    {description && <p>{description}</p>}
+        <div className="quote-design-notes">
+          <div>
+            <h4 className="quote-design-notes__title">Materials and design</h4>
+            <div className="quote-design-notes__content">
+              {designs.map(({name, description, image}, id) => (
+                <div className="quote-design-notes__content-item" key={id}>
+                  <div className="quote-design-notes__img">
+                    <img src={image} />
                   </div>
-                ))}
-              </div>
+                  <div className="quote-design-notes__name">{name}</div>
+                  {description && <p>{description}</p>}
+                </div>
+              ))}
             </div>
           </div>
+        </div>
         }
         <ExplanationSection asPDF={asPDF} warrantyLink={warranty}/>
       </div>
