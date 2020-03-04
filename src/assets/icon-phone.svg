@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>phone copy@2x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="home-page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="home-page-copy" transform="translate(-1051.000000, -5364.000000)">
+            <g id="footer" transform="translate(0.000000, 5250.000000)">
+                <g id="phone-copy" transform="translate(1051.000000, 114.000000)">
+                    <rect id="Rectangle-2" x="0" y="0" width="24" height="24" rx="12"></rect>
+                    <path d="M16.127,13.7783 L13.981,13.7773 C13.682,13.7773 13.441,14.0183 13.441,14.3153 L13.442,15.3623 C10.849,15.2233 8.777,13.1513 8.641,10.5583 L9.685,10.5583 C9.981,10.5583 10.223,10.3183 10.223,10.0213 L10.222,7.8733 C10.223,7.5773 9.981,7.3383 9.685,7.3373 L7.538,7.3363 C7.241,7.3383 7.001,7.5773 7,7.8743 L7.001,10.5583 L7.017,10.5583 C7.153,14.0433 9.957,16.8463 13.443,16.9853 L13.443,17.0003 L16.126,17.0003 C16.422,16.9993 16.663,16.7583 16.664,16.4623 L16.663,14.3143 C16.663,14.0183 16.423,13.7783 16.127,13.7783" id="Fill-1619" fill="#FFFFFF" ></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

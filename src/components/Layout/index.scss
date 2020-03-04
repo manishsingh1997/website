@@ -75,7 +75,7 @@
       padding: 7px;
       border-radius: 4px;
       margin: unset;
-      
+
       @include phone {
         line-height: 20px !important;
       }
@@ -131,4 +131,20 @@
     }
   }
 
+  .phone-number {
+    display: flex;
+    margin-right: 18px;
+
+    &__icon {
+      background: $green-1;
+      border-radius: 50%;
+    }
+
+    &__link {
+      font-size: 21px;
+      padding-left: 8px;
+      color: $green-1;
+      font-weight: 600;
+    }
+  }
 }

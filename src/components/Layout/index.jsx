@@ -5,10 +5,13 @@ import {NavLink} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
 
-import {Footer, TopPanel, DropdownMenu, NavLinkContext, Spinner} from '@ergeon/core-components';
 import logOutIcon from '@ergeon/core-components/src/assets/icon-logout.svg';
 import userIcon from '@ergeon/core-components/src/assets/icon-user.svg';
+import {Footer, TopPanel, DropdownMenu, NavLinkContext, Spinner} from '@ergeon/core-components';
+import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
+import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 
+import phoneIcon from 'assets/icon-phone.svg';
 import {getParameterByName, isChristmasTime, showUpcomingFeatures} from 'utils/utils';
 import {getMenuItems} from 'data/customer-app.js';
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
@@ -134,6 +137,15 @@ export default class Layout extends React.Component {
     );
   }
 
+  renderPdfDetails() {
+    return (
+      <div className="phone-number">
+        <ReactSVG className="phone-number__icon" src={phoneIcon} />
+        <a className="phone-number__link" href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a>
+      </div>
+    );
+  }
+
   render() {
     const widthClass = this.checkTemplateWidth()? 'wrapper-980' : 'wrapper-1180';
     const asPDF = getParameterByName('asPDF');
@@ -144,6 +156,7 @@ export default class Layout extends React.Component {
           <WebsiteTopPanel
             customerMenu={this.isUpcomingFeaturesEnabled ? this.renderDropdownMenu() : null}
             ergeonUrl="/"
+            pdfDetails={this.renderPdfDetails()}
             pdfMode={asPDF}
             showChristmasHat={this.isChristmasTime}
             widthClass={widthClass}>
