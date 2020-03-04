@@ -17,8 +17,17 @@ export default class AppPage extends React.Component {
     renderHeader: PropTypes.func.isRequired,
   };
 
+  state = {
+    isFetchStarted: false,  // needed to not render content before `fetchData` starts
+  }
+
   componentDidMount() {
     this.props.fetchData();
+    this.setFetchDataStarted();
+  }
+
+  setFetchDataStarted() {
+    this.setState({isFetchStarted: true});
   }
 
   renderError(error) {
@@ -32,7 +41,7 @@ export default class AppPage extends React.Component {
   }
 
   renderContent() {
-    if (this.props.isLoading) {
+    if (!this.state.isFetchStarted || this.props.isLoading) {
       return <AppLoader />;
     }
     if (this.props.error) {
