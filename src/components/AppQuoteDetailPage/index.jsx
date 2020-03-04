@@ -22,6 +22,7 @@ import AppLoader from 'components/common/AppLoader';
 import {DRIVEWAY_QUANTITY_UNIT, ERGEON_LICENSE_NUMBER, FENCE_QUANTITY_UNIT} from 'website/constants';
 import MapLabel from './MapLabel';
 import Notice from './Notice';
+import ExplanationSection from './ExplanationSection';
 
 import '@ergeon/draw-map/styles.css';
 
@@ -148,6 +149,7 @@ export default class AppQuoteDetailPage extends React.Component {
     const {
       'calc_input': {gates, sides, polygons},
       order: {house: {address, customer}},
+      warranty,
     } = quote;
     const location = {
       lat: address.latitude,
@@ -342,6 +344,7 @@ export default class AppQuoteDetailPage extends React.Component {
             </div>
           </div>
         }
+        <ExplanationSection asPDF={asPDF} warrantyLink={warranty}/>
       </div>
     );
   }
