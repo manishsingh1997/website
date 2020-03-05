@@ -19,7 +19,7 @@ import AppHouseListPage from 'containers/AppHouseListPage';
 import AppLayout from 'containers/AppLayout';
 import AppOrderDetailPage from 'containers/AppOrderDetailPage';
 import AppOrderListPage from 'containers/AppOrderListPage';
-import AppQuoteDetailPage from 'components/AppQuoteDetailPage';
+import AppQuoteDetailPage from 'containers/AppQuoteDetailPage';
 import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
 import AuthLogoutPage from 'containers/AuthLogoutPage';
 import AuthSignInPage from 'components/AuthSignInPage';

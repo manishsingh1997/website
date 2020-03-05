@@ -11,6 +11,7 @@ import {Spinner, Notification} from '@ergeon/core-components';
 import DrawMap, {getLabelFromIndex} from '@ergeon/draw-map';
 
 import {formatDate, isPastDate} from 'utils/date';
+import {getOrderDetailURL} from 'utils/urls';
 import {formatPrice} from 'utils/app-order';
 import {getParameterByName} from 'utils/utils';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
@@ -30,6 +31,8 @@ import {
 } from 'website/constants';
 import MapLabel from './MapLabel';
 import ExplanationSection from './ExplanationSection';
+import {ReactSVG} from 'react-svg';
+import ImgBack from 'assets/icon-arrow-left.svg';
 
 import '@ergeon/draw-map/styles.css';
 
@@ -38,6 +41,7 @@ import './index.scss';
 export default class AppQuoteDetailPage extends React.Component {
 
   static propTypes = {
+    auth: PropTypes.object,
     location: PropTypes.shape({
       pathname: PropTypes.string,
     }),
@@ -63,11 +67,20 @@ export default class AppQuoteDetailPage extends React.Component {
 
   static contextType = CustomerGIDContext;
 
+  get customerGID() {
+    return this.context;
+  }
+
+  isUserSignedIn() {
+    const {auth : {user}} = this.props;
+    return !!user;
+  }
+
   async getQuoteDetailsFromAPI() {
     // We don't need this data in redux store for now, so calling API directly
     this.setState({isLoading: true, isLoadingMap: true});
     try {
-      const data = await getQuoteDetails(this.context, this.props.match.params.secret);
+      const data = await getQuoteDetails(this.customerGID, this.props.match.params.secret);
       this.setState({quote: data.data});
     } catch (apiError) {
       // TODO: show reasonable message
@@ -140,6 +153,20 @@ export default class AppQuoteDetailPage extends React.Component {
       return quote['total_cost'];
     }
     return quote['total_price'];
+  }
+
+  get linkToOrderPage() {
+    const orderID = this.state.quote['order_id'];
+    return getOrderDetailURL(this.customerGID, orderID);
+  }
+
+  renderBackButton() {
+    return (
+      <Link
+        className="button button--regular button--size__small taste__boundless button-back"
+        to={this.linkToOrderPage}>
+        <ReactSVG className="gray-arrow-fill" src={ImgBack}/>Back to order</Link>
+    );
   }
 
   renderQuotePreview(quoteLine, noPreview) {
@@ -395,8 +422,9 @@ export default class AppQuoteDetailPage extends React.Component {
           {isPDFModeDisabled && this.isQuoteCancelled(quote) && this.renderQuoteCancelledMessage(quote)}
           <div className="quote-details__description flex-wrapper spacing after__is-48">
             <div className="quote-details-wrapper">
-              <h4>{quote.order.product.name} Quote #{quote.id}</h4>
-              <div className="spacing before__is-12 after__is-12">
+              {this.isUserSignedIn() && isPDFModeDisabled && this.renderBackButton()}
+              <h3>{quote.order.product.name} Quote #{quote.id}</h3>
+              <div>
                 {quote.title}
               </div>
               <div>
@@ -405,7 +433,11 @@ export default class AppQuoteDetailPage extends React.Component {
               <div className="quote-fields spacing before__is-24">
                 <DataRow title="Customer" value={customerDetails} />
                 <DataRow title="Quote ID" value={`#${quote.id}`} />
-                <DataRow title="Order ID" value={`#${quote.order.id}`} />
+                {
+                  this.isUserSignedIn()
+                    ? <DataRow title="Order ID" value={<Link to={this.linkToOrderPage}>#{quote.order.id}</Link>}/>
+                    : <DataRow title="Order ID" value={`#${quote.order.id}`} />
+                }
                 <DataRow title="Sent On" value={formatDate(quote['sent_to_customer_at'])} />
                 <DataRow title="Expires On" value={formatDate(quote['expires_at'])} />
               </div>
@@ -484,7 +516,7 @@ export default class AppQuoteDetailPage extends React.Component {
           </div>
         </div>
         }
-        <ExplanationSection asPDF={asPDF} warrantyLink={warranty}/>
+        <ExplanationSection asPDF={this.isPDFMode()} warrantyLink={warranty}/>
       </div>
     );
   }
