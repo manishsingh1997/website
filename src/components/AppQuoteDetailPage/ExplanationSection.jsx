@@ -6,6 +6,7 @@ import ImgFinal from 'assets/icon-final-walkthrough.svg';
 import ImgBilling from 'assets/icon-billing.svg';
 import './ExplanationSection.scss';
 import PropTypes from 'prop-types';
+import config from 'website/config';
 
 export default class ExplanationSection extends React.Component {
   static propTypes = {
@@ -60,7 +61,7 @@ export default class ExplanationSection extends React.Component {
           </div>
           You’ll be charged after your project is complete. Payments made via paper check or e-check will be
           charged at the amount listed on your quote. Payments made via credit card will be subject to an
-          additional 2% transaction fee.
+          additional {config.CARD_TRANSACTION_FEE} transaction fee.
         </div>
         {!asPDF && this.renderWarrantyBlock()}
       </div>

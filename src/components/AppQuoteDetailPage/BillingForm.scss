@@ -1,0 +1,349 @@
+@import "~@ergeon/core-components/src/components/variables";
+
+.billing-form {
+  background-color: white;
+  border: 1px solid $gray-4;
+  border-radius: $corner-soft;
+  box-shadow: none;
+  padding: 33px;
+  margin-top: $v-30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  position: relative;
+
+  @include phone() {
+    display: block;
+    padding: 20px;
+    margin: 0 auto;
+    border: 0;
+
+    .billing-form__content {
+      padding-right: 0;
+      border: 0;
+
+      &:after {
+        display: none;
+      }
+    }
+
+    .billing-form__actions {
+      width: 100%;
+      margin-top: 30px;
+      border-top: 1px solid #eaeaea;
+      text-align: center;
+      padding-top: 19px;
+      text-align: left;
+    }
+
+    .billing-form__total-pay {
+      display: inline-block;
+      height: 70px;
+    }
+
+    .billing-form__approve {
+      float: right;
+      margin-top: 4px;
+    }
+
+    .billing-form__request-changes,
+    .billing-form__terms {
+      display: block;
+      text-align: left;
+      margin-top: 5px;
+    }
+
+    .billing-form__title-section {
+      flex-wrap: wrap;
+    }
+
+    .billing-form__fields {
+      display: block;
+    }
+
+    .billing-form__card-number {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .billing-form__expiration-date,
+    .billing-form__cvc{
+      margin-bottom: 5px;
+      display: inline-block;
+    }
+  }
+
+  @include phone-small() {
+    .billing-form__approve {
+      float: none;
+    }
+  }
+
+  &__content {
+    position: relative;
+    flex: 1;
+    padding-right: 30px;
+
+    &:after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 20px;
+      width: 1px;
+      background-color: $gray-4;
+      content: "";
+    }
+  }
+
+  &__title-section {
+    h4 {
+      color: $black-1;
+      font-weight: 500;
+      font-family: $font-title;
+      font-size: $h4-size;
+      line-height: $h4-line-height;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon-cards {
+    width: 200px;
+    height: 16px;
+    margin-right: 10px;
+  }
+
+  &__icon-secure {
+    height: 12px;
+    width: 24px;
+  }
+
+  &__fields {
+    display: flex;
+    padding: 40px 0 30px 0;
+
+    .float-container input {
+      font-size: 12px;
+    }
+
+    .float-container label {
+      transform: translate(0, -34px) scale(1);
+    }
+  }
+
+  &__card-number {
+    margin-right: 15px;
+    width: calc(100% - 294px);
+  }
+
+  &__expiration-date {
+    margin-right: 15px;
+    width: 119px;
+  }
+
+  &__cvc {
+    margin-right: 8px;
+    width: 119px;
+  }
+
+  &__card-disclaimer {
+    position: relative;
+    padding-left: 34px;
+    margin-top: 14px;
+    font-style: italic;
+    font-size: 14px;
+    max-width: 500px;
+
+    &-icon {
+      position: absolute;
+      left: 0;
+    }
+
+    &-text {
+      font-style: italic;
+    }
+  }
+
+  &__actions {
+    align-self: flex-start;
+    width: 245px;
+  }
+
+  &__total-pay {
+    color: $gray-1;
+    font-size: 13px;
+    font-family: $font-title;
+    height: 106px;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  &__price {
+    font-family: $font-title;
+    color: $black-1;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__approve {
+    margin-bottom: $v-20;
+
+    &-button {
+      padding: 0 30px;
+
+      &[disabled] {
+        opacity: .2;
+      }
+    }
+  }
+
+  &__request-changes,
+  &__terms-link {
+    outline: 0;
+    color: $green-1;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 13px;
+
+    &:hover {
+      color: $green-2;
+      text-decoration: underline;
+    }
+  }
+
+  &__terms {
+    margin-top: 14px;
+  }
+
+  &__accept-terms-button {
+    border: 2px solid $gray-3;
+    width: $v-24;
+    min-width: $v-24;
+    height: $v-24;
+    min-height: $v-24;
+    vertical-align: middle;
+    position: relative;
+    border-radius: $corner-default;
+    display: inline-block;
+    background-color: white;
+    transition: all .2s ease-out;
+
+    &:active {
+      background-color: $gray-4;
+    }
+
+    &-icon {
+      transition: all .15s ease-out;
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      margin-top: -5px;
+      margin-left: -5px;
+      top: 50%;
+      left: 50%;
+      fill: $green-1;
+      transform: scale(1) rotate(0deg);
+    }
+
+    &--selected {
+      border-color: $green-1;
+    }
+  }
+
+  &__terms-accept {
+    font-size: 13px;
+    margin-left: 10px;
+  }
+
+  &__terms-link {
+  }
+
+  &__payment-method-details {
+
+    &-item {
+      display: flex;
+      align-items: center;
+
+      &-name {
+        margin-right: 20px;
+        text-align: right;
+        width: 110px;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        color: #787e75;
+        font-size: 14px;
+
+      }
+
+      &-value {
+        flex-grow: 1;
+        word-break: break-all;
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  &__cancel-edit-button {
+    margin-left: 10px;
+    line-height: 12px;
+  }
+
+  &__cvc,
+  &__expiration-date,
+  &__card-number {
+    position: relative;
+  }
+
+  &__valid-field-check {
+    position: absolute;
+    opacity: 0;
+    transition: all .2s ease-out;
+    right: 10px;
+    top: 50%;
+  }
+
+  .Form-field.is-error input {
+    @include border();
+    border-color: $red-1;
+
+    &:focus {
+      border-color: $gray-1;
+    }
+  }
+
+  .Form-field.is-valid {
+    input {
+      border-color: $green-1;
+    }
+
+    .billing-form__valid-field-check {
+      opacity: 1;
+    }
+  }
+
+  .Form-field input:focus {
+    @include border();
+    border-color: $gray-1;
+    box-shadow: none;
+  }
+
+  .Form-error {
+    position: absolute;
+    font-size: 10px;
+    color: $red-1;
+    line-height: 12px;
+    margin: 0;
+    transition: all .2s ease-out;
+    transition-delay: .3s;
+    top: 100%;
+    margin-top: 3px;
+    left: 0;
+  }
+}

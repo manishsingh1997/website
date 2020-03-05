@@ -10,6 +10,7 @@ import {Spinner, Notification} from '@ergeon/core-components';
 
 import DrawMap, {getLabelFromIndex} from '@ergeon/draw-map';
 
+import config from 'website/config';
 import {formatDate, isPastDate} from 'utils/date';
 import {getOrderDetailURL} from 'utils/urls';
 import {formatPrice} from 'utils/app-order';
@@ -30,6 +31,7 @@ import {
   VENDOR_PREVIEW_SLUG,
 } from 'website/constants';
 import MapLabel from './MapLabel';
+import BillingForm from './BillingForm';
 import ExplanationSection from './ExplanationSection';
 import {ReactSVG} from 'react-svg';
 import ImgBack from 'assets/icon-arrow-left.svg';
@@ -88,6 +90,12 @@ export default class AppQuoteDetailPage extends React.Component {
     } finally {
       this.setState({isLoading: false});
     }
+  }
+
+  handleBillingSubmit(data, approveOnly) {
+    // TODO: Implement API call to /billing/method
+    console.log('Billing api call data: ', data);
+    console.log('approveOnly: ', approveOnly);
   }
 
   async reviewQuote() {
@@ -394,7 +402,7 @@ export default class AppQuoteDetailPage extends React.Component {
     }
     const {
       'calc_input': {gates, sides, polygons},
-      order: {house: {address, customer}},
+      order: {house: {address, customer, id: houseId, paymentMethod}},
       warranty,
     } = quote;
     const location = {
@@ -486,7 +494,7 @@ export default class AppQuoteDetailPage extends React.Component {
             <span className="asterisk">*</span>
           </div>
           <div className="asterisk-notes">
-            <i>An additional 2% fee will be added for credit cards</i>
+            <i>An additional {config.CARD_TRANSACTION_FEE} fee will be added for credit cards</i>
             <span className="asterisk">*</span>
           </div>
         </div>
@@ -518,6 +526,13 @@ export default class AppQuoteDetailPage extends React.Component {
           </div>
         </div>
         }
+        <BillingForm
+          houseId={houseId}
+          onSubmit={this.handleBillingSubmit.bind(this)}
+          paymentMethod={paymentMethod}
+          quoteId={quote['id']}
+          termsAndConditionsUrl={quote['terms_and_conditions']}
+          total={formatPrice(this.getTotalPrice(quote))} />
         <ExplanationSection asPDF={this.isPDFMode()} warrantyLink={warranty}/>
       </div>
     );

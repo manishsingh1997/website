@@ -6,8 +6,10 @@ import './FloatingInput.scss';
 
 export default class TextInput extends React.Component {
   static propTypes = {
+    className: PropTypes.string,
     labelName: PropTypes.string,
     name: PropTypes.string,
+    onBlur: PropTypes.func,
     onChange: PropTypes.func,
     placeholder: PropTypes.string,
     value: PropTypes.string,
@@ -25,10 +27,18 @@ export default class TextInput extends React.Component {
     };
 
     render() {
+      const classes = {
+        'float-container': true,
+        'is-hasValue': this.props.value,
+        [this.props.className]: this.props.className,
+      };
+
       return (
-        <div className={classNames('float-container', {'is-hasValue': this.props.value})}>
+        <div className={classNames(classes)}>
           <input
-            id={this.props.name} onChange={this.handleInputChange}
+            id={this.props.name}
+            onBlur={this.props.onBlur}
+            onChange={this.handleInputChange}
             placeholder={this.props.placeholder}
             type="text"
             value={this.state.value} />
