@@ -6,6 +6,7 @@ import {Spinner} from '@ergeon/core-components';
 import previewPlaceholderIcon from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {calcUtils} from '@ergeon/3d-lib';
+import {constants as constants3dLib} from '@ergeon/3d-lib';
 
 import './AppConfigPreview.scss';
 
@@ -52,7 +53,9 @@ export default class AppConfigPreview extends React.Component {
       this.setState({previewImage: preview});
     } catch (error) {
       this.setState({previewImage: previewPlaceholderIcon});
-      throw error;  // re-raise an error so we'll be notified
+      if (error !== constants3dLib.UNKNOWN_SCHEMA_CODE_ERROR) {
+        console.error(error, schemaCodeUrl);
+      }
     }
   }
 
