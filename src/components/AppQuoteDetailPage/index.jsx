@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import classNames from 'classnames';
+import {some} from 'lodash';
 
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
@@ -16,18 +17,23 @@ import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import AppConfigPreview from 'components/common/AppConfigPreview';
 import DataRow from 'components/common/DataRow';
 
-import {getQuoteDetails} from 'api/app';
+import {getQuoteDetails, reviewQuote} from 'api/app';
 
 import AppLoader from 'components/common/AppLoader';
-import {DRIVEWAY_QUANTITY_UNIT, ERGEON_LICENSE_NUMBER, FENCE_QUANTITY_UNIT} from 'website/constants';
+import {
+  DIRECT_PREVIEW_SLUG,
+  DRIVEWAY_QUANTITY_UNIT,
+  ERGEON_LICENSE_NUMBER,
+  FENCE_QUANTITY_UNIT,
+  STATUS_CANCELLED,
+  VENDOR_PREVIEW_SLUG,
+} from 'website/constants';
 import MapLabel from './MapLabel';
 import ExplanationSection from './ExplanationSection';
 
 import '@ergeon/draw-map/styles.css';
 
 import './index.scss';
-
-const STATUS_CANCELLED = 'CAN';
 
 export default class AppQuoteDetailPage extends React.Component {
 
@@ -37,6 +43,7 @@ export default class AppQuoteDetailPage extends React.Component {
     }),
     match: PropTypes.shape({
       params: PropTypes.shape({
+        type: PropTypes.string,
         secret: PropTypes.string,
       }),
     }),
@@ -51,6 +58,7 @@ export default class AppQuoteDetailPage extends React.Component {
 
   async componentDidMount() {
     await this.getQuoteDetailsFromAPI();
+    await this.reviewQuote();
   }
 
   static contextType = CustomerGIDContext;
@@ -69,12 +77,42 @@ export default class AppQuoteDetailPage extends React.Component {
     }
   }
 
+  async reviewQuote() {
+    const {quote} = this.state;
+    if (
+      quote && !some([
+        this.isDirectPreview(),
+        this.isVendorPreview(),
+        quote['reviewed_at'],
+        this.isPDFMode(),
+      ])
+    ) {
+      try {
+        await reviewQuote(this.context, this.props.match.params.secret);
+      } catch (apiError) {
+        console.error(apiError);
+      }
+    }
+  }
+
   isQuoteCancelled(quote = {}) {
     return quote.status === STATUS_CANCELLED;
   }
 
   isQuoteReplaced(quote = {}) {
     return quote['replaced_by_quote'] && quote['replaced_by_quote']['secret'];
+  }
+
+  isVendorPreview() {
+    return this.props.match.params.type === VENDOR_PREVIEW_SLUG;
+  }
+
+  isDirectPreview() {
+    return this.props.match.params.type === DIRECT_PREVIEW_SLUG;
+  }
+
+  isPDFMode() {
+    return getParameterByName('asPDF');
   }
 
   getNewQuoteLink(quote) {
@@ -97,9 +135,11 @@ export default class AppQuoteDetailPage extends React.Component {
     return quoteLines.find((quoteLine) => quoteLine.label === itemName);
   }
 
-  getTotal(quote) {
-    // TODO: internal/direct
-    return quote.total_price;
+  getTotalPrice(quote) {
+    if (this.isVendorPreview()) {
+      return quote['total_cost'];
+    }
+    return quote['total_price'];
   }
 
   renderQuotePreview(quoteLine, noPreview) {
@@ -139,9 +179,185 @@ export default class AppQuoteDetailPage extends React.Component {
     );
   }
 
+  renderPolygons() {
+    const {quote} = this.state;
+    const {
+      'calc_input': {polygons},
+    } = quote;
+    return (
+      <React.Fragment>
+        <div>
+          {(polygons || []).map(({description, area, map_id: id, price}, index) => (
+            <div className="flex-wrapper quote-line" key={`area-${id}`}>
+              <div>
+                {this.renderQuotePreview(
+                  this.getQuoteLineForCalcInputItem(quote['quote_lines'], getLabelFromIndex(index))
+                )}
+              </div>
+              <div className="quote-line-description">
+                <div className="spacing after__is-12">
+                  <MapLabel name={getLabelFromIndex(index)} type="LabelYellow" />
+                  <b>Area {getLabelFromIndex(index)}</b>
+                </div>
+                <div>
+                  {description}
+                </div>
+              </div>
+              <div className="quote-line-price">
+                <div className="mobile-length spacing before__is-12 after__is-12">
+                  Area: {area} {DRIVEWAY_QUANTITY_UNIT}
+                </div>
+                <div><b>{formatPrice(price)}</b></div>
+                <div className="desktop-length spacing before__is-12">
+                  Area: {area} {DRIVEWAY_QUANTITY_UNIT}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </React.Fragment>
+    );
+  }
+
+  renderCalcInfo() {
+    const {quote} = this.state;
+    const {
+      'calc_input': {gates, sides},
+    } = quote;
+    return (
+      <React.Fragment>
+        <div className="quote-details__sides">
+          {(sides || []).map(({description, distance, map_id: id, price}, index) => (
+            <div className="flex-wrapper quote-line" key={`side-${id}`}>
+              <div>
+                <div>
+                  {this.renderQuotePreview(
+                    this.getQuoteLineForCalcInputItem(quote['quote_lines'], getLabelFromIndex(index))
+                  )}
+                </div>
+              </div>
+              <div className="quote-line-description">
+                <div className="spacing after__is-12">
+                  <MapLabel isInline={true} name={getLabelFromIndex(index)} type="Label" />
+                  <b>Side {getLabelFromIndex(index)}</b>
+                </div>
+                <div>
+                  {description}
+                </div>
+              </div>
+              <div className="quote-line-price">
+                <div className="mobile-length spacing before__is-12 after__is-12">
+                  Length: {distance} {FENCE_QUANTITY_UNIT}
+                </div>
+                <div><b>{formatPrice(price)}</b></div>
+                <div className="desktop-length spacing before__is-12">
+                  Length: {distance} {FENCE_QUANTITY_UNIT}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div>
+          {(gates || []).map(({description, map_id: id, name, price}, index) => (
+            <div className="flex-wrapper quote-line" key={`gate-${id}`}>
+              <div>
+                {this.renderQuotePreview(
+                  this.getQuoteLineForCalcInputItem(quote['quote_lines'], index + 1),
+                  name === '!' || name === 'Complications',
+                )}
+              </div>
+              <div className="quote-line-description">
+                <div className="spacing after__is-12">
+                  <MapLabel name={index + 1} type="Circle" />
+                  <span>{name}</span>
+                </div>
+                <div>
+                  {description}
+                </div>
+              </div>
+              <div className="quote-line-price spacing before__is-12">
+                <div><b>{formatPrice(price)}</b></div>
+              </div>
+            </div>
+          ))}
+        </div>
+        {this.renderPolygons()}
+      </React.Fragment>
+    );
+  }
+
+  renderQuoteLines() {
+    const {quote} = this.state;
+    const quoteLines = quote['quote_lines'];
+    // sides is alphabetical values A, B, ... , AA
+    let sides = quoteLines.filter(line => isNaN(line['label'])).sort(line => line['label']);
+    // gates is integer values 1,2 ..., 99
+    let gates = quoteLines.filter(line => !isNaN(line['label'])).sort(line => parseInt(line['label'], 10));
+
+    return (
+      <React.Fragment>
+        <div>
+          {(sides || []).map(({cost, description, id, label, quantity, unit}) => (
+            <div className="flex-wrapper quote-line" key={`side-${id}`}>
+              <div>
+                <div>
+                  {this.renderQuotePreview(
+                    this.getQuoteLineForCalcInputItem(quote['quote_lines'], label)
+                  )}
+                </div>
+              </div>
+              <div className="quote-line-description">
+                <div className="spacing after__is-12">
+                  <MapLabel isInline={true} name={label} type="Label" />
+                  <b>Side {label}</b>
+                </div>
+                <div>
+                  {description}
+                </div>
+              </div>
+              <div className="quote-line-price">
+                <div className="mobile-length spacing before__is-12 after__is-12">
+                  Length: {Math.round(quantity)} {unit}.
+                </div>
+                <div><b>{formatPrice(cost)}</b></div>
+                <div className="desktop-length spacing before__is-12">
+                  Length: {Math.round(quantity)} {unit}.
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div>
+          {(gates || []).map(({cost, description, id, label}) => (
+            <div className="flex-wrapper quote-line" key={`gate-${id}`}>
+              <div>
+                {this.renderQuotePreview(
+                  this.getQuoteLineForCalcInputItem(quote['quote_lines'], label),
+                  label === '!' || label === 'Complications',
+                )}
+              </div>
+              <div className="quote-line-description">
+                <div className="spacing after__is-12">
+                  <MapLabel name={label} type="Circle" />
+                  <span>Gate {label}</span>
+                </div>
+                <div>
+                  {description}
+                </div>
+              </div>
+              <div className="quote-line-price spacing before__is-12">
+                <div><b>{formatPrice(cost)}</b></div>
+              </div>
+            </div>
+          ))}
+        </div>
+        {this.renderPolygons()}
+      </React.Fragment>
+    );
+  }
+
   render() {
     const {isLoadingMap, isLoading, quote} = this.state;
-    const asPDF = getParameterByName('asPDF');
 
     if (isLoading) {
       return <AppLoader />;
@@ -171,7 +387,7 @@ export default class AppQuoteDetailPage extends React.Component {
     const designs = this.getQuoteDesigns(quote);
     const SPINNER_BORDER_WITH = 0.10;
     const SPINNER_SIZE = 64;
-    const isPDFModeDisabled = !asPDF;
+    const isPDFModeDisabled = !this.isPDFMode();
 
     return (
       <div className="quote-detail-page">
@@ -203,7 +419,7 @@ export default class AppQuoteDetailPage extends React.Component {
               <DrawMap
                 className={classNames({'quote-labels-map__content': isLoadingMap})}
                 disabled
-                disableMapUI={Boolean(asPDF)}
+                disableMapUI={Boolean(this.isPDFMode())}
                 location={location}
                 onTilesLoaded={() => {
                   this.setState({isLoadingMap: false});
@@ -228,92 +444,11 @@ export default class AppQuoteDetailPage extends React.Component {
               </a>.
             </Notification>
           )}
-          <div className="quote-details__sides">
-            {(sides || []).map(({description, distance, map_id: id, price}, index) => (
-              <div className="flex-wrapper quote-line" key={`side-${id}`}>
-                <div>
-                  <div>
-                    {this.renderQuotePreview(
-                      this.getQuoteLineForCalcInputItem(quote['quote_lines'], getLabelFromIndex(index))
-                    )}
-                  </div>
-                </div>
-                <div className="quote-line-description">
-                  <div className="spacing after__is-12">
-                    <MapLabel isInline={true} name={getLabelFromIndex(index)} type="Label" />
-                    <b>Side {getLabelFromIndex(index)}</b>
-                  </div>
-                  <div>
-                    {description}
-                  </div>
-                </div>
-                <div className="quote-line-price">
-                  <div className="mobile-length spacing before__is-12 after__is-12">
-                    Length: {distance} {FENCE_QUANTITY_UNIT}
-                  </div>
-                  <div><b>{formatPrice(price)}</b></div>
-                  <div className="desktop-length spacing before__is-12">
-                    Length: {distance} {FENCE_QUANTITY_UNIT}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div>
-            {(gates || []).map(({description, map_id: id, name, price}, index) => (
-              <div className="flex-wrapper quote-line" key={`gate-${id}`}>
-                <div>
-                  {this.renderQuotePreview(
-                    this.getQuoteLineForCalcInputItem(quote['quote_lines'], index + 1),
-                    name === '!' || name === 'Complications',
-                  )}
-                </div>
-                <div className="quote-line-description">
-                  <div className="spacing after__is-12">
-                    <MapLabel name={index + 1} type="Circle" />
-                    <span>{name}</span>
-                  </div>
-                  <div>
-                    {description}
-                  </div>
-                </div>
-                <div className="quote-line-price spacing before__is-12">
-                  <div><b>{formatPrice(price)}</b></div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div>
-            {(polygons || []).map(({description, area, map_id: id, price}, index) => (
-              <div className="flex-wrapper quote-line" key={`area-${id}`}>
-                <div>
-                  {this.renderQuotePreview(
-                    this.getQuoteLineForCalcInputItem(quote['quote_lines'], getLabelFromIndex(index))
-                  )}
-                </div>
-                <div className="quote-line-description">
-                  <div className="spacing after__is-12">
-                    <MapLabel name={getLabelFromIndex(index)} type="LabelYellow" />
-                    <b>Area {getLabelFromIndex(index)}</b>
-                  </div>
-                  <div>
-                    {description}
-                  </div>
-                </div>
-                <div className="quote-line-price">
-                  <div className="mobile-length spacing before__is-12 after__is-12">
-                    Area: {area} {DRIVEWAY_QUANTITY_UNIT}
-                  </div>
-                  <div><b>{formatPrice(price)}</b></div>
-                  <div className="desktop-length spacing before__is-12">
-                    Area: {area} {DRIVEWAY_QUANTITY_UNIT}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          {this.isVendorPreview() && quote['quote_lines']
+            ? this.renderQuoteLines()
+            : Boolean(quote['calc_input']) && this.renderCalcInfo()}
           <div className="total-price spacing after__is-24">
-            <span><b>Total {formatPrice(this.getTotal(quote))}</b></span>
+            <span><b>Total {formatPrice(this.getTotalPrice(quote))}</b></span>
             <span className="asterisk">*</span>
           </div>
           <div className="asterisk-notes">

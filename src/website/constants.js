@@ -10,3 +10,7 @@ export const ERGEON_LICENSE_NUMBER = 'CA#1040925';
 
 export const FENCE_QUANTITY_UNIT = 'ft.';
 export const DRIVEWAY_QUANTITY_UNIT = 'sr.';
+
+export const STATUS_CANCELLED = 'CAN';
+export const VENDOR_PREVIEW_SLUG = 'vendor';
+export const DIRECT_PREVIEW_SLUG = 'direct';

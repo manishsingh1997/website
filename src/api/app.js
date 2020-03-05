@@ -55,3 +55,12 @@ export const getQuoteDetails = (customerGID, quoteSecret) => {
     headers: getCommonHeaders(),
   });
 };
+
+export const reviewQuote = (customerGID, quoteSecret) => {
+  return axios({
+    url: `${getBaseAPIURL(customerGID)}/quotes/${quoteSecret}/reviewed/`,
+    method: 'post',
+    responseType: 'json',
+    headers: getCommonHeaders(),
+  });
+};

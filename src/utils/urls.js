@@ -1,4 +1,3 @@
-
 export const getOrderDetailURL = (customerGID, orderId) => {
   return `/app/${customerGID}/orders/${orderId}`;
 };
@@ -8,5 +7,5 @@ export const getQuoteDetailURL = (customerGID, secret) => {
 };
 
 export const isQuoteDetailURL = (url) => {
-  return url.match(/^\/app\/[^\/]+\/quotes\/[^\/]+\/?$/g) !== null;
+  return url.match(/^\/app\/[^\/]+\/quotes+\/(direct\/|vendor\/)?[^\/]+\/?$/g) !== null;
 };

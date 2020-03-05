@@ -64,7 +64,9 @@ const CustomerApp = ({match, location}) => (
       <Route component={AppHouseListPage} path={`${match.url}/houses`} />
       <Route component={AppOrderListPage} path={`${match.url}/orders`} />
       <Route component={AppAppointmentsListPage} path={`${match.url}/appointments`} />
-      <Route component={AppQuoteDetailPage} name="quoteDetail" path={`${match.url}/quotes/:secret`} />
+      <Route component={AppQuoteDetailPage} exact name="quoteDetail" path={`${match.url}/quotes/:secret`} />
+      <Route component={AppQuoteDetailPage} exact name="quoteDirect" path={`${match.url}/quotes/:type/:secret`} />
+      <Route component={AppQuoteDetailPage} exact name="quoteVendor" path={`${match.url}/quotes/:type/:secret`} />
       <Route component={NotFoundPage} exact path="*"/>
     </Switch>
   </AppLayout>
