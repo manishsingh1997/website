@@ -31,6 +31,7 @@ export default class RequestQuotePage extends React.Component {
     openAddressUpdatePopup: PropTypes.func.isRequired,
     product: PropTypes.string,
     updateLeadAndConfig: PropTypes.func.isRequired,
+    updateLeadFromAddress: PropTypes.func.isRequired,
     updateProduct: PropTypes.func,
     zipcode: PropTypes.string,
   };
@@ -65,6 +66,25 @@ export default class RequestQuotePage extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.address !== this.props.address) {
       window.onInitMap && window.onInitMap();
+    }
+
+    this.updateAddress();
+  }
+
+  updateAddress() {
+    // If we don't have address in GET params or in props
+    // we should use customer main address and update address redux store
+    const {user} = this.props.auth;
+    let address = this.props.address;
+    if (!address && user && user['main_address']) {
+      address = user['main_address']['formatted_address'];
+      const {zipcode} = this.props;
+      const product = getParameterByName('product') || this.props.product;
+      this.props.updateLeadFromAddress({
+        address,
+        product,
+        zipcode,
+      });
     }
   }
 
@@ -254,7 +274,6 @@ export default class RequestQuotePage extends React.Component {
               onProductChange={product => updateProduct(product)}
               onSubmit={() => this.setState({showThankYou: true})}
               product={product}
-              showProductField
               user={user || {}}/>
           </div>
           {this.renderSignupMap()}

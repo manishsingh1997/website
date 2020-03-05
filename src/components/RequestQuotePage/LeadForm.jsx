@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
 import {constants, calcUtils} from '@ergeon/3d-lib';
 
-import {AddressInput, Button, Spinner} from '@ergeon/core-components';
+import {Button, Spinner} from '@ergeon/core-components';
 import TextInput from 'components/common/TextInput';
 import PhoneInput from './PhoneInput';
 import MultiProductSelect from './MultiProductSelect';
@@ -77,8 +77,6 @@ export default class LeadForm extends React.Component {
     onProductChange: PropTypes.func,
     onSubmit: PropTypes.func,
     product: PropTypes.string,
-    showAddressInput: PropTypes.bool,
-    showProductField: PropTypes.bool,
     user: PropTypes.object,
   };
 
@@ -89,10 +87,8 @@ export default class LeadForm extends React.Component {
       phone: [required, phone],
       product: [required],
       name: [required],
+      address: [required, fullAddress],
     };
-    if (props.showAddressInput) {
-      validateField.address = [required, fullAddress];
-    }
     this.validator = createValidator(validateField);
     this.state = getInitialState(false, props);
   }
@@ -199,7 +195,7 @@ export default class LeadForm extends React.Component {
   }
 
   render() {
-    const {showAddressInput, product} = this.props;
+    const {product} = this.props;
     const {data: {email, name, phone, comment}, errors, loading, showNoteField} = this.state;
     const multiselectProducts = products.map(function(productItem) {
       return {value: productItem.slug, label: productItem.name};
@@ -211,7 +207,6 @@ export default class LeadForm extends React.Component {
 
     return (
       <form className="Form LeadForm" onSubmit={this.handleSubmit}>
-        {this.props.showProductField &&
         <div className={classNames('Form-field', {'is-error': errors && errors.product})}>
           <label className="label spacing after__is-12">Ergeon services:</label>
           <MultiProductSelect
@@ -220,7 +215,7 @@ export default class LeadForm extends React.Component {
             onChange={this.handleFieldChange}
             value={multiselectChoosenProduct} />
           {errors && <div className="Form-error">{errors.product}</div>}
-        </div>}
+        </div>
         <div className={classNames('Form-field', {'is-error': errors && errors.name})}>
           <TextInput
             disabled={loading}
@@ -275,12 +270,6 @@ export default class LeadForm extends React.Component {
             {errors && <div className="Form-error">{errors.comment}</div>}
           </div>
         )}
-        {showAddressInput && <div className={classNames('Form-field', {'is-error': errors && errors.address})}>
-          <AddressInput
-            onChange={(address) => this.handleFieldChange('address', address)}
-            showButton={false} />
-          {errors && <div className="Form-error">{errors.address}</div>}
-        </div>}
         <div className="Form-actions">
           {errors && <div className="Form-error">{errors.global}</div>}
           <Button

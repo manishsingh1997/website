@@ -67,6 +67,9 @@ const mapDispatchToProps = (dispatch) => {
         }
       }
     },
+    updateLeadFromAddress: ({address, product, zipcode}) => {
+      dispatch(updateLeadFromAddress({address, product, zipcode}));
+    },
   };
 };
 
