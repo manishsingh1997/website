@@ -36,7 +36,7 @@ export default class AppOrdersListPage extends React.Component {
   renderQuote(quote) {
     const customerGID = this.context;
     return (
-      <div>
+      <div key={`quote-${quote['id']}`}>
         <Link to={getQuoteDetailURL(customerGID, quote['secret'])}>
           #{quote['id']}
         </Link> ({quote['status_display']})

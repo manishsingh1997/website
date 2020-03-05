@@ -16,7 +16,7 @@ const DataRow = ({title, value, defaultValue='-'}) => {
 DataRow.propTypes = {
   defaultValue: PropTypes.string,
   title: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  value: PropTypes.node,
 };
 
 export default DataRow;

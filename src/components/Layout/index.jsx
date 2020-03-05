@@ -92,7 +92,7 @@ export default class Layout extends React.Component {
     const {auth: {isAuthLoading, isUserLoading, user}} = this.props;
     if (isUserLoading || isAuthLoading) {
       return (
-        <Link className="sign-in-link" to="/app/sign-in">
+        <Link className="sign-in-link" key="dropp-loading" to="/app/sign-in">
           <li className="link">
             <div className="flex-align-middle">
               <span><img className="sign-in-icon" src={userIcon}/></span>
@@ -119,16 +119,17 @@ export default class Layout extends React.Component {
       return (
         <WebsiteDropdownMenu
           items={menuItems}
+          key="dropp-user"
           title={(
-            <React.Fragment>
+            <span key="dropp-user-icon">
               <img className="sign-in-icon" src={userIcon}/>
               <span className="user-full-name">{user.full_name}</span>
-            </React.Fragment>
+            </span>
           )} />
       );
     }
     return (
-      <Link className="sign-in-link" to="/app/sign-in">
+      <Link className="sign-in-link" key="dropp-sign-in" to="/app/sign-in">
         <li className="link" id={SIGN_IN_LINK_ID}>
           <img className="sign-in-icon" src={userIcon}/>
           <span className="user-full-name">Sign In</span>

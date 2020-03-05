@@ -81,11 +81,10 @@
       }
     }
     .sign-in-icon {
-      vertical-align: bottom;
+      vertical-align: middle;
       margin-right: 5px;
 
       @include phone() {
-        vertical-align: middle;
         margin-right: 0;
       }
     }
@@ -93,11 +92,10 @@
 
   .link {
     .sign-in-icon {
-      vertical-align: bottom;
+      vertical-align: middle;
       margin-right: 5px;
 
       @include phone() {
-        vertical-align: middle;
         margin-right: unset;
       }
     }
