@@ -4,7 +4,7 @@ const initialAuthState = {
   user: null,
   isAuthLoading: false,
   authError: null,
-  isUserLoading: false,
+  isUserLoading: true,
   userError: null,
   userSetByCode: false,
   isUserLoggedOut: false,
