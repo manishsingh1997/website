@@ -414,6 +414,8 @@ export default class AppQuoteDetailPage extends React.Component {
     const designs = this.getQuoteDesigns(quote);
     const SPINNER_BORDER_WITH = 0.10;
     const SPINNER_SIZE = 64;
+    const expiresAt = quote['expires_at'];
+    const expiresAtTitle = isPastDate(expiresAt) ? 'Expired at' : 'Expires at';
     const isPDFModeDisabled = !this.isPDFMode();
 
     return (
@@ -439,7 +441,7 @@ export default class AppQuoteDetailPage extends React.Component {
                     : <DataRow title="Order ID" value={`#${quote.order.id}`} />
                 }
                 <DataRow title="Sent On" value={formatDate(quote['sent_to_customer_at'])} />
-                <DataRow title="Expires On" value={formatDate(quote['expires_at'])} />
+                {expiresAt && <DataRow title={expiresAtTitle} value={formatDate(expiresAt)} />}
               </div>
             </div>
             <div className="quote-labels-map">
