@@ -35,21 +35,6 @@ export const required = (value, fields, errorMessage = 'This field is required')
   }
 };
 
-export const fullAddress = value => {
-  const isValid = !!(
-    typeof value === 'object' &&
-    value['street_name'] &&
-    value['city_name'] &&
-    value['primary_number'] &&
-    value['state_abbreviation'] &&
-    value['zipcode']
-  );
-
-  if (!isValid) {
-    return 'Enter your home address including house number and select from the list';
-  }
-};
-
 const zipcodeRe = /\d{5}/;
 export const zipcode = (value) => {
   if (!zipcodeRe.test(value)) {

@@ -15,7 +15,6 @@ import {
   phone,
   email,
   required,
-  fullAddress,
 } from 'utils/validation';
 import ls from 'local-storage';
 import {
@@ -87,7 +86,6 @@ export default class LeadForm extends React.Component {
       phone: [required, phone],
       product: [required],
       name: [required],
-      address: [required, fullAddress],
     };
     this.validator = createValidator(validateField);
     this.state = getInitialState(false, props);
