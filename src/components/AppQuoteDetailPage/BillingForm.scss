@@ -5,19 +5,19 @@
   border: 1px solid $gray-4;
   border-radius: $corner-soft;
   box-shadow: none;
-  padding: 33px;
+  padding: $h-40;
   margin-top: $v-30;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: $v-48;
   position: relative;
 
   @include phone() {
     display: block;
-    padding: 20px;
-    margin: 0 auto;
-    border: 0;
+    border-radius: 0;
+    padding: $h-20;
+    margin-bottom: $v-30;
 
     .billing-form__content {
       padding-right: 0;
@@ -32,7 +32,6 @@
       width: 100%;
       margin-top: 30px;
       border-top: 1px solid #eaeaea;
-      text-align: center;
       padding-top: 19px;
       text-align: left;
     }
@@ -83,26 +82,27 @@
   &__content {
     position: relative;
     flex: 1;
-    padding-right: 30px;
+    padding-right: 80px;
+    @include tablet() {
+      padding-right: 40px;
+    }
 
     &:after {
       position: absolute;
       top: 0;
       bottom: 0;
-      right: 20px;
+      right: 40px;
       width: 1px;
       background-color: $gray-4;
       content: "";
+      @include tablet() {
+        right: 20px;
+      }
     }
   }
 
   &__title-section {
     h4 {
-      color: $black-1;
-      font-weight: 500;
-      font-family: $font-title;
-      font-size: $h4-size;
-      line-height: $h4-line-height;
       margin-bottom: 20px;
     }
   }
@@ -125,7 +125,7 @@
 
   &__fields {
     display: flex;
-    padding: 40px 0 30px 0;
+    padding: 30px 0 24px 0;
 
     .float-container input {
       font-size: 12px;
@@ -137,18 +137,19 @@
   }
 
   &__card-number {
-    margin-right: 15px;
-    width: calc(100% - 294px);
+    margin-right: 20px;
+    width: calc(100% - 280px);
+    min-width: 120px;
+    max-width: 480px;
   }
 
   &__expiration-date {
-    margin-right: 15px;
-    width: 119px;
+    margin-right: 20px;
+    width: 120px;
   }
 
   &__cvc {
-    margin-right: 8px;
-    width: 119px;
+    width: 120px;
   }
 
   &__card-disclaimer {
@@ -178,7 +179,7 @@
     color: $gray-1;
     font-size: 13px;
     font-family: $font-title;
-    height: 106px;
+    height: 96px;
     text-align: left;
     text-transform: uppercase;
   }

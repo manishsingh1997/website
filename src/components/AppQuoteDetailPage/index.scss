@@ -1,10 +1,23 @@
-@import '@ergeon/core-components/src/components/variables.scss';
+@import '~@ergeon/core-components/src/components/variables.scss';
 
 .quote-detail-page {
+  .page-break {
+    @media print {
+      margin-top: $v-24;
+      page-break-before: always !important;
+    }
+  }
+
+  .card {
+    background-color: white;
+    &.padding-40 {
+      @include phone() {
+        padding: $h-20;
+      }
+    }
+  }
 
   .quote-details {
-    padding: $h-40;
-    margin: $v-30 auto;
 
     @include phone() {
       padding: $h-20;
@@ -12,7 +25,7 @@
     }
 
     &__sides {
-      page-break-before: always;
+
     }
   }
 
@@ -44,32 +57,56 @@
   }
 
   .quote-details-wrapper {
-    margin-right: $h-20;
-    min-width: 500px;
-
+    margin-right: $h-40;
+    max-width: 460px;
+    @include tablet() {
+      max-width: unset;
+      margin-right: unset;
+    }
     @include phone() {
-      min-width: initial;
-      margin: 0;
-      margin-bottom: $h-10;
+      max-width: unset;
+      margin: 0 0 $v-12 0;
+    }
+    @media print {
+      margin-right: unset;
+      max-width: unset;
     }
   }
 
   .quote-fields {
     border-top: 1px solid $gray-4;
     border-bottom: 1px solid $gray-4;
+    padding: $v-12 0;
   }
 
   .quote-line {
     page-break-inside: avoid;
-    padding-top: $h-10;
-    padding-bottom: $h-20;
-    border-bottom: 1px solid $gray-4;
-    margin-bottom: $h-20;
+    border-bottom: 1px solid $gray-5;
+    padding-bottom: $v-24;
+    margin-top: $v-24;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    @include phone() {
+      flex-direction: column;
+    }
+    &__title {
+      display: flex;
+    }
   }
 
   .quote-line-preview {
     margin-top: 0;
-    margin-bottom: $v-12;
+    @include tablet() {
+      margin-bottom: $v-12;
+    }
+    @include phone() {
+      margin-bottom: $v-12;
+    }
+    @media print {
+      margin-right: 20px;
+    }
+
   }
 
   .quote-line-description {
@@ -84,7 +121,16 @@
   }
 
   .total-price {
+    position: relative;
+    margin-top: $v-24;
     text-align: right;
+    &:after {
+      content: '*';
+      color: $red;
+      position: absolute;
+      top: -6px;
+      font-size: $font-label-size;
+    }
   }
 
   .asterisk {
@@ -114,8 +160,12 @@
   }
 
   .quote-notes {
-    page-break-before: always;
-
+    p, ul, ol {
+      max-width: 720px;
+    }
+    h4 {
+      margin-bottom: $v-12;
+    }
     @include phone() {
       padding: $h-20;
       margin: 0 auto;
@@ -151,12 +201,6 @@
   }
 
   .quote-design-notes {
-    @include border();
-    background-color: white;
-    box-shadow: none;
-    padding: $v-20;
-    page-break-before: always;
-
     &__title {
       font-family: $font-title;
       font-weight: 500;
@@ -244,8 +288,25 @@
     color-adjust: exact !important;
   }
 
-  .customer-app-layout {
+  .card {
+    border: none !important;
     padding: 0;
+    .padding-40 {
+      padding: 0;
+    }
+  }
+
+  .customer-app-layout {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .wrapper-980 {
+    padding-left: 0;
+    padding-right: 0;
+    .phone-number {
+      margin-right: 0;
+    }
   }
 
   .quote {

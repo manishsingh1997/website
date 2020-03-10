@@ -223,16 +223,16 @@ export default class AppQuoteDetailPage extends React.Component {
       <React.Fragment>
         <div>
           {(polygons || []).map(({description, area, map_id: id, price}, index) => (
-            <div className="flex-wrapper quote-line" key={`area-${id}`}>
+            <div className="quote-line" key={`area-${id}`}>
               <div>
                 {this.renderQuotePreview(
                   this.getQuoteLineForCalcInputItem(quote['quote_lines'], getLabelFromIndex(index))
                 )}
               </div>
               <div className="quote-line-description">
-                <div className="spacing after__is-12">
+                <div className="quote-line__title spacing after__is-12">
                   <MapLabel name={getLabelFromIndex(index)} type="LabelYellow" />
-                  <b>Area {getLabelFromIndex(index)}</b>
+                  <h5>Area {getLabelFromIndex(index)}</h5>
                 </div>
                 <div>
                   {description}
@@ -242,7 +242,7 @@ export default class AppQuoteDetailPage extends React.Component {
                 <div className="mobile-length spacing before__is-12 after__is-12">
                   Area: {area} {DRIVEWAY_QUANTITY_UNIT}
                 </div>
-                <div><b>{formatPrice(price)}</b></div>
+                <div><h5>{formatPrice(price)}</h5></div>
                 <div className="desktop-length spacing before__is-12">
                   Area: {area} {DRIVEWAY_QUANTITY_UNIT}
                 </div>
@@ -261,62 +261,64 @@ export default class AppQuoteDetailPage extends React.Component {
     } = quote;
     return (
       <React.Fragment>
-        <div className="quote-details__sides">
-          {(sides || []).map(({description, distance, map_id: id, price}, index) => (
-            <div className="flex-wrapper quote-line" key={`side-${id}`}>
-              <div>
+        <div className="page-break">{Boolean(this.isPDFMode()) && <h4>Project Scope</h4>}
+          <div className="quote-details__sides spacing before__is-24">
+            {(sides || []).map(({description, distance, map_id: id, price}, index) => (
+              <div className="quote-line" key={`side-${id}`}>
+                <div>
+                  <div>
+                    {this.renderQuotePreview(
+                      this.getQuoteLineForCalcInputItem(quote['quote_lines'], getLabelFromIndex(index))
+                    )}
+                  </div>
+                </div>
+                <div className="quote-line-description">
+                  <div className="quote-line__title spacing after__is-12">
+                    <MapLabel isInline={true} name={getLabelFromIndex(index)} type="Label" />
+                    <h5>Side {getLabelFromIndex(index)}</h5>
+                  </div>
+                  <div>
+                    {description}
+                  </div>
+                </div>
+                <div className="quote-line-price">
+                  <div className="mobile-length spacing before__is-12 after__is-12">
+                  Length: {distance} {FENCE_QUANTITY_UNIT}
+                  </div>
+                  <div><h5>{formatPrice(price)}</h5></div>
+                  <div className="desktop-length spacing before__is-12">
+                  Length: {distance} {FENCE_QUANTITY_UNIT}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div>
+            {(gates || []).map(({description, map_id: id, name, price}, index) => (
+              <div className="quote-line" key={`gate-${id}`}>
                 <div>
                   {this.renderQuotePreview(
-                    this.getQuoteLineForCalcInputItem(quote['quote_lines'], getLabelFromIndex(index))
+                    this.getQuoteLineForCalcInputItem(quote['quote_lines'], index + 1),
+                    name === '!' || name === 'Complications',
                   )}
                 </div>
-              </div>
-              <div className="quote-line-description">
-                <div className="spacing after__is-12">
-                  <MapLabel isInline={true} name={getLabelFromIndex(index)} type="Label" />
-                  <b>Side {getLabelFromIndex(index)}</b>
+                <div className="quote-line-description">
+                  <div className="quote-line__title spacing after__is-12">
+                    <MapLabel name={index + 1} type="Circle" />
+                    <h5>{name}</h5>
+                  </div>
+                  <div>
+                    {description}
+                  </div>
                 </div>
-                <div>
-                  {description}
-                </div>
-              </div>
-              <div className="quote-line-price">
-                <div className="mobile-length spacing before__is-12 after__is-12">
-                  Length: {distance} {FENCE_QUANTITY_UNIT}
-                </div>
-                <div><b>{formatPrice(price)}</b></div>
-                <div className="desktop-length spacing before__is-12">
-                  Length: {distance} {FENCE_QUANTITY_UNIT}
+                <div className="quote-line-price spacing before__is-12">
+                  <div><h5>{formatPrice(price)}</h5></div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          {this.renderPolygons()}
         </div>
-        <div>
-          {(gates || []).map(({description, map_id: id, name, price}, index) => (
-            <div className="flex-wrapper quote-line" key={`gate-${id}`}>
-              <div>
-                {this.renderQuotePreview(
-                  this.getQuoteLineForCalcInputItem(quote['quote_lines'], index + 1),
-                  name === '!' || name === 'Complications',
-                )}
-              </div>
-              <div className="quote-line-description">
-                <div className="spacing after__is-12">
-                  <MapLabel name={index + 1} type="Circle" />
-                  <span>{name}</span>
-                </div>
-                <div>
-                  {description}
-                </div>
-              </div>
-              <div className="quote-line-price spacing before__is-12">
-                <div><b>{formatPrice(price)}</b></div>
-              </div>
-            </div>
-          ))}
-        </div>
-        {this.renderPolygons()}
       </React.Fragment>
     );
   }
@@ -333,7 +335,7 @@ export default class AppQuoteDetailPage extends React.Component {
       <React.Fragment>
         <div>
           {(sides || []).map(({cost, description, id, label, quantity, unit}) => (
-            <div className="flex-wrapper quote-line" key={`side-${id}`}>
+            <div className="quote-line" key={`side-${id}`}>
               <div>
                 <div>
                   {this.renderQuotePreview(
@@ -342,9 +344,9 @@ export default class AppQuoteDetailPage extends React.Component {
                 </div>
               </div>
               <div className="quote-line-description">
-                <div className="spacing after__is-12">
+                <div className="quote-line__title spacing after__is-12">
                   <MapLabel isInline={true} name={label} type="Label" />
-                  <b>Side {label}</b>
+                  <h5>Side {label}</h5>
                 </div>
                 <div>
                   {description}
@@ -354,7 +356,7 @@ export default class AppQuoteDetailPage extends React.Component {
                 <div className="mobile-length spacing before__is-12 after__is-12">
                   Length: {Math.round(quantity)} {unit}.
                 </div>
-                <div><b>{formatPrice(cost)}</b></div>
+                <div><h5>{formatPrice(cost)}</h5></div>
                 <div className="desktop-length spacing before__is-12">
                   Length: {Math.round(quantity)} {unit}.
                 </div>
@@ -364,7 +366,7 @@ export default class AppQuoteDetailPage extends React.Component {
         </div>
         <div>
           {(gates || []).map(({cost, description, id, label}) => (
-            <div className="flex-wrapper quote-line" key={`gate-${id}`}>
+            <div className="quote-line" key={`gate-${id}`}>
               <div>
                 {this.renderQuotePreview(
                   this.getQuoteLineForCalcInputItem(quote['quote_lines'], label),
@@ -372,16 +374,16 @@ export default class AppQuoteDetailPage extends React.Component {
                 )}
               </div>
               <div className="quote-line-description">
-                <div className="spacing after__is-12">
+                <div className="quote-line__title spacing after__is-12">
                   <MapLabel name={label} type="Circle" />
-                  <span>Gate {label}</span>
+                  <h5>Gate {label}</h5>
                 </div>
                 <div>
                   {description}
                 </div>
               </div>
               <div className="quote-line-price spacing before__is-12">
-                <div><b>{formatPrice(cost)}</b></div>
+                <div><h5>{formatPrice(cost)}</h5></div>
               </div>
             </div>
           ))}
@@ -428,15 +430,12 @@ export default class AppQuoteDetailPage extends React.Component {
 
     return (
       <div className="quote-detail-page">
-        <div className="quote-details card shadow soft-border">
+        <div className="quote-details card padding-40 soft-border spacing after__is-48">
           {isPDFModeDisabled && this.isQuoteCancelled(quote) && this.renderQuoteCancelledMessage(quote)}
-          <div className="quote-details__description flex-wrapper spacing after__is-48">
+          <div className="quote-details__description flex-wrapper spacing after__is-24">
             <div className="quote-details-wrapper">
               {this.isUserSignedIn() && isPDFModeDisabled && this.renderBackButton()}
               <h3>{quote.order.product.name} Quote #{quote.id}</h3>
-              <div>
-                {quote.title}
-              </div>
               <div>
                 <i>Quote provided by Ergeon, licence {ERGEON_LICENSE_NUMBER}</i>
               </div>
@@ -489,18 +488,19 @@ export default class AppQuoteDetailPage extends React.Component {
           {this.isVendorPreview() && quote['quote_lines']
             ? this.renderQuoteLines()
             : Boolean(quote['calc_input']) && this.renderCalcInfo()}
-          <div className="total-price spacing after__is-24">
-            <span><b>Total {formatPrice(this.getTotalPrice(quote))}</b></span>
-            <span className="asterisk">*</span>
+          <div className="total-price">
+            <span><h4>Total: {formatPrice(this.getTotalPrice(quote))}
+            </h4></span>
+
           </div>
           <div className="asterisk-notes">
-            <i>An additional {config.CARD_TRANSACTION_FEE} fee will be added for credit cards</i>
             <span className="asterisk">*</span>
+            <i> – An additional {config.CARD_TRANSACTION_FEE} fee will be added for credit cards</i>
           </div>
         </div>
 
         {quote['description_html'] && (
-          <div className="quote-notes card shadow">
+          <div className="quote-notes card padding-40 soft-border spacing after__is-48 page-break">
             <h4>Project notes</h4>
             <div className="quote-projects-notes">{
               // eslint-disable-next-line react/no-danger
@@ -509,7 +509,7 @@ export default class AppQuoteDetailPage extends React.Component {
           </div>
         )}
         {designs.length > 0 &&
-        <div className="quote-design-notes">
+        <div className="quote-design-notes card padding-40 soft-border spacing after__is-48 page-break">
           <div>
             <h4 className="quote-design-notes__title">Materials and design</h4>
             <div className="quote-design-notes__content">
@@ -526,13 +526,13 @@ export default class AppQuoteDetailPage extends React.Component {
           </div>
         </div>
         }
-        <BillingForm
+        {isPDFModeDisabled && <BillingForm
           houseId={houseId}
           onSubmit={this.handleBillingSubmit.bind(this)}
           paymentMethod={paymentMethod}
           quoteId={quote['id']}
           termsAndConditionsUrl={quote['terms_and_conditions']}
-          total={formatPrice(this.getTotalPrice(quote))} />
+          total={formatPrice(this.getTotalPrice(quote))} />}
         <ExplanationSection asPDF={this.isPDFMode()} warrantyLink={warranty}/>
       </div>
     );

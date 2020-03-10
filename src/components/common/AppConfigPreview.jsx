@@ -65,7 +65,13 @@ export default class AppConfigPreview extends React.Component {
     const isPlaceholder = previewImage === previewPlaceholderIcon || previewImage === noPreviewIcon;
 
     return (
-      <div className={classNames({'config-preview': true, 'border': true, [className]: !!className})}>
+      <div
+        className={classNames(
+          {'config-preview': true,
+            'border': true,
+            'config-preview__no-preview': isPlaceholder,
+            [className]: !!className}
+        )}>
         {isLoading && <Spinner active={true} borderWidth={.15} color="green" size={64} />}
         <img
           className={classNames({'preview-placeholder': isPlaceholder, 'hidden-img': isLoading})}

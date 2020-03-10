@@ -1,7 +1,7 @@
-@import '@ergeon/core-components/src/components/variables.scss';
+@import '~@ergeon/core-components/src/components/variables.scss';
 
 .app-subcard {
-  
+
   &.card.shadow {
     background: $gray-6;
   }
@@ -16,5 +16,8 @@
         flex-direction: row;
       }
     }
+  }
+  .quote-preview {
+    margin-right: 0 !important;
   }
 }

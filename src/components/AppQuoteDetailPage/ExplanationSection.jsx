@@ -28,7 +28,7 @@ export default class ExplanationSection extends React.Component {
   render() {
     const {asPDF} = this.props;
     return (
-      <div className="explanation-section card padding-40 soft-border">
+      <div className="explanation-section card padding-40 soft-border page-break">
         <h4 className="spacing after__is-24">After you approve the quote</h4>
         <div className="text-block restricted-720">
           <div className="title-wrapper spacing after__is-12">

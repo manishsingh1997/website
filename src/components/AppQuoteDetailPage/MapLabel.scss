@@ -1,41 +1,51 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
 .map-label {
-  background: #FF7D59;
-  border-radius: 2px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  border-radius: $corner-default;
   font-weight: bold;
   font-size: 14px;
-  color: #FFFFFF;
-  padding: 3px 8px;
-  display: inline-flex;
-
-  line-height: initial;
-  margin-right: 5px;
+  line-height: $v-24;
+  color: $white;
+  margin-right: $h-10;
+  min-width: $v-24;
+  background: $red;
 }
 
 .map-label-yellow {
-  background: #F7C950;
-  border-radius: 2px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  border-radius: $corner-default;
   font-weight: bold;
   font-size: 14px;
-  color: #FFFFFF;
-  padding: 3px 8px;
-  display: inline-flex;
-
-  line-height: initial;
-  margin-right: 5px;
+  line-height: $v-24;
+  color: $white;
+  margin-right: $h-10;
+  min-width: $v-24;
+  background: #FFBE4E;
 }
 
 .map-circle {
-  background: #FFFFFF;
-  border: 2px solid #4DC4FF;
-  border-radius: 100px;
-  font-weight: bold;
-  width: 24px;
-  height: 24px;
-  font-size: 15px;
-  color: #4DC4FF;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 
+  border-radius: 100%;
+  font-weight: bold;
+  font-size: 15px;
   line-height: initial;
-  display: inline-block;
-  margin-right: 5px;
+  margin-right: $h-10;
+  color: $blue;
+  background: $white;
+  border: 2px solid $blue;
+  width: $v-24;
+  height: $v-24;
 }
