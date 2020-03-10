@@ -1,4 +1,4 @@
-@import "@ergeon/core-components/src/components/variables.scss";
+@import "~@ergeon/core-components/src/components/variables.scss";
 
 .request-quote-page {
   max-width: 1020px;
@@ -37,6 +37,28 @@
 
     @include phone() {
       display: block;
+    }
+    &__mobile-address {
+      border: 1px solid rgba($gray-3, 0.55);
+      margin-bottom: $v-24;
+      display: none;
+      background-color: $gray-6;
+      border-radius: $corner-default;
+      @include phone() {
+        display: block;
+      }
+      &__field {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $v-6 $v-12 $v-6 $h-10;
+        font-size: $font-mobile-size;
+        height: $v-48;
+        .label {
+          font-size: $font-mobile-size;
+          transform: translate(-13px, 0) scale(0.75);
+        }
+      }
     }
   }
 

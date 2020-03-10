@@ -1,77 +1,89 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
 
-.react-select {
-  &__option {
-    padding: 6px !important;
-    padding-left: 12px !important;
-    color: #333631 !important;
-    background-color: #FFFFFF !important;
-    &:hover {
-      background-color: #F8FBF7 !important;
-    }
-    &:active {
-      background-color: #F8FBF7 !important;
-    }
-    &--is-focused {
-
-    }
+.multi-product-select__wrapper {
+  position: relative;
+  .label {
+    font-size: $font-mobile-size;
+    transform: scale(0.75);
+    top: 6px;
+    left: -2px;
+    position: absolute;
+    z-index: 1;
   }
-  &__control {
-    height: 48px !important;
-    border-radius: 4px !important;
-    font-family: "Open Sans", sans-serif !important;
-    font-size: 14px !important;
-    color: #333631 !important;
-    letter-spacing: 0 !important;
-    background: #F8FBF7 !important;
-    border: 1px solid rgba(191,196,189,0.55) !important;
-    box-shadow: none !important;
-    &:hover {
-      //border: none;
+  .react-select {
+    &__single-value {
+      top: 30px;
     }
-    &--is-focused {
-      background: #FFFFFF !important;
-      border: 1px solid rgba(0,0,0,0.50) !important;
-      box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.2) !important;
-    }
-  }
-  &__multi-value {
-    flex-wrap: nowrap !important;
-    margin: 0 !important;
-    border: 1px solid rgba(9, 168, 115, 0.2) !important;
-    background-color: rgba(9, 168, 115, 0.1) !important;
-    margin-right: 6px !important;
-    border-radius: 4px !important;
-    &__label {
-      padding: 0 !important;
-      padding-left: 6px !important;
-      font-size: 12px !important;
-      font-family: "Hind Vadodara", sans-serif !important;
-      color: #09A873 !important;
-    }
-    &__remove {
-      background: transparent;
-      color: #09A873 !important;
-      margin: 1px !important;
-      margin-left: 3px !important;
-      border-radius: 3px !important;
-      align-items: center;
-      display: flex;
-      padding-left: 4px;
-      padding-right: 4px;
-      box-sizing: border-box;
-
+    &__option {
+      padding: 6px !important;
+      padding-left: 12px !important;
+      color: #333631 !important;
+      background-color: #FFFFFF !important;
       &:hover {
-        background-color: rgba(9, 168, 115, 0.5)!important;
-        color: white !important;
+        background-color: #F8FBF7 !important;
+      }
+      &:active {
+        background-color: #F8FBF7 !important;
+      }
+      &--is-focused {
+
       }
     }
-  }
-  &__value-container {
-    flex-wrap: nowrap !important;
-    height: 48px !important;
-  }
-  &-container {
-    flex-wrap: nowrap !important;
-    height: 48px !important;
+    &__control {
+      height: 48px !important;
+      border-radius: 4px !important;
+      font-family: "Open Sans", sans-serif !important;
+      font-size: 14px !important;
+      color: #333631 !important;
+      letter-spacing: 0 !important;
+      background: #F8FBF7 !important;
+      border: 1px solid rgba(191,196,189,0.55) !important;
+      box-shadow: none !important;
+      &--is-focused {
+        background: #FFFFFF !important;
+        border: 1px solid rgba(0,0,0,0.50) !important;
+        box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.2) !important;
+      }
+    }
+    &__multi-value {
+      flex-wrap: nowrap !important;
+      margin: 0 !important;
+      border: 1px solid rgba(9, 168, 115, 0.2) !important;
+      background-color: rgba(9, 168, 115, 0.1) !important;
+      margin-right: 6px !important;
+      border-radius: 4px !important;
+      &__label {
+        padding: 0 !important;
+        padding-left: 6px !important;
+        font-size: 12px !important;
+        font-family: "Hind Vadodara", sans-serif !important;
+        color: #09A873 !important;
+      }
+      &__remove {
+        background: transparent;
+        color: #09A873 !important;
+        margin: 1px !important;
+        margin-left: 3px !important;
+        border-radius: 3px !important;
+        align-items: center;
+        display: flex;
+        padding-left: 4px;
+        padding-right: 4px;
+        box-sizing: border-box;
+
+        &:hover {
+          background-color: rgba(9, 168, 115, 0.5)!important;
+          color: white !important;
+        }
+      }
+    }
+    &__value-container {
+      flex-wrap: nowrap !important;
+      height: 48px !important;
+    }
+    &-container {
+      flex-wrap: nowrap !important;
+      height: 48px !important;
+    }
   }
 }

@@ -36,6 +36,7 @@ const ClearIndicator = (props) => {
 export default class MultiProductSelect extends React.Component {
     static propTypes = {
       isMulti: PropTypes.bool,
+      label: PropTypes.string,
       name: PropTypes.string,
       onChange: PropTypes.func,
       value: PropTypes.string,
@@ -65,21 +66,26 @@ export default class MultiProductSelect extends React.Component {
     };
 
     render() {
+      const {label} = this.props;
       const {selectedOption} = this.state;
       const value = (this.props.value !== undefined) ? this.props.value : selectedOption;
 
       return (
-        <Select
-          className="react-select-container"
-          classNamePrefix="react-select"
-          components={{DropdownIndicator, ClearIndicator}}
-          isMulti={this.props.isMulti}
-          isSearchable={false}
-          name={this.props.name}
-          onChange={this.handleChange}
-          options={options}
-          placeholder={'Select services…'}
-          value={value} />
+        <div className="multi-product-select__wrapper">
+          <label className="label">{label}</label>
+          <Select
+            className="react-select-container"
+            classNamePrefix="react-select"
+            components={{DropdownIndicator, ClearIndicator}}
+            isMulti={this.props.isMulti}
+            isSearchable={false}
+            name={this.props.name}
+            onChange={this.handleChange}
+            options={options}
+            placeholder={'Select services…'}
+            value={value} />
+        </div>
+
       );
     }
 }

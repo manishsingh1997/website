@@ -206,9 +206,9 @@ export default class LeadForm extends React.Component {
     return (
       <form className="Form LeadForm" onSubmit={this.handleSubmit}>
         <div className={classNames('Form-field', {'is-error': errors && errors.product})}>
-          <label className="label spacing after__is-12">Ergeon services:</label>
           <MultiProductSelect
             isMulti={false}
+            label="Ergeon services:"
             name="product"
             onChange={this.handleFieldChange}
             value={multiselectChoosenProduct} />

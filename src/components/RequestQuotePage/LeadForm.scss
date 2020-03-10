@@ -1,4 +1,4 @@
-@import '@ergeon/core-components/src/components/variables.scss';
+@import '~@ergeon/core-components/src/components/variables.scss';
 .Popup {
   position: fixed !important;
   top: 0;
@@ -83,13 +83,9 @@
   .Form-field {
     height: auto;
     position: relative;
-    
-    @include phone() {
-      margin-bottom: 28px;
 
-      &:first-child {
-        margin-bottom: 44px;
-      }
+    @include phone() {
+      margin-bottom: 15px;
     }
 
     &.is-error {

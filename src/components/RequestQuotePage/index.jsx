@@ -239,6 +239,28 @@ export default class RequestQuotePage extends React.Component {
     );
   }
 
+  renderMobileAddress() {
+    return (
+      <div className="lead-area__mobile-address">
+        <div
+          className="lead-area__mobile-address__field"
+          onClick={this.openAddressUpdatePopup.bind(this)}>
+          <div className="left-part">
+            <div className="label">Street address:</div>
+            {this.getStreetAddress()}
+          </div>
+          <div className="right-part">
+            <Button
+              flavor="regular"
+              onClick={this.openAddressUpdatePopup.bind(this)}
+              size="small"
+              taste="line">
+              Edit</Button>
+          </div>
+        </div>
+      </div>);
+  }
+
   render() {
     const {
       auth: {isAuthLoading, isUserLoading, user},
@@ -268,6 +290,7 @@ export default class RequestQuotePage extends React.Component {
         {this.renderHeaderMessage()}
         <div className="lead-area">
           <div className="request-quote-page__lead-form">
+            {this.getStreetAddress() && this.renderMobileAddress()}
             <LeadForm
               configs={configs}
               lead={lead || {}}
