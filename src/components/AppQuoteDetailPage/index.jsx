@@ -153,7 +153,10 @@ export default class AppQuoteDetailPage extends React.Component {
   }
 
   getQuoteLineForCalcInputItem(quoteLines, itemName) {
-    return quoteLines.find((quoteLine) => quoteLine.label === itemName);
+    if (!itemName) {
+      return undefined;
+    }
+    return quoteLines.find((quoteLine) => !!quoteLine.label && quoteLine.label.toString() === itemName.toString());
   }
 
   getTotalPrice(quote) {
