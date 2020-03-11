@@ -7,6 +7,7 @@ import config, {DEVELOPMENT} from 'website/config';
 import {getUserAgent, getUserUuid, getUTM} from './analytics';
 import {DEFAULT_SOURCE_VALUE} from '../website/constants';
 import cleanDeep from 'clean-deep';
+import {isPastDate} from './date';
 
 export const parseError = (error) => {
   try {
@@ -34,6 +35,10 @@ export const getParameterByName = (name, url) => {
 export const isObject = (value) => {
   const type = typeof value;
   return value != null && (type === 'object' || type === 'function');
+};
+
+export const getExpiresAtTitle = (expiresAt) => {
+  return isPastDate(expiresAt) ? 'Expired at' : 'Expires at';
 };
 
 export const isChristmasTime = () => {

@@ -23,6 +23,7 @@ import AppSubCard from 'components/common/AppSubCard';
 import AppConfigPreview from 'components/common/AppConfigPreview';
 
 import './index.scss';
+import {getExpiresAtTitle} from '../../utils/utils';
 
 export default class AppOrderDetailPage extends React.Component {
 
@@ -77,6 +78,8 @@ export default class AppOrderDetailPage extends React.Component {
 
     const showTotalLength = Boolean(quote['total_length']) && quote['total_length'] !== '0';
     const showTotalArea = Boolean(quote['total_area']) && quote['total_area'] !== '0';
+    const expiresAt = quote['expires_at'];
+    const expiresAtTitle = getExpiresAtTitle(expiresAt);
 
     return (
       <React.Fragment>
@@ -91,6 +94,7 @@ export default class AppOrderDetailPage extends React.Component {
             <DataRow title="Sent At" value={formatDateAndTime(quote['sent_to_customer_at'])} />
             {quote['approved_at'] && <DataRow title="Approved At" value={formatDateAndTime(quote['approved_at'])} />}
             {quote['cancelled_at'] && <DataRow title="Cancelled At" value={formatDateAndTime(quote['cancelled_at'])} />}
+            {expiresAt && <DataRow title={expiresAtTitle} value={formatDate(expiresAt)} />}
           </div>
           <div>
             <AppConfigPreview className="quote-preview" schemaCodeUrl={schemaCodeUrl} />

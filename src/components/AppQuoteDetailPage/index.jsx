@@ -39,6 +39,7 @@ import ImgBack from 'assets/icon-arrow-left.svg';
 import '@ergeon/draw-map/styles.css';
 
 import './index.scss';
+import {getExpiresAtTitle} from '../../utils/utils';
 
 export default class AppQuoteDetailPage extends React.Component {
 
@@ -428,7 +429,7 @@ export default class AppQuoteDetailPage extends React.Component {
     const SPINNER_BORDER_WITH = 0.10;
     const SPINNER_SIZE = 64;
     const expiresAt = quote['expires_at'];
-    const expiresAtTitle = isPastDate(expiresAt) ? 'Expired at' : 'Expires at';
+    const expiresAtTitle = getExpiresAtTitle(expiresAt);
     const isPDFModeDisabled = !this.isPDFMode();
 
     return (
