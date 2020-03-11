@@ -9,6 +9,13 @@
     margin: 30px auto 0;
   }
 
+  .confirmation-email {
+    display: flex;
+    justify-content: center;
+    font-size: $font-regular-size;
+    font-weight: bold;
+  }
+
   &__header-message {
     .title {
       font-family: $font-title;

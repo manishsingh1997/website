@@ -36,7 +36,8 @@ import {DEFAULT_SOURCE_VALUE} from 'website/constants';
 import {products} from '@ergeon/core-components/src/constants';
 
 import './LeadForm.scss';
-import {getEventData, getAdvancedEditorUrl} from '../../utils/utils';
+import {getEventData, getAdvancedEditorUrl, showUpcomingFeatures} from '../../utils/utils';
+import authService from '../../utils/auth';
 
 const stringifyAddress = (address) => {
   if (address !== null && address !== undefined) {
@@ -91,7 +92,7 @@ export default class LeadForm extends React.Component {
     this.state = getInitialState(false, props);
   }
 
-  handleSubmit = (e) => {
+  async handleSubmit(e) {
     e.preventDefault();
 
     const {lead, onSubmit, product} = this.props;
@@ -119,27 +120,37 @@ export default class LeadForm extends React.Component {
         category: 'action',
         data: submitData,
       });
-      submitLeadArrived(submitData).then((res) => {
-        identify(data);
-        track(CUSTOMER_LEAD_CREATED, {
-          ...submitData,
-          source: DEFAULT_SOURCE_VALUE,
-        });
-        this.setState(getInitialState(false, this.props));
-        onSubmit && onSubmit();
-        ls.remove(LS_KEY);
-        return res;
-      }, (error) => {
-        trackError(new Error(`Lead submit error: ${parseError(error)}`, submitData));
+
+      try {
+        await submitLeadArrived(submitData);
+        await identify(data);
+        await track(CUSTOMER_LEAD_CREATED, {...submitData, source: DEFAULT_SOURCE_VALUE});
+        if (showUpcomingFeatures()) {
+          await this.requestSignIn(submitData['email']);
+        }
+      } catch (error) {
+        trackError(new Error(`Lead submit error: ${parseError(error)}`));
         this.setState({
           errors: {
             global: parseError(error),
           },
           loading: false,
         });
-      });
+      }
+
+      this.setState(getInitialState(false, this.props));
+      onSubmit && onSubmit();
+      ls.remove(LS_KEY);
     }
-  };
+  }
+
+  async requestSignIn(email) {
+    try {
+      await authService.requestOTP(email, 'email');
+    } catch (signInError) {
+      console.error(signInError);
+    }
+  }
 
   handleAddNote = () => {
     this.setState({
@@ -204,7 +215,7 @@ export default class LeadForm extends React.Component {
     );
 
     return (
-      <form className="Form LeadForm" onSubmit={this.handleSubmit}>
+      <form className="Form LeadForm" onSubmit={this.handleSubmit.bind(this)}>
         <div className={classNames('Form-field', {'is-error': errors && errors.product})}>
           <MultiProductSelect
             isMulti={false}
