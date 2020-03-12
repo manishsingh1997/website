@@ -122,8 +122,10 @@ export default class Layout extends React.Component {
           key="dropp-user"
           title={(
             <span key="dropp-user-icon">
-              <img className="sign-in-icon" src={userIcon}/>
-              <span className="user-full-name">{user.full_name}</span>
+              <div className="user-name-menu-item">
+                <img className="sign-in-icon" src={userIcon}/>
+                <span className="user-full-name">{user.full_name}</span>
+              </div>
             </span>
           )} />
       );

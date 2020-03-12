@@ -1,9 +1,9 @@
-@import '@ergeon/core-components/src/components/variables.scss';
+@import '~@ergeon/core-components/src/components/variables.scss';
 
 .app-layout {
   .dropdown-menu {
     vertical-align: middle;
-    min-width: 150px;
+    min-width: unset;
     max-width: 300px;
 
     .special {
@@ -15,16 +15,24 @@
       min-width: 25px;
       text-align: center;
     }
+    .user-name-menu-item {
+      display: flex;
+    }
     .user-full-name {
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis
+      text-overflow: ellipsis;
+      max-width: 120px;
     }
 
     @include phone() {
       min-width: 20px;
-
-      .link {
+    }
+    .link {
+      @include tablet() {
+        padding: 0 $v-12;
+      }
+      @include phone() {
         padding: 5px;
       }
     }
@@ -64,6 +72,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    .dropdown-menu--icon {
+      min-width: $v-24;
+    }
   }
 
   .sign-in-link {

@@ -210,11 +210,13 @@ export default class AppQuoteDetailPage extends React.Component {
     }
 
     return (
-      <Notification
-        mode="embed"
-        type="Warning">
-        This quote has been cancelled.
-      </Notification>
+      <div className="spacing after__is-24">
+        <Notification
+          mode="embed"
+          type="Warning">
+          This quote has been cancelled.
+        </Notification>
+      </div>
     );
   }
 
