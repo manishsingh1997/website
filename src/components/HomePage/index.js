@@ -11,13 +11,14 @@ import GetStartedSection from './GetStartedSection';
 import QASection from './QASection';
 import imgCalc from 'assets/calc_promo.png';
 import imgMap from 'assets/map_image.png';
+import MetaDescription from '../common/MetaDescription';
 
 class HomePage extends React.Component {
 
   render() {
-
     return (
       <div>
+        <MetaDescription pageName="HomePage"/>
         <SliderHero/>
         <ReviewHero/>
         <div className="wrapper-1180">

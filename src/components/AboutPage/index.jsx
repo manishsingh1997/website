@@ -1,5 +1,5 @@
 import React from 'react';
-import MetaTags from 'react-meta-tags';
+import MetaDescription from '../common/MetaDescription';
 
 import {Button} from '@ergeon/core-components';
 import imgHeart from 'assets/about-page/ergeon_heart.svg';
@@ -13,20 +13,7 @@ class AboutPage extends React.Component {
   render() {
     return (
       <div>
-        <MetaTags>
-          <title>Company Mission</title>
-          <meta
-            content={`Ergeon is a tech-enabled general contractor that provides consumers a simpler,
-            faster and better value home improvement experience. Ergeon is founded by two CS PhD serial entrepreneurs
-            that share a passion for shaping the Future of Work.`}
-            name="description"/>
-          <meta
-            content={`Ergeon is a tech-enabled general contractor that provides consumers a simpler,
-            faster and better value home improvement experience. Ergeon is founded by two CS PhD serial entrepreneurs
-            that share a passion for shaping the Future of Work.`}
-            property="og:description"/>
-        </MetaTags>
-
+        <MetaDescription pageName="AboutPage"/>
         <div className="wrapper-1180">
           <div className="spacing before__is-48 after__is-48">
             <h1 className="center spacing after__is-12">

@@ -1,5 +1,5 @@
 import React from 'react';
-import MetaTags from 'react-meta-tags';
+import MetaDescription from '../common/MetaDescription';
 
 import './index.scss';
 
@@ -17,15 +17,7 @@ class LocationsPage extends React.Component {
     );
     return (
       <div className="locations-page wrapper-1180">
-        <MetaTags>
-          <title>Ergeon Locations</title>
-          <meta
-            content="{locationsContent}"
-            name="description" />
-          <meta
-            content="{locationsContent}"
-            name="og:description" />
-        </MetaTags>
+        <MetaDescription pageName="LocationsPage"/>
         <div className="locations__header">
           <h2>Our Locations</h2>
           <p className="paragraph-3">

@@ -1,6 +1,6 @@
 import React from 'react';
 import {find} from 'lodash';
-import MetaTags from 'react-meta-tags';
+import MetaDescription from '../common/MetaDescription';
 
 import config from 'website/config';
 
@@ -102,15 +102,7 @@ class WarrantiesPage extends React.Component {
 
     return (
       <div className="warraties-page">
-        <MetaTags>
-          <title>Ergeon Licenses and Warranties</title>
-          <meta
-            content="We are licensed, bonded and insured contractors and promise you&#x27;ll be happy with our work."
-            name="description"/>
-          <meta
-            content="We are licensed, bonded and insured contractors and promise you&#x27;ll be happy with our work."
-            property="og:description"/>
-        </MetaTags>
+        <MetaDescription pageName="WarrantiesPage"/>
         <div className="warranties-page__header">
           <div className="full-width-block wrapper-1180">
             <div className="spacing after__is-48">
