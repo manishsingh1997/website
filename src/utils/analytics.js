@@ -73,8 +73,9 @@ export const track = (eventName, data) => {
 };
 
 const campaignParams = (params) => {
-  const campaignKeywords =
-    'utm_source utm_medium utm_campaign utm_content utm_term utm_adset utm_ad referred rc source ref'.split(' ');
+  const keywords = 'utm_location utm_source utm_medium utm_campaign' +
+    ' utm_content utm_term utm_adset utm_ad referred rc source ref';
+  const campaignKeywords = keywords.split(' ');
   let kw = '';
   let index;
 
@@ -230,7 +231,7 @@ export const init = () => {
       'dsn': config.sentryDSN,
       'environment': config.env,
     });
-  
+
     Sentry.configureScope((scope) => {
       scope.setTag('service_name', 'website');
     });
