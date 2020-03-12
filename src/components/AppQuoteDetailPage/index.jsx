@@ -11,7 +11,7 @@ import {Spinner, Notification} from '@ergeon/core-components';
 import DrawMap, {getLabelFromIndex} from '@ergeon/draw-map';
 
 import config from 'website/config';
-import {formatDate, isPastDate} from 'utils/date';
+import {formatDateAndTime, isPastDate} from 'utils/date';
 import {getOrderDetailURL} from 'utils/urls';
 import {formatPrice} from 'utils/app-order';
 import {getParameterByName} from 'utils/utils';
@@ -453,8 +453,8 @@ export default class AppQuoteDetailPage extends React.Component {
                     ? <DataRow title="Order ID" value={<Link to={this.linkToOrderPage}>#{quote.order.id}</Link>}/>
                     : <DataRow title="Order ID" value={`#${quote.order.id}`} />
                 }
-                <DataRow title="Sent On" value={formatDate(quote['sent_to_customer_at'])} />
-                {expiresAt && <DataRow title={expiresAtTitle} value={formatDate(expiresAt)} />}
+                <DataRow title="Sent At" value={formatDateAndTime(quote['sent_to_customer_at'])} />
+                {expiresAt && <DataRow title={expiresAtTitle} value={formatDateAndTime(expiresAt)} />}
               </div>
             </div>
             <div className="quote-labels-map">

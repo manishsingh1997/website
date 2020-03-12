@@ -38,7 +38,7 @@ export const isObject = (value) => {
 };
 
 export const getExpiresAtTitle = (expiresAt) => {
-  return isPastDate(expiresAt) ? 'Expired at' : 'Expires at';
+  return isPastDate(expiresAt) ? 'Expired At' : 'Expires At';
 };
 
 export const isChristmasTime = () => {

@@ -94,7 +94,7 @@ export default class AppOrderDetailPage extends React.Component {
             <DataRow title="Sent At" value={formatDateAndTime(quote['sent_to_customer_at'])} />
             {quote['approved_at'] && <DataRow title="Approved At" value={formatDateAndTime(quote['approved_at'])} />}
             {quote['cancelled_at'] && <DataRow title="Cancelled At" value={formatDateAndTime(quote['cancelled_at'])} />}
-            {expiresAt && <DataRow title={expiresAtTitle} value={formatDate(expiresAt)} />}
+            {expiresAt && <DataRow title={expiresAtTitle} value={formatDateAndTime(expiresAt)} />}
           </div>
           <div>
             <AppConfigPreview className="quote-preview" schemaCodeUrl={schemaCodeUrl} />
