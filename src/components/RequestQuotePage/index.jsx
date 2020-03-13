@@ -281,7 +281,7 @@ export default class RequestQuotePage extends React.Component {
           <Success
             header="Thanks!"
             text="We will call you within 24 hours" />
-          {showUpcomingFeatures() &&
+          {(showUpcomingFeatures() && !user) &&
           <span>
             <p className="confirmation-email spacing before__is-24">
               We have sent a confirmation message to your email.
@@ -304,7 +304,7 @@ export default class RequestQuotePage extends React.Component {
               onProductChange={product => updateProduct(product)}
               onSubmit={() => this.setState({showThankYou: true})}
               product={product}
-              user={user || {}}/>
+              user={user}/>
           </div>
           {this.renderSignupMap()}
         </div>

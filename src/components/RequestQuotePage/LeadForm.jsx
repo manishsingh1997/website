@@ -22,6 +22,7 @@ import {
 } from 'api/lead';
 import {
   parseError,
+  showUpcomingFeatures,
 } from 'utils/utils';
 import {
   identify,
@@ -36,8 +37,7 @@ import {DEFAULT_SOURCE_VALUE} from 'website/constants';
 import {products} from '@ergeon/core-components/src/constants';
 
 import './LeadForm.scss';
-import {getEventData, getAdvancedEditorUrl, showUpcomingFeatures} from '../../utils/utils';
-import authService from '../../utils/auth';
+import {getEventData, getAdvancedEditorUrl} from '../../utils/utils';
 
 const stringifyAddress = (address) => {
   if (address !== null && address !== undefined) {
@@ -59,9 +59,9 @@ const getInitialState = (showNoteField = false, props = {}) => {
     validateOnChange: false,
     showNoteField,
     data: {
-      email: props.user.email || '',
-      name: props.user.full_name || '',
-      phone: props.user.phone_number || '',
+      email: props.user && props.user.email || '',
+      name: props.user && props.user.full_name || '',
+      phone: props.user && props.user.phone_number || '',
       comment: '',
       'string_address': stringifyAddress(props.lead && props.lead.address),
     },
@@ -95,7 +95,7 @@ export default class LeadForm extends React.Component {
   async handleSubmit(e) {
     e.preventDefault();
 
-    const {lead, onSubmit, product} = this.props;
+    const {lead, user, onSubmit, product} = this.props;
     const data = {
       ...this.state.data,
       product,
@@ -115,6 +115,9 @@ export default class LeadForm extends React.Component {
       const order = this.getOrder();
       submitData['address'] = data.address || lead.address;
       submitData['object'] = {...submitData.object, order};
+      if (showUpcomingFeatures() && !user) {
+        submitData['auto_sign_in'] = true;
+      }
       Sentry.addBreadcrumb({
         message: 'Lead submit',
         category: 'action',
@@ -125,9 +128,6 @@ export default class LeadForm extends React.Component {
         await submitLeadArrived(submitData);
         await identify(data);
         await track(CUSTOMER_LEAD_CREATED, {...submitData, source: DEFAULT_SOURCE_VALUE});
-        if (showUpcomingFeatures()) {
-          await this.requestSignIn(submitData['email']);
-        }
       } catch (error) {
         trackError(new Error(`Lead submit error: ${parseError(error)}`));
         this.setState({
@@ -141,14 +141,6 @@ export default class LeadForm extends React.Component {
       this.setState(getInitialState(false, this.props));
       onSubmit && onSubmit();
       ls.remove(LS_KEY);
-    }
-  }
-
-  async requestSignIn(email) {
-    try {
-      await authService.requestOTP(email, 'email');
-    } catch (signInError) {
-      console.error(signInError);
     }
   }
 
