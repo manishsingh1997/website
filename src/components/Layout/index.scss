@@ -39,6 +39,8 @@
   }
 
   .menu {
+    width: unset !important;
+    right: 0;
     .menu-item {
       width: inherit;
     }
