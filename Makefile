@@ -42,8 +42,11 @@ deploy-production:
 s3upload:
 	@if [ -z "$(S3_BUCKET)" ]; then >&2 echo S3_BUCKET must be supplied; exit 1; fi;
 	$(AWS_CLI) s3 sync dist s3://$(S3_BUCKET)/  # use default cloudfront cache ttl
+	# don't use cache on staging for index.html at all
+	@if [ "$(LEVEL)" != "production" ]; then $(AWS_CLI) s3 cp dist/index.html s3://$(S3_BUCKET)/ --cache-control max-age=0; fi;
 
 invalidate-cloudfront:
 	@if [ -z "$(DOMAIN)" ]; then >&2 echo DOMAIN must be supplied; exit 1; fi;
-	$(AWS_CLI) cloudfront create-invalidation --distribution-id `$(AWS_CLI) cloudfront list-distributions --query "DistributionList.Items[?contains(Aliases.Items, '$(DOMAIN)')].Id" --output text` --paths /index.html
+	# invalidate cache only on production
+	@if [ "$(LEVEL)" = "production" ]; then $(AWS_CLI) cloudfront create-invalidation --distribution-id `$(AWS_CLI) cloudfront list-distributions --query "DistributionList.Items[?contains(Aliases.Items, '$(DOMAIN)')].Id" --output text` --paths /index.html /?upcoming-features; fi;
 
