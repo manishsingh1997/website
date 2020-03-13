@@ -58,18 +58,18 @@
 
   .quote-details-wrapper {
     margin-right: $h-40;
-    max-width: 460px;
+    width: 460px;
     @include tablet() {
-      max-width: unset;
+      width: 100%;
       margin-right: unset;
     }
     @include phone() {
-      max-width: unset;
+      width: 100%;
       margin: 0 0 $v-12 0;
     }
     @media print {
+      width: 100%;
       margin-right: unset;
-      max-width: unset;
     }
   }
 
