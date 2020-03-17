@@ -34,7 +34,7 @@ export default class EmergencyNotification extends React.Component {
     const {display} = this.state;
     return (
       <React.Fragment>
-        {display &&
+        {display && this.checkConditions() &&
         <div className="area-of-emergency-notification">
           <div className="wrapper-1180">
             <Notification
