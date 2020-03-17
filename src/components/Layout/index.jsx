@@ -18,6 +18,7 @@ import {getMenuItems} from 'data/customer-app.js';
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
 
 import './index.scss';
+import EmergencyNotification from '../EmergencyNotification';
 
 const SIGN_IN_LINK_ID = 'app-sign-in-link';
 
@@ -152,9 +153,10 @@ export default class Layout extends React.Component {
   render() {
     const widthClass = this.checkTemplateWidth()? 'wrapper-980' : 'wrapper-1180';
     const asPDF = getParameterByName('asPDF');
-
+    const {location} = this.props;
     return (
       <div className="app-layout">
+        <EmergencyNotification location={location}/>
         <NavLinkContext.Provider value={NavLink}>
           <WebsiteTopPanel
             customerMenu={this.isUpcomingFeaturesEnabled ? this.renderDropdownMenu() : null}
