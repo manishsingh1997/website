@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, {oneOfType} from 'prop-types';
 
 import './MapLabel.scss';
 
@@ -7,7 +7,7 @@ export default class MapLabel extends React.Component {
 
   static propTypes = {
     isInline: PropTypes.bool,
-    name: PropTypes.string.isRequired,
+    name: oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     type: PropTypes.oneOf(['Label', 'LabelYellow', 'Circle']),
   };
 
