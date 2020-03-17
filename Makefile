@@ -31,12 +31,12 @@ test: install lint
 
 deploy-staging:
 	LEVEL=staging make build
-	S3_BUCKET=dev.ergeon.com make s3upload
+	LEVEL=staging S3_BUCKET=dev.ergeon.com make s3upload
 	LEVEL=staging DOMAIN=dev.ergeon.com make invalidate-cloudfront
 
 deploy-production:
 	LEVEL=production make build
-	S3_BUCKET=www.ergeon.com make s3upload
+	LEVEL=production S3_BUCKET=www.ergeon.com make s3upload
 	LEVEL=production DOMAIN=www.ergeon.com make invalidate-cloudfront
 
 s3upload:
