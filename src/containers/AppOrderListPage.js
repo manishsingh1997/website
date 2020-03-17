@@ -6,7 +6,7 @@ import AppOrderListPage from 'components/AppOrderListPage';
 
 const mapStateToProps = ({auth: {user}, orders, address}) => {
   return {
-    orders: orders.data,
+    orders: orders.listData,
     isListLoading: orders.isListLoading,
     listError: orders.listError,
     address: user['main_address'] ? user['main_address']['formatted_address'] : address.address,

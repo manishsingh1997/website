@@ -29,6 +29,15 @@ export const getCustomerOrders = (customerGID) => {
   });
 };
 
+export const getCustomerOrderDetails = (customerGID, orderId) => {
+  return axios({
+    url: `${getBaseAPIURL(customerGID)}/orders/${orderId}/`,
+    method: 'get',
+    responseType: 'json',
+    headers: getCommonHeaders(),
+  });
+};
+
 export const getCustomerAppointments = (customerGID) => {
   return axios({
     url: `${getBaseAPIURL(customerGID)}/appointments`,

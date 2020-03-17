@@ -29,11 +29,10 @@ export default class AppOrderDetailPage extends React.Component {
 
   static propTypes = {
     error: PropTypes.object,
-    getOrders: PropTypes.func.isRequired,
+    fetchOrder: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
     match: PropTypes.object,
-    orders: PropTypes.array,
-    ordersDict: PropTypes.object,
+    orders: PropTypes.object,
   };
 
   state = {
@@ -43,20 +42,19 @@ export default class AppOrderDetailPage extends React.Component {
   static contextType = CustomerGIDContext;
 
   fetchData() {
-    const {getOrders} = this.props;
+    const {fetchOrder} = this.props;
     const customerGID = this.context;
-    getOrders(customerGID);
-  }
-
-  getOrder() {
-    const {orders} = this.props;
-    if (!orders) return null;
     const orderId = this.props.match.params.orderId;
-    return this.props.ordersDict[orderId];
+    fetchOrder(customerGID, orderId);
   }
 
   getAddress(order) {
     return order['house']['address']['formatted_address'];
+  }
+
+  getOrder() {
+    const orderId = this.props.match.params.orderId;
+    return this.props.orders[orderId];
   }
 
   handleChange = (selectedOption) => {
