@@ -1,5 +1,5 @@
 import axios from 'axios';
-import authService from 'utils/auth';
+import {authService} from 'utils/auth';
 import config from 'website/config';
 
 const getBaseAPIURL = (customerGID) => {

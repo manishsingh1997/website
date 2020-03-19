@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
-import queryString from 'query-string';
 
+import ExpiredLinkIcon from '@ergeon/core-components/src/assets/icon-expired-link.svg';
 import InvalidLockIcon from '@ergeon/core-components/src/assets/icon-link-is-not-valid.svg';
 import {Button, Spinner} from '@ergeon/core-components';
 
 import Success from 'components/common/Success';
 import SingleCard from 'components/common/SingleCard';
+import {getAuthOTPCode} from 'utils/auth';
 
 import './index.scss';
 
@@ -18,6 +19,7 @@ class AuthConfirmSignInPage extends React.Component {
     auth: PropTypes.object.isRequired,
     authenticateUserWithCode: PropTypes.func.isRequired,
     location: PropTypes.object.isRequired,
+    resendLink: PropTypes.func.isRequired,
   };
 
   state = {
@@ -25,10 +27,16 @@ class AuthConfirmSignInPage extends React.Component {
   };
 
   componentDidMount() {
-    const parsedQuery = queryString.parse(this.props.location.search);
-    if (parsedQuery.code) {
-      this.props.authenticateUserWithCode(parsedQuery.code);
+    const otpCode = getAuthOTPCode(this.props.location.search);
+    if (otpCode) {
+      this.props.authenticateUserWithCode(otpCode);
     }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const otpCode = getAuthOTPCode(this.props.location.search);
+    this.props.resendLink(otpCode);
   }
 
   renderSuccess() {
@@ -41,11 +49,10 @@ class AuthConfirmSignInPage extends React.Component {
   }
 
   renderInvalidCode() {
-
     return (
       <div className="center">
         <div className="center spacing after__is-24">
-          <img className="icon-invalid-lock" src={InvalidLockIcon} />
+          <img className="icon-invalid-lock" src={InvalidLockIcon}/>
         </div>
         <h4 className="center spacing after__is-12">Sorry, but the link is not valid</h4>
         <Link to="/app/sign-in">
@@ -60,13 +67,38 @@ class AuthConfirmSignInPage extends React.Component {
     );
   }
 
-  renderLoader() {
+  renderExpiredCode() {
+    return (
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        <div className="center">
+          <div className="center spacing after__is-24">
+            <img className="icon-invalid-lock" src={ExpiredLinkIcon}/>
+          </div>
+          <h4 className="center spacing after__is-12">
+            Sorry, but the link you have used was already expired.Try to resend a confirmation email.
+          </h4>
+          <Button
+            className="spacing before__is-12"
+            size="large"
+            type="submit">
+            Resend
+          </Button>
+        </div>
+      </form>
+    );
+  }
+
+  renderLoader(text) {
     return (
       <div className="center">
-        <h4 className="center spacing after__is-24">Verifying the link, please wait</h4>
+        <h4 className="center spacing after__is-24">{text}</h4>
         <Spinner active={true} borderWidth={0.10} color="green" size={48}/>
       </div>
     );
+  }
+
+  renderSuccessResendLink() {
+    return <Success header="We have sent you email with a link for sign in" />;
   }
 
   render() {
@@ -76,16 +108,23 @@ class AuthConfirmSignInPage extends React.Component {
     if (redirectNow) {
       return <Redirect to={`/app/${auth.user.gid}/orders`} />;
     }
-
     let content = null;
-    if (auth.isAuthLoading) {
-      content = this.renderLoader();
+    if (auth.isAuthLoading || auth.isUserLoading) {
+      content = this.renderLoader('Verifying the link, please wait');
+    } else if (auth.isResendLinkLoading) {
+      content = this.renderLoader('Resending the link, please wait');
+    } else if (auth.isResendLinkSuccess) {
+      content = this.renderSuccessResendLink();
+    } else if (auth.resendLinkError) {
+      content = this.renderInvalidCode();
+    } else if (!auth.authError && auth.user && auth.userSetByCode) {
+      content = this.renderSuccess();
     } else {
-      if (!auth.authError && auth.user && auth.userSetByCode) {
-        content = this.renderSuccess();
-      } else {
+      const error = auth.authError.data.otp.errorCode;
+      if (error === 'invalid')
         content = this.renderInvalidCode();
-      }
+      else if (error === 'expired')
+        content = this.renderExpiredCode();
     }
 
     return <SingleCard className="confirm-signin-page" content={content} />;

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {authenticateUserWithCode} from 'flux/actions/auth';
+import {authenticateUserWithCode, resendLink} from 'flux/actions/auth';
 import AuthConfirmSignInPage from 'components/AuthConfirmSignInPage';
 
 const mapStateToProps = ({auth}) => {
@@ -11,6 +11,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     authenticateUserWithCode: (code) => {
       return dispatch(authenticateUserWithCode(code));
+    },
+    resendLink: (otp) => {
+      return dispatch(resendLink(otp));
     },
   };
 };

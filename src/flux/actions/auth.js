@@ -1,4 +1,4 @@
-import authService from 'utils/auth';
+import {authService} from 'utils/auth';
 import {parseAPIError} from 'utils/api';
 
 export const actionTypes = {
@@ -11,6 +11,28 @@ export const actionTypes = {
   'AUTH_LOGOUT_START': 'AUTH_LOGOUT_START',
   'AUTH_LOGOUT_DONE': 'AUTH_LOGOUT_DONE',
   'AUTH_LOGOUT_ERROR': 'AUTH_LOGOUT_ERROR',
+  'RESEND_NEW_LINK_START': 'RESEND_NEW_LINK_START',
+  'RESEND_NEW_LINK_DONE': 'RESEND_NEW_LINK_DONE',
+  'RESEND_NEW_LINK_ERROR': 'RESEND_NEW_LINK_ERROR',
+};
+
+export const resendLink = (otp) => {
+  return async function(dispatch) {
+    dispatch({
+      type: actionTypes.RESEND_NEW_LINK_START,
+    });
+    try {
+      await authService.resendOTP(otp);
+      dispatch({
+        type: actionTypes.RESEND_NEW_LINK_DONE,
+      });
+    } catch (otpError) {
+      dispatch({
+        type: actionTypes.RESEND_NEW_LINK_ERROR,
+        error: parseAPIError(otpError),
+      });
+    }
+  };
 };
 
 export const authenticateUserWithCode = (code) => {

@@ -1,3 +1,4 @@
+import queryString from 'query-string';
 import ErgCustomerAuthService from '@ergeon/erg-customer-auth';
 
 import {DEVELOPMENT, PRODUCTION} from 'website/config';
@@ -10,4 +11,7 @@ export const authService = authService || new ErgCustomerAuthService({
   authApiServer: `${config.apiHost}/`,
 });
 
-export default authService;
+export const getAuthOTPCode = (querystring) => {
+  const parsedQuery = queryString.parse(querystring);
+  return parsedQuery.code;
+};

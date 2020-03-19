@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import authService from 'utils/auth';
+import {authService} from 'utils/auth';
 import {Button, Spinner} from '@ergeon/core-components';
 import LockIcon from '@ergeon/core-components/src/assets/icon-lock.svg';
 

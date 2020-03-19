@@ -9,6 +9,9 @@ const initialAuthState = {
   userSetByCode: false,
   isUserLoggedOut: false,
   logoutError: null,
+  resendLinkError: null,
+  isResendLinkLoading: false,
+  isResendLinkSuccess: false,
 };
 
 const authReducer = (state=initialAuthState, action) => {
@@ -38,6 +41,12 @@ const authReducer = (state=initialAuthState, action) => {
     case actionTypes.AUTH_LOGOUT_ERROR:
       return {...state, isAuthLoading: false, logoutError: action.error};
 
+    case actionTypes.RESEND_NEW_LINK_START:
+      return {...state, isResendLinkLoading: true, isResendLinkSuccess: false};
+    case actionTypes.RESEND_NEW_LINK_DONE:
+      return {...state, isResendLinkLoading: false, resendLinkError: null, isResendLinkSuccess: true};
+    case actionTypes.RESEND_NEW_LINK_ERROR:
+      return {...state, resendLinkError: action.error, isResendLinkLoading: false, isResendLinkSuccess: false};
     default:
       return state;
   }
