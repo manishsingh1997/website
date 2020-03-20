@@ -2,11 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {some} from 'lodash';
 
+import {Notification} from '@ergeon/core-components';
 import {formatPrice} from 'utils/app-order';
 import {getParameterByName} from 'utils/utils';
+import {parseAPIError} from 'utils/api';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 
-import {getQuoteDetails, reviewQuote} from 'api/app';
+import {
+  getQuoteDetails,
+  reviewQuote,
+  approveAndPayQuote,
+} from 'api/app';
 
 import AppLoader from 'components/common/AppLoader';
 import {
@@ -42,7 +48,11 @@ export default class AppQuoteDetailPage extends React.Component {
     previewImages: {},
     isLoading: false,
     isLoadingMap: false,
+    isLoadingForm: false,
     quote: null,
+    quoteError: null,
+    paymentMethod: null,
+    paymentMethodError: null,
   };
 
   async componentDidMount() {
@@ -61,19 +71,42 @@ export default class AppQuoteDetailPage extends React.Component {
     this.setState({isLoading: true, isLoadingMap: true});
     try {
       const data = await getQuoteDetails(this.customerGID, this.props.match.params.secret);
-      this.setState({quote: data.data});
+      this.setState({
+        quote: data.data,
+        paymentMethod: data.data.order.house['payment_method'],
+        quoteError: null,
+        paymentMethodError: null,
+      });
     } catch (apiError) {
-      // TODO: show reasonable message
-      throw apiError;
+      this.setState({
+        quote: null,
+        quoteError: parseAPIError(apiError).nonFieldErrors.join('\n'),
+      });
     } finally {
       this.setState({isLoading: false});
     }
   }
 
-  handleBillingSubmit(data, approveOnly) {
-    // TODO: Implement API call to /billing/method
-    console.log('Billing api call data: ', data);
-    console.log('approveOnly: ', approveOnly);
+  async approveQuoteToAPI(stripeToken) {
+    this.setState({isLoadingForm: true});
+    try {
+      const data = await approveAndPayQuote(this.customerGID, this.props.match.params.secret, stripeToken);
+      this.setState({
+        paymentMethod: data.data,
+        paymentMethodError: null,
+      });
+    } catch (apiError) {
+      this.setState({
+        paymentMethod: null,
+        paymentMethodError: parseAPIError(apiError).nonFieldErrors.join('\n'),
+      });
+    } finally {
+      this.setState({isLoadingForm: false});
+    }
+  }
+
+  async handleBillingSubmit(data) {
+    this.approveQuoteToAPI(data['stripe_token']);
   }
 
   async reviewQuote() {
@@ -130,17 +163,41 @@ export default class AppQuoteDetailPage extends React.Component {
     return quote['total_price'];
   }
 
+  renderQuoteError() {
+    const {quoteError} = this.state;
+
+    return (
+      <Notification
+        mode="embed"
+        type="Error">
+        There was an error trying to retrieve quote.<br />
+        {quoteError}
+      </Notification>
+    );
+  }
   render() {
     const {auth} = this.props;
-    const {isLoading, isLoadingMap, quote} = this.state;
+    const {
+      isLoadingMap,
+      isLoadingForm,
+      isLoading,
+      quote,
+      quoteError,
+      paymentMethod,
+      paymentMethodError,
+    } = this.state;
+
     if (isLoading) {
       return <AppLoader />;
+    }
+    if (quoteError) {
+      return this.renderQuoteError();
     }
     if (!quote) {
       return null;
     }
     const {
-      order: {house: {id: houseId, paymentMethod}},
+      order: {house: {id: houseId}},
       warranty,
     } = quote;
 
@@ -161,7 +218,9 @@ export default class AppQuoteDetailPage extends React.Component {
         <ProjectNotes quote={quote}/>
         <MaterialsAndDesign designs={designs}/>
         {isPDFModeDisabled && <BillingForm
+          error={paymentMethodError}
           houseId={houseId}
+          loading={isLoadingForm}
           onSubmit={this.handleBillingSubmit.bind(this)}
           paymentMethod={paymentMethod}
           quoteId={quote['id']}

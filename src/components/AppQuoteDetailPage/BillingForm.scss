@@ -7,11 +7,7 @@
   box-shadow: none;
   padding: $h-40;
   margin-top: $v-30;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-bottom: $v-48;
-  position: relative;
 
   @include phone() {
     display: block;
@@ -80,6 +76,18 @@
   }
 
   &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin: 0;
+  }
+
+  &__error {
+    margin-top: 16px;
+  }
+
+  &__information {
     position: relative;
     flex: 1;
     padding-right: 80px;
@@ -196,6 +204,7 @@
 
     &-button {
       padding: 0 30px;
+      min-width: 236px;
 
       &[disabled] {
         opacity: .2;
@@ -308,6 +317,28 @@
     transition: all .2s ease-out;
     right: 10px;
     top: 50%;
+  }
+
+
+  &--with-payment-method-details {
+    .billing-form__icons {
+      display: none;
+    }
+    
+    .billing-form__terms {
+      display: none;
+    }
+
+    .billing-form__approve {
+      display: none;
+    }
+  }
+
+  &--loading {
+    .billing-form__accept-terms-button {
+      pointer-events: none;
+      background-color: #E4E9E2;
+    }
   }
 
   .Form-field.is-error input {

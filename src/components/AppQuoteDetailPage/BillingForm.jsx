@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import {Button} from '@ergeon/core-components';
+import {Button, Spinner, Notification} from '@ergeon/core-components';
 
 import {
   cardNumberValidation,
@@ -23,7 +23,9 @@ import './BillingForm.scss';
 
 export default class BillingForm extends React.Component {
   static propTypes = {
+    error: PropTypes.string,
     houseId: PropTypes.number,
+    loading: PropTypes.bool,
     onSubmit: PropTypes.func,
     paymentMethod: PropTypes.object,
     quoteId: PropTypes.number,
@@ -32,7 +34,6 @@ export default class BillingForm extends React.Component {
   };
 
   state = {
-    loading: false,
     editMode: false,
     form: {
       termsAccepted: false,
@@ -132,6 +133,20 @@ export default class BillingForm extends React.Component {
     this.setState({editMode: !editMode});
   }
 
+  renderError() {
+    const {error} = this.props;
+    return (
+      <div className="billing-form__error">
+        <Notification
+          mode="embed"
+          type="Error">
+          There was an error trying to approve payment.<br />
+          {error}
+        </Notification>
+      </div>
+    );
+  }
+
   renderEditOrCancelButton() {
     const {editMode} = this.state;
 
@@ -148,7 +163,8 @@ export default class BillingForm extends React.Component {
   }
 
   renderFormFields() {
-    const {loading, form, validate} = this.state;
+    const {loading} = this.props;
+    const {form, validate} = this.state;
     const {card, expirationDate, cvc} = form;
     const errors = this.getFormErrors(form, validate);
 
@@ -241,77 +257,88 @@ export default class BillingForm extends React.Component {
   render() {
     const {form} = this.state;
     const {termsAccepted} = form;
-    const {quoteId, termsAndConditionsUrl, total, paymentMethod} = this.props;
+    const {quoteId, termsAndConditionsUrl, total, loading, error} = this.props;
+    const classes = {
+      'billing-form': true,
+      'billing-form--with-payment-method-details': this.isUsingCurrentPaymentMethod(),
+      'billing-form--loading': loading,
+    };
 
     return (
-      <form className="billing-form" onSubmit={this.handleSubmit.bind(this)}>
-        <div className="billing-form__content">
-          <div className="billing-form__title-section">
-            <h4>
-              Billing Information
-              {paymentMethod && this.renderEditOrCancelButton()}
-            </h4>
-            <div className="billing-form__icons">
-              <img className="billing-form__icon-cards" src={IconCards}/>
-              <img className="billing-form__icon-secure" src={IconSSL}/>
+      <div className={classNames(classes)}>
+        <form className="billing-form__content" onSubmit={this.handleSubmit.bind(this)}>
+          <div className="billing-form__information">
+            <div className="billing-form__title-section">
+              <h4>
+                Billing Information
+              </h4>
+              <div className="billing-form__icons">
+                <img className="billing-form__icon-cards" src={IconCards}/>
+                <img className="billing-form__icon-secure" src={IconSSL}/>
+              </div>
+            </div>
+            {
+              this.isUsingCurrentPaymentMethod() ?
+                this.renderPaymentMethodDetails() :
+                this.renderFormFields()
+            }
+            <div className="billing-form__card-disclaimer">
+              <img className="billing-form__card-disclaimer-icon" src={IconCardSecure} />
+              <div className="billing-form__card-disclaimer-text">
+                You <b>will not be charged</b> until after your service is completed.
+                Credit card payments are subject to an additional {config.CARD_TRANSACTION_FEE} transaction fee.
+              </div>
             </div>
           </div>
-          {
-            this.isUsingCurrentPaymentMethod() ?
-              this.renderPaymentMethodDetails() :
-              this.renderFormFields()
-          }
-          <div className="billing-form__card-disclaimer">
-            <img className="billing-form__card-disclaimer-icon" src={IconCardSecure} />
-            <div className="billing-form__card-disclaimer-text">
-              You <b>will not be charged</b> until after your service is completed.
-              Credit card payments are subject to an additional {config.CARD_TRANSACTION_FEE} transaction fee.
+          <div className="billing-form__actions">
+            <div className="billing-form__total-pay">
+              Total pay
+              <div className="billing-form__price">
+                {total}
+              </div>
+            </div>
+            <div className="billing-form__approve">
+              <Button
+                className="billing-form__approve-button"
+                disabled={this.getFormErrors(form) || !termsAccepted || loading}
+                size="large">
+                {
+                  loading ?
+                    <Spinner active={true} borderWidth={0.15} color="white" size={24}/> :
+                    'Approve and place order'
+                }
+              </Button>
+            </div>
+            <a
+              className="billing-form__request-changes"
+              href={`mailto:${config.CONTACT_EMAIL}?subject=Quote change request: ${quoteId}`}>
+              Request changes to quote
+            </a>
+            <div className="billing-form__terms">
+              <div
+                className={classNames(
+                  'billing-form__accept-terms-button',
+                  {'billing-form__accept-terms-button--selected': termsAccepted}
+                )}
+                onClick={this.handleFieldChange.bind(this, 'termsAccepted', !termsAccepted)}>
+                {termsAccepted && <img
+                  className="billing-form__accept-terms-button-icon"
+                  src={IconMarkGreen} />}
+              </div>
+              <span className="billing-form__terms-accept">
+                I accept <a
+                  className="billing-form__terms-link"
+                  href={termsAndConditionsUrl}
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  Terms and Conditions
+                </a>
+              </span>
             </div>
           </div>
-        </div>
-        <div className="billing-form__actions">
-          <div className="billing-form__total-pay">
-            Total pay
-            <div className="billing-form__price">
-              {total}
-            </div>
-          </div>
-          <div className="billing-form__approve">
-            <Button
-              className="billing-form__approve-button"
-              disabled={this.getFormErrors(form) || !termsAccepted}
-              size="large">
-              Approve and place order
-            </Button>
-          </div>
-          <a
-            className="billing-form__request-changes"
-            href={`mailto:${config.CONTACT_EMAIL}?subject=Quote change request: ${quoteId}`}>
-            Request changes to quote
-          </a>
-          <div className="billing-form__terms">
-            <div
-              className={classNames(
-                'billing-form__accept-terms-button',
-                {'billing-form__accept-terms-button--selected': termsAccepted}
-              )}
-              onClick={this.handleFieldChange.bind(this, 'termsAccepted', !termsAccepted)}>
-              {termsAccepted && <img
-                className="billing-form__accept-terms-button-icon"
-                src={IconMarkGreen} />}
-            </div>
-            <span className="billing-form__terms-accept">
-              I accept <a
-                className="billing-form__terms-link"
-                href={termsAndConditionsUrl}
-                rel="noopener noreferrer"
-                target="_blank">
-                Terms and Conditions
-              </a>
-            </span>
-          </div>
-        </div>
-      </form>
+        </form>
+        {error ? this.renderError(): null}
+      </div>
     );
   }
 }

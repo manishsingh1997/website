@@ -73,3 +73,15 @@ export const reviewQuote = (customerGID, quoteSecret) => {
     headers: getCommonHeaders(),
   });
 };
+
+export const approveAndPayQuote = (customerGID, quoteSecret, stripeToken) => {
+  return axios({
+    url: `${getBaseAPIURL(customerGID)}/quotes/${quoteSecret}/approve-and-pay/`,
+    method: 'post',
+    responseType: 'json',
+    headers: getCommonHeaders(),
+    data: JSON.stringify({
+      'stripe_token': stripeToken,
+    }),
+  });
+};
