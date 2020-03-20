@@ -34,7 +34,7 @@ import {
   CUSTOMER_LEAD_CREATED,
 } from 'utils/events';
 import {DEFAULT_SOURCE_VALUE} from 'website/constants';
-import {products} from '@ergeon/core-components/src/constants';
+import {FENCE_SLUG, products} from '@ergeon/core-components/src/constants';
 
 import './LeadForm.scss';
 import {getEventData, getAdvancedEditorUrl} from '../../utils/utils';
@@ -114,7 +114,9 @@ export default class LeadForm extends React.Component {
       const submitData = getEventData(data);
       const order = this.getOrder();
       submitData['address'] = data.address || lead.address;
-      submitData['object'] = {...submitData.object, order};
+      if (product === FENCE_SLUG) {
+        submitData['object'] = {...submitData.object, order};
+      }
       if (showUpcomingFeatures() && !user) {
         submitData['auto_sign_in'] = true;
       }
@@ -166,7 +168,7 @@ export default class LeadForm extends React.Component {
 
     this.setState(newState);
 
-    if (name === 'product' && this.props.onProductChange) {
+    if (name === 'product' && this.props.onProductChange && value !== this.props.product) {
       this.props.onProductChange(value);
     }
   };
@@ -198,12 +200,12 @@ export default class LeadForm extends React.Component {
   render() {
     const {product} = this.props;
     const {data: {email, name, phone, comment}, errors, loading, showNoteField} = this.state;
-    const multiselectProducts = products.map(function(productItem) {
+    const multiSelectProducts = products.map(function(productItem) {
       return {value: productItem.slug, label: productItem.name};
     });
 
-    const multiselectChoosenProduct = multiselectProducts.find(
-      multiselectProduct => multiselectProduct.value === product
+    const multiSelectChosenProduct = multiSelectProducts.find(
+      multiSelectProduct => multiSelectProduct.value === product
     );
 
     return (
@@ -214,7 +216,7 @@ export default class LeadForm extends React.Component {
             label="Ergeon services:"
             name="product"
             onChange={this.handleFieldChange}
-            value={multiselectChoosenProduct} />
+            value={multiSelectChosenProduct} />
           {errors && <div className="Form-error">{errors.product}</div>}
         </div>
         <div className={classNames('Form-field', {'is-error': errors && errors.name})}>
