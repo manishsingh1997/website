@@ -15,14 +15,10 @@ import AppSubCard from 'components/common/AppSubCard';
 export default class AppOrdersListPage extends React.Component {
 
   static propTypes = {
-    address: PropTypes.string,
     getOrders: PropTypes.func.isRequired,
     isListLoading: PropTypes.bool.isRequired,
     listError: PropTypes.object,
     orders: PropTypes.array,
-    product: PropTypes.string,
-    updateLeadFromAddress: PropTypes.func.isRequired,
-    zipcode: PropTypes.string,
   };
 
   static contextType = CustomerGIDContext;
@@ -35,15 +31,6 @@ export default class AppOrdersListPage extends React.Component {
 
   getAddress(order) {
     return order['house']['address']['formatted_address'];
-  }
-
-  updateAddress() {
-    const {address, product, zipcode} = this.props;
-    this.props.updateLeadFromAddress({
-      address,
-      product,
-      zipcode,
-    });
   }
 
   renderQuote(quote) {
@@ -98,16 +85,6 @@ export default class AppOrdersListPage extends React.Component {
     return (
       <React.Fragment>
         <div>Orders</div>
-        <div>
-          <Link to="/request-quote">
-            <Button
-              onClick={() => this.updateAddress()}
-              size="small"
-              type="submit">
-              Add Order
-            </Button>
-          </Link>
-        </div>
       </React.Fragment>
     );
   }
