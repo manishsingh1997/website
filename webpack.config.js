@@ -6,19 +6,20 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 const {dependencies} = require('./package.json');
 
-const BUILD_DIR = path.join(__dirname, 'dist');
-const APP_DIR = path.join(__dirname, 'src');
+const BUILD_DIR = path.resolve(__dirname, 'dist');
+const APP_DIR = path.resolve(__dirname, 'src');
 const VENDOR_LIST = Object.keys(dependencies).filter(vendor => vendor !== 'lodash');
 
 var config = {
     devtool: 'source-map',
     entry: {
-        bundle: APP_DIR + '/index.js',
-        vendor: VENDOR_LIST,
+        'assets/bundle': APP_DIR + '/index.js',
+        'assets/vendor': VENDOR_LIST,
+        'utm/assets/bundle': APP_DIR + '/utm/index.js',
     },
     output: {
         path: BUILD_DIR,
-        filename: 'assets/[name]-[hash].js',
+        filename: '[name]-[hash].js',
         publicPath: '/',
     },
     module: {
@@ -73,7 +74,14 @@ var config = {
     plugins: [
         new htmlWebpackPlugin({
             template: APP_DIR + '/index.html',
+            chunks: ['assets/bundle', 'assets/vendor'],
             favicon: APP_DIR + '/assets/favicon.png',
+            filename: BUILD_DIR + '/index.html',
+        }),
+        new htmlWebpackPlugin({
+            template: APP_DIR + '/utm/index.html',
+            chunks: ['utm/assets/bundle'],
+            filename: BUILD_DIR + '/utm/index.html',
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({

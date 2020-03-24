@@ -4,6 +4,7 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {createBrowserHistory} from 'history';
 import {Router, Route, Switch, Redirect} from 'react-router-dom';
+import {initUTMs} from '@ergeon/erg-utms';
 
 import {
   FencePhotoData,
@@ -36,6 +37,7 @@ import PhotoGallery from 'components/PhotoGallery';
 import RequestQuotePage from 'containers/RequestQuotePage';
 import WarrantiesPage from 'components/WarrantiesPage';
 import store from 'flux/store';
+import config from 'website/config';
 
 import '@ergeon/core-components/src/components/main.scss';
 import './main.scss';
@@ -113,6 +115,11 @@ render(
   document.getElementById('root'),
   customScripts(),
 );
+
+initUTMs('utm-iframe', config.websiteDomain, [
+  `${config.fencequotingHost}/utm/`,
+  `${config.projectsGalleryHost}/utm/`,
+]);
 
 CustomerApp.propTypes = {
   location: PropTypes.object,
