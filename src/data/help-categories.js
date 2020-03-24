@@ -30,6 +30,11 @@ const helpDefaultCategories = [
     icon: IconPricing,
     nodeId: '201900006',
   },
+  {
+    title: 'COVID-19 (Coronavirus)',
+    icon: IconService,
+    nodeId: '202000375',
+  },
 ];
 
 export default helpDefaultCategories;
