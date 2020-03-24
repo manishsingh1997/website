@@ -11,6 +11,15 @@
     padding-bottom: $v-16;
     margin-bottom: $v-16;
 
+    @include phone() {
+      padding-bottom: $v-12;
+      margin-bottom: $v-12;
+
+      .button {
+        padding: 0 12px;
+      }
+    }
+
     .flex-wrapper {
       @include tablet() {
         flex-direction: row;

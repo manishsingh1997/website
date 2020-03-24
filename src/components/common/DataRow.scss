@@ -6,6 +6,15 @@
   justify-content: left;
   margin: $v-12 0;
 
+
+  @include phone() {
+    margin: $v-6 0;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
   > div:first-child {
     margin-right: $h-20;
     font-size: 14px;
@@ -13,6 +22,10 @@
     min-width: 100px;
     max-width: 100px;
     text-align: right;
+
+    @include phone() {
+      margin-right: $h-10;
+    }
   }
 
   > div:nth-child(2) {
