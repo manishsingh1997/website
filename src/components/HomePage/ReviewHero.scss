@@ -19,6 +19,13 @@
     padding-right: 60px;
     border-right: 1px solid rgba($gray-4, 0.6);
     min-width: 230px;
+    a {
+      color: $black-2;
+      font-weight: normal;
+      &:hover {
+        color: $black-2;
+      }
+    }
     @include tablet() {
       padding-right: 40px;
       h4 {

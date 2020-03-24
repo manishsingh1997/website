@@ -1,24 +1,28 @@
 import React from 'react';
 import homeAdvisorLogo from 'assets/home_advisor@2x.png';
-import {Rating} from '@ergeon/core-components';
+import {Rating, RatingsData} from '@ergeon/core-components';
 
 import './ReviewHero.scss';
 
 class ReviewHero extends React.Component {
   render() {
+    const {homeadvisor} = RatingsData;
     return (
       <div className="review-hero">
         <div className="wrapper-1180">
           <div className="review-hero__flex-wrapper">
             <div className="review-hero__customer-reviews">
               <h4>Customer reviews</h4>
-              <div className="review-hero__customer-reviews__home-advisor-section">
-                <div className="review-hero__customer-reviews__rating">
-                  <Rating value={4.5}/>
-                  <div className="review-hero__customer-reviews__rating__numbers">4.8 / 38 Verified Reviews</div>
+              <a href="https://www.homeadvisor.com/rated.ErgeonPaloAlto.66624661.html">
+                <div className="review-hero__customer-reviews__home-advisor-section">
+                  <div className="review-hero__customer-reviews__rating">
+                    <Rating value={homeadvisor.rating > 4.5 ? 4.5 : homeadvisor.rating}/>
+                    <div className="review-hero__customer-reviews__rating__numbers">
+                      {homeadvisor.rating} / {homeadvisor.reviewCount} Verified Reviews</div>
+                  </div>
+                  <img className="review-hero__customer-reviews__home-advisor-logo" src={homeAdvisorLogo}/>
                 </div>
-                <img className="review-hero__customer-reviews__home-advisor-logo" src={homeAdvisorLogo}/>
-              </div>
+              </a>
 
             </div>
             <div className="review-hero__main-review">
