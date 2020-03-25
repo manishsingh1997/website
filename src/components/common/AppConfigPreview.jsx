@@ -8,6 +8,8 @@ import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {calcUtils} from '@ergeon/3d-lib';
 import {constants as constants3dLib} from '@ergeon/3d-lib';
 
+import config from 'website/config';
+
 import './AppConfigPreview.scss';
 
 const USE_CACHE = true;
@@ -20,12 +22,14 @@ export default class AppConfigPreview extends React.Component {
     className: PropTypes.string,
     noPreview: PropTypes.bool,
     schemaCodeUrl: PropTypes.string,
+    withLink: PropTypes.bool,
+    zipCode: PropTypes.string,
   };
 
   state = {
     previewImage: undefined,
     isLoading: false,
-  }
+  };
 
   async componentDidMount() {
     await this.fetchQuotePreview();
@@ -59,8 +63,31 @@ export default class AppConfigPreview extends React.Component {
     }
   }
 
+  renderPreviewWithLink() {
+    const {schemaCodeUrl, zipCode} = this.props;
+    return (
+      <a
+        href={`${config.fencequotingHost}/fence3d?${schemaCodeUrl}&mode=3d&options=true&zipcode=${zipCode}`}
+        rel="noopener noreferrer"
+        target="_blank">
+        {this.renderPreview()}
+      </a>
+    );
+  }
+
+  renderPreview() {
+    const {isLoading, previewImage} = this.state;
+    const isPlaceholder = previewImage === previewPlaceholderIcon || previewImage === noPreviewIcon;
+    return (
+      <img
+        className={classNames({'preview-placeholder': isPlaceholder, 'hidden-img': isLoading})}
+        onLoad={() => this.setState({'isLoading': false})}
+        src={previewImage} />
+    );
+  }
+
   render() {
-    const {className} = this.props;
+    const {withLink, className} = this.props;
     const {isLoading, previewImage} = this.state;
     const isPlaceholder = previewImage === previewPlaceholderIcon || previewImage === noPreviewIcon;
 
@@ -73,10 +100,7 @@ export default class AppConfigPreview extends React.Component {
             [className]: !!className}
         )}>
         {isLoading && <Spinner active={true} borderWidth={.15} color="green" size={64} />}
-        <img
-          className={classNames({'preview-placeholder': isPlaceholder, 'hidden-img': isLoading})}
-          onLoad={() => this.setState({'isLoading': false})}
-          src={previewImage} />
+        {withLink ? this.renderPreviewWithLink() : this.renderPreview()}
       </div>
     );
   }
