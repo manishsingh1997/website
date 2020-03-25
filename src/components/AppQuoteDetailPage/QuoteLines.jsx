@@ -85,9 +85,13 @@ export default class QuoteLines extends React.Component {
     const {quote} = this.state;
     const quoteLines = quote['quote_lines'];
     // sides is alphabetical values A, B, ... , AA
-    let sides = quoteLines.filter(line => isNaN(line['label'])).sort(line => line['label']);
+    let sides = quoteLines.filter(line => isNaN(line['label'])).sort(
+      (lineA, lineB) => lineA['label'].localeCompare(lineB['label'])
+    );
     // gates is integer values 1,2 ..., 99
-    let gates = quoteLines.filter(line => !isNaN(line['label'])).sort(line => parseInt(line['label'], 10));
+    let gates = quoteLines.filter(line => !isNaN(line['label'])).sort(
+      (lineA, lineB) => parseInt(lineA['label'], 10) - parseInt(lineB['label'], 10)
+    );
 
     return (
       <React.Fragment>

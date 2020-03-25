@@ -2,17 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {getLabelFromIndex} from '@ergeon/draw-map';
 import MapLabel from './MapLabel';
-import {FENCE_QUANTITY_UNIT} from '../../website/constants';
+import {DRIVEWAY_QUANTITY_UNIT, FENCE_QUANTITY_UNIT} from '../../website/constants';
 import {formatPrice} from '../../utils/app-order';
 import AppConfigPreview from '../common/AppConfigPreview';
 
 export default class QuoteLine extends React.Component {
   static propTypes = {
+    area: PropTypes.number,
     cost: PropTypes.number,
     description: PropTypes.string,
     distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     id: PropTypes.string,
     index: PropTypes.number,
+    label: PropTypes.string,
     name: PropTypes.string,
     price: PropTypes.number,
     quantity: PropTypes.string,
@@ -27,8 +29,8 @@ export default class QuoteLine extends React.Component {
     return quoteLines.find((quoteLine) => !!quoteLine.label && quoteLine.label.toString() === itemName.toString());
   }
   get indexLabel() {
-    const {index} = this.props;
-    return getLabelFromIndex(index);
+    const {index, label} = this.props;
+    return label ? label : getLabelFromIndex(index);
   }
   renderSideTitle() {
     return (
@@ -39,11 +41,11 @@ export default class QuoteLine extends React.Component {
     );
   }
   renderPointTitle() {
-    const {index, name} = this.props;
+    const {index, name, label} = this.props;
     return (
       <React.Fragment>
-        <MapLabel name={index + 1} type="Circle" />
-        <h5>{name}</h5>
+        <MapLabel name={label ? label : index + 1} type="Circle" />
+        <h5>{label ? `Gate ${label}` : name}</h5>
       </React.Fragment>
     );
   }
@@ -78,10 +80,13 @@ export default class QuoteLine extends React.Component {
         schemaCodeUrl={schemaCodeUrl} />
     );
   }
-  renderPreview() {
+
+  renderPreviewForCalcInfo() {
     const {quote, type, index, name} = this.props;
     if ((type === 'Side') || (type === 'Area')) return (
-      this.renderQuotePreview(this.getQuoteLineForCalcInputItem(quote['quote_lines'], this.indexLabel))
+      this.renderQuotePreview(
+        this.getQuoteLineForCalcInputItem(quote['quote_lines'], this.indexLabel)
+      )
     );
     if (type === 'Gate') return (
       this.renderQuotePreview(
@@ -91,13 +96,30 @@ export default class QuoteLine extends React.Component {
     );
     return null;
   }
+
+  renderPreviewForQuoteLine() {
+    const {quote, type, label, name} = this.props;
+    if (type === 'Side') return (
+      this.renderQuotePreview(
+        this.getQuoteLineForCalcInputItem(quote['quote_lines'], label)
+      )
+    );
+    if (type === 'Gate') return (
+      this.renderQuotePreview(
+        this.getQuoteLineForCalcInputItem(quote['quote_lines'], label),
+        name === '!' || name === 'Complications',
+      )
+    );
+    return null;
+  }
+
   render() {
-    const {id, distance, description, price, cost, quantity, unit} = this.props;
+    const {id, area, distance, description, label, price, cost, quantity, unit} = this.props;
     return (
       <div className="quote-line" key={`side-${id}`}>
         <div>
           <div>
-            {this.renderPreview()}
+            {label ? this.renderPreviewForQuoteLine() : this.renderPreviewForCalcInfo()}
           </div>
         </div>
         <div className="quote-line-description">
@@ -109,13 +131,15 @@ export default class QuoteLine extends React.Component {
         <div className="quote-line-price">
           <div className="mobile-length spacing before__is-12 after__is-12">
             {distance && <span>Length: {distance} {FENCE_QUANTITY_UNIT}</span>}
-            {quantity && unit && <span>Length: {Math.round(quantity)} {unit}</span>}
+            {quantity && unit && <span>Length: {Math.round(quantity)} {unit}.</span>}
+            {area && <span>Area: {area} {DRIVEWAY_QUANTITY_UNIT}</span>}
           </div>
           {price && <h5>{formatPrice(price)}</h5>}
           {cost && <h5>{formatPrice(cost)}</h5>}
           <div className="desktop-length spacing before__is-12">
             {distance && <span>Length: {distance} {FENCE_QUANTITY_UNIT}</span>}
-            {quantity && unit && <span>Length: {Math.round(quantity)} {unit}</span>}
+            {quantity && unit && <span>Length: {Math.round(quantity)} {unit}.</span>}
+            {area && <span>Area: {area} {DRIVEWAY_QUANTITY_UNIT}</span>}
           </div>
         </div>
       </div>);
