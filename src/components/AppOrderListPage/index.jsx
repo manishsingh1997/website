@@ -6,6 +6,7 @@ import {Button} from '@ergeon/core-components';
 
 import {formatDate} from 'utils/date';
 import {getOrderDetailURL, getQuoteDetailURL} from 'utils/urls';
+import {filterQuotesByStatus, DEFAULT_QUOTE_FILTER} from 'utils/app-order';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import DataRow from 'components/common/DataRow';
 
@@ -45,7 +46,7 @@ export default class AppOrdersListPage extends React.Component {
   }
 
   renderQuotes(order) {
-    const quotes = order['quotes'].filter(quote => quote['sent_to_customer_at']);
+    const quotes = filterQuotesByStatus(order['quotes'], DEFAULT_QUOTE_FILTER);
     return quotes.length > 0 ? quotes.map(quote => this.renderQuote(quote)): null;
   }
 

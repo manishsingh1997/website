@@ -12,6 +12,7 @@ import {
   filterQuotesSentToCustomer,
   formatPrice,
   QUOTE_FILTERS,
+  DEFAULT_QUOTE_FILTER,
 } from 'utils/app-order';
 import {getQuoteDetailURL} from 'utils/urls';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
@@ -36,7 +37,7 @@ export default class AppOrderDetailPage extends React.Component {
   };
 
   state = {
-    selectedOption: QUOTE_FILTERS[0],
+    selectedOption: DEFAULT_QUOTE_FILTER,
   };
 
   static contextType = CustomerGIDContext;
