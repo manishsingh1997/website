@@ -16,9 +16,9 @@ import {getParameterByName, isChristmasTime, showUpcomingFeatures} from 'utils/u
 import {getMenuItems} from 'data/customer-app.js';
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
+import COVIDNotification from './COVIDNotification';
 
 import './index.scss';
-import EmergencyNotification from '../EmergencyNotification';
 
 const SIGN_IN_LINK_ID = 'app-sign-in-link';
 
@@ -156,7 +156,7 @@ export default class Layout extends React.Component {
     const {location} = this.props;
     return (
       <div className="app-layout">
-        <EmergencyNotification location={location}/>
+        <COVIDNotification location={location}/>
         <NavLinkContext.Provider value={NavLink}>
           <WebsiteTopPanel
             customerMenu={this.isUpcomingFeaturesEnabled ? this.renderDropdownMenu() : null}
