@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import {some} from 'lodash';
 import {Button, Spinner, Notification} from '@ergeon/core-components';
 
 import {
@@ -35,6 +36,8 @@ export default class BillingForm extends React.Component {
 
   state = {
     editMode: false,
+    errors: {},
+    errorMessage: null,
     form: {
       termsAccepted: false,
       card: '',
@@ -51,38 +54,6 @@ export default class BillingForm extends React.Component {
     return paymentMethod && !editMode;
   }
 
-  getFormErrors(form, validate = {card: true, expirationDate: true, cvc: true}) {
-    const {card, expirationDate, cvc} = form;
-    let errors = null;
-
-    if (this.isUsingCurrentPaymentMethod()) {
-      return null;
-    }
-
-    if (validate.card && cardNumberValidation(card)) {
-      errors = {
-        ...errors,
-        card: cardNumberValidation(card),
-      };
-    }
-
-    if (validate.expirationDate && cardExpDateValidation(expirationDate)) {
-      errors = {
-        ...errors,
-        expirationDate: cardExpDateValidation(expirationDate),
-      };
-    }
-
-    if (validate.cvc && cardCvcValidation(cvc)) {
-      errors = {
-        ...errors,
-        cvc: cardCvcValidation(cvc),
-      };
-    }
-
-    return errors;
-  }
-
   submitToken = (token) => {
     const {houseId} = this.props;
 
@@ -93,10 +64,20 @@ export default class BillingForm extends React.Component {
   };
 
   handleFieldChange(name, value) {
+    const validation = {
+      'card': cardNumberValidation,
+      'expirationDate': cardExpDateValidation,
+      'cvc': cardCvcValidation,
+    }[name];
+
     this.setState({
       form: {
         ...this.state.form,
         [name]: value,
+      },
+      errors: {
+        ...this.state.errors,
+        [name]: validation && validation(value),
       },
     });
   }
@@ -111,17 +92,35 @@ export default class BillingForm extends React.Component {
   }
 
   handleSubmit(event) {
-    const {form} = this.state;
-    const errors = this.getFormErrors(form);
+    const {form, errors} = this.state;
 
     event.preventDefault();
 
-    if (!errors && form.termsAccepted) {
+    if (!some(Object.values(errors)) && form.termsAccepted) {
       getStripeToken({
-        number: form.card,
-        exp: form.expirationDate,
+        card: form.card,
+        expirationDate: form.expirationDate,
         cvc: form.cvc,
-      }).then(token => this.submitToken(token));
+      })
+        .then(token => {
+          this.submitToken(token);
+          this.setState({
+            errors: {},
+          });
+        })
+        .catch(result => {
+          if (result.param) {
+            this.setState({
+              errors: {
+                [result.param]: result._error,
+              },
+            });
+          } else {
+            this.setState({
+              errorMessage: result._error,
+            });
+          }
+        });
     }
   }
 
@@ -134,7 +133,12 @@ export default class BillingForm extends React.Component {
   }
 
   renderError() {
-    const {error} = this.props;
+    const {error: propsError} = this.props;
+    const {errorMessage: stateError} = this.state;
+    const error = propsError || stateError;
+
+    if (!error) return null;
+
     return (
       <div className="billing-form__error">
         <Notification
@@ -164,9 +168,8 @@ export default class BillingForm extends React.Component {
 
   renderFormFields() {
     const {loading} = this.props;
-    const {form, validate} = this.state;
+    const {form, errors, validate} = this.state;
     const {card, expirationDate, cvc} = form;
-    const errors = this.getFormErrors(form, validate);
 
     const getFieldModificatorClass = field => ({
       'is-error': errors && errors[field],
@@ -189,7 +192,7 @@ export default class BillingForm extends React.Component {
             <img
               className="billing-form__valid-field-check"
               src={IconMarkGreen} />
-            {errors && errors.card && <div className="Form-error">{errors.card}</div>}
+            {validate.card && errors.card && <div className="Form-error">{errors.card}</div>}
           </div>
         </div>
         <div className="billing-form__expiration-date">
@@ -207,7 +210,11 @@ export default class BillingForm extends React.Component {
             <img
               className="billing-form__valid-field-check"
               src={IconMarkGreen} />
-            {errors && errors.expirationDate && <div className="Form-error">{errors.expirationDate}</div>}
+            {
+              validate.expirationDate &&
+              errors.expirationDate &&
+              <div className="Form-error">{errors.expirationDate}</div>
+            }
           </div>
         </div>
         <div className="billing-form__cvc">
@@ -223,7 +230,7 @@ export default class BillingForm extends React.Component {
             <img
               className="billing-form__valid-field-check"
               src={IconMarkGreen} />
-            {errors && errors.cvc && <div className="Form-error">{errors.cvc}</div>}
+            {validate.cvc && errors.cvc && <div className="Form-error">{errors.cvc}</div>}
           </div>
         </div>
       </div>
@@ -255,9 +262,9 @@ export default class BillingForm extends React.Component {
   }
 
   render() {
-    const {form} = this.state;
+    const {form, errors} = this.state;
     const {termsAccepted} = form;
-    const {quoteId, termsAndConditionsUrl, total, loading, error} = this.props;
+    const {quoteId, termsAndConditionsUrl, total, loading} = this.props;
     const classes = {
       'billing-form': true,
       'billing-form--with-payment-method-details': this.isUsingCurrentPaymentMethod(),
@@ -300,7 +307,7 @@ export default class BillingForm extends React.Component {
             <div className="billing-form__approve">
               <Button
                 className="billing-form__approve-button"
-                disabled={this.getFormErrors(form) || !termsAccepted || loading}
+                disabled={some(Object.values(errors)) || !termsAccepted || loading}
                 size="large">
                 {
                   loading ?
@@ -337,7 +344,7 @@ export default class BillingForm extends React.Component {
             </div>
           </div>
         </form>
-        {error ? this.renderError(): null}
+        {this.renderError()}
       </div>
     );
   }

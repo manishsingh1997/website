@@ -43,18 +43,29 @@ export const cardCvcValidation = (value) => {
 
 export const getStripeToken = (data) => {
   initStripe();
-  const expDateParts = data.exp.split('/');
+  const expDateParts = data.expirationDate.split('/');
   return new Promise((resolve, reject) => {
     window.Stripe.card.createToken({
-      number: data.number,
+      number: data.card,
       cvc: data.cvc,
       'exp_month': expDateParts[0],
       'exp_year': expDateParts[1],
     }, (status, response) => {
       if (response.error) {
         const errorMsg = response.error.message;
-        trackError(response.error);
-        return reject({_error: errorMsg});
+        const errorParam = {
+          'invalid_expiry_month': 'expirationDate',
+          'invalid_expiry_year': 'expirationDate',
+          'invalid_number': 'card',
+          'invalid_card_type': 'card',
+          'invalid_cvc': 'cvc',
+        }[response.error.code];
+
+        if (errorParam) {
+          trackError(response.error);
+        }
+
+        return reject({_error: errorMsg, param: errorParam});
       }
       return resolve(response.id);
     });
