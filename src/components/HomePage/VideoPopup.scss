@@ -1,0 +1,32 @@
+@import "../../../node_modules/@ergeon/core-components/src/components/variables";
+.video-popup {
+  position: absolute;
+  z-index: 2;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: $corner-default;
+  &__wrapper {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+.fog-popup {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: all 300ms ease;
+  pointer-events: none;
+  z-index: 1;
+  &.display {
+    opacity: 1;
+    background-color: rgba($black-1, 0.75);
+    backdrop-filter: blur(4px);
+    pointer-events: unset;
+  }
+
+}

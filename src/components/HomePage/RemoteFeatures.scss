@@ -1,0 +1,106 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
+.remote-features {
+  border-bottom: 1px solid $gray-4;
+  padding: $v-42 0 $v-64 0;
+  @include phone() {
+    padding: $v-48 0 $v-48 0;
+  }
+  &__title {
+    text-align: center;
+    width: 100%;
+    margin-bottom: $v-42;
+    @include phone() {
+      margin-bottom: $v-24;
+    }
+  }
+  &__cards {
+    display: flex;
+    justify-content: space-between;
+    @include phone() {
+      flex-direction: column;
+    }
+  }
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include tablet() {
+      margin-right: $h-10;
+      margin-left: $h-10;
+      &:last-child {
+        margin-right: unset;
+      }
+      &:first-child {
+        margin-left: unset;
+      }
+    }
+    @include phone() {
+      margin-right: unset;
+      margin-left: unset;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+    &__text-part {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__img {
+      padding: $h-10;
+      max-width: 240px;
+      margin-bottom: $v-24;
+      transition: all 100ms ease;
+      &:hover {
+        cursor: pointer;
+        border-color: $gray-3;
+      }
+      @include border();
+      img {
+        width: 100%;
+      }
+      @include tablet() {
+        max-width: unset;
+        width: 100%;
+      }
+      @include phone() {
+        display: none;
+      }
+    }
+    &__title {
+      text-align: center;
+    }
+    &__desc {
+      text-align: center;
+      margin-bottom: $v-12;
+    }
+    &__sep-wrapper {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: $h-20;
+      @include tablet() {
+        display: none;
+      }
+      @include phone() {
+        display: flex;
+        justify-content: center;
+        height: $v-48;
+        min-width: unset;
+      }
+      &__line {
+        height: $v-42;
+        width: 1px;
+        background-color: $gray-4;
+        display: block;
+        @include phone() {
+          height: 1px;
+          width: $h-40;
+        }
+      }
+    }
+
+  }
+}
