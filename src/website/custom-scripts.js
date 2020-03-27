@@ -7,14 +7,16 @@ export default function () {
 
   (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    var search = window.location.search;
+    var url = new URL(window.location);
+    var searchParams = url.searchParams;
+    var asPDFParameter = searchParams.get('asPDF') || '';
 
     s1.async=true;
     s1.src='https://embed.tawk.to/5c4c7f0251410568a1086d00/default';
     s1.charset='UTF-8';
     s1.setAttribute('crossorigin','*');
 
-    if (search.indexOf('asPDF=true') === -1) {
+    if (asPDFParameter.toLowerCase() !== 'true') {
       s0.parentNode.insertBefore(s1,s0);
     }
   })();
