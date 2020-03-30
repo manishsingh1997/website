@@ -71,24 +71,31 @@ export default class QuoteLine extends React.Component {
         {getTitle()}
       </div>);
   }
-  renderQuotePreview(quoteLine, noPreview) {
+  renderQuotePreview(quoteLine, useNoPreviewIcon = false, usePlaceHolder = false) {
     const {order: {house: {address: {zip_code: zipCode}}}} = this.props.quote;
     const schemaCodeUrl = quoteLine && quoteLine['config']['schema_code_url'];
     return (
       <AppConfigPreview
         className="quote-line-preview"
-        noPreview={noPreview}
-        schemaCodeUrl={schemaCodeUrl}
-        withLink={true}
+        schemaCodeUrl={usePlaceHolder ? null : schemaCodeUrl}
+        useNoPreviewIcon={useNoPreviewIcon}
+        withLink={Boolean(schemaCodeUrl)}
         zipCode={zipCode}/>
     );
   }
 
   renderPreviewForCalcInfo() {
     const {quote, type, index, name} = this.props;
-    if ((type === 'Side') || (type === 'Area')) return (
+    if (type === 'Side') return (
       this.renderQuotePreview(
         this.getQuoteLineForCalcInputItem(quote['quote_lines'], this.indexLabel)
+      )
+    );
+    if (type === 'Area') return (
+      this.renderQuotePreview(
+        null,
+        false,
+        true,
       )
     );
     if (type === 'Gate') return (

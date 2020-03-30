@@ -20,8 +20,8 @@ export default class AppConfigPreview extends React.Component {
 
   static propTypes = {
     className: PropTypes.string,
-    noPreview: PropTypes.bool,
     schemaCodeUrl: PropTypes.string,
+    useNoPreviewIcon: PropTypes.bool,
     withLink: PropTypes.bool,
     zipCode: PropTypes.string,
   };
@@ -36,8 +36,8 @@ export default class AppConfigPreview extends React.Component {
   }
 
   async fetchQuotePreview() {
-    const {schemaCodeUrl, noPreview} = this.props;
-    if (noPreview) {
+    const {schemaCodeUrl, useNoPreviewIcon} = this.props;
+    if (useNoPreviewIcon) {
       this.setState({previewImage: noPreviewIcon});
       return;
     }
@@ -87,7 +87,7 @@ export default class AppConfigPreview extends React.Component {
   }
 
   render() {
-    const {withLink, className} = this.props;
+    const {withLink, schemaCodeUrl, className} = this.props;
     const {isLoading, previewImage} = this.state;
     const isPlaceholder = previewImage === previewPlaceholderIcon || previewImage === noPreviewIcon;
 
@@ -100,7 +100,7 @@ export default class AppConfigPreview extends React.Component {
             [className]: !!className}
         )}>
         {isLoading && <Spinner active={true} borderWidth={.15} color="green" size={64} />}
-        {withLink ? this.renderPreviewWithLink() : this.renderPreview()}
+        {withLink && schemaCodeUrl ? this.renderPreviewWithLink() : this.renderPreview()}
       </div>
     );
   }
