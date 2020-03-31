@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import {some} from 'lodash';
 
 import {Notification} from '@ergeon/core-components';
-import {formatPrice} from 'utils/app-order';
 import {getParameterByName} from 'utils/utils';
 import {parseAPIError} from 'utils/api';
+import {
+  formatPrice,
+  isQuoteReplaced,
+  isQuoteCancelled,
+  isQuoteExpired,
+  STATUS_APPROVED,
+} from 'utils/app-order';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 
 import {
@@ -163,6 +169,18 @@ export default class AppQuoteDetailPage extends React.Component {
     return quote['total_price'];
   }
 
+  shouldShowBillingForm() {
+    const {quote} = this.state;
+    const isPDFModeDisabled = !this.isPDFMode();
+
+    return (
+      isPDFModeDisabled &&
+      !isQuoteReplaced(quote) &&
+      !isQuoteCancelled(quote) &&
+      !isQuoteExpired(quote)
+    );
+  }
+
   renderQuoteError() {
     const {quoteError} = this.state;
 
@@ -175,6 +193,7 @@ export default class AppQuoteDetailPage extends React.Component {
       </Notification>
     );
   }
+
   render() {
     const {auth} = this.props;
     const {
@@ -202,7 +221,6 @@ export default class AppQuoteDetailPage extends React.Component {
     } = quote;
 
     const designs = this.getQuoteDesigns(quote);
-    const isPDFModeDisabled = !this.isPDFMode();
 
     return (
       <div className="quote-detail-page">
@@ -210,19 +228,20 @@ export default class AppQuoteDetailPage extends React.Component {
           asPDF={this.isPDFMode()}
           auth={auth}
           customerGID={this.customerGID}
-          getNewQuoteLink={this.getNewQuoteLink}
+          getNewQuoteLink={this.getNewQuoteLink.bind(this)}
           isLoadingMap={isLoadingMap}
           isVendorPreview={this.isVendorPreview()}
           quote={quote}
           totalPrice={formatPrice(this.getTotalPrice(quote))}/>
         <ProjectNotes quote={quote}/>
         <MaterialsAndDesign designs={designs}/>
-        {isPDFModeDisabled && <BillingForm
+        {this.shouldShowBillingForm() && <BillingForm
           error={paymentMethodError}
           houseId={houseId}
           loading={isLoadingForm}
           onSubmit={this.handleBillingSubmit.bind(this)}
           paymentMethod={paymentMethod}
+          quoteApproved={quote['status'] === STATUS_APPROVED}
           quoteId={quote['id']}
           termsAndConditionsUrl={quote['terms_and_conditions']}
           total={formatPrice(this.getTotalPrice(quote))} />}

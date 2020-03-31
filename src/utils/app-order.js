@@ -12,6 +12,9 @@ export const DEFAULT_QUOTE_FILTER = QUOTE_FILTERS[0];
 
 const QUOTE_ORDERING = ['APP', 'SNT', 'CAN'];
 
+export const STATUS_CANCELLED = 'CAN';
+export const STATUS_APPROVED = 'APP';
+
 export const filterQuotesByStatus = (quotes, selectedOption) => {
   quotes = quotes.filter((quote) => {
     return selectedOption['statuses'].includes(quote['status']) && quote['sent_to_customer_at'];
@@ -47,4 +50,16 @@ export const formatPrice = (price) => {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,  // don't show digits after decimal point (i.e. cents)
   });
+};
+
+export const isQuoteReplaced = (quote) => {
+  return quote['replaced_by_quote'] && quote['replaced_by_quote']['secret'];
+};
+
+export const isQuoteCancelled = (quote) => {
+  return quote.status === STATUS_CANCELLED;
+};
+
+export const isQuoteExpired = (quote) => {
+  return isPastDate(quote['expires_at']);
 };

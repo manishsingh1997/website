@@ -29,6 +29,7 @@ export default class BillingForm extends React.Component {
     loading: PropTypes.bool,
     onSubmit: PropTypes.func,
     paymentMethod: PropTypes.object,
+    quoteApproved: PropTypes.bool,
     quoteId: PropTypes.number,
     termsAndConditionsUrl: PropTypes.string,
     total: PropTypes.string,
@@ -47,11 +48,8 @@ export default class BillingForm extends React.Component {
     validate: {},
   };
 
-  isUsingCurrentPaymentMethod() {
-    const {paymentMethod} = this.props;
-    const {editMode} = this.state;
-
-    return paymentMethod && !editMode;
+  isQuoteApproved() {
+    return this.props.quoteApproved;
   }
 
   submitToken = (token) => {
@@ -60,7 +58,7 @@ export default class BillingForm extends React.Component {
     this.props.onSubmit && this.props.onSubmit({
       'stripe_token': token,
       'house': houseId,
-    }, this.isUsingCurrentPaymentMethod());
+    });
   };
 
   handleFieldChange(name, value) {
@@ -267,7 +265,7 @@ export default class BillingForm extends React.Component {
     const {quoteId, termsAndConditionsUrl, total, loading} = this.props;
     const classes = {
       'billing-form': true,
-      'billing-form--with-payment-method-details': this.isUsingCurrentPaymentMethod(),
+      'billing-form--with-payment-method-details': this.isQuoteApproved(),
       'billing-form--loading': loading,
     };
 
@@ -285,7 +283,7 @@ export default class BillingForm extends React.Component {
               </div>
             </div>
             {
-              this.isUsingCurrentPaymentMethod() ?
+              this.isQuoteApproved() ?
                 this.renderPaymentMethodDetails() :
                 this.renderFormFields()
             }
