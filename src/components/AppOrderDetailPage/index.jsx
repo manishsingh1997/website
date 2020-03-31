@@ -137,6 +137,15 @@ export default class AppOrderDetailPage extends React.Component {
     );
   }
 
+  renderVisitDates(visits) {
+    return visits.map(visit => (
+      <React.Fragment key={`visit-${visit.id}`}>
+        {formatDate(visit['estimated_start_time'])}
+        <br />
+      </React.Fragment>
+    ));
+  }
+
   renderContent() {
     const {selectedOption} = this.state;
     const order = this.getOrder();
@@ -146,6 +155,7 @@ export default class AppOrderDetailPage extends React.Component {
           <DataRow title="Order" value={`#${order['id']}`} />
           <DataRow title="Status" value={order['status_display']} />
           <DataRow title="Ordered on" value={formatDate(order['ordered_at'])} />
+          <DataRow title="Visit Dates" value={this.renderVisitDates(order['visits'])} />
           <DataRow title="Address" value={this.getAddress(order)} />
         </div>
         {filterQuotesByStatus(order['quotes'], selectedOption).map(quote => (
@@ -169,5 +179,4 @@ export default class AppOrderDetailPage extends React.Component {
         renderHeader={this.renderHeader.bind(this)} />
     );
   }
-
 }
