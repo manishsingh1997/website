@@ -74,9 +74,13 @@ export default class QuoteLine extends React.Component {
   renderQuotePreview(quoteLine, useNoPreviewIcon = false, usePlaceHolder = false) {
     const {order: {house: {address: {zip_code: zipCode}}}} = this.props.quote;
     const schemaCodeUrl = quoteLine && quoteLine['config']['schema_code_url'];
+    const propertyData = quoteLine && quoteLine['property_config'] && quoteLine['property_config']['schema_code_url'];
+    const propertySchemaCodeUrl = propertyData && propertyData.replace(
+      'schema', 'property_schema').replace('code', 'property_code');
     return (
       <AppConfigPreview
         className="quote-line-preview"
+        propertySchemaCodeUrl={propertySchemaCodeUrl}
         schemaCodeUrl={usePlaceHolder ? null : schemaCodeUrl}
         useNoPreviewIcon={useNoPreviewIcon}
         withLink={Boolean(schemaCodeUrl)}

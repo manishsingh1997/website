@@ -20,6 +20,7 @@ export default class AppConfigPreview extends React.Component {
 
   static propTypes = {
     className: PropTypes.string,
+    propertySchemaCodeUrl: PropTypes.string,
     schemaCodeUrl: PropTypes.string,
     useNoPreviewIcon: PropTypes.bool,
     withLink: PropTypes.bool,
@@ -64,10 +65,13 @@ export default class AppConfigPreview extends React.Component {
   }
 
   renderPreviewWithLink() {
-    const {schemaCodeUrl, zipCode} = this.props;
+    const {propertySchemaCodeUrl, schemaCodeUrl, zipCode} = this.props;
+    let finalSchemaCodeUrl = `${schemaCodeUrl}`;
+    if (propertySchemaCodeUrl)
+      finalSchemaCodeUrl = `${schemaCodeUrl}&${propertySchemaCodeUrl}`;
     return (
       <a
-        href={`${config.fencequotingHost}/fence3d?${schemaCodeUrl}&mode=3d&options=true&zipcode=${zipCode}`}
+        href={`${config.fencequotingHost}/fence3d?${finalSchemaCodeUrl}&mode=3d&options=true&zipcode=${zipCode}`}
         rel="noopener noreferrer"
         target="_blank">
         {this.renderPreview()}
