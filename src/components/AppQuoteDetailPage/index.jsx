@@ -16,7 +16,7 @@ import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 
 import {
   getQuoteDetails,
-  reviewQuote,
+  reviewQuote as reviewQuoteAPI,
   approveAndPayQuote,
 } from 'api/app';
 
@@ -79,7 +79,6 @@ export default class AppQuoteDetailPage extends React.Component {
       const data = await getQuoteDetails(this.customerGID, this.props.match.params.secret);
       this.setState({
         quote: data.data,
-        paymentMethod: data.data.order.house['payment_method'],
         quoteError: null,
         paymentMethodError: null,
       });
@@ -114,7 +113,7 @@ export default class AppQuoteDetailPage extends React.Component {
   }
 
   async handleBillingSubmit(data) {
-    this.approveQuoteToAPI(data['stripe_token']);
+    await this.approveQuoteToAPI(data['stripe_token']);
   }
 
   async reviewQuote() {
@@ -128,7 +127,7 @@ export default class AppQuoteDetailPage extends React.Component {
       ])
     ) {
       try {
-        await reviewQuote(this.context, this.props.match.params.secret);
+        await reviewQuoteAPI(this.context, this.props.match.params.secret);
       } catch (apiError) {
         console.error(apiError);
       }

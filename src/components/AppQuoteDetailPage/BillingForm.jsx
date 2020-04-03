@@ -237,6 +237,7 @@ export default class BillingForm extends React.Component {
 
   renderPaymentMethodDetails() {
     const {paymentMethod} = this.props;
+    const lastDigits = paymentMethod && paymentMethod['card_last_digits'];
     return (
       <div className="billing-form__payment-method-details">
         <div className="billing-form__payment-method-details-item">
@@ -244,7 +245,7 @@ export default class BillingForm extends React.Component {
             Card number
           </div>
           <div className="billing-form__payment-method-details-item-value">
-            {paymentMethod && paymentMethod['card_last_digits']}
+            {lastDigits && `*${lastDigits}`}
           </div>
         </div>
         <div className="billing-form__payment-method-details-item">
@@ -262,7 +263,7 @@ export default class BillingForm extends React.Component {
   render() {
     const {form, errors} = this.state;
     const {termsAccepted} = form;
-    const {quoteId, termsAndConditionsUrl, total, loading} = this.props;
+    const {paymentMethod, quoteId, termsAndConditionsUrl, total, loading} = this.props;
     const classes = {
       'billing-form': true,
       'billing-form--with-payment-method-details': this.isQuoteApproved(),
@@ -282,11 +283,8 @@ export default class BillingForm extends React.Component {
                 <img className="billing-form__icon-secure" src={IconSSL}/>
               </div>
             </div>
-            {
-              this.isQuoteApproved() ?
-                this.renderPaymentMethodDetails() :
-                this.renderFormFields()
-            }
+            {!this.isQuoteApproved() && this.renderFormFields()}
+            {this.isQuoteApproved() && paymentMethod && this.renderPaymentMethodDetails()}
             <div className="billing-form__card-disclaimer">
               <img className="billing-form__card-disclaimer-icon" src={IconCardSecure} />
               <div className="billing-form__card-disclaimer-text">
