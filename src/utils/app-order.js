@@ -1,19 +1,22 @@
 import {isPastDate} from 'utils/date';
 
+import {
+  QUOTE_STATUS_APPROVED,
+  QUOTE_STATUS_SENT,
+  QUOTE_STATUS_CANCELLED,
+} from 'website/constants';
+
 export const QUOTE_FILTERS = [
-  {value: 'active', label: 'Active Quotes', statuses: ['SNT', 'APP']},
-  {value: 'sent', label: 'Sent Quotes', statuses: ['SNT']},
-  {value: 'approved', label: 'Approved Quotes', statuses: ['APP']},
-  {value: 'expired', label: 'Expired Quotes', statuses: ['SNT', 'CAN']},
-  {value: 'cancelled', label: 'Cancelled Quotes', statuses: ['CAN']},
+  {value: 'active', label: 'Active Quotes', statuses: [QUOTE_STATUS_SENT, QUOTE_STATUS_APPROVED]},
+  {value: 'sent', label: 'Sent Quotes', statuses: [QUOTE_STATUS_SENT]},
+  {value: 'approved', label: 'Approved Quotes', statuses: [QUOTE_STATUS_APPROVED]},
+  {value: 'expired', label: 'Expired Quotes', statuses: [QUOTE_STATUS_SENT, QUOTE_STATUS_CANCELLED]},
+  {value: 'cancelled', label: 'Cancelled Quotes', statuses: [QUOTE_STATUS_CANCELLED]},
 ];
 
 export const DEFAULT_QUOTE_FILTER = QUOTE_FILTERS[0];
 
-const QUOTE_ORDERING = ['APP', 'SNT', 'CAN'];
-
-export const STATUS_CANCELLED = 'CAN';
-export const STATUS_APPROVED = 'APP';
+const QUOTE_ORDERING = [QUOTE_STATUS_APPROVED, QUOTE_STATUS_SENT, QUOTE_STATUS_CANCELLED];
 
 export const filterQuotesByStatus = (quotes, selectedOption) => {
   quotes = quotes.filter((quote) => {
@@ -26,7 +29,7 @@ export const filterQuotesByStatus = (quotes, selectedOption) => {
   if (['active', 'sent'].includes(selectedOption['value'])) {
     quotes = quotes.filter((quote) => {
       const expiresAt = quote['expires_at'];
-      if (!expiresAt && quote['status'] === 'APP') {
+      if (!expiresAt && quote['status'] === QUOTE_STATUS_APPROVED) {
         return true;
       }
       return expiresAt && !isPastDate(expiresAt);
@@ -53,13 +56,17 @@ export const formatPrice = (price) => {
 };
 
 export const isQuoteReplaced = (quote) => {
-  return quote['replaced_by_quote'] && quote['replaced_by_quote']['secret'];
+  return quote && quote['replaced_by_quote'] && quote['replaced_by_quote']['secret'];
 };
 
 export const isQuoteCancelled = (quote) => {
-  return quote.status === STATUS_CANCELLED;
+  return quote && quote.status === QUOTE_STATUS_CANCELLED;
+};
+
+export const isQuoteApproved = (quote) => {
+  return quote && quote.status === QUOTE_STATUS_APPROVED;
 };
 
 export const isQuoteExpired = (quote) => {
-  return isPastDate(quote['expires_at']);
+  return quote && isPastDate(quote['expires_at']);
 };

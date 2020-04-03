@@ -10,6 +10,7 @@ import DataRow from '../common/DataRow';
 import {formatDateAndTime} from '../../utils/date';
 import {getExpiresAtTitle} from '../../utils/utils';
 import {getOrderDetailURL} from '../../utils/urls';
+import {isQuoteApproved} from 'utils/app-order';
 
 export default class QuoteDescription extends React.Component {
   static propTypes = {
@@ -42,6 +43,7 @@ export default class QuoteDescription extends React.Component {
     } = quote;
     const expiresAt = quote['expires_at'];
     const expiresAtTitle = getExpiresAtTitle(expiresAt);
+    const approvedAt = quote['approved_at'];
     const customerDetails = (
       <div>
         {customer.full_name}<br />
@@ -67,6 +69,9 @@ export default class QuoteDescription extends React.Component {
           }
           <DataRow title="Sent At" value={formatDateAndTime(quote['sent_to_customer_at'])} />
           {expiresAt && <DataRow title={expiresAtTitle} value={formatDateAndTime(expiresAt)} />}
+          {isQuoteApproved(quote) && approvedAt && (
+            <DataRow title="Approved At" value={formatDateAndTime(approvedAt)} />
+          )}
         </div>
       </div>);
   }

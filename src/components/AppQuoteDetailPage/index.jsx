@@ -7,10 +7,10 @@ import {getParameterByName} from 'utils/utils';
 import {parseAPIError} from 'utils/api';
 import {
   formatPrice,
+  isQuoteApproved,
   isQuoteReplaced,
   isQuoteCancelled,
   isQuoteExpired,
-  STATUS_APPROVED,
 } from 'utils/app-order';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 
@@ -243,7 +243,7 @@ export default class AppQuoteDetailPage extends React.Component {
           loading={isLoadingForm}
           onSubmit={this.handleBillingSubmit.bind(this)}
           paymentMethod={paymentMethod}
-          quoteApproved={quote['status'] === STATUS_APPROVED}
+          quoteApproved={isQuoteApproved(quote)}
           quoteId={quote['id']}
           termsAndConditionsUrl={quote['terms_and_conditions']}
           total={formatPrice(this.getTotalPrice(quote))} />}

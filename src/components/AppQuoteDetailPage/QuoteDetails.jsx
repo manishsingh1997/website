@@ -8,8 +8,8 @@ import {isPastDate} from '../../utils/date';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import QuoteLines from './QuoteLines';
-import config from '../../website/config';
-import {STATUS_CANCELLED} from '../../website/constants';
+import config from 'website/config';
+import {isQuoteCancelled} from 'utils/app-order';
 import {Link} from 'react-router-dom';
 
 export default class QuoteDetails extends React.Component {
@@ -32,9 +32,6 @@ export default class QuoteDetails extends React.Component {
   }
   isQuoteReplaced(quote = {}) {
     return quote['replaced_by_quote'] && quote['replaced_by_quote']['secret'];
-  }
-  isQuoteCancelled(quote = {}) {
-    return quote.status === STATUS_CANCELLED;
   }
   renderQuoteCancelledMessage(quote) {
     const {getNewQuoteLink} = this.props;
@@ -80,7 +77,7 @@ export default class QuoteDetails extends React.Component {
     };
     return (
       <div className="quote-details card padding-40 soft-border spacing after__is-48">
-        {!asPDF && this.isQuoteCancelled(quote) && this.renderQuoteCancelledMessage(quote)}
+        {!asPDF && isQuoteCancelled(quote) && this.renderQuoteCancelledMessage(quote)}
         <div className="quote-details__description flex-wrapper spacing after__is-24">
           <QuoteDescription asPDF={asPDF} auth={auth} customerGID={customerGID} quote={quote}/>
           <div className="quote-labels-map">
