@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {withRouter, NavLink} from 'react-router-dom';
 
-import {Spinner} from '@ergeon/core-components';
+import {Notification, Spinner} from '@ergeon/core-components';
 import helpDefaultCategories from 'data/help-categories';
 import HelpSearchField from '../common/HelpSearchField';
 import HelpSearchResults from './HelpSearchResults';
 
 import {getParameterByName} from 'utils/utils';
 import {getHelpNode, getHelpResults} from 'api/help';
+import {parseAPIError} from 'utils/api';
 
 import HomeIcon from 'assets/icon-home-black.svg';
 
@@ -61,7 +62,7 @@ class HelpPage extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps) {
     const nodeId = this.props.match.params.nodeId;
     const search = this.props.location.search;
     const prevNodeId = prevProps.match.params.nodeId;
@@ -69,7 +70,7 @@ class HelpPage extends React.Component {
     const query = getParameterByName('q');
 
     if (nodeId !== prevNodeId && nodeId) {
-      this.retrieveHelpNode(nodeId);
+      await this.retrieveHelpNode(nodeId);
     }
 
     if (query && prevSearch !== search) {
@@ -77,15 +78,20 @@ class HelpPage extends React.Component {
     }
   }
 
-  retrieveHelpNode(nodeUrn) {
+  async retrieveHelpNode(nodeUrn) {
     this.setState({loading: true, search: '', searchResults: null});
 
-    getHelpNode(nodeUrn)
-      .then(data => this.setState({loading: false, helpNode: data, error: null}))
-      .catch(error => {
-        console.error(error);
-        this.setState({loading: false, error, helpNode: null});
+    try {
+      const data = await getHelpNode(nodeUrn);
+      this.setState({loading: false, helpNode: data, error: null});
+    } catch (apiError) {
+      console.warn(apiError);
+      this.setState({
+        loading: false,
+        error: parseAPIError(apiError),
+        helpNode: null,
       });
+    }
   }
 
   searchRedirect(value) {
@@ -125,10 +131,14 @@ class HelpPage extends React.Component {
 
   renderError() {
     const {error} = this.state;
+    const errorMessage = Object.values(error.data).join('\n');
     return (
-      <div>
-        Error: {error}
-      </div>
+      <Notification
+        mode="embed"
+        type="Error">
+        There was an error trying to retrieve help page.<br />
+        {errorMessage}
+      </Notification>
     );
   }
 
