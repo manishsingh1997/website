@@ -2,9 +2,9 @@ import React from 'react';
 
 import {Button} from '@ergeon/core-components';
 
-import imgRemoteOnsite from 'assets/remote-features/remote-onsite@2x.jpg';
-import imgRemoteQuote from 'assets/remote-features/remote-quote@2x.jpg';
-import imgContactless from 'assets/remote-features/contactless-installation@2x.jpg';
+import imgRemoteOnsite from 'assets/remote-features/icon_video-call@2x.svg';
+import imgRemoteQuote from 'assets/remote-features/icon_monitor@2x.svg';
+import imgContactless from 'assets/remote-features/icon_van@2x.svg';
 
 import './RemoteFeatures.scss';
 import VideoPopup from './VideoPopup';
@@ -26,17 +26,17 @@ class RemoteFeatures extends React.Component {
   renderCard({title, desc, img, link}) {
     return (
       <div className="remote-features__card">
-        <div className="remote-features__card__img" onClick={() => this.toShowVideo(link)}>
+        <div className="remote-features__card__img">
           <img alt={title} src={img}/>
         </div>
         <div className="remote-features__card__text-part">
           <h5 className="remote-features__card__title">{title}</h5>
           <p className="remote-features__card__desc">{desc}</p>
-          <Button
+          {link && <Button
             flavor="primary"
             onClick={() => this.toShowVideo(link)}
             size="small"
-            taste="solid">Watch video</Button>
+            taste="solid">Watch video</Button>}
         </div>
       </div>);
   }
@@ -46,31 +46,30 @@ class RemoteFeatures extends React.Component {
       <div className="remote-features">
         <VideoPopup linkToVideo={currentVideo} onHide={this.toHideVideo.bind(this)} visible={videoPopupVisible}/>
         <div className="wrapper-1180">
-          <h3 className="remote-features__title">Here’s how we’re keeping you&nbsp;safe</h3>
+          <h3 className="remote-features__title">Here is how we are keeping you&nbsp;safe</h3>
           <div className="remote-features__cards">
             {this.renderCard({
-              title: 'Remote onsite',
-              desc: 'Remote onsite consultation using video call',
+              title: 'Video Call for Your Onsite Visit',
+              // eslint-disable-next-line max-len
+              desc: 'Our Team is well equipped to guarantee an accurate quote for your project using satellite imagery and a video call.',
               img: imgRemoteOnsite,
-              link: 'https://www.youtube.com/embed/7R__Sqr6kR0',
             })}
             <div className="remote-features__card__sep-wrapper">
               <div className="remote-features__card__sep-wrapper__line"/>
             </div>
             {this.renderCard({
-              title: 'Remote quoting & payment',
-              desc: 'Accurate quote via satellite measurements',
+              title: 'Approve Your Quote & Pay Online',
+              desc: 'You can review, approve, and pay for your quote all online!',
               img: imgRemoteQuote,
-              link: 'https://www.youtube.com/embed/4lxXxdeeo7U',
             })}
             <div className="remote-features__card__sep-wrapper">
               <div className="remote-features__card__sep-wrapper__line"/>
             </div>
             {this.renderCard({
-              title: 'Contactless installation',
-              desc: '3D images and detailed specs for the installer',
+              title: 'Stay Inside While We Install Your Fence',
+              // eslint-disable-next-line max-len
+              desc: 'The Construction Team can install with zero physical contact with you and are equipped with full construction details.',
               img: imgContactless,
-              link: 'https://www.youtube.com/embed/v75a6kK1l-k',
             })}
           </div>
         </div>
