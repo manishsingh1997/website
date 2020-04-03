@@ -43,8 +43,8 @@ s3upload:
 	@if [ -z "$(S3_BUCKET)" ]; then >&2 echo S3_BUCKET must be supplied; exit 1; fi;
 	$(AWS_CLI) s3 sync dist s3://$(S3_BUCKET)/  # use default cloudfront cache ttl
 	# don't use cache index.html
-	$(AWS_CLI) s3 cp dist/index.html s3://$(S3_BUCKET)/ --cache-control max-age=0; fi;
-	$(AWS_CLI) s3 cp dist/utm/index.html s3://$(S3_BUCKET)/utm/ --cache-control max-age=0; fi;
+	$(AWS_CLI) s3 cp dist/index.html s3://$(S3_BUCKET)/ --cache-control max-age=0
+	$(AWS_CLI) s3 cp dist/utm/index.html s3://$(S3_BUCKET)/utm/ --cache-control max-age=0
 
 invalidate-cloudfront:
 	@if [ -z "$(DOMAIN)" ]; then >&2 echo DOMAIN must be supplied; exit 1; fi;
