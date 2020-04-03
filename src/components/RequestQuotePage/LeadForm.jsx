@@ -20,10 +20,7 @@ import ls from 'local-storage';
 import {
   submitLeadArrived,
 } from 'api/lead';
-import {
-  parseError,
-  showUpcomingFeatures,
-} from 'utils/utils';
+import {parseError} from 'utils/utils';
 import {
   identify,
   track,
@@ -117,7 +114,7 @@ export default class LeadForm extends React.Component {
       if (product === FENCE_SLUG) {
         submitData['object'] = {...submitData.object, order};
       }
-      if (showUpcomingFeatures() && !user) {
+      if (!user) {
         submitData['auto_sign_in'] = true;
       }
       Sentry.addBreadcrumb({

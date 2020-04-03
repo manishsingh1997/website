@@ -12,7 +12,7 @@ import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 
 import phoneIcon from 'assets/icon-phone.svg';
-import {getParameterByName, isChristmasTime, showUpcomingFeatures} from 'utils/utils';
+import {getParameterByName, isChristmasTime} from 'utils/utils';
 import {getMenuItems} from 'data/customer-app.js';
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
@@ -68,7 +68,6 @@ export default class Layout extends React.Component {
   constructor(props) {
     super(props);
     this.isChristmasTime = isChristmasTime();
-    this.isUpcomingFeaturesEnabled = showUpcomingFeatures();
   }
 
   componentDidMount() {
@@ -159,7 +158,7 @@ export default class Layout extends React.Component {
         <COVIDNotification location={location}/>
         <NavLinkContext.Provider value={NavLink}>
           <WebsiteTopPanel
-            customerMenu={this.isUpcomingFeaturesEnabled ? this.renderDropdownMenu() : null}
+            customerMenu={this.renderDropdownMenu()}
             ergeonUrl="/"
             pdfDetails={this.renderPdfDetails()}
             pdfMode={asPDF}

@@ -9,7 +9,7 @@ import AppLoader from 'components/common/AppLoader';
 import Marker from 'assets/marker.svg';
 import config from 'website/config';
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
-import {getParameterByName, showUpcomingFeatures} from 'utils/utils';
+import {getParameterByName} from 'utils/utils';
 import Success from 'components/common/Success';
 import LeadForm from './LeadForm';
 import ConfigCart from 'containers/ConfigCart';
@@ -281,7 +281,7 @@ export default class RequestQuotePage extends React.Component {
           <Success
             header="Thanks!"
             text="We will call you within 24 hours" />
-          {(showUpcomingFeatures() && !user) &&
+          {!user &&
           <span>
             <p className="confirmation-email spacing before__is-24">
               We have sent a confirmation message to your email.
