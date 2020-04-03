@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {getLabelFromIndex} from '@ergeon/draw-map';
 import MapLabel from './MapLabel';
+import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 import {DRIVEWAY_QUANTITY_UNIT, FENCE_QUANTITY_UNIT} from '../../website/constants';
 import {formatPrice} from '../../utils/app-order';
 import AppConfigPreview from '../common/AppConfigPreview';
@@ -19,7 +20,7 @@ export default class QuoteLine extends React.Component {
     price: PropTypes.number,
     quantity: PropTypes.string,
     quote: PropTypes.object,
-    type: PropTypes.oneOf(['Side', 'Gate', 'Area']),
+    type: PropTypes.oneOf([CALC_SIDE_TYPE, CALC_GATE_TYPE, CALC_AREA_TYPE]),
     unit: PropTypes.string,
   };
   getQuoteLineForCalcInputItem(quoteLines, itemName) {
@@ -61,9 +62,9 @@ export default class QuoteLine extends React.Component {
   renderTitle() {
     const {type} = this.props;
     const getTitle = () => {
-      if (type === 'Side') return this.renderSideTitle();
-      if (type === 'Gate') return this.renderPointTitle();
-      if (type === 'Area') return this.renderAreaTitle();
+      if (type === CALC_SIDE_TYPE) return this.renderSideTitle();
+      if (type === CALC_GATE_TYPE) return this.renderPointTitle();
+      if (type === CALC_AREA_TYPE) return this.renderAreaTitle();
       return null;
     };
     return (
@@ -71,7 +72,7 @@ export default class QuoteLine extends React.Component {
         {getTitle()}
       </div>);
   }
-  renderQuotePreview(quoteLine, useNoPreviewIcon = false, usePlaceHolder = false) {
+  renderQuotePreview(quoteLine, configType, useNoPreviewIcon = false, usePlaceHolder = false) {
     const {order: {house: {address: {zip_code: zipCode}}}} = this.props.quote;
     const schemaCodeUrl = quoteLine && quoteLine['config']['schema_code_url'];
     const isQuotePreviewPossible = quoteLine && quoteLine['is_quote_preview_possible'];
@@ -82,6 +83,7 @@ export default class QuoteLine extends React.Component {
     return (
       <AppConfigPreview
         className="quote-line-preview"
+        configType={configType}
         propertySchemaCodeUrl={propertySchemaCodeUrl}
         schemaCodeUrl={usePlaceHolder ? null : schemaCodeUrl}
         useNoPreviewIcon={useNoPreviewIcon}
@@ -92,21 +94,24 @@ export default class QuoteLine extends React.Component {
 
   renderPreviewForCalcInfo() {
     const {quote, type, index, name} = this.props;
-    if (type === 'Side') return (
+    if (type === CALC_SIDE_TYPE) return (
       this.renderQuotePreview(
-        this.getQuoteLineForCalcInputItem(quote['quote_lines'], this.indexLabel)
+        this.getQuoteLineForCalcInputItem(quote['quote_lines'], this.indexLabel),
+        type,
       )
     );
-    if (type === 'Area') return (
+    if (type === CALC_AREA_TYPE) return (
       this.renderQuotePreview(
         null,
+        type,
         false,
         true,
       )
     );
-    if (type === 'Gate') return (
+    if (type === CALC_GATE_TYPE) return (
       this.renderQuotePreview(
         this.getQuoteLineForCalcInputItem(quote['quote_lines'], index + 1),
+        type,
         name === '!' || name === 'Complications',
       )
     );
@@ -115,14 +120,16 @@ export default class QuoteLine extends React.Component {
 
   renderPreviewForQuoteLine() {
     const {quote, type, label, name} = this.props;
-    if (type === 'Side') return (
-      this.renderQuotePreview(
-        this.getQuoteLineForCalcInputItem(quote['quote_lines'], label)
-      )
-    );
-    if (type === 'Gate') return (
+    if (type === CALC_SIDE_TYPE) return (
       this.renderQuotePreview(
         this.getQuoteLineForCalcInputItem(quote['quote_lines'], label),
+        type,
+      )
+    );
+    if (type === CALC_GATE_TYPE) return (
+      this.renderQuotePreview(
+        this.getQuoteLineForCalcInputItem(quote['quote_lines'], label),
+        type,
         name === '!' || name === 'Complications',
       )
     );

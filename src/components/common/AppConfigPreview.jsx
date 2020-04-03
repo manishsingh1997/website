@@ -7,6 +7,7 @@ import previewPlaceholderIcon from '@ergeon/core-components/src/assets/icon-phot
 import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {calcUtils} from '@ergeon/3d-lib';
 import {constants as constants3dLib} from '@ergeon/3d-lib';
+import {CALC_GATE_TYPE} from 'website/constants';
 
 import config from 'website/config';
 
@@ -20,6 +21,7 @@ export default class AppConfigPreview extends React.Component {
 
   static propTypes = {
     className: PropTypes.string,
+    configType: PropTypes.string,
     propertySchemaCodeUrl: PropTypes.string,
     schemaCodeUrl: PropTypes.string,
     useNoPreviewIcon: PropTypes.bool,
@@ -65,13 +67,15 @@ export default class AppConfigPreview extends React.Component {
   }
 
   renderPreviewWithLink() {
-    const {propertySchemaCodeUrl, schemaCodeUrl, zipCode} = this.props;
+    const {configType, propertySchemaCodeUrl, schemaCodeUrl, zipCode} = this.props;
+    const baseUrlPath = configType === CALC_GATE_TYPE ? 'gate3d' : 'fence3d';  // fallback to fence
     let finalSchemaCodeUrl = `${schemaCodeUrl}`;
     if (propertySchemaCodeUrl)
       finalSchemaCodeUrl = `${schemaCodeUrl}&${propertySchemaCodeUrl}`;
+
     return (
       <a
-        href={`${config.fencequotingHost}/fence3d?${finalSchemaCodeUrl}&mode=3d&options=true&zipcode=${zipCode}`}
+        href={`${config.fencequotingHost}/${baseUrlPath}?${finalSchemaCodeUrl}&mode=3d&options=true&zipcode=${zipCode}`}
         rel="noopener noreferrer"
         target="_blank">
         {this.renderPreview()}
