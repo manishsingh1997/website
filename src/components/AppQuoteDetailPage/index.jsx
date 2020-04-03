@@ -97,8 +97,10 @@ export default class AppQuoteDetailPage extends React.Component {
     this.setState({isLoadingForm: true});
     try {
       const data = await approveAndPayQuote(this.customerGID, this.props.match.params.secret, stripeToken);
+      const updatedQuote = data.data;
       this.setState({
-        paymentMethod: data.data,
+        quote: updatedQuote,
+        paymentMethod: updatedQuote['payment_method'],
         paymentMethodError: null,
       });
     } catch (apiError) {
