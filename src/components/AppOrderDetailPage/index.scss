@@ -32,6 +32,10 @@
     margin-left: $h-10;
     margin-right: $h-40;
     margin-bottom: $v-12;
+
+    @include phone() {
+      margin-top: $v-12;
+    }
   }
 
   .quote-filters {
