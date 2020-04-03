@@ -4,7 +4,7 @@ import {isChristmasTime as baseIsChristmasTime} from '@ergeon/core-components';
 import {constants} from '@ergeon/3d-lib/';
 
 import config, {DEVELOPMENT} from 'website/config';
-import {getUserAgent, getUserUuid, getUTM} from './analytics';
+import {getUserAgent, getUserUuid, getUTM, trackError} from './analytics';
 import {DEFAULT_SOURCE_VALUE} from '../website/constants';
 import cleanDeep from 'clean-deep';
 import {isPastDate} from './date';
@@ -29,7 +29,15 @@ export const getParameterByName = (name, url) => {
     results = regex.exec(url);
   if (!results) return null;
   if (!results[2]) return '';
-  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  let parameterValue;
+  try {
+    parameterValue = decodeURIComponent(results[2].replace(/\+/g, ' '));
+  } catch (error) {
+    parameterValue = '';
+    console.error(error);
+    trackError(error);
+  }
+  return parameterValue;
 };
 
 export const isObject = (value) => {
