@@ -23,16 +23,19 @@ export default class QuoteLine extends React.Component {
     type: PropTypes.oneOf([CALC_SIDE_TYPE, CALC_GATE_TYPE, CALC_AREA_TYPE]),
     unit: PropTypes.string,
   };
+
   getQuoteLineForCalcInputItem(quoteLines, itemName) {
     if (!itemName) {
       return undefined;
     }
     return quoteLines.find((quoteLine) => !!quoteLine.label && quoteLine.label.toString() === itemName.toString());
   }
+
   get indexLabel() {
     const {index, label} = this.props;
     return label ? label : getLabelFromIndex(index);
   }
+
   renderSideTitle() {
     return (
       <React.Fragment>
@@ -41,6 +44,7 @@ export default class QuoteLine extends React.Component {
       </React.Fragment>
     );
   }
+
   renderPointTitle() {
     const {index, name, label} = this.props;
     return (
@@ -50,6 +54,7 @@ export default class QuoteLine extends React.Component {
       </React.Fragment>
     );
   }
+
   renderAreaTitle() {
     const {index} = this.props;
     return (
@@ -59,6 +64,7 @@ export default class QuoteLine extends React.Component {
       </React.Fragment>
     );
   }
+
   renderTitle() {
     const {type} = this.props;
     const getTitle = () => {
@@ -72,6 +78,7 @@ export default class QuoteLine extends React.Component {
         {getTitle()}
       </div>);
   }
+
   renderQuotePreview(quoteLine, configType, useNoPreviewIcon = false, usePlaceHolder = false) {
     const {order: {house: {address: {zip_code: zipCode}}}} = this.props.quote;
     const schemaCodeUrl = quoteLine && quoteLine['config']['schema_code_url'];
