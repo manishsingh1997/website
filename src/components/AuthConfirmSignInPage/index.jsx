@@ -75,7 +75,8 @@ class AuthConfirmSignInPage extends React.Component {
             <img className="icon-invalid-lock" src={ExpiredLinkIcon}/>
           </div>
           <h4 className="center spacing after__is-12">
-            Sorry, but the link you have used was already expired.Try to resend a confirmation email.
+            Sorry, but the link you have used was already expired.<br/>
+            Try to resend a confirmation email.
           </h4>
           <Button
             className="spacing before__is-12"
