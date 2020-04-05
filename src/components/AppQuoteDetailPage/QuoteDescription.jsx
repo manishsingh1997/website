@@ -57,7 +57,7 @@ export default class QuoteDescription extends React.Component {
         {this.isUserSignedIn() && !asPDF && this.renderBackButton()}
         <h3>{quote.order.product.name} Quote #{quote.id}</h3>
         <div>
-          <i>Quote provided by Ergeon, licence {ERGEON_LICENSE_NUMBER}</i>
+          <i>Quote provided by Ergeon, license CA{ERGEON_LICENSE_NUMBER}</i>
         </div>
         <div className="quote-fields spacing before__is-24">
           <DataRow title="Customer" value={customerDetails} />

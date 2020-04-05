@@ -8,6 +8,7 @@ import {isChristmasTime} from 'utils/utils';
 import Slider from './Slider';
 import {FENCE_SLUG, DRIVEWAY_SLUG} from '@ergeon/core-components/src/constants';
 import {getParameterByName} from 'utils/utils';
+import {ERGEON_LICENSE_NUMBER} from 'website/constants';
 
 import './SliderHero.scss';
 
@@ -30,7 +31,7 @@ class SliderHero extends React.Component {
         <span className="title-wrapper">
           <h1 className="h0 white center">{data.title}</h1>
           <span className="subheader h2 white center">
-            Servicing the Bay Area, Sacramento and Fresno. License #1040925.
+            Servicing the Bay Area, Sacramento and Fresno. License {ERGEON_LICENSE_NUMBER}.
           </span>
         </span>
 

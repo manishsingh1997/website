@@ -3,6 +3,7 @@ import {find} from 'lodash';
 import MetaDescription from '../common/MetaDescription';
 
 import config from 'website/config';
+import {ERGEON_LICENSE_NUMBER} from 'website/constants';
 
 import certifiedIcon from 'assets/certified@2x.png';
 import licenseImage from 'assets/license.jpg';
@@ -124,13 +125,13 @@ class WarrantiesPage extends React.Component {
                 <img className="certified-icon" src={certifiedIcon} />
                 <h4>C13 - Fencing</h4>
                 <p>Ergeon inc</p>
-                <p>License #1040925</p>
+                <p>License {ERGEON_LICENSE_NUMBER}</p>
               </div>
               <div className="certification-item">
                 <img className="certified-icon" src={certifiedIcon} />
                 <h4>C27 - Landscaping</h4>
                 <p>Ergeon inc</p>
-                <p>License #1040925</p>
+                <p>License {ERGEON_LICENSE_NUMBER}</p>
               </div>
             </div>
             <a
