@@ -14,7 +14,7 @@ export const DRIVEWAY_QUANTITY_UNIT = 'sq.ft.';
 export const VENDOR_PREVIEW_SLUG = 'vendor';
 export const DIRECT_PREVIEW_SLUG = 'direct';
 
-export const CALC_AREA_TYPE = 'Side';
+export const CALC_AREA_TYPE = 'Area';
 export const CALC_GATE_TYPE = 'Gate';
 export const CALC_SIDE_TYPE = 'Side';
 
