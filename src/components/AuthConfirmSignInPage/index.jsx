@@ -48,13 +48,13 @@ class AuthConfirmSignInPage extends React.Component {
     );
   }
 
-  renderInvalidCode() {
+  renderError(content) {
     return (
       <div className="center">
         <div className="center spacing after__is-24">
           <img className="icon-invalid-lock" src={InvalidLockIcon}/>
         </div>
-        <h4 className="center spacing after__is-12">Sorry, but the link is not valid</h4>
+        <h4 className="center spacing after__is-12">{content}</h4>
         <Link to="/app/sign-in">
           <Button
             className="spacing before__is-12"
@@ -64,6 +64,19 @@ class AuthConfirmSignInPage extends React.Component {
           </Button>
         </Link>
       </div>
+    );
+  }
+
+  renderInvalidCode() {
+    return this.renderError('Sorry, but the link is not valid');
+  }
+
+  renderUnknownError() {
+    return this.renderError(
+      <React.Fragment>
+        Sorry, we can&apos;t process the request.<br/>
+        Check that link is correct and try to refresh the page.
+      </React.Fragment>
     );
   }
 
@@ -88,7 +101,6 @@ class AuthConfirmSignInPage extends React.Component {
       </form>
     );
   }
-
   renderLoader(text) {
     return (
       <div className="center">
@@ -120,12 +132,14 @@ class AuthConfirmSignInPage extends React.Component {
       content = this.renderInvalidCode();
     } else if (!auth.authError && auth.user && auth.userSetByCode) {
       content = this.renderSuccess();
-    } else {
+    } else if (auth.authError) {
       const error = auth.authError.data.otp.errorCode;
       if (error === 'invalid')
         content = this.renderInvalidCode();
       else if (error === 'expired')
         content = this.renderExpiredCode();
+    } else {
+      content = this.renderUnknownError();
     }
 
     return <SingleCard className="confirm-signin-page" content={content} />;
