@@ -16,6 +16,12 @@
     margin-bottom: $v-30;
 
     .billing-form__content {
+      display: block;
+      border-radius: 0;
+      padding: 0;
+    }
+
+    .billing-form__information {
       padding-right: 0;
       border: 0;
 
