@@ -10,7 +10,6 @@ import AppConfigPreview from '../common/AppConfigPreview';
 export default class QuoteLine extends React.Component {
   static propTypes = {
     area: PropTypes.number,
-    cost: PropTypes.number,
     description: PropTypes.string,
     distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     id: PropTypes.string,
@@ -144,7 +143,7 @@ export default class QuoteLine extends React.Component {
   }
 
   render() {
-    const {id, area, distance, description, label, price, cost, quantity, unit} = this.props;
+    const {id, area, distance, description, label, price, quantity, unit} = this.props;
     return (
       <div className="quote-line" key={`side-${id}`}>
         <div>
@@ -164,8 +163,7 @@ export default class QuoteLine extends React.Component {
             {quantity && unit && <span>Length: {Math.round(quantity)} {unit}.</span>}
             {area && <span>Area: {area} {DRIVEWAY_QUANTITY_UNIT}</span>}
           </div>
-          {price && <h5>{formatPrice(price)}</h5>}
-          {cost && <h5>{formatPrice(cost)}</h5>}
+          <h5>{formatPrice(price)}</h5>
           <div className="desktop-length spacing before__is-12">
             {distance && <span>Length: {distance} {FENCE_QUANTITY_UNIT}</span>}
             {quantity && unit && <span>Length: {Math.round(quantity)} {unit}.</span>}
