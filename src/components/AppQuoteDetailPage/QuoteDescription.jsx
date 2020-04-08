@@ -24,9 +24,9 @@ export default class QuoteDescription extends React.Component {
     const orderID = this.props.quote['order_id'];
     return getOrderDetailURL(customerGID, orderID);
   }
-  isUserSignedIn() {
-    const {auth : {user}} = this.props;
-    return !!user;
+  isUserOwnerOfQuote() {
+    const {auth : {user}, customerGID} = this.props;
+    return !!user && user.gid === customerGID;
   }
   renderBackButton() {
     return (
@@ -54,7 +54,7 @@ export default class QuoteDescription extends React.Component {
     );
     return (
       <div className="quote-details-wrapper">
-        {this.isUserSignedIn() && !asPDF && this.renderBackButton()}
+        {this.isUserOwnerOfQuote() && !asPDF && this.renderBackButton()}
         <h3>{quote.order.product.name} Quote #{quote.id}</h3>
         <div>
           <i>Quote provided by Ergeon, license CA{ERGEON_LICENSE_NUMBER}</i>
@@ -63,7 +63,7 @@ export default class QuoteDescription extends React.Component {
           <DataRow title="Customer" value={customerDetails} />
           <DataRow title="Quote ID" value={`#${quote.id}`} />
           {
-            this.isUserSignedIn()
+            this.isUserOwnerOfQuote()
               ? <DataRow title="Order ID" value={<Link to={this.linkToOrderPage}>#{quote.order.id}</Link>}/>
               : <DataRow title="Order ID" value={`#${quote.order.id}`} />
           }
