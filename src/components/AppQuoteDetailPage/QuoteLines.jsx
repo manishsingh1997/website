@@ -51,19 +51,6 @@ export default class QuoteLines extends React.Component {
             ))}
           </div>
           <div>
-            {(gates || []).map(({description, map_id: id, name, price}, index) => (
-              <QuoteLine
-                description={description}
-                id={id}
-                index={index}
-                key={`gate-${id}`}
-                name={name}
-                price={showPrice ? price: 0}
-                quote={quote}
-                type={CALC_GATE_TYPE}/>
-            ))}
-          </div>
-          <div>
             {(polygons || []).map(({description, area, map_id: id, price}, index) => (
               <QuoteLine
                 area={area}
@@ -75,6 +62,19 @@ export default class QuoteLines extends React.Component {
                 price={showPrice ? price : 0}
                 quote={quote}
                 type={CALC_AREA_TYPE}/>
+            ))}
+          </div>
+          <div>
+            {(gates || []).map(({description, map_id: id, name, price}, index) => (
+              <QuoteLine
+                description={description}
+                id={id}
+                index={index}
+                key={`gate-${id}`}
+                name={name}
+                price={showPrice ? price: 0}
+                quote={quote}
+                type={CALC_GATE_TYPE}/>
             ))}
           </div>
         </div>
@@ -107,18 +107,6 @@ export default class QuoteLines extends React.Component {
           ))}
         </div>
         <div>
-          {(gates || []).map(({cost, description, id, label}) => (
-            <QuoteLine
-              description={description}
-              id={id}
-              key={`gate-${id}`}
-              label={label}
-              price={cost}
-              quote={quote}
-              type={CALC_GATE_TYPE}/>
-          ))}
-        </div>
-        <div>
           {(areas || []).map(({cost, description, id, label}) => (
             <QuoteLine
               description={description}
@@ -128,6 +116,18 @@ export default class QuoteLines extends React.Component {
               price={cost}
               quote={quote}
               type={CALC_AREA_TYPE}/>
+          ))}
+        </div>
+        <div>
+          {(gates || []).map(({cost, description, id, label}) => (
+            <QuoteLine
+              description={description}
+              id={id}
+              key={`gate-${id}`}
+              label={label}
+              price={cost}
+              quote={quote}
+              type={CALC_GATE_TYPE}/>
           ))}
         </div>
       </React.Fragment>
