@@ -1,4 +1,4 @@
-/* eslint-disable */
+import slugify from 'slugify';
 import cookies from 'js-cookie';
 import ls from 'local-storage';
 import * as Sentry from '@sentry/browser';
@@ -15,7 +15,7 @@ import {
   isObject,
 } from 'utils/utils';
 import {submitAddressEntered} from 'api/lead';
-import {ADDRESS_ENTERED} from 'utils/events';
+import {CUSTOMER_LEAD_CREATED, ADDRESS_ENTERED} from 'utils/events';
 
 export const LS_KEY = 'ergeon-utms';
 
@@ -130,10 +130,10 @@ export const identify = (_gidOrTraits, _traits) => {
 
   try {
     Sentry.configureScope(scope => {
-        scope.setUser({
-          ...traits,
-          uuid: getUserUuid(),
-        });
+      scope.setUser({
+        ...traits,
+        uuid: getUserUuid(),
+      });
     });
   } catch (e) {
     trackError(e);
@@ -189,20 +189,20 @@ export const cacheUTM = () => {
     };
   }
 
-  const initial_referrer = document.referrer || 'No referrer';
-  current.initial_referrer = saved.initial_referrer === undefined ? initial_referrer : saved.initial_referrer;
-  current.initial_landing_page = saved.initial_landing_page === undefined ?
+  const initialReferrer = document.referrer || 'No referrer';
+  current['initial_referrer'] = saved.initial_referrer === undefined ? initialReferrer : saved.initial_referrer;
+  current['initial_landing_page'] = saved.initial_landing_page === undefined ?
     window.location.href :
     saved.initial_landing_page;
 
-  const referrerSourcesKeywords = [{keyword: "advisor", label: "Lead - Home Advisor"},
-    {keyword: "yelp", label: "Lead - Yelp"},
-    {keyword: "google", label: "Lead - Google"},
-    {keyword: "facebook", label: "Lead - Facebook Page"}];
+  const referrerSourcesKeywords = [{keyword: 'advisor', label: 'Lead - Home Advisor'},
+    {keyword: 'yelp', label: 'Lead - Yelp'},
+    {keyword: 'google', label: 'Lead - Google'},
+    {keyword: 'facebook', label: 'Lead - Facebook Page'}];
   let index;
   for (index = 0; index < referrerSourcesKeywords.length; ++index) {
-    if (initial_referrer.includes(referrerSourcesKeywords[index].keyword)) {
-      current.utm_source = referrerSourcesKeywords[index].label;
+    if (initialReferrer.includes(referrerSourcesKeywords[index].keyword)) {
+      current['utm_source'] = referrerSourcesKeywords[index].label;
     }
   }
   try {
@@ -281,7 +281,7 @@ export const trackAddressEntered = (lead) => {
   enteredAddressData['zip_code'] = address.zipcode;
   enteredAddressData['address1'] = `${address.primary_number} ${address.street_name}`;
   enteredAddressData['city'] = address.city_name;
-  if (typeof address.location.lat === "function") {
+  if (typeof address.location.lat === 'function') {
     enteredAddressData['location'] = {
       lat: address.location.lat(),
       lng: address.location.lng(),
@@ -312,6 +312,7 @@ export const trackAddressEntered = (lead) => {
   obj['inner_width'] = window.innerWidth;
   obj['inner_height'] = window.innerHeight;
   enteredAddressData['object'] = obj;
+  trackTawkEvent(ADDRESS_ENTERED, {address: address.formatted_address});
   submitAddressEntered(enteredAddressData);
   Sentry.addBreadcrumb({
     message: 'Address submit',
@@ -320,3 +321,26 @@ export const trackAddressEntered = (lead) => {
   });
 };
 
+export const trackTawkEvent = (eventName, data) => {
+  const TawkAPI = window['Tawk_API'] = window['Tawk_API'] || {};
+  TawkAPI.addEvent(slugify(eventName, {lower: true}), data);
+};
+
+export const trackTawkLeadEvent = (submitData) => {
+  const TawkAPI = window['Tawk_API'] = window['Tawk_API'] || {};
+
+  TawkAPI.setAttributes({
+    email: submitData.email,
+    name: submitData.name,
+  });
+
+  trackTawkEvent(CUSTOMER_LEAD_CREATED, {
+    address: submitData.address['formatted_address'],
+    email: submitData.email,
+    name: submitData.name,
+    ...submitData.object.order.reduce((res, config, index) => {
+      res[`config-${index}`] = config.description;
+      return res;
+    }, {}),
+  });
+};

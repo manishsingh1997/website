@@ -28,6 +28,7 @@ import {
   identify,
   track,
   trackError,
+  trackTawkLeadEvent,
   LS_KEY,
 } from 'utils/analytics';
 import {
@@ -128,6 +129,7 @@ export default class LeadForm extends React.Component {
 
       try {
         await submitLeadArrived(submitData);
+        await trackTawkLeadEvent(submitData);
         await identify(data);
         await track(CUSTOMER_LEAD_CREATED, {...submitData, source: DEFAULT_SOURCE_VALUE});
       } catch (error) {
