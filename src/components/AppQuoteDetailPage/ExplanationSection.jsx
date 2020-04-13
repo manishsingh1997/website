@@ -20,7 +20,7 @@ export default class ExplanationSection extends React.Component {
         <hr className="gray-line restricted-720"/>
         <h4 className="spacing before__is-48 after__is-12">Warranty</h4>
         <div>
-        Read our fence warranty <a href={warrantyLink}>here</a>.
+          Read our fence warranty <a href={warrantyLink}>here</a>.
         </div>
       </div>
     );

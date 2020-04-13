@@ -4,9 +4,7 @@ import {isChristmasTime as baseIsChristmasTime} from '@ergeon/core-components';
 import {constants} from '@ergeon/3d-lib/';
 
 import config, {DEVELOPMENT} from 'website/config';
-import {getUserAgent, getUserUuid, getUTM, trackError} from './analytics';
-import {DEFAULT_SOURCE_VALUE} from '../website/constants';
-import cleanDeep from 'clean-deep';
+import {trackError} from './analytics';
 import {isPastDate} from './date';
 
 export const parseError = (error) => {
@@ -62,29 +60,6 @@ export const showUpcomingFeatures = () => {
     return 'upcoming-features' in queryString.parse(location.search);
   }
   return false;
-};
-
-export const getEventData = (data) => {
-  const {savedAt, ...utms} = getUTM();
-  let submitData = {
-    ...data,
-    uuid: getUserUuid(),
-    object: {
-      ...utms,
-      ...getUserAgent(),
-      'utm_source': utms['utm_source'] || DEFAULT_SOURCE_VALUE,
-      pathname: window.location.pathname,
-      'arrival_time': savedAt,
-      'user_ip': window.userip,
-      'inner_width': window.innerWidth,
-      'inner_height': window.innerHeight,
-      href: window.location.href,
-      search: window.location.search,
-    },
-    source: DEFAULT_SOURCE_VALUE,
-  };
-  submitData = cleanDeep(submitData);
-  return submitData;
 };
 
 export const getAdvancedEditorUrl = (order, zipcode) => {

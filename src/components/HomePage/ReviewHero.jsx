@@ -29,12 +29,12 @@ class ReviewHero extends React.Component {
               <h4>The installation went great!</h4>
               <p><i>
                 Roberto and team were very flexible and took care of few adjustments without
-                 making a big deal about it. I would recommend this service to a friend.
+                making a big deal about it. I would recommend this service to a friend.
               </i></p>
               <div className="review-hero__main-review__bottom">
                 <span className="label">Taylor K.</span>
                 <span>
-                More reviews on <a href="https://app.ergeon.com/projects-gallery/#/tags/feedback">Project Showcase</a>
+                  More reviews on <a href="https://app.ergeon.com/projects-gallery/#/tags/feedback">Project Showcase</a>
                 </span>
               </div>
             </div>

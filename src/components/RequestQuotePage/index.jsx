@@ -163,7 +163,7 @@ export default class RequestQuotePage extends React.Component {
           <h4 className="title">You haven&apos;t entered your address</h4>
           <p className="Subtitle">
             <a onClick={this.openAddressUpdatePopup.bind(this)}>Add your address </a>
-             to get a better price estimation
+            to get a better price estimation
           </p>
         </div>
       );

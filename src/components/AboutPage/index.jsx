@@ -17,10 +17,10 @@ class AboutPage extends React.Component {
         <div className="wrapper-1180">
           <div className="spacing before__is-48 after__is-48">
             <h1 className="center spacing after__is-12">
-                Our mission
+              Our mission
             </h1>
             <p className="subheader h2 center">
-                Simplify home improvement <br/>by empowering skilled local contractors
+              Simplify home improvement <br/>by empowering skilled local contractors
             </p>
           </div>
           <div className="values-container">

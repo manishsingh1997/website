@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
 
+import {getBaseEventData} from '@ergeon/erg-utms';
 import {Button, Spinner} from '@ergeon/core-components';
 import TextInput from '../common/TextInput';
 import TextArea from '../common/TextArea';
@@ -15,10 +16,7 @@ import {
 } from 'utils/validation';
 import ls from 'local-storage';
 import {submitContactUs} from 'api/contactUs';
-import {
-  getEventData,
-  parseError,
-} from 'utils/utils';
+import {parseError} from 'utils/utils';
 import {
   identify,
   track,
@@ -63,7 +61,7 @@ export default class ContactUsForm extends React.Component {
     this.state = getInitialState();
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async e => {
     e.preventDefault();
 
     const {onSubmit} = this.props;
@@ -79,16 +77,18 @@ export default class ContactUsForm extends React.Component {
         loading: true,
         errors: null,
       });
-      const submitData = getEventData(data);
+
+      const baseEventData = await getBaseEventData();
+      const eventData = {...baseEventData, ...data};
       Sentry.addBreadcrumb({
         message: 'Contact us message submit',
         category: 'action',
-        data: submitData,
+        data: eventData,
       });
-      submitContactUs(submitData).then((res) => {
+      submitContactUs(eventData).then((res) => {
         identify(data);
         track(CONTACT_US_MESSAGE_ENTERED, {
-          ...submitData,
+          ...eventData,
           source: DEFAULT_SOURCE_VALUE,
         });
         this.setState(getInitialState());
@@ -96,7 +96,7 @@ export default class ContactUsForm extends React.Component {
         ls.remove(LS_KEY);
         return res;
       }, (error) => {
-        trackError(new Error(`Contact us message submit error: ${parseError(error)}`, submitData));
+        trackError(new Error(`Contact us message submit error: ${parseError(error)}`, eventData));
         this.setState({
           errors: {
             global: parseError(error),

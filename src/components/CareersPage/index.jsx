@@ -33,7 +33,7 @@ class CareersPage extends React.Component {
         <div className="spacing before__is-48 after__is-48">
           <h2 className="center spacing after__is-12">Our Team</h2>
           <p className="subheader h2 center">
-              The Ergeon team is global and diverse.
+            The Ergeon team is global and diverse.
           </p>
         </div>
         <StaffMap/>

@@ -5,6 +5,7 @@ import * as Sentry from '@sentry/browser';
 import {constants, calcUtils} from '@ergeon/3d-lib';
 
 import {Button, Spinner} from '@ergeon/core-components';
+import {getBaseEventData} from '@ergeon/erg-utms';
 import TextInput from 'components/common/TextInput';
 import PhoneInput from './PhoneInput';
 import MultiProductSelect from './MultiProductSelect';
@@ -38,7 +39,7 @@ import {DEFAULT_SOURCE_VALUE} from 'website/constants';
 import {FENCE_SLUG, products} from '@ergeon/core-components/src/constants';
 
 import './LeadForm.scss';
-import {getEventData, getAdvancedEditorUrl} from '../../utils/utils';
+import {getAdvancedEditorUrl} from '../../utils/utils';
 
 const stringifyAddress = (address) => {
   if (address !== null && address !== undefined) {
@@ -112,26 +113,31 @@ export default class LeadForm extends React.Component {
         loading: true,
         errors: null,
       });
-      const submitData = getEventData(data);
+
+      const baseEventData = await getBaseEventData();
+      const eventData = {
+        ...baseEventData,
+        ...data,
+        address: data.address || lead.address,
+      };
       const order = this.getOrder();
-      submitData['address'] = data.address || lead.address;
       if (product === FENCE_SLUG) {
-        submitData['object'] = {...submitData.object, order};
+        eventData['object'] = {...eventData.object, order};
       }
       if (showUpcomingFeatures() && !user) {
-        submitData['auto_sign_in'] = true;
+        eventData['auto_sign_in'] = true;
       }
       Sentry.addBreadcrumb({
         message: 'Lead submit',
         category: 'action',
-        data: submitData,
+        data: eventData,
       });
 
       try {
-        await submitLeadArrived(submitData);
-        await trackTawkLeadEvent(submitData);
+        await submitLeadArrived(eventData);
+        await trackTawkLeadEvent(eventData);
         await identify(data);
-        await track(CUSTOMER_LEAD_CREATED, {...submitData, source: DEFAULT_SOURCE_VALUE});
+        await track(CUSTOMER_LEAD_CREATED, {...eventData, source: DEFAULT_SOURCE_VALUE});
       } catch (error) {
         trackError(new Error(`Lead submit error: ${parseError(error)}`));
         this.setState({

@@ -6,8 +6,7 @@ import UAParser from 'ua-parser-js';
 import isPlainObject from 'is-plain-object';
 import cleanDeep from 'clean-deep';
 
-const MILLISECONDS_IN_MONTH = 2592000000;
-
+import {getBaseEventData} from '@ergeon/erg-utms';
 import {DEFAULT_SOURCE_VALUE, UUID_COOKIE_NAME} from 'website/constants';
 import config from 'website/config';
 import {
@@ -17,6 +16,7 @@ import {
 import {submitAddressEntered} from 'api/lead';
 import {CUSTOMER_LEAD_CREATED, ADDRESS_ENTERED} from 'utils/events';
 
+const MILLISECONDS_IN_MONTH = 2592000000;
 export const LS_KEY = 'ergeon-utms';
 
 export const guid = () => {
@@ -259,22 +259,8 @@ export const getUserAgent = () => {
 };
 
 export const trackAddressEntered = (lead) => {
-  const {...utms} = getUTM();
-
-  const data = {
-    address: lead.address,
-    'product_slug': lead['product_slug'],
-  };
-
-  track(ADDRESS_ENTERED, {
-    ...utms,
-    address: data.address,
-    source: DEFAULT_SOURCE_VALUE,
-  });
-
-  const address = data.address;
+  const address = lead.address;
   const enteredAddressData = {};
-  enteredAddressData['uuid'] = getUserUuid();
   enteredAddressData['formatted_address'] = address.formatted_address;
   enteredAddressData['place_types'] = address.place_types;
   enteredAddressData['raw_address'] = address.raw_address;
@@ -293,31 +279,28 @@ export const trackAddressEntered = (lead) => {
     };
   }
   enteredAddressData['state'] = address.state_abbreviation;
-  enteredAddressData['product_slug'] = data.product_slug;
-  enteredAddressData['source'] = DEFAULT_SOURCE_VALUE;
-  const obj = {...utms};
-  obj['arrival_time'] = Date.now();
-  obj['path'] = window.location.pathname;
-  obj['href'] = window.location.href;
-  const result = new UAParser().getResult();
-  obj['ua'] = result.ua;
-  obj['browser_name'] = result.browser.name;
-  obj['browser_version'] = result.browser.version;
-  obj['browser_major'] = result.browser.major;
-  obj['cpu_architecture'] = result.cpu.architecture;
-  obj['engine_name'] = result.engine.name;
-  obj['engine_version'] = result.engine.version;
-  obj['os_name'] = result.os.name;
-  obj['os_version'] = result.os.version;
-  obj['inner_width'] = window.innerWidth;
-  obj['inner_height'] = window.innerHeight;
-  enteredAddressData['object'] = obj;
+  enteredAddressData['product_slug'] = lead['product_slug'];
+
   trackTawkEvent(ADDRESS_ENTERED, {address: address.formatted_address});
-  submitAddressEntered(enteredAddressData);
-  Sentry.addBreadcrumb({
-    message: 'Address submit',
-    category: 'action',
-    data,
+
+  getBaseEventData().then((baseEventData) => {
+    const eventData = {...baseEventData, ...enteredAddressData};
+
+    // TODO: use eventData for google analytics and remove `getUTM()` completely
+    const {...utms} = getUTM();
+    track(ADDRESS_ENTERED, {
+      ...utms,
+      address,
+      source: DEFAULT_SOURCE_VALUE,
+    });
+
+    // submit the event
+    submitAddressEntered(eventData);
+    Sentry.addBreadcrumb({
+      message: 'Address submit',
+      category: 'action',
+      data: eventData,
+    });
   });
 };
 

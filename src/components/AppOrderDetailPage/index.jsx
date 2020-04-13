@@ -101,11 +101,7 @@ export default class AppOrderDetailPage extends React.Component {
         </div>
         <div>
           <Link className="spacing left__is-10" to={getQuoteDetailURL(customerGID, quote['secret'])}>
-            <Button
-              size="large"
-              type="submit">
-                View Full Quote
-            </Button>
+            <Button size="large" type="submit">View Full Quote</Button>
           </Link>
         </div>
       </React.Fragment>

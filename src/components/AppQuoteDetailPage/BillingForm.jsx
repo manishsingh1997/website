@@ -250,7 +250,7 @@ export default class BillingForm extends React.Component {
         </div>
         <div className="billing-form__payment-method-details-item">
           <div className="billing-form__payment-method-details-item-name">
-          Exp. date
+            Exp. date
           </div>
           <div className="billing-form__payment-method-details-item-value">
             {paymentMethod && paymentMethod['card_expiration_date_short']}
