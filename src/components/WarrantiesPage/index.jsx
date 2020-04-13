@@ -9,7 +9,6 @@ import certifiedIcon from 'assets/certified@2x.png';
 import licenseImage from 'assets/license.jpg';
 import './index.scss';
 
-const pdfjsLib = window.pdfjsLib || {};
 const WARRANTIES_URL = `${config.apiHost}/api/store/product-descriptions/`;
 const DEFAULT_PRODUCTS = [
   {
@@ -61,6 +60,7 @@ class WarrantiesPage extends React.Component {
   generatePdfPreview(canvas, url) {
     if (!canvas) return;
     const canvasContext = canvas.getContext('2d');
+    const pdfjsLib = window.pdfjsLib || {};
 
     return pdfjsLib.getDocument({url})
       .then(doc => doc.getPage(1))
