@@ -66,9 +66,15 @@ export default class QuoteDetails extends React.Component {
     const {quote, asPDF, auth, isVendorPreview, totalPrice, customerGID} = this.props;
     const {isLoadingMap} = this.state;
     const {
-      'calc_input': {gates, sides, polygons},
+      'calc_input': calcInput,
       order: {house: {address}},
     } = quote;
+    let gates = [], sides = [], polygons = [];
+    if (calcInput) {
+      gates = calcInput.gates;
+      sides = calcInput.sides;
+      polygons = calcInput.polygons;
+    }
     const SPINNER_BORDER_WITH = 0.10;
     const SPINNER_SIZE = 64;
     const location = {

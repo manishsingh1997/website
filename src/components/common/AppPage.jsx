@@ -19,7 +19,7 @@ export default class AppPage extends React.Component {
 
   state = {
     isFetchStarted: false,  // needed to not render content before `fetchData` starts
-  }
+  };
 
   componentDidMount() {
     this.props.fetchData();
@@ -32,10 +32,18 @@ export default class AppPage extends React.Component {
 
   renderError(error) {
     console.warn(error);
+    const errorMessage = Object.values(error.data).map((message, index) => (
+      <p key={`app-error-${index}`}>{message}</p>
+    ));
     return (
       <div className="center error">
-        <p>Something unexpected happened, we are already notified about this.</p>
-        <p>Please try to reload the page.</p>
+        {errorMessage ?
+          <React.Fragment>{errorMessage}</React.Fragment> :
+          <React.Fragment>
+            <p>Something unexpected happened, we are already notified about this.</p>
+            <p>Please try to reload the page.</p>
+          </React.Fragment>
+        }
       </div>
     );
   }

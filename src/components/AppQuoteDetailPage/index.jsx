@@ -85,7 +85,7 @@ export default class AppQuoteDetailPage extends React.Component {
     } catch (apiError) {
       this.setState({
         quote: null,
-        quoteError: parseAPIError(apiError).nonFieldErrors.join('\n'),
+        quoteError: parseAPIError(apiError).data['detail'],
       });
     } finally {
       this.setState({isLoading: false});
