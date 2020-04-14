@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {some} from 'lodash';
 
 import {Notification} from '@ergeon/core-components';
-import {getParameterByName} from 'utils/utils';
+import {isPDFMode} from 'utils/utils';
 import {parseAPIError} from 'utils/api';
 import {
   formatPrice,
@@ -75,6 +75,7 @@ export default class AppQuoteDetailPage extends React.Component {
   async getQuoteDetailsFromAPI() {
     // We don't need this data in redux store for now, so calling API directly
     this.setState({isLoading: true, isLoadingMap: true});
+
     try {
       const data = await getQuoteDetails(this.customerGID, this.props.match.params.secret);
       this.setState({
@@ -123,7 +124,7 @@ export default class AppQuoteDetailPage extends React.Component {
         this.isDirectPreview(),
         this.isVendorPreview(),
         quote['reviewed_at'],
-        this.isPDFMode(),
+        isPDFMode(),
       ])
     ) {
       try {
@@ -140,10 +141,6 @@ export default class AppQuoteDetailPage extends React.Component {
 
   isDirectPreview() {
     return this.props.match.params.type === DIRECT_PREVIEW_SLUG;
-  }
-
-  isPDFMode() {
-    return getParameterByName('asPDF');
   }
 
   getNewQuoteLink() {
@@ -172,7 +169,7 @@ export default class AppQuoteDetailPage extends React.Component {
 
   shouldShowBillingForm() {
     const {quote} = this.state;
-    const isPDFModeDisabled = !this.isPDFMode();
+    const isPDFModeDisabled = !isPDFMode();
 
     return (
       isPDFModeDisabled &&
@@ -226,7 +223,7 @@ export default class AppQuoteDetailPage extends React.Component {
     return (
       <div className="quote-detail-page">
         <QuoteDetails
-          asPDF={this.isPDFMode()}
+          asPDF={isPDFMode()}
           auth={auth}
           customerGID={this.customerGID}
           getNewQuoteLink={this.getNewQuoteLink.bind(this)}
@@ -246,7 +243,7 @@ export default class AppQuoteDetailPage extends React.Component {
           quoteId={quote['id']}
           termsAndConditionsUrl={quote['terms_and_conditions']}
           total={formatPrice(this.getTotalPrice(quote))} />}
-        <ExplanationSection asPDF={this.isPDFMode()} warrantyLink={warranty}/>
+        <ExplanationSection asPDF={isPDFMode()} warrantyLink={warranty}/>
       </div>
     );
   }

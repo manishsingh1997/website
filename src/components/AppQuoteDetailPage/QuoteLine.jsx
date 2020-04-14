@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import {getLabelFromIndex} from '@ergeon/draw-map';
+import {Button} from '@ergeon/core-components';
+
+import AppConfigPreview from '../common/AppConfigPreview';
 import MapLabel from './MapLabel';
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 import {DRIVEWAY_QUANTITY_UNIT, FENCE_QUANTITY_UNIT} from '../../website/constants';
 import {formatPrice} from '../../utils/app-order';
-import AppConfigPreview from '../common/AppConfigPreview';
+import {isPDFMode, showUpcomingFeatures} from 'utils/utils';
 
 export default class QuoteLine extends React.Component {
   static propTypes = {
@@ -19,8 +23,13 @@ export default class QuoteLine extends React.Component {
     price: PropTypes.number,
     quantity: PropTypes.string,
     quote: PropTypes.object,
+    tags: PropTypes.array,
     type: PropTypes.oneOf([CALC_SIDE_TYPE, CALC_GATE_TYPE, CALC_AREA_TYPE]),
     unit: PropTypes.string,
+  };
+
+  static defaultProps = {
+    tags: [],
   };
 
   getQuoteLineForCalcInputItem(quoteLines, itemName) {
@@ -142,6 +151,38 @@ export default class QuoteLine extends React.Component {
     return null;
   }
 
+  renderTags() {
+    const pdfModeDisabled = !isPDFMode();
+    const {tags} = this.props;
+    let tagsNode;
+
+    if (showUpcomingFeatures() && pdfModeDisabled && tags && tags.length) {
+      tagsNode = (
+        <div className="quote-line-description__tags">
+          <span className="tags__title">Tags:</span>
+          <div>{tags.map((tag, index) => {
+            const {name, url} = tag;
+
+            return (
+              <Button
+                asAnchor
+                className="tags__item"
+                href={url}
+                key={index}
+                size="small"
+                taste="line">
+                {name}
+              </Button>
+            );
+          })}
+          </div>
+        </div>
+      );
+    }
+
+    return tagsNode;
+  }
+
   render() {
     const {id, area, distance, description, label, price, quantity, unit} = this.props;
     return (
@@ -156,6 +197,7 @@ export default class QuoteLine extends React.Component {
           <div>
             {description}
           </div>
+          {this.renderTags()}
         </div>
         <div className="quote-line-price">
           <div className="mobile-length spacing before__is-12 after__is-12">
@@ -170,6 +212,7 @@ export default class QuoteLine extends React.Component {
             {area && <span>Area: {area} {DRIVEWAY_QUANTITY_UNIT}</span>}
           </div>
         </div>
-      </div>);
+      </div>
+    );
   }
 }

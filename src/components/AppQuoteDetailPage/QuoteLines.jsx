@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {getLabelFromIndex} from '@ergeon/draw-map';
+
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 import QuoteLine from './QuoteLine';
 
@@ -28,6 +30,21 @@ export default class QuoteLines extends React.Component {
     return types.some(type => type === quoteType);
   }
 
+  getTagsForQuoteLine(itemName) {
+    const {quote} = this.state;
+    const quoteLines = quote['quote_lines'];
+    const quoteLine = quoteLines.find((quoteLine) =>
+      !!quoteLine.label && quoteLine.label.toString() === itemName.toString()
+    );
+    let tags = [];
+
+    if (quoteLine && quoteLine.config && quoteLine.config.tags) {
+      tags = quoteLine.config.tags;
+    }
+
+    return tags;
+  }
+
   renderCalcInfo(showPrice = true) {
     const {asPDF} = this.props;
     const {quote} = this.state;
@@ -38,17 +55,23 @@ export default class QuoteLines extends React.Component {
       <React.Fragment>
         <div className="page-break">{asPDF && <h4>Project Scope</h4>}
           <div className="quote-details__sides spacing before__is-24">
-            {(sides || []).map(({description, distance, map_id: id, price}, index) => (
-              <QuoteLine
-                description={description}
-                distance={distance}
-                id={id}
-                index={index}
-                key={`side-${id}`}
-                price={showPrice ? price: 0}
-                quote={quote}
-                type={CALC_SIDE_TYPE}/>
-            ))}
+            {(sides || []).map(({description, distance, map_id: id, price}, index) => {
+              const itemName = getLabelFromIndex(index);
+
+              return (
+                <QuoteLine
+                  description={description}
+                  distance={distance}
+                  id={id}
+                  index={index}
+                  key={`side-${id}`}
+                  price={showPrice ? price: 0}
+                  quote={quote}
+                  tags={this.getTagsForQuoteLine(itemName)}
+                  type={CALC_SIDE_TYPE}/>
+              );
+            }
+            )}
           </div>
           <div>
             {(polygons || []).map(({description, area, map_id: id, price}, index) => (
@@ -74,6 +97,7 @@ export default class QuoteLines extends React.Component {
                 name={name}
                 price={showPrice ? price: 0}
                 quote={quote}
+                tags={this.getTagsForQuoteLine(index + 1)}
                 type={CALC_GATE_TYPE}/>
             ))}
           </div>

@@ -112,6 +112,22 @@
     width: 100%;
     word-break: break-word;
     white-space: pre-line;
+
+    &__tags {
+      margin: $v-6 0;
+      display: flex;
+      align-items: center;
+
+      .tags {
+        &__title {
+          white-space: nowrap;
+        }
+        &__item {
+          padding: 0 $h-10;
+          margin: 5px 0 5px 10px;
+        }
+      }
+    }
   }
 
   .quote-line-price {
@@ -337,6 +353,10 @@
     height: 100% !important;
     position: absolute !important;
     right: 0;
+  }
+
+  .quote-line-description__tabs {
+    display: none;
   }
 
   .customer-app-data-row > div:first-child {

@@ -12,7 +12,7 @@ import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 
 import phoneIcon from 'assets/icon-phone.svg';
-import {getParameterByName, isChristmasTime} from 'utils/utils';
+import {isChristmasTime, isPDFMode} from 'utils/utils';
 import {getMenuItems} from 'data/customer-app.js';
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
@@ -151,7 +151,7 @@ export default class Layout extends React.Component {
 
   render() {
     const widthClass = this.checkTemplateWidth()? 'wrapper-980' : 'wrapper-1180';
-    const asPDF = getParameterByName('asPDF');
+    const asPDF = isPDFMode();
     const {location} = this.props;
     return (
       <div className="app-layout">

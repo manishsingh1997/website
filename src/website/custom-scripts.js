@@ -1,21 +1,20 @@
 import {init, track} from 'utils/analytics';
 import {OFFLINE_FORM_SUBMIT, CHAT_STARTED} from 'utils/events';
+import {isPDFMode} from 'utils/utils';
 
 export default function() {
   // <!--Start of Tawk.to Script-->
 
   (function() {
     let s1=document.createElement('script'), s0=document.getElementsByTagName('script')[0];
-    let url = new URL(window.location);
-    let searchParams = url.searchParams;
-    let asPDFParameter = searchParams.get('asPDF') || '';
+    const pdfModeDisabled = !isPDFMode();
 
     s1.async=true;
     s1.src='https://embed.tawk.to/5c4c7f0251410568a1086d00/default';
     s1.charset='UTF-8';
     s1.setAttribute('crossorigin', '*');
 
-    if (asPDFParameter.toLowerCase() !== 'true') {
+    if (pdfModeDisabled) {
       s0.parentNode.insertBefore(s1, s0);
     }
   })();

@@ -84,3 +84,9 @@ export const getAdvancedEditorUrl = (order, zipcode) => {
   query += `&zipcode=${zipcode}`;
   return query;
 };
+
+export const isPDFMode = () => {
+  const asPDF = getParameterByName('asPDF') || '';
+
+  return asPDF.toLocaleLowerCase() === 'true';
+};
