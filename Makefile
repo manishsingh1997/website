@@ -44,8 +44,8 @@ s3upload:
 	$(AWS_CLI) s3 sync dist s3://$(S3_BUCKET)/  # use default cloudfront cache ttl
 	# don't use cache index.html
 	$(AWS_CLI) s3 cp dist/index.html s3://$(S3_BUCKET)/ --cache-control max-age=0
-	$(AWS_CLI) s3 cp dist/utm/index.html s3://$(S3_BUCKET)/utm/ --cache-control max-age=0
+	@if [ "$(LEVEL)" != "production" ]; then $(AWS_CLI) s3 cp dist/utm/index.html s3://$(S3_BUCKET)/utm/ --cache-control max-age=0; fi;
 
 invalidate-cloudfront:
 	@if [ -z "$(DOMAIN)" ]; then >&2 echo DOMAIN must be supplied; exit 1; fi;
-
+	@if [ "$(LEVEL)" = "production" ]; then $(AWS_CLI) cloudfront create-invalidation --distribution-id `$(AWS_CLI) cloudfront list-distributions --query "DistributionList.Items[?contains(Aliases.Items, '$(DOMAIN)')].Id" --output text` --paths /utm/index.html /utm/; fi;

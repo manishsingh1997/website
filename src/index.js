@@ -42,6 +42,11 @@ import config from 'website/config';
 import '@ergeon/core-components/src/components/main.scss';
 import './main.scss';
 
+initUTMs('utm-iframe', config.websiteDomain, [
+  `${config.fencequotingHost}/utm/`,
+  `${config.projectsGalleryHost}/utm/`,
+]);
+
 export const history = createBrowserHistory();
 
 const renderPhotoGalleryRedirect = (productSlug, category) => {
@@ -115,11 +120,6 @@ render(
   document.getElementById('root'),
   customScripts(),
 );
-
-initUTMs('utm-iframe', config.websiteDomain, [
-  `${config.fencequotingHost}/utm/`,
-  `${config.projectsGalleryHost}/utm/`,
-]);
 
 CustomerApp.propTypes = {
   location: PropTypes.object,
