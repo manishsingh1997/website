@@ -89,18 +89,36 @@ export default class AppAppointmentsListPage extends React.Component {
     );
   }
 
-  renderContent() {
-    const {selectedOption} = this.state;
-    const {appointments} = this.props;
-
+  renderAppointments(appointments) {
     return (
       <React.Fragment>
-        {appointments && filterAppointmentsByDate(appointments, selectedOption).map(appointment => (
+        {!this.isAppointmentsEmpty(appointments) ? (appointments.map(appointment => (
           <AppSubCard
             key={`appointment-${appointment.id}`}
             renderContent={this.renderListElementContent.bind(this, appointment)}
             renderHeader={() => `${appointment['type']} for ${appointment['order']['product']['name']}`} />
-        ))}
+        ))) : (
+          <div className="center error">
+            No appointments to show, try changing the filter.
+          </div>
+        )}
+      </React.Fragment>
+    );
+  }
+
+  renderContent() {
+    const {selectedOption} = this.state;
+    const {appointments} = this.props;
+    const filteredAppointments = filterAppointmentsByDate(appointments, selectedOption);
+    return (
+      <React.Fragment>
+        {!this.isAppointmentsEmpty(appointments) ? (
+          this.renderAppointments(filteredAppointments)
+        ) : (
+          <div className="center error">
+            There are no appointments yet.
+          </div>
+        )}
       </React.Fragment>
     );
   }
@@ -116,5 +134,4 @@ export default class AppAppointmentsListPage extends React.Component {
         renderHeader={this.renderHeader.bind(this)} />
     );
   }
-
 }
