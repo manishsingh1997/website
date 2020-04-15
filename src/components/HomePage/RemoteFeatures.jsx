@@ -23,7 +23,7 @@ class RemoteFeatures extends React.Component {
   toHideVideo() {
     this.setState({videoPopupVisible: false});
   }
-  renderCard({title, desc, img, link}) {
+  renderCard({title, desc, img, link, videoLink}) {
     return (
       <div className="remote-features__card">
         <div className="remote-features__card__img">
@@ -32,11 +32,19 @@ class RemoteFeatures extends React.Component {
         <div className="remote-features__card__text-part">
           <h5 className="remote-features__card__title">{title}</h5>
           <p className="remote-features__card__desc">{desc}</p>
-          {link && <Button
+          {videoLink && <Button
+            className="remote-features__card__button"
             flavor="primary"
-            onClick={() => this.toShowVideo(link)}
-            size="small"
-            taste="solid">Watch video</Button>}
+            onClick={() => this.toShowVideo(videoLink)}
+            size="medium"
+            taste="line">Watch video</Button>}
+          {link && <Button
+            asAnchor
+            className="remote-features__card__button"
+            flavor="primary"
+            href={link}
+            size="medium"
+            taste="line">Learn more</Button>}
         </div>
       </div>);
   }
@@ -46,13 +54,14 @@ class RemoteFeatures extends React.Component {
       <div className="remote-features">
         <VideoPopup linkToVideo={currentVideo} onHide={this.toHideVideo.bind(this)} visible={videoPopupVisible}/>
         <div className="wrapper-1180">
-          <h3 className="remote-features__title">Here is how we are keeping you&nbsp;safe</h3>
+          <h3 className="remote-features__title">Our Remote Model</h3>
           <div className="remote-features__cards">
             {this.renderCard({
               title: 'Video Call for Your Onsite Visit',
               // eslint-disable-next-line max-len
               desc: 'Our Team is well equipped to guarantee an accurate quote for your project using satellite imagery and a video call.',
               img: imgRemoteOnsite,
+              videoLink: 'https://www.youtube.com/embed/HJh1auVQfV8',
             })}
             <div className="remote-features__card__sep-wrapper">
               <div className="remote-features__card__sep-wrapper__line"/>
@@ -61,6 +70,7 @@ class RemoteFeatures extends React.Component {
               title: 'Approve Your Quote & Pay Online',
               desc: 'You can review, approve, and pay for your quote all online!',
               img: imgRemoteQuote,
+              link: 'https://blog.ergeon.com/post/how-our-remote-quoting-works',
             })}
             <div className="remote-features__card__sep-wrapper">
               <div className="remote-features__card__sep-wrapper__line"/>
@@ -70,6 +80,7 @@ class RemoteFeatures extends React.Component {
               // eslint-disable-next-line max-len
               desc: 'The Construction Team can install with zero physical contact with you and are equipped with full construction details.',
               img: imgContactless,
+              link: 'https://blog.ergeon.com/post/contactless-fence-installation',
             })}
           </div>
         </div>
