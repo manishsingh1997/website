@@ -199,11 +199,11 @@ export default class BillingForm extends React.Component {
               className="FormControl--short"
               disabled={loading}
               labelName="Exp. Date"
-              mask="99/9999"
+              mask="99/99"
               name="expirationDate"
               onBlur={this.handleBlur.bind(this, 'expirationDate')}
               onChange={event => this.handleFieldChange('expirationDate', event.target.value)}
-              placeholder="MM/YYYY"
+              placeholder="MM/YY"
               value={expirationDate} />
             <img
               className="billing-form__valid-field-check"
