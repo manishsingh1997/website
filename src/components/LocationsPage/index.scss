@@ -75,12 +75,18 @@
     left: 40%;
     bottom: 60px;
     display: block;
-    width: 720px;
-    height: 500px;
+    width: 708px;
+    height: 770px;
     float: none;
-    background-image: url('../../assets/img-locations.png');
-    background-position: 0px 0px;
+    background-image: url('https://ergeon-converters.s3-us-west-2.amazonaws.com/production/locations/map.png');
+    background-repeat: no-repeat;
     background-size: cover;
+    background-position: -354px 0px;
+    border-radius: 12px;
+    border: 1px solid #e4e9e2;
+    background-color: #fff;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+
   }
 
   .nice_view_map {
@@ -127,8 +133,9 @@
     .nice_view_map {
       display: block;
       height: 400px;
-      background-image: url('../../assets/img-locations.png');
+      background-image: url('https://ergeon-converters.s3-us-west-2.amazonaws.com/production/locations/map.png');
       background-repeat: no-repeat;
+      background-position: -200px 0px;
       background-size: cover;
     }
 
