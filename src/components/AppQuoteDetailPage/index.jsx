@@ -84,9 +84,10 @@ export default class AppQuoteDetailPage extends React.Component {
         paymentMethodError: null,
       });
     } catch (apiError) {
+      const parsedAPIErrorData = parseAPIError(apiError);
       this.setState({
         quote: null,
-        quoteError: parseAPIError(apiError).data['detail'],
+        quoteError: parsedAPIErrorData.data && parsedAPIErrorData.data.detail,
       });
     } finally {
       this.setState({isLoading: false});
