@@ -78,8 +78,8 @@
     width: 720px;
     height: 500px;
     float: none;
-    background-image: url('../../assets/img-locations.png');
-    background-position: 0px 0px;
+    background-image: url('https://ergeon-converters.s3-us-west-2.amazonaws.com/production/locations/map.png');
+    background-repeat: no-repeat;
     background-size: cover;
   }
 
@@ -127,7 +127,7 @@
     .nice_view_map {
       display: block;
       height: 400px;
-      background-image: url('../../assets/img-locations.png');
+      background-image: url('https://ergeon-converters.s3-us-west-2.amazonaws.com/production/locations/map.png');
       background-repeat: no-repeat;
       background-size: cover;
     }
