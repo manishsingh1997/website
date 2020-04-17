@@ -27,6 +27,7 @@
   .quote-labels-map {
     position: relative;
     width: 100%;
+    min-height: 300px;
 
     &__content {
       opacity: 0;
@@ -40,6 +41,8 @@
     }
 
     .Map {
+      height: 100%;
+      position: absolute;
 
       .MapContent {
         &,
