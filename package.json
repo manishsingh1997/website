@@ -56,7 +56,7 @@
     "@ergeon/core-components": "1.26.5",
     "@ergeon/draw-map": "2.6.0",
     "@ergeon/erg-customer-auth": "0.3.0",
-    "@ergeon/erg-utms": "2.0.0",
+    "@ergeon/erg-utms": "2.0.1",
     "@ergeon/map-component": "^1.5.6",
     "@sentry/browser": "^5.9.0",
     "axios": "^0.19.0",
