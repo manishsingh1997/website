@@ -34,7 +34,7 @@ class HomePage extends React.Component {
           <GetStartedSection/>
           <QASection/>
           <PromoBlock
-            btnLink="https://app.ergeon.com/projects-gallery/#/map"
+            btnLink="https://app.ergeon.com/projects-gallery/map"
             btnName="Open Map"
             img={imgMap}
             subtitle="Find fence projects near your house"
