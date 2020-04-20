@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {isChristmasTime} from 'utils/utils';
+import {isChristmasTime, scrollTop} from 'utils/utils';
 
 import christmasSparkles from '../../assets/christmas-pics/sparkles.png';
 import './Success.scss';
@@ -10,12 +10,23 @@ class Success extends React.Component {
 
   static propTypes = {
     header: PropTypes.string,
+    scrollOnMount: PropTypes.bool,
     text: PropTypes.string,
+  };
+
+  static defaultProps = {
+    scrollOnMount: true,
   };
 
   constructor(props) {
     super(props);
     this.isChristmasTime = isChristmasTime();
+  }
+
+  componentDidMount() {
+    if (this.props.scrollOnMount) {
+      scrollTop();
+    }
   }
 
   render() {
