@@ -1,5 +1,6 @@
 import React from 'react';
 import {find} from 'lodash';
+import Script from 'react-load-script';
 import MetaDescription from '../common/MetaDescription';
 
 import config from 'website/config';
@@ -29,6 +30,7 @@ class WarrantiesPage extends React.Component {
     super(props);
     this.state = {
       warranties: [],
+      pdfJSLoaded: false,
     };
 
     this.getWarranties()
@@ -99,7 +101,7 @@ class WarrantiesPage extends React.Component {
   }
 
   render() {
-    const {warranties} = this.state;
+    const {warranties, pdfJSLoaded} = this.state;
 
     return (
       <div className="warraties-page">
@@ -143,9 +145,16 @@ class WarrantiesPage extends React.Component {
             </a>
           </div>
           <h3 className="spacing after__is-30">Warranty</h3>
-          <div className="warranties cards three-columns">
-            {warranties.map(this.renderWarranty.bind(this))}
-          </div>
+          <Script
+            onLoad={() => this.setState({pdfJSLoaded: true})}
+            url="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.943/build/pdf.min.js" />
+          {
+            pdfJSLoaded && (
+              <div className="warranties cards three-columns">
+                {warranties.map(this.renderWarranty.bind(this))}
+              </div>
+            )
+          }
         </div>
       </div>
     );
