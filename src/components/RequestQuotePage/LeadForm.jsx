@@ -192,7 +192,7 @@ export default class LeadForm extends React.Component {
       return {
         advancedEditorUrl: getAdvancedEditorUrl(
           {schema, code, 'catalog_type': item.catalog_type},
-          lead.address.zipcode
+          lead.address && lead.address.zipcode
         ),
         'catalog_type': item.catalog_type,
         'catalog_id': item.catalog_type === CATALOG_TYPE_FENCE ? CATALOG_ID_FENCE : CATALOG_ID_GATE,

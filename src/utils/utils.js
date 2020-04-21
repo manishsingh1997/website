@@ -81,7 +81,9 @@ export const getAdvancedEditorUrl = (order, zipcode) => {
   });
   query = query.slice(0, -1);
   query += '&options=true&mode=3d';
-  query += `&zipcode=${zipcode}`;
+  if (zipcode) {
+    query += `&zipcode=${zipcode}`;
+  }
   return query;
 };
 
