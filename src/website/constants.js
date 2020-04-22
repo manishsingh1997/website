@@ -1,5 +1,3 @@
-export const UUID_COOKIE_NAME = 'fences-uuid';
-
 export const DEFAULT_SOURCE_VALUE = 'website';
 
 // LS CONSTANTS

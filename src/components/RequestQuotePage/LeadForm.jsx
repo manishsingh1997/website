@@ -17,7 +17,6 @@ import {
   email,
   required,
 } from 'utils/validation';
-import ls from 'local-storage';
 import {
   submitLeadArrived,
 } from 'api/lead';
@@ -30,7 +29,6 @@ import {
   track,
   trackError,
   trackTawkLeadEvent,
-  LS_KEY,
 } from 'utils/analytics';
 import {
   CUSTOMER_LEAD_CREATED,
@@ -150,7 +148,6 @@ export default class LeadForm extends React.Component {
 
       this.setState(getInitialState(false, this.props));
       onSubmit && onSubmit();
-      ls.remove(LS_KEY);
     }
   }
 

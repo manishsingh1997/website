@@ -14,14 +14,12 @@ import {
   maxLengthFactory,
   required,
 } from 'utils/validation';
-import ls from 'local-storage';
 import {submitContactUs} from 'api/contactUs';
 import {parseError} from 'utils/utils';
 import {
   identify,
   track,
   trackError,
-  LS_KEY,
 } from 'utils/analytics';
 
 import {DEFAULT_SOURCE_VALUE} from 'website/constants';
@@ -93,7 +91,6 @@ export default class ContactUsForm extends React.Component {
         });
         this.setState(getInitialState());
         onSubmit && onSubmit();
-        ls.remove(LS_KEY);
         return res;
       }, (error) => {
         trackError(new Error(`Contact us message submit error: ${parseError(error)}`, eventData));

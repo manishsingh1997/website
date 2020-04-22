@@ -1,47 +1,12 @@
 import slugify from 'slugify';
-import cookies from 'js-cookie';
-import ls from 'local-storage';
 import * as Sentry from '@sentry/browser';
-import UAParser from 'ua-parser-js';
-import isPlainObject from 'is-plain-object';
-import cleanDeep from 'clean-deep';
 
-import {getBaseEventData} from '@ergeon/erg-utms';
-import {DEFAULT_SOURCE_VALUE, UUID_COOKIE_NAME} from 'website/constants';
+import {getBaseEventData, getVisitorId, getCurrentData} from '@ergeon/erg-utms';
+import {DEFAULT_SOURCE_VALUE} from 'website/constants';
 import config from 'website/config';
-import {
-  getParameterByName,
-  isObject,
-} from 'utils/utils';
+import {isObject} from 'utils/utils';
 import {submitAddressEntered} from 'api/lead';
 import {CUSTOMER_LEAD_CREATED, ADDRESS_ENTERED} from 'utils/events';
-
-const MILLISECONDS_IN_MONTH = 2592000000;
-export const LS_KEY = 'ergeon-utms';
-
-export const guid = () => {
-  const s4 = function() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  };
-
-  return `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
-};
-
-export const getUserUuid = () => {
-  let uuid;
-
-  try {
-    uuid = cookies.get(UUID_COOKIE_NAME) || guid();
-    cookies.set(UUID_COOKIE_NAME, uuid, {expires: 365});
-  } catch (e) {
-    trackError(e);
-    uuid = guid();
-  }
-
-  return uuid;
-};
 
 export const track = (eventName, data) => {
   // BEGIN: Google Tag manager
@@ -50,18 +15,20 @@ export const track = (eventName, data) => {
   if (!dataLayer) {
     trackError('No GTM');
   }
-  try {
-    dataLayer.push({
-      event: eventName,
-      data: {
-        ...data,
-        uuid: getUserUuid(),
-        anonymousId: getUserUuid(),
-      },
+  getVisitorId()
+    .then(visitorId => {
+      dataLayer.push({
+        event: eventName,
+        data: {
+          ...data,
+          uuid: visitorId,
+          anonymousId: visitorId,
+        },
+      });
+    })
+    .catch(e => {
+      trackError(e);
     });
-  } catch (e) {
-    trackError(e);
-  }
   // END: Google Tag manager
 
   if (config.level !== config.PRODUCTION) {
@@ -72,21 +39,9 @@ export const track = (eventName, data) => {
   }
 };
 
-const campaignParams = (params) => {
-  const keywords = 'utm_location utm_source utm_medium utm_campaign' +
-    ' utm_content utm_term utm_adset utm_ad referred rc source ref';
-  const campaignKeywords = keywords.split(' ');
-  let kw = '';
-  let index;
-
-  for (index = 0; index < campaignKeywords.length; ++index) {
-    kw = getParameterByName(campaignKeywords[index]);
-    if (kw && kw.length) {
-      params[campaignKeywords[index]] = kw;
-    }
-  }
-  params['document_referrer'] = document.referrer || 'No referrer';
-  return params;
+const addCampaignParams = (params) => {
+  const currentData = getCurrentData();
+  return {...params, ...currentData['utm'], ...currentData['document']};
 };
 
 export const identify = (_gidOrTraits, _traits) => {
@@ -107,37 +62,41 @@ export const identify = (_gidOrTraits, _traits) => {
     traits = _traits;
   }
 
-  traits = campaignParams(traits || {});
+  traits = addCampaignParams(traits || {});
 
   if (document.referrer) {
     traits.referrer = document.referrer;
   }
 
-  try {
-    if (gid) {
-      mixpanel.alias(gid);
-      mixpanel.identify(gid, traits, {
-        anonymousId: getUserUuid(),
-      });
-    } else {
-      mixpanel.identify(traits, {
-        anonymousId: getUserUuid(),
-      });
-    }
-  } catch (e) {
-    trackError(e);
-  }
-
-  try {
-    Sentry.configureScope(scope => {
-      scope.setUser({
-        ...traits,
-        uuid: getUserUuid(),
-      });
+  getVisitorId()
+    .then(visitorId => {
+      if (gid) {
+        mixpanel.alias(gid);
+        mixpanel.identify(gid, traits, {
+          anonymousId: visitorId,
+        });
+      } else {
+        mixpanel.identify(traits, {
+          anonymousId: visitorId,
+        });
+      }
+    })
+    .catch(e => {
+      trackError(e);
     });
-  } catch (e) {
-    trackError(e);
-  }
+
+  getVisitorId()
+    .then(visitorId => {
+      Sentry.configureScope(scope => {
+        scope.setUser({
+          ...traits,
+          uuid: visitorId,
+        });
+      });
+    })
+    .catch(e => {
+      trackError(e);
+    });
 };
 
 export const trackError = (error, data) => {
@@ -155,74 +114,23 @@ export const page = () => {
     trackError('No Mixpanel');
   }
 
-  try {
-    mixpanel.track('Loaded a Page', {
-      uuid: getUserUuid(),
-      path: window.location.pathname,
-      title: document.title,
+  getVisitorId()
+    .then(visitorId => {
+      mixpanel.track('Loaded a Page', {
+        uuid: visitorId,
+        path: window.location.pathname,
+        title: document.title,
+      });
+    })
+    .catch(e => {
+      trackError(e);
     });
-  } catch (e) {
-    trackError(e);
-  }
 
   if (config.level !== config.PRODUCTION) {
     console.log(`%cPage %c ${window.location.pathname}`,
       'color: #FF8118; font-size:24px;',
       'color: #00B9F3; font-size:24px;');
   }
-};
-
-export const cacheUTM = () => {
-  let current = {};
-  const saved = getUTM();
-
-  campaignParams(current);
-  const savedPrint = saved.utm_source + saved.utm_medium + saved.utm_campaign + saved.utm_content;
-
-  // if new utm params came, keep the first
-  if (savedPrint) {
-    current = saved;
-  } else {
-    current = {
-      ...current,
-      savedAt: Date.now(),
-    };
-  }
-
-  const initialReferrer = document.referrer || 'No referrer';
-  current['initial_referrer'] = saved.initial_referrer === undefined ? initialReferrer : saved.initial_referrer;
-  current['initial_landing_page'] = saved.initial_landing_page === undefined ?
-    window.location.href :
-    saved.initial_landing_page;
-
-  const referrerSourcesKeywords = [{keyword: 'advisor', label: 'Lead - Home Advisor'},
-    {keyword: 'yelp', label: 'Lead - Yelp'},
-    {keyword: 'google', label: 'Lead - Google'},
-    {keyword: 'facebook', label: 'Lead - Facebook Page'}];
-  let index;
-  for (index = 0; index < referrerSourcesKeywords.length; ++index) {
-    if (initialReferrer.includes(referrerSourcesKeywords[index].keyword)) {
-      current['utm_source'] = referrerSourcesKeywords[index].label;
-    }
-  }
-  try {
-    ls.set(LS_KEY, current);
-  } catch (e) {}
-  return current;
-};
-
-export const getUTM = () => {
-  let current;
-  try {
-    current = ls.get(LS_KEY) || {};
-    if (current && current.savedAt &&
-      Date.now() - current.savedAt > MILLISECONDS_IN_MONTH || !current) {
-      current = {};
-    }
-  } catch (e) {
-    current = {};
-  }
-  return current;
 };
 
 export const init = () => {
@@ -236,26 +144,10 @@ export const init = () => {
       scope.setTag('service_name', 'website');
     });
   }
-  cacheUTM();
-  identify(getUserUuid());
-  page();
-};
-
-export const getUserAgent = () => {
-  const ua = UAParser(window.navigator.userAgent);
-  const res = {};
-  for (const key in ua) {
-    if (isPlainObject(ua[key])) {
-      for (const deepKey in ua[key]) {
-        if (ua[key][deepKey]) {
-          res[`${key}_${deepKey}`] = ua[key][deepKey];
-        }
-      }
-    } else if (ua[key]) {
-      res[key] = ua[key];
-    }
-  }
-  return cleanDeep(res);
+  getVisitorId().then(visitorId => {
+    identify(visitorId);
+    page();
+  });
 };
 
 export const trackAddressEntered = (lead) => {
@@ -286,10 +178,8 @@ export const trackAddressEntered = (lead) => {
   getBaseEventData().then((baseEventData) => {
     const eventData = {...baseEventData, ...enteredAddressData};
 
-    // TODO: use eventData for google analytics and remove `getUTM()` completely
-    const {...utms} = getUTM();
     track(ADDRESS_ENTERED, {
-      ...utms,
+      ...eventData['object']['initial_params'],
       address,
       source: DEFAULT_SOURCE_VALUE,
     });

@@ -1,3 +1,5 @@
+import {getSessionData} from '@ergeon/erg-utms';
+
 import {init, track} from 'utils/analytics';
 import {OFFLINE_FORM_SUBMIT, CHAT_STARTED} from 'utils/events';
 import {isPDFMode} from 'utils/utils';
@@ -19,20 +21,14 @@ export default function() {
     }
   })();
 
-  let ergeonUtms = null;
-  let initialReferrer = null;
-  try {
-    ergeonUtms = JSON.parse(localStorage.getItem('ergeon-utms'));
-    initialReferrer = ergeonUtms['initial_referrer'] || 'No referrer';
-  } catch (error) {
-    initialReferrer = 'No referrer';
-  }
-
   // Attach Tawk events
   const TawkAPI = window['Tawk_API'] = window['Tawk_API'] || {};
 
   TawkAPI.onLoad = function() {
-    TawkAPI.addTags([`Initial referrer: ${initialReferrer}`], () => null);
+    getSessionData().then(sessionData => {
+      const initialReferrer = sessionData['document']['referrer'];
+      TawkAPI.addTags([`Initial referrer: ${initialReferrer}`], () => null);
+    });
   };
   TawkAPI.onOfflineSubmit = function(data) {
     track(OFFLINE_FORM_SUBMIT, data);
@@ -42,31 +38,6 @@ export default function() {
   };
 
   // <!--End of Tawk.to Script-->
-  // <!-- Start Adding utms to external links -->
-  let FENCEQUOTING = 'fencequoting';
-  let PROJECTS_GALLERY = 'projects-gallery';
-  document.addEventListener('DOMContentLoaded', function() {
-    if (ergeonUtms) {
-      let query = '?';
-      let utmKeys = Object.keys(ergeonUtms);
-      utmKeys.forEach(function(utm) {
-        if (utm !== 'savedAt') query += `erg_${utm}=${ergeonUtms[utm]}&`;
-      });
-      if (query.length > 1) {
-        query = query.slice(0, -1);
-        Array.prototype.forEach.call(document.getElementsByTagName('a'), function(anchor) {
-          if (anchor.href.includes(FENCEQUOTING) || anchor.href.includes(PROJECTS_GALLERY)) {
-            let changeLocation = (e) => {
-              e.preventDefault();
-              window.location.href = anchor.href+=query;
-            };
-            anchor.addEventListener('click', changeLocation);
-          }
-        });
-      }
-    }
-  }, false);
-  // <!-- End Adding utms to external links -->
 
   // init link analytics tracking
   init();
