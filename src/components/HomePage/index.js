@@ -2,8 +2,8 @@ import React from 'react';
 
 import {BadgesSection} from '@ergeon/core-components';
 
+import config from 'website/config';
 import SliderHero from './SliderHero';
-
 import ReviewHero from './ReviewHero';
 import ProjectsSection from './ProjectsSection';
 import PromoBlock from './PromoBlock';
@@ -26,7 +26,7 @@ class HomePage extends React.Component {
         <div className="wrapper-1180">
           <ProjectsSection/>
           <PromoBlock
-            btnLink="https://fencequoting.com/"
+            btnLink={config.fencequotingHost}
             btnName="Fence Calculator"
             img={imgCalc}
             subtitle="Build your dream fence and get an estimate instantly"
