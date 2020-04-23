@@ -19,3 +19,5 @@ export const CALC_SIDE_TYPE = 'Side';
 export const QUOTE_STATUS_APPROVED = 'APP';
 export const QUOTE_STATUS_SENT = 'SNT';
 export const QUOTE_STATUS_CANCELLED = 'CAN';
+
+export const HTTP_STATUS_NOT_FOUND = 404;

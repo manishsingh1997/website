@@ -34,6 +34,8 @@ import './index.scss';
 import ProjectNotes from './ProjectNotes';
 import MaterialsAndDesign from './MaterialsAndDesign';
 import QuoteDetails from './QuoteDetails';
+import {HTTP_STATUS_NOT_FOUND} from '../../website/constants';
+import NotFoundPage from '../NotFoundPage';
 
 export default class AppQuoteDetailPage extends React.Component {
 
@@ -84,10 +86,9 @@ export default class AppQuoteDetailPage extends React.Component {
         paymentMethodError: null,
       });
     } catch (apiError) {
-      const parsedAPIErrorData = parseAPIError(apiError);
       this.setState({
         quote: null,
-        quoteError: parsedAPIErrorData.data && parsedAPIErrorData.data.detail,
+        quoteError: parseAPIError(apiError),
       });
     } finally {
       this.setState({isLoading: false});
@@ -181,14 +182,22 @@ export default class AppQuoteDetailPage extends React.Component {
   }
 
   renderQuoteError() {
-    const {quoteError} = this.state;
+    const {statusCode, data} = this.state.quoteError;
+    if (statusCode === HTTP_STATUS_NOT_FOUND) {
+      return <NotFoundPage/>;
+    }
+
+    let error = '';
+    if (data && data.detail) {
+      error = {detail: error};
+    }
 
     return (
       <Notification
         mode="embed"
         type="Error">
         There was an error trying to retrieve quote.<br />
-        {quoteError}
+        {error}
       </Notification>
     );
   }
