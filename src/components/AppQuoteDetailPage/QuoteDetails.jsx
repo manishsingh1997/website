@@ -83,7 +83,11 @@ export default class QuoteDetails extends React.Component {
     };
     return (
       <div className="quote-details card padding-40 soft-border spacing after__is-48">
-        {!asPDF && isQuoteCancelled(quote) && this.renderQuoteCancelledMessage(quote)}
+        {!asPDF && isQuoteCancelled(quote) && (
+          <div className="quote-details__notification">
+            {this.renderQuoteCancelledMessage(quote)}
+          </div>
+        )}
         <div className="quote-details__description flex-wrapper spacing after__is-24">
           <QuoteDescription asPDF={asPDF} auth={auth} customerGID={customerGID} quote={quote}/>
           <div className="quote-labels-map">

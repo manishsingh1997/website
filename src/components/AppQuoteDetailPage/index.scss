@@ -22,6 +22,17 @@
       padding: $h-20;
       margin: 0 auto;
     }
+
+    &__notification {
+      margin-bottom: $h-20;
+
+      @include tablet() {
+        margin-bottom: $h-10;
+      }
+      @include phone() {
+        margin-bottom: $h-10;
+      }
+    }
   }
 
   .quote-labels-map {
