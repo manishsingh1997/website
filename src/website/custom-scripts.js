@@ -1,6 +1,6 @@
 import {getSessionData} from '@ergeon/erg-utms';
 
-import {init, track} from 'utils/analytics';
+import {init, track, trackTawkEvent} from 'utils/analytics';
 import {OFFLINE_FORM_SUBMIT, CHAT_STARTED} from 'utils/events';
 import {isPDFMode} from 'utils/utils';
 
@@ -28,6 +28,10 @@ export default function() {
     getSessionData().then(sessionData => {
       const initialReferrer = sessionData['document']['referrer'];
       TawkAPI.addTags([`Initial referrer: ${initialReferrer}`], () => null);
+      trackTawkEvent('UTM Data', {
+        source: sessionData['utm']['utm_source'],
+        'initial-referrer': initialReferrer,
+      });
     });
   };
   TawkAPI.onOfflineSubmit = function(data) {
