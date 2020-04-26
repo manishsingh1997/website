@@ -15,12 +15,12 @@ const DEFAULT_PRODUCTS = [
   {
     name: 'Driveway Installation',
     slug: 'driveway-installation',
-    ['warranty_url']: 'https://s3-us-west-2.amazonaws.com/ergeon.com/warranty/concrete_warranty_2019.pdf',
+    ['warranty_url']: 'https://s3-us-west-2.amazonaws.com:443/api-ergeon-in/products/driveway-installation/warranties/concrete%20and%20paver%20warranty%202019%20format.pdf',
   },
   {
     name: 'Fence Installation',
     slug: 'fence-replacement',
-    ['warranty_url']: 'https://s3-us-west-2.amazonaws.com/ergeon.com/warranty/fence_warranty_2019.pdf',
+    ['warranty_url']: 'https://s3-us-west-2.amazonaws.com:443/api-ergeon-in/products/fence-replacement/warranties/fence_warranty_2020.pdf',
   },
 ];
 
