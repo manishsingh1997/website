@@ -48,11 +48,10 @@ export default class AppConfigPreview extends React.Component {
       this.setState({previewImage: previewPlaceholderIcon});
       return;
     }
-    const data = calcUtils.getValueFromUrl(`/?${schemaCodeUrl}`);
     this.setState({isLoading: true});
     try {
       const preview = await calcUtils.getPreviewImage(
-        data,
+        schemaCodeUrl,
         DEFAULT_PREVIEW_WIDTH,
         DEFAULT_PREVIEW_HEIGTH,
         USE_CACHE,
