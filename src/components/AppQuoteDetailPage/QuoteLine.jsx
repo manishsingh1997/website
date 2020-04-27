@@ -9,7 +9,7 @@ import MapLabel from './MapLabel';
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 import {DRIVEWAY_QUANTITY_UNIT, FENCE_QUANTITY_UNIT} from '../../website/constants';
 import {formatPrice} from '../../utils/app-order';
-import {isPDFMode, showUpcomingFeatures} from 'utils/utils';
+import {isPDFMode} from 'utils/utils';
 
 export default class QuoteLine extends React.Component {
   static propTypes = {
@@ -156,7 +156,7 @@ export default class QuoteLine extends React.Component {
     const {tags} = this.props;
     let tagsNode;
 
-    if (showUpcomingFeatures() && pdfModeDisabled && tags && tags.length) {
+    if (pdfModeDisabled && tags && tags.length) {
       tagsNode = (
         <div className="quote-line-description__tags">
           <span className="tags__title">Tags:</span>
