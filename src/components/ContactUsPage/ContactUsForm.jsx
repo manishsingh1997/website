@@ -121,7 +121,7 @@ export default class ContactUsForm extends React.Component {
   };
 
   render() {
-    const {data: {email, name, message}, errors, loading} = this.state;
+    const {data: {email, name, comment}, errors, loading} = this.state;
 
     return (
       <form className="ContactUsForm" onSubmit={this.handleSubmit}>
@@ -156,7 +156,7 @@ export default class ContactUsForm extends React.Component {
             onChange={this.handleFieldChange}
             placeholder="Add your message here"
             type="text"
-            value={message} />
+            value={comment} />
           {errors && <div className="Form-error">{errors.comment}</div>}
         </div>
         <div className="Form-actions">

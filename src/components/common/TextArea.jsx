@@ -25,8 +25,15 @@ export default class TextArea extends React.Component {
   };
 
   render() {
+    const classes = {
+      'float-area-container': true,
+      'is-hasValue': this.props.value,
+    };
+
     return (
-      <div className={classNames('float-area-container', {'is-hasValue': this.props.value})}>
+      <label
+        className={classNames(classes)}
+        htmlFor={this.props.name}>
         <textarea
           cols="50"
           id={this.props.name}
@@ -35,8 +42,8 @@ export default class TextArea extends React.Component {
           rows="2"
           type="text"
           value={this.state.value} />
-        <label htmlFor={this.props.name}>{this.props.labelName}</label>
-      </div>
+        <div className="float-area-container__label">{this.props.labelName}</div>
+      </label>
     );
   }
 }
