@@ -98,6 +98,10 @@
         animation: animate-success-long 0.75s;
       }
     }
+
+    @include phone() {
+      margin-bottom: 24px;
+    }
   }
 
   .christmas-sparkles {
