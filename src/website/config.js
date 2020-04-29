@@ -21,7 +21,7 @@ const ERGEON_STAGING = ['dev.ergeon.com'];
 const ERGEON_DEVELOPMENT = ['ergeon.local:6600'];
 
 let env, apiHost, fencequotingHost, projectsGalleryHost, websiteDomain, addressEnteredApi, leadArrivedApi;
-let sentryDSN, googleMapsApiKey, stripePublicKey;
+let sentryConsoleLevels, sentryDSN, googleMapsApiKey, stripePublicKey;
 
 const host = document.location.host;
 if (includes(EREGON_PRODUCTION, host)) {
@@ -32,6 +32,7 @@ if (includes(EREGON_PRODUCTION, host)) {
   leadArrivedApi = 'https://tchin24eg6.execute-api.us-west-2.amazonaws.com/production/website-lead-arrived';
   addressEnteredApi = 'https://90oksb1qq9.execute-api.us-west-2.amazonaws.com/production/landing-address-submitted';
   sentryDSN = 'https://f0fe1cc5aa2e4422bec8bbd637bba091@sentry.io/1794736';
+  sentryConsoleLevels = ['error', 'assert'];
   stripePublicKey = 'pk_live_AZq0V7dLw1c3iBlADB9vdyBS';
   googleMapsApiKey = 'AIzaSyClO1qoZxVjVWmdNlNbl4W_XlAluWIb4mQ';
   env = PRODUCTION;
@@ -42,6 +43,7 @@ if (includes(EREGON_PRODUCTION, host)) {
   projectsGalleryHost = 'https://appdev.ergeon.com/projects-gallery';
   leadArrivedApi = 'https://8ijvlqff7l.execute-api.us-west-2.amazonaws.com/staging/website-lead-arrived';
   sentryDSN = 'https://f0fe1cc5aa2e4422bec8bbd637bba091@sentry.io/1794736';
+  sentryConsoleLevels = ['warn', 'error', 'assert'];
   addressEnteredApi = 'https://wvt5gxjul1.execute-api.us-west-2.amazonaws.com/staging/landing-address-submitted';
   googleMapsApiKey = 'AIzaSyCJfEriZ61E_-iggE4PfQd5rs0IRSao2oI';
   stripePublicKey = 'pk_test_dV8nuwF8ciDuX1y0kOCkmzrN';
@@ -73,6 +75,7 @@ export default {
   leadArrivedApi,
   addressEnteredApi,
   sentryDSN,
+  sentryConsoleLevels,
   stripePublicKey,
   googleMapsApiKey,
   ...configuration,

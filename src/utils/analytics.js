@@ -1,5 +1,6 @@
 import slugify from 'slugify';
 import * as Sentry from '@sentry/browser';
+import {CaptureConsole as CaptureConsoleIntegration} from '@sentry/integrations';
 
 import {getBaseEventData, getVisitorId, getCurrentData} from '@ergeon/erg-utms';
 import {DEFAULT_SOURCE_VALUE} from 'website/constants';
@@ -139,6 +140,7 @@ export const init = () => {
     Sentry.init({
       'dsn': config.sentryDSN,
       'environment': config.env,
+      'integrations': [new CaptureConsoleIntegration({levels: config.sentryConsoleLevels})],
     });
 
     Sentry.configureScope((scope) => {
