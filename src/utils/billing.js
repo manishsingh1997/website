@@ -71,3 +71,58 @@ export const getStripeToken = (data) => {
     });
   });
 };
+
+export const VISA = 'Visa';
+export const MASTERCARD = 'Mastercard';
+export const AMEX = 'AMEX';
+export const DISCOVER = 'Discover';
+export const DINERS = 'Diners';
+export const JCB = 'JCB';
+export const VISA_ELECTRON = 'Visa Electron';
+
+export const getCardType = (number) => {
+  // Visa
+  let re = new RegExp('^4[0-9]{12}(?:[0-9]{3})?$');
+  let type = '';
+  if (number.match(re) != null) {
+    type = VISA;
+  }
+
+  // Mastercard
+  re = new RegExp('^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$');
+  if (number.match(re) != null) {
+    type = MASTERCARD;
+  }
+
+  // AMEX
+  re = new RegExp('^3[47][0-9]{13}$');
+  if (number.indexOf('34') === 0 || number.indexOf('37') === 0 || number.match(re) != null) {
+    type = AMEX;
+  }
+
+  // Discover
+  re = new RegExp('^6(?:011|5[0-9]{2})[0-9]{12}$');
+  if (number.match(re) != null) {
+    type = DISCOVER;
+  }
+
+  // Diners
+  re = new RegExp('^3(?:0[0-5]|[68][0-9])[0-9]{11}$');
+  if (number.match(re) != null) {
+    type = DINERS;
+  }
+
+  // JCB
+  re = new RegExp('^(?:2131|1800|35\\d{3})\\d{11}$');
+  if (number.match(re) != null) {
+    type = JCB;
+  }
+
+  // Visa Electron
+  re = new RegExp('^(4026|417500|4508|4844|491(3|7))');
+  if (number.match(re) != null) {
+    type = VISA_ELECTRON;
+  }
+
+  return type;
+};

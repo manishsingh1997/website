@@ -5,6 +5,9 @@ import {some} from 'lodash';
 import {Button, Spinner, Notification} from '@ergeon/core-components';
 
 import {
+  AMEX,
+  DINERS,
+  getCardType,
   cardNumberValidation,
   cardExpDateValidation,
   cardCvcValidation,
@@ -130,6 +133,22 @@ export default class BillingForm extends React.Component {
     this.setState({editMode: !editMode});
   }
 
+  getCardMask(card) {
+    const cardType = getCardType(card.replace(/[_\s]/gi, ''));
+    let mask;
+    switch (cardType) {
+      case AMEX:
+        mask = '9999 999999 99999';
+        break;
+      case DINERS:
+        mask = '9999 9999 9999 99';
+        break;
+      default:
+        mask = '9999 9999 9999 9999';
+    }
+    return mask;
+  }
+
   renderError() {
     const {error: propsError} = this.props;
     const {errorMessage: stateError} = this.state;
@@ -182,7 +201,7 @@ export default class BillingForm extends React.Component {
             <MaskedTextInput
               disabled={loading}
               labelName="Card Number"
-              mask="9999 9999 9999 9999"
+              mask={this.getCardMask(card)}
               name="card"
               onBlur={this.handleBlur.bind(this, 'card')}
               onChange={event => this.handleFieldChange('card', event.target.value)}
