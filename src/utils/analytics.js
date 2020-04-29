@@ -7,6 +7,7 @@ import config from 'website/config';
 import {isObject} from 'utils/utils';
 import {submitAddressEntered} from 'api/lead';
 import {CUSTOMER_LEAD_CREATED, ADDRESS_ENTERED} from 'utils/events';
+import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 
 export const track = (eventName, data) => {
   // BEGIN: Google Tag manager
@@ -207,13 +208,21 @@ export const trackTawkLeadEvent = (submitData) => {
     name: submitData.name,
   });
 
-  trackTawkEvent(CUSTOMER_LEAD_CREATED, {
+  let data = {
     address: submitData.address['formatted_address'],
     email: submitData.email,
     name: submitData.name,
-    ...submitData.object.order.reduce((res, config, index) => {
-      res[`config-${index}`] = config.description;
-      return res;
-    }, {}),
-  });
+  };
+
+  if (submitData.product === FENCE_SLUG) {
+    data = {
+      ...data,
+      ...submitData.object.order.reduce((res, config, index) => {
+        res[`config-${index}`] = config.description;
+        return res;
+      }, {}),
+    };
+  }
+
+  trackTawkEvent(CUSTOMER_LEAD_CREATED, data);
 };
