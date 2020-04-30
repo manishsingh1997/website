@@ -1,30 +1,15 @@
-import {includes} from 'lodash';
-const configs = {
-  common: {
-    FENCE_REPLACEMENT: 'fence-replacement',
-    FENCE_REPLACEMENT_NAME: 'Fence Installation',
-    HELP_ROOT_NODE: '201900001',
-    CONTACT_EMAIL: 'contact@ergeon.com',
-    CARD_TRANSACTION_FEE: '2%',
-  },
-  'development': {},
-  'staging': {},
-  'production': {},
-};
+/*
+This file should not have any import.
+ */
 
 export const PRODUCTION = 'production';
 export const STAGING = 'staging';
 export const DEVELOPMENT = 'development';
 
-const EREGON_PRODUCTION = ['www.ergeon.com', 'ergeon.com', 'prod.ergeon.com'];
-const ERGEON_STAGING = ['dev.ergeon.com'];
-const ERGEON_DEVELOPMENT = ['ergeon.local:6600'];
-
 let env, apiHost, fencequotingHost, projectsGalleryHost, websiteDomain, addressEnteredApi, leadArrivedApi;
 let googleMapsApiKey, stripePublicKey;
 
-const host = document.location.host;
-if (includes(EREGON_PRODUCTION, host)) {
+if (process.env.NODE_ENV === PRODUCTION) {
   websiteDomain = 'ergeon.com';
   apiHost = 'https://api.ergeon.in';
   fencequotingHost = 'https://fencequoting.com';
@@ -34,7 +19,7 @@ if (includes(EREGON_PRODUCTION, host)) {
   stripePublicKey = 'pk_live_AZq0V7dLw1c3iBlADB9vdyBS';
   googleMapsApiKey = 'AIzaSyClO1qoZxVjVWmdNlNbl4W_XlAluWIb4mQ';
   env = PRODUCTION;
-} else if (includes(ERGEON_STAGING, host)) {
+} else if (process.env.NODE_ENV === STAGING) {
   apiHost = 'https://apidev.ergeon.in';
   websiteDomain = 'ergeon.com';
   fencequotingHost = 'https://fencequoting-staging.firebaseapp.com';
@@ -44,7 +29,7 @@ if (includes(EREGON_PRODUCTION, host)) {
   googleMapsApiKey = 'AIzaSyCJfEriZ61E_-iggE4PfQd5rs0IRSao2oI';
   stripePublicKey = 'pk_test_dV8nuwF8ciDuX1y0kOCkmzrN';
   env = STAGING;
-} else if (includes(ERGEON_DEVELOPMENT, host)) {
+} else {
   websiteDomain = 'ergeon.local';
   apiHost = 'http://api.ergeon.local:8000';
   fencequotingHost = 'http://fencequoting.local:8700';
@@ -54,14 +39,9 @@ if (includes(EREGON_PRODUCTION, host)) {
   googleMapsApiKey = 'AIzaSyCJfEriZ61E_-iggE4PfQd5rs0IRSao2oI';
   stripePublicKey = 'pk_test_dV8nuwF8ciDuX1y0kOCkmzrN';
   env = DEVELOPMENT;
-} else {
-  console.error('Domain is unexpected');
 }
 
-const configuration = configs[env];
-
 export default {
-  ...configs.common,
   level: env,
   env,
   apiHost,
@@ -72,5 +52,4 @@ export default {
   addressEnteredApi,
   stripePublicKey,
   googleMapsApiKey,
-  ...configuration,
 };

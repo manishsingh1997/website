@@ -8,7 +8,7 @@ import {isPastDate} from '../../utils/date';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import QuoteLines from './QuoteLines';
-import config from 'website/config';
+import {CARD_TRANSACTION_FEE} from 'website/constants';
 import {isQuoteCancelled} from 'utils/app-order';
 import {Link} from 'react-router-dom';
 
@@ -129,7 +129,7 @@ export default class QuoteDetails extends React.Component {
         </div>
         <div className="asterisk-notes">
           <span className="asterisk">*</span>
-          <i> – An additional {config.CARD_TRANSACTION_FEE} fee will be added for credit cards</i>
+          <i> – An additional {CARD_TRANSACTION_FEE} fee will be added for credit cards</i>
         </div>
       </div>);
   }

@@ -13,7 +13,7 @@ import {
   cardCvcValidation,
   getStripeToken,
 } from 'utils/billing';
-import config from 'website/config';
+import {CARD_TRANSACTION_FEE, CONTACT_EMAIL} from 'website/constants';
 
 import MaskedTextInput from 'components/common/MaskedTextInput';
 import TextInput from 'components/common/TextInput';
@@ -308,7 +308,7 @@ export default class BillingForm extends React.Component {
               <img className="billing-form__card-disclaimer-icon" src={IconCardSecure} />
               <div className="billing-form__card-disclaimer-text">
                 You <b>will not be charged</b> until after your service is completed.
-                Credit card payments are subject to an additional {config.CARD_TRANSACTION_FEE} transaction fee.
+                Credit card payments are subject to an additional {CARD_TRANSACTION_FEE} transaction fee.
               </div>
             </div>
           </div>
@@ -333,7 +333,7 @@ export default class BillingForm extends React.Component {
             </div>
             <a
               className="billing-form__request-changes"
-              href={`mailto:${config.CONTACT_EMAIL}?subject=Quote change request: ${quoteId}`}>
+              href={`mailto:${CONTACT_EMAIL}?subject=Quote change request: ${quoteId}`}>
               Request changes to quote
             </a>
             <div className="billing-form__terms">

@@ -21,3 +21,7 @@ export const QUOTE_STATUS_SENT = 'SNT';
 export const QUOTE_STATUS_CANCELLED = 'CAN';
 
 export const HTTP_STATUS_NOT_FOUND = 404;
+
+export const CONTACT_EMAIL = 'contact@ergeon.com';
+export const CARD_TRANSACTION_FEE = '2%';
+export const HELP_ROOT_NODE = '201900001';

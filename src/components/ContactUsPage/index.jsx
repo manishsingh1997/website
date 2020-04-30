@@ -6,7 +6,7 @@ import ContactUsForm from './ContactUsForm';
 import Success from '../common/Success';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
-import config from 'website/config';
+import {CONTACT_EMAIL} from 'website/constants';
 
 class ContactUsPage extends React.Component {
   state = {
@@ -47,7 +47,7 @@ class ContactUsPage extends React.Component {
         <div className="contact-us-page__body wrapper-1180">
           <div className="email">
             <p>Email:</p>
-            <p><a href={`mailto:${config.CONTACT_EMAIL}`}>{config.CONTACT_EMAIL}</a></p>
+            <p><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
           </div>
           <div className="phone">
             <p>Phone:</p>
