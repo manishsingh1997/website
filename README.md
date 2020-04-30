@@ -30,6 +30,13 @@ make run
 
 The rules are inspired from this [doc](https://github.com/airbnb/javascript/tree/master/react).
 
+### Sentry integration
+
+Sentry is used to track errors. To not miss errors during starting stage - sentry script
+is loaded before any app script.
+
+But Sentry is still used inside the app to attach custom breadcrumbs. So it is important to match sentry versions: in the app and from CDN.
+
 ### Run tests
 Run tests and lint.
 

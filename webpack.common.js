@@ -11,6 +11,12 @@ const VENDOR_LIST = Object.keys(dependencies).filter(
   (vendor) => vendor !== 'lodash'
 );
 
+const SENTRY_DSN = 'https://f0fe1cc5aa2e4422bec8bbd637bba091@o147577.ingest.sentry.io/1794736';
+let SENTRY_CONSOLE_LEVELS = "['warn', 'error', 'assert']";
+if (process.env.NODE_ENV === 'production') {
+  SENTRY_CONSOLE_LEVELS = "['error', 'assert']";
+}
+
 module.exports = {
   entry: {
     'assets/bundle': `${APP_DIR}/index.js`,
@@ -65,6 +71,9 @@ module.exports = {
       chunks: ['assets/bundle', 'assets/vendor'],
       favicon: `${APP_DIR}/assets/favicon.png`,
       filename: `${BUILD_DIR}/index.html`,
+      environment: process.env.NODE_ENV,
+      sentryConsoleLevels: SENTRY_CONSOLE_LEVELS,
+      sentryDSN: SENTRY_DSN,
     }),
     new htmlWebpackPlugin({
       template: `${APP_DIR}/utm/index.html`,
