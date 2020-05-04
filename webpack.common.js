@@ -27,6 +27,7 @@ module.exports = {
     path: BUILD_DIR,
     filename: '[name]-[hash].js',
     publicPath: '/',
+    sourceMapFilename: '[name]-[hash].js.map',
   },
   module: {
     rules: [
@@ -65,15 +66,17 @@ module.exports = {
   node: {
     fs: 'empty',
   },
+  devtool: 'source-map',
   plugins: [
     new htmlWebpackPlugin({
       template: `${APP_DIR}/index.html`,
       chunks: ['assets/bundle', 'assets/vendor'],
       favicon: `${APP_DIR}/assets/favicon.png`,
       filename: `${BUILD_DIR}/index.html`,
-      environment: process.env.NODE_ENV,
+      environment: JSON.stringify(process.env.NODE_ENV),
       sentryConsoleLevels: SENTRY_CONSOLE_LEVELS,
-      sentryDSN: SENTRY_DSN,
+      sentryDSN: JSON.stringify(SENTRY_DSN),
+      sentryRelease: JSON.stringify(process.env.SENTRY_RELEASE_NAME),
     }),
     new htmlWebpackPlugin({
       template: `${APP_DIR}/utm/index.html`,

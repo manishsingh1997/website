@@ -23,6 +23,7 @@ jobs:
             sudo python get-pip.py pip==19.3.1
             sudo pip install awscli
             sudo npm install -g npm@6.13.1
+            sudo npm install -g @sentry/cli --unsafe-perm 
             make install
 
       - save_cache:

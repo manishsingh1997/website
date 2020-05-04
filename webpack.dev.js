@@ -6,7 +6,6 @@ const BUILD_DIR = common.output.path;
 
 module.exports = merge(common, {
   mode: 'development',
-  devtool: 'source-map',
   devServer: {
     compress: true,
     contentBase: BUILD_DIR,
