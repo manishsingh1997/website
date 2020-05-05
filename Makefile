@@ -35,7 +35,7 @@ lint: install
 	npm run lint
 
 run: install
-	npm run start
+	SENTRY_RELEASE_NAME=$(SENTRY_RELEASE_NAME) npm run start
 
 test: install lint
 

@@ -77,6 +77,7 @@ module.exports = {
       sentryConsoleLevels: SENTRY_CONSOLE_LEVELS,
       sentryDSN: JSON.stringify(SENTRY_DSN),
       sentryRelease: JSON.stringify(process.env.SENTRY_RELEASE_NAME),
+      isProd: process.env.NODE_ENV === 'production',
     }),
     new htmlWebpackPlugin({
       template: `${APP_DIR}/utm/index.html`,
@@ -94,6 +95,9 @@ module.exports = {
     ]),
     new CopyPlugin([
       {from: './node_modules/@ergeon/3d-lib/assets/3d-data', to: '3d-data'},
+    ]),
+    new CopyPlugin([
+      {from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`},
     ]),
   ],
   optimization: {

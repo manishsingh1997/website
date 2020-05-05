@@ -40,11 +40,9 @@
         <script type="text/javascript" async>
             WebFont.load({  google: {    families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Hind Vadodara:regular,500,600,700"]  }});
         </script>
-        <script>
-            var NEW_RELIC_KEY = 'fab2aa410c';
-            var NEW_RELIC_ID = '183412583';
-        </script>
-        <script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ergeon.com/newrelic.js" defer />
+        <% if (htmlWebpackPlugin.options.isProd) { %>
+        <script type="text/javascript" src="/assets/newrelic.js" defer></script>
+        <% } %>
         <!-- load AB-test -->
         <script type="text/javascript" defer>
             var script = document.createElement('script');
