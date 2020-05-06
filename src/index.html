@@ -43,16 +43,6 @@
         <% if (htmlWebpackPlugin.options.isProd) { %>
         <script type="text/javascript" src="/assets/newrelic.js" defer></script>
         <% } %>
-        <!-- load AB-test -->
-        <script type="text/javascript" defer>
-            var script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = '//www.google-analytics.com/cx/api.js?experiment=' +
-                (document.location.host === 'www.ergeon.com' ? '7enQNR0AQ0Cww_qcf7cbng' : 'yQ19CzRUS2OWhetsD4IuyQ');
-
-            document.getElementsByTagName('head')[0].appendChild(script);
-        </script>
-        <!-- END load AB-test -->
         <script type="text/javascript" src="https://js.stripe.com/v2/" defer></script>
     </head>
     <body>
