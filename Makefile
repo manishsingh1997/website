@@ -39,6 +39,12 @@ run: install
 
 test: install lint
 
+sentry-create-release:
+	$(SENTRY_CLI) releases new --finalize $(SENTRY_RELEASE_NAME)
+
+sentry-set-commits: sentry-create-release
+	$(SENTRY_CLI) releases set-commits --auto $(SENTRY_RELEASE_NAME)
+
 sentry-upload-sourcemaps:
 	 $(SENTRY_CLI) releases files $(SENTRY_RELEASE_NAME) upload-sourcemaps $(DIST_PATH) --rewrite -i node_modules/ -i webpack.*
 
@@ -46,11 +52,13 @@ deploy-staging:
 	LEVEL=staging make build
 	LEVEL=staging S3_BUCKET=dev.ergeon.com make s3upload
 	LEVEL=staging DOMAIN=dev.ergeon.com make invalidate-cloudfront
+	LEVEL=staging make sentry-set-commits
 
 deploy-production:
 	LEVEL=production make build
 	LEVEL=production S3_BUCKET=www.ergeon.com make s3upload
 	LEVEL=production DOMAIN=www.ergeon.com make invalidate-cloudfront
+	LEVEL=production make sentry-set-commits
 	LEVEL=production make sentry-upload-sourcemaps
 
 s3upload:
