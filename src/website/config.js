@@ -6,7 +6,7 @@ export const PRODUCTION = 'production';
 export const STAGING = 'staging';
 export const DEVELOPMENT = 'development';
 
-let env, apiHost, fencequotingHost, projectsGalleryHost, websiteDomain, addressEnteredApi, leadArrivedApi;
+let env, apiHost, fencequotingHost, projectsGalleryHost, websiteDomain, addressEnteredApi, leadArrivedApi, tawkAPIKey;
 let googleMapsApiKey, stripePublicKey;
 
 if (process.env.NODE_ENV === PRODUCTION) {
@@ -18,6 +18,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   addressEnteredApi = 'https://90oksb1qq9.execute-api.us-west-2.amazonaws.com/production/landing-address-submitted';
   stripePublicKey = 'pk_live_AZq0V7dLw1c3iBlADB9vdyBS';
   googleMapsApiKey = 'AIzaSyClO1qoZxVjVWmdNlNbl4W_XlAluWIb4mQ';
+  tawkAPIKey = '5c4c7f0251410568a1086d00';
   env = PRODUCTION;
 } else if (process.env.NODE_ENV === STAGING) {
   apiHost = 'https://apidev.ergeon.in';
@@ -28,6 +29,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   addressEnteredApi = 'https://wvt5gxjul1.execute-api.us-west-2.amazonaws.com/staging/landing-address-submitted';
   googleMapsApiKey = 'AIzaSyCJfEriZ61E_-iggE4PfQd5rs0IRSao2oI';
   stripePublicKey = 'pk_test_dV8nuwF8ciDuX1y0kOCkmzrN';
+  tawkAPIKey = '5c4c7f0251410568a1086d00';
   env = STAGING;
 } else {
   websiteDomain = 'ergeon.local';
@@ -38,6 +40,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   addressEnteredApi = 'http://localhost:8080/landing-address-submitted';
   googleMapsApiKey = 'AIzaSyCJfEriZ61E_-iggE4PfQd5rs0IRSao2oI';
   stripePublicKey = 'pk_test_dV8nuwF8ciDuX1y0kOCkmzrN';
+  tawkAPIKey = '5c4c7f0251410568a1086d00';
   env = DEVELOPMENT;
 }
 
@@ -52,4 +55,5 @@ export default {
   addressEnteredApi,
   stripePublicKey,
   googleMapsApiKey,
+  tawkAPIKey,
 };

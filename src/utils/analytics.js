@@ -1,7 +1,6 @@
-import slugify from 'slugify';
 import * as Sentry from '@sentry/browser';
 
-import {getBaseEventData, getVisitorId, getCurrentData} from '@ergeon/erg-utms';
+import {getBaseEventData, getVisitorId, getCurrentData, tawk} from '@ergeon/erg-utms';
 import {DEFAULT_SOURCE_VALUE} from 'website/constants';
 import config from 'website/config';
 import {isObject} from 'utils/utils';
@@ -164,7 +163,7 @@ export const trackAddressEntered = (lead) => {
   enteredAddressData['state'] = address.state_abbreviation;
   enteredAddressData['product_slug'] = lead['product_slug'];
 
-  trackTawkEvent(ADDRESS_ENTERED, {address: address.formatted_address});
+  tawk.trackTawkEvent(ADDRESS_ENTERED, {address: address.formatted_address});
 
   getBaseEventData().then((baseEventData) => {
     const eventData = {...baseEventData, ...enteredAddressData};
@@ -185,34 +184,29 @@ export const trackAddressEntered = (lead) => {
   });
 };
 
-export const trackTawkEvent = (eventName, data) => {
-  const TawkAPI = window['Tawk_API'] = window['Tawk_API'] || {};
-  TawkAPI.addEvent(slugify(eventName, {lower: true}), data);
-};
-
 export const trackTawkLeadEvent = (submitData) => {
-  const TawkAPI = window['Tawk_API'] = window['Tawk_API'] || {};
+  return tawk.tawkAPILoader.then(TawkAPI => {
+    TawkAPI.setAttributes({
+      email: submitData.email,
+      name: submitData.name,
+    });
 
-  TawkAPI.setAttributes({
-    email: submitData.email,
-    name: submitData.name,
-  });
-
-  let data = {
-    address: submitData.address['formatted_address'],
-    email: submitData.email,
-    name: submitData.name,
-  };
-
-  if (submitData.product === FENCE_SLUG) {
-    data = {
-      ...data,
-      ...submitData.object.order.reduce((res, config, index) => {
-        res[`config-${index}`] = config.description;
-        return res;
-      }, {}),
+    let data = {
+      address: submitData.address['formatted_address'],
+      email: submitData.email,
+      name: submitData.name,
     };
-  }
 
-  trackTawkEvent(CUSTOMER_LEAD_CREATED, data);
+    if (submitData.product === FENCE_SLUG) {
+      data = {
+        ...data,
+        ...submitData.object.order.reduce((res, config, index) => {
+          res[`config-${index}`] = config.description;
+          return res;
+        }, {}),
+      };
+    }
+
+    return tawk.trackTawkEvent(CUSTOMER_LEAD_CREATED, data);
+  });
 };
