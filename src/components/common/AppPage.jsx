@@ -31,7 +31,7 @@ export default class AppPage extends React.Component {
   }
 
   renderError(error) {
-    console.warn(error);
+    console.warn('Error during rendering customer-app page', error);
     const errorMessage = error.data && Object.values(error.data).map((message, index) => (
       <p key={`app-error-${index}`}>{message}</p>
     ));
