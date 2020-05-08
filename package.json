@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "@ergeon/3d-lib": "1.28.1",
-    "@ergeon/core-components": "1.26.5",
+    "@ergeon/core-components": "1.27.2",
     "@ergeon/draw-map": "2.6.2",
     "@ergeon/erg-customer-auth": "0.3.0",
     "@ergeon/erg-utms": "2.4.2",
