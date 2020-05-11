@@ -18,18 +18,15 @@ export default class QuoteDetails extends React.Component {
     auth: PropTypes.object,
     customerGID: PropTypes.string,
     getNewQuoteLink: PropTypes.func,
-    isLoadingMap: PropTypes.bool,
     isVendorPreview: PropTypes.bool,
     quote: PropTypes.object,
     totalPrice: PropTypes.string,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoadingMap: props.isLoadingMap,
-    };
-  }
+  state = {
+    isLoadingMap: true,
+  };
+
   isQuoteReplaced(quote = {}) {
     return quote['replaced_by_quote'] && quote['replaced_by_quote']['secret'];
   }

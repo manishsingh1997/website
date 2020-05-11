@@ -54,8 +54,7 @@ export default class AppQuoteDetailPage extends React.Component {
 
   state = {
     previewImages: {},
-    isLoading: false,
-    isLoadingMap: false,
+    isLoading: true,
     isLoadingForm: false,
     quote: null,
     quoteError: null,
@@ -76,7 +75,6 @@ export default class AppQuoteDetailPage extends React.Component {
 
   async getQuoteDetailsFromAPI() {
     // We don't need this data in redux store for now, so calling API directly
-    this.setState({isLoading: true, isLoadingMap: true});
 
     try {
       const data = await getQuoteDetails(this.customerGID, this.props.match.params.secret);
@@ -205,7 +203,6 @@ export default class AppQuoteDetailPage extends React.Component {
   render() {
     const {auth} = this.props;
     const {
-      isLoadingMap,
       isLoadingForm,
       isLoading,
       quote,
@@ -237,7 +234,6 @@ export default class AppQuoteDetailPage extends React.Component {
           auth={auth}
           customerGID={this.customerGID}
           getNewQuoteLink={this.getNewQuoteLink.bind(this)}
-          isLoadingMap={isLoadingMap}
           isVendorPreview={this.isVendorPreview()}
           quote={quote}
           totalPrice={formatPrice(this.getTotalPrice(quote))}/>
