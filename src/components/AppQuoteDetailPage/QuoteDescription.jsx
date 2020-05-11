@@ -55,7 +55,8 @@ export default class QuoteDescription extends React.Component {
     return (
       <div className="quote-details-wrapper">
         {this.isUserOwnerOfQuote() && !asPDF && this.renderBackButton()}
-        <h3>{quote.order.product.name} Quote #{quote.id}</h3>
+        {quote.title  && quote.title.length < 55 ? <h3>{quote.title}</h3> : <h4>{quote.title}</h4>}
+        {!quote.title &&  <h3>{quote.order.product.name} Quote #{quote.id}</h3>}
         <div>
           <i>Quote provided by Ergeon, license CA{ERGEON_LICENSE_NUMBER}</i>
         </div>
