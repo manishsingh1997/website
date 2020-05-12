@@ -25,3 +25,4 @@ export const HTTP_STATUS_NOT_FOUND = 404;
 export const CONTACT_EMAIL = 'contact@ergeon.com';
 export const CARD_TRANSACTION_FEE = '2%';
 export const HELP_ROOT_NODE = '201900001';
+export const HELP_DOMAIN_ID = '1';
