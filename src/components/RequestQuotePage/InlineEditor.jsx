@@ -45,8 +45,9 @@ export default class InlineEditor extends React.Component {
     return (
       <div className="config-cart__editor">
         <Viewer
+          isParameterMenuVisible={true}
           onModelChange={this.onEditorModelChange.bind(this)}
-          showParameterSelector
+          showParameterSelector={true}
           threeDModel={editorModel} />
         <div className="config-cart__editor__control-panel">
           <div className="config-cart__editor__info">
