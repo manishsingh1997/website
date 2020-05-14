@@ -6,6 +6,7 @@ import photoPictureFrame from 'assets/promo-projects/goood-neighbor_updated.jpg'
 import photoPictureFrameLattice from 'assets/promo-projects/goood-neighbor-lattice_updated.jpg';
 import photoBrushed from 'assets/promo-projects/brushed_concrete.jpg';
 import photoStamped from 'assets/promo-projects/stumped_concrete.jpg';
+import photoPavers from 'assets/promo-projects/pavers.jpg';
 import PaneSwitcher from './PaneSwitcher';
 
 import './ProjectsSection.scss';
@@ -72,6 +73,13 @@ class ProjectsSection extends React.Component {
               content: 'This style of paving features poured concrete, then patterned stamped on top of the fresh ' +
                     'concrete surface. This finish will create patterns and textures that looks like natural stone.',
               link: '/gallery/driveway/stamped/casual',
+            })}
+            {this.renderCard({
+              img: photoPavers,
+              title: 'Pavers',
+              content: 'This style of paving features precast concrete and natural stone pavers that can come in ' +
+                    'various modular sizes and shapes. This finish will create natural and geometric patterns.',
+              link: '/gallery/driveway/pavers/casual',
             })}
           </div>
         </PaneSwitcher>
