@@ -55,7 +55,6 @@ export default class AppQuoteDetailPage extends React.Component {
   state = {
     previewImages: {},
     isLoading: true,
-    isLoadingForm: false,
     quote: null,
     quoteError: null,
     paymentMethod: null,
@@ -94,7 +93,6 @@ export default class AppQuoteDetailPage extends React.Component {
   }
 
   async approveQuoteToAPI(stripeToken) {
-    this.setState({isLoadingForm: true});
     try {
       const data = await approveAndPayQuote(this.customerGID, this.props.match.params.secret, stripeToken);
       const updatedQuote = data.data;
@@ -108,8 +106,6 @@ export default class AppQuoteDetailPage extends React.Component {
         paymentMethod: null,
         paymentMethodError: parseAPIError(apiError).nonFieldErrors.join('\n'),
       });
-    } finally {
-      this.setState({isLoadingForm: false});
     }
   }
 
@@ -203,7 +199,6 @@ export default class AppQuoteDetailPage extends React.Component {
   render() {
     const {auth} = this.props;
     const {
-      isLoadingForm,
       isLoading,
       quote,
       quoteError,
@@ -242,7 +237,6 @@ export default class AppQuoteDetailPage extends React.Component {
         {this.shouldShowBillingForm() && <BillingForm
           error={paymentMethodError}
           houseId={houseId}
-          loading={isLoadingForm}
           onSubmit={this.handleBillingSubmit.bind(this)}
           paymentMethod={paymentMethod}
           quoteApproved={isQuoteApproved(quote)}

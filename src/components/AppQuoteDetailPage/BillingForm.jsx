@@ -29,7 +29,6 @@ export default class BillingForm extends React.Component {
   static propTypes = {
     error: PropTypes.string,
     houseId: PropTypes.number,
-    loading: PropTypes.bool,
     onSubmit: PropTypes.func,
     paymentMethod: PropTypes.object,
     quoteApproved: PropTypes.bool,
@@ -39,6 +38,7 @@ export default class BillingForm extends React.Component {
   };
 
   state = {
+    isLoading: false,
     editMode: false,
     errors: {},
     errorMessage: null,
@@ -58,7 +58,7 @@ export default class BillingForm extends React.Component {
   submitToken = (token) => {
     const {houseId} = this.props;
 
-    this.props.onSubmit && this.props.onSubmit({
+    return this.props.onSubmit({
       'stripe_token': token,
       'house': houseId,
     });
@@ -98,16 +98,19 @@ export default class BillingForm extends React.Component {
     event.preventDefault();
 
     if (!some(Object.values(errors)) && form.termsAccepted) {
+      this.setState({isLoading: true});
       getStripeToken({
         card: form.card,
         expirationDate: form.expirationDate,
         cvc: form.cvc,
       })
         .then(token => {
-          this.submitToken(token);
-          this.setState({
-            errors: {},
-          });
+          return this.submitToken(token)
+            .then(() => {
+              this.setState({
+                errors: {},
+              });
+            });
         })
         .catch(result => {
           if (result.param) {
@@ -121,6 +124,9 @@ export default class BillingForm extends React.Component {
               errorMessage: result._error,
             });
           }
+        })
+        .finally(() => {
+          this.setState({isLoading: false});
         });
     }
   }
@@ -184,8 +190,7 @@ export default class BillingForm extends React.Component {
   }
 
   renderFormFields() {
-    const {loading} = this.props;
-    const {form, errors, validate} = this.state;
+    const {form, errors, validate, isLoading} = this.state;
     const {card, expirationDate, cvc} = form;
 
     const getFieldModificatorClass = field => ({
@@ -199,7 +204,7 @@ export default class BillingForm extends React.Component {
           <div
             className={classNames('Form-field', getFieldModificatorClass('card'))}>
             <MaskedTextInput
-              disabled={loading}
+              disabled={isLoading}
               labelName="Card Number"
               mask={this.getCardMask(card)}
               name="card"
@@ -216,7 +221,7 @@ export default class BillingForm extends React.Component {
           <div className={classNames('Form-field', getFieldModificatorClass('expirationDate'))}>
             <MaskedTextInput
               className="FormControl--short"
-              disabled={loading}
+              disabled={isLoading}
               labelName="Exp. Date"
               mask="99/99"
               name="expirationDate"
@@ -238,7 +243,7 @@ export default class BillingForm extends React.Component {
           <div className={classNames('Form-field', getFieldModificatorClass('cvc'))}>
             <TextInput
               className="FormControl--short"
-              disabled={loading}
+              disabled={isLoading}
               labelName="CVC"
               name="cvc"
               onBlur={this.handleBlur.bind(this, 'cvc')}
@@ -280,13 +285,13 @@ export default class BillingForm extends React.Component {
   }
 
   render() {
-    const {form, errors} = this.state;
+    const {form, errors, isLoading} = this.state;
     const {termsAccepted} = form;
-    const {paymentMethod, quoteId, termsAndConditionsUrl, total, loading} = this.props;
+    const {paymentMethod, quoteId, termsAndConditionsUrl, total} = this.props;
     const classes = {
       'billing-form': true,
       'billing-form--with-payment-method-details': this.isQuoteApproved(),
-      'billing-form--loading': loading,
+      'billing-form--loading': isLoading,
     };
 
     return (
@@ -322,10 +327,10 @@ export default class BillingForm extends React.Component {
             <div className="billing-form__approve">
               <Button
                 className="billing-form__approve-button"
-                disabled={some(Object.values(errors)) || !termsAccepted || loading}
+                disabled={some(Object.values(errors)) || !termsAccepted || isLoading}
                 size="large">
                 {
-                  loading ?
+                  isLoading ?
                     <Spinner active={true} borderWidth={0.15} color="white" size={24}/> :
                     'Approve and place order'
                 }
