@@ -105,12 +105,11 @@ export default class BillingForm extends React.Component {
         cvc: form.cvc,
       })
         .then(token => {
-          return this.submitToken(token)
-            .then(() => {
-              this.setState({
-                errors: {},
-              });
-            });
+          this.setState({
+            errors: {},
+            errorMessage: null,
+          });
+          return this.submitToken(token);
         })
         .catch(result => {
           if (result.param) {
