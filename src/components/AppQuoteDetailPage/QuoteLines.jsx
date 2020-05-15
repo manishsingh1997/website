@@ -48,9 +48,13 @@ export default class QuoteLines extends React.Component {
   renderCalcInfo(showPrice = true) {
     const {asPDF} = this.props;
     const {quote} = this.state;
-    const {
-      'calc_input': {gates, polygons, sides},
-    } = quote;
+    const {'calc_input': calcInput} = quote;
+    let gates = [], sides = [], polygons = [];
+    if (calcInput) {
+      gates = calcInput.gates;
+      sides = calcInput.sides;
+      polygons = calcInput.polygons;
+    }
     return (
       <React.Fragment>
         <div className="page-break">{asPDF && <h4>Project Scope</h4>}
