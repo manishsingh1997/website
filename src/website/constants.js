@@ -26,3 +26,4 @@ export const CONTACT_EMAIL = 'contact@ergeon.com';
 export const CARD_TRANSACTION_FEE = '2%';
 export const HELP_ROOT_NODE = '201900001';
 export const HELP_DOMAIN_ID = '1';
+export const STAFF_MAP_GID = '8sKm037W1MZ8Xw_S';

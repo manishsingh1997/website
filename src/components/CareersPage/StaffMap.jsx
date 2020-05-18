@@ -1,23 +1,67 @@
 import React from 'react';
-import config from 'website/config';
 import MapComponent from '@ergeon/map-component';
 import {Spinner} from '@ergeon/core-components';
-import markers from 'data/map-employees.js';
-
+import {STAFF_MAP_GID} from 'website/constants';
+import {getMapData} from 'api/map';
+import config from 'website/config';
 import './StaffMap.scss';
 
 class StaffMap extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      markers: [],
+      polygons: [],
+      popupBehaviour: 'close',
+      controls: {disableDefaultUI: true},
+      styles: [],
+      aspectRatio: '16:9',
+      ready: false,
+    };
+  }
+  componentDidMount() {
+    getMapData(STAFF_MAP_GID).then((response) => {
+      const mapData = response.data;
+      const {markers, polygons, legend} = mapData;
+      const {aspectRatio, popupBehaviour, controls, styles} = mapData.config;
+      this.setState({
+        markers,
+        polygons,
+        legend,
+        aspectRatio,
+        popupBehaviour,
+        controls,
+        styles,
+        ready: true,
+      });
+    });
+  }
   render() {
-    const loadingPlaceholder = <Spinner active={true} color="green" size={32} />;
-    const controls = {disableDefaultUI: true};
+    const {
+      markers,
+      polygons,
+      legend,
+      aspectRatio,
+      popupBehaviour,
+      controls,
+      styles,
+      ready,
+    } = this.state;
+    const loadingPlaceholder = <Spinner active={!ready} color="green" size={48} />;
+    const loader = <div className="loader-placeholder">{loadingPlaceholder}</div>;
     return (
       <div className="staff-map">
-        <MapComponent
+        {!ready && loader}
+        {ready && <MapComponent
           apiKey={config.googleMapsApiKey}
+          aspectRatio={aspectRatio}
           controls={controls}
+          legend={legend}
           loadingPlaceholder={loadingPlaceholder}
           markers={markers}
-          popupBehaviour="close" />
+          polygons={polygons}
+          popupBehaviour={popupBehaviour}
+          styles={styles} />}
       </div>
     );
   }
