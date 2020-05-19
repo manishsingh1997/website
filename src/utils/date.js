@@ -1,4 +1,5 @@
-import * as moment from 'moment';
+import moment from 'moment-timezone';
+import {TIMEZONE} from '../website/constants';
 
 const DEFAULT_DATE_FORMAT = 'MMM D, YYYY';
 const DEFAULT_TIME_FORMAT = 'hh:mm a';
@@ -31,4 +32,12 @@ export const formatDateAndTime = (date, format=DEFAULT_DATE_TIME_FORMAT) => {
     return null;
   }
   return moment(date).format(format);
+};
+
+export const getTimeInPST = (dateTime) => {
+  return moment.tz(dateTime, TIMEZONE);
+};
+
+export const currentNow = () => {
+  return moment.tz(TIMEZONE);
 };
