@@ -10,6 +10,8 @@ class Slider extends React.Component {
     additionalClassNames: PropTypes.string,
     children: PropTypes.node,
     defaultSlide: PropTypes.number,
+    onChange: PropTypes.func,
+    slide: PropTypes.number,
   };
   constructor(props) {
     super();
@@ -19,13 +21,21 @@ class Slider extends React.Component {
     };
     this.switchSlide = this.switchSlide.bind(this);
   }
+  getCurrentSlide() {
+    if (this.props.slide !== undefined) {
+      return this.props.slide;
+    }
+    return this.state.currentSlide;
+  }
   switchSlide(event) {
     const targetClass = event.target
       ? event.target.className
       : event.dir // event has dir (direction) if was called by swipe
         ? event.dir
         : null;
-    const {currentSlide, slidesCount} = this.state;
+    const currentSlide = this.getCurrentSlide();
+    const {slidesCount} = this.state;
+    const {onChange} = this.props;
     let nextSlide = Number(event.target? event.target.getAttribute('data-key') : 0) || 0;
     if (targetClass.toLowerCase().includes('right')) {
       nextSlide = currentSlide === slidesCount - 1? 0 : currentSlide + 1;
@@ -34,10 +44,11 @@ class Slider extends React.Component {
       nextSlide = currentSlide === 0? slidesCount - 1 : currentSlide - 1;
     }
     this.setState({currentSlide: nextSlide});
+    onChange && onChange(nextSlide);
   }
   render() {
     const {children, additionalClassNames} = this.props;
-    const {currentSlide} = this.state;
+    const currentSlide = this.getCurrentSlide();
     const swipeConfig = {
       // delta: 10,
       preventDefaultTouchmoveEvent: false,

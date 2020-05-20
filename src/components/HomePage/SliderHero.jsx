@@ -10,6 +10,8 @@ import {FENCE_SLUG, DRIVEWAY_SLUG} from '@ergeon/core-components/src/constants';
 import {getParameterByName} from 'utils/utils';
 import {ERGEON_LICENSE_NUMBER} from 'website/constants';
 
+const AUTO_SLIDE_INTERVAL_SECONDS = 5;
+
 import './SliderHero.scss';
 
 class SliderHero extends React.Component {
@@ -17,6 +19,26 @@ class SliderHero extends React.Component {
   constructor(props) {
     super(props);
     this.isChristmasTime = isChristmasTime();
+    this.state = {
+      slide: getParameterByName('utm_content') === 'driveway' ? 1 : 0,
+    };
+    this.autoSlide = setInterval(
+      () => this.setState({slide: (this.state.slide + 1) % 2}),
+      AUTO_SLIDE_INTERVAL_SECONDS * 1000
+    );
+  }
+
+  componentWillUnmount() {
+    this.clearAutoSlide();
+  }
+
+  clearAutoSlide() {
+    clearInterval(this.autoSlide);
+  }
+
+  handleSlideChange(slide) {
+    this.clearAutoSlide();
+    this.setState({slide});
   }
 
   renderSlide(data) {
@@ -27,7 +49,7 @@ class SliderHero extends React.Component {
     });
     const product = (data.name === 'fence') ? FENCE_SLUG : DRIVEWAY_SLUG;
     return (
-      <div className={slideClasses}>
+      <div className={slideClasses} onFocus={() => this.clearAutoSlide()}>
         <span className="title-wrapper">
           <h1 className="h0 white center">{data.title}</h1>
           <span className="subheader h2 white center">
@@ -45,11 +67,13 @@ class SliderHero extends React.Component {
 
   render() {
     const additionalClassNames = this.isChristmasTime ? 'snow-bg' : '';
+    const {slide} = this.state;
     return (
       <div className="slider-hero">
         <Slider
           additionalClassNames={additionalClassNames}
-          defaultSlide={getParameterByName('utm_content') === 'driveway' ? 1 : 0}>
+          onChange={this.handleSlideChange.bind(this)}
+          slide={slide}>
           {this.renderSlide({title: 'Fence Installation Service', name: 'fence'})}
           {this.renderSlide({title: 'Driveway Installation Service', name: 'driveway'})}
         </Slider>
