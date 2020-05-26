@@ -231,7 +231,7 @@ class ConfigCart extends React.Component {
         <div className="config-cart__disclaimer">
           The price shown are for informational purposes only.
           Actual prices may vary with project complexity, material price fluctuations and additional options.
-          Contact us to speak to an expert and get a personalied full quote.
+          Contact us to speak to an expert and get a personalized full quote.
         </div>
       </div>
     );
