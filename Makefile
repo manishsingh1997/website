@@ -7,6 +7,7 @@ AWS_CLI ?= aws --region $(S3_REGION)
 SENTRY_RELEASE_NAME ?= `git rev-parse HEAD`
 SENTRY_CLI ?= sentry-cli
 DIST_PATH ?= dist/
+SHOW_UPCOMING_FEATURES ?= true
 
 # Don't deploy source maps on production due to security reasons
 ifeq ($(LEVEL), production)
@@ -35,7 +36,7 @@ lint: install
 	npm run lint
 
 run: install
-	SENTRY_RELEASE_NAME=$(SENTRY_RELEASE_NAME) npm run start
+	SENTRY_RELEASE_NAME=$(SENTRY_RELEASE_NAME) SHOW_UPCOMING_FEATURES=$(SHOW_UPCOMING_FEATURES) npm run start
 
 test: install lint
 

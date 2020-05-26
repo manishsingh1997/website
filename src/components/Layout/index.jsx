@@ -7,12 +7,19 @@ import {ReactSVG} from 'react-svg';
 
 import logOutIcon from '@ergeon/core-components/src/assets/icon-logout.svg';
 import userIcon from '@ergeon/core-components/src/assets/icon-user.svg';
-import {Footer, TopPanel, DropdownMenu, NavLinkContext, Spinner} from '@ergeon/core-components';
+import {
+  DropdownMenu,
+  Footer,
+  NavLinkContext,
+  Notification,
+  Spinner,
+  TopPanel,
+} from '@ergeon/core-components';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 
 import phoneIcon from 'assets/icon-phone.svg';
-import {isChristmasTime, isPDFMode} from 'utils/utils';
+import {isChristmasTime, isPDFMode, showUpcomingFeatures} from 'utils/utils';
 import {getMenuItems} from 'data/customer-app.js';
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
@@ -155,6 +162,9 @@ export default class Layout extends React.Component {
     const {location} = this.props;
     return (
       <div className="app-layout">
+        {showUpcomingFeatures() && (
+          <Notification type="Information">Upcoming Features are shown</Notification>
+        )}
         <COVIDNotification location={location}/>
         <NavLinkContext.Provider value={NavLink}>
           <WebsiteTopPanel

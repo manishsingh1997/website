@@ -1,9 +1,7 @@
-import queryString from 'query-string';
-
 import {isChristmasTime as baseIsChristmasTime} from '@ergeon/core-components';
 import {constants} from '@ergeon/3d-lib/';
+import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 
-import config, {DEVELOPMENT} from 'website/config';
 import {trackError} from './analytics';
 import {isPastDate} from './date';
 
@@ -52,14 +50,10 @@ export const isChristmasTime = () => {
 };
 
 export const showUpcomingFeatures = () => {
-  if (config.env === DEVELOPMENT) {
+  if (process.env.SHOW_UPCOMING_FEATURES === 'true') {
     return true;
   }
-  const location = window.location || (window.document && window.document.location);
-  if (location && location.search) {
-    return 'upcoming-features' in queryString.parse(location.search);
-  }
-  return false;
+  return isUpcomingFeaturesEnabled();
 };
 
 export const getAdvancedEditorUrl = (order, zipcode) => {
