@@ -163,7 +163,12 @@ export default class Layout extends React.Component {
     return (
       <div className="app-layout">
         {showUpcomingFeatures() && (
-          <Notification type="Information">Upcoming Features are shown</Notification>
+          <div className="upcoming-features-wrapper">
+            <Notification type="Information">
+              <h6 className="additional-header">Experimental mode</h6>
+              Upcoming Features are shown
+            </Notification>
+          </div>
         )}
         <COVIDNotification location={location}/>
         <NavLinkContext.Provider value={NavLink}>

@@ -158,4 +158,11 @@
       font-weight: 600;
     }
   }
+
+  .upcoming-features-wrapper {
+    position: fixed;
+    bottom: $v-20;
+    left: $h-20;
+    z-index: 99;
+  }
 }
