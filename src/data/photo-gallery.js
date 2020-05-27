@@ -551,30 +551,6 @@ export const DrivewayPhotoData = [
           },
         ],
       },
-      {
-        groupName: 'Enhanced',
-        groupSlug: 'enhanced',
-        groupPhotos: [
-          {
-            'title': 'Exposed Aggregate Concrete ',
-            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/driveway/5c3e57fc9f55ca529a8b1780_stamped%2520color4.jpg',
-            'slug': 'exposed-aggregate-concrete',
-            'description': 'Exposed aggregate concrete is the universal term for concrete which incorporates natural stones, like pebbles, applied into the top layer of poured concrete. The result is a timeless look with unmatched durability. Great for surfaces that require a bit more traction as well.',
-          },
-          {
-            'title': 'Poured Concrete Pavers with Pebbles',
-            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/driveway/5c40c8fdfb42f65b2cd2df66_stamped%2520colored.jpg',
-            'slug': 'poured-concrete-pavers-with-pebbles',
-            'description': 'A trending concrete application is the use of substantially sized pebbles between the slabs or pavers. Shown here large poured concrete slabs are punctuated with three to four inch gaps filled with smooth pebbles. When the base is prepared properly, these slabs hold up astonishingly well to wear and tear. A look that is sure to garnish compliments!',
-          },
-          {
-            'title': 'Brushed Concrete with Color',
-            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/driveway/5c410042d8bf8e0e5967817c_stamped%2520colored2.jpg',
-            'slug': 'brushed-concrete-with-color',
-            'description': 'Add a dynamic twist to basic grey brushed concrete with integral color. The team at Ergeon can work with you to select the perfect brushed concrete color that will compliment the color of your home and highlight your landscape.',
-          },
-        ],
-      },
     ],
     partners: [
       {
@@ -669,6 +645,44 @@ export const DrivewayPhotoData = [
         url: 'https://www.pacificconcreteimages.com/product-category/concrete-stamps/',
         imageSrc: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/previews/concrete-stamps.jpg',
       },
+      {
+        name: 'Davis Colors',
+        slug: 'davis-colors',
+        url: 'https://www.daviscolors.com/',
+        imageSrc: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/previews/davis-colors.png',
+      },
+    ],
+  },
+  {
+    categoryName: 'Enhanced',
+    categorySlug: 'enhanced',
+    categoryGroups: [
+      {
+        groupName: 'Enhanced',
+        groupSlug: 'enhanced',
+        groupPhotos: [
+          {
+            'title': 'Exposed Aggregate Concrete ',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/driveway/5c3e57fc9f55ca529a8b1780_stamped%2520color4.jpg',
+            'slug': 'exposed-aggregate-concrete',
+            'description': 'Exposed aggregate concrete is the universal term for concrete which incorporates natural stones, like pebbles, applied into the top layer of poured concrete. The result is a timeless look with unmatched durability. Great for surfaces that require a bit more traction as well.',
+          },
+          {
+            'title': 'Poured Concrete Pavers with Pebbles',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/driveway/5c40c8fdfb42f65b2cd2df66_stamped%2520colored.jpg',
+            'slug': 'poured-concrete-pavers-with-pebbles',
+            'description': 'A trending concrete application is the use of substantially sized pebbles between the slabs or pavers. Shown here large poured concrete slabs are punctuated with three to four inch gaps filled with smooth pebbles. When the base is prepared properly, these slabs hold up astonishingly well to wear and tear. A look that is sure to garnish compliments!',
+          },
+          {
+            'title': 'Brushed Concrete with Color',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/driveway/5c410042d8bf8e0e5967817c_stamped%2520colored2.jpg',
+            'slug': 'brushed-concrete-with-color',
+            'description': 'Add a dynamic twist to basic grey brushed concrete with integral color. The team at Ergeon can work with you to select the perfect brushed concrete color that will compliment the color of your home and highlight your landscape.',
+          },
+        ],
+      },
+    ],
+    partners: [
       {
         name: 'Davis Colors',
         slug: 'davis-colors',

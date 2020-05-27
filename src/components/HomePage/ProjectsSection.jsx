@@ -6,6 +6,7 @@ import photoPictureFrame from 'assets/promo-projects/goood-neighbor_updated.jpg'
 import photoPictureFrameLattice from 'assets/promo-projects/goood-neighbor-lattice_updated.jpg';
 import photoBrushed from 'assets/promo-projects/brushed_concrete.jpg';
 import photoStamped from 'assets/promo-projects/stumped_concrete.jpg';
+import photoEnhanced from 'assets/promo-projects/enhanced_concrete.jpg';
 import PaneSwitcher from './PaneSwitcher';
 
 import './ProjectsSection.scss';
@@ -72,6 +73,14 @@ class ProjectsSection extends React.Component {
               content: 'This style of paving features poured concrete, then patterned stamped on top of the fresh ' +
                     'concrete surface. This finish will create patterns and textures that looks like natural stone.',
               link: '/gallery/driveway/stamped/casual',
+            })}
+            {this.renderCard({
+              img: photoEnhanced,
+              title: 'Enhanced',
+              content: 'Exposed aggregate concrete is the universal term for concrete which incorporates ' +
+                    'natural stones, like pebbles, applied into the top layer of poured concrete. ' +
+                    'The result is a timeless look with unmatched durability.',
+              link: '/gallery/driveway/enhanced/enhanced',
             })}
           </div>
         </PaneSwitcher>

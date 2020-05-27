@@ -229,6 +229,7 @@ class PhotoGallery extends React.Component {
       );
       const {modalOpened, imageIndex} = this.state;
       const category = this.getCategoryData();
+      const breadcrumbGroups = this.getBreadcrumbGroups();
 
       const banners = {
         [PRODUCTS.FENCE]: [BANNERS.GATE_BANNER, BANNERS.DRIVEWAY_BANNER],
@@ -271,10 +272,10 @@ class PhotoGallery extends React.Component {
             </div>
           </div>
           <div className="wrapper-1180">
-            <div className="photo-gallery__groups spacing after__is-24">
+            {breadcrumbGroups.length > 1 && <div className="photo-gallery__groups spacing after__is-24">
               <Breadcrumb
-                items={[this.getBreadcrumbGroups()]} secondary/>
-            </div>
+                items={[breadcrumbGroups]} secondary/>
+            </div>}
             {this.renderPhotos()}
             <div className="cards two-columns spacing before__is-64">
               {banners.map((banner, index) => this.renderBanner(banner, index))}
