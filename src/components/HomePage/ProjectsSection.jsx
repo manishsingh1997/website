@@ -62,7 +62,7 @@ class ProjectsSection extends React.Component {
             {this.renderCard({
               img: photoBrushed,
               title: 'Brushed Concrete',
-              content: 'Brushed Concrete This style of paving features poured concrete finished by pulling ' +
+              content: 'This style of paving features poured concrete finished by pulling ' +
                     'a brush over the fresh concrete surface. Brushed Concrete is suitable for high vehicular ' +
                     'and foot traffic areas.',
               link: '/gallery/driveway/brushed/natural',
