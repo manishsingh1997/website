@@ -7,7 +7,7 @@ import {constants, calcUtils} from '@ergeon/3d-lib';
 import {ReactSVG} from 'react-svg';
 import iconPlus from '../../assets/icon-plus.svg';
 
-import StyleBrowserWrapper from './StyleBrowserWrapper';
+import InlineEditor from 'components/RequestQuotePage/InlineEditor';
 
 import './ConfigCart.scss';
 class ConfigCart extends React.Component {
@@ -15,7 +15,7 @@ class ConfigCart extends React.Component {
     addConfigFromSchema: PropTypes.func,
     configs: PropTypes.arrayOf(PropTypes.shape({
       preview: PropTypes.string,
-      price: PropTypes.string,
+      price: PropTypes.number,
       description: PropTypes.string,
       units: PropTypes.number,
     })),
@@ -32,10 +32,6 @@ class ConfigCart extends React.Component {
     showInlineEditor: false,
     inlineEditorIndex: -1,
   };
-
-  scrollToNode(node) {
-    node.scrollIntoView({behavior: 'smooth'});
-  }
 
   getTotal() {
     return reduce(
@@ -64,9 +60,9 @@ class ConfigCart extends React.Component {
   onUnitsChange(index, event) {
     const {value} = event.target;
     const {configs} = this.props;
-    const config = configs[index];
+
     this.props.updateConfig(index, {
-      ...config,
+      ...configs[index],
       units: value,
     });
   }
@@ -79,17 +75,17 @@ class ConfigCart extends React.Component {
 
   onDoneEditorClick(editorModel, index = -1) {
     const {configs, zipcode} = this.props;
-    const schemaCode = calcUtils.getSchemaCodeFromState(editorModel);
+    const data = calcUtils.getValueFromUrl(editorModel);
+    const schemaCode = calcUtils.getSchemaCodeFromState(data);
 
     this.setState({
       showInlineEditor: false,
       inlineEditorIndex: -1,
     });
-    this.scrollToNode(this.configCardRef);
-    const config = configs[index];
+
     this.props.addConfigFromSchema({
-      length: index !== -1 ? config.units : 1,
-      data: editorModel,
+      length: index !== -1 ? configs[index].units : 1,
+      data,
       schemaCode,
       configs,
       zipcode,
@@ -109,6 +105,20 @@ class ConfigCart extends React.Component {
 
   renderConfig(config, index) {
     const isFenceConfig = this.isItFence(config);
+    const {showInlineEditor, inlineEditorIndex} = this.state;
+
+    if (showInlineEditor && inlineEditorIndex === index) {
+      return (
+        <div key={config.id}>
+          <InlineEditor
+            initialConfig={`?${config.code}`}
+            onClose={this.onCloseEditorClick.bind(this)}
+            onDone={(editorModel) => this.onDoneEditorClick(editorModel, index)}
+            zipcode={this.props.zipcode}/>
+          <hr />
+        </div>
+      );
+    }
 
     return (
       <div key={config.id}>
@@ -148,12 +158,10 @@ class ConfigCart extends React.Component {
                 <div className="config-item__buttons">
                   <Button
                     flavor="regular"
-                    onClick={() => this.editConfig(index)}
+                    onClick={this.editConfig.bind(this, index)}
                     size="small"
                     taste="line">Edit</Button>
-                  <Button
-                    className="delete-config-button"
-                    onClick={() => this.removeConfig(index)}>Delete</Button>
+                  <Button className="delete-config-button" onClick={this.removeConfig.bind(this, index)}>Delete</Button>
                 </div>
                 {
                   isFenceConfig &&
@@ -184,64 +192,48 @@ class ConfigCart extends React.Component {
     );
   }
 
-  renderStyleBrowser() {
-    const {inlineEditorIndex} = this.state;
-    const {configs} = this.props;
-    const config = configs[inlineEditorIndex];
-    const schemaCode = config? `?${config?.code}` : undefined;
-    const doneButtonText = inlineEditorIndex === -1? 'Add to order' : 'Save changes';
-    return (
-      <StyleBrowserWrapper
-        doneButtonText={doneButtonText}
-        initialSchemaCode={schemaCode}
-        onClose={() => this.onCloseEditorClick()}
-        onDone={(editorModel) => this.onDoneEditorClick(editorModel, inlineEditorIndex)}
-        zipcode={this.props.zipcode}/>
-    );
-  }
-
   render() {
     const {configs} = this.props;
     const {showInlineEditor, inlineEditorIndex} = this.state;
+
     return (
-      <React.Fragment>
-        {(showInlineEditor)
-          ? this.renderStyleBrowser()
-          : null}
-        <div className="config-cart" ref={(node) => this.configCardRef = node}>
-          <div className="config-cart__list">
-            {configs.map((config, index) => this.renderConfig(config, index))}
-            {
-              !configs.length &&
-              <div>
-                <div className="config-cart__no-config-title">You didn&apos;t add any fence or gate configuration</div>
-                <div className="config-cart__no-config-description">Add a config to send with quote request</div>
-                <hr />
-              </div>
-            }
-          </div>
-          <div className="config-cart__resume">
-            <Button
-              asAnchor={!(showInlineEditor && inlineEditorIndex === -1)}
-              className="add-config-button"
-              disabled={showInlineEditor && inlineEditorIndex === -1}
-              flavor="regular"
-              onClick={this.onAddConfigClick.bind(this)}
-              size="large"
-              taste="line">
-              <ReactSVG className="spacing right__is-5"  src={iconPlus}/>Add a config
-            </Button>
-            <div className="config-cart__total">
-              {this.getTotal() ? `Total: ~$${Math.round(this.getTotal())}` : null}
+      <div className="config-cart">
+        <div className="config-cart__list">
+          {configs.map(this.renderConfig.bind(this))}
+          {
+            !configs.length &&
+            <div>
+              <div className="config-cart__no-config-title">You didn&apos;t add any fence or gate configuration</div>
+              <div className="config-cart__no-config-description">Add a config to send with quote request</div>
+              <hr />
             </div>
-          </div>
-          <div className="config-cart__disclaimer">
-            The price shown are for informational purposes only.
-            Actual prices may vary with project complexity, material price fluctuations and additional options.
-            Contact us to speak to an expert and get a personalized full quote.
+          }
+        </div>
+        {(showInlineEditor && inlineEditorIndex === -1) ? <InlineEditor
+          onClose={this.onCloseEditorClick.bind(this)}
+          onDone={this.onDoneEditorClick.bind(this)}
+          zipcode={this.props.zipcode} /> : null}
+        <div className="config-cart__resume">
+          <Button
+            asAnchor={!(showInlineEditor && inlineEditorIndex === -1)}
+            className="add-config-button"
+            disabled={showInlineEditor && inlineEditorIndex === -1}
+            flavor="regular"
+            onClick={this.onAddConfigClick.bind(this)}
+            size="large"
+            taste="line">
+            <ReactSVG className="spacing right__is-5"  src={iconPlus}/>Add a config
+          </Button>
+          <div className="config-cart__total">
+            {this.getTotal() ? `Total: ~$${Math.round(this.getTotal())}` : null}
           </div>
         </div>
-      </React.Fragment>
+        <div className="config-cart__disclaimer">
+          The price shown are for informational purposes only.
+          Actual prices may vary with project complexity, material price fluctuations and additional options.
+          Contact us to speak to an expert and get a personalized full quote.
+        </div>
+      </div>
     );
   }
 }

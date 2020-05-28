@@ -12,7 +12,7 @@ import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import {getParameterByName, showUpcomingFeatures} from 'utils/utils';
 import Success from 'components/common/Success';
 import LeadForm from './LeadForm';
-import ConfigCart from 'containers/ConfigCart';
+import ConfigCart from 'containers/DEPRECATED_ConfigCart';
 
 import './index.scss';
 
@@ -38,7 +38,6 @@ export default class RequestQuotePage extends React.Component {
 
   state = {
     showThankYou: false,
-    showConfigCart: false,
   };
 
   componentDidMount() {
@@ -295,25 +294,23 @@ export default class RequestQuotePage extends React.Component {
 
     return (
       <div className="request-quote-page">
+        {this.renderHeaderMessage()}
         <div className="lead-area">
-          {this.renderHeaderMessage()}
-          <div className="lead-area__flex-wrapper">
-            <div className="request-quote-page__lead-form">
-              {this.getStreetAddress() && this.renderMobileAddress()}
-              {<LeadForm
-                configs={configs}
-                lead={lead || {}}
-                onProductChange={product => updateProduct(product)}
-                onSubmit={() => this.setState({showThankYou: true})}
-                product={product}
-                user={user}/>
-              }
-            </div>
-            {this.renderSignupMap()}
+          <div className="request-quote-page__lead-form">
+            {this.getStreetAddress() && this.renderMobileAddress()}
+            <LeadForm
+              configs={configs}
+              lead={lead || {}}
+              onProductChange={product => updateProduct(product)}
+              onSubmit={() => this.setState({showThankYou: true})}
+              product={product}
+              user={user}/>
           </div>
+          {this.renderSignupMap()}
         </div>
         {
-          (product === FENCE_SLUG) && <ConfigCart zipcode={zipcode}/>
+          product === FENCE_SLUG &&
+          <ConfigCart zipcode={zipcode}/>
         }
       </div>
     );

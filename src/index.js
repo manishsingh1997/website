@@ -34,14 +34,16 @@ import HomePage from 'components/HomePage';
 import Layout from 'containers/Layout';
 import LocationsPage from 'components/LocationsPage';
 import PhotoGallery from 'components/PhotoGallery';
-import RequestQuotePage from 'containers/RequestQuotePage';
 import WarrantiesPage from 'components/WarrantiesPage';
 import store from 'flux/store';
 import config from 'website/config';
 
 import '@ergeon/core-components/src/components/main.scss';
 import './main.scss';
-
+import {showUpcomingFeatures} from './utils/utils';
+const RequestQuotePage = showUpcomingFeatures()
+  ? require('containers/RequestQuotePage').default
+  : require('containers/DEPRECATED_RequestQuotePage').default;
 initUTMs('utm-iframe', config.websiteDomain, [
   `${config.fencequotingHost}/utm/`,
   `${config.projectsGalleryHost}/utm/`,
@@ -101,6 +103,7 @@ render(
           <Route component={HelpLandingPage} exact path="/help"/>
           <Route component={HelpPage} exact path="/help/search"/>
           <Route component={HelpPage} exact path="/help/:nodeId"/>
+          {/* eslint-disable-next-line camelcase */}
           <Route component={RequestQuotePage} exact path="/request-quote"/>
           <Route component={AuthSignInPage} exact path="/app/sign-in"/>
           <Route component={AuthConfirmSignInPage} exact path="/app/confirm-sign-in"/>

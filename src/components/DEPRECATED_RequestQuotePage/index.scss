@@ -1,7 +1,7 @@
 @import "~@ergeon/core-components/src/components/variables.scss";
 
 .request-quote-page {
-  max-width: 100%;
+  max-width: 1020px;
   padding-left: 20px;
   padding-right: 20px;
   margin: 60px auto 0;
@@ -39,15 +39,10 @@
   }
 
   .lead-area {
-    max-width: 980px;
-    margin: 0 auto;
-    flex-direction: column;
-    &__flex-wrapper {
-      display: flex;
-      justify-content: space-between;
-      @include phone() {
-        display: block;
-      }
+    display: flex;
+    justify-content: space-between;
+    @include phone() {
+      display: block;
     }
     &__mobile-address {
       border: 1px solid rgba($gray-3, 0.55);
