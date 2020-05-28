@@ -42,7 +42,8 @@ export default function() {
     let imageSlug = hash.slice(1);
     if (imageSlug && (counter===0)) {
       counter++;
-      document.querySelector(`div[gallery-link-id='${imageSlug}']`).click();
+      const imageLink = document.querySelector(`div[gallery-link-id='${imageSlug}']`);
+      imageLink && imageLink.click();
     }
   });
 }
