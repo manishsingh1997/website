@@ -19,19 +19,32 @@ class ConfigCart extends React.Component {
       description: PropTypes.string,
       units: PropTypes.number,
     })),
+    onShowStyleBrowserChange: PropTypes.func.isRequired,
     removeConfig: PropTypes.func.isRequired,
+    showStyleBrowser: PropTypes.bool,
     updateConfig: PropTypes.func.isRequired,
     zipcode: PropTypes.string,
   };
 
   static defaultProps = {
     configs: [],
+    showStyleBrowser: false,
   };
 
-  state = {
-    showInlineEditor: false,
-    inlineEditorIndex: -1,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      showStyleBrowser: props.showStyleBrowser,
+      styleBrowserIndex: -1,
+    };
+  }
+
+  componentDidUpdate() {
+    if (this.props.showStyleBrowser !== this.state.showStyleBrowser) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({showStyleBrowser: this.props.showStyleBrowser});
+    }
+  }
 
   scrollToNode(node) {
     node.scrollIntoView({behavior: 'smooth'});
@@ -52,9 +65,10 @@ class ConfigCart extends React.Component {
 
   editConfig(index) {
     this.setState({
-      showInlineEditor: true,
-      inlineEditorIndex: index,
+      showStyleBrowser: true,
+      styleBrowserIndex: index,
     });
+    this.props.onShowStyleBrowserChange && this.props.onShowStyleBrowserChange(true);
   }
 
   removeConfig(index) {
@@ -73,8 +87,9 @@ class ConfigCart extends React.Component {
 
   onCloseEditorClick() {
     this.setState({
-      showInlineEditor: false,
+      showStyleBrowser: false,
     });
+    this.props.onShowStyleBrowserChange && this.props.onShowStyleBrowserChange(false);
   }
 
   onDoneEditorClick(editorModel, index = -1) {
@@ -82,9 +97,10 @@ class ConfigCart extends React.Component {
     const schemaCode = calcUtils.getSchemaCodeFromState(editorModel);
 
     this.setState({
-      showInlineEditor: false,
-      inlineEditorIndex: -1,
+      showStyleBrowser: false,
+      styleBrowserIndex: -1,
     });
+    this.props.onShowStyleBrowserChange && this.props.onShowStyleBrowserChange(false);
     this.scrollToNode(this.configCardRef);
     const config = configs[index];
     this.props.addConfigFromSchema({
@@ -98,9 +114,10 @@ class ConfigCart extends React.Component {
 
   onAddConfigClick() {
     this.setState({
-      showInlineEditor: true,
-      inlineEditorIndex: -1,
+      showStyleBrowser: true,
+      styleBrowserIndex: -1,
     });
+    this.props.onShowStyleBrowserChange && this.props.onShowStyleBrowserChange(true);
   }
 
   renderDescription(config) {
@@ -185,27 +202,27 @@ class ConfigCart extends React.Component {
   }
 
   renderStyleBrowser() {
-    const {inlineEditorIndex} = this.state;
+    const {styleBrowserIndex} = this.state;
     const {configs} = this.props;
-    const config = configs[inlineEditorIndex];
+    const config = configs[styleBrowserIndex];
     const schemaCode = config? `?${config?.code}` : undefined;
-    const doneButtonText = inlineEditorIndex === -1? 'Add to order' : 'Save changes';
+    const doneButtonText = styleBrowserIndex === -1? 'Add to order' : 'Save changes';
     return (
       <StyleBrowserWrapper
         doneButtonText={doneButtonText}
         initialSchemaCode={schemaCode}
         onClose={() => this.onCloseEditorClick()}
-        onDone={(editorModel) => this.onDoneEditorClick(editorModel, inlineEditorIndex)}
+        onDone={(editorModel) => this.onDoneEditorClick(editorModel, styleBrowserIndex)}
         zipcode={this.props.zipcode}/>
     );
   }
 
   render() {
     const {configs} = this.props;
-    const {showInlineEditor, inlineEditorIndex} = this.state;
+    const {showStyleBrowser, styleBrowserIndex} = this.state;
     return (
       <React.Fragment>
-        {(showInlineEditor)
+        {(showStyleBrowser)
           ? this.renderStyleBrowser()
           : null}
         <div className="config-cart" ref={(node) => this.configCardRef = node}>
@@ -222,9 +239,9 @@ class ConfigCart extends React.Component {
           </div>
           <div className="config-cart__resume">
             <Button
-              asAnchor={!(showInlineEditor && inlineEditorIndex === -1)}
+              asAnchor={!(showStyleBrowser && styleBrowserIndex === -1)}
               className="add-config-button"
-              disabled={showInlineEditor && inlineEditorIndex === -1}
+              disabled={showStyleBrowser && styleBrowserIndex === -1}
               flavor="regular"
               onClick={this.onAddConfigClick.bind(this)}
               size="large"

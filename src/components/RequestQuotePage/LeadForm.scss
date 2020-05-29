@@ -71,23 +71,31 @@
 }
 
 .Form {
+  margin-block-end: unset;
   button {
     width: 100%;
   }
-
-  .Form-Note {
-    background: url(../../assets/icon-plus.svg) no-repeat left center;
-    padding-left: 18px;
+  .Form-action-links {
+    margin-top: $v-24;
+    .action-link {
+      background: url(../../assets/icon-plus.svg) no-repeat left center;
+      padding-left: 18px;
+    }
+    .label {
+      padding-left: 18px;
+    }
+    .add-config__disable {
+      display: none;
+    }
   }
 
   .Form-field {
     height: auto;
     position: relative;
-
+    margin-bottom: $v-24;
     @include phone() {
-      margin-bottom: 15px;
+      margin-bottom: $v-12;
     }
-
     &.is-error {
       input {
         border-color: $red;
@@ -99,19 +107,10 @@
         background-color: $white;
       }
     }
-
-    & + .Form-field {
-      margin-top: 32px;
-
-      @include phone() {
-        margin-top: 0px;
-        margin-bottom: 15px;
-      }
-    }
   }
   .Form-actions {
     border-top: 1px solid $gray-4;
-    margin-top: 30px;
+    margin-top: $v-24;
     position: relative;
 
     .Form-error {
@@ -133,19 +132,6 @@
     font-size: 12px;
     line-height: 18px;
     margin-top: 30px;
-  }
-
-
-  @include phone {
-    h1 {
-      font-size: 6vw;
-    }
-    input {
-      height: 48px;
-    }
-    .Form-field {
-       height: 56px;
-    }
   }
 }
 

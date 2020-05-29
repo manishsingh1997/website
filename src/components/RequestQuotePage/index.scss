@@ -56,6 +56,7 @@
       background-color: $gray-6;
       border-radius: $corner-default;
       @include phone() {
+        margin-bottom: $v-12;
         display: block;
       }
       &__field {

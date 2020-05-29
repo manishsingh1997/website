@@ -74,8 +74,9 @@ export default class LeadForm extends React.Component {
   static propTypes = {
     configs: PropTypes.array,
     lead: PropTypes.object,
-    onProductChange: PropTypes.func,
-    onSubmit: PropTypes.func,
+    onAddConfigClick: PropTypes.func.isRequired,
+    onProductChange: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
     product: PropTypes.string,
     user: PropTypes.object,
   };
@@ -157,6 +158,11 @@ export default class LeadForm extends React.Component {
     });
   };
 
+  handleAddConfig = () => {
+    const {onAddConfigClick} = this.props;
+    onAddConfigClick && onAddConfigClick();
+  }
+
   handleFieldChange = (name, value) => {
     const {data, validateOnChange} = this.state;
     const newState = {
@@ -203,7 +209,7 @@ export default class LeadForm extends React.Component {
   }
 
   render() {
-    const {product} = this.props;
+    const {product, lead: {address}} = this.props;
     const {data: {email, name, phone, comment}, errors, loading, showNoteField} = this.state;
     const multiSelectProducts = products.map(function(productItem) {
       return {value: productItem.slug, label: productItem.name};
@@ -212,7 +218,9 @@ export default class LeadForm extends React.Component {
     const multiSelectChosenProduct = multiSelectProducts.find(
       multiSelectProduct => multiSelectProduct.value === product
     );
-
+    const addConfigLinkClasses = classNames({
+      'add-config__disable': !address || product !== FENCE_SLUG,
+    });
     return (
       <form className="Form LeadForm" onSubmit={this.handleSubmit.bind(this)}>
         <div className={classNames('Form-field', {'is-error': errors && errors.product})}>
@@ -257,27 +265,38 @@ export default class LeadForm extends React.Component {
             value={email} />
           {errors && <div className="Form-error">{errors.email}</div>}
         </div>
-        {showNoteField === false ? (
-          <div className="Form-field">
+        <div className="Form-action-links">
+          {showNoteField === false ? (
+            <div className="spacing after__is-12">
+              <a
+                className="action-link"
+                onClick={this.handleAddNote}>
+                Add a note
+              </a>
+            </div>
+          ) : (
+            <div className={classNames('Form-field', {'is-error': errors && errors.comment})}>
+              <TextArea
+                disabled={loading}
+                labelName="Note"
+                name="comment"
+                onChange={this.handleFieldChange}
+                placeholder="Add your note here"
+                type="text"
+                value={comment} />
+              {errors && <div className="Form-error">{errors.comment}</div>}
+            </div>
+          )}
+          <div className={addConfigLinkClasses}>
             <a
-              className="Form-Note"
-              onClick={this.handleAddNote}>
-              Add a note
+              className="action-link"
+              onClick={this.handleAddConfig}>
+              Design your Fence or Gate
             </a>
+            <label className="label">And get an estimate instantly</label>
           </div>
-        ) : (
-          <div className={classNames('Form-field', {'is-error': errors && errors.comment})}>
-            <TextArea
-              disabled={loading}
-              labelName="Note"
-              name="comment"
-              onChange={this.handleFieldChange}
-              placeholder="Add your note here"
-              type="text"
-              value={comment} />
-            {errors && <div className="Form-error">{errors.comment}</div>}
-          </div>
-        )}
+        </div>
+
         <div className="Form-actions">
           {errors && <div className="Form-error">{errors.global}</div>}
           <Button
@@ -285,11 +304,6 @@ export default class LeadForm extends React.Component {
             disabled={loading}
             size="large"
             type="submit">{loading ? <Spinner active={true} borderWidth={0.10} size={25} /> : 'Get a quote'}</Button>
-        </div>
-        <div className="Form-footer">
-          By creating an account, you agree to the <br />
-          <a href="https://s3-us-west-2.amazonaws.com/ergeon-terms/terms-of-use.pdf" rel="noopener noreferrer" target="_blank" >Terms of Use</a> and <a
-            href="https://s3-us-west-2.amazonaws.com/ergeon-terms/privacy-policy.pdf" rel="noopener noreferrer" target="_blank">Privacy Policy</a>
         </div>
       </form>
     );

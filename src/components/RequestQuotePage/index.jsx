@@ -39,6 +39,7 @@ export default class RequestQuotePage extends React.Component {
   state = {
     showThankYou: false,
     showConfigCart: false,
+    showStyleBrowser: false,
   };
 
   componentDidMount() {
@@ -272,6 +273,8 @@ export default class RequestQuotePage extends React.Component {
       configs,
     } = this.props;
 
+    const {showConfigCart, showStyleBrowser} = this.state;
+
     if (isAuthLoading || isUserLoading) {
       return <AppLoader/>;
     }
@@ -303,6 +306,7 @@ export default class RequestQuotePage extends React.Component {
               {<LeadForm
                 configs={configs}
                 lead={lead || {}}
+                onAddConfigClick={() => this.setState({showStyleBrowser: true, showConfigCart: true})}
                 onProductChange={product => updateProduct(product)}
                 onSubmit={() => this.setState({showThankYou: true})}
                 product={product}
@@ -313,7 +317,11 @@ export default class RequestQuotePage extends React.Component {
           </div>
         </div>
         {
-          (product === FENCE_SLUG) && <ConfigCart zipcode={zipcode}/>
+          (product === FENCE_SLUG) && (showConfigCart || configs.length > 0) &&
+          <ConfigCart
+            onShowStyleBrowserChange={(value) => this.setState({showStyleBrowser: value})}
+            showStyleBrowser={showStyleBrowser}
+            zipcode={zipcode}/>
         }
       </div>
     );
