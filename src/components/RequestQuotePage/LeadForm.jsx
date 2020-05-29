@@ -160,7 +160,7 @@ export default class LeadForm extends React.Component {
 
   handleAddConfig = () => {
     const {onAddConfigClick} = this.props;
-    onAddConfigClick && onAddConfigClick();
+    onAddConfigClick();
   }
 
   handleFieldChange = (name, value) => {

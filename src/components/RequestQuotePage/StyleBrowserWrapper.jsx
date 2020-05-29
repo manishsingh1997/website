@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {calcUtils, constants, StyleBrowser} from '@ergeon/3d-lib';
 import {getPriceAndDescription, getCheckedZIP} from 'api/lead';
+import config from 'website/config';
 
 import './StyleBrowserWrapper.scss';
 import PopUp from './PopUp';
@@ -38,6 +39,7 @@ export default class StyleBrowserWrapper extends React.Component {
   updatePrice(modelString) {
     const {zipcode} = this.props;
     const modelState = calcUtils.getValueFromUrl(modelString);
+    this.setState({moreStylesUrl: this.getFencequotingUrl(modelString, zipcode)});
     return getPriceAndDescription(modelState, zipcode)
       .then(data => {
         this.setState({
@@ -59,12 +61,17 @@ export default class StyleBrowserWrapper extends React.Component {
     const row = this.isFence(modelState) ? `Fence Estimate: $${unitPrice}/ft` : `Gate Estimate: ~$${unitPrice}`;
     return row;
   }
+  getFencequotingUrl(schemaCode, zipCode) {
+    schemaCode = schemaCode.replace('?', '');
+    return `${config.fencequotingHost}/fence3d?${schemaCode}&mode=3d&options=true&zipcode=${zipCode}`;
+  }
   handleModelChange(modelString) {
     const {zipcode} = this.props;
     const {propertyConfig} = this.state;
     const modelState = calcUtils.getValueFromUrl(modelString);
     this.setState({
       model: modelString,
+      moreStylesUrl: this.getFencequotingUrl(modelString, zipcode),
     });
     getPriceAndDescription(modelState, zipcode, propertyConfig)
       .then(data => {
@@ -89,7 +96,7 @@ export default class StyleBrowserWrapper extends React.Component {
     onDone && onDone(model);
   }
   render() {
-    const {price, model, description, productAvailability} = this.state;
+    const {price, model, description, productAvailability, moreStylesUrl} = this.state;
     return (
       <div className="style-browser-wrapper">
         <PopUp
@@ -104,6 +111,7 @@ export default class StyleBrowserWrapper extends React.Component {
               description={description}
               doneButtonText={this.props.doneButtonText}
               model={model}
+              moreStylesUrl={moreStylesUrl}
               onChange={(model) => this.handleModelChange(model)}
               onComplete={(model) => this.handleSelectionCompleted(model)}
               price={price}
