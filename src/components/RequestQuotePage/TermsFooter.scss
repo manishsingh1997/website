@@ -1,0 +1,21 @@
+@import "~@ergeon/core-components/src/components/variables.scss";
+
+.terms-footer {
+  border-top: 1px solid $gray-4;
+  padding-top: $v-24;
+  max-width: 980px;
+  margin: 0 auto;
+  font-size: $font-label-size;
+  line-height: $line-height-label;
+  color: $gray-1;
+  margin-bottom: $v-42;
+  .copyright {
+    margin-bottom: $v-12;
+  }
+  a {
+    color: $black-3;
+    &:hover {
+      color: $black-1;
+    }
+  }
+}

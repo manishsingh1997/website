@@ -12,6 +12,7 @@ import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import {getParameterByName, showUpcomingFeatures} from 'utils/utils';
 import Success from 'components/common/Success';
 import LeadForm from './LeadForm';
+import TermsFooter from './TermsFooter';
 import ConfigCart from 'containers/ConfigCart';
 
 import './index.scss';
@@ -323,6 +324,7 @@ export default class RequestQuotePage extends React.Component {
             showStyleBrowser={showStyleBrowser}
             zipcode={zipcode}/>
         }
+        <TermsFooter/>
       </div>
     );
   }

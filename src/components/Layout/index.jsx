@@ -81,18 +81,29 @@ export default class Layout extends React.Component {
     this.props.getCurrentUser();
   }
 
-  checkTemplateWidth() {
+  checkRouteList(routes = []) {
     const {location} = this.props;
     const pathname = location? location.pathname : '/';
-    let isItNarrowTemplate = false;
+    let included = false;
+    routes.forEach(path => {
+      if (pathname.includes(path)) included = true;
+    });
+    return included;
+  }
+
+  checkTemplateWidth() {
     const narrowTemplates = [
       '/request-quote',
       '/app/',
     ];
-    narrowTemplates.forEach(path => {
-      if (pathname.includes(path)) isItNarrowTemplate = true;
-    });
-    return isItNarrowTemplate;
+    return this.checkRouteList(narrowTemplates);
+  }
+
+  isNoFooterTemplate() {
+    const noFooterTemplates = [
+      '/request-quote',
+    ];
+    return this.checkRouteList(noFooterTemplates);
   }
 
   renderDropdownMenu() {
@@ -158,6 +169,7 @@ export default class Layout extends React.Component {
 
   render() {
     const widthClass = this.checkTemplateWidth()? 'wrapper-980' : 'wrapper-1180';
+    const showFooter = showUpcomingFeatures()? !this.isNoFooterTemplate() : true;
     const asPDF = isPDFMode();
     const {location} = this.props;
     return (
@@ -181,7 +193,7 @@ export default class Layout extends React.Component {
             widthClass={widthClass}>
           </WebsiteTopPanel>
           <div>{this.props.children}</div>
-          {!asPDF && <Footer ergeonUrl="/"  widthClass={widthClass}/>}
+          {!asPDF && showFooter && <Footer ergeonUrl="/"  widthClass={widthClass}/>}
           <AddressUpdatePopup />
         </NavLinkContext.Provider>
       </div>
