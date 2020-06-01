@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import classNames from 'classnames';
 import {Button, Places, Spinner} from '@ergeon/core-components';
 import {calcUtils} from '@ergeon/3d-lib';
 import MapComponent from '@ergeon/map-component';
@@ -159,6 +159,12 @@ export default class RequestQuotePage extends React.Component {
     };
   }
 
+  get isConfigCartDisplayed() {
+    const {showConfigCart} = this.state;
+    const {product, configs} = this.props;
+    return (product === FENCE_SLUG) && (showConfigCart || configs.length > 0);
+  }
+
   renderHeaderMessage() {
     if (!this.props.lead) {
       return (
@@ -274,7 +280,7 @@ export default class RequestQuotePage extends React.Component {
       configs,
     } = this.props;
 
-    const {showConfigCart, showStyleBrowser} = this.state;
+    const {showStyleBrowser} = this.state;
 
     if (isAuthLoading || isUserLoading) {
       return <AppLoader/>;
@@ -296,7 +302,9 @@ export default class RequestQuotePage extends React.Component {
         </div>
       );
     }
-
+    const footerClassNames = classNames({
+      'top-border' : !this.isConfigCartDisplayed,
+    });
     return (
       <div className="request-quote-page">
         <div className="lead-area">
@@ -318,13 +326,13 @@ export default class RequestQuotePage extends React.Component {
           </div>
         </div>
         {
-          (product === FENCE_SLUG) && (showConfigCart || configs.length > 0) &&
+          this.isConfigCartDisplayed &&
           <ConfigCart
             onShowStyleBrowserChange={(value) => this.setState({showStyleBrowser: value})}
             showStyleBrowser={showStyleBrowser}
             zipcode={zipcode}/>
         }
-        <TermsFooter/>
+        <TermsFooter className={footerClassNames}/>
       </div>
     );
   }

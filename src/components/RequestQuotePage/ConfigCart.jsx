@@ -158,8 +158,17 @@ class ConfigCart extends React.Component {
                   }
                 </span>
               </div>
-              <div className="config-item__description">
-                {this.renderDescription(config)}
+              <div className="config-item__internal-wrapper">
+                <div className="config-item__description">
+                  {this.renderDescription(config)}
+                </div>
+                <div className="config-item__preview__in-description">
+                  {
+                    config.preview ?
+                      <img src={config.preview}/> :
+                      <Spinner active={true} borderWidth={.15} color="green" size={64} />
+                  }
+                </div>
               </div>
               <div className="config-item__actions">
                 <div className="config-item__buttons">
@@ -170,7 +179,10 @@ class ConfigCart extends React.Component {
                     taste="line">Edit</Button>
                   <Button
                     className="delete-config-button"
-                    onClick={() => this.removeConfig(index)}>Delete</Button>
+                    flavor="attention"
+                    onClick={() => this.removeConfig(index)}
+                    size="small"
+                    taste="boundless">Delete</Button>
                 </div>
                 {
                   isFenceConfig &&
@@ -225,37 +237,44 @@ class ConfigCart extends React.Component {
         {(showStyleBrowser)
           ? this.renderStyleBrowser()
           : null}
-        <div className="config-cart" ref={(node) => this.configCardRef = node}>
-          <div className="config-cart__list">
-            {configs.map((config, index) => this.renderConfig(config, index))}
-            {
-              !configs.length &&
-              <div>
-                <div className="config-cart__no-config-title">You didn&apos;t add any fence or gate configuration</div>
-                <div className="config-cart__no-config-description">Add a config to send with quote request</div>
-                <hr />
-              </div>
-            }
-          </div>
-          <div className="config-cart__resume">
-            <Button
-              asAnchor={!(showStyleBrowser && styleBrowserIndex === -1)}
-              className="add-config-button"
-              disabled={showStyleBrowser && styleBrowserIndex === -1}
-              flavor="regular"
-              onClick={this.onAddConfigClick.bind(this)}
-              size="large"
-              taste="line">
-              <ReactSVG className="spacing right__is-5"  src={iconPlus}/>Add a config
-            </Button>
-            <div className="config-cart__total">
-              {this.getTotal() ? `Total: ~$${Math.round(this.getTotal())}` : null}
+        <div className="config-cart__wrapper">
+          <div className="config-cart" ref={(node) => this.configCardRef = node}>
+            <div className="config-cart__title">
+              <h4>Selected configurations</h4>
             </div>
-          </div>
-          <div className="config-cart__disclaimer">
-            The price shown are for informational purposes only.
-            Actual prices may vary with project complexity, material price fluctuations and additional options.
-            Contact us to speak to an expert and get a personalized full quote.
+            <div className="config-cart__list">
+              {configs.map((config, index) => this.renderConfig(config, index))}
+              {
+                !configs.length &&
+                  <div>
+                    <div className="config-cart__no-config-title">
+                      You didn&apos;t add any fence or gate configuration
+                    </div>
+                    <div className="config-cart__no-config-description">Add a config to send with quote request</div>
+                    <hr />
+                  </div>
+              }
+            </div>
+            <div className="config-cart__resume">
+              <Button
+                asAnchor={!(showStyleBrowser && styleBrowserIndex === -1)}
+                className="add-config-button"
+                disabled={showStyleBrowser && styleBrowserIndex === -1}
+                flavor="regular"
+                onClick={this.onAddConfigClick.bind(this)}
+                size="large"
+                taste="line">
+                <ReactSVG className="spacing right__is-5"  src={iconPlus}/>Add a config
+              </Button>
+              <div className="config-cart__total">
+                {this.getTotal() ? `Total estimate: ~$${Math.round(this.getTotal())}` : null}
+              </div>
+            </div>
+            <div className="config-cart__disclaimer">
+              The price shown are for informational purposes only.
+              Actual prices may vary with project complexity, material price fluctuations and additional options.
+              Contact us to speak to an expert and get a personalized full quote.
+            </div>
           </div>
         </div>
       </React.Fragment>

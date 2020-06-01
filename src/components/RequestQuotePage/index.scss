@@ -2,8 +2,6 @@
 
 .request-quote-page {
   max-width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
   margin: 60px auto 0;
   @include phone() {
     margin: 30px auto 0;
@@ -42,6 +40,10 @@
     max-width: 980px;
     margin: 0 auto;
     flex-direction: column;
+    @include tablet() {
+      padding-left: $h-20;
+      padding-right: $h-20;
+    }
     &__flex-wrapper {
       display: flex;
       justify-content: space-between;

@@ -1,4 +1,4 @@
-@import '@ergeon/core-components/src/components/variables.scss';
+@import '~@ergeon/core-components/src/components/variables.scss';
 
 .config-cart {
   background: #ffffff;
@@ -8,13 +8,35 @@
   border: 1px solid #e4e9e2;
   border-radius: 12px;
   padding: 60px;
+  &__wrapper {
+    @include tablet() {
+      padding: 0 $h-20;
+    }
+    @include phone() {
+      padding: 0;
+    }
+  }
   @include tablet() {
     padding: $h-40;
   }
   @include phone() {
     margin-top: 30px;
-    padding: 0;
+    margin-bottom: $v-24;
+    padding: $v-24 $h-20;
     border: none;
+    border-top: 1px solid $gray-4;
+    border-bottom: 1px solid $gray-4;
+    border-radius: 0;
+    background-image: linear-gradient(180deg, rgba($gray-6, 1) 0%, rgba($white, 1) 100%),
+                      linear-gradient(180deg, rgba($white, 1) 0%, rgba($gray-6, 1) 100%);
+    background-repeat: no-repeat, no-repeat;
+    background-position: left top, left bottom;
+    background-size: 100% $v-124, 100% $v-124;
+  }
+  &__title {
+    border-bottom: 1px solid $gray-4;
+    padding-bottom: $v-12;
+    margin-bottom: $v-24;
   }
   .config-cart__list {
 
@@ -27,7 +49,9 @@
 
     .config-item {
       margin-bottom: 24px;
-
+      .config-item__internal-wrapper {
+        display: flex;
+      }
       .config-item__content {
         display: flex;
         .config-item__preview {
@@ -44,10 +68,29 @@
             width: 100%;
             height: auto;
           }
-
           @include phone() {
+            display: none;
             min-width: 60px;
             margin-right: 20px;
+          }
+          &__in-description {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            margin-left: 20px;
+            min-width: 90px;
+            max-width: 90px;
+            height: 90px;
+            background-color: $gray-6;
+            border: 1px solid $gray-5;
+            margin-top: 12px;
+            img {
+              width: 100%;
+              height: auto;
+            }
+            @include phone() {
+              display: flex;
+            }
           }
         }
 
@@ -68,7 +111,7 @@
             margin-top: 12px;
             max-width: 620px;
               @include phone() {
-                  margin-top: 6px;
+                  margin-top: 12px;
               }
           }
 
@@ -97,35 +140,14 @@
             }
 
             .delete-config-button {
-              display: inline-block;
-              width: 80px;
-              height: 25px;
-              font-size: $font-label-size;
-              line-height: $line-height-label;
-              font-weight: normal;
-              margin-top: 0;
-              margin-left: 5px;
-              min-width: 0;
-              color: red;
-              background-color: white;
-              &:hover {
-                background-color: rgba(255,125,89,.1);
-              }
+              margin-left: $h-10;
               @include phone() {
-                  background-image: url('../../assets/icon-cross-red.svg');
-                  background-repeat: no-repeat;
-                  background-size: 16px;
-                  background-position: center;
-                  font-size: 0;
-                  width: 24px;
-                  height: 24px;
-                  display: inline-block;
+
               }
             }
           }
         }
       }
-
       .config-item__length {
         text-align: right;
         display: flex;
@@ -191,12 +213,17 @@
   .config-cart__resume {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
-
+    @include phone() {
+      flex-direction: column;
+    }
+    .add-config-button {
+      @include phone() {
+        width: 100%;
+      }
+    }
     .add-config-button[disabled] {
       cursor: default;
-
       &:hover {
         background-color: #DDD;
       }
@@ -206,7 +233,8 @@
       font-weight: bold;
       font-size: $h5-size;
         @include phone() {
-            font-size: $h6-size;
+          margin-top: $v-24;
+          font-size: $h6-size;
         }
     }
   }

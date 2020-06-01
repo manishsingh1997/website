@@ -1,10 +1,21 @@
 import React from 'react';
 
 import './TermsFooter.scss';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+
 export default class TermsFooter extends React.Component {
+  static propTypes = {
+    className: PropTypes.string,
+  };
   render() {
+    const {className} = this.props;
+    const footerClassNames = classNames({
+      'terms-footer': true,
+      [className]: className,
+    });
     return (
-      <div className="terms-footer">
+      <div className={footerClassNames}>
         <div className="copyright">&copy; {new Date().getFullYear()} Ergeon Inc</div>
         By creating an account, you agree to the <br />
         <a
