@@ -1,55 +1,49 @@
-import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 import vanillaTextMask from 'vanilla-text-mask';
+import {Input} from '@ergeon/core-components';
 
-import './FloatingInput.scss';
-
+// TODO: Move PhoneInput to erg-core-components
 const phoneMask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
 export default class PhoneInput extends React.Component {
   static propTypes = {
-    labelName: PropTypes.string,
+    disabled: PropTypes.string,
+    label: PropTypes.string,
     name: PropTypes.string,
     onChange: PropTypes.func,
     placeholder: PropTypes.string,
+    valid: PropTypes.bool,
     value: PropTypes.string,
   };
-
   constructor(props) {
     super(props);
     this.state = {value: props.value || ''};
   }
-
   componentDidMount() {
     this.maskedInputController = vanillaTextMask({
-      inputElement: this.input,
+      inputElement: document.getElementById(this.props.name),
       mask: phoneMask,
     });
   }
-
   componentWillUnmount() {
-    this.maskedInputController.destroy();
+    if (this.maskedInputController) this.maskedInputController.destroy();
   }
-
-  handleInputChange = (event) => {
-    const value = event.target.value;
+  handleInputChange = (e, name, value) => {
     this.setState({value});
-    this.props.onChange(this.props.name, value);
+    this.props.onChange(e, name, value);
   };
-
   render() {
+    const {disabled, label, name, placeholder, valid} = this.props;
     return (
-      <div className={classNames('float-container', {'is-hasValue': this.props.value})}>
-        <input
-          id={this.props.name}
-          onKeyUp={this.handleInputChange}
-          placeholder={this.props.placeholder}
-          ref={input => this.input = input}
-          type="phone"
-          value={this.state.value} />
-        <label htmlFor={this.props.name}>{this.props.labelName}</label>
-      </div>
+      <Input
+        disabled={disabled}
+        label={label}
+        name={name}
+        onKeyUp={this.handleInputChange}
+        placeholder={placeholder}
+        valid={valid}
+        value={this.state.value} />
     );
   }
 }

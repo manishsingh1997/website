@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
 import {constants, calcUtils} from '@ergeon/3d-lib';
 
-import {Button, Spinner} from '@ergeon/core-components';
+import {Button, Spinner, Input} from '@ergeon/core-components';
 import {getBaseEventData} from '@ergeon/erg-utms';
-import TextInput from 'components/common/TextInput';
 import PhoneInput from './PhoneInput';
 import MultiProductSelect from './MultiProductSelect';
 import TextArea from '../common/TextArea';
@@ -65,6 +64,7 @@ const getInitialState = (showNoteField = false, props = {}) => {
       comment: '',
       'string_address': stringifyAddress(props.lead && props.lead.address),
     },
+    validFields: null,
     errors: null,
     loading: false,
   };
@@ -92,7 +92,6 @@ export default class LeadForm extends React.Component {
     this.validator = createValidator(validateField);
     this.state = getInitialState(false, props);
   }
-
   async handleSubmit(e) {
     e.preventDefault();
 
@@ -102,17 +101,22 @@ export default class LeadForm extends React.Component {
       product,
     };
     const errors = this.validator(data);
+    const validFields = {};
+    Object.keys(data).forEach(key => {
+      validFields[key] = !(errors && key in errors);
+    });
     if (errors) {
       this.setState({
         errors,
+        validFields,
         validateOnChange: true,
       });
     } else {
       this.setState({
+        validFields,
         loading: true,
         errors: null,
       });
-
       const baseEventData = await getBaseEventData();
       const eventData = {
         ...baseEventData,
@@ -162,7 +166,6 @@ export default class LeadForm extends React.Component {
     const {onAddConfigClick} = this.props;
     onAddConfigClick();
   }
-
   handleFieldChange = (name, value) => {
     const {data, validateOnChange} = this.state;
     const newState = {
@@ -175,6 +178,13 @@ export default class LeadForm extends React.Component {
 
     if (validateOnChange) {
       newState.errors = this.validator(newState.data);
+      let validFields = {};
+      Object.keys(newState.data).forEach(key => {
+        let valid = true;
+        if (newState.errors && key in newState.errors) valid = false;
+        validFields[key] = valid;
+      });
+      newState.validFields = validFields;
     }
 
     this.setState(newState);
@@ -210,11 +220,10 @@ export default class LeadForm extends React.Component {
 
   render() {
     const {product, lead: {address}} = this.props;
-    const {data: {email, name, phone, comment}, errors, loading, showNoteField} = this.state;
+    const {data: {email, name, phone, comment}, errors, loading, showNoteField, validFields} = this.state;
     const multiSelectProducts = products.map(function(productItem) {
       return {value: productItem.slug, label: productItem.name};
     });
-
     const multiSelectChosenProduct = multiSelectProducts.find(
       multiSelectProduct => multiSelectProduct.value === product
     );
@@ -233,35 +242,35 @@ export default class LeadForm extends React.Component {
           {errors && <div className="Form-error">{errors.product}</div>}
         </div>
         <div className={classNames('Form-field', {'is-error': errors && errors.name})}>
-          <TextInput
+          <Input
             disabled={loading}
-            labelName="Your name"
+            label="Your name"
             name="name"
-            onChange={this.handleFieldChange}
+            onChange={(_, name, value) => this.handleFieldChange(name, value)}
             placeholder="e.g. John Smith"
-            type="text"
+            valid={validFields ? validFields.name : null}
             value={name} />
           {errors && <div className="Form-error">{errors.name}</div>}
         </div>
         <div className={classNames('Form-field', {'is-error': errors && errors.phone})}>
           <PhoneInput
             disabled={loading}
-            labelName="Your phone number"
+            label="Your phone number"
             name="phone"
-            onChange={this.handleFieldChange}
+            onChange={(_, name, value) => this.handleFieldChange(name, value)}
             placeholder="(555) 123-4567"
-            type="text"
+            valid={validFields ? validFields.phone : null}
             value={phone} />
           {errors && <div className="Form-error">{errors.phone}</div>}
         </div>
         <div className={classNames('Form-field', {'is-error': errors && errors.email})}>
-          <TextInput
+          <Input
             disabled={loading}
-            labelName="Email"
+            label="Email"
             name="email"
-            onChange={this.handleFieldChange}
+            onChange={(_, name, value) => this.handleFieldChange(name, value)}
             placeholder="e.g. username@mail.com"
-            type="email"
+            valid={validFields ? validFields.email : null}
             value={email} />
           {errors && <div className="Form-error">{errors.email}</div>}
         </div>
