@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {calcUtils, constants, StyleBrowser} from '@ergeon/3d-lib';
 import {getPriceAndDescription, getCheckedZIP} from 'api/lead';
 import config from 'website/config';
+import {tawk} from '@ergeon/erg-utms';
 
 import './StyleBrowserWrapper.scss';
 import PopUp from './PopUp';
@@ -26,9 +27,13 @@ export default class StyleBrowserWrapper extends React.Component {
   };
 
   componentDidMount() {
+    tawk.tawkAPILoader.then(TawkAPI => TawkAPI.hideWidget());
     const {model} = this.state;
     this.updatePrice(model);
     this.checkZipcode();
+  }
+  componentWillUnmount() {
+    tawk.tawkAPILoader.then(TawkAPI => TawkAPI.showWidget());
   }
   checkZipcode() {
     const {zipcode} = this.props;
