@@ -101,8 +101,11 @@
     &.is-error {
       input {
         border-color: $red;
-        background-color: $white;
+        background-color: $white, rgba($red, 0.05);
         color: $red;
+        &:focus {
+          box-shadow: 0 0 0 3px rgba($red, 0.2);
+        }
       }
       .react-select__control {
         border-color: $red;
@@ -111,7 +114,6 @@
     }
   }
   .Form-actions {
-    border-top: 1px solid $gray-4;
     margin-top: $v-24;
     position: relative;
 
@@ -126,7 +128,6 @@
       font-family: $font-content;
       letter-spacing: 0;
       line-height: $line-height-label;
-      position: absolute;
       text-align: left;
   }
   .Form-footer {
