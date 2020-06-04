@@ -311,10 +311,10 @@ export default class RequestQuotePage extends React.Component {
           {this.renderHeaderMessage()}
           <div className="lead-area__flex-wrapper">
             <div className="request-quote-page__lead-form">
-              {this.getStreetAddress() && this.renderMobileAddress()}
               {<LeadForm
                 configs={configs}
                 lead={lead || {}}
+                mobileAddressField={this.getStreetAddress() && this.renderMobileAddress()}
                 onAddConfigClick={() => this.setState({showStyleBrowser: true, showConfigCart: true})}
                 onProductChange={product => updateProduct(product)}
                 onSubmit={() => this.setState({showThankYou: true})}

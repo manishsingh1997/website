@@ -3,11 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
 import {constants, calcUtils} from '@ergeon/3d-lib';
-
-import {Button, Spinner, Input} from '@ergeon/core-components';
+import {RadioGroup} from 'react-radio-group';
+import {Button, Spinner, Input, RadioButton} from '@ergeon/core-components';
 import {getBaseEventData} from '@ergeon/erg-utms';
 import PhoneInput from './PhoneInput';
-import MultiProductSelect from './MultiProductSelect';
 import AddNote from './AddNote';
 
 import {
@@ -33,7 +32,7 @@ import {
   CUSTOMER_LEAD_CREATED,
 } from 'utils/events';
 import {DEFAULT_SOURCE_VALUE} from 'website/constants';
-import {FENCE_SLUG, products} from '@ergeon/core-components/src/constants';
+import {DRIVEWAY_SLUG, FENCE_SLUG} from '@ergeon/core-components/src/constants';
 
 import './LeadForm.scss';
 import {getAdvancedEditorUrl} from '../../utils/utils';
@@ -62,6 +61,7 @@ const getInitialState = (showNoteField = false, props = {}) => {
       name: props.user && props.user.full_name || '',
       phone: props.user && props.user.phone_number || '',
       comment: '',
+      product: FENCE_SLUG,
       'string_address': stringifyAddress(props.lead && props.lead.address),
     },
     validFields: null,
@@ -74,6 +74,7 @@ export default class LeadForm extends React.Component {
   static propTypes = {
     configs: PropTypes.array,
     lead: PropTypes.object,
+    mobileAddressField: PropTypes.node,
     onAddConfigClick: PropTypes.func.isRequired,
     onProductChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
@@ -224,28 +225,30 @@ export default class LeadForm extends React.Component {
   }
 
   render() {
-    const {product, lead: {address}} = this.props;
+    const {product, lead: {address}, mobileAddressField} = this.props;
     const {data: {email, name, phone, comment}, errors, loading, showNoteField, validFields} = this.state;
-    const multiSelectProducts = products.map(function(productItem) {
-      return {value: productItem.slug, label: productItem.name};
-    });
-    const multiSelectChosenProduct = multiSelectProducts.find(
-      multiSelectProduct => multiSelectProduct.value === product
-    );
     const addConfigLinkClasses = classNames({
       'add-config__disable': !address || product !== FENCE_SLUG,
     });
     return (
       <form className="Form LeadForm" onSubmit={this.handleSubmit.bind(this)}>
-        <div className={classNames('Form-field', {'is-error': errors && errors.product})}>
-          <MultiProductSelect
-            isMulti={false}
-            label="Ergeon services:"
-            name="product"
-            onChange={this.handleFieldChange}
-            value={multiSelectChosenProduct} />
-          {errors && <div className="Form-error">{errors.product}</div>}
+        <div>
+          <label className="label">Ergeon service:</label>
+          <RadioGroup
+            name="ergeon-service"
+            onChange={value => this.handleFieldChange('product', value)}
+            selectedValue={this.state.data.product}>
+            <ul className="product-radio-list no-padding">
+              <RadioButton value={FENCE_SLUG}>
+                Fences & Gates
+              </RadioButton>
+              <RadioButton value={DRIVEWAY_SLUG}>
+                Driveways & Patios
+              </RadioButton>
+            </ul>
+          </RadioGroup>
         </div>
+        {mobileAddressField && mobileAddressField}
         <div className={classNames('Form-field', {'is-error': errors && errors.name})}>
           <Input
             disabled={loading}
