@@ -8,7 +8,7 @@ import {Button, Spinner, Input} from '@ergeon/core-components';
 import {getBaseEventData} from '@ergeon/erg-utms';
 import PhoneInput from './PhoneInput';
 import MultiProductSelect from './MultiProductSelect';
-import TextArea from '../common/TextArea';
+import AddNote from './AddNote';
 
 import {
   createValidator,
@@ -161,7 +161,12 @@ export default class LeadForm extends React.Component {
       showNoteField: true,
     });
   };
-
+  handleRemoveNote = () => {
+    this.setState({
+      showNoteField: false,
+      data: {...this.state.data, comment: ''},
+    });
+  };
   handleAddConfig = () => {
     const {onAddConfigClick} = this.props;
     onAddConfigClick();
@@ -275,27 +280,14 @@ export default class LeadForm extends React.Component {
           {errors && <div className="Form-error">{errors.email}</div>}
         </div>
         <div className="Form-action-links">
-          {showNoteField === false ? (
-            <div className="spacing after__is-12">
-              <a
-                className="action-link"
-                onClick={this.handleAddNote}>
-                Add a note
-              </a>
-            </div>
-          ) : (
-            <div className={classNames('Form-field', {'is-error': errors && errors.comment})}>
-              <TextArea
-                disabled={loading}
-                labelName="Note"
-                name="comment"
-                onChange={this.handleFieldChange}
-                placeholder="Add your note here"
-                type="text"
-                value={comment} />
-              {errors && <div className="Form-error">{errors.comment}</div>}
-            </div>
-          )}
+          <AddNote
+            comment={comment}
+            errors={errors}
+            handleAddNote={this.handleAddNote}
+            handleFieldChange={this.handleFieldChange}
+            handleRemoveNote={this.handleRemoveNote}
+            loading={loading}
+            showNoteField={showNoteField}/>
           <div className={addConfigLinkClasses}>
             <a
               className="action-link"
@@ -305,7 +297,6 @@ export default class LeadForm extends React.Component {
             <label className="label">And get an estimate instantly</label>
           </div>
         </div>
-
         <div className="Form-actions">
           {errors && <div className="Form-error">{errors.global}</div>}
           <Button

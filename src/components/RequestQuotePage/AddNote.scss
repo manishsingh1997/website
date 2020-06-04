@@ -1,0 +1,26 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
+.remove-a-note {
+  display: flex;
+  align-items: center;
+  margin-bottom: $v-6;
+  &__link {
+    font-size: $font-mobile-size;
+    line-height: $line-height-mobile;
+    color: $gray-1;
+    margin-left: $h-5;
+    &:hover {
+      color: $black-2;
+    }
+  }
+  &__cross-icon {
+    svg {
+      width: 12px;
+      height: 12px;
+      path {
+        fill: $gray-2;
+      }
+    }
+  }
+
+}
