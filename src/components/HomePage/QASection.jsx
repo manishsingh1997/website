@@ -89,8 +89,8 @@ class QASection extends React.Component {
               <div className="qa-section__question">
                 <h6>How long will my new driveway last?</h6>
                 <p>
-                  We use high-grade specifications of fresh base rock, rebar, and a minimum of 4
-                  inches of 3500 psi concrete or high-grade pavers, so your new driveway will
+                  We use high-grade specifications of fresh base rock, rebar, and a minimum of 2
+                  inches of 3000 psi concrete or high-grade pavers, so your new driveway will
                   typically last 20-30 years. For comparison, driveway installations that don’t
                   match our specifications will only last 5-15 years. Cracks are expected in all
                   concrete driveways after even a couple of years but you should experience no
