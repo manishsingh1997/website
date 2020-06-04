@@ -164,5 +164,23 @@
     bottom: $v-20;
     left: $h-20;
     z-index: 99;
+    animation-name: move-it-out;
+    animation-duration: 2s;
+    animation-delay: 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  @keyframes move-it-out {
+    0% {
+      bottom: $v-20;
+    }
+    25% {
+      bottom: 40px;
+    }
+    100% {
+      bottom: -500px;
+      display: none;
+    }
   }
 }
