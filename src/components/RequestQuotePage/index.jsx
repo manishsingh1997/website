@@ -295,9 +295,8 @@ export default class RequestQuotePage extends React.Component {
           {(showUpcomingFeatures() && !user) &&
           <span>
             <p className="confirmation-email spacing before__is-24">
-              We have sent a confirmation message to your email.
+              We have sent a confirmation message to your email. Please follow the instructions there.
             </p>
-            <p className="confirmation-email">Please follow the instructions there.</p>
           </span>}
         </div>
       );

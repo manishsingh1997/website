@@ -12,6 +12,10 @@
     justify-content: center;
     font-size: $font-regular-size;
     font-weight: bold;
+    text-align: center;
+    @include tablet() {
+      padding: 0 $h-20;
+    }
   }
 
   &__header-message {
