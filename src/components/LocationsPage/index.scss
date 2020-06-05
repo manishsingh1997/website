@@ -69,7 +69,6 @@
 
   }
 
-
   .nice_view {
     position: relative;
     left: 40%;
@@ -78,9 +77,14 @@
     width: 720px;
     height: 500px;
     float: none;
-    background-image: url('https://ergeon-converters.s3-us-west-2.amazonaws.com/production/locations/map.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+    .loader-placeholder {
+      text-align: end;
+    }
+    .locations-map {
+      position: absolute !important;
+      width: 720px;
+      height: 500px;
+    }
   }
 
   .nice_view_map {
@@ -127,9 +131,14 @@
     .nice_view_map {
       display: block;
       height: 400px;
-      background-image: url('https://ergeon-converters.s3-us-west-2.amazonaws.com/production/locations/map.png');
-      background-repeat: no-repeat;
-      background-size: cover;
+      .loader-placeholder {
+        text-align: center;
+      }
+      .locations-map {
+        position: absolute !important;
+        height: 400px;
+        width: 100%;
+      }
     }
 
     .locations {

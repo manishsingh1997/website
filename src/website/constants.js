@@ -30,3 +30,4 @@ export const HELP_DOMAIN_ID = '1';
 export const TIMEZONE = 'America/Los_Angeles';
 
 export const STAFF_MAP_GID = '8sKm037W1MZ8Xw_S';
+export const LOCATIONS_MAP_GID = '8eoPQugBzrKiGZpy';

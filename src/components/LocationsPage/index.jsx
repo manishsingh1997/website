@@ -1,6 +1,6 @@
 import React from 'react';
 import MetaDescription from '../common/MetaDescription';
-
+import LocationsMap from './LocationsMap';
 import './index.scss';
 
 class LocationsPage extends React.Component {
@@ -15,6 +15,7 @@ class LocationsPage extends React.Component {
     const locationsContent = (
       'We provide service to over 4.3 million households in the Bay Area, Sacramento and Fresno.'
     );
+    const locationsMap = <LocationsMap/>;
     return (
       <div className="locations-page wrapper-1180">
         <MetaDescription pageName="LocationsPage"/>
@@ -24,7 +25,7 @@ class LocationsPage extends React.Component {
             {locationsContent}
           </p>
         </div>
-        <div className="nice_view_map"></div>
+        <div className="nice_view_map">{locationsMap}</div>
         <div className="locations">
           <div className="locations_tile">
             <address className="location_item">
@@ -63,7 +64,7 @@ class LocationsPage extends React.Component {
               {this.renderPhoneNumber('559-236-5266')}
             </address>
           </div>
-          <div className="nice_view"></div>
+          <div className="nice_view">{locationsMap}</div>
         </div>
       </div>
     );
