@@ -225,8 +225,8 @@ export default class LeadForm extends React.Component {
   }
 
   render() {
-    const {product, lead: {address}, mobileAddressField} = this.props;
-    const {data: {email, name, phone, comment}, errors, loading, showNoteField, validFields} = this.state;
+    const {lead: {address}, mobileAddressField} = this.props;
+    const {data: {email, name, phone, comment, product}, errors, loading, showNoteField, validFields} = this.state;
     const addConfigLinkClasses = classNames({
       'add-config__disable': !address || product !== FENCE_SLUG,
     });

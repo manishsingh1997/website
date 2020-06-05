@@ -169,7 +169,7 @@ export default class RequestQuotePage extends React.Component {
     if (!this.props.lead) {
       return (
         <div className="request-quote-page__header-message">
-          <h4 className="title">You haven&apos;t entered your address</h4>
+          <h3 className="title">You haven&apos;t entered your address</h3>
           <p className="Subtitle">
             <a onClick={this.openAddressUpdatePopup.bind(this)}>Add your address </a>
             to get a better price estimation
@@ -181,7 +181,7 @@ export default class RequestQuotePage extends React.Component {
     if (!this.isItSupportedArea()) {
       return (
         <div className="request-quote-page__header-message">
-          <h4 className="title">We&apos;re not in your area yet</h4>
+          <h3 className="title">We&apos;re not in your area yet</h3>
           <p className="subtitle">
             Your house is not in a neighborhood we support right now.
             We&apos;re showing prices for San Francisco Bay Area.
@@ -194,7 +194,7 @@ export default class RequestQuotePage extends React.Component {
 
     return (
       <div className="request-quote-page__header-message">
-        <h4 className="title">Get your free custom quote</h4>
+        <h3 className="title">Get your free custom quote</h3>
         <p className="subtitle">
           Enter your contact information below and our experts will be
           in touch within 24 hours to discuss your project further.

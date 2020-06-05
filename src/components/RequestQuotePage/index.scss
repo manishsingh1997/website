@@ -2,9 +2,9 @@
 
 .request-quote-page {
   max-width: 100%;
-  margin: 60px auto 0;
+  margin: 40px auto 0;
   @include phone() {
-    margin: 30px auto 0;
+    margin: $v-12 auto 0;
   }
 
   .confirmation-email {
@@ -20,23 +20,12 @@
 
   &__header-message {
     .title {
-      font-family: $font-title;
-      font-size: 30px;
-      color: #333631;
-      letter-spacing: 0;
-      line-height: 40px;
-      text-align: left;
-      margin: 0 0 12px;
+      margin-bottom: $v-6;
     }
-
     .subtitle {
-      font-size: 14px;
-      color: #787e75;
-      letter-spacing: 0;
-      text-align: left;
-      line-height: 18px;
-      max-width: 480px;
-      margin-bottom: 30px;
+      margin-bottom: $v-24;
+      max-width: 460px;
+      color: $black-3
     }
   }
 

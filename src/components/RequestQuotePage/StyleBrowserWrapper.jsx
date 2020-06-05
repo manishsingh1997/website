@@ -15,6 +15,7 @@ export default class StyleBrowserWrapper extends React.Component {
     initialSchemaCode: PropTypes.string,
     onClose: PropTypes.func.isRequired,
     onDone: PropTypes.func.isRequired,
+    onLoaded: PropTypes.func.isRequired,
     zipcode: PropTypes.string,
   };
   static defaultProps = {
@@ -36,8 +37,9 @@ export default class StyleBrowserWrapper extends React.Component {
     tawk.tawkAPILoader.then(TawkAPI => TawkAPI.showWidget());
   }
   checkZipcode() {
-    const {zipcode} = this.props;
+    const {zipcode, onLoaded} = this.props;
     return getCheckedZIP(zipcode).then(response => {
+      onLoaded();
       this.setState({productAvailability: response.data});
     });
   }

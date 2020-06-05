@@ -130,7 +130,7 @@
   .ergeon-logo {
     @include phone {
       position: relative;
-      left: calc(8px / 2);
+      left: 0 !important;
       width: 112px;
       height: 16px;
     }

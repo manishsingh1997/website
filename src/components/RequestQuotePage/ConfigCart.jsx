@@ -6,7 +6,7 @@ import {Button, Spinner} from '@ergeon/core-components';
 import {constants, calcUtils} from '@ergeon/3d-lib';
 import {ReactSVG} from 'react-svg';
 import iconPlus from '../../assets/icon-plus.svg';
-
+import classNames from 'classnames';
 import StyleBrowserWrapper from './StyleBrowserWrapper';
 
 import './ConfigCart.scss';
@@ -88,8 +88,9 @@ class ConfigCart extends React.Component {
   onCloseEditorClick() {
     this.setState({
       showStyleBrowser: false,
+      styleBrowserLoaded: false,
     });
-    this.props.onShowStyleBrowserChange && this.props.onShowStyleBrowserChange(false);
+    this.props.onShowStyleBrowserChange(false);
   }
 
   onDoneEditorClick(editorModel, index = -1) {
@@ -99,6 +100,7 @@ class ConfigCart extends React.Component {
     this.setState({
       showStyleBrowser: false,
       styleBrowserIndex: -1,
+      styleBrowserLoaded: false,
     });
     this.props.onShowStyleBrowserChange && this.props.onShowStyleBrowserChange(false);
     this.scrollToNode(this.configCardRef);
@@ -120,6 +122,10 @@ class ConfigCart extends React.Component {
     this.props.onShowStyleBrowserChange && this.props.onShowStyleBrowserChange(true);
   }
 
+  showStyleBrowser() {
+    this.setState({styleBrowserLoaded: true});
+  }
+
   renderDescription(config) {
     return config.description;
   }
@@ -135,7 +141,7 @@ class ConfigCart extends React.Component {
               {
                 config.preview ?
                   <img src={config.preview}/> :
-                  <Spinner active={true} borderWidth={.15} color="green" size={64} />
+                  <Spinner active={true} borderWidth={.2} color="green" size={48} />
               }
             </div>
             <div className="config-item__info">
@@ -166,7 +172,7 @@ class ConfigCart extends React.Component {
                   {
                     config.preview ?
                       <img src={config.preview}/> :
-                      <Spinner active={true} borderWidth={.15} color="green" size={64} />
+                      <Spinner active={true} borderWidth={.2} color="green" size={36} />
                   }
                 </div>
               </div>
@@ -225,17 +231,31 @@ class ConfigCart extends React.Component {
         initialSchemaCode={schemaCode}
         onClose={() => this.onCloseEditorClick()}
         onDone={(editorModel) => this.onDoneEditorClick(editorModel, styleBrowserIndex)}
+        onLoaded={() => this.showStyleBrowser()}
         zipcode={this.props.zipcode}/>
     );
   }
 
   render() {
     const {configs} = this.props;
-    const {showStyleBrowser, styleBrowserIndex} = this.state;
+    const {showStyleBrowser, styleBrowserIndex, styleBrowserLoaded} = this.state;
+    const styleBrowserContainerClasses = classNames({
+      'style-browser-loader' : true,
+      'loaded' : styleBrowserLoaded,
+    });
+    const styleBrowserPreloaderClasses = classNames({
+      'style-browser-preloader' : true,
+      'loaded' : styleBrowserLoaded,
+    });
     return (
       <React.Fragment>
         {(showStyleBrowser)
-          ? this.renderStyleBrowser()
+          ? <div>
+            <div className={styleBrowserPreloaderClasses}>
+              <Spinner active={!styleBrowserLoaded} borderWidth={0.16} color="white" size={64}/>
+            </div>
+            <div className={styleBrowserContainerClasses}>{this.renderStyleBrowser()}</div>
+          </div>
           : null}
         <div className="config-cart__wrapper">
           <div className="config-cart" ref={(node) => this.configCardRef = node}>

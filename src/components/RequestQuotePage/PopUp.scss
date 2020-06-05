@@ -42,6 +42,10 @@
         padding: 0 0 $h-20 0;
       }
     }
+    margin-bottom: $v-42;
+    @include tablet() {
+      margin-bottom: $v-64;
+    }
   }
   &__cross-icon {
     position: absolute;

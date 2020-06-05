@@ -286,3 +286,48 @@
     }
   }
 }
+.style-browser-loader {
+  background-color: $black-2;
+  opacity: 0;
+  .popup__wrapper {
+    position: fixed;
+    bottom: -100%;
+  }
+  &.loaded {
+    opacity: 1;
+    .popup__wrapper {
+      animation-name: show-from-bottom;
+      animation-duration: 0.5s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+  }
+  @keyframes show-from-bottom {
+    0% {
+      bottom: -100%;
+    }
+    95% {
+      bottom: 5%;
+    }
+    100% {
+      position: relative;
+      bottom: 0;
+    }
+  }
+}
+.style-browser-preloader {
+  background-color: rgba($black-1, 0.8);
+  backdrop-filter: blur(4px);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.loaded {
+    display: none;
+  }
+}

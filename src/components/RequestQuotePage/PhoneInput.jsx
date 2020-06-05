@@ -8,7 +8,7 @@ const phoneMask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\
 
 export default class PhoneInput extends React.Component {
   static propTypes = {
-    disabled: PropTypes.string,
+    disabled: PropTypes.bool,
     label: PropTypes.string,
     name: PropTypes.string,
     onChange: PropTypes.func,
