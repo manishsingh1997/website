@@ -32,7 +32,6 @@
   .lead-area {
     max-width: 980px;
     margin: 0 auto;
-    flex-direction: column;
     @include tablet() {
       padding-left: $h-20;
       padding-right: $h-20;
@@ -40,6 +39,7 @@
     &__flex-wrapper {
       display: flex;
       justify-content: space-between;
+      align-items: start;
       @include phone() {
         display: block;
       }
@@ -91,7 +91,6 @@
   &__signup-map {
     margin-left: 40px;
     max-width: 500px;
-    height: 100%;
     width: 100%;
     hr {
       border: none;
