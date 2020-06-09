@@ -289,11 +289,17 @@
 .style-browser-loader {
   background-color: $black-2;
   opacity: 0;
+  position: absolute;
+  pointer-events: none;
+  overflow: hidden;
   .popup__wrapper {
     bottom: -100%;
   }
   &.loaded {
     opacity: 1;
+    position: unset;
+    overflow: unset;
+    pointer-events: auto;
     .popup__wrapper {
       animation-name: show-from-bottom;
       animation-duration: 0.5s;
@@ -325,10 +331,13 @@
   left: 0;
   height: 100vh;
   width: 100vw;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  &.show {
+    display: flex;
+  }
   &.loaded {
-    display: none;
+    display: none !important;
   }
 }

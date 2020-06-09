@@ -36,6 +36,7 @@ export default class StyleBrowserWrapper extends React.Component {
   componentWillUnmount() {
     tawk.tawkAPILoader.then(TawkAPI => TawkAPI.showWidget());
   }
+
   checkZipcode() {
     const {zipcode, onLoaded} = this.props;
     return getCheckedZIP(zipcode).then(response => {

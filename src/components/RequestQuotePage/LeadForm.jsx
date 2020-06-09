@@ -195,7 +195,7 @@ export default class LeadForm extends React.Component {
 
     this.setState(newState);
 
-    if (name === 'product' && this.props.onProductChange && value !== this.props.product) {
+    if (name === 'product' && value !== this.props.product) {
       this.props.onProductChange(value);
     }
   };
@@ -225,8 +225,8 @@ export default class LeadForm extends React.Component {
   }
 
   render() {
-    const {lead: {address}, mobileAddressField} = this.props;
-    const {data: {email, name, phone, comment, product}, errors, loading, showNoteField, validFields} = this.state;
+    const {lead: {address}, mobileAddressField, product} = this.props;
+    const {data: {email, name, phone, comment}, errors, loading, showNoteField, validFields} = this.state;
     const addConfigLinkClasses = classNames({
       'add-config__disable': !address || product !== FENCE_SLUG,
     });
@@ -237,7 +237,7 @@ export default class LeadForm extends React.Component {
           <RadioGroup
             name="ergeon-service"
             onChange={value => this.handleFieldChange('product', value)}
-            selectedValue={this.state.data.product}>
+            selectedValue={this.props.product}>
             <ul className="product-radio-list no-padding">
               <RadioButton value={FENCE_SLUG}>
                 Fences & Gates

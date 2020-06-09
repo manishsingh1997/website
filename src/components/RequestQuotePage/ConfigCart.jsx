@@ -68,7 +68,7 @@ class ConfigCart extends React.Component {
       showStyleBrowser: true,
       styleBrowserIndex: index,
     });
-    this.props.onShowStyleBrowserChange && this.props.onShowStyleBrowserChange(true);
+    this.props.onShowStyleBrowserChange(true);
   }
 
   removeConfig(index) {
@@ -122,7 +122,7 @@ class ConfigCart extends React.Component {
     this.props.onShowStyleBrowserChange && this.props.onShowStyleBrowserChange(true);
   }
 
-  showStyleBrowser() {
+  onStyleBrowserLoaded() {
     this.setState({styleBrowserLoaded: true});
   }
 
@@ -231,7 +231,7 @@ class ConfigCart extends React.Component {
         initialSchemaCode={schemaCode}
         onClose={() => this.onCloseEditorClick()}
         onDone={(editorModel) => this.onDoneEditorClick(editorModel, styleBrowserIndex)}
-        onLoaded={() => this.showStyleBrowser()}
+        onLoaded={() => this.onStyleBrowserLoaded()}
         zipcode={this.props.zipcode}/>
     );
   }
@@ -246,17 +246,19 @@ class ConfigCart extends React.Component {
     const styleBrowserPreloaderClasses = classNames({
       'style-browser-preloader' : true,
       'loaded' : styleBrowserLoaded,
+      'show' : showStyleBrowser,
     });
     return (
       <React.Fragment>
-        {(showStyleBrowser)
-          ? <div>
-            <div className={styleBrowserPreloaderClasses}>
-              <Spinner active={!styleBrowserLoaded} borderWidth={0.16} color="white" size={64}/>
-            </div>
-            <div className={styleBrowserContainerClasses}>{this.renderStyleBrowser()}</div>
+        <div>
+          <div className={styleBrowserPreloaderClasses}>
+            <Spinner active={!styleBrowserLoaded} borderWidth={0.16} color="white" size={64}/>
           </div>
-          : null}
+          {(showStyleBrowser)
+            ? <div className={styleBrowserContainerClasses}>{this.renderStyleBrowser()}</div>
+            : null
+          }
+        </div>
         <div className="config-cart__wrapper">
           <div className="config-cart" ref={(node) => this.configCardRef = node}>
             <div className="config-cart__title">

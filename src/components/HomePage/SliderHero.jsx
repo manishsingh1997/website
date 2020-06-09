@@ -6,7 +6,7 @@ import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import AddressForm from 'containers/AddressForm';
 import {isChristmasTime} from 'utils/utils';
 import Slider from './Slider';
-import {FENCE_SLUG, DRIVEWAY_SLUG} from '@ergeon/core-components/src/constants';
+import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import {getParameterByName} from 'utils/utils';
 import {ERGEON_LICENSE_NUMBER} from 'website/constants';
 
@@ -47,7 +47,7 @@ class SliderHero extends React.Component {
       fence: data.name === 'fence',
       driveway: data.name === 'driveway',
     });
-    const product = (data.name === 'fence') ? FENCE_SLUG : DRIVEWAY_SLUG;
+    const product = FENCE_SLUG;
     return (
       <div className={slideClasses} onFocus={() => this.clearAutoSlide()}>
         <span className="title-wrapper">
