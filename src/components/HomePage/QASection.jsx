@@ -16,13 +16,15 @@ class QASection extends React.Component {
                 <h6>Why should I replace my fence vs repairing it?</h6>
                 <ul>
                   <li>
-                    It’s very hard to just repair parts of a fence since the panels are structurally connected.
-                    If someone offers you a repair, they may break other parts of the fence as they are removing
-                    panels and then it may end up costing you more.
+                    {/* eslint-disable-next-line max-len */}
+                    If multiple components are damaged on the fence, then it may be more cost effective to just replace the whole fence.
+                    {/* eslint-disable-next-line max-len */}
+                    Aside from the extra time to carefully dissemble and salvage existing fence components, components tend to lose some structural integrity in the process of removing and re-adding nails.
                   </li>
                   <li>
-                    If you only repair parts of the fence, you’ll have mismatched panels that have aged differently.
-                    This creates a generally undesirable appearance.
+                    {/* eslint-disable-next-line max-len */}
+                    A fully replaced fence will also ensure visual consistency, and hence be more aesthetically appealing.
+                    Your new fence will come with a 5 year warranty and with proper care can last around 25 years.
                   </li>
                 </ul>
               </div>
