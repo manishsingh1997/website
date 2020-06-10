@@ -74,7 +74,7 @@ export default class AppOrdersListPage extends React.Component {
     return (
       <React.Fragment>
         <DataRow title="Order" value={`#${order['id']}`} />
-        <DataRow title="Status" value={order['status_display']} />
+        <DataRow title="Status" value={order['customer_deal_status']} />
         <DataRow title="Ordered on" value={formatDate(order['ordered_at'])} />
         <DataRow title="Address" value={this.getAddress(order)} />
         <DataRow title="Quotes" value={this.renderQuotes(order)} />

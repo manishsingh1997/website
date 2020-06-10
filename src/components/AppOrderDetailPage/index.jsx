@@ -149,7 +149,7 @@ export default class AppOrderDetailPage extends React.Component {
       <React.Fragment>
         <div className="order-details">
           <DataRow title="Order" value={`#${order['id']}`} />
-          <DataRow title="Status" value={order['status_display']} />
+          <DataRow title="Status" value={order['customer_deal_status']} />
           <DataRow title="Ordered on" value={formatDate(order['ordered_at'])} />
           <DataRow title="Visit Dates" value={this.renderVisitDates(order['visits'])} />
           <DataRow title="Address" value={this.getAddress(order)} />
