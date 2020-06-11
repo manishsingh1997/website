@@ -40,10 +40,7 @@ import config from 'website/config';
 
 import '@ergeon/core-components/src/components/main.scss';
 import './main.scss';
-import {showUpcomingFeatures} from './utils/utils';
-const RequestQuotePage = showUpcomingFeatures()
-  ? require('containers/RequestQuotePage').default
-  : require('containers/DEPRECATED_RequestQuotePage').default;
+import RequestQuotePage from 'containers/RequestQuotePage';
 initUTMs('utm-iframe', config.websiteDomain, [
   `${config.fencequotingHost}/utm/`,
   `${config.projectsGalleryHost}/utm/`,

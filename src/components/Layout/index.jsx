@@ -169,7 +169,7 @@ export default class Layout extends React.Component {
 
   render() {
     const widthClass = this.checkTemplateWidth()? 'wrapper-980' : 'wrapper-1180';
-    const showFooter = showUpcomingFeatures()? !this.isNoFooterTemplate() : true;
+    const showFooter = !this.isNoFooterTemplate();
     const asPDF = isPDFMode();
     const {location} = this.props;
     return (
