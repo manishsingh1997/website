@@ -128,8 +128,11 @@ export default class LeadForm extends React.Component {
       if (product === FENCE_SLUG) {
         eventData['object'] = {...eventData.object, order};
       }
-      if (showUpcomingFeatures() && !user) {
-        eventData['auto_sign_in'] = true;
+      if (showUpcomingFeatures()) {
+        eventData['is_upcoming_features_enabled'] = true;
+        if (!user) {
+          eventData['auto_sign_in'] = true;
+        }
       }
       Sentry.addBreadcrumb({
         message: 'Lead submit',
