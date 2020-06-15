@@ -146,10 +146,10 @@ export default class LeadForm extends React.Component {
         await identify(data);
         await track(CUSTOMER_LEAD_CREATED, {...eventData, source: DEFAULT_SOURCE_VALUE});
       } catch (error) {
-        trackError(new Error(`Lead submit error: ${parseError(error)}`));
+        trackError(new Error('Lead submit error'), {error});
         this.setState({
           errors: {
-            global: parseError(error),
+            global: parseError(error) || 'Unknown error',
           },
           loading: false,
         });
