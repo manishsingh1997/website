@@ -36,14 +36,14 @@ class RemoteFeatures extends React.Component {
             className="remote-features__card__button"
             flavor="primary"
             onClick={() => this.toShowVideo(videoLink)}
-            size="medium"
+            size="small"
             taste="line">Learn more</Button>}
           {link && <Button
             asAnchor
             className="remote-features__card__button"
             flavor="primary"
             href={link}
-            size="medium"
+            size="small"
             taste="line">Learn more</Button>}
         </div>
       </div>);
