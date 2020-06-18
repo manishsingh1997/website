@@ -26,6 +26,11 @@
     border-bottom: 1px solid $gray-4;
     padding-bottom: $v-16;
     margin-bottom: $v-30;
+
+    .warranty-thumb {
+      max-width: 300px;
+      max-height: 300px;
+    }
   }
 
   .quote-preview {
