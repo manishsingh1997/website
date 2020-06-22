@@ -7,20 +7,33 @@ import ImgBilling from 'assets/icon-billing.svg';
 import './ExplanationSection.scss';
 import PropTypes from 'prop-types';
 import {CARD_TRANSACTION_FEE} from 'website/constants';
+import {showUpcomingFeatures} from 'utils/utils';
 
 export default class ExplanationSection extends React.Component {
   static propTypes = {
     asPDF: PropTypes.bool,
+    projectWarrantyImage: PropTypes.string,
+    projectWarrantyLink: PropTypes.string,
     warrantyLink: PropTypes.string,
   };
   renderWarrantyBlock() {
-    const {warrantyLink} = this.props;
+    const {warrantyLink, projectWarrantyLink, projectWarrantyImage} = this.props;
+    const oldWarranty = (
+      <React.Fragment>Read our fence warranty <a href={warrantyLink}>here</a>.</React.Fragment>
+    );
+    const linkContent = projectWarrantyImage ?
+      <img className="warranty-image" src={projectWarrantyImage} /> :
+      <React.Fragment>Read your project warranty</React.Fragment>;
+    const newWarranty = (
+      projectWarrantyLink && <a href={projectWarrantyLink}>{linkContent}</a>
+    );
+    const warrantyContent = showUpcomingFeatures() && newWarranty ? newWarranty : oldWarranty;
     return (
       <div>
         <hr className="gray-line restricted-720"/>
         <h4 className="spacing before__is-48 after__is-12">Warranty</h4>
         <div>
-          Read our fence warranty <a href={warrantyLink}>here</a>.
+          {warrantyContent}
         </div>
       </div>
     );

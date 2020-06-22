@@ -221,7 +221,8 @@ export default class AppQuoteDetailPage extends React.Component {
     } = quote;
 
     const designs = this.getQuoteDesigns(quote);
-
+    const projectWarrantyImage = quote.order.project_warranty_image;
+    const projectWarrantyLink = quote.order.project_warranty_pdf;
     return (
       <div className="quote-detail-page">
         <QuoteDetails
@@ -243,7 +244,11 @@ export default class AppQuoteDetailPage extends React.Component {
           quoteId={quote['id']}
           termsAndConditionsUrl={quote['terms_and_conditions']}
           total={formatPrice(this.getTotalPrice(quote))} />}
-        <ExplanationSection asPDF={isPDFMode()} warrantyLink={warranty}/>
+        <ExplanationSection
+          asPDF={isPDFMode()}
+          projectWarrantyImage={projectWarrantyImage}
+          projectWarrantyLink={projectWarrantyLink}
+          warrantyLink={warranty} />
       </div>
     );
   }

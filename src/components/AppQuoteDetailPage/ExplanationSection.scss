@@ -12,6 +12,11 @@
     max-width: 720px;
   }
 
+  .warranty-image {
+    max-width: 100%;
+    max-height: auto;
+  }
+
   .text-block {
     margin-bottom: $v-24;
     &:last-child {
