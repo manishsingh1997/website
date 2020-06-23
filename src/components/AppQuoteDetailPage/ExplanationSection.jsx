@@ -19,23 +19,23 @@ export default class ExplanationSection extends React.Component {
   renderWarrantyBlock() {
     const {warrantyLink, projectWarrantyLink, projectWarrantyImage} = this.props;
     const oldWarranty = (
-      <React.Fragment>Read our fence warranty <a href={warrantyLink}>here</a>.</React.Fragment>
+      <React.Fragment>
+        <h4 className="spacing before__is-48 after__is-12">Warranty</h4>
+        Read our fence warranty <a href={warrantyLink}>here</a>.
+      </React.Fragment>
     );
     const linkContent = projectWarrantyImage ?
-      <img className="warranty-image" src={projectWarrantyImage} /> :
-      <React.Fragment>Read your project warranty</React.Fragment>;
+      <img className="spacing before__is-24 restricted-720" src={projectWarrantyImage} /> :
+      <React.Fragment>Read our project warranty here</React.Fragment>;
     const newWarranty = (
       projectWarrantyLink && <a href={projectWarrantyLink}>{linkContent}</a>
     );
     const warrantyContent = showUpcomingFeatures() && newWarranty ? newWarranty : oldWarranty;
     return (
-      <div>
+      <React.Fragment>
         <hr className="gray-line restricted-720"/>
-        <h4 className="spacing before__is-48 after__is-12">Warranty</h4>
-        <div>
-          {warrantyContent}
-        </div>
-      </div>
+        {warrantyContent}
+      </React.Fragment>
     );
   }
   render() {
