@@ -45,14 +45,14 @@ export default class RequestQuotePage extends React.Component {
 
   componentDidMount() {
     let {zipcode, configs} = this.props;
-    const address = getParameterByName('address');
+    const address = getParameterByName('address') || this.props.address;
     const product = getParameterByName('product') || this.props.product;
     const schema = getParameterByName('schema');
     const code = getParameterByName('code');
     const length = getParameterByName('length');
 
     GoogleMapsLoader.load(google => window.google = google);
-    const data = (schema && code) ? calcUtils.getValueFromUrl(window.location.href) : null;
+    const data = (schema && code) ? calcUtils.getValueFromUrl(window.location.search) : null;
     const schemaCode = (schema && code) ? calcUtils.getSchemaCodeFromState(data) : null;
 
     this.props.updateLeadAndConfig({
