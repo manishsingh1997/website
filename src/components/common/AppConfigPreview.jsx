@@ -59,7 +59,7 @@ export default class AppConfigPreview extends React.Component {
       this.setState({previewImage: preview});
     } catch (error) {
       this.setState({previewImage: previewPlaceholderIcon});
-      if (error !== constants3dLib.UNKNOWN_SCHEMA_CODE_ERROR) {
+      if (error !== constants3dLib.UNKNOWN_PRODUCT_ERROR) {
         console.error(error, schemaCodeUrl);
       }
     }
