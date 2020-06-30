@@ -126,7 +126,7 @@ export default class QuoteDetails extends React.Component {
         </div>
         <div className="asterisk-notes">
           <span className="asterisk">*</span>
-          <i> – An additional {CARD_TRANSACTION_FEE} fee will be added for credit cards</i>
+          <i> – An additional {CARD_TRANSACTION_FEE} fee will be added for credit/debit cards</i>
         </div>
       </div>);
   }
