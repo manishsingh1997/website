@@ -57,7 +57,7 @@
               xhr.onreadystatechange = function() {
                 if (this.readyState!==4) return;
                 if (this.status!==200) {
-                  console.error(`Could not load index.html`);
+                  console.error("Could not load index.html");
                   return;
                 }
                 document.write(this.responseText);
