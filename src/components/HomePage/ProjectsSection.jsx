@@ -1,6 +1,7 @@
 import React from 'react';
 import {getParameterByName} from 'utils/utils';
 
+import config from 'website/config';
 import photoNailUpProject from 'assets/promo-projects/dog-ear-fence@2x.png';
 import photoPictureFrame from 'assets/promo-projects/goood-neighbor_updated.jpg';
 import photoPictureFrameLattice from 'assets/promo-projects/goood-neighbor-lattice_updated.jpg';
@@ -41,21 +42,21 @@ class ProjectsSection extends React.Component {
               title: 'Nail Up',
               content: 'This fence features non-overlapping 6 ft high ' +
                     'boards with curved tops on one side and the frame on the other side.',
-              link: 'https://app.ergeon.com/projects-gallery/#/tags/nail-up',
+              link: `${config.projectsGalleryHost}/tags/nail-up`,
             })}
             {this.renderCard({
               img: photoPictureFrame,
               title: 'Picture Frame',
               content: 'This fence features overlapping boards for added durability, ' +
                     'and each side of the fence looks identical. This is ideal for fences on shared boundary lines.',
-              link: 'https://app.ergeon.com/projects-gallery/#/tags/picture-frame',
+              link: `${config.projectsGalleryHost}/tags/picture-frame`,
             })}
             {this.renderCard({
               img: photoPictureFrameLattice,
               title: 'Picture Frame with Lattice',
               content: 'This fence is the same as our Picture Frame Fence, ' +
                     'with a lattice on top for added height and privacy.',
-              link: 'https://app.ergeon.com/projects-gallery/#/tags/lattice',
+              link: `${config.projectsGalleryHost}/tags/lattice`,
             })}
           </div>
           <div className="projects-section__project-cards" data-name="Driveway projects">

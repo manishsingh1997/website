@@ -43,7 +43,6 @@ import './main.scss';
 import RequestQuotePage from 'containers/RequestQuotePage';
 initUTMs('utm-iframe', config.websiteDomain, [
   `${config.fencequotingHost}/utm/`,
-  `${config.projectsGalleryHost}/utm/`,
 ]);
 
 export const history = createBrowserHistory();
