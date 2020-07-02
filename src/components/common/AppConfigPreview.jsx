@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import * as Sentry from '@sentry/browser';
 
 import {Spinner} from '@ergeon/core-components';
 import previewPlaceholderIcon from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
@@ -60,7 +61,10 @@ export default class AppConfigPreview extends React.Component {
     } catch (error) {
       this.setState({previewImage: previewPlaceholderIcon});
       if (error !== constants3dLib.UNKNOWN_PRODUCT_ERROR) {
-        console.error(error, schemaCodeUrl);
+        Sentry.withScope(scope => {
+          scope.setExtra('schemaCode', schemaCodeUrl);
+          console.error(error);
+        });
       }
     }
   }
