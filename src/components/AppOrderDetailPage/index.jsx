@@ -24,7 +24,7 @@ import AppSubCard from 'components/common/AppSubCard';
 import AppConfigPreview from 'components/common/AppConfigPreview';
 
 import './index.scss';
-import {getExpiresAtTitle, showUpcomingFeatures} from '../../utils/utils';
+import {getExpiresAtTitle} from '../../utils/utils';
 export default class AppOrderDetailPage extends React.Component {
 
   static propTypes = {
@@ -161,11 +161,9 @@ export default class AppOrderDetailPage extends React.Component {
           <DataRow title="Ordered on" value={formatDate(order['ordered_at'])} />
           <DataRow title="Visit Dates" value={this.renderVisitDates(order['visits'])} />
           <DataRow title="Address" value={this.getAddress(order)} />
-          {showUpcomingFeatures() && (
-            <DataRow
-              title="Warranty"
-              value={this.renderWarrantyLink(order.project_warranty_pdf, order.project_warranty_thumb)} />
-          )}
+          <DataRow
+            title="Warranty"
+            value={this.renderWarrantyLink(order.project_warranty_pdf, order.project_warranty_thumb)} />
         </div>
         {filterQuotesByStatus(order['quotes'], selectedOption).map(quote => (
           <AppSubCard

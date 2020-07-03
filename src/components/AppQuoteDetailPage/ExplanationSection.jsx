@@ -7,7 +7,6 @@ import ImgBilling from 'assets/icon-billing.svg';
 import './ExplanationSection.scss';
 import PropTypes from 'prop-types';
 import {CARD_TRANSACTION_FEE} from 'website/constants';
-import {showUpcomingFeatures} from 'utils/utils';
 
 export default class ExplanationSection extends React.Component {
   static propTypes = {
@@ -30,7 +29,7 @@ export default class ExplanationSection extends React.Component {
     const newWarranty = (
       projectWarrantyLink && <a href={projectWarrantyLink}>{linkContent}</a>
     );
-    const warrantyContent = showUpcomingFeatures() && newWarranty ? newWarranty : oldWarranty;
+    const warrantyContent = newWarranty ? newWarranty : oldWarranty;
     return (
       <React.Fragment>
         <hr className="gray-line restricted-720"/>
