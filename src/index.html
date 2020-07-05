@@ -69,7 +69,7 @@
             paths = Object.keys(indexOfPath);
             for (i=0; i < paths.length; i++) {
               path = paths[i];
-              if (pathname.startsWith(path)) {
+              if (pathname.indexOf(path) === 0) {
                 loadHTML(indexOfPath[path]);
                 break;
               }
