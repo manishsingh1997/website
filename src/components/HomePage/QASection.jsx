@@ -1,4 +1,3 @@
-/* eslint-disable react/no-danger */
 import React from 'react';
 import PaneSwitcher from './PaneSwitcher';
 import {getParameterByName} from 'utils/utils';
@@ -62,6 +61,7 @@ class QASection extends React.Component {
     return (
       <div className="qa-section__question">
         <h6>{title}</h6>
+        {/* eslint-disable-next-line */}
         <p dangerouslySetInnerHTML={{__html: content}} />
       </div>
     );

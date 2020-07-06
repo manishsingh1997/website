@@ -12,8 +12,9 @@ const getCommonHeaders = () => {
 };
 
 export const getNodes = (ids) => {
+  const idsString = ids.join(',');
   return axios({
-    url: `${getBaseAPIURL()}?node_id=${ids}`,
+    url: `${getBaseAPIURL()}?node_id=${idsString}`,
     method: 'get',
     responseType: 'json',
     headers: getCommonHeaders(),
