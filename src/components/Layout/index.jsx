@@ -23,6 +23,7 @@ import {isChristmasTime, isPDFMode, showUpcomingFeatures} from 'utils/utils';
 import {getMenuItems} from 'data/customer-app.js';
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
+import config from 'website/config';
 import COVIDNotification from './COVIDNotification';
 
 import './index.scss';
@@ -187,13 +188,18 @@ export default class Layout extends React.Component {
           <WebsiteTopPanel
             customerMenu={this.renderDropdownMenu()}
             ergeonUrl="/"
+            fencequotingUrl={`${config.fencequotingHost}/`}
             pdfDetails={this.renderPdfDetails()}
             pdfMode={asPDF}
             showChristmasHat={this.isChristmasTime}
             widthClass={widthClass}>
           </WebsiteTopPanel>
           <div>{this.props.children}</div>
-          {!asPDF && showFooter && <Footer ergeonUrl="/"  widthClass={widthClass}/>}
+          {
+            !asPDF &&
+            showFooter &&
+            <Footer ergeonUrl="/" fencequotingUrl={`${config.fencequotingHost}/`} widthClass={widthClass} />
+          }
           <AddressUpdatePopup />
         </NavLinkContext.Provider>
       </div>
