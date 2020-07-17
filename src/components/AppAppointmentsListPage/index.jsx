@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import {SelectFilter} from '@ergeon/core-components';
 
 import {formatDate, formatTime} from 'utils/date';
+import {getFormattedAddress} from 'utils/app-house';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import DataRow from 'components/common/DataRow';
 
@@ -35,10 +36,6 @@ export default class AppAppointmentsListPage extends React.Component {
     getAppointments(customerGID);
   }
 
-  getAddress(order) {
-    return order['house']['address']['formatted_address'];
-  }
-
   getOrderDetailLink(order) {
     const customerGID = this.context;
     return (
@@ -62,7 +59,7 @@ export default class AppAppointmentsListPage extends React.Component {
         <DataRow title="Date" value={formatDate(appointment['date'])}/>
         <DataRow title="Time Start" value={formatTime(appointment['time_start'])}/>
         <DataRow title="Time End" value={formatTime(appointment['time_end'])}/>
-        <DataRow title="Address" value={this.getAddress(appointment['order'])}/>
+        <DataRow title="Address" value={getFormattedAddress(appointment['order']['house'])}/>
         <DataRow title="Order" value={this.getOrderDetailLink(appointment['order'])}/>
         <DataRow title="Agent name" value={appointment['agent_name']}/>
       </React.Fragment>

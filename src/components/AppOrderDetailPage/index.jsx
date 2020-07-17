@@ -14,6 +14,7 @@ import {
   QUOTE_FILTERS,
   DEFAULT_QUOTE_FILTER,
 } from 'utils/app-order';
+import {getFormattedAddress} from 'utils/app-house';
 import {getQuoteDetailURL} from 'utils/urls';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import {DRIVEWAY_QUANTITY_UNIT, FENCE_QUANTITY_UNIT} from 'website/constants';
@@ -46,10 +47,6 @@ export default class AppOrderDetailPage extends React.Component {
     const customerGID = this.context;
     const orderId = this.props.match.params.orderId;
     fetchOrder(customerGID, orderId);
-  }
-
-  getAddress(order) {
-    return order['house']['address']['formatted_address'];
   }
 
   getOrder() {
@@ -160,7 +157,7 @@ export default class AppOrderDetailPage extends React.Component {
           <DataRow title="Status" value={order['customer_deal_status']} />
           <DataRow title="Ordered on" value={formatDate(order['ordered_at'])} />
           <DataRow title="Visit Dates" value={this.renderVisitDates(order['visits'])} />
-          <DataRow title="Address" value={this.getAddress(order)} />
+          <DataRow title="Address" value={getFormattedAddress(order['house'])} />
           <DataRow
             title="Warranty"
             value={this.renderWarrantyLink(order.project_warranty_pdf, order.project_warranty_thumb)} />

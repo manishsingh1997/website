@@ -8,6 +8,7 @@ import Marker from 'assets/marker.svg';
 import config from 'website/config';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import DataRow from 'components/common/DataRow';
+import {getFormattedAddress} from 'utils/app-house';
 
 import AppPage from 'components/common/AppPage';
 import AppSubCard from 'components/common/AppSubCard';
@@ -34,10 +35,6 @@ export default class AppHouseListPage extends React.Component {
     getHouses(customerGID);
   }
 
-  getAddress(house) {
-    return house['address']['formatted_address'];
-  }
-
   renderListElementContent(house) {
 
     const mapControls = {
@@ -52,8 +49,8 @@ export default class AppHouseListPage extends React.Component {
     const locationMarker = {
       'info': '',
       'position': {
-        'lat': house['address']['latitude'],
-        'lng': house['address']['longitude'],
+        'lat': house['address'] && house['address']['latitude'],
+        'lng': house['address'] && house['address']['longitude'],
       },
       'icon': Marker,
     };
@@ -61,20 +58,22 @@ export default class AppHouseListPage extends React.Component {
     return (
       <div className="flex-wrapper">
         <div>
-          <DataRow title="Address" value={this.getAddress(house)} />
+          <DataRow title="Address" value={getFormattedAddress(house)} />
         </div>
-        <div className="map-wrapper">
-          <MapComponent
-            apiKey={config.googleMapsApiKey}
-            aspectRatio="4:3"
-            controls={mapControls}
-            loadGoogleMapsLibrary={GoogleMapsLoader.load}
-            loadingPlaceholder={<Spinner active={true} color="green" size={32} />}
-            markers={[locationMarker]}
-            popupBehaviour="close"
-            styles={[{'stylers': [{'saturation': -100}]}]}
-            zoom={14} />
-        </div>
+        {house['address'] && (
+          <div className="map-wrapper">
+            <MapComponent
+              apiKey={config.googleMapsApiKey}
+              aspectRatio="4:3"
+              controls={mapControls}
+              loadGoogleMapsLibrary={GoogleMapsLoader.load}
+              loadingPlaceholder={<Spinner active={true} color="green" size={32} />}
+              markers={[locationMarker]}
+              popupBehaviour="close"
+              styles={[{'stylers': [{'saturation': -100}]}]}
+              zoom={14} />
+          </div>
+        )}
       </div>
     );
   }

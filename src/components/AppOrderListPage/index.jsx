@@ -7,6 +7,7 @@ import {Button} from '@ergeon/core-components';
 import {formatDate} from 'utils/date';
 import {getOrderDetailURL, getQuoteDetailURL} from 'utils/urls';
 import {filterQuotesByStatus, DEFAULT_QUOTE_FILTER} from 'utils/app-order';
+import {getFormattedAddress} from 'utils/app-house';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import DataRow from 'components/common/DataRow';
 
@@ -28,10 +29,6 @@ export default class AppOrdersListPage extends React.Component {
     const {getOrders} = this.props;
     const customerGID = this.context;
     getOrders(customerGID);
-  }
-
-  getAddress(order) {
-    return order['house']['address']['formatted_address'];
   }
 
   renderQuote(quote) {
@@ -76,7 +73,7 @@ export default class AppOrdersListPage extends React.Component {
         <DataRow title="Order" value={`#${order['id']}`} />
         <DataRow title="Status" value={order['customer_deal_status']} />
         <DataRow title="Ordered on" value={formatDate(order['ordered_at'])} />
-        <DataRow title="Address" value={this.getAddress(order)} />
+        <DataRow title="Address" value={getFormattedAddress(order['house'])} />
         <DataRow title="Quotes" value={this.renderQuotes(order)} />
       </React.Fragment>
     );
