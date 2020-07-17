@@ -192,7 +192,7 @@ export const trackTawkLeadEvent = (submitData) => {
     });
 
     let data = {
-      address: submitData.address['formatted_address'],
+      address: submitData.address && submitData.address['formatted_address'],
       email: submitData.email,
       name: submitData.name,
     };
