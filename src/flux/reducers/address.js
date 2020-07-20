@@ -2,6 +2,7 @@ import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import ls from 'local-storage';
 import {constants} from '@ergeon/3d-lib';
 import {actionTypes} from '../actions/address';
+import {get} from 'lodash';
 
 let initialState = {
   address: null,
@@ -24,7 +25,7 @@ const getStateFromLead = function(state, lead) {
     product,
     updateModalLead: null,
     updateModalOpened: false,
-    updateModalValue: lead ? lead.address['formatted_address'] : state.updateModalValue,
+    updateModalValue: get(lead, 'address.formatted_address', state.updateModalValue),
     error: null,
   };
 };
@@ -47,27 +48,27 @@ export default function addressReducer(state = initialState, action) {
       return {
         ...state,
         updateModalLead: action.payload,
-        updateModalValue: action.payload.address['formatted_address'],
+        updateModalValue: action.payload.address['formatted_address'] || '',
       };
     case actionTypes.OPEN_POPUP:
       return {
         ...state,
         updateModalLead: state.lead,
         updateModalOpened: true,
-        updateModalValue: state.address,
+        updateModalValue: state.address || '',
       };
     case actionTypes.CLOSE_POPUP:
       return {
         ...state,
         updateModalLead: null,
         updateModalOpened: false,
-        updateModalValue: state.address,
+        updateModalValue: state.address || '',
       };
     case actionTypes.MODAL_VALUE_UPDATED:
       return {
         ...state,
         updateModalLead: null,
-        updateModalValue: action.payload,
+        updateModalValue: action.payload || '',
       };
   }
 
