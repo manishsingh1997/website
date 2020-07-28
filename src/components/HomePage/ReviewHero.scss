@@ -1,4 +1,4 @@
-@import '@ergeon/core-components/src/components/variables.scss';
+@import '~@ergeon/core-components/src/components/variables.scss';
 .review-hero {
   &__flex-wrapper {
     display: flex;
@@ -58,18 +58,14 @@
       @include phone() {
         display: flex;
         align-items: center;
-        margin: 6px 6px 10px 0;
-        .stars-group {
-          margin-right: 10px;
-          .icon {
-            width: 16px;
-            height: 16px;
-            background-size: 16px 16px;
-          }
-        }
+        margin: 0;
       }
       &__numbers {
         margin-top: 6px;
+        @include phone() {
+          margin-top: unset;
+          margin-left: 10px;
+        }
       }
     }
   }
