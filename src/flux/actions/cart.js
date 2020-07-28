@@ -1,6 +1,7 @@
 import {some, random} from 'lodash';
 import {getPriceAndDescription} from 'api/lead';
 import {constants, calcUtils, attrs} from '@ergeon/3d-lib';
+import moment from 'moment';
 
 export const actionTypes = {
   'ADD_CONFIG': 'ADD_CONFIG',
@@ -50,6 +51,7 @@ export const addConfigFromSchema = function({zipcode, data, schemaCode, length, 
           description: priceAndDescription['description'],
           price: priceAndDescription['unit_price'],
           units: length || 1,
+          timestamp: moment().unix() * 1000,
         };
 
         if (index !== -1) {
