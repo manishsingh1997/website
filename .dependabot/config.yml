@@ -1,0 +1,18 @@
+version: 1
+update_configs:
+  # Keep package.json (& lockfiles) up to date as soon as
+  # new versions are published to the npm registry
+  - package_manager: "javascript"
+    directory: "/"
+    update_schedule: "live"
+    default_reviewers:
+      - chapayevdauren
+      - LEMing
+      - ivandiazwm
+      - maximilianotulian
+      - shulyugin
+      - st4lk
+  # Only trigger updates for private packages
+    allowed_updates:
+      - match:
+          dependency_name: "@ergeon/*"
