@@ -109,6 +109,11 @@ render(
             from="/gallery/driveway"
             key="gallery-driveway-redirect"
             to="/gallery/driveway/stamped/casual" />
+          <Redirect
+            exact
+            from="/pro-advice"
+            key="pro-advice-redirect"
+            to="https://blog.ergeon.com/" />
           <Route component={NotFoundPage} exact path="*"/>
           {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
         </Switch>

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import PaneSwitcher from './PaneSwitcher';
 import {getParameterByName} from 'utils/utils';
 import {getNodes} from 'api/node';
@@ -76,13 +77,13 @@ class QASection extends React.Component {
             <div className="qa-section__questions-wrapper">
               {isLoading ? this.renderSpinner() : this.renderQuestions('fence')}
             </div>
-            <a href="/help/201900004">Read more →</a>
+            <Link to="/help/201900004">Read more →</Link>
           </div>
           <div data-name="Driveway 101">
             <div className="qa-section__questions-wrapper">
               {isLoading ? this.renderSpinner() : this.renderQuestions('driveways')}
             </div>
-            <a href="/help/201900003">Read more →</a>
+            <Link to="/help/201900003">Read more →</Link>
           </div>
         </PaneSwitcher>
       </div>

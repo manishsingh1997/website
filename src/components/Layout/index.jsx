@@ -198,7 +198,11 @@ export default class Layout extends React.Component {
           {
             !asPDF &&
             showFooter &&
-            <Footer ergeonUrl="/" fencequotingUrl={`${config.fencequotingHost}/`} widthClass={widthClass} />
+            <Footer
+              ergeonUrl="/"
+              fencequotingUrl={`${config.fencequotingHost}/`}
+              projectsGalleryUrl={`${config.projectsGalleryHost}/`}
+              widthClass={widthClass} />
           }
           <AddressUpdatePopup />
         </NavLinkContext.Provider>
