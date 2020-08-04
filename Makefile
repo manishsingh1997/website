@@ -35,6 +35,9 @@ install: .install
 lint: install
 	npm run lint
 
+create-site-map:
+	npm run create-site-map
+
 run: install
 	SENTRY_RELEASE_NAME=$(SENTRY_RELEASE_NAME) SHOW_UPCOMING_FEATURES=$(SHOW_UPCOMING_FEATURES) npm run start
 
@@ -56,6 +59,7 @@ deploy-staging:
 	LEVEL=staging make sentry-set-commits
 
 deploy-production:
+	LEVEL=production make create-site-map 
 	LEVEL=production make build
 	LEVEL=production S3_BUCKET=www.ergeon.com make s3upload
 	LEVEL=production DOMAIN=www.ergeon.com make invalidate-cloudfront

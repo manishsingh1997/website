@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "create-site-map": "npx babel-node ./src/process/createSitemap.js",
     "start": "NODE_ENV=development webpack-dev-server --config webpack.dev.js",
     "build-production": "NODE_ENV=production webpack --config webpack.prod.js",
     "build-staging": "NODE_ENV=staging webpack --config webpack.staging.js",
@@ -28,6 +29,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-lodash": "^3.3.4",
+    "bent": "^7.3.9",
     "colors": "^1.3.3",
     "compression-webpack-plugin": "^3.1.0",
     "copy-webpack-plugin": "^5.0.4",

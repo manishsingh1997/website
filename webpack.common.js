@@ -100,6 +100,12 @@ module.exports = {
     new CopyPlugin([
       {from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`},
     ]),
+    new CopyPlugin([
+      {
+        from: './src/data/sitemap.xml',
+        to: '',
+      },
+    ]),
   ],
   optimization: {
     splitChunks: {
