@@ -80,44 +80,47 @@ const CustomerApp = ({match, location}) => (
 render(
   <Provider store={store}>
     <Router history={history}>
-      <Layout>
-        <Switch>
-          {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
-          {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
-          {DrivewayPhotoData.map(renderPhotoGalleryRedirect.bind(this, 'driveway'))}
+      <Switch>
+        <Route
+          exact
+          path="/pro-advice"
+          render={() => {
+            window.location = 'https://blog.ergeon.com/';
+          }} />
+        <Layout>
+          <Switch>
+            {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
+            {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
+            {DrivewayPhotoData.map(renderPhotoGalleryRedirect.bind(this, 'driveway'))}
 
-          <Route component={HomePage} exact path="/"/>
-          <Route component={CareersPage} exact path="/careers"/>
-          <Route component={ContactUsPage} exact path="/contacts"/>
-          <Route component={AboutPage} exact path="/about-ergeon"/>
-          <Route component={PhotoGallery} exact path="/gallery/"/>
-          <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug"/>
-          <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug/:groupSlug"/>
-          <Route component={FAQPage} exact path="/faq"/>
-          <Route component={WarrantiesPage} exact path="/licenses-warranties"/>
-          <Route component={LocationsPage} exact path="/locations"/>
-          <Route component={HelpLandingPage} exact path="/help"/>
-          <Route component={HelpPage} exact path="/help/search"/>
-          <Route component={HelpPage} exact path="/help/:nodeId"/>
-          <Route component={RequestQuotePage} exact path="/request-quote"/>
-          <Route component={AuthSignInPage} exact path="/app/sign-in"/>
-          <Route component={AuthConfirmSignInPage} exact path="/app/confirm-sign-in"/>
-          <Route component={AuthLogoutPage} exact path="/app/logout"/>
-          <Route component={CustomerApp} path="/app/:customerGid" />
-          <Redirect
-            exact
-            from="/gallery/driveway"
-            key="gallery-driveway-redirect"
-            to="/gallery/driveway/stamped/casual" />
-          <Redirect
-            exact
-            from="/pro-advice"
-            key="pro-advice-redirect"
-            to="https://blog.ergeon.com/" />
-          <Route component={NotFoundPage} exact path="*"/>
-          {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
-        </Switch>
-      </Layout>
+            <Route component={HomePage} exact path="/"/>
+            <Route component={CareersPage} exact path="/careers"/>
+            <Route component={ContactUsPage} exact path="/contacts"/>
+            <Route component={AboutPage} exact path="/about-ergeon"/>
+            <Route component={PhotoGallery} exact path="/gallery/"/>
+            <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug"/>
+            <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug/:groupSlug"/>
+            <Route component={FAQPage} exact path="/faq"/>
+            <Route component={WarrantiesPage} exact path="/licenses-warranties"/>
+            <Route component={LocationsPage} exact path="/locations"/>
+            <Route component={HelpLandingPage} exact path="/help"/>
+            <Route component={HelpPage} exact path="/help/search"/>
+            <Route component={HelpPage} exact path="/help/:nodeId"/>
+            <Route component={RequestQuotePage} exact path="/request-quote"/>
+            <Route component={AuthSignInPage} exact path="/app/sign-in"/>
+            <Route component={AuthConfirmSignInPage} exact path="/app/confirm-sign-in"/>
+            <Route component={AuthLogoutPage} exact path="/app/logout"/>
+            <Route component={CustomerApp} path="/app/:customerGid" />
+            <Redirect
+              exact
+              from="/gallery/driveway"
+              key="gallery-driveway-redirect"
+              to="/gallery/driveway/stamped/casual" />
+            <Route component={NotFoundPage} exact path="*"/>
+            {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
+          </Switch>
+        </Layout>
+      </Switch>
     </Router>
   </Provider>,
   document.getElementById('root'),
