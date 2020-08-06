@@ -141,10 +141,14 @@
       fill: $green-1;
     }
   }
-
   .phone-number {
     display: flex;
     margin-right: 18px;
+    @include phone() {
+      position: absolute;
+      top: 12px;
+      right: 0;
+    }
 
     &__icon {
       background: $green-1;
@@ -156,6 +160,9 @@
       padding-left: 8px;
       color: $green-1;
       font-weight: 600;
+      @include phone() {
+        font-size: 14px;
+      }
     }
   }
 
