@@ -37,14 +37,23 @@ const getNodeIds = async function() {
 
 const getAllSitemapUrls = async function() {
   const nodeIdsUrls =  await getNodeIds();
+  const paths = [
+    'about-ergeon',
+    'careers',
+    'contacts',
+    'faq',
+    'gallery',
+    'help',
+    'help/search',
+    'licenses-warranties',
+    'locations',
+    'projects-gallery',
+    'request-quote',
+  ];
   const urls = [
-    `${HOME_PAGE_URL}`,
-    `${HOME_PAGE_URL}/careers`,
-    `${HOME_PAGE_URL}/contacts`,
-    `${HOME_PAGE_URL}/about-ergeon`,
-    `${HOME_PAGE_URL}/gallery`,
-    `${HOME_PAGE_URL}/faq`,
+    ...paths.map(path => `${HOME_PAGE_URL}/${path}`),
     ...nodeIdsUrls,
+    'https://blog.ergeon.com',
   ];
   const urlsAsXMLTags = reduce(
     urls,
