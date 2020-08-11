@@ -62,7 +62,7 @@
     "@ergeon/erg-customer-auth": "0.4.0",
     "@ergeon/erg-utils-js": "2.0.1",
     "@ergeon/erg-utms": "2.5.1",
-    "@ergeon/help-components": "0.7.2",
+    "@ergeon/help-components": "0.7.3",
     "@ergeon/map-component": "1.10.0",
     "@sentry/browser": "5.15.5",
     "axios": "^0.19.0",
