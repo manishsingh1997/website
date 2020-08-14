@@ -21,18 +21,19 @@ import AppLayout from 'containers/AppLayout';
 import AppOrderDetailPage from 'containers/AppOrderDetailPage';
 import AppOrderListPage from 'containers/AppOrderListPage';
 import AppQuoteDetailPage from 'containers/AppQuoteDetailPage';
+import AppNotificationsPage from 'components/AppNotificationsPage';
 import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
 import AuthLogoutPage from 'containers/AuthLogoutPage';
 import AuthSignInPage from 'components/AuthSignInPage';
 import CareersPage from 'components/CareersPage';
 import ContactUsPage from 'components/ContactUsPage';
-import NotFoundPage from './components/NotFoundPage';
 import FAQPage from 'components/FAQPage';
 import HelpLandingPage from 'components/HelpLandingPage';
 import HelpPage from 'components/HelpPage';
 import HomePage from 'components/HomePage';
 import Layout from 'containers/Layout';
 import LocationsPage from 'components/LocationsPage';
+import NotFoundPage from './components/NotFoundPage';
 import PhotoGallery from 'components/PhotoGallery';
 import WarrantiesPage from 'components/WarrantiesPage';
 import store from 'flux/store';
@@ -64,14 +65,15 @@ const renderPhotoGalleryRedirect = (productSlug, category) => {
 const CustomerApp = ({match, location}) => (
   <AppLayout location={location} match={match}>
     <Switch>
-      <Route component={AppOrderDetailPage} path={`${match.url}/orders/:orderId`} />
+      <Route component={AppAppointmentsListPage} path={`${match.url}/appointments`} />
       <Route component={AppContactsPage} path={`${match.url}/contacts`} />
       <Route component={AppHouseListPage} path={`${match.url}/houses`} />
+      <Route component={AppOrderDetailPage} path={`${match.url}/orders/:orderId`} />
       <Route component={AppOrderListPage} path={`${match.url}/orders`} />
-      <Route component={AppAppointmentsListPage} path={`${match.url}/appointments`} />
       <Route component={AppQuoteDetailPage} exact name="quoteDetail" path={`${match.url}/quotes/:secret`} />
       <Route component={AppQuoteDetailPage} exact name="quoteDirect" path={`${match.url}/quotes/:type/:secret`} />
       <Route component={AppQuoteDetailPage} exact name="quoteVendor" path={`${match.url}/quotes/:type/:secret`} />
+      <Route component={AppNotificationsPage} path={`${match.url}/notifications`} />
       <Route component={NotFoundPage} exact path="*"/>
     </Switch>
   </AppLayout>

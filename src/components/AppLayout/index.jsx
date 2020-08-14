@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link, NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
 
 import {Button} from '@ergeon/core-components';
@@ -8,8 +8,10 @@ import {Button} from '@ergeon/core-components';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import AppLoader from 'components/common/AppLoader';
 import SingleCard from 'components/common/SingleCard';
+import PathNavLink from 'components/common/PathNavLink';
 import {getMenuItems} from 'data/customer-app';
-import {isQuoteDetailURL} from 'utils/urls';
+import {isQuoteDetailURL, isUnsubscribeURL} from 'utils/urls';
+import {getUnsubscribeCodeFromQuery} from 'utils/app-notifications';
 
 import './index.scss';
 
@@ -41,21 +43,22 @@ export default class AppLayout extends React.Component {
   }
 
   renderSideBar() {
-    const {match} = this.props;
+    const {location, match} = this.props;
+    const unsubscribedCode = getUnsubscribeCodeFromQuery(location.search);
 
     return (
       <div>
         <ul className="siblings-list">
-          {getMenuItems(match.url).map(
+          {getMenuItems(match.url, unsubscribedCode).map(
             (menuItem => (
-              <NavLink activeClassName="active-link" key={`app-menu-${menuItem.title}`} to={menuItem.path}>
+              <PathNavLink activeClassName="active-link" key={`app-menu-${menuItem.title}`} to={menuItem.path}>
                 <li className="siblings-list-item">
                   <div className="menu-icon-wrapper">
                     <ReactSVG src={menuItem.iconSVG} />
                   </div>
                   <div className="siblings-list-item__wrapper">{menuItem.title}</div>
                 </li>
-              </NavLink>
+              </PathNavLink>
             ))
           )}
         </ul>
@@ -79,15 +82,18 @@ export default class AppLayout extends React.Component {
 
   render() {
     const {auth: {isAuthLoading, isUserLoading, user}, location} = this.props;
-
     const isLoading = isAuthLoading || isUserLoading;
-
-    // Quote detail page is special case - don't show sidebar
     const isQuotePage = isQuoteDetailURL(location.pathname);
 
-    if (!isLoading && !isQuotePage && !user) {
-      // TODO: if auth has error - show message with error
-      return this.renderAnonymousUser();
+    if (!isLoading && !user) {
+      if (isUnsubscribeURL(location.pathname, location.search)) {
+        // Unsubscribe page is special case - authentication not needed
+      } else if (isQuotePage) {
+        // Quote detail page is special case - authentication not needed, don't show sidebar
+      } else {
+        // TODO: if auth has error - show message with error
+        return this.renderAnonymousUser();
+      }
     }
 
     return (

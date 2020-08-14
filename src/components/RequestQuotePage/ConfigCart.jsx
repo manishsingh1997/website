@@ -18,6 +18,7 @@ class ConfigCart extends React.Component {
       price: PropTypes.string,
       description: PropTypes.string,
       units: PropTypes.number,
+      code: PropTypes.object,
     })),
     onShowStyleBrowserChange: PropTypes.func.isRequired,
     removeConfig: PropTypes.func.isRequired,

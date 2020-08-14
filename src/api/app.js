@@ -85,3 +85,22 @@ export const approveAndPayQuote = (customerGID, quoteSecret, stripeToken) => {
     }),
   });
 };
+
+export const getNotificationPreferences = (customerGID, secret) => {
+  return axios({
+    url: `${getBaseAPIURL(customerGID)}/notification-preferences?unsubscribe-secret=${secret}`,
+    method: 'get',
+    responseType: 'json',
+    headers: getCommonHeaders(),
+  });
+};
+
+export const updateNotificationPreferences = (customerGID, secret, data) => {
+  return axios({
+    url: `${getBaseAPIURL(customerGID)}/notification-preferences?unsubscribe-secret=${secret}`,
+    method: 'post',
+    responseType: 'json',
+    headers: getCommonHeaders(),
+    data: JSON.stringify(data),
+  });
+};
