@@ -1,3 +1,3 @@
 export const getFormattedAddress = (houseData) => {
-  houseData['address'] && houseData['address']['formatted_address'];
+  return houseData['address'] && houseData['address']['formatted_address'];
 };
