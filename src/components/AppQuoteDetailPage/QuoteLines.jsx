@@ -114,9 +114,17 @@ export default class QuoteLines extends React.Component {
     const {quote} = this.state;
     const quoteLines = quote['quote_lines'];
 
-    const sides = quoteLines.filter(quoteline => this.isQuoteLineOfMapKinds(quoteline, ['line']));
-    const gates = quoteLines.filter(quoteline => this.isQuoteLineOfMapKinds(quoteline, ['point', null, undefined]));
-    const areas = quoteLines.filter(quoteline => this.isQuoteLineOfMapKinds(quoteline, ['area']));
+    const filterByField = this.isVendorPreview() ? 'display_to_installer':'display_to_customer';
+
+    const sides = quoteLines
+      .filter(quoteline => this.isQuoteLineOfMapKinds(quoteline, ['line']))
+      .filter(quoteLine => quoteLine[filterByField] === true);
+    let gates = quoteLines
+      .filter(quoteline => this.isQuoteLineOfMapKinds(quoteline, ['point', null, undefined]))
+      .filter(quoteLine => quoteLine[filterByField] === true);
+    let areas = quoteLines
+      .filter(quoteline => this.isQuoteLineOfMapKinds(quoteline, ['area']))
+      .filter(quoteLine => quoteLine[filterByField] === true);
 
     return (
       <React.Fragment>
