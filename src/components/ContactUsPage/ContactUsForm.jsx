@@ -1,12 +1,12 @@
 import classNames from 'classnames';
+import every from 'lodash/every';
 import React from 'react';
 import PropTypes from 'prop-types';
+import isEmail from 'sane-email-validation';
 import * as Sentry from '@sentry/browser';
 
 import {getBaseEventData} from '@ergeon/erg-utms';
-import {Button, Spinner} from '@ergeon/core-components';
-import TextInput from '../common/TextInput';
-import TextArea from '../common/TextArea';
+import {Button, FormField, Input, Spinner} from '@ergeon/core-components';
 
 import {
   createValidator,
@@ -59,6 +59,11 @@ export default class ContactUsForm extends React.Component {
     this.state = getInitialState();
   }
 
+  get isValid() {
+    const {data: {email, name, comment}} = this.state;
+    return every([isEmail(email || ''), !!name, !!comment]);
+  }
+
   handleSubmit = async e => {
     e.preventDefault();
 
@@ -104,7 +109,7 @@ export default class ContactUsForm extends React.Component {
     }
   };
 
-  handleFieldChange = (name, value) => {
+  handleFieldChange = (event, name, value) => {
     const {data, validateOnChange} = this.state;
     const newState = {
       data: {
@@ -126,44 +131,48 @@ export default class ContactUsForm extends React.Component {
     return (
       <form className="ContactUsForm" onSubmit={this.handleSubmit}>
         <h4 className="center spacing after__is-30">Send us a message</h4>
-        <div className={classNames('Form-field', {'is-error': errors && errors.name})}>
-          <TextInput
+        <FormField>
+          <Input
             disabled={loading}
-            labelName="Your name"
+            label="Your name"
             name="name"
             onChange={this.handleFieldChange}
             placeholder="e.g. John Smith"
             type="text"
+            valid={!!name}
+            validationMessage={errors?.name}
             value={name} />
-          {errors && <div className="Form-error">{errors.name}</div>}
-        </div>
-        <div className={classNames('Form-field', {'is-error': errors && errors.email})}>
-          <TextInput
+        </FormField>
+        <FormField>
+          <Input
             disabled={loading}
-            labelName="Email"
+            label="Email"
             name="email"
             onChange={this.handleFieldChange}
             placeholder="e.g. username@mail.com"
             type="email"
+            valid={isEmail(email || '')}
+            validationMessage={errors?.email}
             value={email} />
-          {errors && <div className="Form-error">{errors.email}</div>}
-        </div>
-        <div className={classNames('Form-field', {'is-error': errors && errors.comment})}>
-          <TextArea
+        </FormField>
+        <FormField>
+          <Input
             disabled={loading}
-            labelName="Message"
+            label="Message"
+            multiline
             name="comment"
             onChange={this.handleFieldChange}
             placeholder="Add your message here"
             type="text"
+            valid={!!comment}
+            validationMessage={errors?.comment}
             value={comment} />
-          {errors && <div className="Form-error">{errors.comment}</div>}
-        </div>
+        </FormField>
         <div className="Form-actions">
           {errors && <div className="Form-error">{errors.global}</div>}
           <Button
             className={classNames({'is-loading': loading})}
-            disabled={loading}
+            disabled={!this.isValid || loading}
             size="large"
             type="submit">{loading ? <Spinner active={true} borderWidth={0.10} size={25} /> : 'Submit'}</Button>
         </div>

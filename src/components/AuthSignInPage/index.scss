@@ -25,26 +25,6 @@
     width: 100%;
   }
 
-  .signin-form-field {
-    height: auto;
-    position: relative;
-
-    &.is-error {
-      input {
-        border-color: $red;
-        background-color: $white;
-        color: $red;
-      }
-      .react-select__control {
-        border-color: $red;
-        background-color: $white;
-      }
-    }
-
-    & + .signin-form-field {
-      margin-top: 32px;
-    }
-  }
   .signin-form-actions {
     margin-top: 30px;
     position: relative;

@@ -1,12 +1,12 @@
 import classNames from 'classnames';
 import React from 'react';
 import {Link} from 'react-router-dom';
+import isEmail from 'sane-email-validation';
 
 import {authService} from 'utils/auth';
-import {Button, Spinner} from '@ergeon/core-components';
+import {Button, FormField, Input, Spinner} from '@ergeon/core-components';
 import LockIcon from '@ergeon/core-components/src/assets/icon-lock.svg';
 
-import TextInput from 'components/common/TextInput';
 import Success from 'components/common/Success';
 import SingleCard from 'components/common/SingleCard';
 import {
@@ -74,7 +74,7 @@ class AuthSignInPage extends React.Component {
     return errors;
   }
 
-  handleFieldChange = (name, value) => {
+  handleFieldChange = (event, name, value) => {
     const {data, validateOnChange} = this.state;
     const newState = {
       data: {
@@ -113,17 +113,18 @@ class AuthSignInPage extends React.Component {
           <i>New to ergeon?</i> <Link to="/request-quote">Request a quote</Link>.
         </p>
         <form className="signin-form" onSubmit={this.handleSubmit.bind(this)}>
-          <div className={classNames('signin-form-field', {'is-error': errors && errors.email})}>
-            <TextInput
+          <FormField>
+            <Input
               disabled={loading}
-              labelName="Email"
+              label="Email"
               name="email"
               onChange={this.handleFieldChange}
               placeholder="e.g. username@mail.com"
               type="email"
+              valid={isEmail(email || '') && !errors?.email || null}
               value={email} />
             {this.renderErrors('email')}
-          </div>
+          </FormField>
           <div className="signin-form-actions">
             {this.renderErrors('global')}
             <Button
