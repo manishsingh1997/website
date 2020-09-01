@@ -5,7 +5,15 @@ import isEmail from 'sane-email-validation';
 import * as Sentry from '@sentry/browser';
 import {constants, calcUtils} from '@ergeon/3d-lib';
 import {RadioGroup} from 'react-radio-group';
-import {Button, FormField, PhoneInput, Spinner, Input, RadioButton} from '@ergeon/core-components';
+import {
+  Button,
+  Checkbox,
+  FormField,
+  PhoneInput,
+  Spinner,
+  Input,
+  RadioButton,
+} from '@ergeon/core-components';
 import {getBaseEventData} from '@ergeon/erg-utms';
 
 import AddNote from './AddNote';
@@ -64,6 +72,7 @@ const getInitialState = (showNoteField = false, props = {}) => {
       comment: '',
       product: FENCE_SLUG,
       'string_address': stringifyAddress(props.lead && props.lead.address),
+      'is_subscribed_to_news': true,
     },
     validFields: null,
     errors: null,
@@ -203,6 +212,11 @@ export default class LeadForm extends React.Component {
       this.props.onProductChange(value);
     }
   };
+  handleCheckChange(value) {
+    this.setState({
+      data: {...this.state.data, 'is_subscribed_to_news': value},
+    });
+  }
 
   getOrder() {
     const {lead} = this.props;
@@ -230,9 +244,16 @@ export default class LeadForm extends React.Component {
 
   render() {
     const {lead: {address}, mobileAddressField, product} = this.props;
-    const {data: {email, name, phone, comment}, errors, loading, showNoteField, validFields} = this.state;
+    const {
+      data: {email, name, phone, comment, is_subscribed_to_news: isSubscribedToNews},
+      errors,
+      loading,
+      showNoteField,
+      validFields,
+    } = this.state;
     const addConfigLinkClasses = classNames({
       'add-config__disable': !address || product !== FENCE_SLUG,
+      'spacing after__is-12': true,
     });
     return (
       <form className="Form LeadForm" onSubmit={this.handleSubmit.bind(this)}>
@@ -302,6 +323,13 @@ export default class LeadForm extends React.Component {
               Design your Fence or Gate
             </a>
             <label className="label">And get an estimate instantly</label>
+          </div>
+          <div>
+            <Checkbox checked={isSubscribedToNews} onClick={this.handleCheckChange.bind(this)}>
+              <div>
+                <p className="newsletter-label">I&apos;m ok to receive interesting insights over email</p>
+              </div>
+            </Checkbox>
           </div>
         </div>
         <div className="Form-actions">
