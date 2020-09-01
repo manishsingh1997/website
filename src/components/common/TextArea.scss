@@ -1,0 +1,81 @@
+
+@import '~@ergeon/core-components/src/components/variables.scss';
+
+/** float container */
+.float-area-container {
+  @include border();
+
+  border-color: rgba($gray-3, 0.5);
+  background: $gray-6;
+  box-sizing: border-box;
+  color: $black-2;
+  display: flex;
+  position: relative;
+  padding-top: $v-24;
+  resize: none;
+  letter-spacing: 0;
+  width: 100%;
+
+  textarea {
+    background: transparent;
+    outline: none;
+    border: 0;
+    width: 100%;
+    padding: 0 12px 14px;
+    font-family: $font-content;
+    font-size: $font-mobile-size;
+  
+    &::placeholder {
+      color: transparent;
+    }
+  
+    &:focus {
+      &::placeholder {
+        color: $gray-1;
+      }
+    }
+  }
+
+  &:focus-within {
+    outline: 0;
+    border: 1px solid rgba(black, 0.50);
+    background: white;
+    -webkit-box-shadow: 0 0 0 3px rgba(black, 0.2);
+    -moz-box-shadow: 0 0 0 3px rgba(black, 0.2);
+    box-shadow: 0px 0 0 3px rgba(black, 0.2);
+
+    & .float-area-container__label {
+      line-height: 10px;
+      transform: scale(.75);
+      transform-origin: top left;
+      top: 10px;
+    }
+  }
+
+  &__label {
+    font-weight: normal;
+    color: $gray-1;
+    letter-spacing: 0;
+    margin-left: 12px;
+    font-family: $font-content;
+    font-size: $font-mobile-size;
+    line-height: $line-height-mobile;
+    position: absolute;
+    transform-origin: top left;
+    transform: scale(1);
+    transition: all .1s ease-in-out;  //speed
+    pointer-events: none;
+    left: 0;
+    top: 14px;
+  }
+
+  &.is-hasValue {
+    .float-area-container__label {
+      //move the x coordinate and reduce size
+      line-height: 10px;
+      top: 10px;
+      transform-origin: top left;
+      transform: scale(.75);
+    }
+  }
+}

@@ -1,21 +1,18 @@
 import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
-import isEmail from 'sane-email-validation';
 import * as Sentry from '@sentry/browser';
 import {constants, calcUtils} from '@ergeon/3d-lib';
 import {RadioGroup} from 'react-radio-group';
 import {
   Button,
   Checkbox,
-  FormField,
-  PhoneInput,
   Spinner,
   Input,
   RadioButton,
 } from '@ergeon/core-components';
 import {getBaseEventData} from '@ergeon/erg-utms';
-
+import PhoneInput from './PhoneInput';
 import AddNote from './AddNote';
 
 import {
@@ -185,7 +182,7 @@ export default class LeadForm extends React.Component {
     const {onAddConfigClick} = this.props;
     onAddConfigClick();
   }
-  handleFieldChange = (event, name, value) => {
+  handleFieldChange = (name, value) => {
     const {data, validateOnChange} = this.state;
     const newState = {
       data: {
@@ -257,7 +254,7 @@ export default class LeadForm extends React.Component {
     });
     return (
       <form className="Form LeadForm" onSubmit={this.handleSubmit.bind(this)}>
-        <FormField>
+        <div>
           <label className="label">Ergeon service:</label>
           <RadioGroup
             name="ergeon-service"
@@ -272,48 +269,48 @@ export default class LeadForm extends React.Component {
               </RadioButton>
             </ul>
           </RadioGroup>
-        </FormField>
+        </div>
         {mobileAddressField && mobileAddressField}
-        <FormField>
+        <div className={classNames('Form-field', {'is-error': errors && errors.name})}>
           <Input
             disabled={loading}
             label="Your name"
             name="name"
-            onChange={this.handleFieldChange.bind(this)}
+            onChange={(_, name, value) => this.handleFieldChange(name, value)}
             placeholder="e.g. John Smith"
-            valid={validFields?.name || !!name}
-            validationMessage={errors?.name}
+            valid={validFields ? validFields.name : null}
             value={name} />
-        </FormField>
-        <FormField>
+          {errors && <div className="Form-error">{errors.name}</div>}
+        </div>
+        <div className={classNames('Form-field', {'is-error': errors && errors.phone})}>
           <PhoneInput
             disabled={loading}
             label="Your phone number"
             name="phone"
-            onChange={this.handleFieldChange.bind(this)}
-            valid={validFields?.phone || !(/_/).test(phone) || null}
-            validationMessage={errors?.phone}
+            onChange={(_, name, value) => this.handleFieldChange(name, value)}
+            placeholder="(555) 123-4567"
+            valid={validFields ? validFields.phone : null}
             value={phone} />
-        </FormField>
-        <FormField>
+          {errors && <div className="Form-error">{errors.phone}</div>}
+        </div>
+        <div className={classNames('Form-field', {'is-error': errors && errors.email})}>
           <Input
             disabled={loading}
             label="Email"
             name="email"
-            onChange={this.handleFieldChange.bind(this)}
+            onChange={(_, name, value) => this.handleFieldChange(name, value)}
             placeholder="e.g. username@mail.com"
-            type="email"
-            valid={validFields?.email || isEmail(email || '') || null}
-            validationMessage={errors?.email}
+            valid={validFields ? validFields.email : null}
             value={email} />
-        </FormField>
+          {errors && <div className="Form-error">{errors.email}</div>}
+        </div>
         <div className="Form-action-links">
           <AddNote
             comment={comment}
             errors={errors}
-            handleAddNote={this.handleAddNote.bind(this)}
-            handleFieldChange={this.handleFieldChange.bind(this)}
-            handleRemoveNote={this.handleRemoveNote.bind(this)}
+            handleAddNote={this.handleAddNote}
+            handleFieldChange={this.handleFieldChange}
+            handleRemoveNote={this.handleRemoveNote}
             loading={loading}
             showNoteField={showNoteField}/>
           <div className={addConfigLinkClasses}>

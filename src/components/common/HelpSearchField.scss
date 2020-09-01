@@ -1,0 +1,48 @@
+@import "@ergeon/core-components/src/components/variables.scss";
+.search-field {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 0;
+
+  &__icon {
+    background-image: url('../../assets/icon-search-gray.svg');
+    background-size: $v-16;
+    background-repeat: no-repeat;
+    width: $v-16;
+    height: $v-16;
+    background-position: 0;
+    position: absolute;
+    top: 50%;
+    margin-top: -7px;
+    right: 75px;
+  }
+
+  &__input {
+    height: $v-36;
+    background-color: $gray-6;
+    padding-right: $h-20;
+    padding-left: $h-10;
+    width: 100%;
+    transition: 0.2s;
+    color: $black-1;
+    font-family: $font-content;
+    font-size: $font-mobile-size;
+    line-height: $line-height-mobile;
+    border: 1px solid #e4e9e2;
+    border-radius: 4px;
+    &:focus {
+      outline: 0;
+      border: 1px solid rgba($black-1, 0.50);
+      background-color: $white;
+      box-shadow: 0 0 0 3px rgba($black-1, 0.2);
+    }
+  }
+
+  &__button {
+    margin-left: $h-10;
+    height: $v-36;
+    min-width: $h-40;
+    padding: 0;
+  }
+}

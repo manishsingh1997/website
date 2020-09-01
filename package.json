@@ -7,7 +7,6 @@
     "create-site-map-production": "NODE_ENV=production npx babel-node ./src/process/createSitemap.js",
     "create-site-map-staging": "NODE_ENV=staging npx babel-node ./src/process/createSitemap.js",
     "start": "NODE_ENV=development webpack-dev-server --config webpack.dev.js",
-    "start:staging": "NODE_ENV=staging webpack-dev-server --config webpack.dev.js",
     "build-production": "NODE_ENV=production webpack --config webpack.prod.js",
     "build-staging": "NODE_ENV=staging webpack --config webpack.staging.js",
     "build-development": "NODE_ENV=development webpack --config webpack.dev.js",
@@ -25,7 +24,6 @@
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@ergeon/eslint-config-ergeon": "^1.0.0",
@@ -59,7 +57,7 @@
   },
   "dependencies": {
     "@ergeon/3d-lib": "4.4.1",
-    "@ergeon/core-components": "1.35.0",
+    "@ergeon/core-components": "1.34.2",
     "@ergeon/draw-map": "2.7.0",
     "@ergeon/erg-customer-auth": "0.4.0",
     "@ergeon/erg-utils-js": "2.0.1",
@@ -95,7 +93,6 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "sane-email-validation": "^3.0.1",
     "vanilla-text-mask": "^5.1.1"
   },
   "bugs": {

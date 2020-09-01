@@ -79,9 +79,11 @@
     display: flex;
     border-bottom: 1px solid $gray-4;
     padding-bottom: $v-12;
+    margin-bottom: $v-24;
     flex-wrap: wrap;
     @include tablet() {
       padding-bottom: $v-12;
+      margin-bottom: $v-24;
     }
     .radio-button {
       font-size: $font-mobile-size;
@@ -114,6 +116,28 @@
     }
   }
 
+  .Form-field {
+    height: auto;
+    position: relative;
+    margin-bottom: $v-24;
+    @include phone() {
+      margin-bottom: $v-12;
+    }
+    &.is-error {
+      input {
+        border-color: $red;
+        background-color: $white, rgba($red, 0.05);
+        color: $red;
+        &:focus {
+          box-shadow: 0 0 0 3px rgba($red, 0.2);
+        }
+      }
+      .react-select__control {
+        border-color: $red;
+        background-color: $white;
+      }
+    }
+  }
   .Form-actions {
     margin-top: $v-24;
     position: relative;

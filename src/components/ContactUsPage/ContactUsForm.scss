@@ -17,6 +17,43 @@
     margin: 0 auto;
   }
 
+  .Form-field {
+    height: auto;
+    position: relative;
+
+    @include phone() {
+      margin-top: 0;
+      margin-bottom: 14px;
+
+      &:first-child {
+        margin-bottom: 44px;
+      }
+    }
+
+    &.is-error {
+      input {
+        border-color: $red;
+        background-color: $white;
+        color: $red;
+      }
+
+      textarea {
+        border-color: $red;
+        background-color: $white;
+        color: $red;
+      }
+    }
+
+    & + .Form-field {
+      margin-top: 32px;
+
+      @include phone() {
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
   .Form-actions {
     border-top: 1px solid $gray-4;
     margin-top: 50px;

@@ -1,11 +1,10 @@
-import classNames from 'classnames';
 import React from 'react';
 import propTypes from 'prop-types';
 import {ReactSVG} from 'react-svg';
 import crossIcon from '@ergeon/core-components/src/assets/icon-cross-gray.svg';
-import {Input} from '@ergeon/core-components';
-
+import classNames from 'classnames';
 import './AddNote.scss';
+import TextArea from '../common/TextArea';
 
 export default class AddNote extends React.Component {
   static propTypes = {
@@ -42,17 +41,15 @@ export default class AddNote extends React.Component {
                 Remove
               </a>
             </div>
-            <Input
+            <TextArea
               disabled={loading}
-              label="Note"
-              multiline
+              labelName="Note"
               name="comment"
               onChange={handleFieldChange}
               placeholder="Add your note here"
               type="text"
-              valid={!!comment && !errors?.comment || null}
-              validationMessage={errors?.comment}
               value={comment} />
+            {errors && <div className="Form-error">{errors.comment}</div>}
           </div>
         )}
       </React.Fragment>
