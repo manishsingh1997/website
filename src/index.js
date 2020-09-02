@@ -107,7 +107,7 @@ render(
             <Route component={LocationsPage} exact path="/locations"/>
             <Route component={HelpLandingPage} exact path="/help"/>
             <Route component={HelpPage} exact path="/help/search"/>
-            <Route component={HelpPage} exact path="/help/:nodeId"/>
+            <Route component={HelpPage} exact path="/help/:nodeKey"/>
             <Route component={RequestQuotePage} exact path="/request-quote"/>
             <Route component={AuthSignInPage} exact path="/app/sign-in"/>
             <Route component={AuthConfirmSignInPage} exact path="/app/confirm-sign-in"/>
