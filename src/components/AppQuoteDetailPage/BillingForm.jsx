@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import {some} from 'lodash';
-import {Button, Spinner, Notification} from '@ergeon/core-components';
+import {Button, FormField, Input, Spinner, Notification} from '@ergeon/core-components';
 
 import {
   AMEX,
@@ -14,9 +14,6 @@ import {
   getStripeToken,
 } from 'utils/billing';
 import {CARD_TRANSACTION_FEE, CONTACT_EMAIL} from 'website/constants';
-
-import MaskedTextInput from 'components/common/MaskedTextInput';
-import TextInput from 'components/common/TextInput';
 
 import IconCards from 'assets/icon-cards.png';
 import IconSSL from 'assets/icon-ssl.svg';
@@ -64,7 +61,7 @@ export default class BillingForm extends React.Component {
     });
   };
 
-  handleFieldChange(name, value) {
+  handleFieldChange(event, name, value) {
     const validation = {
       'card': cardNumberValidation,
       'expirationDate': cardExpDateValidation,
@@ -81,6 +78,10 @@ export default class BillingForm extends React.Component {
         [name]: validation && validation(value),
       },
     });
+  }
+
+  handleTermsCheck(value) {
+    this.handleFieldChange({}, 'termsAccepted', value);
   }
 
   handleBlur(name) {
@@ -192,67 +193,57 @@ export default class BillingForm extends React.Component {
     const {form, errors, validate, isLoading} = this.state;
     const {card, expirationDate, cvc} = form;
 
-    const getFieldModificatorClass = field => ({
-      'is-error': errors && errors[field],
-      'is-valid': validate[field] && !(errors && errors[field]),
-    });
-
     return (
       <div className="billing-form__fields">
         <div className="billing-form__card-number">
-          <div
-            className={classNames('Form-field', getFieldModificatorClass('card'))}>
-            <MaskedTextInput
+          <FormField>
+            <Input
               disabled={isLoading}
-              labelName="Card Number"
+              label="Card Number"
               mask={this.getCardMask(card)}
               name="card"
               onBlur={this.handleBlur.bind(this, 'card')}
-              onChange={event => this.handleFieldChange('card', event.target.value)}
+              onChange={this.handleFieldChange.bind(this)}
+              tabindex="1"
+              type="tel"
+              valid={validate.card ? !errors?.card : undefined}
+              validationMessage={errors?.card}
               value={card} />
-            <img
-              className="billing-form__valid-field-check"
-              src={IconMarkGreen} />
-            {validate.card && errors.card && <div className="Form-error">{errors.card}</div>}
-          </div>
+          </FormField>
         </div>
         <div className="billing-form__expiration-date">
-          <div className={classNames('Form-field', getFieldModificatorClass('expirationDate'))}>
-            <MaskedTextInput
+          <FormField>
+            <Input
               className="FormControl--short"
               disabled={isLoading}
-              labelName="Exp. Date"
+              label="Exp. Date"
               mask="99/99"
               name="expirationDate"
               onBlur={this.handleBlur.bind(this, 'expirationDate')}
-              onChange={event => this.handleFieldChange('expirationDate', event.target.value)}
+              onChange={this.handleFieldChange.bind(this)}
               placeholder="MM/YY"
+              tabindex="2"
+              type="tel"
+              valid={validate.expirationDate ? !errors?.expirationDate : undefined}
+              validationMessage={errors?.expirationDate}
               value={expirationDate} />
-            <img
-              className="billing-form__valid-field-check"
-              src={IconMarkGreen} />
-            {
-              validate.expirationDate &&
-              errors.expirationDate &&
-              <div className="Form-error">{errors.expirationDate}</div>
-            }
-          </div>
+          </FormField>
         </div>
         <div className="billing-form__cvc">
-          <div className={classNames('Form-field', getFieldModificatorClass('cvc'))}>
-            <TextInput
+          <FormField>
+            <Input
               className="FormControl--short"
               disabled={isLoading}
-              labelName="CVC"
+              label="CVC"
               name="cvc"
               onBlur={this.handleBlur.bind(this, 'cvc')}
-              onChange={(name, value) => this.handleFieldChange('cvc', value)}
+              onChange={this.handleFieldChange.bind(this)}
+              tabindex="3"
+              type="tel"
+              valid={validate.cvc ? !errors?.cvc : undefined}
+              validationMessage={errors?.cvc}
               value={cvc} />
-            <img
-              className="billing-form__valid-field-check"
-              src={IconMarkGreen} />
-            {validate.cvc && errors.cvc && <div className="Form-error">{errors.cvc}</div>}
-          </div>
+          </FormField>
         </div>
       </div>
     );
@@ -346,7 +337,7 @@ export default class BillingForm extends React.Component {
                   'billing-form__accept-terms-button',
                   {'billing-form__accept-terms-button--selected': termsAccepted}
                 )}
-                onClick={this.handleFieldChange.bind(this, 'termsAccepted', !termsAccepted)}>
+                onClick={this.handleTermsCheck.bind(this, !termsAccepted)}>
                 {termsAccepted && <img
                   className="billing-form__accept-terms-button-icon"
                   src={IconMarkGreen} />}
