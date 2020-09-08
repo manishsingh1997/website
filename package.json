@@ -58,8 +58,8 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "@ergeon/3d-lib": "4.4.1",
-    "@ergeon/core-components": "1.35.0",
+    "@ergeon/3d-lib": "5.1.3",
+    "@ergeon/core-components": "^1.36.0",
     "@ergeon/draw-map": "2.7.0",
     "@ergeon/erg-customer-auth": "0.4.0",
     "@ergeon/erg-utils-js": "2.0.1",
@@ -78,8 +78,8 @@
     "moment-timezone": "^0.5.28",
     "prop-types": "^15.7.2",
     "query-string": "^6.9.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-images": "^1.0.0",
     "react-input-mask": "^2.0.4",
     "react-load-script": "0.0.6",

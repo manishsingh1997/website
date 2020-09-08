@@ -62,6 +62,10 @@ module.exports = {
   resolve: {
     modules: [APP_DIR, './node_modules'],
     extensions: ['.js', '.jsx'],
+    alias: {
+      'react': path.resolve('./node_modules/react'),
+      'react-dom': path.resolve('./node_modules/react-dom'),
+    },
   },
   node: {
     fs: 'empty',
@@ -96,6 +100,10 @@ module.exports = {
     ]),
     new CopyPlugin([
       {from: './node_modules/@ergeon/3d-lib/assets/3d-data', to: '3d-data'},
+      {from: './node_modules/@ergeon/3d-lib/assets',
+        to: 'assets',
+        ignore: ['3d-data/*'],
+      },
     ]),
     new CopyPlugin([
       {from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`},
