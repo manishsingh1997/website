@@ -105,10 +105,6 @@
     .label {
       padding-left: 18px;
     }
-    .newsletter-label {
-      font-size: $font-mobile-size;
-      line-height: $line-height-mobile;
-    }
     .add-config__disable {
       display: none;
     }
@@ -117,6 +113,12 @@
   .Form-actions {
     margin-top: $v-24;
     position: relative;
+    .newsletter-checkbox {
+      filter: grayscale(1);
+      label {
+        padding-top: 3px;
+      }
+    }
 
     .Form-error {
       margin-top: 6px;

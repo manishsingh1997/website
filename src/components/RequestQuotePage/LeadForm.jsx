@@ -256,7 +256,6 @@ export default class LeadForm extends React.Component {
     } = this.state;
     const addConfigLinkClasses = classNames({
       'add-config__disable': !address || product !== FENCE_SLUG,
-      'spacing after__is-12': true,
     });
     return (
       <form className="Form LeadForm" onSubmit={this.handleSubmit.bind(this)}>
@@ -327,21 +326,21 @@ export default class LeadForm extends React.Component {
             </a>
             <label className="label">And get an estimate instantly</label>
           </div>
-          <div>
-            <Checkbox checked={isSubscribedToNews} onClick={this.handleCheckChange.bind(this)}>
-              <div>
-                <p className="newsletter-label">I&apos;m ok to receive interesting insights over email</p>
-              </div>
-            </Checkbox>
-          </div>
         </div>
         <div className="Form-actions">
           {errors && <div className="Form-error">{errors.global}</div>}
           <Button
-            className={classNames('AddressButton', {'is-loading': loading})}
+            className={classNames('AddressButton', 'spacing after__is-24', {'is-loading': loading})}
             disabled={loading}
             size="large"
-            type="submit">{loading ? <Spinner active={true} borderWidth={0.10} size={25} /> : 'Get a quote'}</Button>
+            type="submit">
+            {loading ? <Spinner active={true} borderWidth={0.10} size={25} /> : 'Get a quote'}
+          </Button>
+          <div className="newsletter-checkbox">
+            <Checkbox checked={isSubscribedToNews} onClick={this.handleCheckChange.bind(this)}>
+              <p className="label">Email me interesting insights and company news</p>
+            </Checkbox>
+          </div>
         </div>
       </form>
     );
