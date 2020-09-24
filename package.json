@@ -58,7 +58,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "@ergeon/3d-lib": "5.1.4",
+    "@ergeon/3d-lib": "5.1.5",
     "@ergeon/core-components": "^1.36.0",
     "@ergeon/draw-map": "2.7.0",
     "@ergeon/erg-customer-auth": "0.4.0",
