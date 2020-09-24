@@ -9,7 +9,6 @@ update_configs:
       - chapayevdauren
       - LEMing
       - ivandiazwm
-      - maximilianotulian
       - shulyugin
       - st4lk
   # Only trigger updates for private packages
