@@ -59,7 +59,7 @@ export default class AppConfigPreview extends React.Component {
       );
       this.setState({previewImage: preview});
     } catch (error) {
-      this.setState({previewImage: previewPlaceholderIcon});
+      this.setState({previewImage: previewPlaceholderIcon, isLoading: false});
       if (error !== constants3dLib.UNKNOWN_PRODUCT_ERROR) {
         Sentry.withScope(scope => {
           scope.setExtra('schemaCode', schemaCodeUrl);
