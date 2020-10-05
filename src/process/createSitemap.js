@@ -28,7 +28,7 @@ const getNodeIds = async function() {
     const url = `${config.apiHost}/api/help/node/?domain=1`;
     const result = await getJSON(url);
     if (result && result.length) {
-      return result.map(result => `${HELP_PAGE_URL}/${result.node_id}`);
+      return result.map(result => `${HELP_PAGE_URL}/${result.node_key}`);
     }
   } catch (e) {
     console.log(`Error while getting node ids ${e}`);
