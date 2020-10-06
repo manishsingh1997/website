@@ -51,7 +51,7 @@ class QASection extends React.Component {
     const {questions} = this.state;
     const nodes = (type === 'fence') ? FENCE_NODES : DRIVEWAYS_NODES;
     return nodes.map((id) => {
-      let node = questions.filter(q => q['node_id'] === id);
+      let node = questions.filter(q => q['node_key'] === id);
       if (node && node[0]) {
         return this.renderQuestion(node[0]);
       }
