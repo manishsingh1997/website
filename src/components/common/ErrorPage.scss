@@ -1,8 +1,9 @@
 @import "~@ergeon/core-components/src/components/variables";
 
-.not-found-page__img-container {
+.error-page__img-container {
   max-width: 700px;
   padding-top: $h-20;
+  padding-bottom: $h-20;
   margin: 0 auto;
   width: 100%;
   overflow: hidden;
