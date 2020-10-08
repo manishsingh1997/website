@@ -5,6 +5,7 @@ import {Redirect} from 'react-router-dom';
 
 import ExpiredLinkIcon from '@ergeon/core-components/src/assets/icon-expired-link.svg';
 import InvalidLockIcon from '@ergeon/core-components/src/assets/icon-link-is-not-valid.svg';
+import ErrorIcon from '@ergeon/core-components/src/assets/icon-error.svg';
 import {Button, Spinner} from '@ergeon/core-components';
 
 import Success from 'components/common/Success';
@@ -67,6 +68,19 @@ class AuthConfirmSignInPage extends React.Component {
     );
   }
 
+  renderUnknownError(errorCode) {
+    return (
+      <div className="center">
+        <div className="center spacing after__is-24">
+          <img className="icon-invalid-lock" src={ErrorIcon}/>
+        </div>
+        <h4 className="center spacing after__is-12">
+          {`Sorry, unexpected error happened (${errorCode}) . Please try again.`}
+        </h4>
+      </div>
+    );
+  }
+
   renderExpiredCode() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
@@ -121,12 +135,14 @@ class AuthConfirmSignInPage extends React.Component {
       content = this.renderInvalidCode();
     } else if (!auth.authError && auth.user && auth.userSetByCode) {
       content = this.renderSuccess();
-    } else if (auth.authError) {
+    } else if (auth.authError && auth.authError.data.otp) {
       const error = auth.authError.data.otp.errorCode;
       if (error === 'invalid')
         content = this.renderInvalidCode();
       else if (error === 'expired')
         content = this.renderExpiredCode();
+    } else if (auth.authError) {
+      content = this.renderUnknownError(auth.authError.statusCode);
     } else {
       content = this.renderInvalidCode();
     }

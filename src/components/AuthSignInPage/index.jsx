@@ -58,7 +58,8 @@ class AuthSignInPage extends React.Component {
       await authService.requestOTP(email, 'email');
     } catch (signInError) {
       // TODO: move response formatting to erg-customer-auth-js
-      if (signInError.response && signInError.response.status < 500 && signInError.response.data) {
+      if (signInError.response && signInError.response.status < 500 && signInError.response.data
+          && (signInError.response.data.identifier || signInError.response.data['non_field_errors'])) {
         errors = {
           email: signInError.response.data.identifier,
           global: signInError.response.data['non_field_errors'],
