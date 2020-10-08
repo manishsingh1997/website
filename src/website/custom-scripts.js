@@ -6,21 +6,20 @@ import {isPDFMode} from 'utils/utils';
 import config from 'website/config';
 
 export default function() {
-  // <!--Start of Tawk.to Script-->
-  const pdfModeDisabled = !isPDFMode();
-  if (pdfModeDisabled) {
-    tawk.initTawk(config.tawkAPIKey);
-    tawk.tawkAPILoader.then(TawkAPI => {
-      TawkAPI.onOfflineSubmit = function(data) {
-        track(OFFLINE_FORM_SUBMIT, data);
-      };
-      TawkAPI.onChatStarted = function(data) {
-        track(CHAT_STARTED, data);
-      };
-    });
+  if (isPDFMode()) {
+    return;
   }
-  // <!--End of Tawk.to Script-->
-
+  // start of Tawk.to init
+  tawk.initTawk(config.tawkAPIKey);
+  tawk.tawkAPILoader.then(TawkAPI => {
+    TawkAPI.onOfflineSubmit = function(data) {
+      track(OFFLINE_FORM_SUBMIT, data);
+    };
+    TawkAPI.onChatStarted = function(data) {
+      track(CHAT_STARTED, data);
+    };
+  });
+  // end of Tawk.to init
   // init link analytics tracking
   init();
   document.body.addEventListener('click', function(event) {
@@ -33,17 +32,18 @@ export default function() {
       });
     }
   });
-
-  let counter = 0;
-
+  // end of link analytics tracking
+  // Gallery link redirection
   document.addEventListener('DOMContentLoaded', function() {
     const hash = document.location.hash;
     if (!hash.length) return;
-    let imageSlug = hash.slice(1);
-    if (imageSlug && (counter===0)) {
-      counter++;
+    const imageSlug = hash.slice(1);
+    if (imageSlug) {
       const imageLink = document.querySelector(`div[gallery-link-id='${imageSlug}']`);
-      imageLink && imageLink.click();
+      if (imageLink) {
+        imageLink.click();
+      }
     }
-  });
+  }, {'once': true});
+// End Gallery link redirection
 }

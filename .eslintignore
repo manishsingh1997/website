@@ -1,2 +1,4 @@
 dist/*
 src/monitoring/newrelic.js
+src/monitoring/googletagmanager.js
+src/monitoring/mixpanel.js
