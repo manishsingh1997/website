@@ -6,9 +6,10 @@ import {isPDFMode} from 'utils/utils';
 import config from 'website/config';
 
 export default function() {
-  if (isPDFMode()) {
+  if (isPDFMode() || window.IS_INTERNAL_REDIRECT) {
     return;
   }
+  init();
   // start of Tawk.to init
   tawk.initTawk(config.tawkAPIKey);
   tawk.tawkAPILoader.then(TawkAPI => {
@@ -21,7 +22,6 @@ export default function() {
   });
   // end of Tawk.to init
   // init link analytics tracking
-  init();
   document.body.addEventListener('click', function(event) {
     const link = event.target;
     if (link.hasAttribute('data-track-link')) {
