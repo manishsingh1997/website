@@ -6,22 +6,23 @@ import {isPDFMode} from 'utils/utils';
 import config from 'website/config';
 
 export default function() {
-  if (isPDFMode() || window.IS_INTERNAL_REDIRECT) {
-    return;
+  // <!--Start of Tawk.to Script-->
+  const pdfModeDisabled = !isPDFMode();
+  if (pdfModeDisabled) {
+    tawk.initTawk(config.tawkAPIKey);
+    tawk.tawkAPILoader.then(TawkAPI => {
+      TawkAPI.onOfflineSubmit = function(data) {
+        track(OFFLINE_FORM_SUBMIT, data);
+      };
+      TawkAPI.onChatStarted = function(data) {
+        track(CHAT_STARTED, data);
+      };
+    });
   }
-  init();
-  // start of Tawk.to init
-  tawk.initTawk(config.tawkAPIKey);
-  tawk.tawkAPILoader.then(TawkAPI => {
-    TawkAPI.onOfflineSubmit = function(data) {
-      track(OFFLINE_FORM_SUBMIT, data);
-    };
-    TawkAPI.onChatStarted = function(data) {
-      track(CHAT_STARTED, data);
-    };
-  });
-  // end of Tawk.to init
+  // <!--End of Tawk.to Script-->
+
   // init link analytics tracking
+  init();
   document.body.addEventListener('click', function(event) {
     const link = event.target;
     if (link.hasAttribute('data-track-link')) {
@@ -32,18 +33,17 @@ export default function() {
       });
     }
   });
-  // end of link analytics tracking
-  // Gallery link redirection
+
+  let counter = 0;
+
   document.addEventListener('DOMContentLoaded', function() {
     const hash = document.location.hash;
     if (!hash.length) return;
-    const imageSlug = hash.slice(1);
-    if (imageSlug) {
+    let imageSlug = hash.slice(1);
+    if (imageSlug && (counter===0)) {
+      counter++;
       const imageLink = document.querySelector(`div[gallery-link-id='${imageSlug}']`);
-      if (imageLink) {
-        imageLink.click();
-      }
+      imageLink && imageLink.click();
     }
-  }, {'once': true});
-// End Gallery link redirection
+  });
 }

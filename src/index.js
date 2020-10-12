@@ -11,6 +11,7 @@ import {
   GatePhotoData,
   DrivewayPhotoData,
 } from 'data/photo-gallery';
+import customScripts from 'website/custom-scripts';
 
 import AboutPage from 'components/AboutPage';
 import AppAppointmentsListPage from 'containers/AppAppointmentsListPage';
@@ -38,7 +39,6 @@ import WarrantiesPage from 'components/WarrantiesPage';
 import ErrorBoundary from './components/ErrorBoundary';
 import store from 'flux/store';
 import config from 'website/config';
-import customScripts from 'website/custom-scripts';
 
 import '@ergeon/core-components/src/components/main.scss';
 import './main.scss';
@@ -80,70 +80,56 @@ const CustomerApp = ({match, location}) => (
   </AppLayout>
 );
 
-class App extends React.Component {
-
-  componentDidMount() {
-    customScripts();
-  }
-
-  render() {
-    return (
-      <Provider store={store}>
-        <Router history={history}>
-          <Switch>
-            <Route
-              exact
-              path="/pro-advice"
-              render={() => {
-                window.location = 'https://blog.ergeon.com/';
-              }} />
-            <Layout>
-              <ErrorBoundary>
-                <Switch>
-                  {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
-                  {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
-                  {DrivewayPhotoData.map(renderPhotoGalleryRedirect.bind(this, 'driveway'))}
-
-                  <Route component={HomePage} exact path="/"/>
-                  <Route component={CareersPage} exact path="/careers"/>
-                  <Route component={ContactUsPage} exact path="/contacts"/>
-                  <Route component={AboutPage} exact path="/about-ergeon"/>
-                  <Route component={PhotoGallery} exact path="/gallery/"/>
-                  <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug"/>
-                  <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug/:groupSlug"/>
-                  <Route component={FAQPage} exact path="/faq"/>
-                  <Route component={WarrantiesPage} exact path="/licenses-warranties"/>
-                  <Route component={LocationsPage} exact path="/locations"/>
-                  <Route component={HelpLandingPage} exact path="/help"/>
-                  <Route component={HelpPage} exact path="/help/search"/>
-                  <Route component={HelpPage} exact path="/help/:nodeKey"/>
-                  <Route component={RequestQuotePage} exact path="/request-quote"/>
-                  <Route component={AuthSignInPage} exact path="/app/sign-in"/>
-                  <Route component={AuthConfirmSignInPage} exact path="/app/confirm-sign-in"/>
-                  <Route component={AuthLogoutPage} exact path="/app/logout"/>
-                  <Route component={CustomerApp} path="/app/:customerGid" />
-                  <Redirect
-                    exact
-                    from="/gallery/driveway"
-                    key="gallery-driveway-redirect"
-                    to="/gallery/driveway/stamped/casual" />
-                  <Route component={NotFoundPage} exact path="*"/>
-                  {
-                  /* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */
-                  }
-                </Switch>
-              </ErrorBoundary>
-            </Layout>
-          </Switch>
-        </Router>
-      </Provider>
-    );
-  }
-}
-
 render(
-  <App />,
-  document.getElementById('root')
+  <Provider store={store}>
+    <Router history={history}>
+      <Switch>
+        <Route
+          exact
+          path="/pro-advice"
+          render={() => {
+            window.location = 'https://blog.ergeon.com/';
+          }} />
+        <Layout>
+          <ErrorBoundary>
+            <Switch>
+              {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
+              {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
+              {DrivewayPhotoData.map(renderPhotoGalleryRedirect.bind(this, 'driveway'))}
+
+              <Route component={HomePage} exact path="/"/>
+              <Route component={CareersPage} exact path="/careers"/>
+              <Route component={ContactUsPage} exact path="/contacts"/>
+              <Route component={AboutPage} exact path="/about-ergeon"/>
+              <Route component={PhotoGallery} exact path="/gallery/"/>
+              <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug"/>
+              <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug/:groupSlug"/>
+              <Route component={FAQPage} exact path="/faq"/>
+              <Route component={WarrantiesPage} exact path="/licenses-warranties"/>
+              <Route component={LocationsPage} exact path="/locations"/>
+              <Route component={HelpLandingPage} exact path="/help"/>
+              <Route component={HelpPage} exact path="/help/search"/>
+              <Route component={HelpPage} exact path="/help/:nodeKey"/>
+              <Route component={RequestQuotePage} exact path="/request-quote"/>
+              <Route component={AuthSignInPage} exact path="/app/sign-in"/>
+              <Route component={AuthConfirmSignInPage} exact path="/app/confirm-sign-in"/>
+              <Route component={AuthLogoutPage} exact path="/app/logout"/>
+              <Route component={CustomerApp} path="/app/:customerGid" />
+              <Redirect
+                exact
+                from="/gallery/driveway"
+                key="gallery-driveway-redirect"
+                to="/gallery/driveway/stamped/casual" />
+              <Route component={NotFoundPage} exact path="*"/>
+              {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
+            </Switch>
+          </ErrorBoundary>
+        </Layout>
+      </Switch>
+    </Router>
+  </Provider>,
+  document.getElementById('root'),
+  customScripts(),
 );
 
 CustomerApp.propTypes = {

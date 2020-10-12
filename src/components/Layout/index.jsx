@@ -191,7 +191,6 @@ export default class Layout extends React.Component {
             fencequotingUrl={`${config.fencequotingHost}/`}
             pdfDetails={this.renderPdfDetails()}
             pdfMode={asPDF}
-            projectsGalleryUrl={`${config.projectsGalleryHost}/`}
             showChristmasHat={this.isChristmasTime}
             widthClass={widthClass}>
           </WebsiteTopPanel>

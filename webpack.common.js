@@ -107,9 +107,6 @@ module.exports = {
     ]),
     new CopyPlugin([
       {from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`},
-      {from: `${APP_DIR}/monitoring/googletagmanager.js`, to: `${BUILD_DIR}/assets/`},
-      {from: `${APP_DIR}/monitoring/mixpanel.js`, to: `${BUILD_DIR}/assets/`},
-      {from: `${APP_DIR}/loader.js`, to: `${BUILD_DIR}/assets/`},
     ]),
     new CopyPlugin([
       {

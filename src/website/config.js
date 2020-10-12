@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   websiteDomain = 'ergeon.com';
   apiHost = 'https://api.ergeon.in';
   fencequotingHost = 'https://fencequoting.com';
-  projectsGalleryHost = '/projects-gallery';
+  projectsGalleryHost = 'https://www.ergeon.com/projects-gallery';
   leadArrivedApi = 'https://tchin24eg6.execute-api.us-west-2.amazonaws.com/production/website-lead-arrived';
   addressEnteredApi = 'https://90oksb1qq9.execute-api.us-west-2.amazonaws.com/production/landing-address-submitted';
   publicWebsite = `https://www.${websiteDomain}`;
@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   apiHost = 'https://apidev.ergeon.in';
   websiteDomain = 'ergeon.com';
   fencequotingHost = 'https://fencequoting-staging.firebaseapp.com';
-  projectsGalleryHost = '/projects-gallery';
+  projectsGalleryHost = 'https://dev.ergeon.com/projects-gallery';
   leadArrivedApi = 'https://8ijvlqff7l.execute-api.us-west-2.amazonaws.com/staging/website-lead-arrived';
   addressEnteredApi = 'https://wvt5gxjul1.execute-api.us-west-2.amazonaws.com/staging/landing-address-submitted';
   publicWebsite = `https://www.${websiteDomain}`;
