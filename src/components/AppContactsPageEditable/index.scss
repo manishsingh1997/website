@@ -1,0 +1,71 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.contacts-page {
+
+  .additional-identifiers {
+    display: flex;
+
+    .identifiers-list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    > div:first-child {
+      margin-right: $h-5;
+    }
+
+    span {
+      margin-right: $h-5;
+    }
+  }
+
+  .contacts-page-additional-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    button {
+      margin-left: $h-20;
+    }
+  }
+
+
+  .additional-contact-info-row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: $v-12;
+
+    .additional-contact-info-row-input {
+      flex-grow: 2;
+      margin-right: $h-20;
+    }
+
+    .additional-contact-info-row-button > button {
+      height: 48px;
+
+      svg path {
+        fill: $red-1
+      }
+    }
+  }
+
+  .additional-contact-info-add-button {
+    padding-left: 0;
+
+    span {
+      color: $green-1
+    }
+  }
+
+  .additional-contacts-sub-header {
+    padding-bottom: 8px;
+    margin-top: 16px;
+    border-bottom: 1px solid #e4e9e2
+  }
+
+  .customer-app-data-row {
+    > div:nth-child(2) {
+      width: 100%;
+    }
+  }  
+}

@@ -104,3 +104,13 @@ export const updateNotificationPreferences = (customerGID, secret, data) => {
     data: JSON.stringify(data),
   });
 };
+
+export const updateCustomerContacts = (customerGID, data) => {
+  return axios({
+    url: `${getBaseAPIURL(customerGID)}/contacts`,
+    method: 'post',
+    responseType: 'json',
+    headers: getCommonHeaders(),
+    data: JSON.stringify(data),
+  });
+};

@@ -2,6 +2,10 @@ import {connect} from 'react-redux';
 
 import {getContacts} from 'flux/actions/app-contacts';
 import AppContactsPage from 'components/AppContactsPage';
+import AppContactsPageEditable from 'components/AppContactsPageEditable';
+import {getCurrentUser} from '../flux/actions/auth';
+
+import {showUpcomingFeatures} from '../utils/utils';
 
 const mapStateToProps = ({contacts}) => {
   return {
@@ -13,10 +17,14 @@ const mapStateToProps = ({contacts}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    getCurrentUser: () => {
+      dispatch(getCurrentUser());
+    },
     getContacts: (customerGID) => {
       dispatch(getContacts(customerGID));
     },
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppContactsPage);
+const Page = showUpcomingFeatures() ? AppContactsPageEditable : AppContactsPage;
+export default connect(mapStateToProps, mapDispatchToProps)(Page);
