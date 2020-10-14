@@ -6,12 +6,14 @@ export const PRODUCTION = 'production';
 export const STAGING = 'staging';
 export const DEVELOPMENT = 'development';
 
-let env, apiHost, fencequotingHost, projectsGalleryHost, websiteDomain, addressEnteredApi, leadArrivedApi, tawkAPIKey;
+let env, apiHost, blogHost, fencequotingHost, projectsGalleryHost,
+  websiteDomain, addressEnteredApi, leadArrivedApi, tawkAPIKey;
 let googleMapsApiKey, stripePublicKey, publicWebsite;
 
 if (process.env.NODE_ENV === PRODUCTION) {
   websiteDomain = 'ergeon.com';
   apiHost = 'https://api.ergeon.in';
+  blogHost = 'https://blog.ergeon.com';
   fencequotingHost = 'https://fencequoting.com';
   projectsGalleryHost = 'https://www.ergeon.com/projects-gallery';
   leadArrivedApi = 'https://tchin24eg6.execute-api.us-west-2.amazonaws.com/production/website-lead-arrived';
@@ -24,6 +26,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
 } else if (process.env.NODE_ENV === STAGING) {
   apiHost = 'https://apidev.ergeon.in';
   websiteDomain = 'ergeon.com';
+  blogHost = 'https://blog.ergeon.com';
   fencequotingHost = 'https://fencequoting-staging.firebaseapp.com';
   projectsGalleryHost = 'https://dev.ergeon.com/projects-gallery';
   leadArrivedApi = 'https://8ijvlqff7l.execute-api.us-west-2.amazonaws.com/staging/website-lead-arrived';
@@ -36,6 +39,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
 } else {
   websiteDomain = 'ergeon.local';
   apiHost = 'http://api.ergeon.local:8000';
+  blogHost = 'https://blog.ergeon.com';
   fencequotingHost = 'http://fencequoting.local:8700';
   projectsGalleryHost = 'http://ergeon.local:6500/projects-gallery';
   leadArrivedApi = 'http://localhost:8080/website-lead-arrived';
@@ -50,6 +54,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
 export default {
   addressEnteredApi,
   apiHost,
+  blogHost,
   env,
   fencequotingHost,
   googleMapsApiKey,

@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import {createBrowserHistory} from 'history';
 import {Router, Route, Switch, Redirect} from 'react-router-dom';
 import {initUTMs} from '@ergeon/erg-utms';
+import omit from 'lodash/omit';
 
 import {
   FencePhotoData,
@@ -13,7 +14,6 @@ import {
 } from 'data/photo-gallery';
 import customScripts from 'website/custom-scripts';
 
-import AboutPage from 'components/AboutPage';
 import AppAppointmentsListPage from 'containers/AppAppointmentsListPage';
 import AppContactsPage from 'containers/AppContactsPage';
 import AppHouseListPage from 'containers/AppHouseListPage';
@@ -22,27 +22,18 @@ import AppOrderDetailPage from 'containers/AppOrderDetailPage';
 import AppOrderListPage from 'containers/AppOrderListPage';
 import AppQuoteDetailPage from 'containers/AppQuoteDetailPage';
 import AppNotificationsPage from 'components/AppNotificationsPage';
-import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
-import AuthLogoutPage from 'containers/AuthLogoutPage';
-import AuthSignInPage from 'components/AuthSignInPage';
-import CareersPage from 'components/CareersPage';
-import ContactUsPage from 'components/ContactUsPage';
-import FAQPage from 'components/FAQPage';
-import HelpLandingPage from 'components/HelpLandingPage';
-import HelpPage from 'components/HelpPage';
-import HomePage from 'components/HomePage';
+import ErrorBoundary from 'components/ErrorBoundary';
 import Layout from 'containers/Layout';
-import LocationsPage from 'components/LocationsPage';
-import NotFoundPage from './components/NotFoundPage';
-import PhotoGallery from 'components/PhotoGallery';
-import WarrantiesPage from 'components/WarrantiesPage';
-import ErrorBoundary from './components/ErrorBoundary';
+import NotFoundPage from 'components/NotFoundPage';
+
 import store from 'flux/store';
 import config from 'website/config';
 
+import routes from './public-routes';
+
 import '@ergeon/core-components/src/components/main.scss';
 import './main.scss';
-import RequestQuotePage from 'containers/RequestQuotePage';
+
 initUTMs('utm-iframe', config.websiteDomain, [
   `${config.fencequotingHost}/utm/`,
 ]);
@@ -88,7 +79,7 @@ render(
           exact
           path="/pro-advice"
           render={() => {
-            window.location = 'https://blog.ergeon.com/';
+            window.location = config.blogHost;
           }} />
         <Layout>
           <ErrorBoundary>
@@ -96,24 +87,7 @@ render(
               {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
               {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
               {DrivewayPhotoData.map(renderPhotoGalleryRedirect.bind(this, 'driveway'))}
-
-              <Route component={HomePage} exact path="/"/>
-              <Route component={CareersPage} exact path="/careers"/>
-              <Route component={ContactUsPage} exact path="/contacts"/>
-              <Route component={AboutPage} exact path="/about-ergeon"/>
-              <Route component={PhotoGallery} exact path="/gallery/"/>
-              <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug"/>
-              <Route component={PhotoGallery} exact path="/gallery/:productSlug/:categorySlug/:groupSlug"/>
-              <Route component={FAQPage} exact path="/faq"/>
-              <Route component={WarrantiesPage} exact path="/licenses-warranties"/>
-              <Route component={LocationsPage} exact path="/locations"/>
-              <Route component={HelpLandingPage} exact path="/help"/>
-              <Route component={HelpPage} exact path="/help/search"/>
-              <Route component={HelpPage} exact path="/help/:nodeKey"/>
-              <Route component={RequestQuotePage} exact path="/request-quote"/>
-              <Route component={AuthSignInPage} exact path="/app/sign-in"/>
-              <Route component={AuthConfirmSignInPage} exact path="/app/confirm-sign-in"/>
-              <Route component={AuthLogoutPage} exact path="/app/logout"/>
+              {routes.map(routeProps => <Route key={routeProps.path} {...omit(routeProps, ['sitemap'])}/>)}
               <Route component={CustomerApp} path="/app/:customerGid" />
               <Redirect
                 exact

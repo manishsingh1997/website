@@ -60,7 +60,7 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: [APP_DIR, './node_modules'],
+    modules: ['./node_modules'],
     extensions: ['.js', '.jsx'],
     alias: {
       'react': path.resolve('./node_modules/react'),
@@ -108,11 +108,10 @@ module.exports = {
     new CopyPlugin([
       {from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`},
     ]),
-    new CopyPlugin([
-      {
-        from: './src/data/sitemap.xml',
-        to: '',
-      },
+    new CopyPlugin([ // Sitemaps
+      {from: './src/data/sitemap.xml', to: `${BUILD_DIR}/`},
+      {from: './src/data/gallery/sitemap.xml', to: `${BUILD_DIR}/gallery/`},
+      {from: './src/data/help/sitemap.xml', to: `${BUILD_DIR}/help/`},
     ]),
   ],
   optimization: {

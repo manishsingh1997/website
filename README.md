@@ -67,7 +67,7 @@ First you need to install [`awscli`](https://docs.aws.amazon.com/cli/latest/user
 The sitemap will be created automatically by production deployments.
 
 How it works?
-1. Production deployment call `make create-site-map` which creates the sitemap. 
+1. Production deployment call `make create-sitemap` which creates the sitemap.
 The output is placed at src/process/sitemap.xml.
 2. Then, the build for production is done and sitemap is copyied by webpack from origal location to /dist.
 3. Finally, sitemap is uploaded to s3 inside /dist folder.
@@ -75,5 +75,5 @@ The output is placed at src/process/sitemap.xml.
 It's possible to create a sitemap manually by running the following command,
 
 ```bash
-make create-site-map
+make create-sitemap
 ```

@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sitemap should generate for gallery 1`] = `
+"
+      <url>
+        <loc>http://ergeon.local/gallery</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/driveway/brushed/natural</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/driveway/enhanced/enhanced</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/driveway/stamped/casual</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/driveway/stamped/modern</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/driveway/stamped/traditional</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/fence/before-after</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/fence/horizontal</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/fence/nail-up/dog-ear</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/fence/nail-up/falt-top</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/fence/picture-frame/with-lattice</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/fence/picture-frame/without-lattice</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/horizontal</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/nail-up/double</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/nail-up/single</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/picture-frame/double</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/picture-frame/single</loc>
+      </url>"
+`;
+
+exports[`Sitemap should generate for help 1`] = `
+"
+      <url>
+        <loc>http://ergeon.local/help</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/help/1</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/help/2</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/help/3</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/help/search</loc>
+      </url>"
+`;
+
+exports[`Sitemap should generate for website 1`] = `
+"
+      <url>
+        <loc>http://ergeon.local/about-ergeon</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/app/logout</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/app/sign-in</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/careers</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/contacts</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/faq</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/licenses-warranties</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/locations</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/request-quote</loc>
+      </url>
+      <url>
+        <loc>https://blog.ergeon.com</loc>
+      </url>"
+`;

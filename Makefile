@@ -35,14 +35,17 @@ install: .install
 lint: install
 	npm run lint
 
-create-site-map:
+jest: install
+	npm run test:sitemap
+
+create-sitemap:
 	@if [ -z "$(LEVEL)" ]; then >&2 echo LEVEL must be supplied; exit 1; fi;
-	npm run create-site-map-$(LEVEL)
+	npm run create-sitemap-$(LEVEL)
 
 run: install
 	SENTRY_RELEASE_NAME=$(SENTRY_RELEASE_NAME) SHOW_UPCOMING_FEATURES=$(SHOW_UPCOMING_FEATURES) npm run start
 
-test: install lint
+test: install lint jest
 
 sentry-create-release:
 	$(SENTRY_CLI) releases new --finalize $(SENTRY_RELEASE_NAME)
@@ -54,14 +57,14 @@ sentry-upload-sourcemaps:
 	 $(SENTRY_CLI) releases files $(SENTRY_RELEASE_NAME) upload-sourcemaps $(DIST_PATH) --rewrite -i node_modules/ -i webpack.*
 
 deploy-staging:
-	LEVEL=staging make create-site-map
+	LEVEL=staging make create-sitemap
 	LEVEL=staging make build
 	LEVEL=staging S3_BUCKET=dev.ergeon.com make s3upload
 	LEVEL=staging DOMAIN=dev.ergeon.com make invalidate-cloudfront
 	LEVEL=staging make sentry-set-commits
 
 deploy-production:
-	LEVEL=production make create-site-map
+	LEVEL=production make create-sitemap
 	LEVEL=production make build
 	LEVEL=production S3_BUCKET=www.ergeon.com make s3upload
 	LEVEL=production DOMAIN=www.ergeon.com make invalidate-cloudfront

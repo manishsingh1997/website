@@ -81,6 +81,11 @@ typings/
 #DynamoDB Local files
 .dynamodb/
 
+# Sitemaps
+src/data/sitemap.xml
+src/data/gallery/sitemap.xml
+src/data/help/sitemap.xml
+
 dist/
 .idea
 .DS_Store
