@@ -1,10 +1,13 @@
 import React from 'react';
 import MapComponent from '@ergeon/map-component';
-import {Spinner} from '@ergeon/core-components';
+import {Places, Spinner} from '@ergeon/core-components';
 import {STAFF_MAP_GID} from 'website/constants';
 import {getMapData} from 'api/map';
 import config from 'website/config';
 import './StaffMap.scss';
+
+const {GoogleMapsLoader} = Places;
+GoogleMapsLoader.options.libraries = ['places', 'geometry'];
 
 class StaffMap extends React.Component {
   constructor(props) {
@@ -56,7 +59,9 @@ class StaffMap extends React.Component {
           apiKey={config.googleMapsApiKey}
           aspectRatio={aspectRatio}
           controls={controls}
+          fitBy="width"
           legend={legend}
+          loadGoogleMapsLibrary={GoogleMapsLoader}
           loadingPlaceholder={loadingPlaceholder}
           markers={markers}
           polygons={polygons}

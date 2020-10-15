@@ -1,9 +1,12 @@
 import React from 'react';
 import MapComponent from '@ergeon/map-component';
-import {Spinner} from '@ergeon/core-components';
+import {Places, Spinner} from '@ergeon/core-components';
 import {LOCATIONS_MAP_GID} from 'website/constants';
 import {getMapData} from 'api/map';
 import config from 'website/config';
+
+const {GoogleMapsLoader} = Places;
+GoogleMapsLoader.options.libraries = ['places', 'geometry'];
 
 class LocationsMap extends React.Component {
   constructor(props) {
@@ -57,7 +60,9 @@ class LocationsMap extends React.Component {
           asFragment={true}
           aspectRatio={aspectRatio}
           controls={controls}
+          fitBy="none"
           legend={legend}
+          loadGoogleMapsLibrary={GoogleMapsLoader}
           loadingPlaceholder={loadingPlaceholder}
           mapElementClass={mapElementClass}
           markers={markers}

@@ -14,7 +14,7 @@ import AppPage from 'components/common/AppPage';
 import AppSubCard from 'components/common/AppSubCard';
 
 const {GoogleMapsLoader} = Places;
-GoogleMapsLoader.LIBRARIES = ['places', 'geometry'];
+GoogleMapsLoader.options.libraries = ['places', 'geometry'];
 
 import './index.scss';
 
@@ -66,7 +66,8 @@ export default class AppHouseListPage extends React.Component {
               apiKey={config.googleMapsApiKey}
               aspectRatio="4:3"
               controls={mapControls}
-              loadGoogleMapsLibrary={GoogleMapsLoader.load}
+              fitBy="width"
+              loadGoogleMapsLibrary={GoogleMapsLoader}
               loadingPlaceholder={<Spinner active={true} color="green" size={32} />}
               markers={[locationMarker]}
               popupBehaviour="close"
