@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button, Input, PhoneInput} from '@ergeon/core-components';
+import {Button, Input, PhoneInput, Spinner} from '@ergeon/core-components';
 import AdditionalContactInfo from './AdditionalContactInfo';
 
 import DataRow from 'components/common/DataRow';
@@ -8,6 +8,7 @@ import DataRow from 'components/common/DataRow';
 const ContactEditForm = (props) => {
   const {
     primaryContact,
+    isSubmitting,
     additionalContacts,
     onPrimaryChange,
     onAddNewContactInfo,
@@ -68,6 +69,7 @@ const ContactEditForm = (props) => {
       <div className="contacts-page-additional-buttons">
         <Button
           className="spacing after__is-12"
+          disabled={isSubmitting}
           flavor="regular"
           onClick={onCancel}
           taste="solid"
@@ -76,9 +78,11 @@ const ContactEditForm = (props) => {
         </Button>
         <Button
           className="spacing after__is-12"
+          disabled={isSubmitting}
           flavor="primary"
           taste="solid"
           type="button">
+          <Spinner active={isSubmitting} size={16}/>
           Save
         </Button>
       </div>
@@ -89,6 +93,7 @@ const ContactEditForm = (props) => {
 ContactEditForm.propTypes = {
   additionalContacts: PropTypes.array,
   errors: PropTypes.object,
+  isSubmitting: PropTypes.bool,
   onAddNewContactInfo: PropTypes.func,
   onCancel: PropTypes.func,
   onContactInfoChange: PropTypes.func,

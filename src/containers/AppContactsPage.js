@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import {getContacts} from 'flux/actions/app-contacts';
 import AppContactsPage from 'components/AppContactsPage';
 import AppContactsPageEditable from 'components/AppContactsPageEditable';
-import {getCurrentUser} from '../flux/actions/auth';
+import {getCurrentUser, actionTypes as authActionTypes} from '../flux/actions/auth';
+import {actionTypes as contactsActionTypes} from '../flux/actions/app-contacts';
+import {authService} from '../utils/auth';
 
 import {showUpcomingFeatures} from '../utils/utils';
 
@@ -22,6 +24,22 @@ const mapDispatchToProps = (dispatch) => {
     },
     getContacts: (customerGID) => {
       dispatch(getContacts(customerGID));
+    },
+    updateContacts: (data) => {
+      dispatch({
+        type: contactsActionTypes.GET_CONTACTS_DONE,
+        data,
+      });
+    },
+    updateUser: async(newUserData) => {
+      const user = await authService.getUser();
+      dispatch({
+        type: authActionTypes.AUTH_GET_USER_DONE,
+        user: {
+          ...user,
+          ...newUserData,
+        },
+      });
     },
   };
 };

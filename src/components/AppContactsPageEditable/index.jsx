@@ -1,20 +1,20 @@
 import React, {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {Button} from '@ergeon/core-components';
+import {Button, Notification} from '@ergeon/core-components';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import AppPage from 'components/common/AppPage';
-import Success from 'components/common/Success';
 import ContactEditForm from './ContactEditForm';
 import ContactReadonlyForm from './ContactReadonlyForm';
 import {updateCustomerContacts} from '../../api/app';
 
 import './index.scss';
 
-export default function AppContactsPage({contacts, getContacts, getCurrentUser, listError, isListLoading}) {
+export default function AppContactsPage({contacts, getContacts, updateContacts, updateUser, listError, isListLoading}) {
   const customerGID = useContext(CustomerGIDContext);
 
   const [editing, setEditing] = useState(false);
-  const [saveSuccess, setSaveSuccess] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
 
   const [primaryContact, setPrimaryContact] = useState({
@@ -57,6 +57,8 @@ export default function AppContactsPage({contacts, getContacts, getCurrentUser, 
 
   const onEditingClick = () => {
     resetUser();
+    setIsSuccess(false);
+    setErrors({});
     setEditing(!editing);
   };
 
@@ -87,6 +89,9 @@ export default function AppContactsPage({contacts, getContacts, getCurrentUser, 
 
   const onSave = async(event) => {
     event.preventDefault();
+    setIsSubmitting(true);
+    setIsSuccess(false);
+    setErrors({});
 
     try {
       const cleanedContacts = additionalContacts.map((contact) => {
@@ -99,20 +104,27 @@ export default function AppContactsPage({contacts, getContacts, getCurrentUser, 
         }
         return contact;
       });
-      await updateCustomerContacts(
+      const response = await updateCustomerContacts(
         customerGID,
         {
           'id': primaryContact.id,
           'full_name': primaryContact.name,
           'phone_number': primaryContact.phone,
           'additional_contacts': cleanedContacts,
-        });
-      setSaveSuccess(true);
-      fetchData();
-      getCurrentUser();
+        }
+      );
+
+      updateContacts(response.data);
+      await updateUser({
+        'phone_number': primaryContact.phone,
+        'full_name': primaryContact.name,
+      });
+      setIsSuccess(true);
     } catch (error) {
-      setSaveSuccess(false);
+      setIsSuccess(false);
       parseError(error.response);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -137,14 +149,12 @@ export default function AppContactsPage({contacts, getContacts, getCurrentUser, 
     setAdditionalContacts(contacts);
   };
 
-  const renderSuccess = () => {
-    if (saveSuccess) {
-      return  <Success header="Successfully updated your contacts"/>;
-    }
-    return null;
-  };
-
   const parseError = (response) => {
+    if (!response) {
+      return setErrors({
+        global: 'Unexpected error happened. Please try again.',
+      });
+    }
     const {status, statusText, data} = response;
 
     const isValidationError = status === 400 && typeof data === 'object';
@@ -182,7 +192,7 @@ export default function AppContactsPage({contacts, getContacts, getCurrentUser, 
     }
 
     setErrors({
-      global: `Unexpected error happened: ${status} ${statusText}. Please try again`,
+      global: `Unexpected error happened: ${status} ${statusText}. Please try again.`,
     });
   };
 
@@ -190,9 +200,20 @@ export default function AppContactsPage({contacts, getContacts, getCurrentUser, 
     const globalError = errors.global;
     if (globalError) {
       return (
-        <div className="center error">
+        <Notification mode="embed" type="Error">
           {globalError}
-        </div>
+        </Notification>
+      );
+    }
+    return null;
+  };
+
+  const renderSuccess = () => {
+    if (isSuccess) {
+      return (
+        <Notification mode="embed" type="Success">
+          Contacts were updated successfully.
+        </Notification>
       );
     }
     return null;
@@ -217,6 +238,7 @@ export default function AppContactsPage({contacts, getContacts, getCurrentUser, 
           <ContactEditForm
             additionalContacts={additionalContacts}
             errors={errors}
+            isSubmitting={isSubmitting}
             onAddNewContactInfo={onAddNewContactInfo}
             onCancel={onEditingClick}
             onContactInfoChange={onContactInfoChange}
@@ -249,4 +271,6 @@ AppContactsPage.propTypes = {
   getCurrentUser: PropTypes.func.isRequired,
   isListLoading: PropTypes.bool.isRequired,
   listError: PropTypes.object,
+  updateContacts: PropTypes.func.isRequired,
+  updateUser: PropTypes.func.isRequired,
 };
