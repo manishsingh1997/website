@@ -108,7 +108,8 @@ module.exports = {
     new CopyPlugin([
       {from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`},
     ]),
-    new CopyPlugin([ // Sitemaps
+    new CopyPlugin([ // SEO
+      {from: './src/robots.txt', to: `${BUILD_DIR}/`},
       {from: './src/data/sitemap.xml', to: `${BUILD_DIR}/`},
       {from: './src/data/gallery/sitemap.xml', to: `${BUILD_DIR}/gallery/`},
       {from: './src/data/help/sitemap.xml', to: `${BUILD_DIR}/help/`},

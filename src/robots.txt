@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /app/
+
+Sitemap: https://www.ergeon.com/sitemap.xml
+Sitemap: https://www.ergeon.com/help/sitemap.xml
+Sitemap: https://www.ergeon.com/gallery/sitemap.xml
