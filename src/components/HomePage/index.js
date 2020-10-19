@@ -11,15 +11,13 @@ import GetStartedSection from './GetStartedSection';
 import QASection from './QASection';
 import imgCalc from 'assets/calc_promo.png';
 import imgMap from 'assets/map_image.png';
-import MetaDescription from '../common/MetaDescription';
 import RemoteFeatures from './RemoteFeatures';
 
 class HomePage extends React.Component {
 
   render() {
     return (
-      <div>
-        <MetaDescription pageName="HomePage"/>
+      <>
         <SliderHero/>
         <RemoteFeatures/>
         <ReviewHero/>
@@ -41,7 +39,7 @@ class HomePage extends React.Component {
             title="Browse Projects In Your Area"/>
           <BadgesSection/>
         </div>
-      </div>
+      </>
     );
   }
 }

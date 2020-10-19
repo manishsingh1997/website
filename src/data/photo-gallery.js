@@ -200,7 +200,7 @@ export const FencePhotoData = [
       },
       {
         groupName: 'Flat Top',
-        groupSlug: 'falt-top',
+        groupSlug: 'flat-top',
         groupPhotos: [
           {
             'caption': 'Livermore, CA - Nail Up Board on Board Flat Top with Alternating Panels (aka Good Neighbor)',

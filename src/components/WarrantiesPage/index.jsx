@@ -1,7 +1,6 @@
 import React from 'react';
 import {find} from 'lodash';
 import Script from 'react-load-script';
-import MetaDescription from '../common/MetaDescription';
 
 import config from 'website/config';
 import {ERGEON_LICENSE_NUMBER} from 'website/constants';
@@ -105,7 +104,6 @@ class WarrantiesPage extends React.Component {
 
     return (
       <div className="warraties-page">
-        <MetaDescription pageName="WarrantiesPage"/>
         <div className="warranties-page__header">
           <div className="full-width-block wrapper-1180">
             <div className="spacing after__is-48">

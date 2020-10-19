@@ -30,7 +30,7 @@ exports[`Sitemap should generate for gallery 1`] = `
         <loc>http://ergeon.local/gallery/fence/nail-up/dog-ear</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/nail-up/falt-top</loc>
+        <loc>http://ergeon.local/gallery/fence/nail-up/flat-top</loc>
       </url>
       <url>
         <loc>http://ergeon.local/gallery/fence/picture-frame/with-lattice</loc>

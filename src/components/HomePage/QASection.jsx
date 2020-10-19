@@ -53,14 +53,14 @@ class QASection extends React.Component {
     return nodes.map((id) => {
       let node = questions.filter(q => q['node_key'] === id);
       if (node && node[0]) {
-        return this.renderQuestion(node[0]);
+        return this.renderQuestion(node[0], id);
       }
       return null;
     });
   }
-  renderQuestion({content, title}) {
+  renderQuestion({content, title}, id) {
     return (
-      <div className="qa-section__question">
+      <div className="qa-section__question" key={id}>
         <h6>{title}</h6>
         {/* eslint-disable-next-line */}
         <p dangerouslySetInnerHTML={{__html: content}} />

@@ -1,5 +1,4 @@
 import React from 'react';
-import MetaDescription from '../common/MetaDescription';
 import LocationsMap from './LocationsMap';
 import './index.scss';
 
@@ -18,7 +17,6 @@ class LocationsPage extends React.Component {
     const locationsMap = <LocationsMap/>;
     return (
       <div className="locations-page wrapper-1180">
-        <MetaDescription pageName="LocationsPage"/>
         <div className="locations__header">
           <h2>Our Locations</h2>
           <p className="paragraph-3">

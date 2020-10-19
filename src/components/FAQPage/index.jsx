@@ -1,5 +1,4 @@
 import React from 'react';
-import MetaDescription from '../common/MetaDescription';
 
 import {Accordion} from '@ergeon/core-components';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
@@ -26,7 +25,6 @@ class FAQPage extends React.Component {
   render() {
     return (
       <div className="faq-page">
-        <MetaDescription pageName="FAQPage"/>
         <div className="faq-page__header">
           <div className="wrapper-1180">
             <div className="full-width-block">

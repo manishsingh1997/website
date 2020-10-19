@@ -6,7 +6,7 @@ import sortBy from 'lodash/sortBy';
 
 import {getHelpNodesURLs} from 'api/sitemap';
 import {FencePhotoData, GatePhotoData, DrivewayPhotoData} from 'data/photo-gallery';
-import {authRoutes, galleryRoutes, helpRoutes, publicRoutes} from 'public-routes';
+import {authRoutes, basicRoutes, galleryRoutes, helpRoutes} from 'routes/public';
 import config from 'website/config';
 
 const HOME_PAGE_URL = config.publicWebsite;
@@ -55,7 +55,7 @@ const getSitemapUrls = routes => {
 export const generateErgeonSitemap = async() => {
   const urls = sortBy([
     ...getSitemapUrls(authRoutes),
-    ...getSitemapUrls(publicRoutes),
+    ...getSitemapUrls(basicRoutes),
     config.blogHost,
   ]);
   return generateSitemap(urls);

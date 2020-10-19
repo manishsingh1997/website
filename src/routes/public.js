@@ -17,7 +17,7 @@ import WarrantiesPage from 'components/WarrantiesPage';
  * This routes can be visited without any authentication.
  * The most of them are included into the main sitemap.
  */
-export const publicRoutes = [
+export const basicRoutes = [
   {
     component: HomePage,
     exact: true,
@@ -84,6 +84,9 @@ export const galleryRoutes = [
   },
 ];
 
+// Help node path to be matched from outside.
+export const helpNodePath = '/help/:nodeKey';
+
 /**
  * Routes of the help section.
  */
@@ -102,7 +105,7 @@ export const helpRoutes = [
     component: HelpPage,
     exact: true,
     sitemap: false,
-    path: '/help/:nodeKey',
+    path: helpNodePath,
   },
 ];
 
@@ -129,7 +132,7 @@ export const authRoutes = [
 ];
 
 export default [
-  ...publicRoutes,
+  ...basicRoutes,
   ...galleryRoutes,
   ...helpRoutes,
   ...authRoutes,

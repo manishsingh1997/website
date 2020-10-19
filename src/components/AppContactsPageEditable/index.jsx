@@ -49,7 +49,7 @@ export default function AppContactsPage({contacts, getContacts, updateContacts, 
 
   useEffect(() => {
     resetUser();
-  }, [contacts]);
+  }, [contacts]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchData = () => {
     getContacts(customerGID);

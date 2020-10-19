@@ -4,7 +4,8 @@
     "jest": true
   },
   "extends": [
-    "@ergeon/ergeon/alternate"
+    "@ergeon/ergeon/alternate",
+    "plugin:react-hooks/recommended"
   ],
   "root": true,
   "plugins": [

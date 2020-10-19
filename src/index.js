@@ -25,11 +25,11 @@ import AppNotificationsPage from 'components/AppNotificationsPage';
 import ErrorBoundary from 'components/ErrorBoundary';
 import Layout from 'containers/Layout';
 import NotFoundPage from 'components/NotFoundPage';
+import MetaTags from 'components/common/MetaTags';
 
 import store from 'flux/store';
 import config from 'website/config';
-
-import routes from './public-routes';
+import publicRoutes from 'routes/public';
 
 import '@ergeon/core-components/src/components/main.scss';
 import './main.scss';
@@ -74,32 +74,34 @@ const CustomerApp = ({match, location}) => (
 render(
   <Provider store={store}>
     <Router history={history}>
-      <Switch>
-        <Route
-          exact
-          path="/pro-advice"
-          render={() => {
-            window.location = config.blogHost;
-          }} />
-        <Layout>
-          <ErrorBoundary>
-            <Switch>
-              {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
-              {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
-              {DrivewayPhotoData.map(renderPhotoGalleryRedirect.bind(this, 'driveway'))}
-              {routes.map(routeProps => <Route key={routeProps.path} {...omit(routeProps, ['sitemap'])}/>)}
-              <Route component={CustomerApp} path="/app/:customerGid" />
-              <Redirect
-                exact
-                from="/gallery/driveway"
-                key="gallery-driveway-redirect"
-                to="/gallery/driveway/stamped/casual" />
-              <Route component={NotFoundPage} exact path="*"/>
-              {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
-            </Switch>
-          </ErrorBoundary>
-        </Layout>
-      </Switch>
+      <MetaTags>
+        <Switch>
+          <Route
+            exact
+            path="/pro-advice"
+            render={() => {
+              window.location = config.blogHost;
+            }} />
+          <Layout>
+            <ErrorBoundary>
+              <Switch>
+                {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
+                {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
+                {DrivewayPhotoData.map(renderPhotoGalleryRedirect.bind(this, 'driveway'))}
+                {publicRoutes.map(props => <Route key={props.path} {...omit(props, 'sitemap')} />)}
+                <Route component={CustomerApp} path="/app/:customerGid" />
+                <Redirect
+                  exact
+                  from="/gallery/driveway"
+                  key="gallery-driveway-redirect"
+                  to="/gallery/driveway/stamped/casual" />
+                <Route component={NotFoundPage} exact path="*"/>
+                {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
+              </Switch>
+            </ErrorBoundary>
+          </Layout>
+        </Switch>
+      </MetaTags>
     </Router>
   </Provider>,
   document.getElementById('root'),

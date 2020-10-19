@@ -1,5 +1,4 @@
 import React from 'react';
-import MetaDescription from '../common/MetaDescription';
 
 import StaffMap from './StaffMap';
 import JobBoard from './JobBoard';
@@ -18,8 +17,6 @@ class CareersPage extends React.Component {
   render() {
     return (
       <div className="careers-page wrapper-1180">
-        <MetaDescription pageName="CareersPage"/>
-
         <div className="spacing before__is-48 after__is-48">
           <h1 className="center spacing after__is-12">Join Us In Changing The Home Services Industry</h1>
           <p className="subheader h2 center">
