@@ -82,7 +82,7 @@ class ConfigCart extends React.Component {
     const config = configs[index];
     this.props.updateConfig(index, {
       ...config,
-      units: value,
+      units: Math.max(Number(value) || 1, 1).toString(),
     });
   }
 
@@ -195,7 +195,7 @@ class ConfigCart extends React.Component {
                   isFenceConfig &&
                   <div className="config-item__length-field">
                     <span className="config-item__length-label">Length:</span>
-                    <input min="0" onChange={this.onUnitsChange.bind(this, index)} type="number" value={config.units} />
+                    <input min="1" onChange={this.onUnitsChange.bind(this, index)} type="number" value={config.units} />
                     <span className="config-item__length-field-unit">ft</span>
                   </div>
                 }
@@ -205,7 +205,7 @@ class ConfigCart extends React.Component {
                     <span className="config-item__length-label">Count:</span>
                     <input
                       className="unit-input"
-                      min="0"
+                      min="1"
                       onChange={this.onUnitsChange.bind(this, index)}
                       type="number"
                       value={config.units} />
