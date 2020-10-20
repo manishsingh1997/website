@@ -16,13 +16,14 @@
   flex-wrap: wrap;
   @include phone() {
     flex-direction: column;
+    grid-template-columns: minmax(100px, 1fr) !important;
   }
   &__card {
     height: 100%;
     padding: 40px;
     border-radius: $corner-soft;
     border: 1px solid $gray-5;
-    margin-bottom: 24px;
+    margin-bottom: $v-24;
     background-color: $gray-6;
     position: relative;
     z-index: 1;

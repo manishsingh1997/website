@@ -11,7 +11,7 @@ class JobBoard extends React.Component {
     super();
     this.state = {
       jobList: [],
-      loader: true,
+      loading: true,
     };
   }
   componentDidMount() {
@@ -20,7 +20,7 @@ class JobBoard extends React.Component {
   getJobList() {
     axios.get('https://boards-api.greenhouse.io/v1/boards/ergeon/departments')
       .then((response) => {
-        this.setState({jobList: response.data, loader: false});
+        this.setState({jobList: response.data, loading: false});
       })
       .catch((error) => {
         console.log(error);
@@ -42,11 +42,7 @@ class JobBoard extends React.Component {
     const {jobList} = this.state;
     if (jobList.departments) {
       const departments = jobList.departments;
-      let departmentCount = 0;
-      departments.map(department => {
-        if (department.jobs.length > 0) departmentCount++;
-        return null;
-      });
+      const departmentCount = departments.filter(department => department.jobs.length > 0).length;
       const jobListClasses = ClassNames({
         'job-list': true,
         'normal': departmentCount > 1,
@@ -57,7 +53,7 @@ class JobBoard extends React.Component {
           if (department.jobs.length) {
             return (
               <div className={jobListClasses} key={i}>
-                <div className="job-list__department">
+                <div className="card job-list__department">
                   <span className="additional-header h2">{department.name}</span>
                 </div>
                 {this.renderPositions(department.jobs)}
@@ -68,23 +64,22 @@ class JobBoard extends React.Component {
         })
       );
     }
-
   }
 
   render() {
-    const {loader} = this.state;
-    const loaderClasses = ClassNames({
-      'loader-placeholder': true,
-      'visible': loader,
+    const {loading} = this.state;
+    const loadingClasses = ClassNames({
+      'loading-placeholder': true,
+      'visible': loading,
     });
     return (
       <div>
         <div className="section-title">
           <h2 className="center">Current Job Openings</h2>
         </div>
-        <div className="job-board">
-          <div className={loaderClasses}>
-            <Spinner active={loader} color="green" size={48}/>
+        <div className="cards two-columns job-board">
+          <div className={loadingClasses}>
+            <Spinner active={loading} color="green" size={48} />
           </div>
           {this.renderDepartments()}
         </div>

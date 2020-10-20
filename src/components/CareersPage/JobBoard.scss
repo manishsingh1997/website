@@ -3,32 +3,26 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  .loader-placeholder {
+  .loading-placeholder {
     margin: 0 auto;
     display: none;
     &.visible {
       display: block;
     }
   }
+  padding-bottom: $v-24;
 }
 .job-list {
+  height: 100%;
   padding: 40px;
-  border-radius: 12px;
+  border-radius: $corner-soft;
   border: 1px solid $gray-4;
-  margin-bottom: 24px;
   background-color: $white;
   position: relative;
-  &.normal {
-    width: calc(50% - 10px);
-  }
-  &.full-width {
-    width: 100%;
-  }
   &__department {
-    margin-bottom: 12px;
+    margin-bottom: $v-12;
   }
   &__job {
-    margin-bottom: 6px;
+    margin-bottom: $v-6;
   }
-
 }
