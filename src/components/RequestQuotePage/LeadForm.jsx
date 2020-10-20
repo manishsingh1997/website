@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
-import isEmail from 'sane-email-validation';
 import * as Sentry from '@sentry/browser';
 import {constants, calcUtils} from '@ergeon/3d-lib';
 import {RadioGroup} from 'react-radio-group';
@@ -293,7 +292,7 @@ export default class LeadForm extends React.Component {
             label="Your phone number"
             name="phone"
             onChange={this.handleFieldChange.bind(this)}
-            valid={validFields?.phone || !(/_/).test(phone) || null}
+            valid={validFields?.phone || false}
             validationMessage={errors?.phone}
             value={phone} />
         </FormField>
@@ -305,7 +304,7 @@ export default class LeadForm extends React.Component {
             onChange={this.handleFieldChange.bind(this)}
             placeholder="e.g. username@mail.com"
             type="email"
-            valid={validFields?.email || isEmail(email || '') || null}
+            valid={validFields?.email || false}
             validationMessage={errors?.email}
             value={email} />
         </FormField>
