@@ -1,5 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+
 import {Button, Notification} from '@ergeon/core-components';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import AppPage from 'components/common/AppPage';
@@ -120,6 +122,7 @@ export default function AppContactsPage({contacts, getContacts, updateContacts, 
         'full_name': primaryContact.name,
       });
       setIsSuccess(true);
+      setEditing(false);
     } catch (error) {
       setIsSuccess(false);
       parseError(error.response);
@@ -222,10 +225,10 @@ export default function AppContactsPage({contacts, getContacts, updateContacts, 
   const renderHeader = () => {
     return (
       <>
-        <h5>Contacts</h5>
+        Contacts
         {editing ? (
-          <Button flavor="regular" onClick={onEditingClick}>Cancel</Button>)
-          : (<Button onClick={onEditingClick}>Edit</Button>)}
+          <Button flavor="regular" onClick={onEditingClick} size="small">Cancel</Button>)
+          : (<Button onClick={onEditingClick} size="small">Edit</Button>)}
       </>);
   };
 
@@ -233,7 +236,6 @@ export default function AppContactsPage({contacts, getContacts, updateContacts, 
     if (editing) {
       return (
         <>
-          {renderSuccess()}
           {renderError()}
           <ContactEditForm
             additionalContacts={additionalContacts}
@@ -250,13 +252,18 @@ export default function AppContactsPage({contacts, getContacts, updateContacts, 
       );
     }
     return (
-      <ContactReadonlyForm contacts={contacts}></ContactReadonlyForm>
+      <>
+        {renderSuccess()}
+        <ContactReadonlyForm contacts={contacts}></ContactReadonlyForm>
+      </>
     );
   };
 
+  const classes = classnames('contacts-page', {'contacts-page_edit_form': editing});
+
   return (
     <AppPage
-      className="contacts-page"
+      className={classes}
       error={listError}
       fetchData={fetchData}
       isLoading={isListLoading}

@@ -49,8 +49,8 @@ const ContactEditForm = (props) => {
           valid={!errors.phoneNumber}
           validationMessage={errors.phoneNumber}
           value={primaryContact.phone}/>}/>
-      <div>
-        <h5 className="flex-row align-center additional-contacts-sub-header">Additional contacts</h5>
+      <div className="additional-contacts">
+        <h6 className="flex-row align-center additional-contacts-sub-header">Additional contacts</h6>
         <AdditionalContactInfo
           contactInfos={additionalEmails}
           label="Email"
@@ -68,7 +68,6 @@ const ContactEditForm = (props) => {
       </div>
       <div className="contacts-page-additional-buttons">
         <Button
-          className="spacing after__is-12"
           disabled={isSubmitting}
           flavor="regular"
           onClick={onCancel}
@@ -77,7 +76,6 @@ const ContactEditForm = (props) => {
           Cancel
         </Button>
         <Button
-          className="spacing after__is-12"
           disabled={isSubmitting}
           flavor="primary"
           taste="solid"

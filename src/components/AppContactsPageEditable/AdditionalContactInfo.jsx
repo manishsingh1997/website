@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {ReactSVG} from 'react-svg';
-
+import classnames from 'classnames';
 import {Input, PhoneInput, Button} from '@ergeon/core-components';
 import PlusIcon from '@ergeon/core-components/src/assets/icon-plus.svg';
 import MinusIcon from '@ergeon/core-components/src/assets/icon-minus.svg';
@@ -14,7 +14,7 @@ export default function AdditionalContactInfo({title, label, contactInfos, onAdd
     onAdd(label);
   };
 
-  const contactsRender = contactInfos.map((contactInfo) => {
+  const contactsRender = contactInfos.map((contactInfo, index) => {
     const inputProps = {
       label,
       onChange,
@@ -26,8 +26,12 @@ export default function AdditionalContactInfo({title, label, contactInfos, onAdd
     };
     const ContactInput = label === 'Email' ? <Input {...inputProps} type="email"/> : <PhoneInput {...inputProps}/>;
 
+    const classes = classnames(
+      'additional-contact-info-row',
+      {'additional-contact-info-row_last': index === contactInfos.length - 1}
+    );
     return (
-      <div className="additional-contact-info-row"  key={contactInfo.id}>
+      <div className={classes}  key={contactInfo.id}>
         <div className="additional-contact-info-row-input">
           {ContactInput}
         </div>
@@ -46,16 +50,21 @@ export default function AdditionalContactInfo({title, label, contactInfos, onAdd
   const rowValue = (
     <>
       {contactsRender}
-      <Button
-        className="additional-contact-info-add-button" flavor="regular" onClick={onAddHandler} size="small"
+      <a
+        className="additional-contact-info-add-button" onClick={onAddHandler}
         taste="boundless">
         <ReactSVG className="spacing right__is-5" src={PlusIcon}/>
         <span>Add {label.toLowerCase()} field</span>
-      </Button>
+      </a>
     </>
   );
 
-  return <DataRow title={title} value={rowValue}/>;
+  const classes = classnames({'additional-contacts-empty': contactInfos.length === 0});
+  return (
+    <div className={classes}>
+      <DataRow title={title} value={rowValue}/>
+    </div>
+  );
 }
 
 AdditionalContactInfo.propTypes = {
