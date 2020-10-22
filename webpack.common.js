@@ -114,6 +114,10 @@ module.exports = {
       {from: './src/data/gallery/sitemap.xml', to: `${BUILD_DIR}/gallery/`},
       {from: './src/data/help/sitemap.xml', to: `${BUILD_DIR}/help/`},
     ]),
+    new CopyPlugin([
+      {from: './src/manifest.webmanifest', to: `${BUILD_DIR}/`},
+      {from: './src/assets/ergeon-logo.png', to: `${BUILD_DIR}/`},
+    ]),
   ],
   optimization: {
     splitChunks: {

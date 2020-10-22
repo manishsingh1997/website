@@ -1,0 +1,15 @@
+{
+  "background_color": "green",
+  "description": "Fence and Driveway Contractors.",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "/ergeon-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "Ergeon",
+  "short_name": "Ergeon",
+  "start_url": "/"
+}
