@@ -282,7 +282,7 @@ export default class LeadForm extends React.Component {
             name="name"
             onChange={this.handleFieldChange.bind(this)}
             placeholder="e.g. John Smith"
-            valid={validFields?.name || !!name}
+            valid={validFields?.name !== undefined ? validFields?.name : null}
             validationMessage={errors?.name}
             value={name} />
         </FormField>
@@ -292,7 +292,7 @@ export default class LeadForm extends React.Component {
             label="Your phone number"
             name="phone"
             onChange={this.handleFieldChange.bind(this)}
-            valid={validFields?.phone || false}
+            valid={validFields?.phone !== undefined ? validFields?.phone : null}
             validationMessage={errors?.phone}
             value={phone} />
         </FormField>
@@ -304,7 +304,7 @@ export default class LeadForm extends React.Component {
             onChange={this.handleFieldChange.bind(this)}
             placeholder="e.g. username@mail.com"
             type="email"
-            valid={validFields?.email || false}
+            valid={validFields?.email !== undefined ? validFields?.email : null}
             validationMessage={errors?.email}
             value={email} />
         </FormField>
