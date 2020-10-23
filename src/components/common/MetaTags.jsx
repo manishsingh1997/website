@@ -66,7 +66,6 @@ const MetaTags = (props) => {
         <ReactMetaTags>
           <title>{meta.title}</title>
           <meta content={meta.description} name="description" />
-          <meta content={meta.description} property="og:description"/>
         </ReactMetaTags>
       )}
       {props.children}

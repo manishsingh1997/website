@@ -80,12 +80,6 @@ exports[`Sitemap should generate for website 1`] = `
         <loc>http://ergeon.local/about-ergeon</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/app/logout</loc>
-      </url>
-      <url>
-        <loc>http://ergeon.local/app/sign-in</loc>
-      </url>
-      <url>
         <loc>http://ergeon.local/careers</loc>
       </url>
       <url>

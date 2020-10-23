@@ -116,6 +116,7 @@ export const authRoutes = [
   {
     component: AuthSignInPage,
     exact: true,
+    sitemap: false,
     path: '/app/sign-in',
   },
   {
@@ -127,6 +128,7 @@ export const authRoutes = [
   {
     component: AuthLogoutPage,
     exact: true,
+    sitemap: false,
     path: '/app/logout',
   },
 ];
