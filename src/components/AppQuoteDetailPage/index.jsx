@@ -32,7 +32,6 @@ import '@ergeon/draw-map/styles.css';
 
 import './index.scss';
 import ProjectNotes from './ProjectNotes';
-import MaterialsAndDesign from './MaterialsAndDesign';
 import QuoteDetails from './QuoteDetails';
 import {HTTP_STATUS_NOT_FOUND} from '../../website/constants';
 import NotFoundPage from '../NotFoundPage';
@@ -145,17 +144,6 @@ export default class AppQuoteDetailPage extends React.Component {
     return location.pathname.replace(match.params.secret, quote['replaced_by_quote']['secret']);
   }
 
-  getQuoteDesigns(quote = {}) {
-    let fenceDescription = {materials: [], styles: []};
-
-    if (quote['fence_description']) {
-      fenceDescription = quote['fence_description'];
-    }
-
-    const {materials, styles} = fenceDescription;
-    return [...materials, ...styles];
-  }
-
   getTotalPrice(quote) {
     if (this.isVendorPreview()) {
       return quote['total_cost'];
@@ -220,7 +208,6 @@ export default class AppQuoteDetailPage extends React.Component {
       warranty,
     } = quote;
 
-    const designs = this.getQuoteDesigns(quote);
     const projectWarrantyImage = quote.order.project_warranty_image;
     const projectWarrantyLink = quote.order.project_warranty_pdf;
     return (
@@ -234,7 +221,6 @@ export default class AppQuoteDetailPage extends React.Component {
           quote={quote}
           totalPrice={formatPrice(this.getTotalPrice(quote))}/>
         <ProjectNotes quote={quote}/>
-        <MaterialsAndDesign designs={designs}/>
         {this.shouldShowBillingForm() && <BillingForm
           error={paymentMethodError}
           houseId={houseId}
