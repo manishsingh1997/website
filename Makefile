@@ -76,8 +76,10 @@ s3upload:
 	$(AWS_CLI) s3 sync $(DIST_PATH) s3://$(S3_BUCKET)/ $(AWS_S3_SYNC_PARAMS)  # use default cloudfront cache ttl
 	# don't use cache index.html
 	$(AWS_CLI) s3 cp $(DIST_PATH)/index.html s3://$(S3_BUCKET)/ --cache-control max-age=0
+	# don't use cache robots.txt
+	$(AWS_CLI) s3 cp $(DIST_PATH)/robots.txt s3://$(S3_BUCKET)/ --cache-control max-age=0
 	@if [ "$(LEVEL)" != "production" ]; then $(AWS_CLI) s3 cp $(DIST_PATH)/utm/index.html s3://$(S3_BUCKET)/utm/ --cache-control max-age=0; fi;
 
 invalidate-cloudfront:
 	@if [ -z "$(DOMAIN)" ]; then >&2 echo DOMAIN must be supplied; exit 1; fi;
-	$(AWS_CLI) cloudfront create-invalidation --distribution-id `$(AWS_CLI) cloudfront list-distributions --query "DistributionList.Items[?contains(Aliases.Items, '$(DOMAIN)')].Id" --output text` --paths /index.html /?upcoming-features /utm/index.html /utm/
+	$(AWS_CLI) cloudfront create-invalidation --distribution-id `$(AWS_CLI) cloudfront list-distributions --query "DistributionList.Items[?contains(Aliases.Items, '$(DOMAIN)')].Id" --output text` --paths /index.html /?upcoming-features /utm/index.html /utm/ /robots.txt
