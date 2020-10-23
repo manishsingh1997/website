@@ -109,10 +109,10 @@ module.exports = {
       {from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`},
     ]),
     new CopyPlugin([ // SEO
-      {from: './src/robots.txt', to: `${BUILD_DIR}/`},
-      {from: './src/data/sitemap.xml', to: `${BUILD_DIR}/`},
-      {from: './src/data/gallery/sitemap.xml', to: `${BUILD_DIR}/gallery/`},
-      {from: './src/data/help/sitemap.xml', to: `${BUILD_DIR}/help/`},
+      {from: './src/robots.txt', to: `${BUILD_DIR}/`, force: true},
+      {from: './src/data/sitemap.xml', to: `${BUILD_DIR}/`, force: true},
+      {from: './src/data/gallery/sitemap.xml', to: `${BUILD_DIR}/gallery/`, force: true},
+      {from: './src/data/help/sitemap.xml', to: `${BUILD_DIR}/help/`, force: true},
     ]),
     new CopyPlugin([
       {from: './src/manifest.webmanifest', to: `${BUILD_DIR}/`},
