@@ -24,7 +24,22 @@ exports[`Sitemap should generate for gallery 1`] = `
         <loc>http://ergeon.local/gallery/fence/before-after</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/horizontal</loc>
+        <loc>http://ergeon.local/gallery/fence/boxed-frame</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/fence/chain-link</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/fence/horizontal/nail-up</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/fence/horizontal/picture-frame</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/fence/horizontal/with-lattice</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/fence/lumber</loc>
       </url>
       <url>
         <loc>http://ergeon.local/gallery/fence/nail-up/dog-ear</loc>
@@ -33,25 +48,61 @@ exports[`Sitemap should generate for gallery 1`] = `
         <loc>http://ergeon.local/gallery/fence/nail-up/flat-top</loc>
       </url>
       <url>
+        <loc>http://ergeon.local/gallery/fence/nail-up/short-fence</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/fence/nail-up/with-lattice</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/fence/picture-frame/short-fence</loc>
+      </url>
+      <url>
         <loc>http://ergeon.local/gallery/fence/picture-frame/with-lattice</loc>
       </url>
       <url>
         <loc>http://ergeon.local/gallery/fence/picture-frame/without-lattice</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/horizontal</loc>
+        <loc>http://ergeon.local/gallery/fence/staining/semi-transparent</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/nail-up/double</loc>
+        <loc>http://ergeon.local/gallery/fence/staining/solid</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/nail-up/single</loc>
+        <loc>http://ergeon.local/gallery/fence/staining/transparent</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/picture-frame/double</loc>
+        <loc>http://ergeon.local/gallery/gate/double/box-frame</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/picture-frame/single</loc>
+        <loc>http://ergeon.local/gallery/gate/double/chain-link</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/double/horizontal</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/double/picture-frame</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/double/z-frame</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/single/box-frame</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/single/chain-link</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/single/horizontal</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/single/picture-frame</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/single/z-frame</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local/gallery/gate/sliding</loc>
       </url>"
 `;
 

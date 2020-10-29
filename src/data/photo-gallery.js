@@ -1,13 +1,42 @@
 /* eslint-disable */
+
+/**
+ * Returns URL slug.
+ * @param {string} str
+ */
+function slugify(str) {
+  return str.toLocaleLowerCase().replace(/[\s|.|,|\\|/|%|']/g, '-');
+}
+
 export const FencePhotoData = [
   {
     categoryName: 'Picture Frame',
-    categorySlug: 'picture-frame',
+    categorySlug: slugify('Picture Frame'),
     categoryGroups: [
       {
         groupName: 'Without Lattice',
-        groupSlug: 'without-lattice',
+        groupSlug: slugify('Without Lattice'),
         groupPhotos: [
+          {
+            'caption':"Picture Frame Side by Side Stepped Top",
+            'url':'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/pf+sbs+2.jpg',
+            'slug': slugify('Picture Frame Side by Side Stepped Top'),
+          },
+          {
+            'caption':"Picture Frame Side by Side",
+            'url':'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/PF+sbs.jpeg',
+            'slug': slugify('Picture Frame Side by Side'),
+          },
+          {
+            'caption':"Picture Frame Louvered with Kickboard",
+            'url':'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/pf+louvered.png',
+            'slug': slugify('Picture Frame Louvered with Kickboard 1'),
+          },
+          {
+            'caption':"Picture Frame Louvered with Kickboard",
+            'url':'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/pf+louvered+3.png',
+            'slug': slugify('Picture Frame Louvered with Kickboard 2'),
+          },
           {
             'caption':'Vallejo, CA - Picture Frame Board on Board with Kickboard',
             'url':'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5cc086dd9e1f671c728112fe_vallejo%2520picture%2520frame.jpg',
@@ -57,8 +86,23 @@ export const FencePhotoData = [
       },
       {
         groupName: 'With Lattice',
-        groupSlug: 'with-lattice',
+        groupSlug: slugify('With Lattice'),
         groupPhotos: [
+          {
+            'caption': "Picture Frame Board on Board with Square Lattice",
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Alameda+California+-+Picture+Frame+with+Lattice+2.jpg',
+            'slug': slugify('Picture Frame Board on Board with Square Lattice'),
+          },
+          {
+            'caption': "Picture Frame Board on Board with Piano Key Lattice",
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Oakland+California+-+Picture+Frame+with+Lattice+1.jpg',
+            'slug': slugify('Picture Frame Board on Board with Piano Key Lattice'),
+          },
+          {
+            'caption': "Picture Frame Side by Side with Diagonal Lattice",
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/NU+with+lattice.jpeg',
+            'slug': slugify('Picture Frame Side by Side with Diagonal Lattice'),
+          },
           {
             'caption': "Carmichael, CA - Picture Frame Board on Board with 1' Diagonal Lattice",
             'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5cc087e80a5c75fa2cbacd6c_carmichael%2520picture%2520frame%2520with%2520lattice.jpg',
@@ -116,16 +160,67 @@ export const FencePhotoData = [
           },
         ],
       },
+      {
+        groupName: 'Short Fence',
+        groupSlug: slugify('Short Fence'),
+        groupPhotos: [
+          {
+            'caption': "Picture Frame Board on Board with Diagonal Privacy Lattice",
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/picture+frame+with+privacy+lattice.jpg',
+            'slug': slugify('Picture Frame Board on Board with Diagonal Privacy Lattice'),
+          },
+          {
+            'caption': "Picture Frame Board on Board with Diagonal Lattice",
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/picture+frame+with+lattice.jpg',
+            'slug': slugify('Picture Frame Board on Board with Diagonal Lattice 1'),
+          },
+          {
+            'caption': "Picture Frame Board on Board with Diagonal Lattice",
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/picture+frame+with+lattice+1.jpg',
+            'slug': slugify('Picture Frame Board on Board with Diagonal Lattice 2'),
+          },
+          {
+            'caption': "Picture Frame Side by Side with Gaps with Kickboard",
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/picture+frame+with+gaps+.png',
+            'slug': slugify('Picture Frame Side by Side with Gaps with Kickboard'),
+          },
+          {
+            'caption': "Picture Frame Board on Board",
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/picture+frame+short.jpg',
+            'slug': slugify('Picture Frame Board on Board'),
+          },
+        ],
+      },
     ],
   },
   {
     categoryName: 'Nail Up',
-    categorySlug: 'nail-up',
+    categorySlug: slugify('Nail Up'),
     categoryGroups: [
       {
         groupName: 'Dog Ear',
-        groupSlug: 'dog-ear',
+        groupSlug: slugify('Dog Ear'),
         groupPhotos: [
+          {
+            'caption': 'Nail Up Dog Ear Side by Side with Metal Post',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/NU+metal+post.png',
+            'slug': slugify('Nail Up Dog Ear Side by Side with Metal Post 1'),
+          },
+          {
+            'caption': 'Nail Up Dog Ear Side by Side with Metal Post',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/NU+Dog+metal+post.jpg',
+            'slug': slugify('Nail Up Dog Ear Side by Side with Metal Post 2'),
+          },
+          {
+            'caption': 'Nail Up Dog Ear Side by Side with Redwood Kickboard',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/NU+dog+ear+RCH+kickboard.jpg',
+            'slug': slugify('Nail Up Dog Ear Side by Side with Redwood Kickboard'),
+          },
+          {
+            'caption': 'Nail Up Dog Ear Louvered',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/nu+dog+ear+louvered.jpg',
+            'slug': slugify('Nail Up Dog Ear Louvered'),
+          },
           {
             'caption': 'Oakland, CA - Nail Up Side by Side Dog Ear with Kickboard',
             'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5cc08537d2c730e050b0921b_oakland%2520dogear%2520stepped.jpg',
@@ -200,8 +295,28 @@ export const FencePhotoData = [
       },
       {
         groupName: 'Flat Top',
-        groupSlug: 'flat-top',
+        groupSlug: slugify('Flat Top'),
         groupPhotos: [
+          {
+            'caption': 'Nail Up Flat Top Louvered',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/NU+louvered.png',
+            'slug': slugify('Nail Up Flat Top Louvered'),
+          },
+          {
+            'caption': 'Nail Up Flat Top Side by Side with Kickboard',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/NU+with+kickboard.png',
+            'slug': slugify('Nail Up Flat Top Side by Side with Kickboard'),
+          },
+          {
+            'caption': 'Nail Up Flat Top Board on Board with Kickboard',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/NU+sbs+with+kickboard.png',
+            'slug': slugify('Nail Up Flat Top Board on Board with Kickboard'),
+          },
+          {
+            'caption': 'Nail Up Flat Top Side by Side Alternating Panels with Kickboard',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/NU+alternating+retaining+wall.png',
+            'slug': slugify('Nail Up Flat Top Side by Side Alternating Panels with Kickboard'),
+          },
           {
             'caption': 'Livermore, CA - Nail Up Board on Board Flat Top with Alternating Panels (aka Good Neighbor)',
             'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c620823a928ab526841dfc9_livermore%2520nail%2520up%2520board%2520on%2520board%2520alternating%2520panel.jpg',
@@ -249,61 +364,358 @@ export const FencePhotoData = [
           },
         ],
       },
+      {
+        groupName: 'Short Fence',
+        groupSlug: slugify('Short Fence'),
+        groupPhotos: [
+          {
+            'caption': 'Nail Up Dog Ear Side by Side',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Richmond+California+-+Nail+Up+Dog+Ear+4.jpg',
+            'slug': slugify('Nail Up Dog Ear Side by Side 1'),
+          },
+          {
+            'caption': 'Nail Up Dog Ear Side by Side',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Sacramento+California+-+Nail+Up+Dog+Ear+2.jpg',
+            'slug': slugify('Nail Up Dog Ear Side by Side 2'),
+          },
+          {
+            'caption': 'Nail Up Dog Ear Side by Side with Gaps',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Sacramento+California+-+Nail+Up+Dog+Ear+1.jpg',
+            'slug': slugify('Nail Up Dog Ear Side by Side with Gaps'),
+          },
+          {
+            'caption': 'Nail Up Flat Top Side by Side with Cap Rail',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/nailup+sbs+back+side.jpg',
+            'slug': slugify('Nail Up Flat Top Side by Side with Cap Rail'),
+          },
+          {
+            'caption': 'Nail Up Horizontal Side by Side',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/nailup+horizontal+back.jpg',
+            'slug': slugify('Nail Up Horizontal Side by Side 1'),
+          },
+          {
+            'caption': 'Nail Up Horizontal Side by Side',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/nailup+horizontal+1.jpg',
+            'slug': slugify('Nail Up Horizontal Side by Side 2'),
+          },
+          {
+            'caption': 'Nail Up Dog Ear Side by Side with Gaps',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/nailup+dog+ear+with+gaps+1.jpg',
+            'slug': slugify('Nail Up Dog Ear Side by Side with Gaps 1'),
+          },
+          {
+            'caption': 'Nail Up Dog Ear Side by Side with Gaps',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/nail+up+dog+ear+with+gaps.jpg',
+            'slug': slugify('Nail Up Dog Ear Side by Side with Gaps 2'),
+          },
+        ],
+      },
+      {
+        groupName: 'With Lattice',
+        groupSlug: slugify('With Lattice'),
+        groupPhotos: [
+          {
+            'caption': 'Nail Up Flat Top Side by Side with Diagonal Lattice',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-Sacramento+California+-+Nail+Up+Flat+Top+4.jpg.jpg',
+            'slug': slugify('Nail Up Flat Top Side by Side with Diagonal Lattice'),
+          },
+        ],
+      },
     ],
   },
   {
     categoryName: 'Horizontal',
-    categorySlug: 'horizontal',
+    categorySlug: slugify('Horizontal'),
+    categoryGroups: [
+      {
+        groupName: 'Nail Up',
+        groupSlug: slugify('Nail Up'),
+        groupPhotos: [
+          {
+            'caption': 'Nail Up Horizontal Side by Side with Gaps and Stepped Top',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Stanford+California+-+Horizontal+4.jpg',
+            'slug': slugify('Nail Up Horizontal Side by Side with Gaps and Stepped Top 1'),
+          },
+          {
+            'caption': 'Nail Up Horizontal Side by Side with Gaps and Stepped Top',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Montara++California+-+Nail+up+Horizontal++7.jpg',
+            'slug': slugify('Nail Up Horizontal Side by Side with Gaps and Stepped Top 2'),
+          },
+          {
+            'caption': 'Nail Up Horizontal Side by Side Stepped Top with Integrated Retaining Wall',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Oakland+California+-+Nail+Up+Horizontal+Flat+Top+5.jpeg',
+            'slug': slugify('Nail Up Horizontal Side by Side Stepped Top with Integrated Retaining Wall'),
+          },
+          {
+            'caption': 'Nail Up Horizontal Side by Side Over Retaining Wall',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Oakland+California+-+Nail+Up+Horizontal+Flat+Top+2.jpeg',
+            'slug': slugify('Nail Up Horizontal Side by Side Over Retaining Wall'),
+          },
+          {
+            'caption': 'Sacramento, CA - Nail Up Horizontal Flat Top ',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5cc09436cb03033a286f7919_sacramental%2520horizontal%25202.jpg',
+            'slug': 'sacramento-ca-nail-up-horizontal-flat-top-2',
+          },
+          {
+            'caption': 'Sacramento, CA - Nail Up Horizontal Flat Top ',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5cc0940df91e8b79aa8e7490_sacramental%2520horizontal.jpg',
+            'slug': 'sacramento-ca-nail-up-horizontal-flat-top',
+          },
+          {
+            'caption': 'Santa Rosa, CA Nail Up Horizontal Shadow Box',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5cc0931dad680ba6d7711e91_napa%2520horizontal%2520shadowbox.jpg',
+            'slug': 'santa-rosa-ca-nail-up-shadow-box-horizontal-fence',
+          },
+          {
+            'caption': 'Oakland, CA - Nail Up Horizontal Flat Top ',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c6dc9820bcf6e667b511abb_Oakland%2520Nailup%2520Horizontal.jpg',
+            'slug': 'oakland-ca-nail-up-horizontal-flat-top',
+          },
+          {
+            'caption': "San Mateo, CA -  Nail Up Horizontal with a Finished Height of 4'",
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c2516ae4fdbba8001bf09e0_Ergeon%2520horizontal%2520fence3.jpg',
+            'slug': 'san-mateo-ca-nail-up-horizontal-with-a-finished-height-of-4',
+          },
+          {
+            'caption': 'San Mateo, CA - Nail Up Horizontal with Horizontal Lattice',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c2516509a15752a9785af13_Ergeon%2520horizontal%2520fence4.jpg',
+            'slug': 'san-mateo-ca-nail-up-horizontal-with-horizontal-lattice',
+          },
+          {
+            'caption': "Oakland, CA - Nail Up Horizontal with an Integrated 2' Retaining Wall",
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c2513283c78e5053e8d26a6_Ergeon%2520horizontal%2520fence.jpg',
+            'slug': 'nail-up-horizontal-flat-top-with-an-integrated-2-retaining-wall',
+          },
+          {
+            'caption': 'Oakland, CA - Nail Up Horizontal with 2" gaps on a Concrete Retaining Wall',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c2514d435af3a1588da46f1_Ergeon%2520horizontal%2520fence5.jpg',
+            'slug': 'horizontal-fence-2',
+          },
+          {
+            'caption': 'Oakland, CA - Nail Up Horizontal ',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c2514e79a157519f185acb0_Ergeon%2520horizontal%2520fence2.jpg',
+            'slug': 'horizontal-fence',
+          },
+          {
+            'caption': 'Sunnyvale, CA - Wood Retaining Wall',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c252e174fdbba6522bf23e6_retaining%2520wall%2520fence.jpg',
+            'slug': 'sunnyvale-ca-wood-retaining-wall',
+          },
+        ],
+      },
+      {
+        groupName: 'Picture Frame',
+        groupSlug: slugify('Picture Frame'),
+        groupPhotos: [
+          {
+            'caption': 'Picture Frame Horizontal Side by Side with Kickboard',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+El+Sobrante%2C+California+-+Horizontal+1.jpeg',
+            'slug': slugify('Picture Frame Horizontal Side by Side with Kickboard'),
+          },
+          {
+            'caption': 'Picture Frame Horizontal Side by Side',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/pf+horizontal+3.png',
+            'slug': slugify('Picture Frame Horizontal Side by Side'),
+          },
+          {
+            'caption': 'Picture Frame Horizontal Side by Side Stepped Top',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Oakland+California+-+Horizontal+3.jpg',
+            'slug': slugify('Picture Frame Horizontal Side by Side Stepped Top'),
+          },
+          {
+            'caption': 'Picture Frame Horizontal Side by Side Stepped Top with Kickboard',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/pf+horizontal+.jpg',
+            'slug': slugify('Picture Frame Horizontal Side by Side Stepped Top with Kickboard'),
+          },
+        ],
+      },
+      {
+        groupName: 'With Lattice',
+        groupSlug: slugify('With Lattice'),
+        groupPhotos: [
+          {
+            'caption': 'Picture Frame Horizontal Side by Side with Horizontal Lattice and Kickboard',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Oakland+California+-+Horizontal+2.jpg',
+            'slug': slugify('Picture Frame Horizontal Side by Side with Horizontal Lattice and Kickboard'),
+          },
+          {
+            'caption': 'Picture Frame Horizontal Side by Side with Square Lattice and Kickboard',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/PF+horiztonal+with+lattice.jpeg',
+            'slug': slugify('Picture Frame Horizontal Side by Side with Square Lattice and Kickboard'),
+          },
+          {
+            'caption': 'Nail Up Horizontal Side by Side with Horizontal Lattice',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Napa++California+-+Horizontal+1.jpeg',
+            'slug': slugify('Nail Up Horizontal Side by Side with Horizontal Lattice'),
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryName: 'Chain Link',
+    categorySlug: slugify('Chain Link'),
     categoryPhotos: [
       {
-        'caption': 'Sacramento, CA - Nail Up Horizontal Flat Top ',
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5cc09436cb03033a286f7919_sacramental%2520horizontal%25202.jpg',
-        'slug': 'sacramento-ca-nail-up-horizontal-flat-top-2',
+        'caption': 'Chain Link Privacy Fence',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Rod+Williamson+1.jpg',
+        'slug': slugify('Chain Link Privacy Fence'),
       },
       {
-        'caption': 'Sacramento, CA - Nail Up Horizontal Flat Top ',
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5cc0940df91e8b79aa8e7490_sacramental%2520horizontal.jpg',
-        'slug': 'sacramento-ca-nail-up-horizontal-flat-top',
+        'caption': 'Chain Link Fence',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Modesto+California+-+Galvanized+Fabric+1+.jpg',
+        'slug': slugify('Chain Link Fence'),
       },
       {
-        'caption': 'Santa Rosa, CA Nail Up Horizontal Shadow Box',
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5cc0931dad680ba6d7711e91_napa%2520horizontal%2520shadowbox.jpg',
-        'slug': 'santa-rosa-ca-nail-up-shadow-box-horizontal-fence',
+        'caption': 'Vinyl Covered Chain Link',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Bay+PointCalifornia+-+Chain+LInk+4.jpg',
+        'slug': slugify('Vinyl Covered Chain Link'),
       },
       {
-        'caption': 'Oakland, CA - Nail Up Horizontal Flat Top ',
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c6dc9820bcf6e667b511abb_Oakland%2520Nailup%2520Horizontal.jpg',
-        'slug': 'oakland-ca-nail-up-horizontal-flat-top',
+        'caption': 'Chain Link with Barbed Wire',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Sacramento+California+-+Gauge+2.jpg',
+        'slug': slugify('Chain Link with Barbed Wire'),
+      },
+    ],
+  },
+  {
+    categoryName: 'Boxed Frame',
+    categorySlug: slugify('Boxed Frame'),
+    categoryPhotos: [
+      {
+        'caption': 'Boxed Wire Fence 2 Rails w/ Cap Rail 14ga wire',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Tom+Schaal+deer+fence+14ga+wire.jpeg',
+        'slug': slugify('Boxed Wire Fence 2 Rails w/ Cap Rail 14ga wire'),
       },
       {
-        'caption': 'Sunnyvale, CA - Wood Retaining Wall',
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c252e174fdbba6522bf23e6_retaining%2520wall%2520fence.jpg',
-        'slug': 'sunnyvale-ca-wood-retaining-wall',
+        'caption': 'Boxed Wire Fence 2 rails with Kick board 6ga wire',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Image+from+iOS+(4).jpg',
+        'slug': slugify('Boxed Wire Fence 2 rails with Kick board 6ga wire'),
       },
       {
-        'caption': "San Mateo, CA -  Nail Up Horizontal with a Finished Height of 4'",
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c2516ae4fdbba8001bf09e0_Ergeon%2520horizontal%2520fence3.jpg',
-        'slug': 'san-mateo-ca-nail-up-horizontal-with-a-finished-height-of-4',
+        'caption': 'Boxed WireFence 2 rails w/ Cap Rail 6ga wire',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/attachment-2.jpeg',
+        'slug': slugify('Boxed WireFence 2 rails w/ Cap Rail 6ga wire'),
       },
       {
-        'caption': 'San Mateo, CA - Nail Up Horizontal with Horizontal Lattice',
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c2516509a15752a9785af13_Ergeon%2520horizontal%2520fence4.jpg',
-        'slug': 'san-mateo-ca-nail-up-horizontal-with-horizontal-lattice',
+        'caption': 'Picture Frame Board on Board with wire lattice 14 ga',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Brandi+Yaeger+back+fence+4.jpeg',
+        'slug': slugify('Picture Frame Board on Board with wire lattice 14 ga'),
       },
       {
-        'caption': "Oakland, CA - Nail Up Horizontal with an Integrated 2' Retaining Wall",
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c2513283c78e5053e8d26a6_Ergeon%2520horizontal%2520fence.jpg',
-        'slug': 'nail-up-horizontal-flat-top-with-an-integrated-2-retaining-wall',
+        'caption': 'Boxed Wire Fence 3 rails 14ga wire',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/14ga+Boxed+Wire+Deer+Fence+2.jpeg',
+        'slug': slugify('Boxed Wire Fence 3 rails 14ga wire'),
+      },
+    ],
+  },
+  {
+    categoryName: 'Staining',
+    categorySlug: slugify('Staining'),
+    categoryGroups: [
+      {
+        groupName: 'Transparent',
+        groupSlug: slugify('Transparent'),
+        groupPhotos: [
+          {
+            'caption': 'Transparent Wood Fence Stain',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Semi-trans+stain+2.jpg',
+            'slug': slugify('Transparent Wood Fence Stain 1'),
+          },
+          {
+            'caption': 'Transparent Wood Fence Stain',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/trans+1.jpg',
+            'slug': slugify('Transparent Wood Fence Stain 2'),
+          },
+          {
+            'caption': 'Transparent Wood Fence Stain',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Stain+%26+Seal+Fence+-+Ergeon+-+Richmond+Californiac1.jpeg',
+            'slug': slugify('Transparent Wood Fence Stain 3'),
+          },
+        ],
       },
       {
-        'caption': 'Oakland, CA - Nail Up Horizontal with 2" gaps on a Concrete Retaining Wall',
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c2514d435af3a1588da46f1_Ergeon%2520horizontal%2520fence5.jpg',
-        'slug': 'horizontal-fence-2',
+        groupName: 'Semi Transparent',
+        groupSlug: slugify('Semi Transparent'),
+        groupPhotos: [
+          {
+            'caption': 'Semi Transparent Wood Fence Stain',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Berkley%2C+California+-+Staining+3.jpeg',
+            'slug': slugify('Semi Transparent Wood Fence Stain 1'),
+          },
+          {
+            'caption': 'Semi Transparent Wood Fence Stain',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Alameda%2C+California+-+Stain+and+Seal+7.jpeg',
+            'slug': slugify('Semi Transparent Wood Fence Stain 2'),
+          },
+          {
+            'caption': 'Semi Transparent Wood Fence Stain',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Danville+California+-+Picture+Frame+2.jpeg',
+            'slug': slugify('Semi Transparent Wood Fence Stain 3'),
+          },
+          {
+            'caption': 'Semi Transparent Wood Fence Stain',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Castro+Valley%2C+California+-+Stain+and+Seal+4.jpeg',
+            'slug': slugify('Semi Transparent Wood Fence Stain 4'),
+          },
+          {
+            'caption': 'Semi Transparent Wood Fence Stain',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Semi-trans+stain.jpg',
+            'slug': slugify('Semi Transparent Wood Fence Stain 5'),
+          },
+          {
+            'caption': 'Semi Transparent Wood Fence Stain',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Semi-trans+stain+1.jpg',
+            'slug': slugify('Semi Transparent Wood Fence Stain 6'),
+          },
+        ],
       },
       {
-        'caption': 'Oakland, CA - Nail Up Horizontal ',
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c2514e79a157519f185acb0_Ergeon%2520horizontal%2520fence2.jpg',
-        'slug': 'horizontal-fence',
+        groupName: 'Solid',
+        groupSlug: slugify('Solid'),
+        groupPhotos: [
+          {
+            'caption': 'Solid Wood Stain',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Stain+%26+Seal+Fence+-+Ergeon+-+Alameda+California+5.jpg',
+            'slug': slugify('Solid Wood Stain 1'),
+          },
+          {
+            'caption': 'Solid Wood Stain',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Danville_GeoffreyDohrmanPictureFrameWithoutLattice_16.jpg',
+            'slug': slugify('Solid Wood Stain 2'),
+          },
+          {
+            'caption': 'Solid Wood Stain',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/stain+solid.jpg',
+            'slug': slugify('Solid Wood Stain 3'),
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryName: 'Lumber',
+    categorySlug: slugify('Lumber'),
+    categoryPhotos: [
+      {
+        'caption': 'Redwood Con Heart Nail Up Flat Top Side by Side ',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Rocklin%2C+California+-+Nail+Up+Flat+Top.jpeg',
+        'slug': slugify('Redwood Con Heart Nail Up Flat Top Side by Side '),
+      },
+      {
+        'caption': 'Redwood Con Heart Picture Frame Board on Board with Privacy Lattice',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+San+Jose%2C+California+-+Picture+Frame+with+Lattice+1+.jpg',
+        'slug': slugify('Redwood Con Heart Picture Frame Board on Board with Privacy Lattice'),
+      },
+      {
+        'caption': 'Redwood Con Heart Picture Frame Board on Board',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Oakland++California+-+Picture+Frame+1.jpg',
+        'slug': slugify('Redwood Con Heart Picture Frame Board on Board'),
+      },
+      {
+        'caption': 'Redwood Con Heart Nail Up Horizontal Side by Side',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Gate+Installation+-+Ergeon+-+Berkeley+California+-+Single+Gate+2.jpeg',
+        'slug': slugify('Redwood Con Heart Nail Up Horizontal Side by Side'),
       },
     ],
   },
@@ -342,15 +754,30 @@ export const FencePhotoData = [
 
 export const GatePhotoData = [
   {
-    categoryName: 'Nail-up',
-    categorySlug: 'nail-up',
+    categoryName: 'Single',
+    categorySlug: slugify('Single'),
     categoryGroups: [
       {
-        groupName: 'Single',
-        groupSlug: 'single',
+        groupName: 'Z-frame',
+        groupSlug: slugify('Z-frame'),
         groupPhotos: [
           {
-            'caption': 'Stockton, CA - Z-Frame Single Gate Nail Up with Arch Top ',
+            'caption': 'Single Gate Z-frame Arched Top Side by Side',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Alameda+California+-+Single+Gate+2.jpg',
+            'slug': slugify('Single Gate Z-frame Arched Top Side by Side'),
+          },
+          {
+            'caption': 'Single Gate Z-frame Arched Top Board on Board',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Alameda+California+-+Single+Gate+1.jpg',
+            'slug': slugify('Single Gate Z-frame Arched Top Board on Board'),
+          },
+          {
+            'caption': 'Single Gate Z-frame Board on Board with Diagonal lattice',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Roseville+California+-+Single+Gate+1.jpg',
+            'slug': slugify('Single Gate Z-frame Board on Board with Diagonal lattice'),
+          },
+          {
+            'caption': 'Stockton, CA - Z-Frame Single Gate Nail Up with Arch Top',
             'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12df4a002f30d8b5b93675_Ergeon%2520Gates11.jpg',
             'slug': 'stockton-single-gate-with-wide-box-frame-and-arched-top',
           },
@@ -360,7 +787,7 @@ export const GatePhotoData = [
             'slug': 'san-jose-single-gate-with-wide-z-frame-flat-top-board-on-board',
           },
           {
-            'caption': 'Sacramento, CA - Z-Frame Single Gate Board on Board with Flat Top ',
+            'caption': 'Sacramento, CA - Z-Frame Single Gate Board on Board with Flat Top',
             'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12dedae56dc8df56109748_Ergeon%2520Gates8.jpg',
             'slug': 'sacramento-single-gate-with-wide-z-frame-flat-top-board-on-board',
           },
@@ -375,19 +802,9 @@ export const GatePhotoData = [
             'slug': 'livermore-single-gate-with-wide-z-frame-flat-top-board-on-board',
           },
           {
-            'caption': 'Berkeley, CA - Box-Frame Single Gate with Arch Top ',
+            'caption': 'Berkeley, CA - Box-Frame Single Gate with Arch Top',
             'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12e13cb3a12c212719f947_Ergeon%2520Gates19.jpg',
             'slug': 'berkeley-wide-z-frame-single-gate-with-arched-top',
-          },
-          {
-            'caption': 'American Canyon, CA - Box Frame Single Gate Nail Up with Arch Top',
-            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12e198ae722d093e9cf2a6_Ergeon%2520Gates21.jpg',
-            'slug': 'american-canyon-picture-frame-wide-box-frame-single-gate-with-arch',
-          },
-          {
-            'caption': 'Oakland, CA - Box Frame Single Gate Nail Up with Arch',
-            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12dd72002f30b164b93358_Ergeon%2520Gates3.jpg',
-            'slug': 'dolores-nam-nemo-perferendis',
           },
           {
             'caption': 'San Jose, CA - Z-Frame Single Gate Nail Up Louvered with Flat Top',
@@ -402,23 +819,139 @@ export const GatePhotoData = [
         ],
       },
       {
-        groupName: 'Double',
-        groupSlug: 'double',
+        groupName: 'Box Frame',
+        groupSlug: slugify('Box Frame'),
         groupPhotos: [
           {
-            'caption': 'San Jose, CA - Box Frame Double Gate ',
-            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5cc21a174f10d601da71bc8b_sanjose%2520double%2520gate.jpg',
-            'slug': 'san-jose-ca-box-frame-double-gate',
+            'caption': 'Single Gate Box Frame Side by Side with Gaps',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+San+Rafael+California+-+Single+Gate+2.jpg',
+            'slug': slugify('Single Gate Box Frame Side by Side with Gaps'),
           },
           {
-            'caption': 'Milpitas, CA - Box-Frame Double Gate with Arch Top ',
-            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5cc09460822688343ed3dd78_gate%2520framed%2520double.jpg',
-            'slug': 'milpitas-ca-box-frame-double-gate-with-arch-top',
+            'caption': 'Single Gate Box Frame Board on Board with Arched Top',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Granite+Bay%2C+California+-+Single+Gate+2.jpg',
+            'slug': slugify('Single Gate Box Frame Board on Board with Arched Top'),
           },
           {
-            'caption': 'American Canyon, CA - Box Frame Double Gate Nail Up Dog Ear',
-            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c6346a0d04094c63d82c329_American%2520Canyon%2520Box%2520Frame%2520Double%2520Gate%2520Dog%2520Ear.jpg',
-            'slug': 'american-canyon-ca-box-frame-double-gate-nail-up-dog-ear',
+            'caption': 'Single Gate Metal Box Frame Side by Side with Piano Key Lattice',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/metal+frame+gate+.jpg',
+            'slug': slugify('Single Gate Metal Box Frame Side by Side with Piano Key Lattice'),
+          },
+
+          {
+            'caption': 'American Canyon, CA - Box Frame Single Gate Nail Up with Arch Top',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12e198ae722d093e9cf2a6_Ergeon%2520Gates21.jpg',
+            'slug': 'american-canyon-picture-frame-wide-box-frame-single-gate-with-arch',
+          },
+          {
+            'caption': 'Oakland, CA - Box Frame Single Gate Nail Up with Arch',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12dd72002f30b164b93358_Ergeon%2520Gates3.jpg',
+            'slug': 'dolores-nam-nemo-perferendis',
+          },
+        ],
+      },
+      {
+        groupName: 'Picture Frame',
+        groupSlug: slugify('Picture Frame'),
+        groupPhotos: [
+          {
+            'caption': 'Single Gate Picture Frame Board on Board',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Fremont+California+-+Single+Gate+2.jpg',
+            'slug': slugify('Single Gate Picture Frame Board on Board 1'),
+          },
+          {
+            'caption': 'Single Gate Picture Frame Board on Board',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/PF+gate+single.jpg',
+            'slug': slugify('Single Gate Picture Frame Board on Board 2'),
+          },
+          {
+            'caption': 'Single Gate Picture Frame Board on Board with Kickboard',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Martinez%2C+California+-+Single+Gate.jpeg',
+            'slug': slugify('Single Gate Picture Frame Board on Board with Kickboard'),
+          },
+          {
+            'caption': 'Single Gate Picture Frame Board on Board with Privacy Lattice and Kickboard',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Brekeley+California+-+Single+Gate+9.jpeg',
+            'slug': slugify('Single Gate Picture Frame Board on Board with Privacy Lattice and Kickboard'),
+          },
+          {
+            'caption': 'Oakland, Picture Frame Single Gate with Lattice',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12e22bb0a0f2e34580a737_Ergeon%2520Gates26.jpg',
+            'slug': 'quia-dicta-ut-praesentium',
+          },
+        ],
+      },
+      {
+        groupName: 'Horizontal',
+        groupSlug: slugify('Horizontal'),
+        groupPhotos: [
+          {
+            'caption': 'Single Gate Horizontal Side by Side with Gaps and Piano Key Lattice',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Fence+Installation+-+Ergeon+-+Martinez%2C+California+-+Horizontal+1.jpeg',
+            'slug': slugify('Single Gate Horizontal Side by Side with Gaps and Piano Key Lattice'),
+          },
+          {
+            'caption': 'Single Gate Horizontal Side by Side with Gaps ',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Fence+Installation+-+Ergeon+-+Berkeley+California+-+Horizontal+2.jpeg',
+            'slug': slugify('Single Gate Horizontal Side by Side with Gaps'),
+          },
+          {
+            'caption': 'Oakland, CA - Horizontal gate with 1" gap',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5cc095dacb03031a5a6f7d6a_gate%2520horizontal.jpg',
+            'slug': 'oakland-ca-horizontal-gate-with-1-gap',
+          },
+          {
+            'caption': "Petaluma, CA - Horizontal gate 4' Wide 6' Tall Gate",
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12dd1d448d4b1ac4b6e154_Ergeon%2520Gates.jpg',
+            'slug': 'petaluma-ca-horizontal-gate-4-wide-6-tall-gate',
+          },
+          {
+            'caption': "San Mateo, 4' Wide 6' Tall Gate with Piano Lattice",
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12dd3efb60677b0ce21f6f_Ergeon%2520Gates2.jpg',
+            'slug': 'amet-dignissimos-dolor',
+          },
+        ],
+      },
+      {
+        groupName: 'Chain Link',
+        groupSlug: slugify('Chain Link'),
+        groupPhotos: [
+          {
+            'caption': 'Single Gate Chain Link',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Brenda+Sandoval+1.jpg',
+            'slug': slugify('Single Gate Chain Link 1'),
+          },
+          {
+            'caption': 'Single Gate Chain Link',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Rod+Williamson+2.jpg',
+            'slug': slugify('Single Gate Chain Link 2'),
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryName: 'Double',
+    categorySlug: slugify('Double'),
+    categoryGroups: [
+      {
+        groupName: 'Z-frame',
+        groupSlug: slugify('Z-frame'),
+        groupPhotos: [
+          {
+            'caption': 'Double Gate Z-frame Arched Top Side by Side',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Redwood+City+California+-+Double+Gate++2.jpg',
+            'slug': slugify('Double Gate Z-frame Arched Top Side by Side'),
+          },
+          {
+            'caption': 'Double Gate Z-frame Dog Ear Side by Side',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Fence+Installation+-+Ergeon+-+Vallejo+California+-+Nail+Up+Dog+Ear+1.jpg',
+            'slug': slugify('Double Gate Z-frame Dog Ear Side by Side'),
+          },
+          {
+            'caption': 'Double Gate Z-frame Flat Top With Kickboard',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/double+gate+flat+top+kickboard.png',
+            'slug': slugify('Double Gate Z-frame Flat Top With Kickboard'),
           },
           {
             'caption': 'San Jose, CA - Z-Frame Double Gate Nail Up Dog Ear',
@@ -429,16 +962,6 @@ export const GatePhotoData = [
             'caption': 'San Jose, CA - Z-Frame Double Gate Nail Up Dog Ear',
             'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12e10d2ce98fd1411aa97f_Ergeon%2520Gates15.jpg',
             'slug': 'san-jose-double-gate-with-wide-z-frame-flat-top-board-on-board',
-          },
-          {
-            'caption': 'Sacramento, CA - Box Frame Double Gate Nail Up with Flat Top',
-            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12e084cc357a251241ef10_Ergeon%2520Gates14.jpg',
-            'slug': 'sacramento-double-drive-gate-with-wide-box-frame-board-on-board-stained-sealed-2',
-          },
-          {
-            'caption': 'Sacramento, CA - Box Frame Double Gate Board on Board with Flat Top',
-            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12e065b0a0f2c302809fba_Ergeon%2520Gates13.jpg',
-            'slug': 'sacramento-double-drive-gate-with-wide-box-frame-board-on-board-stained-sealed',
           },
           {
             'caption': 'Martinez, CA - Z-Frame Double Gate Nail Up Dog Ear',
@@ -457,27 +980,66 @@ export const GatePhotoData = [
           },
         ],
       },
-    ],
-  },
-  {
-    categoryName: 'Picture Frame',
-    categorySlug: 'picture-frame',
-    categoryGroups: [
       {
-        groupName: 'Single',
-        groupSlug: 'single',
+        groupName: 'Box Frame',
+        groupSlug: slugify('Box Frame'),
         groupPhotos: [
           {
-            'caption': 'Oakland, Picture Frame Single Gate with Lattice',
-            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12e22bb0a0f2e34580a737_Ergeon%2520Gates26.jpg',
-            'slug': 'quia-dicta-ut-praesentium',
+            'caption': 'Double Gate Metal Box Frame with Piano Key Lattice',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Oakland+California+-+Double+Gate+2.jpg.jpg',
+            'slug': slugify('Double Gate Metal Box Frame with Piano Key Lattice'),
+          },
+          {
+            'caption': 'Double Gate Boxed Frame Flat Top Side by Side',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Fence+Installation+-+Ergeon+-+Boulder+Creek+California+-+Nail+Up+Flat+Top+1.jpg',
+            'slug': slugify('Double Gate Boxed Frame Flat Top Side by Side'),
+          },
+          {
+            'caption': 'Double Gate Metal Box Frame Flat Top Side by Side',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Fairfield+California+-+Double+Gate+1.jpg',
+            'slug': slugify('Double Gate Metal Box Frame Flat Top Side by Side'),
+          },
+          {
+            'caption': 'Double Gate Box Frame with Arched Top Piano Key Lattice',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Oakland+California+-+Double+Gate+.jpg',
+            'slug': slugify('Double Gate Box Frame with Arched Top Piano Key Lattice'),
+          },
+          {
+            'caption': 'San Jose, CA - Box Frame Double Gate ',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5cc21a174f10d601da71bc8b_sanjose%2520double%2520gate.jpg',
+            'slug': 'san-jose-ca-box-frame-double-gate',
+          },
+          {
+            'caption': 'Milpitas, CA - Box-Frame Double Gate with Arch Top ',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5cc09460822688343ed3dd78_gate%2520framed%2520double.jpg',
+            'slug': 'milpitas-ca-box-frame-double-gate-with-arch-top',
+          },
+          {
+            'caption': 'American Canyon, CA - Box Frame Double Gate Nail Up Dog Ear',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c6346a0d04094c63d82c329_American%2520Canyon%2520Box%2520Frame%2520Double%2520Gate%2520Dog%2520Ear.jpg',
+            'slug': 'american-canyon-ca-box-frame-double-gate-nail-up-dog-ear',
+          },
+          {
+            'caption': 'Sacramento, CA - Box Frame Double Gate Nail Up with Flat Top',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12e084cc357a251241ef10_Ergeon%2520Gates14.jpg',
+            'slug': 'sacramento-double-drive-gate-with-wide-box-frame-board-on-board-stained-sealed-2',
+          },
+          {
+            'caption': 'Sacramento, CA - Box Frame Double Gate Board on Board with Flat Top',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12e065b0a0f2c302809fba_Ergeon%2520Gates13.jpg',
+            'slug': 'sacramento-double-drive-gate-with-wide-box-frame-board-on-board-stained-sealed',
           },
         ],
       },
       {
-        groupName: 'Double',
-        groupSlug: 'double',
+        groupName: 'Picture Frame',
+        groupSlug: slugify('Picture Frame'),
         groupPhotos: [
+          {
+            'caption': 'Double Gate Picture Frame Board on Board with Lattice on Metal Frame',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Patterson+California+-+Double+Gate+2.jpeg',
+            'slug': slugify('Double Gate Picture Frame Board on Board with Lattice on Metal Frame'),
+          },
           {
             'caption': "Antioch, CA - Picture Frame Double Drive 8' Wide 7' Tall Gate",
             'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c633904d7d20af1af92832e_antioch%2520Picture-frame%2520Double%2520Drive%25208%2527%2520Wide%25207%2527%2520Tall%2520Gate.jpg',
@@ -485,26 +1047,78 @@ export const GatePhotoData = [
           },
         ],
       },
+      {
+        groupName: 'Horizontal',
+        groupSlug: slugify('Horizontal'),
+        groupPhotos: [
+          {
+            'caption': 'Double Gate Horizontal Side by Side',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Menlo+Park+California+-+Double+Gate+4.jpeg',
+            'slug': slugify('Double Gate Horizontal Side by Side'),
+          },
+          {
+            'caption': 'Double Gate Horizontal Side by Bide with Gaps',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Oakland+California+-+Single+%26+Double+Gate.jpg',
+            'slug': slugify('Double Gate Horizontal Side by Bide with Gaps 1'),
+          },
+          {
+            'caption': 'Double Gate Horizontal Side by Bide with Gaps',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Oakland+California+-+Single+Gate+2.jpeg',
+            'slug': slugify('Double Gate Horizontal Side by Bide with Gaps 2'),
+          },
+        ],
+      },
+      {
+        groupName: 'Chain Link',
+        groupSlug: slugify('Chain Link'),
+        groupPhotos: [
+          {
+            'caption': 'Double Gate Chain Link',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/1+(92).jpeg',
+            'slug': slugify('Double Gate Chain Link 1'),
+          },
+          {
+            'caption': 'Double Gate Chain Link',
+            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Rod+Williamson+4.jpg',
+            'slug': slugify('Double Gate Chain Link 2'),
+          },
+        ],
+      },
     ],
   },
   {
-    categoryName: 'Horizontal',
-    categorySlug: 'horizontal',
+    categoryName: 'Sliding',
+    categorySlug: slugify('Sliding'),
     categoryPhotos: [
       {
-        'caption': 'Oakland, CA - Horizontal gate with 1" gap',
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5cc095dacb03031a5a6f7d6a_gate%2520horizontal.jpg',
-        'slug': 'oakland-ca-horizontal-gate-with-1-gap',
+        'caption': 'Sliding Gate Horizontal Metal Box Frame',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Fence+Installation+-+Ergeon+-+Berkeley+California+-+Horizontal+1.jpeg',
+        'slug': slugify('Sliding Gate Horizontal Metal Box Frame'),
       },
       {
-        'caption': "Petaluma, CA - Horizontal gate 4' Wide 6' Tall Gate",
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12dd1d448d4b1ac4b6e154_Ergeon%2520Gates.jpg',
-        'slug': 'petaluma-ca-horizontal-gate-4-wide-6-tall-gate',
+        'caption': 'Sliding Gate Metal Box Frame Board on Board with Privacy Lattice',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Brekeley+California+-+Single+Gate+3.jpeg',
+        'slug': slugify('Sliding Gate Metal Box Frame Board on Board with Privacy Lattice'),
       },
       {
-        'caption': "San Mateo, 4' Wide 6' Tall Gate with Piano Lattice",
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/5c12dd3efb60677b0ce21f6f_Ergeon%2520Gates2.jpg',
-        'slug': 'amet-dignissimos-dolor',
+        'caption': 'Sliding Gate Metal Box Frame Board on Board',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Fence+Installation+-+Ergeon+-+El+Cerrito+California+-+Picture+Frame+1.jpg',
+        'slug': slugify('Sliding Gate Metal Box Frame Board on Board 1'),
+      },
+      {
+        'caption': 'Sliding Gate Metal Box Frame Board on Board',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Berkeley+California+-+Rolling+Gate+2..jpeg',
+        'slug': slugify('Sliding Gate Metal Box Frame Board on Board 2'),
+      },
+      {
+        'caption': 'Sliding Gate Chain Link',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Fence+Installation+-+Ergeon+-+Vallejo++California+-+Chain+Link+2.jpg',
+        'slug': slugify('Sliding Gate Chain Link 1'),
+      },
+      {
+        'caption': 'Sliding Gate Chain Link',
+        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/6+(15).jpeg',
+        'slug': slugify('Sliding Gate Chain Link 2'),
       },
     ],
   },

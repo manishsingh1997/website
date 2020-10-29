@@ -29,7 +29,7 @@ const BANNERS = {
     imageSrc: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/previews/banner_gate.jpg',
     header: 'Gate Photos',
     description: 'Picture Frame, Nail Up, Horizontal, Gates, Before & After',
-    url: '/gallery/gate/nail-up',
+    url: '/gallery/gate/single',
   },
   DRIVEWAY_BANNER: {
     imageSrc: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/previews/banner_driveway.jpg',
