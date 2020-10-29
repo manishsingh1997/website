@@ -74,34 +74,33 @@ const CustomerApp = ({match, location}) => (
 render(
   <Provider store={store}>
     <Router history={history}>
-      <MetaTags>
-        <Switch>
-          <Route
-            exact
-            path="/pro-advice"
-            render={() => {
-              window.location = config.blogHost;
-            }} />
-          <Layout>
-            <ErrorBoundary>
-              <Switch>
-                {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
-                {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
-                {DrivewayPhotoData.map(renderPhotoGalleryRedirect.bind(this, 'driveway'))}
-                {publicRoutes.map(props => <Route key={props.path} {...omit(props, 'sitemap')} />)}
-                <Route component={CustomerApp} path="/app/:customerGid" />
-                <Redirect
-                  exact
-                  from="/gallery/driveway"
-                  key="gallery-driveway-redirect"
-                  to="/gallery/driveway/stamped/casual" />
-                <Route component={NotFoundPage} exact path="*"/>
-                {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
-              </Switch>
-            </ErrorBoundary>
-          </Layout>
-        </Switch>
-      </MetaTags>
+      <MetaTags />
+      <Switch>
+        <Route
+          exact
+          path="/pro-advice"
+          render={() => {
+            window.location = config.blogHost;
+          }} />
+        <Layout>
+          <ErrorBoundary>
+            <Switch>
+              {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
+              {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
+              {DrivewayPhotoData.map(renderPhotoGalleryRedirect.bind(this, 'driveway'))}
+              {publicRoutes.map(props => <Route key={props.path} {...omit(props, 'sitemap')} />)}
+              <Route component={CustomerApp} path="/app/:customerGid" />
+              <Redirect
+                exact
+                from="/gallery/driveway"
+                key="gallery-driveway-redirect"
+                to="/gallery/driveway/stamped/casual" />
+              <Route component={NotFoundPage} exact path="*"/>
+              {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
+            </Switch>
+          </ErrorBoundary>
+        </Layout>
+      </Switch>
     </Router>
   </Provider>,
   document.getElementById('root'),

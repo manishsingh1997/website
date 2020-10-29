@@ -1,7 +1,6 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {useLocation, useRouteMatch} from 'react-router-dom';
-import ReactMetaTags from 'react-meta-tags';
-import PropTypes from 'prop-types';
+import {Helmet} from 'react-helmet';
 
 import {getNodes} from 'api/node';
 import metaDictionary from 'data/meta-data.json';
@@ -11,11 +10,15 @@ import {helpNodePath} from 'routes/public';
 /**
  * This component can optionally update title and meta-description
  * in the <head> every time the location is changed.
- * @param props
  */
-const MetaTags = (props) => {
+const MetaTags = () => {
   // We are going to store meta in state to easily asynchronously update it.
   const [meta, setMeta] = useState(null);
+
+  // Re-assign meta. Used as a callback.
+  const refreshMeta = useCallback(() => {
+    setMeta(meta && {...meta});
+  }, [meta]);
 
   // React Router hooks below.
   const location = useLocation();
@@ -46,10 +49,21 @@ const MetaTags = (props) => {
           console.error(error.message);
         }
       }
-      // Fallback to meta-data.json.
-      setMeta(metaDictionary[location.pathname] || null);
+      // Fallback to meta-data.json. Regex here is to remove a ”/” from the end of path.
+      setMeta(metaDictionary[location.pathname.replace(/^(.+)\/$/, '$1')] || null);
     })();
   }, [helpNodeKey, location.pathname]);
+
+  /**
+   * Force meta update fixes title re-writes bug on tab activated,
+   * see https://github.com/nfl/react-helmet/issues/462.
+   */
+  useEffect(function refreshMetaOnTabActive() {
+    window.addEventListener('focus', refreshMeta);
+    return () => {
+      window.removeEventListener('focus', refreshMeta);
+    };
+  }, [refreshMeta]);
 
   /**
    * Log the meta to simplify debugging.
@@ -60,20 +74,14 @@ const MetaTags = (props) => {
     }
   }, [meta]);
 
-  return (
-    <>
-      {meta && (
-        <ReactMetaTags>
-          <title>{meta.title}</title>
-          <meta content={meta.description} name="description" />
-        </ReactMetaTags>
-      )}
-      {props.children}
-    </>
-  );
-};
-MetaTags.propTypes = {
-  children: PropTypes.node.isRequired,
+  return meta ? (
+    <Helmet>
+      <title key={Math.random()}>{meta.title}</title>
+      <meta content={meta.description} name="description" />
+    </Helmet>
+  ) :
+    // No metadata exist for this page.
+    null;
 };
 
 export default MetaTags;
