@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {find} from 'lodash';
 import Carousel, {Modal, ModalGateway} from 'react-images';
+import Masonry from 'react-masonry-component';
 import {NavLink} from 'react-router-dom';
 
 import {Tabs, Breadcrumb, ImageCard} from '@ergeon/core-components';
@@ -128,21 +129,31 @@ class PhotoGallery extends React.Component {
       return category.categoryPhotos || [];
     }
 
+    layoutImages() {
+      if (this.masonry) {
+        setTimeout(() => {
+          this.masonry.layout();
+        });
+      }
+    }
+
     renderPhotos() {
       let photos = this.getPhotos();
 
       return (
-        <div className="cards three-columns">
+        <Masonry
+          className="photo-gallery__masonry"
+          ref={ref => this.masonry = this.masonry || ref?.masonry}>
           {photos.map((photoProps, index) => (
             <div
-              className="card"
+              className="photo-gallery__masonry-card"
               gallery-link-id={photoProps.slug}
               key={photoProps.slug}
               onClick={this.handlePhotoClick.bind(this, photoProps, index)}>
-              <ImageCard {...photoProps} />
+              <ImageCard onImageLoaded={this.layoutImages.bind(this)} {...photoProps} />
             </div>
           ))}
-        </div>
+        </Masonry>
       );
     }
 

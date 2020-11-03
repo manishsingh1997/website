@@ -133,6 +133,36 @@
       }
     }
   }
+
+  // Masonry JS grid styles
+  &__masonry {
+    margin: -1 * $h-10;
+
+    @include phone() {
+      margin: -1 * $h-5;
+    }
+
+    &-card {
+      // Set columns. -1 for tablets and phones.
+      $columns: 3;
+
+      width: 100/$columns * 1%;
+      padding: $h-10;
+
+      @include tablet() {
+        width: 100/max($columns - 1, 1) * 1%;
+      }
+
+      @include phone() {
+        padding: $h-5;
+      }
+
+      .card {
+        // Makes it visually nicer when cards start to move aka re-layout.
+        background-color: $white;
+      }
+    }
+  }
 }
 
 .breadcrumbs {
@@ -180,4 +210,9 @@
       }
     }
   }
+}
+
+// Rude fix to show photo gallery within viewport size
+.react-images__track {
+  max-height: 100vh;
 }
