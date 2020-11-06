@@ -68,6 +68,15 @@ class PhotoGallery extends React.Component {
       this.setState({modalOpened: true, imageIndex: index});
     }
 
+    clearLocationHash() {
+      history.pushState(null, '', window.location.pathname + window.location.search);
+    }
+
+    handleModalClose() {
+      this.clearLocationHash();
+      this.setState({modalOpened: false});
+    }
+
     getProductData() {
       const {productSlug} = this.props.match.params;
       const dataByProduct = {
@@ -273,7 +282,7 @@ class PhotoGallery extends React.Component {
             {category.partners && this.renderPartners(category.partners)}
             <ModalGateway>
               {modalOpened ? (
-                <Modal onClose={() => this.setState({modalOpened: false})}>
+                <Modal onClose={() => this.handleModalClose()}>
                   <Carousel
                     currentIndex={imageIndex}
                     trackProps={{
