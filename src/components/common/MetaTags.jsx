@@ -4,8 +4,9 @@ import {Helmet} from 'react-helmet';
 
 import {getNodes} from 'api/node';
 import metaDictionary from 'data/meta-data.json';
-import config, {PRODUCTION} from 'website/config';
+import config from 'website/config';
 import {helpNodePath} from 'routes/public';
+import {logDev} from 'utils/log';
 
 /**
  * This component can optionally update title and meta-description
@@ -23,6 +24,16 @@ const MetaTags = () => {
   // React Router hooks below.
   const location = useLocation();
   const match = useRouteMatch(helpNodePath);
+
+  // Remove a ”/” from the end of the pathname.
+  const path = useMemo(() => location.pathname.replace(/^(.+)\/$/, '$1'), [location.pathname]);
+
+  // Canonical URL of the page. See https://moz.com/learn/seo/canonicalization for more info.
+  const canonical = useMemo(() => {
+    const result = `${config.publicWebsite}${path !== '/' ? path : ''}`;
+    logDev('CANONICAL', result);
+    return result;
+  }, [path]);
 
   // Get help node’s key if the URL is matching `helpNodePath`.
   const helpNodeKey = useMemo(() => match?.params?.nodeKey, [match]);
@@ -49,10 +60,10 @@ const MetaTags = () => {
           console.error(error.message);
         }
       }
-      // Fallback to meta-data.json. Regex here is to remove a ”/” from the end of path.
-      setMeta(metaDictionary[location.pathname.replace(/^(.+)\/$/, '$1')] || null);
+      // Fallback to meta-data.json.
+      setMeta(metaDictionary[path] || null);
     })();
-  }, [helpNodeKey, location.pathname]);
+  }, [helpNodeKey, path]);
 
   /**
    * Force meta update fixes title re-writes bug on tab activated,
@@ -69,15 +80,14 @@ const MetaTags = () => {
    * Log the meta to simplify debugging.
    */
   useEffect(function logMeta() {
-    if (config.level !== PRODUCTION && meta) {
-      console.log('META', JSON.stringify(meta, null, 2));
-    }
+    logDev('META', JSON.stringify(meta, null, 2));
   }, [meta]);
 
   return meta ? (
     <Helmet>
       <title key={Math.random()}>{meta.title}</title>
       <meta content={meta.description} name="description" />
+      <link href={canonical} rel="canonical" />
     </Helmet>
   ) :
     // No metadata exist for this page.
