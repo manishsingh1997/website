@@ -11,27 +11,27 @@ let env, apiHost, blogHost, fencequotingHost, projectsGalleryHost,
 let googleMapsApiKey, stripePublicKey, publicWebsite;
 
 if (process.env.NODE_ENV === PRODUCTION) {
-  websiteDomain = 'ergeon.com';
+  websiteDomain = 'www.ergeon.com';
   apiHost = 'https://api.ergeon.in';
   blogHost = 'https://blog.ergeon.com';
   fencequotingHost = 'https://fencequoting.com';
-  projectsGalleryHost = 'https://www.ergeon.com/projects-gallery';
+  projectsGalleryHost = `https://${websiteDomain}/projects-gallery`;
   leadArrivedApi = 'https://tchin24eg6.execute-api.us-west-2.amazonaws.com/production/website-lead-arrived';
   addressEnteredApi = 'https://90oksb1qq9.execute-api.us-west-2.amazonaws.com/production/landing-address-submitted';
-  publicWebsite = `https://www.${websiteDomain}`;
+  publicWebsite = `https://${websiteDomain}`;
   stripePublicKey = 'pk_live_AZq0V7dLw1c3iBlADB9vdyBS';
   googleMapsApiKey = 'AIzaSyClO1qoZxVjVWmdNlNbl4W_XlAluWIb4mQ';
   tawkAPIKey = '5c4c7f0251410568a1086d00';
   env = PRODUCTION;
 } else if (process.env.NODE_ENV === STAGING) {
   apiHost = 'https://apidev.ergeon.in';
-  websiteDomain = 'ergeon.com';
+  websiteDomain = 'dev.ergeon.com';
   blogHost = 'https://blog.ergeon.com';
   fencequotingHost = 'https://fencequoting-staging.firebaseapp.com';
-  projectsGalleryHost = 'https://dev.ergeon.com/projects-gallery';
+  projectsGalleryHost = `https://${websiteDomain}/projects-gallery`;
   leadArrivedApi = 'https://8ijvlqff7l.execute-api.us-west-2.amazonaws.com/staging/website-lead-arrived';
   addressEnteredApi = 'https://wvt5gxjul1.execute-api.us-west-2.amazonaws.com/staging/landing-address-submitted';
-  publicWebsite = `https://www.${websiteDomain}`;
+  publicWebsite = `https://${websiteDomain}`;
   googleMapsApiKey = 'AIzaSyCJfEriZ61E_-iggE4PfQd5rs0IRSao2oI';
   stripePublicKey = 'pk_test_dV8nuwF8ciDuX1y0kOCkmzrN';
   tawkAPIKey = '5c4c7f0251410568a1086d00';
@@ -51,6 +51,9 @@ if (process.env.NODE_ENV === PRODUCTION) {
   env = DEVELOPMENT;
 }
 
+// Extract a second level domain. It is used in the auth service.
+const website2ndLevelDomain = websiteDomain.match(/\.?(\w+\.\w+)$/i)[1];
+
 export default {
   addressEnteredApi,
   apiHost,
@@ -65,4 +68,5 @@ export default {
   stripePublicKey,
   tawkAPIKey,
   websiteDomain,
+  website2ndLevelDomain,
 };
