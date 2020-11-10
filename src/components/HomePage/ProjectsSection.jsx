@@ -1,10 +1,9 @@
 import React from 'react';
 import {getParameterByName} from 'utils/utils';
 
-import config from 'website/config';
-import photoNailUpProject from 'assets/promo-projects/dog-ear-fence@2x.png';
 import photoPictureFrame from 'assets/promo-projects/goood-neighbor_updated.jpg';
-import photoPictureFrameLattice from 'assets/promo-projects/goood-neighbor-lattice_updated.jpg';
+import photoGate from 'assets/promo-projects/gate-sliding.jpg';
+import photoChainLink from 'assets/promo-projects/chain-link-fence.jpg';
 import photoBrushed from 'assets/promo-projects/brushed_concrete.jpg';
 import photoStamped from 'assets/promo-projects/stumped_concrete.jpg';
 import photoEnhanced from 'assets/promo-projects/enhanced_concrete.jpg';
@@ -36,30 +35,30 @@ class ProjectsSection extends React.Component {
       <div className="projects-section">
         <h3 className=""> Professional Installation Services</h3>
         <PaneSwitcher defaultPane={getParameterByName('utm_content') === 'driveway' ? 1 : 0}>
-          <div className="projects-section__project-cards" data-name="Fence projects">
-            {this.renderCard({
-              img: photoNailUpProject,
-              title: 'Nail Up',
-              content: 'This fence features non-overlapping 6 ft high ' +
-                    'boards with curved tops on one side and the frame on the other side.',
-              link: `${config.projectsGalleryHost}/tags/nail-up`,
-            })}
+          <div className="projects-section__project-cards" data-name="Fences and Gates Projects">
             {this.renderCard({
               img: photoPictureFrame,
-              title: 'Picture Frame',
-              content: 'This fence features overlapping boards for added durability, ' +
-                    'and each side of the fence looks identical. This is ideal for fences on shared boundary lines.',
-              link: `${config.projectsGalleryHost}/tags/picture-frame`,
+              title: 'Wooden Fences',
+              content: 'Wooden fences are easy to install, versatile and visually appealing.' +
+                ' Choose from a variety of styles such as Nail Up, Picture Frame, with Lattice and more.',
+              link: '/gallery/fence/picture-frame/without-lattice',
             })}
             {this.renderCard({
-              img: photoPictureFrameLattice,
-              title: 'Picture Frame with Lattice',
-              content: 'This fence is the same as our Picture Frame Fence, ' +
-                    'with a lattice on top for added height and privacy.',
-              link: `${config.projectsGalleryHost}/tags/lattice`,
+              img: photoChainLink,
+              title: 'Chain Link Fences ',
+              content: 'Chain link fences are made of robust galvanized mesh and metal posts.' +
+                ' It is a durable and cost effective option that can be built at different heights. ',
+              link: '/gallery/fence/chain-link',
+            })}
+            {this.renderCard({
+              img: photoGate,
+              title: 'Gates',
+              content: 'Add a wooden or chain link gate. Choose from single gates,' +
+                ' double swing gates or sliding gates. Customize your gate with arched tops or lattice. ',
+              link: '/gallery/gate/sliding',
             })}
           </div>
-          <div className="projects-section__project-cards" data-name="Driveway projects">
+          <div className="projects-section__project-cards" data-name="Hardscape Projects">
             {this.renderCard({
               img: photoBrushed,
               title: 'Brushed Concrete',
@@ -77,7 +76,7 @@ class ProjectsSection extends React.Component {
             })}
             {this.renderCard({
               img: photoEnhanced,
-              title: 'Enhanced',
+              title: 'Enhanced Concrete',
               content: 'Exposed aggregate concrete is the universal term for concrete which incorporates ' +
                     'natural stones, like pebbles, applied into the top layer of poured concrete. ' +
                     'The result is a timeless look with unmatched durability.',
