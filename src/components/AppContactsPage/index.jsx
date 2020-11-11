@@ -1,87 +1,283 @@
-import React from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
+import {Button, Notification} from '@ergeon/core-components';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
-import DataRow from 'components/common/DataRow';
-
 import AppPage from 'components/common/AppPage';
+import ContactEditForm from './ContactEditForm';
+import ContactReadonlyForm from './ContactReadonlyForm';
+import {updateCustomerContacts} from '../../api/app';
 
 import './index.scss';
 
-export default class AppContactsPage extends React.Component {
+export default function AppContactsPage({contacts, getContacts, updateContacts, updateUser, listError, isListLoading}) {
+  const customerGID = useContext(CustomerGIDContext);
 
-  static propTypes = {
-    contacts: PropTypes.array,
-    getContacts: PropTypes.func.isRequired,
-    isListLoading: PropTypes.bool.isRequired,
-    listError: PropTypes.object,
+  const [editing, setEditing] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const [primaryContact, setPrimaryContact] = useState({
+    name: undefined,
+    email: undefined,
+    phone: undefined,
+  });
+  const [additionalContacts, setAdditionalContacts] = useState([]);
+
+  const getField = (contact, field, defaultValue) => {
+    const value = (contact && contact[field]) || defaultValue;
+    return value;
   };
 
-  static contextType = CustomerGIDContext;
+  // will set initial user state, used by cancel button and in initial load state
+  const resetUser = (userContacts = contacts) => {
+    const primaryContact = userContacts && userContacts.find((contact => contact['is_primary']));
+    const primaryEmailInfo = getField(primaryContact, 'primary_email');
+    const primaryPhoneInfo = getField(primaryContact, 'primary_phone');
 
-  fetchData() {
-    const {getContacts} = this.props;
-    const customerGID = this.context;
+    setPrimaryContact({
+      id: getField(primaryContact, 'id'),
+      name: getField(primaryContact, 'full_name'),
+      email: getField(primaryEmailInfo, 'formatted_identifier'),
+      phone: getField(primaryPhoneInfo, 'formatted_identifier'),
+    });
+
+    const additionalEmails = getField(primaryContact, 'additional_emails') || [];
+    const additionalPhones = getField(primaryContact, 'additional_phones') || [];
+    setAdditionalContacts([...additionalEmails, ...additionalPhones]);
+  };
+
+  useEffect(() => {
+    resetUser();
+  }, [contacts]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const fetchData = () => {
     getContacts(customerGID);
-  }
+  };
 
-  getAdditional(contact, type) {
-    const additionalInfos = (contact && contact[type]) || [];
-    return additionalInfos.map(info => info['formatted_identifier']);
-  }
+  const onEditingClick = () => {
+    resetUser();
+    setIsSuccess(false);
+    setErrors({});
+    setEditing(!editing);
+  };
 
-  renderAdditionalIdentifiers(title, idenitifiers) {
-    return (
-      <div className="additional-identifiers">
-        <div>{title}:</div>
-        <div className="identifiers-list">
-          {idenitifiers.map((idenitifier, cnt) => (
-            <span key={cnt}>{idenitifier}{cnt + 1 < idenitifiers.length && ', '}</span>)
-          )}
-        </div>
-      </div>
-    );
-  }
+  const onPrimaryChange = (event, name, value) => {
+    setPrimaryContact({
+      ...primaryContact,
+      [name]: value,
+    });
+  };
 
-  renderContent() {
-    const {contacts} = this.props;
+  const onContactInfoChange = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
 
-    const primaryContact = contacts && contacts.find((contact => contact['is_primary']));
-    const primaryEmailInfo = primaryContact && primaryContact['primary_email'];
-    const primaryPhoneInfo = primaryContact && primaryContact['primary_phone'];
+    const {value} = event.target;
+    const pk = parseInt(event.target.getAttribute('pk'), 10);
+    const newData = [...additionalContacts];
+    const index = additionalContacts.findIndex((item) => item.id === pk);
 
-    const additionalEmails = this.getAdditional(primaryContact, 'additional_emails');
-    const additionalPhones = this.getAdditional(primaryContact, 'additional_phones');
+    newData[index] = {
+      ...newData[index],
+      'formatted_identifier': value,
+      identifier: value,
+    };
 
-    const additionalIdentifiers = additionalEmails.length || additionalPhones.length ? (
-      <React.Fragment>
-        {additionalEmails.length > 0 ? this.renderAdditionalIdentifiers('Emails', additionalEmails): null}
-        {additionalPhones.length > 0 ? this.renderAdditionalIdentifiers('Phones', additionalPhones): null}
-      </React.Fragment>
-    ): null;
+    setAdditionalContacts(newData);
+  };
 
-    return (
-      <React.Fragment>
-        <DataRow title="Full Name" value={primaryContact && primaryContact['full_name']}/>
-        <DataRow title="Email" value={primaryEmailInfo && primaryEmailInfo['formatted_identifier']}/>
-        <DataRow title="Phone" value={primaryPhoneInfo && primaryPhoneInfo['formatted_identifier']}/>
-        {additionalIdentifiers &&
-          <DataRow title="Additional Contacts" value={additionalIdentifiers} />
+  const onSave = async(event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setIsSuccess(false);
+    setErrors({});
+
+    try {
+      const cleanedContacts = additionalContacts.map((contact) => {
+        if (contact.action === 'add') {
+          const {identifier, type} = contact;
+          return {
+            identifier,
+            type,
+          };
         }
-      </React.Fragment>
-    );
-  }
+        return contact;
+      });
+      const response = await updateCustomerContacts(
+        customerGID,
+        {
+          'id': primaryContact.id,
+          'full_name': primaryContact.name,
+          'phone_number': primaryContact.phone,
+          'additional_contacts': cleanedContacts,
+        }
+      );
 
-  render() {
+      updateContacts(response.data);
+      await updateUser({
+        'phone_number': primaryContact.phone,
+        'full_name': primaryContact.name,
+      });
+      setIsSuccess(true);
+      setEditing(false);
+    } catch (error) {
+      setIsSuccess(false);
+      parseError(error.response);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
+  const onAddNewContactInfo = (type) => {
+    const addedIds = additionalContacts.filter(({action}) => action === 'add').map(({id}) => id);
+    const nextId = addedIds.length === 0 ? 1 : Math.max(...addedIds) + 1;
+
+    const contactInfo = {
+      id: nextId,
+      action: 'add',
+      type: type.toLowerCase(),
+    };
+
+    setAdditionalContacts([
+      ...additionalContacts,
+      contactInfo,
+    ]);
+  };
+
+  const onRemoveContactInfo = (id) => {
+    const contacts = additionalContacts.filter((contact) => contact.id !== id);
+    setAdditionalContacts(contacts);
+  };
+
+  const parseError = (response) => {
+    if (!response) {
+      return setErrors({
+        global: 'Unexpected error happened. Please try again.',
+      });
+    }
+    const {status, statusText, data} = response;
+
+    const isValidationError = status === 400 && typeof data === 'object';
+
+    if (isValidationError) {
+      const newErrors = {};
+      const phoneNumberErrors = data['phone_number'];
+      if (Array.isArray(phoneNumberErrors) && phoneNumberErrors[0]) {
+        newErrors.phoneNumber = phoneNumberErrors[0];
+      }
+
+      const fullNameErrors = data['full_name'];
+      if (Array.isArray(fullNameErrors) && fullNameErrors[0]) {
+        newErrors.fullName = fullNameErrors[0];
+      }
+      setErrors(newErrors);
+
+      const additionalContactsErrors = data['additional_contacts'];
+      const newAdditionalContacts = additionalContacts.map((contact, index) => {
+        const contactError = additionalContactsErrors[index];
+        if (!contactError || Object.keys(contactError).length === 0) {
+          delete contact.error;
+          return contact;
+        }
+        const errorKeys = Object.keys(contactError);
+        const errorMessage = typeof contactError === 'string' ? contactError : contactError[errorKeys[0]][0];
+        return {
+          ...contact,
+          error: errorMessage,
+        };
+      });
+      setAdditionalContacts(newAdditionalContacts);
+
+      return;
+    }
+
+    setErrors({
+      global: `Unexpected error happened: ${status} ${statusText}. Please try again.`,
+    });
+  };
+
+  const renderError = () => {
+    const globalError = errors.global;
+    if (globalError) {
+      return (
+        <Notification mode="embed" type="Error">
+          {globalError}
+        </Notification>
+      );
+    }
+    return null;
+  };
+
+  const renderSuccess = () => {
+    if (isSuccess) {
+      return (
+        <Notification mode="embed" type="Success">
+          Contacts were updated successfully.
+        </Notification>
+      );
+    }
+    return null;
+  };
+
+  const renderHeader = () => {
     return (
-      <AppPage
-        className="contacts-page"
-        error={this.props.listError}
-        fetchData={this.fetchData.bind(this)}
-        isLoading={this.props.isListLoading}
-        renderContent={this.renderContent.bind(this)}
-        renderHeader={() => 'Contacts'} />
+      <>
+        Contacts
+        {editing ? (
+          <Button flavor="regular" onClick={onEditingClick} size="small">Cancel</Button>)
+          : (<Button onClick={onEditingClick} size="small">Edit</Button>)}
+      </>);
+  };
+
+  const renderContent = () => {
+    if (editing) {
+      return (
+        <>
+          {renderError()}
+          <ContactEditForm
+            additionalContacts={additionalContacts}
+            errors={errors}
+            isSubmitting={isSubmitting}
+            onAddNewContactInfo={onAddNewContactInfo}
+            onCancel={onEditingClick}
+            onContactInfoChange={onContactInfoChange}
+            onPrimaryChange={onPrimaryChange}
+            onRemoveContactInfo={onRemoveContactInfo}
+            onSave={onSave}
+            primaryContact={primaryContact}/>
+        </>
+      );
+    }
+    return (
+      <>
+        {renderSuccess()}
+        <ContactReadonlyForm contacts={contacts}></ContactReadonlyForm>
+      </>
     );
-  }
+  };
+
+  const classes = classnames('contacts-page', {'contacts-page_edit_form': editing});
+
+  return (
+    <AppPage
+      className={classes}
+      error={listError}
+      fetchData={fetchData}
+      isLoading={isListLoading}
+      renderContent={renderContent}
+      renderHeader={renderHeader} />
+  );
 }
+
+AppContactsPage.propTypes = {
+  contacts: PropTypes.array,
+  getContacts: PropTypes.func.isRequired,
+  getCurrentUser: PropTypes.func.isRequired,
+  isListLoading: PropTypes.bool.isRequired,
+  listError: PropTypes.object,
+  updateContacts: PropTypes.func.isRequired,
+  updateUser: PropTypes.func.isRequired,
+};
