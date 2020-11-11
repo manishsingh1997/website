@@ -12,7 +12,7 @@ class LocationsPage extends React.Component {
 
   render() {
     const locationsContent = (
-      'We provide service to over 4.3 million households in the Bay Area, Sacramento and Fresno.'
+      'We provide service to over 4.3 million households and businesses in the Bay Area, Sacramento and Fresno.'
     );
     const locationsMap = <LocationsMap/>;
     return (

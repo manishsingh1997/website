@@ -1,7 +1,7 @@
 import React from 'react';
 import {getParameterByName} from 'utils/utils';
 
-import photoPictureFrame from 'assets/promo-projects/goood-neighbor_updated.jpg';
+import photoWoodenFences from 'assets/promo-projects/wooden-fences.jpg';
 import photoGate from 'assets/promo-projects/gate-sliding.jpg';
 import photoChainLink from 'assets/promo-projects/chain-link-fence.jpg';
 import photoBrushed from 'assets/promo-projects/brushed_concrete.jpg';
@@ -33,11 +33,12 @@ class ProjectsSection extends React.Component {
   render() {
     return (
       <div className="projects-section">
-        <h3 className=""> Professional Installation Services</h3>
+        <h3 className="">Professional Installation Services</h3>
+        <p>We provide installation services for residential and commercial properties</p>
         <PaneSwitcher defaultPane={getParameterByName('utm_content') === 'driveway' ? 1 : 0}>
-          <div className="projects-section__project-cards" data-name="Fences and Gates Projects">
+          <div className="projects-section__project-cards" data-name="Fences and Gates">
             {this.renderCard({
-              img: photoPictureFrame,
+              img: photoWoodenFences,
               title: 'Wooden Fences',
               content: 'Wooden fences are easy to install, versatile and visually appealing.' +
                 ' Choose from a variety of styles such as Nail Up, Picture Frame, with Lattice and more.',
@@ -58,7 +59,7 @@ class ProjectsSection extends React.Component {
               link: '/gallery/gate/sliding',
             })}
           </div>
-          <div className="projects-section__project-cards" data-name="Hardscape Projects">
+          <div className="projects-section__project-cards" data-name="Hardscape">
             {this.renderCard({
               img: photoBrushed,
               title: 'Brushed Concrete',
@@ -77,9 +78,8 @@ class ProjectsSection extends React.Component {
             {this.renderCard({
               img: photoEnhanced,
               title: 'Enhanced Concrete',
-              content: 'Exposed aggregate concrete is the universal term for concrete which incorporates ' +
-                    'natural stones, like pebbles, applied into the top layer of poured concrete. ' +
-                    'The result is a timeless look with unmatched durability.',
+              content: 'This style of paving features poured concrete that is enhanced with the addition' +
+                ' of colors or natural stones.',
               link: '/gallery/driveway/enhanced/enhanced',
             })}
           </div>

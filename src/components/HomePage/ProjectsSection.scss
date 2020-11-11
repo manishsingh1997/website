@@ -1,4 +1,4 @@
-@import '@ergeon/core-components/src/components/variables.scss';
+@import '~@ergeon/core-components/src/components/variables.scss';
 .projects-section {
   margin-top: 60px;
   &__project-cards {
@@ -9,6 +9,7 @@
   }
   .card {
     max-width: 380px;
+    width: 33.33%;
     margin: 0 10px;
     &:last-child {
       margin-right: 0;
@@ -18,6 +19,7 @@
     }
     @include phone() {
       max-width: 100%;
+      width: 100%;
       display: flex;
       margin: 10px 0;
     }
