@@ -14,6 +14,7 @@ import {isQuoteDetailURL, isUnsubscribeURL} from 'utils/urls';
 import {getUnsubscribeCodeFromQuery} from 'utils/app-notifications';
 
 import './index.scss';
+import somethingWrongIcon from '@ergeon/core-components/src/assets/icon-something-wrong@2x.svg';
 
 export default class AppLayout extends React.Component {
 
@@ -23,7 +24,6 @@ export default class AppLayout extends React.Component {
     location: PropTypes.object,
     match: PropTypes.object,
   };
-
   renderAnonymousUser() {
     const content = (
       <div className="center">
@@ -80,8 +80,33 @@ export default class AppLayout extends React.Component {
     );
   }
 
+  renderUserError() {
+    const content = (
+      <div className="center">
+        <div className="center spacing after__is-24">
+          <ReactSVG className="icon-invalid-lock" src={somethingWrongIcon}/>
+        </div>
+        <h4 className="center spacing after__is-12">
+          Sorry, but something went wrong
+        </h4>
+        <div>
+          Please try to reload the page or sign-in again.
+        </div>
+        <Link to="/app/sign-in">
+          <Button
+            className="spacing before__is-12"
+            size="large"
+            type="submit">
+            Sign In
+          </Button>
+        </Link>
+      </div>
+    );
+    return <SingleCard className="customer-app-anonymous-user" content={content}/>;
+  }
+
   render() {
-    const {auth: {isAuthLoading, isUserLoading, user}, location} = this.props;
+    const {auth: {isAuthLoading, isUserLoading, user, userError}, location} = this.props;
     const isLoading = isAuthLoading || isUserLoading;
     const isQuotePage = isQuoteDetailURL(location.pathname);
 
@@ -90,8 +115,10 @@ export default class AppLayout extends React.Component {
         // Unsubscribe page is special case - authentication not needed
       } else if (isQuotePage) {
         // Quote detail page is special case - authentication not needed, don't show sidebar
+      } else if (userError) {
+        console.error(userError);
+        return this.renderUserError();
       } else {
-        // TODO: if auth has error - show message with error
         return this.renderAnonymousUser();
       }
     }
