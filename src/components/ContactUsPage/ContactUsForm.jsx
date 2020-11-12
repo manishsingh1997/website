@@ -61,7 +61,7 @@ export default class ContactUsForm extends React.Component {
 
   get isValid() {
     const {data: {email, name, comment}} = this.state;
-    return every([isEmail(email || ''), !!name, !!comment]);
+    return every([isEmail(email), !!name, !!comment]);
   }
 
   handleSubmit = async e => {
@@ -139,7 +139,7 @@ export default class ContactUsForm extends React.Component {
             onChange={this.handleFieldChange}
             placeholder="e.g. John Smith"
             type="text"
-            valid={!!name}
+            valid={name ? !!name : undefined}
             validationMessage={errors?.name}
             value={name} />
         </FormField>
@@ -151,7 +151,7 @@ export default class ContactUsForm extends React.Component {
             onChange={this.handleFieldChange}
             placeholder="e.g. username@mail.com"
             type="email"
-            valid={isEmail(email || '')}
+            valid={email ? isEmail(email) : undefined}
             validationMessage={errors?.email}
             value={email} />
         </FormField>
@@ -164,7 +164,7 @@ export default class ContactUsForm extends React.Component {
             onChange={this.handleFieldChange}
             placeholder="Add your message here"
             type="text"
-            valid={!!comment}
+            valid={comment ? !!comment : undefined}
             validationMessage={errors?.comment}
             value={comment} />
         </FormField>

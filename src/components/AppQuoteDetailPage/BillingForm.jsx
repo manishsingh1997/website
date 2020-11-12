@@ -37,7 +37,11 @@ export default class BillingForm extends React.Component {
   state = {
     isLoading: false,
     editMode: false,
-    errors: {},
+    errors: {
+      card: cardNumberValidation(''),
+      expirationDate: cardExpDateValidation(''),
+      cvc: cardCvcValidation(''),
+    },
     errorMessage: null,
     form: {
       termsAccepted: false,
