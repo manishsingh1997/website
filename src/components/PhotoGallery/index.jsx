@@ -45,6 +45,8 @@ import './index.scss';
 class PhotoGallery extends React.Component {
     static propTypes = {
       children: PropTypes.node,
+      history: PropTypes.object,
+      location: PropTypes.object,
       match: PropTypes.shape({
         params: PropTypes.shape({
           categorySlug: PropTypes.string,
@@ -60,7 +62,8 @@ class PhotoGallery extends React.Component {
     };
 
     updateLocationHash(slug) {
-      document.location.hash = `#${slug}`;
+      const {history, location: {pathname, search}} = this.props;
+      history.push(`${pathname}${search}#${slug}`);
     }
 
     handlePhotoClick(photoProps, index) {
@@ -69,7 +72,8 @@ class PhotoGallery extends React.Component {
     }
 
     clearLocationHash() {
-      history.pushState(null, '', window.location.pathname + window.location.search);
+      const {history, location: {pathname, search}} = this.props;
+      history.push(`${pathname}${search}`);
     }
 
     handleModalClose() {

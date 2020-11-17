@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {withRouter} from 'react-router';
 
 import {AddressInput} from '@ergeon/core-components';
 
 import {getCheckedZIP} from 'api/lead';
 import {trackAddressEntered} from 'utils/analytics';
-import {history} from 'index';
 
 class AddressForm extends React.Component {
   static propTypes = {
+    history: PropTypes.object,
     product: PropTypes.string,
     updateLead: PropTypes.func,
   };
@@ -24,7 +25,7 @@ class AddressForm extends React.Component {
   handleAddressSubmit(lead) {
     trackAddressEntered(lead);
     this.props.updateLead(lead);
-    history.push('/request-quote');
+    this.props.history.push('/request-quote');
   }
 
   render() {
@@ -43,4 +44,4 @@ class AddressForm extends React.Component {
   }
 }
 
-export default AddressForm;
+export default withRouter(AddressForm);
