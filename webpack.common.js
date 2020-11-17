@@ -1,12 +1,15 @@
 const webpack = require('webpack');
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+
+const {dependencies} = require('./package.json');
 
 const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
+const VENDOR_LIST = Object.keys(dependencies).filter(
+  (vendor) => vendor !== 'lodash'
+);
 
 const SENTRY_DSN = 'https://f0fe1cc5aa2e4422bec8bbd637bba091@o147577.ingest.sentry.io/1794736';
 let SENTRY_CONSOLE_LEVELS = "['warn', 'error', 'assert']";
@@ -17,6 +20,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   entry: {
     'assets/bundle': `${APP_DIR}/index.js`,
+    'assets/vendor': VENDOR_LIST,
     'utm/assets/bundle': `${APP_DIR}/utm/index.js`,
   },
   output: {
@@ -35,11 +39,11 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|svg|eot|woff|woff2|ttf)$/,
@@ -70,7 +74,7 @@ module.exports = {
   plugins: [
     new htmlWebpackPlugin({
       template: `${APP_DIR}/index.html`,
-      chunks: ['assets/bundle', 'vendor'],
+      chunks: ['assets/bundle', 'assets/vendor'],
       favicon: `${APP_DIR}/assets/favicon.png`,
       filename: `${BUILD_DIR}/index.html`,
       environment: JSON.stringify(process.env.NODE_ENV),
@@ -114,23 +118,15 @@ module.exports = {
       {from: './src/manifest.webmanifest', to: `${BUILD_DIR}/`},
       {from: './src/assets/ergeon-logo.png', to: `${BUILD_DIR}/`},
     ]),
-    new MiniCssExtractPlugin({
-      filename: '[name]-[contenthash].css',
-      chunkFilename: '[id]-[contenthash].css',
-    }),
   ],
   optimization: {
-    minimize: true,
-    minimizer: [
-      new OptimizeCSSAssetsPlugin(),
-    ],
     splitChunks: {
       chunks: 'async',
       cacheGroups: {
         vendor: {
           chunks: 'initial',
           name: 'vendor',
-          test: /node_modules/,
+          test: 'vendor',
           enforce: true,
         },
         data: {
