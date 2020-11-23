@@ -31,7 +31,7 @@ import store from 'flux/store';
 import config from 'website/config';
 import publicRoutes from 'routes/public';
 
-import '@ergeon/core-components/src/components/main.scss';
+import '@ergeon/core-components/dist/main.css';
 import './main.scss';
 
 initUTMs('utm-iframe', config.websiteDomain, [
