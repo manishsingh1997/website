@@ -32,6 +32,10 @@
                 new Sentry.Integrations.CaptureConsole({"levels": <%= htmlWebpackPlugin.options.sentryConsoleLevels %>}),
               ],
               "release": <%= htmlWebpackPlugin.options.sentryRelease %>,
+              "ignoreUrls": [ /* externals */
+                /embed\.tawk\.to/,
+                /newrelic\.js/,
+              ]
             });
           }
         </script>
