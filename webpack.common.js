@@ -1,3 +1,4 @@
+const fs = require('fs');
 const webpack = require('webpack');
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
@@ -5,13 +6,19 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
-const BUILD_DIR = path.resolve(__dirname, 'dist');
-const APP_DIR = path.resolve(__dirname, 'src');
+const APP_DIR = path.resolve(__dirname, './src');
+const BUILD_DIR = path.resolve(__dirname, './dist');
 
 const SENTRY_DSN = 'https://f0fe1cc5aa2e4422bec8bbd637bba091@o147577.ingest.sentry.io/1794736';
 let SENTRY_CONSOLE_LEVELS = "['warn', 'error', 'assert']";
 if (process.env.NODE_ENV === 'production') {
   SENTRY_CONSOLE_LEVELS = "['error', 'assert']";
+}
+
+// Copy robots.txt file. It takes NODE_ENV into account. See CopyPlugin SEO section.
+let robotsPath = `${APP_DIR}/process/robots/${process.env.NODE_ENV}.txt`;
+if (!fs.existsSync(robotsPath)) {
+  robotsPath = `${APP_DIR}/process/robots/default.txt`;
 }
 
 module.exports = {
@@ -112,7 +119,7 @@ module.exports = {
       {from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`},
     ]),
     new CopyPlugin([ // SEO
-      {from: './src/robots.txt', to: `${BUILD_DIR}/`, force: true},
+      {from: robotsPath, to: `${BUILD_DIR}/robots.txt`, force: true},
       {from: './src/data/sitemap.xml', to: `${BUILD_DIR}/`, force: true},
       {from: './src/data/gallery/sitemap.xml', to: `${BUILD_DIR}/gallery/`, force: true},
       {from: './src/data/help/sitemap.xml', to: `${BUILD_DIR}/help/`, force: true},

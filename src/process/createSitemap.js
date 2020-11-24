@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 import isEmpty from 'lodash/isEmpty';
 import reduce from 'lodash/reduce';
 import sortBy from 'lodash/sortBy';
@@ -8,6 +7,8 @@ import {getHelpNodesURLs} from 'api/sitemap';
 import {FencePhotoData, GatePhotoData, DrivewayPhotoData} from 'data/photo-gallery';
 import {authRoutes, basicRoutes, galleryRoutes, helpRoutes} from 'routes/public';
 import config from 'website/config';
+
+import {createDirIfNotExists} from './utils';
 
 const HOME_PAGE_URL = config.publicWebsite;
 
@@ -106,19 +107,6 @@ export const generateHelpSitemap = async() => {
       .concat(await getHelpNodesURLs()),
   );
   return generateSitemap(urls);
-};
-
-/**
- * Helper function to recursively created nested dirs.
- * @param {string} filePath
- */
-const createDirIfNotExists = filePath => {
-  const dirname = path.dirname(filePath);
-  if (fs.existsSync(dirname)) {
-    return true;
-  }
-  createDirIfNotExists(dirname);
-  fs.mkdirSync(dirname);
 };
 
 /**
