@@ -87,7 +87,7 @@ module.exports = {
       environment: JSON.stringify(process.env.NODE_ENV),
       sentryConsoleLevels: SENTRY_CONSOLE_LEVELS,
       sentryDSN: JSON.stringify(SENTRY_DSN),
-      sentryRelease: JSON.stringify(process.env.SENTRY_RELEASE_NAME),
+      sentryRelease: JSON.stringify(process.env.SENTRY_RELEASE_NAME || null),
       isProd: process.env.NODE_ENV === 'production',
     }),
     new htmlWebpackPlugin({
