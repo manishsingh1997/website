@@ -72,7 +72,7 @@
     "@ergeon/draw-map": "2.7.2",
     "@ergeon/erg-customer-auth": "0.4.0",
     "@ergeon/erg-utils-js": "2.0.1",
-    "@ergeon/erg-utms": "2.7.0",
+    "@ergeon/erg-utms": "2.8.0",
     "@ergeon/help-components": "0.11.0",
     "@ergeon/map-component": "1.10.11",
     "@sentry/browser": "5.27.6",
