@@ -10,6 +10,8 @@ const BUILD_DIR = path.resolve(__dirname, './dist');
 
 const SENTRY_DSN = 'https://f0fe1cc5aa2e4422bec8bbd637bba091@o147577.ingest.sentry.io/1794736';
 let SENTRY_CONSOLE_LEVELS = "['warn', 'error', 'assert']";
+
+const IS_DEVELOPMENT = process.env.NODE_ENV === 'development';
 if (process.env.NODE_ENV === 'production') {
   SENTRY_CONSOLE_LEVELS = "['error', 'assert']";
 }
@@ -27,9 +29,8 @@ module.exports = {
   },
   output: {
     path: BUILD_DIR,
-    filename: '[name]-[hash].js',
+    filename: IS_DEVELOPMENT ? '[name].js' : '[name]-[contenthash].js',
     publicPath: '/',
-    sourceMapFilename: '[name]-[hash].js.map',
   },
   module: {
     rules: [
@@ -53,7 +54,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[name]-[hash].[ext]',
+              name: IS_DEVELOPMENT ? '[name].[ext]' : '[name]-[contenthash].[ext]',
               outputPath: 'assets',
             },
           },
@@ -128,8 +129,8 @@ module.exports = {
       {from: './src/assets/ergeon-logo.png', to: `${BUILD_DIR}/`},
     ]),
     new MiniCssExtractPlugin({
-      filename: '[name]-[contenthash].css',
-      chunkFilename: '[id]-[contenthash].css',
+      filename: IS_DEVELOPMENT ? '[name].css' : '[name]-[contenthash].css',
+      chunkFilename: IS_DEVELOPMENT ? '[id].css' : '[id]-[contenthash].css',
     }),
   ],
   optimization: {
