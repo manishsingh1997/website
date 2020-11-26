@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 const APP_DIR = path.resolve(__dirname, './src');
@@ -134,10 +133,6 @@ module.exports = {
     }),
   ],
   optimization: {
-    minimize: true,
-    minimizer: [
-      new OptimizeCSSAssetsPlugin(),
-    ],
     splitChunks: {
       chunks: 'all',
       cacheGroups: {

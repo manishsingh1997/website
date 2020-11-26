@@ -1,4 +1,6 @@
 const CompressionPlugin = require('compression-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const merge = require('webpack-merge');
 
 const common = require('./webpack.common.js');
@@ -26,5 +28,14 @@ module.exports = merge(common, {
     occurrenceOrder: true,
     removeAvailableModules: true,
     removeEmptyChunks: true,
+    minimize: true,
+    minimizer: [
+      new OptimizeCSSAssetsPlugin(),
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true,
+      }),
+    ],
   },
 });
