@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {find} from 'lodash';
+import find from 'lodash/find';
 import Carousel, {Modal, ModalGateway} from 'react-images';
 import Masonry from 'react-masonry-component';
 import {NavLink} from 'react-router-dom';
@@ -233,7 +233,7 @@ class PhotoGallery extends React.Component {
                   <li><NavLink to="/gallery/">Photo gallery</NavLink></li>
                 </ul>
               </span>
-              <h2>Photo gallery</h2>
+              <h1 className="h2">Photo gallery</h1>
             </div>
             <div className="header-border spacing after__is-24">
             </div>
@@ -251,6 +251,7 @@ class PhotoGallery extends React.Component {
       const {modalOpened, imageIndex} = this.state;
       const category = this.getCategoryData();
       const breadcrumbGroups = this.getBreadcrumbGroups();
+      const activeGroup = find(breadcrumbGroups, {highlighted: true});
 
       const banners = {
         [PRODUCTS.FENCE]: [BANNERS.GATE_BANNER, BANNERS.DRIVEWAY_BANNER],
@@ -267,7 +268,7 @@ class PhotoGallery extends React.Component {
                 <li><NavLink to="/gallery/">Photo gallery</NavLink></li>
               </ul>
             </span>
-            <h2>{this.getProductGalleryName()}</h2>
+            <h1 className="h2">{category?.categoryName} {activeGroup?.name} {this.getProductGalleryName()}</h1>
           </div>
           <div className="header-border">
             <div className="photo-gallery__categories wrapper-1180">

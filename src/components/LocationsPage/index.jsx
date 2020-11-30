@@ -18,7 +18,7 @@ class LocationsPage extends React.Component {
     return (
       <div className="locations-page wrapper-1180">
         <div className="locations__header">
-          <h2>Our Locations</h2>
+          <h1 className="h2">Our Locations</h1>
           <p className="paragraph-3">
             {locationsContent}
           </p>

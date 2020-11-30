@@ -109,7 +109,7 @@ class AuthSignInPage extends React.Component {
         <div className="center spacing after__is-24">
           <img className="icon-lock" src={LockIcon} />
         </div>
-        <h4 className="center spacing after__is-12">Sign in to Ergeon</h4>
+        <h1 className="h4 center spacing after__is-12">Sign in to Ergeon</h1>
         <p className="center signin-page__form-header small-text spacing after__is-24">
           <i>New to ergeon?</i> <Link to="/request-quote">Request a quote</Link>.
         </p>

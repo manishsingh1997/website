@@ -29,7 +29,7 @@ class ContactUsPage extends React.Component {
         <div className="shadow-block">
           <div className="contact-us-page__header wrapper-1180">
             <div className="wrapper-480">
-              <h2>Contact Us</h2>
+              <h1 className="h2">Contact Us</h1>
               <div className="subheader h6 spacing before__is-6">
                 We’re here to help! Get in touch and our team will
                 answer your questions as soon as possible.
