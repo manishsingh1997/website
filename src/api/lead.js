@@ -54,7 +54,7 @@ export const getPriceAndDescription = (modelState, zipcode = constants.DEFAULT_Z
 
 export const getPlaceData = (address) => {
   return new Promise((resolve, reject) => {
-    GoogleMapsLoader.load(google => {
+    GoogleMapsLoader.load().then(google => {
       const geocode = new google.maps.Geocoder();
       geocode.geocode({address}, (results, status) => {
         if (results.length) {
