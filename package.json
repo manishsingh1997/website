@@ -68,7 +68,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "@ergeon/3d-lib": "5.14.0",
+    "@ergeon/3d-lib": "5.15.2",
     "@ergeon/core-components": "^1.46.2",
     "@ergeon/draw-map": "2.7.2",
     "@ergeon/erg-customer-auth": "0.4.0",
@@ -107,6 +107,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "sane-email-validation": "^3.0.1",
+    "three": "^0.123.0",
     "vanilla-text-mask": "^5.1.1"
   },
   "bugs": {
