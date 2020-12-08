@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
 import {Link} from 'react-router-dom';
-import isEmail from 'sane-email-validation';
 
 import {authService} from 'utils/auth';
 import {Button, FormField, Input, Spinner} from '@ergeon/core-components';
@@ -31,7 +30,6 @@ class AuthSignInPage extends React.Component {
     data: {
       email: null,
     },
-    validateOnChange: false,
     errors: null,
     loading: false,
   };
@@ -45,7 +43,7 @@ class AuthSignInPage extends React.Component {
       errors = await this.requestSignIn.bind(this)(data.email);
     }
     if (errors) {
-      this.setState({errors, validateOnChange: true});
+      this.setState({errors});
     } else {
       this.setState({isFormSuccess: true});
     }
@@ -76,17 +74,15 @@ class AuthSignInPage extends React.Component {
   }
 
   handleFieldChange = (event, name, value) => {
-    const {data, validateOnChange} = this.state;
+    const {data} = this.state;
     const newState = {
       data: {
         ...data,
         [name]: value,
       },
+      errors: null,
     };
 
-    if (validateOnChange) {
-      newState.errors = this.validator(newState.data);
-    }
     this.setState(newState);
   };
 
@@ -122,7 +118,7 @@ class AuthSignInPage extends React.Component {
               onChange={this.handleFieldChange}
               placeholder="e.g. username@mail.com"
               type="email"
-              valid={isEmail(email || '') && !errors?.email || null}
+              valid={errors?.email ? !errors?.email : null}
               value={email} />
             {this.renderErrors('email')}
           </FormField>
