@@ -28,6 +28,15 @@ const MetaTags = () => {
   // Remove a ”/” from the end of the pathname.
   const path = useMemo(() => location.pathname.replace(/^(.+)\/$/, '$1'), [location.pathname]);
 
+  // Hide a page from search robots.
+  const notIndexed = useMemo(() => {
+    if ((/^\/app/).test(path)) {
+      // All internal /app/**/* URLs should be hidden from robots.
+      return true;
+    }
+    return false;
+  }, [path]);
+
   // Canonical URL of the page. See https://moz.com/learn/seo/canonicalization for more info.
   const canonical = useMemo(() => {
     const result = `${config.publicWebsite}${path !== '/' ? path : ''}`;
@@ -82,6 +91,15 @@ const MetaTags = () => {
   useEffect(function logMeta() {
     logDev('META', JSON.stringify(meta, null, 2));
   }, [meta]);
+
+  // There is no point in adding meta to the pages disallowed for indexing.
+  if (notIndexed) {
+    return (
+      <Helmet>
+        <meta content="noindex" name="robots" />
+      </Helmet>
+    );
+  }
 
   return meta ? (
     <Helmet>
