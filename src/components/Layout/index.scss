@@ -130,15 +130,6 @@
     }
   }
 
-  .ergeon-logo {
-    @include phone {
-      position: relative;
-      left: 0 !important;
-      width: 112px;
-      height: 16px;
-    }
-  }
-
   .active-link {
     svg path {
       fill: $green-1;
