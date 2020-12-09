@@ -1,0 +1,527 @@
+[
+  {
+    "from": "all-categories/aliquid-possimus",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "all-categories/double",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "all-categories/quidem",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "all-categories/quod",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "all-categories/repellendus-similique-deleniti-rerum",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "all-categories/veniam-consequuntur-repellendus",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "all-tags/double",
+    "to": "/projects-gallery/tags/con-common",
+    "active": true
+  },
+  {
+    "from": "all-tags/fence",
+    "to": "/projects-gallery/tags/con-common",
+    "active": true
+  },
+  {
+    "from": "all-tags/gate",
+    "to": "/projects-gallery/tags/single-gate",
+    "active": true
+  },
+  {
+    "from": "all-tags/nail-up",
+    "to": "/projects-gallery/tags/nail-up",
+    "active": true
+  },
+  {
+    "from": "all-tags/picture-frame",
+    "to": "/projects-gallery/tags/picture-frame",
+    "active": true
+  },
+  {
+    "from": "all-tags/single",
+    "to": "/projects-gallery/tags/single-gate",
+    "active": true
+  },
+  {
+    "from": "areas/sacramento",
+    "to": "/projects-gallery/regions/sacramento/sacramento",
+    "active": true
+  },
+  {
+    "from": "ask-question",
+    "to": "/contacts",
+    "active": true
+  },
+  {
+    "from": "cities/maiores-repellat-optio",
+    "to": "/locations",
+    "active": true
+  },
+  {
+    "from": "cities/martinez",
+    "to": "/locations",
+    "active": true
+  },
+  {
+    "from": "cities/oakland",
+    "to": "/locations",
+    "active": true
+  },
+  {
+    "from": "cities/pinole",
+    "to": "/locations",
+    "active": true
+  },
+  {
+    "from": "cities/sacramento",
+    "to": "/locations",
+    "active": true
+  },
+  {
+    "from": "cities/san-jose",
+    "to": "/locations",
+    "active": true
+  },
+  {
+    "from": "compare",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "completed-projects",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "driveway",
+    "to": "/gallery/driveway/stamped/casual",
+    "active": true
+  },
+  {
+    "from": "driveway-categories/pavers",
+    "to": "/gallery/driveway/stamped/casual",
+    "active": true
+  },
+  {
+    "from": "driveway-photos",
+    "to": "/gallery/driveway/stamped/casual",
+    "active": true
+  },
+  {
+    "from": "faq",
+    "to": "/help",
+    "active": true
+  },
+  {
+    "from": "fence",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fence-diagrams/basic-dog-eared",
+    "to": "/gallery/fence/nail-up/dog-ear",
+    "active": true
+  },
+  {
+    "from": "fence-diagrams/basic-dog-eared",
+    "to": "/gallery/fence/nail-up/dog-ear",
+    "active": true
+  },
+  {
+    "from": "fence-diagrams/good-neighbor",
+    "to": "/gallery/fence/nail-up/dog-ear",
+    "active": true
+  },
+  {
+    "from": "fence-diagrams/good-neighbor-with-lattice",
+    "to": "/gallery/fence/picture-frame/with-lattice",
+    "active": true
+  },
+  {
+    "from": "fence-diagrams/nail-up",
+    "to": "/gallery/fence/nail-up/dog-ear",
+    "active": true
+  },
+  {
+    "from": "fence-diagrams/picture-frame",
+    "to": "/gallery/fence/picture-frame/without-lattice",
+    "active": true
+  },
+  {
+    "from": "fence-diagrams/picture-frame-with-lattice",
+    "to": "/gallery/fence/picture-frame/with-lattice",
+    "active": true
+  },
+  {
+    "from": "fence-installation",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fence-photo-gallery",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "fence-specifications",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fence/company",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fence/install",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fence/installation",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fence/privacy",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fence/replacement",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fence/service",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fence/wood",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fencequoting-iframe",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fencing/backyard",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fencing/company",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fencing/install",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "fencing/wood",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "help/201900003",
+    "to": "/help",
+    "active": true
+  },
+  {
+    "from": "help/202000380",
+    "to": "/help",
+    "active": true
+  },
+  {
+    "from": "help/7oiKY-I_pEYrl2WL",
+    "to": "/help",
+    "active": true
+  },
+  {
+    "from": "hidden-pages/driveway-photos",
+    "to": "/gallery/driveway/stamped/casual",
+    "active": true
+  },
+  {
+    "from": "hidden-pages/fence-photo-gallery",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "hidden-pages/fence-photos",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "hidden-pages/projects-gallery/areas",
+    "to": "/locations",
+    "active": true
+  },
+  {
+    "from": "hidden-pages/projects-gallery/map",
+    "to": "/locations",
+    "active": true
+  },
+  {
+    "from": "hidden-pages/projects-gallery/projects",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "hidden-pages/projects-gallery/tags",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "home",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "licenses",
+    "to": "/licenses-warranties",
+    "active": true
+  },
+  {
+    "from": "our-story",
+    "to": "/about-ergeon",
+    "active": true
+  },
+  {
+    "from": "post/what-are-pavers",
+    "to": "https://blog.ergeon.com",
+    "active": true
+  },
+  {
+    "from": "post/what-driveway-material-is-best-for-you",
+    "to": "https://blog.ergeon.com",
+    "active": true
+  },
+  {
+    "from": "pricing",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "project-financing",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "projects-gallery/index.html",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-carmichael-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-dixon-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-dublin-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-hercules-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-lodi-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-milpitas-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-oakland-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-oakland-ca-2",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-oakland-ca-3",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-pinole-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-roseville-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-sacramento-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-san-jose-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-san-jose-ca-2",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-san-mateo-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-santa-clara-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-gate-installation-in-sunnyvale-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-installation-in-albany-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-installation-in-martinez-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-installation-in-sacramento-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-installation-in-sacramento-ca-2",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-installation-in-san-lorenzo-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-installation-in-stockton-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-installation-in-stockton-ca-3",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/fence-installation-in-vacaville-ca",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/pinole-fence-installation",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "projects/richmond-fence-installation",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "reviews",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "sign_up",
+    "to": "/",
+    "active": true
+  },
+  {
+    "from": "tags/company-news",
+    "to": "https://blog.ergeon.com",
+    "active": true
+  },
+  {
+    "from": "tags/curb-appeal",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "tags/curb-appeal",
+    "to": "/projects-gallery/tags/con-common",
+    "active": true
+  },
+  {
+    "from": "tags/diy",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "tags/featured-project-of-the-week",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "tags/fences",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "tags/professional-advice",
+    "to": "/projects-gallery",
+    "active": true
+  },
+  {
+    "from": "warranty",
+    "to": "/licenses-warranties",
+    "active": true
+  },
+  {
+    "from": "wood_fence/quote",
+    "to": "/",
+    "active": true
+  }
+]

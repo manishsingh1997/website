@@ -8,6 +8,8 @@ SENTRY_RELEASE_NAME ?= `git rev-parse HEAD`
 SENTRY_CLI ?= sentry-cli
 DIST_PATH ?= dist/
 SHOW_UPCOMING_FEATURES ?= true
+NODE ?= node
+PROCESS_PATH ?= src/process
 
 # Don't deploy source maps on production due to security reasons
 ifeq ($(LEVEL), production)
@@ -60,6 +62,7 @@ deploy-staging:
 	LEVEL=staging make create-sitemap
 	LEVEL=staging make build
 	LEVEL=staging S3_BUCKET=dev.ergeon.com make s3upload
+	S3_BUCKET=dev.ergeon.com make ensure-redirects
 	LEVEL=staging DOMAIN=dev.ergeon.com make invalidate-cloudfront
 	LEVEL=staging make sentry-set-commits
 
@@ -67,9 +70,13 @@ deploy-production:
 	LEVEL=production make create-sitemap
 	LEVEL=production make build
 	LEVEL=production S3_BUCKET=www.ergeon.com make s3upload
+	S3_BUCKET=www.ergeon.com make ensure-redirects
 	LEVEL=production DOMAIN=www.ergeon.com make invalidate-cloudfront
 	LEVEL=production make sentry-set-commits
 	LEVEL=production make sentry-upload-sourcemaps
+
+ensure-redirects:
+	$(NODE) $(PROCESS_PATH)/redirects/ensureRedirects.js $(S3_BUCKET)
 
 s3upload:
 	@if [ -z "$(S3_BUCKET)" ]; then >&2 echo S3_BUCKET must be supplied; exit 1; fi;

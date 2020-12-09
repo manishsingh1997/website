@@ -77,3 +77,16 @@ It's possible to create a sitemap manually by running the following command,
 ```bash
 make create-sitemap
 ```
+
+### Redirects
+
+Sometimes it is needed to setup redirects at server-side level for SEO purposes.
+
+Since we are deploying this project into AWS S3 bucket - we can define routing rules at [S3 bucket level](https://github.com/ergeon/infrastructure/blob/master/ergeon.com-landing/routing_rules.json).
+But it has limitation: only 50 routing rules can be defined like this. We need more, so in addition to S3-bucket routing rules we are defining [object redirects](https://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html#advanced-conditional-redirects).
+
+
+To define a redirect, add a record into `src/process/redirects/redirects.json`. The redirect will be created automatically on deployment.
+
+
+Imporant note: once added, don't remove entry from `redirects.json`. Instead, set `"active": false`. Having that the script can understand that existing redirect should be removed.
