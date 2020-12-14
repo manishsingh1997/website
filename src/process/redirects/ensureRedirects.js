@@ -1,6 +1,7 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const fs = require('fs');
+const crypto = require('crypto');
 
 const REDIRECTS_FILE = `${__dirname}/redirects.json`;
 const AWS_S3_API_CLI = 'aws --region us-west-2 s3api';
@@ -33,17 +34,19 @@ const removeRedirect = async function(s3Bucket, from, to) {
  * @param {string} filePath
  */
 const readJSONFile = function(filePath) {
-  const rawdata = fs.readFileSync(filePath);
-  return JSON.parse(rawdata);
+  const rawData = fs.readFileSync(filePath);
+  return JSON.parse(rawData);
 };
 
 /**
- * Return file last modification time, in milliseconds
+ * Return hash of file (sha1 of it's content)
  * @param {string} filePath
  */
-const getFileModificationTime = function(filePath) {
-  const stat = fs.statSync(filePath);
-  return stat['mtimeMs'];
+const getFileHash = function(filePath) {
+  const rawData = fs.readFileSync(filePath);
+  const shasum = crypto.createHash('sha1');
+  shasum.update(rawData);
+  return shasum.digest('hex');
 };
 
 /**
@@ -79,8 +82,8 @@ const setS3ObjectMetaData = async function(s3Bucket, path, key, value) {
 const setupRedirects = async function(s3Bucket) {
   // first check, do we have updates since last sync. If not - we can skip it.
   const cachedMetadata = await getS3ObjectMetaData(s3Bucket, CACHE_FILE);
-  const redirectsFileTimestamp = String(getFileModificationTime(REDIRECTS_FILE));
-  if (redirectsFileTimestamp === cachedMetadata['last-ts']) {
+  const redirectsFileHash = String(getFileHash(REDIRECTS_FILE));
+  if (redirectsFileHash === cachedMetadata['redirects-file-hash']) {
     console.log('Redirects are already in sync, skipping');
   } else {
     // Setup redirects
@@ -94,7 +97,7 @@ const setupRedirects = async function(s3Bucket) {
     }
     // Update the cache
     console.log(`Updating cache in ${CACHE_FILE}`);
-    await setS3ObjectMetaData(s3Bucket, CACHE_FILE, 'last-ts', redirectsFileTimestamp);
+    await setS3ObjectMetaData(s3Bucket, CACHE_FILE, 'redirects-file-hash', redirectsFileHash);
   }
 };
 
