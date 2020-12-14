@@ -330,11 +330,6 @@
     "active": true
   },
   {
-    "from": "projects-gallery/index.html",
-    "to": "/projects-gallery",
-    "active": false
-  },
-  {
     "from": "projects/fence-gate-installation-in-carmichael-ca",
     "to": "/projects-gallery",
     "active": true
