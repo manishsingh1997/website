@@ -141,7 +141,7 @@ class AuthSignInPage extends React.Component {
   }
 
   renderSuccess() {
-    return <Success header="We have sent you email with a link for sign in" />;
+    return <Success header="We have sent you an email with a link to sign in" />;
   }
 
   render() {
