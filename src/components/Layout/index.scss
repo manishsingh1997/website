@@ -2,9 +2,10 @@
 
 .app-layout {
   .dropdown-menu {
-    vertical-align: middle;
+    display: block;
     min-width: unset;
     max-width: 300px;
+    position: relative;
 
     .special {
       border-bottom: 1px solid $gray-4;
@@ -24,17 +25,18 @@
       text-overflow: ellipsis;
       max-width: 120px;
     }
+    .link {
+      height: $v-36;
+      display: flex;
+      justify-content: center;
+      padding: 0 $h-10;
+      @include phone() {
+        padding: 0 $h-5;
+      }
+    }
 
     @include phone() {
       min-width: 20px;
-    }
-    .link {
-      @include tablet() {
-        padding: 0 $v-12;
-      }
-      @include phone() {
-        padding: 5px;
-      }
     }
   }
 
@@ -70,7 +72,7 @@
     }
   }
 
-  .flex-align-middle {
+  .icon-and-arrow {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -80,9 +82,18 @@
   }
 
   .sign-in-link {
-    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    padding: 0 $h-10;
+    height: $v-36;
     &:hover {
       color: #333631;
+    }
+    .link-wrapper {
+      padding: $v-6 $h-10;
+      @include phone() {
+        padding: $v-6 $h-5;
+      }
     }
     li {
       border-radius: 4px;
@@ -103,14 +114,12 @@
     }
   }
 
-  .link {
-    .sign-in-icon {
-      vertical-align: middle;
-      margin-right: 5px;
+  .sign-in-icon {
+    vertical-align: middle;
+    margin-right: 5px;
 
-      @include phone() {
-        margin-right: unset;
-      }
+    @include phone() {
+      margin-right: unset;
     }
   }
 
@@ -135,6 +144,7 @@
       fill: $green-1;
     }
   }
+
   .phone-number {
     display: flex;
     margin-right: 18px;
@@ -156,14 +166,6 @@
       font-weight: 600;
       @include phone() {
         font-size: 14px;
-      }
-    }
-  }
-
-  .top-panel__right {
-    li {
-      @include tablet() {
-        padding: 6px 9px;
       }
     }
   }

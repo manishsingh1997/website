@@ -112,8 +112,8 @@ export default class Layout extends React.Component {
     if (isUserLoading || isAuthLoading) {
       return (
         <Link className="sign-in-link" key="dropp-loading" to="/app/sign-in">
-          <li className="link">
-            <div className="flex-align-middle">
+          <li className="link-wrapper">
+            <div className="icon-and-arrow">
               <span><img className="sign-in-icon" src={userIcon}/></span>
               <Spinner active={true} borderWidth={0.10} color="gray" size={16}/>
             </div>
@@ -151,7 +151,7 @@ export default class Layout extends React.Component {
     }
     return (
       <Link className="sign-in-link" key="dropp-sign-in" to="/app/sign-in">
-        <li className="link" id={SIGN_IN_LINK_ID}>
+        <li className="link-wrapper" id={SIGN_IN_LINK_ID}>
           <img className="sign-in-icon" src={userIcon}/>
           <span className="user-full-name">Sign In</span>
         </li>
