@@ -4,12 +4,11 @@ import QuoteDescription from './QuoteDescription';
 import {Notification, Spinner} from '@ergeon/core-components';
 import DrawMap from '@ergeon/draw-map';
 import classNames from 'classnames';
-import {isPastDate} from '../../utils/date';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import QuoteLines from './QuoteLines';
 import {CARD_TRANSACTION_FEE} from 'website/constants';
-import {isQuoteCancelled} from 'utils/app-order';
+import {isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
 import {Link} from 'react-router-dom';
 
 export default class QuoteDetails extends React.Component {
@@ -44,7 +43,7 @@ export default class QuoteDetails extends React.Component {
             target={'_blank'}
             to={getNewQuoteLink()}>
             &nbsp;here
-          </Link> to display the new revision
+          </Link> to display the new revision.
         </Notification>
       );
     }
@@ -57,6 +56,16 @@ export default class QuoteDetails extends React.Component {
           This quote has been cancelled.
         </Notification>
       </div>
+    );
+  }
+  renderQuoteExpiredMessage() {
+    return (
+      <Notification
+        mode="embed"
+        type="Error">
+        This quote is expired.
+        Call <a href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a> to request a new quote revision.
+      </Notification>
     );
   }
   render() {
@@ -85,6 +94,11 @@ export default class QuoteDetails extends React.Component {
             {this.renderQuoteCancelledMessage(quote)}
           </div>
         )}
+        {!asPDF && isQuoteExpired(quote) && (
+          <div className="quote-details__notification">
+            {this.renderQuoteExpiredMessage()}
+          </div>
+        )}
         <div className="quote-details__description flex-wrapper spacing after__is-24">
           <QuoteDescription asPDF={asPDF} auth={auth} customerGID={customerGID} quote={quote}/>
           <div className="quote-labels-map">
@@ -105,7 +119,7 @@ export default class QuoteDetails extends React.Component {
               showControls={false} />
           </div>
         </div>
-        {!asPDF && isPastDate(quote['expires_at']) && (
+        {!asPDF && isQuoteExpired(quote) && (
           <Notification mode="embed" type="Information">
             Oops, it looks like your quote has expired.
             Lumber and Labor prices can fluctuate depending on a number of
