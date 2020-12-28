@@ -80,6 +80,7 @@
     "axios": "^0.19.0",
     "babel-plugin-ignore-import": "^1.0.1",
     "classnames": "^2.2.6",
+    "core-js": "^3.8.1",
     "history": "^4.9.0",
     "local-storage": "^2.0.0",
     "lodash": "^4.17.15",
@@ -106,6 +107,7 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "regenerator-runtime": "^0.13.7",
     "sane-email-validation": "^3.0.1",
     "three": "^0.107.0",
     "vanilla-text-mask": "^5.1.1"
