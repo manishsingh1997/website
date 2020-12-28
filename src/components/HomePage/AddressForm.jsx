@@ -22,9 +22,14 @@ class AddressForm extends React.Component {
     };
   }
 
-  handleAddressSubmit(lead) {
+  async handleAddressSubmit(lead) {
     trackAddressEntered(lead);
-    this.props.updateLead(lead);
+    try {
+      await this.props.updateLead(lead);
+    } catch (updateLeadError) {
+      console.error('Failed to dispatch LEAD_UPDATED action: ', updateLeadError);
+      return;
+    }
     this.props.history.push('/request-quote');
   }
 

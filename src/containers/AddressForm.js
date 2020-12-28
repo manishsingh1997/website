@@ -10,7 +10,7 @@ const mapStateToProps = () => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateLead: (lead) => {
-      dispatch(updateLead(lead));
+      return dispatch(updateLead(lead));
     },
   };
 };
