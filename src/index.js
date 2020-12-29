@@ -29,6 +29,9 @@ import ErrorBoundary from 'components/ErrorBoundary';
 import Layout from 'containers/Layout';
 import NotFoundPage from 'components/NotFoundPage';
 import MetaTags from 'components/common/MetaTags';
+import {googleIntegration} from '@ergeon/core-components';
+import {DRAW_MAP_GOOGLE_LIBRARIES} from '@ergeon/draw-map';
+import {ERG_MAP_COMPONENT_LIBRARIES} from '@ergeon/map-component';
 
 import store from 'flux/store';
 import config from 'website/config';
@@ -40,6 +43,14 @@ import './main.scss';
 initUTMs('utm-iframe', config.websiteDomain, [
   `${config.fencequotingHost}/utm/`,
 ]);
+
+const {initGoogleLoader, ADDRESS_INPUT_LIBRARIES} = googleIntegration;
+initGoogleLoader(
+  config.googleMapsApiKey,
+  ADDRESS_INPUT_LIBRARIES,
+  ERG_MAP_COMPONENT_LIBRARIES,
+  DRAW_MAP_GOOGLE_LIBRARIES,
+);
 
 export const history = createBrowserHistory();
 

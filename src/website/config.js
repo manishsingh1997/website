@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   addressEnteredApi = 'https://90oksb1qq9.execute-api.us-west-2.amazonaws.com/production/landing-address-submitted';
   publicWebsite = `https://${websiteDomain}`;
   stripePublicKey = 'pk_live_AZq0V7dLw1c3iBlADB9vdyBS';
-  googleMapsApiKey = 'AIzaSyClO1qoZxVjVWmdNlNbl4W_XlAluWIb4mQ';
+  googleMapsApiKey = 'AIzaSyAg5pqGm1NfU7whDrZrn2DEeYlPhb6nNQY';
   tawkAPIKey = '5c4c7f0251410568a1086d00';
   env = PRODUCTION;
 } else if (process.env.NODE_ENV === STAGING) {
@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   leadArrivedApi = 'https://8ijvlqff7l.execute-api.us-west-2.amazonaws.com/staging/website-lead-arrived';
   addressEnteredApi = 'https://wvt5gxjul1.execute-api.us-west-2.amazonaws.com/staging/landing-address-submitted';
   publicWebsite = `https://${websiteDomain}`;
-  googleMapsApiKey = 'AIzaSyCJfEriZ61E_-iggE4PfQd5rs0IRSao2oI';
+  googleMapsApiKey = 'AIzaSyB7MA3CPKqhfpDp38ChLxaVUDYOnumBhyM';
   stripePublicKey = 'pk_test_dV8nuwF8ciDuX1y0kOCkmzrN';
   tawkAPIKey = '5c4c7f0251410568a1086d00';
   env = STAGING;
@@ -45,7 +45,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   leadArrivedApi = 'http://localhost:8080/website-lead-arrived';
   addressEnteredApi = 'http://localhost:8080/landing-address-submitted';
   publicWebsite = `http://${websiteDomain}`;
-  googleMapsApiKey = 'AIzaSyCJfEriZ61E_-iggE4PfQd5rs0IRSao2oI';
+  googleMapsApiKey = 'AIzaSyA4eghi3j4pNWSjnQVU2mkS8j5nD4aSzww';
   stripePublicKey = 'pk_test_dV8nuwF8ciDuX1y0kOCkmzrN';
   tawkAPIKey = '5c4c7f0251410568a1086d00';
   env = DEVELOPMENT;

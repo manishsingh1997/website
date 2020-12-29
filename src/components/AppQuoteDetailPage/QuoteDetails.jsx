@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import QuoteDescription from './QuoteDescription';
 import {Notification, Spinner} from '@ergeon/core-components';
+import {googleIntegration} from '@ergeon/core-components';
 import DrawMap from '@ergeon/draw-map';
 import classNames from 'classnames';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
@@ -111,6 +112,7 @@ export default class QuoteDetails extends React.Component {
               className={classNames({'quote-labels-map__content': isLoadingMap})}
               disabled
               disableMapUI={asPDF}
+              googleLoader={googleIntegration.getGoogleLoader()}
               location={location}
               onTilesLoaded={() => {
                 this.setState({isLoadingMap: false});

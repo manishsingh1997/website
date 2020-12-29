@@ -90,3 +90,7 @@ To define a redirect, add a record into `src/process/redirects/redirects.json`. 
 
 
 Imporant note: once added, don't remove entry from `redirects.json`. Instead, set `"active": false`. Having that the script can understand that existing redirect should be removed.
+
+### Google API Key
+In addition to permissions used by dependant packages, current projects require following enabled APIs:
+- Geocoding API

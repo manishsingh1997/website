@@ -1,8 +1,8 @@
 import config from 'website/config';
 import axios from 'axios';
 import {calcUtils, constants, attrs} from '@ergeon/3d-lib';
-import {Places} from '@ergeon/core-components';
-const {GoogleMapsLoader, parsePlace} = Places;
+import {googleIntegration, Places} from '@ergeon/core-components';
+const {parsePlace} = Places;
 
 export const submitLeadArrived = (data) => {
   return axios({
@@ -54,7 +54,7 @@ export const getPriceAndDescription = (modelState, zipcode = constants.DEFAULT_Z
 
 export const getPlaceData = (address) => {
   return new Promise((resolve, reject) => {
-    GoogleMapsLoader.load().then(google => {
+    googleIntegration.getGoogleLoader().load().then(google => {
       const geocode = new google.maps.Geocoder();
       geocode.geocode({address}, (results, status) => {
         if (results.length) {

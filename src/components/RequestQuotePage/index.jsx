@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {Button, Places, Spinner} from '@ergeon/core-components';
+import {Button, Spinner} from '@ergeon/core-components';
+import {googleIntegration} from '@ergeon/core-components';
 import {calcUtils} from '@ergeon/3d-lib';
 import MapComponent from '@ergeon/map-component';
 
 import AppLoader from 'components/common/AppLoader';
 import Marker from 'assets/marker.svg';
-import config from 'website/config';
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import {getParameterByName, showUpcomingFeatures} from 'utils/utils';
 import Success from 'components/common/Success';
@@ -16,9 +16,6 @@ import TermsFooter from './TermsFooter';
 import ConfigCart from 'containers/ConfigCart';
 
 import './index.scss';
-
-const {GoogleMapsLoader} = Places;
-GoogleMapsLoader.options.libraries = ['places', 'geometry'];
 
 export default class RequestQuotePage extends React.Component {
 
@@ -232,11 +229,10 @@ export default class RequestQuotePage extends React.Component {
         <hr />
         <div className="request-quote-page__signup-map-wrapper">
           <MapComponent
-            apiKey={config.googleMapsApiKey}
             aspectRatio="4:3"
             controls={this.getMapControls()}
             fitBy="width"
-            loadGoogleMapsLibrary={GoogleMapsLoader}
+            loadGoogleMapsLibrary={googleIntegration.getGoogleLoader()}
             loadingPlaceholder={<Spinner active={true} color="green" size={32} />}
             markers={[this.getLocationMarker()]}
             popupBehaviour="close"

@@ -1,20 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Places, Spinner} from '@ergeon/core-components';
+import {Spinner} from '@ergeon/core-components';
 import MapComponent from '@ergeon/map-component';
+import {googleIntegration} from '@ergeon/core-components';
 
 import Marker from 'assets/marker.svg';
-import config from 'website/config';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import DataRow from 'components/common/DataRow';
 import {getFormattedAddress} from 'utils/app-house';
 
 import AppPage from 'components/common/AppPage';
 import AppSubCard from 'components/common/AppSubCard';
-
-const {GoogleMapsLoader} = Places;
-GoogleMapsLoader.options.libraries = ['places', 'geometry'];
 
 import './index.scss';
 
@@ -63,11 +60,10 @@ export default class AppHouseListPage extends React.Component {
         {house['address'] && (
           <div className="map-wrapper">
             <MapComponent
-              apiKey={config.googleMapsApiKey}
               aspectRatio="4:3"
               controls={mapControls}
               fitBy="width"
-              loadGoogleMapsLibrary={GoogleMapsLoader}
+              loadGoogleMapsLibrary={googleIntegration.getGoogleLoader()}
               loadingPlaceholder={<Spinner active={true} color="green" size={32} />}
               markers={[locationMarker]}
               popupBehaviour="close"
