@@ -87,39 +87,6 @@
         <script type="text/javascript" src="/assets/newrelic.js" defer></script>
         <% } %>
         <script type="text/javascript" src="https://js.stripe.com/v2/" defer></script>
-        <!-- Internal app redirection -->
-        <script>
-          var indexOfPath = {
-            '/projects-gallery': '/projects-gallery/index.html',
-          };
-          (function() {
-            var pathname, i, path, paths;
-            var loadHTML = function (path) {
-              var xhr = new XMLHttpRequest();
-              xhr.open('GET', path, true);
-              xhr.onreadystatechange = function() {
-                if (this.readyState!==4) return;
-                if (this.status!==200) {
-                  console.error("Could not load index.html");
-                  return;
-                }
-                document.write(this.responseText);
-              };
-              xhr.send();
-            };
-            pathname = window.location.pathname;
-
-            paths = Object.keys(indexOfPath);
-            for (i=0; i < paths.length; i++) {
-              path = paths[i];
-              if (pathname.indexOf(path) === 0) {
-                loadHTML(indexOfPath[path]);
-                break;
-              }
-            }
-          })();
-        </script>
-        <!-- End Internal app redirection -->
     </head>
     <body>
         <div id="utm-iframe" style="display:none"></div>
