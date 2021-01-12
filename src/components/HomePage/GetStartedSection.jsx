@@ -1,5 +1,5 @@
 import React from 'react';
-import imgGetStarted from 'assets/easy-to-use.jpg';
+import imgGetStarted from 'assets/easy-to-use.png';
 import imgTrusted from 'assets/trusted provider.svg';
 import imgCard from 'assets/card.svg';
 import imgBuck from 'assets/buck.svg';
