@@ -151,7 +151,7 @@ export default class LeadForm extends React.Component {
 
       try {
         await submitLeadArrived(eventData);
-        await trackTawkLeadEvent(eventData);
+        trackTawkLeadEvent(eventData);
         await identify(data);
         await track(CUSTOMER_LEAD_CREATED, {...eventData, source: DEFAULT_SOURCE_VALUE});
       } catch (error) {
