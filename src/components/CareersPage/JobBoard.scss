@@ -1,8 +1,5 @@
 @import '~@ergeon/core-components/src/components/variables';
 .job-board {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
   .loading-placeholder {
     margin: 0 auto;
     display: none;
@@ -10,19 +7,26 @@
       display: block;
     }
   }
-  padding-bottom: $v-24;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 940px;
+  padding-bottom: $v-64;
 }
 .job-list {
-  height: 100%;
-  padding: 40px;
-  border-radius: $corner-soft;
-  border: 1px solid $gray-4;
-  background-color: $white;
   position: relative;
   &__department {
-    margin-bottom: $v-12;
+    padding-bottom: $v-12;
+    padding-top: $v-30;
+    border-bottom: 1px solid $gray-5;
   }
   &__job {
-    margin-bottom: $v-6;
+    display: flex;
+    padding: $v-16 0;
+    border-bottom: 1px solid $gray-5;
+    justify-content: space-between;
+    align-items: center;
+    &__location {
+      text-align: right;
+    }
   }
 }

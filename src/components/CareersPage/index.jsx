@@ -42,7 +42,7 @@ class CareersPage extends React.Component {
             here are a few of the perks we offer.
           </p>
         </div>
-        <div className="cards two-columns">
+        <div className="cards two-columns restricted-940">
           <div className="card cards__card">
             <div className="cards__card__title spacing after__is-6">
               <span className="additional-header h2">Positively Affect Lives</span>

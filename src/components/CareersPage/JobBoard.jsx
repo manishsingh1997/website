@@ -32,7 +32,7 @@ class JobBoard extends React.Component {
         return (
           <div className="job-list__job" key={i}>
             <a href={job.absolute_url} rel="noopener noreferrer" target="_blank">{job.title}</a>
-            <div className="label uppercase">{job.location.name}</div>
+            <div className="label uppercase job-list__job__location">{job.location.name}</div>
           </div>
         );
       })
@@ -54,7 +54,7 @@ class JobBoard extends React.Component {
             return (
               <div className={jobListClasses} key={i}>
                 <div className="card job-list__department">
-                  <span className="additional-header h2">{department.name}</span>
+                  <span className="h4">{department.name}</span>
                 </div>
                 {this.renderPositions(department.jobs)}
               </div>
@@ -77,7 +77,7 @@ class JobBoard extends React.Component {
         <div className="section-title">
           <h2 className="center">Current Job Openings</h2>
         </div>
-        <div className="cards two-columns job-board">
+        <div className="job-board">
           <div className={loadingClasses}>
             <Spinner active={loading} color="green" size={48} />
           </div>
