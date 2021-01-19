@@ -149,6 +149,6 @@ exports[`Sitemap should generate for website 1`] = `
         <loc>http://ergeon.local/request-quote</loc>
       </url>
       <url>
-        <loc>https://blog.ergeon.com</loc>
+        <loc>https://dev.ergeon.com/blog</loc>
       </url>"
 `;
