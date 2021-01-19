@@ -9,10 +9,12 @@ import MapLabel from './MapLabel';
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 import {DRIVEWAY_QUANTITY_UNIT, FENCE_QUANTITY_UNIT} from '../../website/constants';
 import {formatPrice} from '../../utils/app-order';
+import {formatDate} from '../../utils/date';
 import {isPDFMode} from 'utils/utils';
 
 export default class QuoteLine extends React.Component {
   static propTypes = {
+    approvedAt: PropTypes.string,
     area: PropTypes.number,
     description: PropTypes.string,
     distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -23,6 +25,7 @@ export default class QuoteLine extends React.Component {
     price: PropTypes.number,
     quantity: PropTypes.string,
     quote: PropTypes.object,
+    quoteLineQuoteId: PropTypes.string,
     tags: PropTypes.array,
     type: PropTypes.oneOf([CALC_SIDE_TYPE, CALC_GATE_TYPE, CALC_AREA_TYPE]),
     unit: PropTypes.string,
@@ -184,7 +187,19 @@ export default class QuoteLine extends React.Component {
   }
 
   render() {
-    const {id, area, distance, description, label, price, quantity, unit} = this.props;
+    const {
+      id,
+      approvedAt,
+      area,
+      distance,
+      description,
+      label,
+      price,
+      quantity,
+      unit,
+      quote,
+      quoteLineQuoteId,
+    } = this.props;
     return (
       <div className="quote-line" key={`side-${id}`}>
         <div>
@@ -194,6 +209,16 @@ export default class QuoteLine extends React.Component {
         </div>
         <div className="quote-line-description">
           {this.renderTitle()}
+          {/*
+            We render quote_lines from the quote data.
+            If this quote is the change order quote, the rendering results should contain
+            the quote_lines from both: the quote itself and from the parent quote.
+            For the quote line that belongs to the quote_lines from the change order quote
+            there should be no "APPROVED AT".
+          */}
+          {approvedAt && quoteLineQuoteId !== quote.id && (<div>
+            <b className="quote-line-approved-at-label">APPROVED AT: {formatDate(approvedAt)}</b>
+          </div>)}
           <div>
             {description}
           </div>

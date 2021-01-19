@@ -59,11 +59,12 @@ export default class QuoteLines extends React.Component {
       <React.Fragment>
         <div className="page-break">{asPDF && <h4>Project Scope</h4>}
           <div className="quote-details__sides spacing before__is-24">
-            {(sides || []).map(({description, distance, map_id: id, price}, index) => {
+            {(sides || []).map(({description, distance, map_id: id, price, approved_at: approvedAt}, index) => {
               const itemName = getLabelFromIndex(index);
 
               return (
                 <QuoteLine
+                  approvedAt={approvedAt}
                   description={description}
                   distance={distance}
                   id={id}
@@ -78,8 +79,9 @@ export default class QuoteLines extends React.Component {
             )}
           </div>
           <div>
-            {(polygons || []).map(({description, area, map_id: id, price}, index) => (
+            {(polygons || []).map(({description, area, map_id: id, price, approved_at: approvedAt}, index) => (
               <QuoteLine
+                approvedAt={approvedAt}
                 area={area}
                 description={description}
                 id={id}
@@ -92,8 +94,9 @@ export default class QuoteLines extends React.Component {
             ))}
           </div>
           <div>
-            {(gates || []).map(({description, map_id: id, name, price}, index) => (
+            {(gates || []).map(({description, map_id: id, name, price, approved_at: approvedAt}, index) => (
               <QuoteLine
+                approvedAt={approvedAt}
                 description={description}
                 id={id}
                 index={index}
@@ -129,8 +132,18 @@ export default class QuoteLines extends React.Component {
     return (
       <React.Fragment>
         <div>
-          {(sides || []).map(({cost, description, id, label, quantity, unit}) => (
+          {(sides || []).map(({
+            cost,
+            description,
+            id,
+            label,
+            quantity,
+            unit,
+            approved_at: approvedAt,
+            quote_id: quoteLineQuoteId,
+          }) => (
             <QuoteLine
+              approvedAt={approvedAt}
               description={description}
               id={id}
               key={`side-${id}`}
@@ -138,31 +151,36 @@ export default class QuoteLines extends React.Component {
               price={cost}
               quantity={quantity}
               quote={quote}
+              quoteLineQuoteId={quoteLineQuoteId}
               type={CALC_SIDE_TYPE}
               unit={unit}/>
           ))}
         </div>
         <div>
-          {(areas || []).map(({cost, description, id, label}) => (
+          {(areas || []).map(({cost, description, id, label, approved_at: approvedAt, quote_id: quoteLineQuoteId}) => (
             <QuoteLine
+              approvedAt={approvedAt}
               description={description}
               id={id}
               key={`gate-${id}`}
               label={label}
               price={cost}
               quote={quote}
+              quoteLineQuoteId={quoteLineQuoteId}
               type={CALC_AREA_TYPE}/>
           ))}
         </div>
         <div>
-          {(gates || []).map(({cost, description, id, label}) => (
+          {(gates || []).map(({cost, description, id, label, approved_at: approvedAt, quote_id: quoteLineQuoteId}) => (
             <QuoteLine
+              approvedAt={approvedAt}
               description={description}
               id={id}
               key={`gate-${id}`}
               label={label}
               price={cost}
               quote={quote}
+              quoteLineQuoteId={quoteLineQuoteId}
               type={CALC_GATE_TYPE}/>
           ))}
         </div>
