@@ -6,6 +6,8 @@ module.exports = {
   'plugins': [
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-optional-chaining',
+    '@babel/plugin-transform-block-scoping',
+    '@babel/plugin-transform-classes',
     'lodash',
     ['module-resolver', {
       'root': ['./src'],

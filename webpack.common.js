@@ -4,6 +4,7 @@ const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const {checkModules} = require('are-you-es5');
 
 const APP_DIR = path.resolve(__dirname, './src');
 const BUILD_DIR = path.resolve(__dirname, './dist');
@@ -22,6 +23,36 @@ if (!fs.existsSync(robotsPath)) {
   robotsPath = `${APP_DIR}/process/robots/default.txt`;
 }
 
+const modules = checkModules({
+  path: './',
+  checkAllNodeModules: true,
+  ignoreBabelAndWebpackPackages: true,
+});
+
+/**
+ * Will tell babel either or not to exclude module from transpile process.
+ * WHY: Some of node modules are provided in es6 style, because of it website is not working
+ * on old browsers, that's why we need to manually transpile them
+ */
+const excludeFn  = (path) => {
+  const nonES5 = modules.es6Modules;
+
+  // all @ergeon npm packages should be transpiled
+  // google-maps should be also included to transpile, as
+  // are-you-es5 cannot detect that it's non-es5 module, strange
+  if (path.includes('@ergeon') || path.includes('google-maps')) {
+    return false;
+  }
+
+  // list of non ES5 packages collected by are-you-es5 package
+  if (nonES5.some(pkg => path.match(pkg))) {
+    return false;
+  }
+
+  // other node_modules should not be transpiled as they are already es5 compatible
+  return path.includes('node_modules');
+};
+
 module.exports = {
   entry: {
     'assets/bundle': `${APP_DIR}/index.js`,
@@ -36,8 +67,9 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        include: APP_DIR,
-        exclude: /node_modules/,
+        // transpile non es5 node_modules only on staging/prod to save time on development
+        include: IS_DEVELOPMENT ? APP_DIR: [APP_DIR, /node_modules/],
+        exclude: IS_DEVELOPMENT ? /node_modules/ : excludeFn,
         use: ['babel-loader'],
       },
       {
