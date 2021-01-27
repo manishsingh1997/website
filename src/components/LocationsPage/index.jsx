@@ -27,11 +27,6 @@ class LocationsPage extends React.Component {
         <div className="locations">
           <div className="locations_tile">
             <address className="location_item">
-              <h5 className="header_with_map_icon">Palo Alto</h5>
-              <p className="p_location">459 Hamilton Ave. #203, Palo Alto, CA 94301</p>
-              {this.renderPhoneNumber('650-460-2902')}
-            </address>
-            <address className="location_item">
               <h5 className="header_with_map_icon">San Jose</h5>
               <p className="p_location">7239 Glenview Dr. San Jose, CA 95120</p>
               {this.renderPhoneNumber('669-201-9553')}
