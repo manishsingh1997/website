@@ -1057,14 +1057,14 @@ export const GatePhotoData = [
             'slug': slugify('Double Gate Horizontal Side by Side'),
           },
           {
-            'caption': 'Double Gate Horizontal Side by Bide with Gaps',
+            'caption': 'Double Gate Horizontal Side by Side with Gaps',
             'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Oakland+California+-+Single+%26+Double+Gate.jpg',
-            'slug': slugify('Double Gate Horizontal Side by Bide with Gaps 1'),
+            'slug': slugify('Double Gate Horizontal Side by Side with Gaps 1'),
           },
           {
-            'caption': 'Double Gate Horizontal Side by Bide with Gaps',
+            'caption': 'Double Gate Horizontal Side by Side with Gaps',
             'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Oakland+California+-+Single+Gate+2.jpeg',
-            'slug': slugify('Double Gate Horizontal Side by Bide with Gaps 2'),
+            'slug': slugify('Double Gate Horizontal Side by Side with Gaps 2'),
           },
         ],
       },
