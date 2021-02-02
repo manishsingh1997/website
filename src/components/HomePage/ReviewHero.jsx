@@ -1,6 +1,7 @@
 import React from 'react';
 import homeAdvisorLogo from 'assets/home_advisor@2x.png';
 import {Rating, RatingsData} from '@ergeon/core-components';
+import config from 'website/config';
 
 import './ReviewHero.scss';
 
@@ -34,7 +35,7 @@ class ReviewHero extends React.Component {
               <div className="review-hero__main-review__bottom">
                 <span className="label">Taylor K.</span>
                 <span>
-                  More reviews on <a href="https://www.ergeon.com/projects-gallery/tags/feedback">Project Showcase</a>
+                  More reviews on <a href={`${config.projectsGalleryHost}/tags/feedback`}>Project Showcase</a>
                 </span>
               </div>
             </div>
