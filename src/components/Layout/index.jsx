@@ -54,16 +54,6 @@ class WebsiteDropdownMenu extends DropdownMenu {
 
 }
 
-// TODO: Update TopPanel in core-components to hide mobile menu if custom link was pressed
-class WebsiteTopPanel extends TopPanel {
-  hideMenu = () => {
-    if (!this.navMenu.contains(event.target) || event.target.id === SIGN_IN_LINK_ID) {
-      this.setState({showMobileMenu: false});
-      document.removeEventListener('click', this.hideMenu);
-    }
-  };
-}
-
 export default class Layout extends React.Component {
 
   static propTypes = {
@@ -185,7 +175,7 @@ export default class Layout extends React.Component {
         )}
         <COVIDNotification location={location}/>
         <NavLinkContext.Provider value={NavLink}>
-          <WebsiteTopPanel
+          <TopPanel
             customerMenu={this.renderDropdownMenu()}
             ergeonUrl="/"
             fencequotingUrl={`${config.fencequotingHost}/`}
@@ -194,7 +184,7 @@ export default class Layout extends React.Component {
             projectsGalleryUrl={`${config.projectsGalleryHost}/`}
             showChristmasHat={this.isChristmasTime}
             widthClass={widthClass}>
-          </WebsiteTopPanel>
+          </TopPanel>
           <div>{this.props.children}</div>
           {
             !asPDF &&
