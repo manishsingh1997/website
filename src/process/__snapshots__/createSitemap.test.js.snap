@@ -1,152 +1,152 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, c
 
 exports[`Sitemap should generate for gallery 1`] = `
 "
       <url>
-        <loc>http://ergeon.local/gallery</loc>
+        <loc>http://ergeon.local:6600/gallery</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/driveway/brushed/natural</loc>
+        <loc>http://ergeon.local:6600/gallery/driveway/brushed/natural</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/driveway/enhanced/enhanced</loc>
+        <loc>http://ergeon.local:6600/gallery/driveway/enhanced/enhanced</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/driveway/stamped/casual</loc>
+        <loc>http://ergeon.local:6600/gallery/driveway/stamped/casual</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/driveway/stamped/modern</loc>
+        <loc>http://ergeon.local:6600/gallery/driveway/stamped/modern</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/driveway/stamped/traditional</loc>
+        <loc>http://ergeon.local:6600/gallery/driveway/stamped/traditional</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/before-after</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/before-after</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/boxed-frame</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/boxed-frame</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/chain-link</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/chain-link</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/horizontal/nail-up</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/horizontal/nail-up</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/horizontal/picture-frame</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/horizontal/picture-frame</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/horizontal/with-lattice</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/horizontal/with-lattice</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/lumber</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/lumber</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/nail-up/dog-ear</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/nail-up/dog-ear</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/nail-up/flat-top</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/nail-up/flat-top</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/nail-up/short-fence</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/nail-up/short-fence</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/nail-up/with-lattice</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/nail-up/with-lattice</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/picture-frame/short-fence</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/picture-frame/short-fence</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/picture-frame/with-lattice</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/picture-frame/with-lattice</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/picture-frame/without-lattice</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/picture-frame/without-lattice</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/staining/semi-transparent</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/staining/semi-transparent</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/staining/solid</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/staining/solid</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/fence/staining/transparent</loc>
+        <loc>http://ergeon.local:6600/gallery/fence/staining/transparent</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/double/box-frame</loc>
+        <loc>http://ergeon.local:6600/gallery/gate/double/box-frame</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/double/chain-link</loc>
+        <loc>http://ergeon.local:6600/gallery/gate/double/chain-link</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/double/horizontal</loc>
+        <loc>http://ergeon.local:6600/gallery/gate/double/horizontal</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/double/picture-frame</loc>
+        <loc>http://ergeon.local:6600/gallery/gate/double/picture-frame</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/double/z-frame</loc>
+        <loc>http://ergeon.local:6600/gallery/gate/double/z-frame</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/single/box-frame</loc>
+        <loc>http://ergeon.local:6600/gallery/gate/single/box-frame</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/single/chain-link</loc>
+        <loc>http://ergeon.local:6600/gallery/gate/single/chain-link</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/single/horizontal</loc>
+        <loc>http://ergeon.local:6600/gallery/gate/single/horizontal</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/single/picture-frame</loc>
+        <loc>http://ergeon.local:6600/gallery/gate/single/picture-frame</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/single/z-frame</loc>
+        <loc>http://ergeon.local:6600/gallery/gate/single/z-frame</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/gallery/gate/sliding</loc>
+        <loc>http://ergeon.local:6600/gallery/gate/sliding</loc>
       </url>"
 `;
 
 exports[`Sitemap should generate for help 1`] = `
 "
       <url>
-        <loc>http://ergeon.local/help</loc>
+        <loc>http://ergeon.local:6600/help</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/help/1</loc>
+        <loc>http://ergeon.local:6600/help/1</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/help/2</loc>
+        <loc>http://ergeon.local:6600/help/2</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/help/3</loc>
+        <loc>http://ergeon.local:6600/help/3</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/help/search</loc>
+        <loc>http://ergeon.local:6600/help/search</loc>
       </url>"
 `;
 
 exports[`Sitemap should generate for website 1`] = `
 "
       <url>
-        <loc>http://ergeon.local/about-ergeon</loc>
+        <loc>http://ergeon.local:6600/about-ergeon</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/careers</loc>
+        <loc>http://ergeon.local:6600/careers</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/contacts</loc>
+        <loc>http://ergeon.local:6600/contacts</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/faq</loc>
+        <loc>http://ergeon.local:6600/faq</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/licenses-warranties</loc>
+        <loc>http://ergeon.local:6600/licenses-warranties</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/locations</loc>
+        <loc>http://ergeon.local:6600/locations</loc>
       </url>
       <url>
-        <loc>http://ergeon.local/request-quote</loc>
+        <loc>http://ergeon.local:6600/request-quote</loc>
       </url>
       <url>
         <loc>https://dev.ergeon.com/blog</loc>

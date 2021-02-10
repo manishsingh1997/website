@@ -196,7 +196,7 @@ export default class LeadForm extends React.Component {
 
     if (validateOnChange) {
       newState.errors = this.validator(newState.data);
-      let validFields = {};
+      const validFields = {};
       Object.keys(newState.data).forEach(key => {
         let valid = true;
         if (newState.errors && key in newState.errors) valid = false;

@@ -21,7 +21,7 @@ class PaneSwitcher extends React.Component {
       this.setState({currentPane: paneIndex});
     }
     renderTabs(state) {
-      let tabs = [];
+      const tabs = [];
       for (let i = 0; i < state.tabNames.length; i++) {
         const tabClasses = classNames({
           tab: true,

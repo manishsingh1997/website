@@ -39,7 +39,7 @@ export default function() {
   document.addEventListener('DOMContentLoaded', function() {
     const hash = document.location.hash;
     if (!hash.length) return;
-    let imageSlug = hash.slice(1);
+    const imageSlug = hash.slice(1);
     if (imageSlug && (counter===0)) {
       counter++;
       const imageLink = document.querySelector(`div[gallery-link-id='${imageSlug}']`);

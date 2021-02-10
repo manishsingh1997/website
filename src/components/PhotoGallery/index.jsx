@@ -151,7 +151,7 @@ class PhotoGallery extends React.Component {
     }
 
     renderPhotos() {
-      let photos = this.getPhotos();
+      const photos = this.getPhotos();
 
       return (
         <Masonry

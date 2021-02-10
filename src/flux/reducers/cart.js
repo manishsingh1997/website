@@ -27,7 +27,7 @@ const getSavedCartData = () => {
   return cartData;
 };
 
-let initialState = {
+const initialState = {
   configs: getSavedCartData(),
 };
 

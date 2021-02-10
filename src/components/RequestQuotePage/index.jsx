@@ -41,7 +41,7 @@ export default class RequestQuotePage extends React.Component {
   };
 
   componentDidMount() {
-    let {zipcode, configs} = this.props;
+    const {zipcode, configs} = this.props;
     const address = getParameterByName('address') || this.props.address;
     const product = getParameterByName('product') || this.props.product;
     const schema = getParameterByName('schema');

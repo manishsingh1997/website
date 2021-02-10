@@ -122,10 +122,10 @@ export default class QuoteLines extends React.Component {
     const sides = quoteLines
       .filter(quoteline => this.isQuoteLineOfMapKinds(quoteline, ['line']))
       .filter(quoteLine => quoteLine[filterByField] === true);
-    let gates = quoteLines
+    const gates = quoteLines
       .filter(quoteline => this.isQuoteLineOfMapKinds(quoteline, ['point', null, undefined]))
       .filter(quoteLine => quoteLine[filterByField] === true);
-    let areas = quoteLines
+    const areas = quoteLines
       .filter(quoteline => this.isQuoteLineOfMapKinds(quoteline, ['area']))
       .filter(quoteLine => quoteLine[filterByField] === true);
 

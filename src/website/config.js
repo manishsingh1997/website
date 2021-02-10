@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   projectsGalleryHost = 'http://ergeon.local:6500/projects-gallery';
   leadArrivedApi = 'http://localhost:8080/website-lead-arrived';
   addressEnteredApi = 'http://localhost:8080/landing-address-submitted';
-  publicWebsite = `http://${websiteDomain}`;
+  publicWebsite = `http://${websiteDomain}:6600`;
   googleMapsApiKey = 'AIzaSyA4eghi3j4pNWSjnQVU2mkS8j5nD4aSzww';
   stripePublicKey = 'pk_test_dV8nuwF8ciDuX1y0kOCkmzrN';
   tawkAPIKey = '5c4c7f0251410568a1086d00';
@@ -53,6 +53,9 @@ if (process.env.NODE_ENV === PRODUCTION) {
 
 // Extract a second level domain. It is used in the auth service.
 const website2ndLevelDomain = websiteDomain.match(/\.?(\w+\.\w+)$/i)[1];
+
+// COVID notification URL
+const policyUrl = `${publicWebsite}/help/202000376`;
 
 export default {
   addressEnteredApi,
@@ -64,6 +67,7 @@ export default {
   leadArrivedApi,
   level: env,
   projectsGalleryHost,
+  policyUrl,
   publicWebsite,
   stripePublicKey,
   tawkAPIKey,
