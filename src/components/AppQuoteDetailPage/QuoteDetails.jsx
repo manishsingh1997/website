@@ -74,8 +74,12 @@ export default class QuoteDetails extends React.Component {
     const {isLoadingMap} = this.state;
     const {
       'calc_input': calcInput,
-      order: {house: {address}},
     } = quote;
+
+    let address = quote.order.house.address;
+    if (!address) {
+      address = quote.order.house.customer['main_address'];
+    }
     let gates = [], sides = [], polygons = [];
     if (calcInput) {
       gates = calcInput.gates;
