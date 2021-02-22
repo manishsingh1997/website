@@ -2,6 +2,8 @@ import React from 'react';
 
 import StaffMap from './StaffMap';
 import JobBoard from './JobBoard';
+import StaffReviews from './StaffReviews';
+
 import ergeonTeam from 'assets/ergeon-team-photo.jpg';
 import imgBeach from 'assets/benefits/Beach.svg';
 import imgGrowth from 'assets/benefits/Growth.svg';
@@ -27,6 +29,13 @@ class CareersPage extends React.Component {
         <div className="careers-page__img-container">
           <img src={ergeonTeam}/>
         </div>
+        <div className="spacing before__is-48 after__is-48">
+          <h2 className="center spacing after__is-12">Staff Reviews</h2>
+          <p className="subheader h2 center">
+            We believe amazing companies start with amazing people.
+          </p>
+        </div>
+        <StaffReviews />
         <div className="spacing before__is-48 after__is-48">
           <h2 className="center spacing after__is-12">Our Team</h2>
           <p className="subheader h2 center">
