@@ -11,6 +11,7 @@ update_configs:
       - ivandiazwm
       - shulyugin
       - st4lk
+      - mexin
   # Only trigger updates for private packages
     allowed_updates:
       - match:
