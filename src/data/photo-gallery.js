@@ -453,11 +453,6 @@ export const FencePhotoData = [
           },
           {
             'caption': 'Sacramento, CA - Nail Up Horizontal Flat Top ',
-            'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5cc09436cb03033a286f7919_sacramental%2520horizontal%25202.jpg',
-            'slug': 'sacramento-ca-nail-up-horizontal-flat-top-2',
-          },
-          {
-            'caption': 'Sacramento, CA - Nail Up Horizontal Flat Top ',
             'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5cc0940df91e8b79aa8e7490_sacramental%2520horizontal.jpg',
             'slug': 'sacramento-ca-nail-up-horizontal-flat-top',
           },
