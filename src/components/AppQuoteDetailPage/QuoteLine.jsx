@@ -18,14 +18,14 @@ export default class QuoteLine extends React.Component {
     area: PropTypes.number,
     description: PropTypes.string,
     distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    id: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     index: PropTypes.number,
     label: PropTypes.string,
     name: PropTypes.string,
-    price: PropTypes.number,
+    price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     quantity: PropTypes.string,
     quote: PropTypes.object,
-    quoteLineQuoteId: PropTypes.string,
+    quoteLineQuoteId: PropTypes.number,
     tags: PropTypes.array,
     type: PropTypes.oneOf([CALC_SIDE_TYPE, CALC_GATE_TYPE, CALC_AREA_TYPE]),
     unit: PropTypes.string,
@@ -61,7 +61,7 @@ export default class QuoteLine extends React.Component {
     return (
       <React.Fragment>
         <MapLabel name={label ? label : index + 1} type="Circle" />
-        <h5>{label ? `Gate ${label}` : name}</h5>
+        <h5>{name || `Gate ${label}`}</h5>
       </React.Fragment>
     );
   }

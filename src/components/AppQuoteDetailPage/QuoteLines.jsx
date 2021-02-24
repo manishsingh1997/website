@@ -79,7 +79,7 @@ export default class QuoteLines extends React.Component {
             )}
           </div>
           <div>
-            {(polygons || []).map(({description, area, map_id: id, price, approved_at: approvedAt}, index) => (
+            {(polygons || []).map(({description, area, map_id: id, price, approved_at: approvedAt, name}, index) => (
               <QuoteLine
                 approvedAt={approvedAt}
                 area={area}
@@ -120,13 +120,13 @@ export default class QuoteLines extends React.Component {
     const filterByField = this.isVendorPreview() ? 'display_to_installer':'display_to_customer';
 
     const sides = quoteLines
-      .filter(quoteline => this.isQuoteLineOfMapKinds(quoteline, ['line']))
+      .filter(quoteLine => this.isQuoteLineOfMapKinds(quoteLine, ['line']))
       .filter(quoteLine => quoteLine[filterByField] === true);
     const gates = quoteLines
-      .filter(quoteline => this.isQuoteLineOfMapKinds(quoteline, ['point', null, undefined]))
+      .filter(quoteLine => this.isQuoteLineOfMapKinds(quoteLine, ['point', null, undefined]))
       .filter(quoteLine => quoteLine[filterByField] === true);
     const areas = quoteLines
-      .filter(quoteline => this.isQuoteLineOfMapKinds(quoteline, ['area']))
+      .filter(quoteLine => this.isQuoteLineOfMapKinds(quoteLine, ['area']))
       .filter(quoteLine => quoteLine[filterByField] === true);
 
     return (
@@ -171,18 +171,22 @@ export default class QuoteLines extends React.Component {
           ))}
         </div>
         <div>
-          {(gates || []).map(({cost, description, id, label, approved_at: approvedAt, quote_id: quoteLineQuoteId}) => (
-            <QuoteLine
-              approvedAt={approvedAt}
-              description={description}
-              id={id}
-              key={`gate-${id}`}
-              label={label}
-              price={cost}
-              quote={quote}
-              quoteLineQuoteId={quoteLineQuoteId}
-              type={CALC_GATE_TYPE}/>
-          ))}
+          {(gates || []).map(
+            (
+              {cost, description, id, label, approved_at: approvedAt, quote_id: quoteLineQuoteId, catalog: {name}}
+            ) => (
+              <QuoteLine
+                approvedAt={approvedAt}
+                description={description}
+                id={id}
+                key={`gate-${id}`}
+                label={label}
+                name={name}
+                price={cost}
+                quote={quote}
+                quoteLineQuoteId={quoteLineQuoteId}
+                type={CALC_GATE_TYPE}/>
+            ))}
         </div>
       </React.Fragment>
     );
