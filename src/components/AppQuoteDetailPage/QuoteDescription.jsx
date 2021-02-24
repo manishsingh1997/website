@@ -38,12 +38,17 @@ export default class QuoteDescription extends React.Component {
   }
   render() {
     const {quote, asPDF} = this.props;
-    const {
-      order: {house: {address, customer}},
-    } = quote;
+    const house = quote.order.house;
+    const {customer} = house;
+    let {address} = house;
+
     const expiresAt = quote['expires_at'];
     const expiresAtTitle = getExpiresAtTitle(expiresAt);
     const approvedAt = quote['approved_at'];
+    if (!address) {
+      address = house.customer['main_address'];
+    }
+
     const customerDetails = (
       <div>
         {customer.full_name}<br />
