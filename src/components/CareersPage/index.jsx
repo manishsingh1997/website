@@ -36,6 +36,7 @@ class CareersPage extends React.Component {
           </p>
         </div>
         <StaffReviews />
+        <JobBoard/>
         <div className="spacing before__is-48 after__is-48">
           <h2 className="center spacing after__is-12">Our Team</h2>
           <p className="subheader h2 center">
@@ -43,7 +44,6 @@ class CareersPage extends React.Component {
           </p>
         </div>
         <StaffMap/>
-        <JobBoard/>
         <div className="spacing before__is-48 after__is-48">
           <h2 className="center spacing after__is-12">Company Benefits</h2>
           <p className="subheader h2 center restricted-620">
