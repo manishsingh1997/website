@@ -69,6 +69,7 @@ export default class QuoteLines extends React.Component {
                   distance={distance}
                   id={id}
                   index={index}
+                  isVendorPreview={this.isVendorPreview()}
                   key={`side-${id}`}
                   price={showPrice ? price: 0}
                   quote={quote}
@@ -86,6 +87,7 @@ export default class QuoteLines extends React.Component {
                 description={description}
                 id={id}
                 index={index}
+                isVendorPreview={this.isVendorPreview()}
                 key={`area-${id}`}
                 name={name}
                 price={showPrice ? price : 0}
@@ -100,6 +102,7 @@ export default class QuoteLines extends React.Component {
                 description={description}
                 id={id}
                 index={index}
+                isVendorPreview={this.isVendorPreview()}
                 key={`gate-${id}`}
                 name={name}
                 price={showPrice ? price: 0}
@@ -146,6 +149,7 @@ export default class QuoteLines extends React.Component {
               approvedAt={approvedAt}
               description={description}
               id={id}
+              isVendorPreview={this.isVendorPreview()}
               key={`side-${id}`}
               label={label}
               price={cost}
@@ -162,6 +166,7 @@ export default class QuoteLines extends React.Component {
               approvedAt={approvedAt}
               description={description}
               id={id}
+              isVendorPreview={this.isVendorPreview()}
               key={`gate-${id}`}
               label={label}
               price={cost}
@@ -179,6 +184,7 @@ export default class QuoteLines extends React.Component {
                 approvedAt={approvedAt}
                 description={description}
                 id={id}
+                isVendorPreview={this.isVendorPreview()}
                 key={`gate-${id}`}
                 label={label}
                 name={name}

@@ -20,6 +20,7 @@ export default class QuoteLine extends React.Component {
     distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     index: PropTypes.number,
+    isVendorPreview: PropTypes.bool,
     label: PropTypes.string,
     name: PropTypes.string,
     price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -57,11 +58,10 @@ export default class QuoteLine extends React.Component {
   }
 
   renderPointTitle() {
-    const {index, name, label} = this.props;
+    const {index, label} = this.props;
     return (
       <React.Fragment>
         <MapLabel name={label ? label : index + 1} type="Circle" />
-        <h5>{name || `Gate ${label}`}</h5>
       </React.Fragment>
     );
   }
@@ -230,7 +230,7 @@ export default class QuoteLine extends React.Component {
             {quantity && unit && <span>Length: {Math.round(quantity)} {unit}.</span>}
             {area && <span>Area: {area} {DRIVEWAY_QUANTITY_UNIT}</span>}
           </div>
-          <h5>{formatPrice(price)}</h5>
+          {!this.props.isVendorPreview && <h5>{formatPrice(price)}</h5>}
           <div className="desktop-length spacing before__is-12">
             {distance && <span>Length: {distance} {FENCE_QUANTITY_UNIT}</span>}
             {quantity && unit && <span>Length: {Math.round(quantity)} {unit}.</span>}

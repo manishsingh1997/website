@@ -157,6 +157,7 @@ export default class AppQuoteDetailPage extends React.Component {
 
     return (
       isPDFModeDisabled &&
+      !this.isVendorPreview() &&
       !isQuoteReplaced(quote) &&
       !isQuoteCancelled(quote) &&
       !isQuoteExpired(quote)
@@ -220,7 +221,7 @@ export default class AppQuoteDetailPage extends React.Component {
           isVendorPreview={this.isVendorPreview()}
           quote={quote}
           totalPrice={formatPrice(this.getTotalPrice(quote))}/>
-        <ProjectNotes quote={quote}/>
+        {!this.isVendorPreview() && <ProjectNotes quote={quote}/>}
         {this.shouldShowBillingForm() && <BillingForm
           error={paymentMethodError}
           houseId={houseId}
@@ -230,11 +231,14 @@ export default class AppQuoteDetailPage extends React.Component {
           quoteId={quote['id']}
           termsAndConditionsUrl={quote['terms_and_conditions']}
           total={formatPrice(this.getTotalPrice(quote))} />}
-        <ExplanationSection
-          asPDF={isPDFMode()}
-          projectWarrantyImage={projectWarrantyImage}
-          projectWarrantyLink={projectWarrantyLink}
-          warrantyLink={warranty} />
+        {
+          !this.isVendorPreview() &&
+          <ExplanationSection
+            asPDF={isPDFMode()}
+            projectWarrantyImage={projectWarrantyImage}
+            projectWarrantyLink={projectWarrantyLink}
+            warrantyLink={warranty}/>
+        }
       </div>
     );
   }
