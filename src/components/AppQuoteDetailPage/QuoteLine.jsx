@@ -50,10 +50,10 @@ export default class QuoteLine extends React.Component {
   }
 
   isAllowedUnitDisplay() {
-    if (!this.props.isVendorPreview) {
+    const {catalog} = this.props;
+    if (!this.props.isVendorPreview || !catalog) {
       return true;
     }
-    const {catalog} = this.props;
     return catalog.type.allows_unit_display;
   }
 
