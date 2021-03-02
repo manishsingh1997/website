@@ -85,7 +85,7 @@ class StaffReviews extends React.Component {
                 </div>
                 <div className="inner-block__wrap__bottom-block">
                   <p className="small-text">
-                    More reviews on <a href="https://www.glassdoor.ca/Reviews/Ergeon-Reviews-E2131774_P2.htm">Glassdor</a>
+                    More reviews on <a href="https://www.glassdoor.ca/Reviews/Ergeon-Reviews-E2131774_P2.htm">Glassdoor</a>
                   </p>
                 </div>
               </div>
