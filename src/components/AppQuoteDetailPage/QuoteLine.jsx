@@ -16,6 +16,7 @@ export default class QuoteLine extends React.Component {
   static propTypes = {
     approvedAt: PropTypes.string,
     area: PropTypes.number,
+    catalog: PropTypes.object,
     description: PropTypes.string,
     distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -46,6 +47,14 @@ export default class QuoteLine extends React.Component {
   get indexLabel() {
     const {index, label} = this.props;
     return label ? label : getLabelFromIndex(index);
+  }
+
+  isAllowedUnitDisplay() {
+    if (!this.props.isVendorPreview) {
+      return true;
+    }
+    const {catalog} = this.props;
+    return catalog.type.allows_unit_display;
   }
 
   renderSideTitle() {
@@ -225,17 +234,24 @@ export default class QuoteLine extends React.Component {
           {this.renderTags()}
         </div>
         <div className="quote-line-price">
-          <div className="mobile-length spacing before__is-12 after__is-12">
-            {distance && <span>Length: {distance} {FENCE_QUANTITY_UNIT}</span>}
-            {quantity && unit && <span>Length: {Math.round(quantity)} {unit}.</span>}
-            {area && <span>Area: {area} {DRIVEWAY_QUANTITY_UNIT}</span>}
-          </div>
+          {
+            this.isAllowedUnitDisplay() &&
+            <div className="mobile-length spacing before__is-12 after__is-12">
+              {distance && <span>Length: {distance} {FENCE_QUANTITY_UNIT}</span>}
+              {quantity && unit && <span>Length: {Math.round(quantity)} {unit}.</span>}
+              {area && <span>Area: {area} {DRIVEWAY_QUANTITY_UNIT}</span>}
+            </div>
+          }
           {!this.props.isVendorPreview && <h5>{formatPrice(price)}</h5>}
-          <div className="desktop-length spacing before__is-12">
-            {distance && <span>Length: {distance} {FENCE_QUANTITY_UNIT}</span>}
-            {quantity && unit && <span>Length: {Math.round(quantity)} {unit}.</span>}
-            {area && <span>Area: {area} {DRIVEWAY_QUANTITY_UNIT}</span>}
-          </div>
+          {
+            this.isAllowedUnitDisplay() &&
+            <div className="desktop-length spacing before__is-12">
+              {distance && <span>Length: {distance} {FENCE_QUANTITY_UNIT}</span>}
+              {quantity && unit && <span>Length: {Math.round(quantity)} {unit}.</span>}
+              {area && <span>Area: {area} {DRIVEWAY_QUANTITY_UNIT}</span>}
+            </div>
+          }
+
         </div>
       </div>
     );

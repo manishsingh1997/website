@@ -142,11 +142,13 @@ export default class QuoteLines extends React.Component {
             label,
             quantity,
             unit,
+            catalog,
             approved_at: approvedAt,
             quote_id: quoteLineQuoteId,
           }) => (
             <QuoteLine
               approvedAt={approvedAt}
+              catalog={catalog}
               description={description}
               id={id}
               isVendorPreview={this.isVendorPreview()}
@@ -161,9 +163,18 @@ export default class QuoteLines extends React.Component {
           ))}
         </div>
         <div>
-          {(areas || []).map(({cost, description, id, label, approved_at: approvedAt, quote_id: quoteLineQuoteId}) => (
+          {(areas || []).map(({
+            cost,
+            catalog,
+            description,
+            id,
+            label,
+            approved_at: approvedAt,
+            quote_id: quoteLineQuoteId,
+          }) => (
             <QuoteLine
               approvedAt={approvedAt}
+              catalog={catalog}
               description={description}
               id={id}
               isVendorPreview={this.isVendorPreview()}
@@ -178,16 +189,17 @@ export default class QuoteLines extends React.Component {
         <div>
           {(gates || []).map(
             (
-              {cost, description, id, label, approved_at: approvedAt, quote_id: quoteLineQuoteId, catalog: {name}}
+              {cost, catalog, description, id, label, approved_at: approvedAt, quote_id: quoteLineQuoteId}
             ) => (
               <QuoteLine
                 approvedAt={approvedAt}
+                catalog={catalog}
                 description={description}
                 id={id}
                 isVendorPreview={this.isVendorPreview()}
                 key={`gate-${id}`}
                 label={label}
-                name={name}
+                name={catalog.name}
                 price={cost}
                 quote={quote}
                 quoteLineQuoteId={quoteLineQuoteId}
