@@ -171,12 +171,13 @@ export default class QuoteLines extends React.Component {
             label,
             approved_at: approvedAt,
             quote_id: quoteLineQuoteId,
-          }) => (
+          }, index) => (
             <QuoteLine
               approvedAt={approvedAt}
               catalog={catalog}
               description={description}
               id={id}
+              index={index}
               isVendorPreview={this.isVendorPreview()}
               key={`gate-${id}`}
               label={label}
