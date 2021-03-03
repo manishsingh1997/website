@@ -7,7 +7,7 @@ export const STAGING = 'staging';
 export const DEVELOPMENT = 'development';
 
 let env, apiHost, blogHost, fencequotingHost, projectsGalleryHost,
-  websiteDomain, addressEnteredApi, leadArrivedApi, tawkAPIKey;
+  websiteDomain, addressEnteredApi, leadArrivedApi, cookbookWebsite, tawkAPIKey;
 let googleMapsApiKey, stripePublicKey, publicWebsite;
 
 if (process.env.NODE_ENV === PRODUCTION) {
@@ -23,6 +23,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   googleMapsApiKey = 'AIzaSyAg5pqGm1NfU7whDrZrn2DEeYlPhb6nNQY';
   tawkAPIKey = '5c4c7f0251410568a1086d00';
   env = PRODUCTION;
+  cookbookWebsite = 'https://cookbook.ergeon.in/';
 } else if (process.env.NODE_ENV === STAGING) {
   apiHost = 'https://apidev.ergeon.in';
   websiteDomain = 'dev.ergeon.com';
@@ -36,6 +37,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   stripePublicKey = 'pk_test_dV8nuwF8ciDuX1y0kOCkmzrN';
   tawkAPIKey = '5c4c7f0251410568a1086d00';
   env = STAGING;
+  cookbookWebsite = 'https://cookbook.ergeon.in/';
 } else {
   websiteDomain = 'ergeon.local';
   apiHost = 'http://api.ergeon.local:8000';
@@ -49,6 +51,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   stripePublicKey = 'pk_test_dV8nuwF8ciDuX1y0kOCkmzrN';
   tawkAPIKey = '5c4c7f0251410568a1086d00';
   env = DEVELOPMENT;
+  cookbookWebsite = 'https://cookbook.ergeon.in/';
 }
 
 // Extract a second level domain. It is used in the auth service.
@@ -72,5 +75,6 @@ export default {
   stripePublicKey,
   tawkAPIKey,
   websiteDomain,
+  cookbookWebsite,
   website2ndLevelDomain,
 };
