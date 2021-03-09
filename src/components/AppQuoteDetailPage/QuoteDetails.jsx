@@ -144,10 +144,11 @@ export default class QuoteDetails extends React.Component {
         <div className="total-price">
           <h4>Total: {totalPrice}</h4>
         </div>
-        <div className="asterisk-notes">
-          <span className="asterisk">*</span>
-          <i> – An additional {CARD_TRANSACTION_FEE} fee will be added for credit/debit cards</i>
-        </div>
+        {!isVendorPreview && (
+          <div className="asterisk-notes">
+            <span className="asterisk">*</span>
+            <i> – An additional {CARD_TRANSACTION_FEE} fee will be added for credit/debit cards</i>
+          </div>)}
       </div>);
   }
 }
