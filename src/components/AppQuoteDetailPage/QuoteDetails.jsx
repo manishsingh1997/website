@@ -141,7 +141,7 @@ export default class QuoteDetails extends React.Component {
           asPDF={asPDF}
           isVendorPreview={isVendorPreview}
           quote={quote}/>
-        <div className="total-price">
+        <div className={classNames({'total-price': !isVendorPreview, 'total-price-noteless': isVendorPreview})}>
           <h4>Total: {totalPrice}</h4>
         </div>
         {!isVendorPreview && (

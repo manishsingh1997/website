@@ -153,10 +153,14 @@
     color: #787E75
   }
 
-  .total-price {
+  .total-price-noteless {
     position: relative;
     margin-top: $v-24;
     text-align: right;
+  }
+
+  .total-price {
+    @extend .total-price-noteless;
     &:after {
       content: '*';
       color: $red;
