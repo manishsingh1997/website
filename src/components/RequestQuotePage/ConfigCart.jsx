@@ -223,13 +223,14 @@ class ConfigCart extends React.Component {
   renderStyleBrowser() {
     const {styleBrowserIndex} = this.state;
     const {configs} = this.props;
-    const config = configs[styleBrowserIndex];
+    const config = styleBrowserIndex !== -1 ? configs[styleBrowserIndex] : undefined;
     const schemaCode = config? `?${config?.code}` : undefined;
     const doneButtonText = styleBrowserIndex === -1? 'Add to order' : 'Save changes';
+    const DEFAULT_FENCE_SIDE_LENGTH = 6;
     return (
       <StyleBrowserWrapper
         doneButtonText={doneButtonText}
-        fenceSideLength={Number(config.units)}
+        fenceSideLength={Number(config?.units || DEFAULT_FENCE_SIDE_LENGTH)}
         initialSchemaCode={schemaCode}
         onClose={() => this.onCloseEditorClick()}
         onDone={(editorModel) => this.onDoneEditorClick(editorModel, styleBrowserIndex)}
