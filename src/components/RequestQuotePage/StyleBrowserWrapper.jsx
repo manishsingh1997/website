@@ -12,6 +12,7 @@ const {getCatalogType} = calcUtils;
 export default class StyleBrowserWrapper extends React.Component {
   static propTypes = {
     doneButtonText: PropTypes.string,
+    fenceSideLength: PropTypes.number,
     initialSchemaCode: PropTypes.string,
     onClose: PropTypes.func.isRequired,
     onDone: PropTypes.func.isRequired,
@@ -19,6 +20,7 @@ export default class StyleBrowserWrapper extends React.Component {
     zipcode: PropTypes.string,
   };
   static defaultProps = {
+    fenceSideLength: 6,
     initialSchemaCode: constants.defaultFenceCode,
   };
   state = {
@@ -71,7 +73,9 @@ export default class StyleBrowserWrapper extends React.Component {
   }
   getFencequotingUrl(schemaCode, zipCode) {
     schemaCode = schemaCode.replace('?', '');
-    return `${config.fencequotingHost}/fence3d?${schemaCode}&mode=3d&options=true&zipcode=${zipCode}`;
+    const {fenceSideLength} = this.props;
+    return `${config.fencequotingHost}/fence3d?${schemaCode}&mode=3d&options=true&zipcode=${zipCode}\
+            &length=${fenceSideLength}`;
   }
   handleModelChange(modelString) {
     const {zipcode} = this.props;

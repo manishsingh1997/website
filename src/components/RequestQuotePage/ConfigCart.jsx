@@ -229,6 +229,7 @@ class ConfigCart extends React.Component {
     return (
       <StyleBrowserWrapper
         doneButtonText={doneButtonText}
+        fenceSideLength={Number(config.units)}
         initialSchemaCode={schemaCode}
         onClose={() => this.onCloseEditorClick()}
         onDone={(editorModel) => this.onDoneEditorClick(editorModel, styleBrowserIndex)}

@@ -23,12 +23,18 @@ export default class AppConfigPreview extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     configType: PropTypes.string,
+    fenceSideLength: PropTypes.number,
     propertySchemaCodeUrl: PropTypes.string,
     schemaCodeUrl: PropTypes.string,
     useNoPreviewIcon: PropTypes.bool,
     withLink: PropTypes.bool,
     zipCode: PropTypes.string,
   };
+
+  static defaultProps = {
+    withLink: false,
+    fenceSideLength: 6,
+  }
 
   state = {
     previewImage: undefined,
@@ -70,7 +76,7 @@ export default class AppConfigPreview extends React.Component {
   }
 
   renderPreviewWithLink() {
-    const {configType, propertySchemaCodeUrl, schemaCodeUrl, zipCode} = this.props;
+    const {configType, propertySchemaCodeUrl, schemaCodeUrl, zipCode, fenceSideLength} = this.props;
     const baseUrlPath = configType === CALC_GATE_TYPE ? 'gate3d' : 'fence3d';  // fallback to fence
     let finalSchemaCodeUrl = `${schemaCodeUrl}`;
     if (propertySchemaCodeUrl)
@@ -78,7 +84,8 @@ export default class AppConfigPreview extends React.Component {
 
     return (
       <a
-        href={`${config.fencequotingHost}/${baseUrlPath}?${finalSchemaCodeUrl}&mode=3d&options=true&zipcode=${zipCode}`}
+        href={`${config.fencequotingHost}/${baseUrlPath}?${finalSchemaCodeUrl}&mode=3d&options=true&zipcode=${zipCode}\
+               &length=${fenceSideLength}`}
         rel="noopener noreferrer"
         target="_blank">
         {this.renderPreview()}
