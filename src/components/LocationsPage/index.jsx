@@ -2,6 +2,13 @@ import React from 'react';
 import LocationsMap from './LocationsMap';
 import './index.scss';
 
+/* The following component LocationsPage is present at /locations, and an effort is being done to replace it by
+ * the newly created /cities page. As of time of writing (see git blame), the /cities page was written in Wordpress,
+ * and is meant to serve as a temporary solution that should later be migrated to be integrated into our normal website.
+ *
+ * Currently, many links are being replaced to stop pointing to /locations and start linking to /cities, so soon this
+ * component might not be rendered anymore.
+ */
 class LocationsPage extends React.Component {
 
   renderPhoneNumber(phone) {

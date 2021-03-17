@@ -181,7 +181,7 @@ export default class RequestQuotePage extends React.Component {
             Your house is not in a neighborhood we support right now.
             We&apos;re showing prices for San Francisco Bay Area.
             See where we are currently available
-            <a href="https://www.ergeon.com/locations" rel="noopener noreferrer" target="_blank"> here</a>.
+            <a href="https://www.ergeon.com/cities/" rel="noopener noreferrer" target="_blank"> here</a>.
           </p>
         </div>
       );
