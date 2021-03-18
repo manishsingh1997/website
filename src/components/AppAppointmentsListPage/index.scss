@@ -1,13 +1,18 @@
-@import '@ergeon/core-components/src/components/variables.scss';
+@import '~@ergeon/core-components/src/components/variables.scss';
 
 .appointment-list-page {
 
   .appointment-filters {
     display: flex;
     justify-content: end;
+    position: relative;
+
+    .erg-select--dropdown {
+      right: 0;
+      width: 150px;
+    }
 
     .react-select-filter {
-      width: 150px;
 
       &__value-container {
         width: 80px;
