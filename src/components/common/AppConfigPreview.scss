@@ -20,12 +20,10 @@
   }
 
   img {
-
     @include border();
     border-color: $white;
     width: 97%;
     height: auto;
-
   }
 
   .preview-placeholder {
@@ -35,5 +33,59 @@
   .hidden-img {
     display: none;
   }
+}
 
+.gallery-preview {
+  background-color: $white;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  margin-right: $h-40;
+  border: none;
+  border-radius: none;
+
+  // increase size of gallery view
+  .image-gallery-container {
+    width: 150px;
+
+    .image-gallery-thumb {
+      .image-loader__wrapper {
+        max-height: 144px; // so it can be 150x150
+      }
+    }
+  }
+}
+
+// image gallery popup uses dialog component
+// this will prevent <hr> to expand as it messes up the UI
+.image-gallery-popup {
+  .image-gallery-dialog {
+    .dialog--content hr {
+      width: 0;
+    }
+  }
+}
+
+// swipe gallery fix as height overflows current area on mobile for some reason
+.swipe-gallery {
+  .image-gallery-image {
+    height: unset;
+  }
+}
+
+.mobile-length {
+  display: none;
+
+  @include phone() {
+    display: block;
+  }
+}
+
+.desktop-length {
+  display: block;
+
+  @include phone() {
+    display: none;
+  }
 }
