@@ -6,3 +6,4 @@ Sitemap: https://www.ergeon.com/help/sitemap.xml
 Sitemap: https://www.ergeon.com/gallery/sitemap.xml
 Sitemap: https://www.ergeon.com/projects-gallery/sitemap.xml
 Sitemap: https://www.ergeon.com/blog/sitemap.xml
+Sitemap: https://www.ergeon.com/catalog/sitemap.xml
