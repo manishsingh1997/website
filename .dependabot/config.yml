@@ -12,6 +12,7 @@ update_configs:
       - shulyugin
       - st4lk
       - mexin
+      - mredigonda
   # Only trigger updates for private packages
     allowed_updates:
       - match:
