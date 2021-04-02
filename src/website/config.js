@@ -6,7 +6,7 @@ export const PRODUCTION = 'production';
 export const STAGING = 'staging';
 export const DEVELOPMENT = 'development';
 
-let env, apiHost, blogHost, fencequotingHost, projectsGalleryHost,
+let env, apiHost, blogHost, fencequotingHost, projectsGalleryHost, productCatalogUrl,
   websiteDomain, addressEnteredApi, leadArrivedApi, cookbookWebsite, tawkAPIKey;
 let googleMapsApiKey, stripePublicKey, publicWebsite;
 
@@ -16,6 +16,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   blogHost = 'https://www.ergeon.com/blog';
   fencequotingHost = 'https://fencequoting.com';
   projectsGalleryHost = `https://${websiteDomain}/projects-gallery`;
+  productCatalogUrl = `https://${websiteDomain}/catalog`;
   leadArrivedApi = 'https://tchin24eg6.execute-api.us-west-2.amazonaws.com/production/website-lead-arrived';
   addressEnteredApi = 'https://90oksb1qq9.execute-api.us-west-2.amazonaws.com/production/landing-address-submitted';
   publicWebsite = `https://${websiteDomain}`;
@@ -30,6 +31,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   blogHost = 'https://dev.ergeon.com/blog';
   fencequotingHost = 'https://fencequoting-staging.firebaseapp.com';
   projectsGalleryHost = `https://${websiteDomain}/projects-gallery`;
+  productCatalogUrl = `https://${websiteDomain}/catalog`;
   leadArrivedApi = 'https://8ijvlqff7l.execute-api.us-west-2.amazonaws.com/staging/website-lead-arrived';
   addressEnteredApi = 'https://wvt5gxjul1.execute-api.us-west-2.amazonaws.com/staging/landing-address-submitted';
   publicWebsite = `https://${websiteDomain}`;
@@ -44,6 +46,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   blogHost = 'https://dev.ergeon.com/blog';
   fencequotingHost = 'http://fencequoting.local:8700';
   projectsGalleryHost = 'http://ergeon.local:6500/projects-gallery';
+  productCatalogUrl = 'http://catalog.ergeon.local:3300';
   leadArrivedApi = 'http://localhost:8080/website-lead-arrived';
   addressEnteredApi = 'http://localhost:8080/landing-address-submitted';
   publicWebsite = `http://${websiteDomain}:6600`;
@@ -70,6 +73,7 @@ export default {
   leadArrivedApi,
   level: env,
   projectsGalleryHost,
+  productCatalogUrl,
   policyUrl,
   publicWebsite,
   stripePublicKey,

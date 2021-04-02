@@ -192,6 +192,7 @@ export default class Layout extends React.Component {
             <Footer
               ergeonUrl="/"
               fencequotingUrl={`${config.fencequotingHost}/`}
+              productCatalogUrl={`${config.productCatalogUrl}/`}
               projectsGalleryUrl={`${config.projectsGalleryHost}/`}
               widthClass={widthClass} />
           }
