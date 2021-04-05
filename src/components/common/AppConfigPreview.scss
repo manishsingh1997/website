@@ -89,3 +89,9 @@
     display: none;
   }
 }
+
+.quote-line-images {
+  .image-loader__wrapper > img {
+    height: 400px; // fixed height for pdf mode only as .quote-line-images is only attached on asPDF
+  }
+}

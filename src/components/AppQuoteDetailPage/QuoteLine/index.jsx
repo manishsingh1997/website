@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
+import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
+import {isPDFMode} from 'utils/utils';
 import {formatPrice} from '../../../utils/app-order';
 
 import {isAllowedUnitDisplay} from './utils';
@@ -53,12 +56,21 @@ export default function QuoteLine(props) {
     isVendorPreview,
   } = props;
 
+  const imagePreview = useMemo(() => (
+    <div>{label ? <PreviewForQuoteLine {...props} /> : <PreviewForCalcInfo {...props} />}</div>
+  ), [label, props]);
+
+  // Used on classNames to correctly trigger pdf classes to modify our layout
+  // Note: when removing upcoming flag we should refactor to only check for isPDFMode() on classNames
+  // as this will become rendunant
+  const isQuoteLinePDF = useMemo(() => isUpcomingFeaturesEnabled() && isPDFMode(), []);
+
   return (
-    <div className="quote-line" key={`side-${id}`}>
-      <div>
-        <div>{label ? <PreviewForQuoteLine {...props} /> : <PreviewForCalcInfo {...props} />}</div>
-      </div>
-      <div className="quote-line-description">
+    <div className={classNames('quote-line', {'quote-line__pdf': isQuoteLinePDF})} key={`side-${id}`}>
+      {/* Note: when removing upcoming flag, we should always check for pdfMode, line below should be taken out */}
+      {!isUpcomingFeaturesEnabled() && imagePreview}
+      {isUpcomingFeaturesEnabled() && !isPDFMode() && imagePreview}
+      <div className={classNames('quote-line-description', {'quote-line-description__pdf': isQuoteLinePDF})}>
         <Title index={index} label={label} type={type} />
         {/*
             We render quote_lines from the quote data.
@@ -73,7 +85,7 @@ export default function QuoteLine(props) {
         <div>{description}</div>
         <Tags tags={tags} />
       </div>
-      <div className="quote-line-price">
+      <div className={classNames('quote-line-price', {'quote-line-price__pdf': isQuoteLinePDF})}>
         {isAllowedUnitDisplay(isVendorPreview, catalog) && (
           <div className="mobile-length spacing before__is-12 after__is-12">
             {distance && (
@@ -102,6 +114,12 @@ export default function QuoteLine(props) {
           </div>
         )}
       </div>
+      {/* This is only used on isPDFMode, as we will render all images underneat */}
+      {isUpcomingFeaturesEnabled() && isPDFMode() && (
+        <div className="quote-line-images spacing before__is-12 after__is-12">
+          {imagePreview}
+        </div>
+      )}
     </div>
   );
 }

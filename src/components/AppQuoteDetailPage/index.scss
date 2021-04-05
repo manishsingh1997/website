@@ -108,6 +108,10 @@
     }
   }
 
+  .quote-line__pdf {
+    flex-wrap: wrap;
+  }
+
   .quote-line-preview {
     margin-top: 0;
     @include tablet() {
@@ -119,7 +123,6 @@
     @media print {
       margin-right: 20px;
     }
-
   }
 
   .quote-line-description {
@@ -144,13 +147,25 @@
     }
   }
 
+  .quote-line-description__pdf {
+    width: 85%;
+  }
+
   .quote-line-price {
     min-width: $h-120;
     text-align: right;
   }
 
+  .quote-line-price__pdf {
+    min-width: 15%;
+  }
+
+  .quote-line-images {
+    width: 100%;
+  }
+
   .quote-line-approved-at-label {
-    color: #787E75
+    color: $gray-1;
   }
 
   .total-price-noteless {
@@ -222,7 +237,7 @@
         margin-bottom: $v-12;
         position: relative;
         &:before {
-          content: "";
+          content: '';
           width: $v-12;
           height: $v-12;
           position: absolute;
