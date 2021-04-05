@@ -1,27 +1,15 @@
 import React from 'react';
-import {find} from 'lodash';
 import Script from 'react-load-script';
 
 import config from 'website/config';
 import {ERGEON_LICENSE_NUMBER} from 'website/constants';
+import {showUpcomingFeatures} from 'utils/utils';
 
 import certifiedIcon from 'assets/certified@2x.png';
 import licenseImage from 'assets/license.jpg';
 import './index.scss';
 
 const WARRANTIES_URL = `${config.apiHost}/api/store/product-descriptions/`;
-const DEFAULT_PRODUCTS = [
-  {
-    name: 'Driveway Installation',
-    slug: 'driveway-installation',
-    ['warranty_url']: 'https://s3-us-west-2.amazonaws.com:443/api-ergeon-in/products/driveway-installation/warranties/concrete%20and%20paver%20warranty%202019%20format.pdf',
-  },
-  {
-    name: 'Fence Installation',
-    slug: 'fence-replacement',
-    ['warranty_url']: 'https://s3-us-west-2.amazonaws.com:443/api-ergeon-in/products/fence-replacement/warranties/fence_warranty_2020.pdf',
-  },
-];
 
 class WarrantiesPage extends React.Component {
 
@@ -41,21 +29,15 @@ class WarrantiesPage extends React.Component {
   }
 
   getWarranties() {
+    const useStateWarranty = showUpcomingFeatures();
+    const getProductWarranty = product => (useStateWarranty && product.state_warranty_url) || product.warranty_url;
     return fetch(WARRANTIES_URL, {mode: 'cors'})
       .then(response => response.json())
-      .then(function(products) {
-        return products.map(function(product) {
-          const productInDefaults = find(DEFAULT_PRODUCTS, {slug: product.slug});
-
-          if (product.warranty_url) return product;
-          else if (productInDefaults) {
-            return Object.assign({}, product, {['warranty_url']: productInDefaults['warranty_url']});
-          }
-          return null;
-        });
-      })
-      .then(products => products.filter(product => product))
-      .catch(() => DEFAULT_PRODUCTS);
+      .then(products => products.filter(getProductWarranty).map(product => {
+        const {slug} = product;
+        const warrantyUrl = getProductWarranty(product);
+        return {slug, warrantyUrl};
+      }));
   }
 
   generatePdfPreview(canvas, url) {
@@ -80,7 +62,7 @@ class WarrantiesPage extends React.Component {
       });
   }
 
-  renderWarranty({warranty_url: warrantyUrl, slug}) {
+  renderWarranty({slug, warrantyUrl}) {
     return (
       <a
         href={warrantyUrl}
