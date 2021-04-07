@@ -8,12 +8,10 @@ import previewPlaceholderIcon from '@ergeon/core-components/src/assets/icon-phot
 import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {calcUtils} from '@ergeon/3d-lib';
 import {constants as constants3dLib} from '@ergeon/3d-lib';
-import {CALC_GATE_TYPE} from 'website/constants';
 import {isPDFMode} from 'utils/utils';
 import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
+import {getFencequotingURL} from '../../utils/urls';
 import isEqual from 'lodash/isEqual';
-
-import config from 'website/config';
 
 import './AppConfigPreview.scss';
 
@@ -102,7 +100,7 @@ export default class AppConfigPreview extends React.Component {
           },
           {
             id: 3,
-            title: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut pretium diam. Nam eget nisl 
+            title: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut pretium diam. Nam eget nisl
           pretium,ultricies dolor eget, vestibulum nisl. Praesent quis neque fermentum, pharetra nisl vitae,
           facilisis magna.
           Proin vitae rhoncus turpis. Curabitur tristique tortor quis tortor mollis, in faucibus augue porttitor.
@@ -162,8 +160,7 @@ export default class AppConfigPreview extends React.Component {
   }
 
   renderPreviewWithLink() {
-    const {configType, propertySchemaCodeUrl, schemaCodeUrl, zipCode, fenceSideLength} = this.props;
-    const baseUrlPath = configType === CALC_GATE_TYPE ? 'gate3d' : 'fence3d';  // fallback to fence
+    const {propertySchemaCodeUrl, schemaCodeUrl, zipCode, fenceSideLength} = this.props;
     let finalSchemaCodeUrl = `${schemaCodeUrl}`;
     if (propertySchemaCodeUrl) {
       finalSchemaCodeUrl = `${schemaCodeUrl}&${propertySchemaCodeUrl}`;
@@ -171,8 +168,7 @@ export default class AppConfigPreview extends React.Component {
 
     return (
       <a
-        href={`${config.fencequotingHost}/${baseUrlPath}?${finalSchemaCodeUrl}&mode=3d&options=true&zipcode=${zipCode}\
-               &length=${fenceSideLength}`}
+        href={getFencequotingURL(finalSchemaCodeUrl, zipCode, fenceSideLength)}
         rel="noopener noreferrer"
         target="_blank">
         {this.renderPreview()}

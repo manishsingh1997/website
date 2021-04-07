@@ -8,8 +8,10 @@ import {ReactSVG} from 'react-svg';
 import iconPlus from '../../assets/icon-plus.svg';
 import classNames from 'classnames';
 import StyleBrowserWrapper from './StyleBrowserWrapper';
+import {getFencequotingURL} from '../../utils/urls';
 
 import './ConfigCart.scss';
+
 class ConfigCart extends React.Component {
   static propTypes = {
     addConfigFromSchema: PropTypes.func,
@@ -132,6 +134,8 @@ class ConfigCart extends React.Component {
   }
 
   renderConfig(config, index) {
+    const {zipcode} = this.props;
+
     const isFenceConfig = this.isItFence(config);
 
     return (
@@ -141,7 +145,9 @@ class ConfigCart extends React.Component {
             <div className="config-item__preview">
               {
                 config.preview ?
-                  <img src={config.preview}/> :
+                  <a href={getFencequotingURL(config.code, zipcode, config.units)}>
+                    <img src={config.preview}/>
+                  </a> :
                   <Spinner active={true} borderWidth={.2} color="green" size={48} />
               }
             </div>

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {calcUtils, constants, StyleBrowser} from '@ergeon/3d-lib';
 import {getPriceAndDescription, getCheckedZIP} from 'api/lead';
-import config from 'website/config';
 import {tawk} from '@ergeon/erg-utms';
+import {getFencequotingURL} from '../../utils/urls';
 
 import './StyleBrowserWrapper.scss';
 import PopUp from './PopUp';
@@ -19,10 +19,12 @@ export default class StyleBrowserWrapper extends React.Component {
     onLoaded: PropTypes.func.isRequired,
     zipcode: PropTypes.string,
   };
+
   static defaultProps = {
     fenceSideLength: 6,
     initialSchemaCode: constants.defaultFenceCode,
   };
+
   state = {
     model: this.props.initialSchemaCode,
     description: '',
@@ -35,8 +37,14 @@ export default class StyleBrowserWrapper extends React.Component {
     this.updatePrice(model);
     this.checkZipcode();
   }
+
   componentWillUnmount() {
     tawk.tawkAPILoader.then(TawkAPI => TawkAPI.showWidget());
+  }
+
+  getMoreStylesURL(modelString) {
+    const {zipcode, fenceSideLength} = this.props;
+    return getFencequotingURL(modelString.replace('?', ''), zipcode, fenceSideLength);
   }
 
   checkZipcode() {
@@ -46,10 +54,13 @@ export default class StyleBrowserWrapper extends React.Component {
       this.setState({productAvailability: response.data});
     });
   }
+
   updatePrice(modelString) {
     const {zipcode} = this.props;
     const modelState = calcUtils.getValueFromUrl(modelString);
-    this.setState({moreStylesUrl: this.getFencequotingUrl(modelString, zipcode)});
+    this.setState({
+      moreStylesUrl: this.getMoreStylesURL(modelString),
+    });
     return getPriceAndDescription(modelState, zipcode)
       .then(data => {
         this.setState({
@@ -66,24 +77,20 @@ export default class StyleBrowserWrapper extends React.Component {
   isFence(modelState) {
     return getCatalogType(modelState) === constants.CATALOG_TYPE_FENCE;
   }
+
   getPriceRow(modelState, unitPrice) {
     unitPrice = Math.floor(unitPrice);
     const row = this.isFence(modelState) ? `Fence Estimate: $${unitPrice}/ft` : `Gate Estimate: ~$${unitPrice}`;
     return row;
   }
-  getFencequotingUrl(schemaCode, zipCode) {
-    schemaCode = schemaCode.replace('?', '');
-    const {fenceSideLength} = this.props;
-    return `${config.fencequotingHost}/fence3d?${schemaCode}&mode=3d&options=true&zipcode=${zipCode}\
-            &length=${fenceSideLength}`;
-  }
+
   handleModelChange(modelString) {
     const {zipcode} = this.props;
     const {propertyConfig} = this.state;
     const modelState = calcUtils.getValueFromUrl(modelString);
     this.setState({
       model: modelString,
-      moreStylesUrl: this.getFencequotingUrl(modelString, zipcode),
+      moreStylesUrl: this.getMoreStylesURL(modelString),
     });
     getPriceAndDescription(modelState, zipcode, propertyConfig)
       .then(data => {
@@ -107,6 +114,7 @@ export default class StyleBrowserWrapper extends React.Component {
     const {onDone} = this.props;
     onDone && onDone(model);
   }
+
   render() {
     const {price, model, description, productAvailability, moreStylesUrl} = this.state;
     return (
