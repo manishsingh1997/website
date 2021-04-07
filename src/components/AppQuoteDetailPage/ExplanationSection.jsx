@@ -13,27 +13,16 @@ export default class ExplanationSection extends React.Component {
     asPDF: PropTypes.bool,
     projectWarrantyImage: PropTypes.string,
     projectWarrantyLink: PropTypes.string,
-    warrantyLink: PropTypes.string,
   };
   renderWarrantyBlock() {
-    const {warrantyLink, projectWarrantyLink, projectWarrantyImage} = this.props;
-    const oldWarranty = (
-      <React.Fragment>
-        <h4 className="spacing before__is-48 after__is-12">Warranty</h4>
-        Read our fence warranty <a href={warrantyLink}>here</a>.
-      </React.Fragment>
-    );
+    const {projectWarrantyLink, projectWarrantyImage} = this.props;
     const linkContent = projectWarrantyImage ?
       <img className="spacing before__is-24 restricted-720" src={projectWarrantyImage} /> :
       <React.Fragment>Read our project warranty here</React.Fragment>;
-    const newWarranty = (
-      projectWarrantyLink && <a href={projectWarrantyLink}>{linkContent}</a>
-    );
-    const warrantyContent = newWarranty ? newWarranty : oldWarranty;
     return (
-      <React.Fragment>
+      projectWarrantyLink && <React.Fragment>
         <hr className="gray-line restricted-720"/>
-        {warrantyContent}
+        <a href={projectWarrantyLink}>{linkContent}</a>
       </React.Fragment>
     );
   }

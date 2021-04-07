@@ -206,7 +206,6 @@ export default class AppQuoteDetailPage extends React.Component {
     }
     const {
       order: {house: {id: houseId}},
-      warranty,
     } = quote;
 
     const projectWarrantyImage = quote.order.project_warranty_image;
@@ -238,8 +237,7 @@ export default class AppQuoteDetailPage extends React.Component {
           <ExplanationSection
             asPDF={isPDFMode()}
             projectWarrantyImage={projectWarrantyImage}
-            projectWarrantyLink={projectWarrantyLink}
-            warrantyLink={warranty}/>
+            projectWarrantyLink={projectWarrantyLink} />
         }
       </div>
     );
