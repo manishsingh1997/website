@@ -21,9 +21,9 @@ export default function QuoteLinesRender(props) {
     // if we have calcInput present we will render CalcInfo quotlines,
     // if not then regular quotelines will be rendered.
     if (calcInput) {
-      gates = calcInput.gates;
-      sides = calcInput.sides;
-      areas = calcInput.polygons;
+      gates = calcInput.gates || [];
+      sides = calcInput.sides || [];
+      areas = calcInput.polygons || [];
     } else {
       sides = quote['quote_lines']
         .filter(quoteLine => isQuoteLineOfMapKinds(quoteLine, ['line']))

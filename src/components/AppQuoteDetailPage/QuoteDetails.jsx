@@ -82,9 +82,9 @@ export default class QuoteDetails extends React.Component {
     }
     let gates = [], sides = [], polygons = [];
     if (calcInput) {
-      gates = calcInput.gates;
-      sides = calcInput.sides;
-      polygons = calcInput.polygons;
+      gates = calcInput.gates || [];
+      sides = calcInput.sides || [];
+      polygons = calcInput.polygons || [];
     }
     const SPINNER_BORDER_WITH = 0.10;
     const SPINNER_SIZE = 64;
