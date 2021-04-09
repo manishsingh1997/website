@@ -10,6 +10,8 @@ let env, apiHost, blogHost, fencequotingHost, projectsGalleryHost, productCatalo
   websiteDomain, addressEnteredApi, leadArrivedApi, cookbookWebsite, tawkAPIKey;
 let googleMapsApiKey, stripePublicKey, publicWebsite;
 
+const storeHost = 'https://store.ergeon.com';  // the same for all envs
+
 if (process.env.NODE_ENV === PRODUCTION) {
   websiteDomain = 'www.ergeon.com';
   apiHost = 'https://api.ergeon.in';
@@ -81,4 +83,5 @@ export default {
   websiteDomain,
   cookbookWebsite,
   website2ndLevelDomain,
+  storeHost,
 };

@@ -58,6 +58,7 @@ export const generateErgeonSitemap = async() => {
     ...getSitemapUrls(authRoutes),
     ...getSitemapUrls(basicRoutes),
     config.blogHost,
+    config.storeHost,
   ]);
   return generateSitemap(urls);
 };

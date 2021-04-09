@@ -150,5 +150,8 @@ exports[`Sitemap should generate for website 1`] = `
       </url>
       <url>
         <loc>https://dev.ergeon.com/blog</loc>
+      </url>
+      <url>
+        <loc>https://store.ergeon.com</loc>
       </url>"
 `;
