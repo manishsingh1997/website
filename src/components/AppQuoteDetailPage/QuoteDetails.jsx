@@ -9,8 +9,9 @@ import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import QuoteLines from './QuoteLines';
 import {CARD_TRANSACTION_FEE} from 'website/constants';
-import {isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
+import {formatPrice, isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
 import {Link} from 'react-router-dom';
+import {formatDate} from '../../utils/date';
 
 export default class QuoteDetails extends React.Component {
   static propTypes = {
@@ -73,8 +74,20 @@ export default class QuoteDetails extends React.Component {
     const {quote, asPDF, auth, isVendorPreview, totalPrice, customerGID} = this.props;
     const {isLoadingMap} = this.state;
     const {
+      'parent_quote': parentQuote,
       'calc_input': calcInput,
     } = quote;
+    let parentQuoteTotalPrice = 0;
+    let parentQuoteTotalPriceText = null;
+
+    if (parentQuote) {
+      parentQuoteTotalPrice = isVendorPreview ? parentQuote['total_cost'] : parentQuote['total_price'];
+      parentQuoteTotalPriceText = `
+        Total previously approved
+        (${formatDate(parentQuote['approved_at'])}):
+        ${formatPrice(parentQuoteTotalPrice)}
+      `;
+    }
 
     let address = quote.order.house.address;
     if (!address) {
@@ -143,6 +156,11 @@ export default class QuoteDetails extends React.Component {
           quote={quote}/>
         <div className={classNames({'total-price': !isVendorPreview, 'total-price-noteless': isVendorPreview})}>
           <h4>Total: {totalPrice}</h4>
+          {parentQuote && (
+            <b className="quote-line-approved-at-label">
+              {parentQuoteTotalPriceText}
+            </b>
+          )}
         </div>
         {!isVendorPreview && (
           <div className="asterisk-notes">
