@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {some} from 'lodash';
 
 import {Notification} from '@ergeon/core-components';
-import {isPDFMode, showUpcomingFeatures} from 'utils/utils';
+import {isPDFMode} from 'utils/utils';
 import {parseAPIError} from 'utils/api';
 import {
   formatPrice,
@@ -210,8 +210,7 @@ export default class AppQuoteDetailPage extends React.Component {
 
     const projectWarrantyImage = quote.order.project_warranty_image;
     const projectWarrantyLink = quote.order.project_warranty_pdf;
-    const useContract = showUpcomingFeatures() && quote.contract;
-    const termsAndConditionsUrl = useContract ? quote.contract : quote.terms_and_conditions;
+    const termsAndConditionsUrl = quote.contract || quote.terms_and_conditions;
     return (
       <div className="quote-detail-page">
         <QuoteDetails

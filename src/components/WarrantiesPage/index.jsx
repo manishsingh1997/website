@@ -3,7 +3,6 @@ import Script from 'react-load-script';
 
 import config from 'website/config';
 import {ERGEON_LICENSE_NUMBER} from 'website/constants';
-import {showUpcomingFeatures} from 'utils/utils';
 
 import certifiedIcon from 'assets/certified@2x.png';
 import licenseImage from 'assets/license.jpg';
@@ -29,8 +28,7 @@ class WarrantiesPage extends React.Component {
   }
 
   getWarranties() {
-    const useStateWarranty = showUpcomingFeatures();
-    const getProductWarranty = product => (useStateWarranty && product.state_warranty_url) || product.warranty_url;
+    const getProductWarranty = product => product.state_warranty_url || product.warranty_url;
     return fetch(WARRANTIES_URL, {mode: 'cors'})
       .then(response => response.json())
       .then(products => products.filter(getProductWarranty).map(product => {
