@@ -69,9 +69,15 @@ export default function QuoteLine(props) {
     <div className={classNames('quote-line', {'quote-line__pdf': isQuoteLinePDF})} key={`side-${id}`}>
       {/* Note: when removing upcoming flag, we should always check for pdfMode, line below should be taken out */}
       {!isUpcomingFeaturesEnabled() && imagePreview}
-      {isUpcomingFeaturesEnabled() && !isPDFMode() && imagePreview}
+      {/* Layout changes from desktop to mobile, as we move the gallery depeding on each */}
+      <div className="desktop-length">
+        {isUpcomingFeaturesEnabled() && !isPDFMode() && imagePreview}
+      </div>
       <div className={classNames('quote-line-description', {'quote-line-description__pdf': isQuoteLinePDF})}>
         <Title index={index} label={label} type={type} />
+        <div className="mobile-length">
+          {isUpcomingFeaturesEnabled() && !isPDFMode() && imagePreview}
+        </div>
         {/*
             We render quote_lines from the quote data.
             If this quote is the change order quote, the rendering results should contain

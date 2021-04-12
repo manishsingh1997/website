@@ -19,7 +19,7 @@
     text-align: center;
   }
 
-  img {
+  .preview-image {
     @include border();
     border-color: $white;
     width: 97%;

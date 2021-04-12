@@ -181,7 +181,7 @@ export default class AppConfigPreview extends React.Component {
     const isPlaceholder = isEqual(previewImage, previewPlaceholderIcon) || isEqual(previewImage, noPreviewIcon);
     return (
       <img
-        className={classNames({'preview-placeholder': isPlaceholder, 'hidden-img': isLoading})}
+        className={classNames('preview-image', {'preview-placeholder': isPlaceholder, 'hidden-img': isLoading})}
         onLoad={() => this.setState({'isLoading': false})}
         src={previewImage} />
     );
