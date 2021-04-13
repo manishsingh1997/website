@@ -41,7 +41,6 @@
 
         @include tablet() {
           padding: $h-5 $h-5;
-          height: 100%;
         }
 
         &__wrap {
@@ -62,7 +61,6 @@
             flex-direction: column;
             padding: $v-16 $v-24;
             max-height: none;
-            height: 100%;
           }
 
           &.ceo-image-wrapper {
