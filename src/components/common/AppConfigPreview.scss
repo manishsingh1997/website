@@ -53,6 +53,9 @@
       .image-loader__wrapper {
         max-height: 144px; // so it can be 150x150
       }
+      .image-loader__image {
+        height: 150px; // so all images no matter what look 150px
+      }
     }
   }
 }

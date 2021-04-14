@@ -12,6 +12,7 @@ import {isPDFMode} from 'utils/utils';
 import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 import {getFencequotingURL} from '../../utils/urls';
 import isEqual from 'lodash/isEqual';
+import isEmpty from 'lodash/isEmpty';
 
 import './AppConfigPreview.scss';
 
@@ -25,6 +26,7 @@ export default class AppConfigPreview extends React.Component {
     className: PropTypes.string,
     configType: PropTypes.string,
     fenceSideLength: PropTypes.number,
+    images: PropTypes.array,
     propertySchemaCodeUrl: PropTypes.string,
     schemaCodeUrl: PropTypes.string,
     useNoPreviewIcon: PropTypes.bool,
@@ -40,18 +42,14 @@ export default class AppConfigPreview extends React.Component {
   state = {
     previewImage: undefined,
     isLoading: false,
-    images: undefined,
   };
 
   async componentDidMount() {
-    if (isUpcomingFeaturesEnabled()) {
-      this.fetchImageList();
-    }
     await this.fetchQuotePreview();
   }
 
   async fetchQuotePreview() {
-    const {schemaCodeUrl, useNoPreviewIcon} = this.props;
+    const {schemaCodeUrl, useNoPreviewIcon, images} = this.props;
     if (useNoPreviewIcon) {
       this.setState({previewImage: noPreviewIcon});
       return;
@@ -60,7 +58,8 @@ export default class AppConfigPreview extends React.Component {
       this.setState({previewImage: previewPlaceholderIcon});
       return;
     }
-    this.setState({isLoading: true});
+    // check if images is empty, if thats the case isLoading will be set on the image onLoad callback
+    this.setState({isLoading: isEmpty(images)});
     try {
       const preview = await calcUtils.getPreviewImage(
         schemaCodeUrl,
@@ -80,57 +79,12 @@ export default class AppConfigPreview extends React.Component {
     }
   }
 
-  fetchImageList() {
-    // mock api to retrieve images for ImageGallery and SwipeGallery
-    this.setState({isLoading: true});
-    // simulate api call delay
-    setTimeout(() => {
-      this.setState({
-        images: [
-          {
-            id: 1,
-            title: 'Test 1',
-            url:
-              'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Roseville+California+-+Single+Gate+1.jpg',
-          },
-          {
-            id: 2,
-            title: 'Test 2',
-            url: 'https://assets.website-files.com/5ad551c41ca0c52724be6c55/5bef42fe6add22891a0cf62c_stampstained9.jpg',
-          },
-          {
-            id: 3,
-            title: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut pretium diam. Nam eget nisl
-          pretium,ultricies dolor eget, vestibulum nisl. Praesent quis neque fermentum, pharetra nisl vitae,
-          facilisis magna.
-          Proin vitae rhoncus turpis. Curabitur tristique tortor quis tortor mollis, in faucibus augue porttitor.
-          Vivamus at risus est. Praesent velit est, bibendum id leo a, sagittis dapibus ante. Morbi eros tortor,
-          ornare sed porttitor accumsan, euismod eu massa.`,
-            url:
-              'https://assets.website-files.com/5ad551c41ca0c52724be6c55/5cc086dd9e1f671c728112fe_vallejo%20picture%20frame.jpg',
-          },
-          {
-            id: 4,
-            title: 'Test 4',
-            url: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+San+Rafael+California+-+Single+Gate+2.jpg',
-          },
-          {
-            id: 5,
-            title: 'Test 5',
-            url:
-              'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Gate+Installation+-+Ergeon+-+Granite+Bay%2C+California+-+Single+Gate+2.jpg',
-          },
-        ],
-        isLoading: false,
-      });
-    }, 2000);
-  }
-
   conditionalConfigPreview() {
-    const {withLink, schemaCodeUrl} = this.props;
+    const {withLink, schemaCodeUrl, images} = this.props;
     const withLinkAndSchemaUrl = Boolean(withLink && schemaCodeUrl);
-    // Note: when removing upcoming flag we can simplify refactoring directly on configPreview()
-    if (isUpcomingFeaturesEnabled() && withLinkAndSchemaUrl) {
+    // Note: as images are now part of props enable galleries only if images isn't empty
+    // if they are then we should fallback to renderPreviewWithLink/renderPreview
+    if (isUpcomingFeaturesEnabled() && !isEmpty(images)) {
       return this.renderGalleries();
     }
     if (!isUpcomingFeaturesEnabled() && withLinkAndSchemaUrl) {
@@ -141,14 +95,14 @@ export default class AppConfigPreview extends React.Component {
   }
 
   configPreview() {
-    const {className} = this.props;
-    const {isLoading, previewImage, images} = this.state;
+    const {className, images} = this.props;
+    const {isLoading, previewImage} = this.state;
     const isPlaceholder = isEqual(previewImage, previewPlaceholderIcon) || isEqual(previewImage, noPreviewIcon);
     return (
       <div
         className={classNames('config-preview', 'border',
           {
-            'gallery-preview': images && !isPlaceholder,
+            'gallery-preview': !isEmpty(images) && !isPlaceholder,
             'config-preview__no-preview': isPlaceholder,
             [className]: Boolean(className),
           }
@@ -182,45 +136,46 @@ export default class AppConfigPreview extends React.Component {
     return (
       <img
         className={classNames('preview-image', {'preview-placeholder': isPlaceholder, 'hidden-img': isLoading})}
-        onLoad={() => this.setState({'isLoading': false})}
+        onLoad={() => this.setState({isLoading: false})}
         src={previewImage} />
     );
   }
 
   renderGalleries() {
-    const {images} = this.state;
+    const {images} = this.props;
+    let imagesObj;
+    if (!isEmpty(images)) {
+      // galleries need url key, map images.file to it
+      imagesObj = images.map((elem) => ({url: elem.file, ...elem}));
+    }
     return (
       <>
-        {images &&
-        <>
-          <div className="desktop-length">
-            <ImageGallery images={images}/>
-          </div>
-          <div className="mobile-length">
-            <SwipeGallery images={images}/>
-          </div>
-        </>
+        {imagesObj &&
+          <>
+            <div className="desktop-length">
+              <ImageGallery images={imagesObj} />
+            </div>
+            <div className="mobile-length">
+              <SwipeGallery images={imagesObj} />
+            </div>
+          </>
         }
       </>
     );
   }
 
   render() {
-    const {previewImage, images} = this.state;
+    const {images} = this.props;
+    const {previewImage} = this.state;
     const isPlaceholder = isEqual(previewImage, previewPlaceholderIcon) || isEqual(previewImage, noPreviewIcon);
-
-    return (
-      <>
-        {/* Note: when removing upcoming flag, we should always check for pdfMode, line below should be taken out */}
-        {!isUpcomingFeaturesEnabled() && this.configPreview()}
-        {/* Hide configPreview if we are in pdf mode, we will render all images in that case*/}
-        {isUpcomingFeaturesEnabled() && !isPDFMode() && this.configPreview()}
-        {isUpcomingFeaturesEnabled() && isPDFMode() && images && !isPlaceholder &&
+    // only for pdf mode so we can show all imageslist
+    if (isUpcomingFeaturesEnabled() && isPDFMode() && !isEmpty(images) && !isPlaceholder) {
+      return (
         <div className="cards two-columns">
-          {images.map((elem) => <ImageCard key={elem.id} title={elem.title} url={elem.url} />)}
+          {images.map((elem) => <ImageCard key={elem.id} title={elem.title} url={elem.file} />)}
         </div>
-        }
-      </>
-    );
+      );
+    }
+    return this.configPreview();
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AppConfigPreview from '../../common/AppConfigPreview';
+import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 
@@ -28,11 +29,16 @@ export default function QuoteLinePreview(props) {
   const propertySchemaCodeUrl =
     propertyData && propertyData.replace('schema', 'property_schema').replace('code', 'property_code');
   const showLink = isQuotePreviewPossible && !(usePlaceHolder || useNoPreviewIcon) && Boolean(schemaCodeUrl);
+  let images = null;
+  if (isUpcomingFeaturesEnabled()) {
+    images = quoteLine && quoteLine['mediafile_list'] && quoteLine['mediafile_list'].mediafiles;
+  }
   return (
     <AppConfigPreview
       className="quote-line-preview"
       configType={type}
       fenceSideLength={fenceSideLength}
+      images={images}
       propertySchemaCodeUrl={propertySchemaCodeUrl}
       schemaCodeUrl={usePlaceHolder ? null : schemaCodeUrl}
       useNoPreviewIcon={useNoPreviewIcon}
