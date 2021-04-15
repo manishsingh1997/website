@@ -20,7 +20,7 @@ class ConfigCart extends React.Component {
       price: PropTypes.string,
       description: PropTypes.string,
       units: PropTypes.number,
-      code: PropTypes.object,
+      code: PropTypes.string,
     })),
     onShowStyleBrowserChange: PropTypes.func.isRequired,
     removeConfig: PropTypes.func.isRequired,
@@ -295,7 +295,7 @@ class ConfigCart extends React.Component {
                 onClick={this.onAddConfigClick.bind(this)}
                 size="large"
                 taste="line">
-                <ReactSVG className="spacing right__is-5"  src={iconPlus}/>Add a config
+                <ReactSVG className="spacing right__is-5" src={iconPlus}/>Add a config
               </Button>
               <div className="config-cart__total">
                 {this.getTotal() ? `Total estimate: ~$${Math.round(this.getTotal())}` : null}

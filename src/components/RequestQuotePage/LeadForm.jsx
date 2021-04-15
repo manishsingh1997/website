@@ -258,8 +258,8 @@ export default class LeadForm extends React.Component {
     });
     return (
       <form className="Form LeadForm" onSubmit={this.handleSubmit.bind(this)}>
+        <label className="label">Ergeon service:</label>
         <FormField>
-          <label className="label">Ergeon service:</label>
           <RadioGroup
             name="ergeon-service"
             onChange={this.handleProductChange.bind(this)}
