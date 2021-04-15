@@ -210,7 +210,7 @@ export default class AppQuoteDetailPage extends React.Component {
 
     const projectWarrantyImage = quote.order.project_warranty_image;
     const projectWarrantyLink = quote.order.project_warranty_pdf;
-    const termsAndConditionsUrl = quote.contract || quote.terms_and_conditions;
+    const termsAndConditionsUrl = quote.contract;
     return (
       <div className="quote-detail-page">
         <QuoteDetails
