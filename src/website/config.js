@@ -6,7 +6,7 @@ export const PRODUCTION = 'production';
 export const STAGING = 'staging';
 export const DEVELOPMENT = 'development';
 
-let env, apiHost, blogHost, fencequotingHost, projectsGalleryHost, productCatalogUrl,
+let env, apiHost, blogHost, citiesUrl, fencequotingHost, projectsGalleryHost, productCatalogUrl,
   websiteDomain, addressEnteredApi, leadArrivedApi, cookbookWebsite, tawkAPIKey;
 let googleMapsApiKey, stripePublicKey, publicWebsite;
 
@@ -16,6 +16,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   websiteDomain = 'www.ergeon.com';
   apiHost = 'https://api.ergeon.in';
   blogHost = 'https://www.ergeon.com/blog';
+  citiesUrl = `https://${websiteDomain}/cities/`;
   fencequotingHost = 'https://fencequoting.com';
   projectsGalleryHost = `https://${websiteDomain}/projects-gallery`;
   productCatalogUrl = `https://${websiteDomain}/catalog`;
@@ -31,6 +32,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   apiHost = 'https://apidev.ergeon.in';
   websiteDomain = 'dev.ergeon.com';
   blogHost = 'https://dev.ergeon.com/blog';
+  citiesUrl = `https://${websiteDomain}/cities/`;
   fencequotingHost = 'https://fencequoting-staging.firebaseapp.com';
   projectsGalleryHost = `https://${websiteDomain}/projects-gallery`;
   productCatalogUrl = `https://${websiteDomain}/catalog`;
@@ -46,6 +48,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
   websiteDomain = 'ergeon.local';
   apiHost = 'http://api.ergeon.local:8000';
   blogHost = 'https://dev.ergeon.com/blog';
+  citiesUrl = 'https://dev.ergeon.com/cities/'; // No local environment, wordpress website
   fencequotingHost = 'http://fencequoting.local:8700';
   projectsGalleryHost = 'http://ergeon.local:6500/projects-gallery';
   productCatalogUrl = 'http://catalog.ergeon.local:3300';
@@ -69,6 +72,7 @@ export default {
   addressEnteredApi,
   apiHost,
   blogHost,
+  citiesUrl,
   env,
   fencequotingHost,
   googleMapsApiKey,
