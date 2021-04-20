@@ -24,7 +24,7 @@ import {Approved, Area, Distance, QuantityUnit} from './QuoteLineComponents';
  *  distance: string|number,
  *  id: string|number,
  *  index: number,
- *  isVendorPreview: boolean,
+ *  isInstallerPreview: boolean,
  *  label: string,
  *  name: string,
  *  price: string|number,
@@ -53,7 +53,7 @@ export default function QuoteLine(props) {
     quoteLineQuoteId,
     tags,
     type,
-    isVendorPreview,
+    isInstallerPreview,
   } = props;
 
   const imagePreview = useMemo(() => (
@@ -92,7 +92,7 @@ export default function QuoteLine(props) {
         <Tags tags={tags} />
       </div>
       <div className={classNames('quote-line-price', {'quote-line-price__pdf': isQuoteLinePDF})}>
-        {isAllowedUnitDisplay(isVendorPreview, catalog) && (
+        {isAllowedUnitDisplay(isInstallerPreview, catalog) && (
           <div className="mobile-length spacing before__is-12 after__is-12">
             {distance && (
               <Distance distance={distance} />
@@ -105,8 +105,8 @@ export default function QuoteLine(props) {
             )}
           </div>
         )}
-        {!isVendorPreview && <h5>{formatPrice(price)}</h5>}
-        {isAllowedUnitDisplay(isVendorPreview, catalog) && (
+        {!isInstallerPreview && <h5>{formatPrice(price)}</h5>}
+        {isAllowedUnitDisplay(isInstallerPreview, catalog) && (
           <div className="desktop-length spacing before__is-12">
             {distance && (
               <Distance distance={distance} />
@@ -138,7 +138,7 @@ QuoteLine.propTypes = {
   distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   index: PropTypes.number,
-  isVendorPreview: PropTypes.bool,
+  isInstallerPreview: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string,
   price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

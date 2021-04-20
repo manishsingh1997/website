@@ -19,7 +19,7 @@ export default class QuoteDetails extends React.Component {
     auth: PropTypes.object,
     customerGID: PropTypes.string,
     getNewQuoteLink: PropTypes.func,
-    isVendorPreview: PropTypes.bool,
+    isInstallerPreview: PropTypes.bool,
     quote: PropTypes.object,
     totalPrice: PropTypes.string,
   };
@@ -71,7 +71,7 @@ export default class QuoteDetails extends React.Component {
     );
   }
   render() {
-    const {quote, asPDF, auth, isVendorPreview, totalPrice, customerGID} = this.props;
+    const {quote, asPDF, auth, isInstallerPreview, totalPrice, customerGID} = this.props;
     const {isLoadingMap} = this.state;
     const {
       'parent_quote': parentQuote,
@@ -81,7 +81,7 @@ export default class QuoteDetails extends React.Component {
     let parentQuoteTotalPriceText = null;
 
     if (parentQuote) {
-      parentQuoteTotalPrice = isVendorPreview ? parentQuote['total_cost'] : parentQuote['total_price'];
+      parentQuoteTotalPrice = isInstallerPreview ? parentQuote['total_cost'] : parentQuote['total_price'];
       parentQuoteTotalPriceText = `
         Total previously approved
         (${formatDate(parentQuote['approved_at'])}):
@@ -152,9 +152,9 @@ export default class QuoteDetails extends React.Component {
         )}
         <QuoteLines
           asPDF={asPDF}
-          isVendorPreview={isVendorPreview}
+          isInstallerPreview={isInstallerPreview}
           quote={quote}/>
-        <div className={classNames({'total-price': !isVendorPreview, 'total-price-noteless': isVendorPreview})}>
+        <div className={classNames({'total-price': !isInstallerPreview, 'total-price-noteless': isInstallerPreview})}>
           <h4>Total: {totalPrice}</h4>
           {parentQuote && (
             <b className="quote-line-approved-at-label">
@@ -162,7 +162,7 @@ export default class QuoteDetails extends React.Component {
             </b>
           )}
         </div>
-        {!isVendorPreview && (
+        {!isInstallerPreview && (
           <div className="asterisk-notes">
             <span className="asterisk">*</span>
             <i> – An additional {CARD_TRANSACTION_FEE} fee will be added for credit/debit cards</i>

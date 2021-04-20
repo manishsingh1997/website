@@ -22,12 +22,12 @@ export const indexLabel = (index, label) => {
 };
 
 /**
- * Checks for isVendorPreview and catalog
- * @param {boolean} isVendorPreview
+ * Checks for isInstallerPreview and catalog
+ * @param {boolean} isInstallerPreview
  * @param {object} catalog
  */
-export const isAllowedUnitDisplay = (isVendorPreview, catalog) => {
-  if (!isVendorPreview || !catalog) {
+export const isAllowedUnitDisplay = (isInstallerPreview, catalog) => {
+  if (!isInstallerPreview || !catalog) {
     return true;
   }
   return catalog.type.allows_unit_display;

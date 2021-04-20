@@ -23,7 +23,7 @@ import {
 import AppLoader from 'components/common/AppLoader';
 import {
   DIRECT_PREVIEW_SLUG,
-  VENDOR_PREVIEW_SLUG,
+  INSTALLER_PREVIEW_SLUG,
 } from 'website/constants';
 import BillingForm from './BillingForm';
 import ExplanationSection from './ExplanationSection';
@@ -117,7 +117,7 @@ export default class AppQuoteDetailPage extends React.Component {
     if (
       quote && !some([
         this.isDirectPreview(),
-        this.isVendorPreview(),
+        this.isInstallerPreview(),
         quote['reviewed_at'],
         isPDFMode(),
       ])
@@ -130,8 +130,8 @@ export default class AppQuoteDetailPage extends React.Component {
     }
   }
 
-  isVendorPreview() {
-    return this.props.match.params.type === VENDOR_PREVIEW_SLUG;
+  isInstallerPreview() {
+    return this.props.match.params.type === INSTALLER_PREVIEW_SLUG;
   }
 
   isDirectPreview() {
@@ -145,7 +145,7 @@ export default class AppQuoteDetailPage extends React.Component {
   }
 
   getTotalPrice(quote) {
-    if (this.isVendorPreview()) {
+    if (this.isInstallerPreview()) {
       return quote['total_cost'];
     }
     return quote['total_price'];
@@ -157,7 +157,7 @@ export default class AppQuoteDetailPage extends React.Component {
 
     return (
       isPDFModeDisabled &&
-      !this.isVendorPreview() &&
+      !this.isInstallerPreview() &&
       !isQuoteReplaced(quote) &&
       !isQuoteCancelled(quote) &&
       !isQuoteExpired(quote)
@@ -218,10 +218,10 @@ export default class AppQuoteDetailPage extends React.Component {
           auth={auth}
           customerGID={this.customerGID}
           getNewQuoteLink={this.getNewQuoteLink.bind(this)}
-          isVendorPreview={this.isVendorPreview()}
+          isInstallerPreview={this.isInstallerPreview()}
           quote={quote}
           totalPrice={formatPrice(this.getTotalPrice(quote))}/>
-        {!this.isVendorPreview() && <ProjectNotes quote={quote}/>}
+        {!this.isInstallerPreview() && <ProjectNotes quote={quote}/>}
         {this.shouldShowBillingForm() && <BillingForm
           error={paymentMethodError}
           houseId={houseId}
@@ -232,7 +232,7 @@ export default class AppQuoteDetailPage extends React.Component {
           termsAndConditionsUrl={termsAndConditionsUrl}
           total={formatPrice(this.getTotalPrice(quote))} />}
         {
-          !this.isVendorPreview() &&
+          !this.isInstallerPreview() &&
           <ExplanationSection
             asPDF={isPDFMode()}
             projectWarrantyImage={projectWarrantyImage}

@@ -32,7 +32,7 @@ export const getFencequotingURL = (schemaCode, zipCode, fenceSideLength) => {
 };
 
 export const isQuoteDetailURL = (url) => {
-  return url.match(/^\/app\/[^\/]+\/quotes+\/(direct\/|vendor\/)?[^\/]+\/?$/g) !== null;
+  return url.match(/^\/app\/[^\/]+\/quotes+\/(direct\/|installer\/)?[^\/]+\/?$/g) !== null;
 };
 
 export const isUnsubscribeURL = (urlPathname, urlSearch) => {

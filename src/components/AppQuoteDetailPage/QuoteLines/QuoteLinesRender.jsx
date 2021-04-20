@@ -9,12 +9,12 @@ import QuoteLine from '../QuoteLine';
 /**
  *  Builds up sides, gates and areas arrays by using calcInput or filterByField quoteLines
  *  then we render each one with their respective props to correctly display their data.
- * @param {{showPrice: boolean, asPDF: boolean, quote: object, isVendorPreview: boolean}} props
+ * @param {{showPrice: boolean, asPDF: boolean, quote: object, isInstallerPreview: boolean}} props
  */
 export default function QuoteLinesRender(props) {
-  const {showPrice = true, asPDF, quote, isVendorPreview} = props;
+  const {showPrice = true, asPDF, quote, isInstallerPreview} = props;
   const {'calc_input': calcInput} = quote;
-  const filterByField = isVendorPreview ? 'display_to_installer' : 'display_to_customer';
+  const filterByField = isInstallerPreview ? 'display_to_installer' : 'display_to_customer';
 
   const quoteLines = useMemo(() => {
     let gates = [], sides = [], areas = [];
@@ -43,7 +43,7 @@ export default function QuoteLinesRender(props) {
       type: CALC_SIDE_TYPE,
       quote,
       index: i,
-      isVendorPreview,
+      isInstallerPreview,
       // show tags only when calcInput is present
       tags: calcInput ? getTagsForQuoteLine(getLabelFromIndex(i), quote) : undefined,
       price: showPrice ? side.price : 0,
@@ -56,7 +56,7 @@ export default function QuoteLinesRender(props) {
       type: CALC_GATE_TYPE,
       quote,
       index: i,
-      isVendorPreview,
+      isInstallerPreview,
       // show tags only when calcInput is present
       tags: calcInput ? getTagsForQuoteLine(i + 1, quote) : undefined,
       price: showPrice ? gate.price : 0,
@@ -71,7 +71,7 @@ export default function QuoteLinesRender(props) {
       type: CALC_AREA_TYPE,
       quote,
       index: i,
-      isVendorPreview,
+      isInstallerPreview,
       price: showPrice ? area.price : 0,
       // hide distance if calcInput is present
       distance: calcInput ? undefined : area.distance,
@@ -82,7 +82,7 @@ export default function QuoteLinesRender(props) {
       ...gates.map(getQuoteLinePropsFromGate),
       ...areas.map(getQuoteLinePropsFromAreas),
     ];
-  }, [isVendorPreview, quote, showPrice, calcInput, filterByField]);
+  }, [isInstallerPreview, quote, showPrice, calcInput, filterByField]);
 
   return (
     <>
@@ -103,7 +103,7 @@ export default function QuoteLinesRender(props) {
 
 QuoteLinesRender.propTypes = {
   asPDF: PropTypes.bool,
-  isVendorPreview: PropTypes.bool,
+  isInstallerPreview: PropTypes.bool,
   quote: PropTypes.object,
   showPrice: PropTypes.bool,
 };

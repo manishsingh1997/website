@@ -9,7 +9,7 @@ export const ERGEON_LICENSE_NUMBER = '#1040925';
 export const FENCE_QUANTITY_UNIT = 'ft.';
 export const DRIVEWAY_QUANTITY_UNIT = 'sq.ft.';
 
-export const VENDOR_PREVIEW_SLUG = 'vendor';
+export const INSTALLER_PREVIEW_SLUG = 'installer';
 export const DIRECT_PREVIEW_SLUG = 'direct';
 
 export const CALC_AREA_TYPE = 'Area';
