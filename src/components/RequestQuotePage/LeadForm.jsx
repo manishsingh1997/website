@@ -277,34 +277,34 @@ export default class LeadForm extends React.Component {
         {mobileAddressField && mobileAddressField}
         <FormField>
           <Input
-            disabled={loading}
+            isDisabled={loading}
+            isValid={validFields?.name !== undefined ? validFields?.name : null}
             label="Your name"
             name="name"
             onChange={this.handleFieldChange.bind(this)}
             placeholder="e.g. John Smith"
-            valid={validFields?.name !== undefined ? validFields?.name : null}
             validationMessage={errors?.name}
             value={name} />
         </FormField>
         <FormField>
           <PhoneInput
-            disabled={loading}
+            isDisabled={loading}
+            isValid={validFields?.phone !== undefined ? validFields?.phone : null}
             label="Your phone number"
             name="phone"
             onChange={this.handleFieldChange.bind(this)}
-            valid={validFields?.phone !== undefined ? validFields?.phone : null}
             validationMessage={errors?.phone}
             value={phone} />
         </FormField>
         <FormField>
           <Input
-            disabled={loading}
+            isDisabled={loading}
+            isValid={validFields?.email !== undefined ? validFields?.email : null}
             label="Email"
             name="email"
             onChange={this.handleFieldChange.bind(this)}
             placeholder="e.g. username@mail.com"
             type="email"
-            valid={validFields?.email !== undefined ? validFields?.email : null}
             validationMessage={errors?.email}
             value={email} />
         </FormField>

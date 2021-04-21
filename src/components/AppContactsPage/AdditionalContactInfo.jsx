@@ -21,10 +21,12 @@ export default function AdditionalContactInfo({title, label, contactInfos, onAdd
       pk: contactInfo.id,
       name: Math.random().toString(36).substr(2, 9),
       value: contactInfo.formatted_identifier,
-      valid: !contactInfo.error,
+      isValid: !contactInfo.error,
       validationMessage: contactInfo.error,
     };
-    const ContactInput = label === 'Email' ? <Input {...inputProps} type="email"/> : <PhoneInput {...inputProps}/>;
+
+    const ContactInput = label === 'Email' ?
+      <Input {...inputProps} type="email"/> : <PhoneInput {...inputProps}/>;
 
     const classes = classnames(
       'additional-contact-info-row',

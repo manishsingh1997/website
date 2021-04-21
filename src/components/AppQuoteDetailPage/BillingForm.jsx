@@ -202,7 +202,8 @@ export default class BillingForm extends React.Component {
         <div className="billing-form__card-number">
           <FormField>
             <Input
-              disabled={isLoading}
+              isDisabled={isLoading}
+              isValid={validate.card ? !errors?.card : undefined}
               label="Card Number"
               mask={this.getCardMask(card)}
               name="card"
@@ -210,7 +211,6 @@ export default class BillingForm extends React.Component {
               onChange={this.handleFieldChange.bind(this)}
               tabindex="1"
               type="tel"
-              valid={validate.card ? !errors?.card : undefined}
               validationMessage={errors?.card}
               value={card} />
           </FormField>
@@ -219,7 +219,8 @@ export default class BillingForm extends React.Component {
           <FormField>
             <Input
               className="FormControl--short"
-              disabled={isLoading}
+              isDisabled={isLoading}
+              isValid={validate.expirationDate ? !errors?.expirationDate : undefined}
               label="Exp. Date"
               mask="99/99"
               name="expirationDate"
@@ -228,7 +229,6 @@ export default class BillingForm extends React.Component {
               placeholder="MM/YY"
               tabindex="2"
               type="tel"
-              valid={validate.expirationDate ? !errors?.expirationDate : undefined}
               validationMessage={errors?.expirationDate}
               value={expirationDate} />
           </FormField>
@@ -237,14 +237,14 @@ export default class BillingForm extends React.Component {
           <FormField>
             <Input
               className="FormControl--short"
-              disabled={isLoading}
+              isDisabled={isLoading}
+              isValid={validate.cvc ? !errors?.cvc : undefined}
               label="CVC"
               name="cvc"
               onBlur={this.handleBlur.bind(this, 'cvc')}
               onChange={this.handleFieldChange.bind(this)}
               tabindex="3"
               type="tel"
-              valid={validate.cvc ? !errors?.cvc : undefined}
               validationMessage={errors?.cvc}
               value={cvc} />
           </FormField>

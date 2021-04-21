@@ -112,13 +112,13 @@ class AuthSignInPage extends React.Component {
         <form className="signin-form" onSubmit={this.handleSubmit.bind(this)}>
           <FormField>
             <Input
-              disabled={loading}
+              isDisabled={loading}
+              isValid={errors?.email ? !errors?.email : null}
               label="Email"
               name="email"
               onChange={this.handleFieldChange}
               placeholder="e.g. username@mail.com"
               type="email"
-              valid={errors?.email ? !errors?.email : null}
               value={email} />
             {this.renderErrors('email')}
           </FormField>

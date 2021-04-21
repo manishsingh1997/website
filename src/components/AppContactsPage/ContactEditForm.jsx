@@ -27,10 +27,10 @@ const ContactEditForm = (props) => {
       <DataRow
         title="Full Name"
         value={<Input
+          isValid={!errors.fullName}
           label="Your name"
           name="name"
           onChange={onPrimaryChange}
-          valid={!errors.fullName}
           validationMessage={errors.fullName}
           value={primaryContact.name}/>}/>
       <DataRow
@@ -43,10 +43,10 @@ const ContactEditForm = (props) => {
       <DataRow
         title="Phone"
         value={<PhoneInput
+          isValid={!errors.phoneNumber}
           label="Phone"
           name="phone"
           onChange={onPrimaryChange}
-          valid={!errors.phoneNumber}
           validationMessage={errors.phoneNumber}
           value={primaryContact.phone}/>}/>
       <div className="additional-contacts">

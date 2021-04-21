@@ -133,38 +133,38 @@ export default class ContactUsForm extends React.Component {
         <h4 className="center spacing after__is-30">Send us a message</h4>
         <FormField>
           <Input
-            disabled={loading}
+            isDisabled={loading}
+            isValid={name ? !!name : undefined}
             label="Your name"
             name="name"
             onChange={this.handleFieldChange}
             placeholder="e.g. John Smith"
             type="text"
-            valid={name ? !!name : undefined}
             validationMessage={errors?.name}
             value={name} />
         </FormField>
         <FormField>
           <Input
-            disabled={loading}
+            isDisabled={loading}
+            isValid={email ? isEmail(email) : undefined}
             label="Email"
             name="email"
             onChange={this.handleFieldChange}
             placeholder="e.g. username@mail.com"
             type="email"
-            valid={email ? isEmail(email) : undefined}
             validationMessage={errors?.email}
             value={email} />
         </FormField>
         <FormField>
           <Input
-            disabled={loading}
+            isDisabled={loading}
+            isValid={comment ? !!comment : undefined}
             label="Message"
             multiline
             name="comment"
             onChange={this.handleFieldChange}
             placeholder="Add your message here"
             type="text"
-            valid={comment ? !!comment : undefined}
             validationMessage={errors?.comment}
             value={comment} />
         </FormField>

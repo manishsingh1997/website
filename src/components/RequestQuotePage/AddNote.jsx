@@ -43,14 +43,14 @@ export default class AddNote extends React.Component {
               </a>
             </div>
             <Input
-              disabled={loading}
+              isDisabled={loading}
+              isValid={!!comment && !errors?.comment || null}
               label="Note"
               multiline
               name="comment"
               onChange={handleFieldChange}
               placeholder="Add your note here"
               type="text"
-              valid={!!comment && !errors?.comment || null}
               validationMessage={errors?.comment}
               value={comment} />
           </div>
