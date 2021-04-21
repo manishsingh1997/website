@@ -2,7 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
@@ -18,13 +18,12 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            echo "//npm.ergeon.in/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
             sudo python get-pip.py pip==20.3.4
-
             sudo pip install awscli
             sudo npm install -g npm@6.13.1
             sudo npm install -g @sentry/cli --unsafe-perm
+            echo "//npm.ergeon.in/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             make install
 
       - save_cache:
@@ -34,13 +33,29 @@ jobs:
             - ~/.cache
           key: v3-dependencies-{{ checksum "package.json" }}
 
-      - run:
-          name: Run tests
-          command: |
-            make test
+      - when:
+          condition:
+            equal: [ "$BUILD_TYPE", "sitemap-only" ]
 
-      - deploy:
-          name: Deploy
-          command: |
-            if [ "$CIRCLE_BRANCH" = "develop" ]; then make deploy-staging; fi
-            if [ "$CIRCLE_BRANCH" = "master" ]; then make deploy-production; fi
+          steps:
+            - run:
+                name: Deploy sitemaps
+                command: |
+                  if [ "$CIRCLE_BRANCH" = "develop" ]; then make deploy-only-sitemap-staging; fi
+                  if [ "$CIRCLE_BRANCH" = "master" ]; then make deploy-only-sitemap-production; fi
+
+      - unless:
+          condition:
+            equal: [ "$BUILD_TYPE", "sitemap-only" ]
+
+          steps:
+            - run:
+                name: Run tests
+                command: |
+                  make test
+
+            - deploy:
+                name: Deploy
+                command: |
+                  if [ "$CIRCLE_BRANCH" = "develop" ]; then make deploy-staging; fi
+                  if [ "$CIRCLE_BRANCH" = "master" ]; then make deploy-production; fi

@@ -20,7 +20,7 @@ endif
 
 all: install run
 
-build: clean
+build: clean create-sitemap
 	SENTRY_RELEASE_NAME=$(SENTRY_RELEASE_NAME) npm run build-$(LEVEL)
 
 clean:
@@ -59,7 +59,6 @@ sentry-upload-sourcemaps:
 	 $(SENTRY_CLI) releases files $(SENTRY_RELEASE_NAME) upload-sourcemaps $(DIST_PATH) --rewrite -i node_modules/ -i webpack.*
 
 deploy-staging:
-	LEVEL=staging make create-sitemap
 	LEVEL=staging make build
 	LEVEL=staging S3_BUCKET=dev.ergeon.com make s3upload
 	S3_BUCKET=dev.ergeon.com make ensure-redirects
@@ -67,7 +66,6 @@ deploy-staging:
 	LEVEL=staging make sentry-set-commits
 
 deploy-production:
-	LEVEL=production make create-sitemap
 	LEVEL=production make build
 	LEVEL=production S3_BUCKET=www.ergeon.com make s3upload
 	S3_BUCKET=www.ergeon.com make ensure-redirects
@@ -78,15 +76,34 @@ deploy-production:
 ensure-redirects:
 	$(NODE) $(PROCESS_PATH)/redirects/ensureRedirects.js $(S3_BUCKET)
 
-s3upload:
+s3upload: s3upload-main s3upload-sitemap
 	@if [ -z "$(S3_BUCKET)" ]; then >&2 echo S3_BUCKET must be supplied; exit 1; fi;
-	$(AWS_CLI) s3 sync $(DIST_PATH) s3://$(S3_BUCKET)/ $(AWS_S3_SYNC_PARAMS)  # use default cloudfront cache ttl
+	@if [ "$(LEVEL)" != "production" ]; then $(AWS_CLI) s3 cp $(DIST_PATH)/utm/index.html s3://$(S3_BUCKET)/utm/ --cache-control max-age=0; fi;
+
+s3upload-main:
+	@if [ -z "$(S3_BUCKET)" ]; then >&2 echo S3_BUCKET must be supplied; exit 1; fi;
+	# use default cloudfront cache ttl
+	$(AWS_CLI) s3 sync $(DIST_PATH) s3://$(S3_BUCKET)/ $(AWS_S3_SYNC_PARAMS) --exclude "index.html" --exclude "*sitemap.xml" --exclude "robots.txt"
 	# don't use cache index.html
 	$(AWS_CLI) s3 cp $(DIST_PATH)/index.html s3://$(S3_BUCKET)/ --cache-control max-age=0
 	# don't use cache robots.txt
 	$(AWS_CLI) s3 cp $(DIST_PATH)/robots.txt s3://$(S3_BUCKET)/ --cache-control max-age=0
-	@if [ "$(LEVEL)" != "production" ]; then $(AWS_CLI) s3 cp $(DIST_PATH)/utm/index.html s3://$(S3_BUCKET)/utm/ --cache-control max-age=0; fi;
+
+s3upload-sitemap:
+	@if [ -z "$(S3_BUCKET)" ]; then >&2 echo S3_BUCKET must be supplied; exit 1; fi;
+	# don't use cache for sitemaps
+	$(AWS_CLI) s3 cp $(DIST_PATH)/sitemap.xml s3://$(S3_BUCKET)/ --cache-control max-age=0
+	$(AWS_CLI) s3 cp $(DIST_PATH)/help/sitemap.xml s3://$(S3_BUCKET)/help/ --cache-control max-age=0
+	$(AWS_CLI) s3 cp $(DIST_PATH)/gallery/sitemap.xml s3://$(S3_BUCKET)/gallery/ --cache-control max-age=0
 
 invalidate-cloudfront:
 	@if [ -z "$(DOMAIN)" ]; then >&2 echo DOMAIN must be supplied; exit 1; fi;
 	$(AWS_CLI) cloudfront create-invalidation --distribution-id `$(AWS_CLI) cloudfront list-distributions --query "DistributionList.Items[?contains(Aliases.Items, '$(DOMAIN)')].Id" --output text` --paths /index.html /?upcoming-features /utm/index.html /utm/ /robots.txt
+
+deploy-only-sitemap-staging:
+	LEVEL=staging S3_BUCKET=dev.ergeon.com make deploy-only-sitemap
+
+deploy-only-sitemap-production:
+	LEVEL=production S3_BUCKET=www.ergeon.com make deploy-only-sitemap
+
+deploy-only-sitemap: build s3upload-sitemap
