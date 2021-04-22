@@ -102,7 +102,7 @@ export default class AppConfigPreview extends React.Component {
       <div
         className={classNames('config-preview', 'border',
           {
-            'gallery-preview': !isEmpty(images) && !isPlaceholder,
+            'gallery-preview': !isEmpty(images),
             'config-preview__no-preview': isPlaceholder,
             [className]: Boolean(className),
           }
@@ -166,10 +166,8 @@ export default class AppConfigPreview extends React.Component {
 
   render() {
     const {images} = this.props;
-    const {previewImage} = this.state;
-    const isPlaceholder = isEqual(previewImage, previewPlaceholderIcon) || isEqual(previewImage, noPreviewIcon);
     // only for pdf mode so we can show all imageslist
-    if (isUpcomingFeaturesEnabled() && isPDFMode() && !isEmpty(images) && !isPlaceholder) {
+    if (isUpcomingFeaturesEnabled() && isPDFMode() && !isEmpty(images)) {
       return (
         <div className="cards two-columns">
           {images.map((elem) => <ImageCard key={elem.id} title={elem.title} url={elem.file} />)}
