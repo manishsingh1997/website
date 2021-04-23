@@ -50,7 +50,7 @@ export default class QuoteDetails extends React.Component {
           </div>
           <div className="cards two-columns">
             {imagesArray.map((elem) =>
-              <ImageCard key={elem.order} title={elem.title} url={elem.file} />)}
+              <ImageCard key={elem.id} title={elem.title} url={elem.file} />)}
           </div>
         </div>
       );
