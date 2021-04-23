@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import QuoteDescription from './QuoteDescription';
-import {Notification, Spinner} from '@ergeon/core-components';
+import {Notification, Spinner, ImageCard} from '@ergeon/core-components';
 import {googleIntegration} from '@ergeon/core-components';
 import DrawMap from '@ergeon/draw-map';
 import classNames from 'classnames';
@@ -11,7 +11,11 @@ import QuoteLines from './QuoteLines';
 import {CARD_TRANSACTION_FEE} from 'website/constants';
 import {formatPrice, isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
 import {Link} from 'react-router-dom';
+import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 import {formatDate} from '../../utils/date';
+import isEmpty from 'lodash/isEmpty';
+
+import {ProjectImagesLegend} from './QuoteLine/utils';
 
 export default class QuoteDetails extends React.Component {
   static propTypes = {
@@ -31,6 +35,29 @@ export default class QuoteDetails extends React.Component {
   isQuoteReplaced(quote = {}) {
     return quote['replaced_by_quote'] && quote['replaced_by_quote']['secret'];
   }
+
+  renderProjectImages() {
+    const {asPDF, quote} = this.props;
+
+    const imagesArray = quote && quote['mediafile_list'] &&
+      quote['mediafile_list'].mediafiles;
+
+    if (isUpcomingFeaturesEnabled() && asPDF && !isEmpty(imagesArray)) {
+      return (
+        <div className="quote-line-images spacing after__is-24">
+          <div className="spacing after__is-12">
+            <ProjectImagesLegend/>
+          </div>
+          <div className="cards two-columns">
+            {imagesArray.map((elem) =>
+              <ImageCard key={elem.order} title={elem.title} url={elem.file} />)}
+          </div>
+        </div>
+      );
+    }
+    return null;
+  }
+
   renderQuoteCancelledMessage(quote) {
     const {getNewQuoteLink} = this.props;
     if (this.isQuoteReplaced(quote)) {
@@ -118,7 +145,7 @@ export default class QuoteDetails extends React.Component {
           </div>
         )}
         <div className="quote-details__description flex-wrapper spacing after__is-24">
-          <QuoteDescription asPDF={asPDF} auth={auth} customerGID={customerGID} quote={quote}/>
+          <QuoteDescription asPDF={asPDF} auth={auth} customerGID={customerGID} quote={quote} />
           <div className="quote-labels-map">
             <Spinner
               active={isLoadingMap}
@@ -150,10 +177,11 @@ export default class QuoteDetails extends React.Component {
             simply contact us at <a href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a>.
           </Notification>
         )}
+        {this.renderProjectImages()}
         <QuoteLines
           asPDF={asPDF}
           isInstallerPreview={isInstallerPreview}
-          quote={quote}/>
+          quote={quote} />
         <div className={classNames({'total-price': !isInstallerPreview, 'total-price-noteless': isInstallerPreview})}>
           <h4>Total: {totalPrice}</h4>
           {parentQuote && (

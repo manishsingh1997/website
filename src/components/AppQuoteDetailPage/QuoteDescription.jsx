@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {ReactSVG} from 'react-svg';
 import {Link} from 'react-router-dom';
+import {ImageGallery, SwipeGallery} from '@ergeon/core-components';
+import {isPDFMode} from 'utils/utils';
+import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
+import isEmpty from 'lodash/isEmpty';
 
 import ImgBack from '../../assets/icon-arrow-left.svg';
 
@@ -11,6 +15,7 @@ import {formatDateAndTime} from '../../utils/date';
 import {getExpiresAtTitle} from '../../utils/utils';
 import {getOrderDetailURL} from '../../utils/urls';
 import {isQuoteApproved} from 'utils/app-order';
+import {ProjectImagesLegend} from './QuoteLine/utils';
 
 export default class QuoteDescription extends React.Component {
   static propTypes = {
@@ -25,15 +30,55 @@ export default class QuoteDescription extends React.Component {
     return getOrderDetailURL(customerGID, orderID);
   }
   isUserOwnerOfQuote() {
-    const {auth : {user}, customerGID} = this.props;
+    const {auth: {user}, customerGID} = this.props;
     return !!user && user.gid === customerGID;
+  }
+  getMediafileList() {
+    const {quote} = this.props;
+    // check if we have mediafiles, if so map url to elem.file as our Galleries need it
+    return quote && quote['mediafile_list'] &&
+      quote['mediafile_list'].mediafiles.map((elem) => ({url: elem.file, ...elem}));
+  }
+  imagesGalleryDesktop() {
+    const imagesArray = this.getMediafileList();
+
+    if (isUpcomingFeaturesEnabled() && !isEmpty(imagesArray)) {
+      return (
+        <div className="quote-project-images">
+          {imagesArray && !isPDFMode() &&
+            <div className="desktop-length">
+              <ImageGallery images={imagesArray} />
+              <ProjectImagesLegend />
+            </div>
+          }
+        </div>
+      );
+    }
+    return null;
+  }
+  imagesGalleryMobile() {
+    const imagesArray = this.getMediafileList();
+
+    if (isUpcomingFeaturesEnabled() && !isEmpty(imagesArray)) {
+      return (
+        <div className="quote-project-images">
+          {imagesArray && !isPDFMode() &&
+            <div className="mobile-length">
+              <ProjectImagesLegend />
+              <SwipeGallery images={imagesArray} />
+            </div>
+          }
+        </div>
+      );
+    }
+    return null;
   }
   renderBackButton() {
     return (
       <Link
         className="button button--regular button--size__small taste__boundless button-back"
         to={this.linkToOrderPage}>
-        <ReactSVG className="gray-arrow-fill" src={ImgBack}/>Back to order</Link>
+        <ReactSVG className="gray-arrow-fill" src={ImgBack} />Back to order</Link>
     );
   }
   render() {
@@ -58,27 +103,40 @@ export default class QuoteDescription extends React.Component {
       </div>
     );
     return (
-      <div className="quote-details-wrapper">
-        {this.isUserOwnerOfQuote() && !asPDF && this.renderBackButton()}
-        {quote.title  && quote.title.length < 55 ? <h3>{quote.title}</h3> : <h4>{quote.title}</h4>}
-        {!quote.title &&  <h3>{quote.order.product.name} Quote #{quote.id}</h3>}
-        <div>
-          <i>Quote provided by Ergeon, license CA{ERGEON_LICENSE_NUMBER}</i>
+      <>
+        <div className="quote-details-wrapper">
+          {this.isUserOwnerOfQuote() && !asPDF && this.renderBackButton()}
+          {quote.title && quote.title.length < 55 ? <h3>{quote.title}</h3> : <h4>{quote.title}</h4>}
+          {!quote.title && <h3>{quote.order.product.name} Quote #{quote.id}</h3>}
+          <div>
+            <i>Quote provided by Ergeon, license CA{ERGEON_LICENSE_NUMBER}</i>
+          </div>
+          <div className="quote-fields spacing before__is-24">
+            <DataRow title="Customer" value={customerDetails} />
+            <div className="quote-fields-wrapper">
+              <div className="quote-fields-wrapper__fields">
+                <DataRow title="Quote ID" value={`#${quote.id}`} />
+                {
+                  this.isUserOwnerOfQuote()
+                    ? <DataRow title="Order ID" value={<Link to={this.linkToOrderPage}>#{quote.order.id}</Link>} />
+                    : <DataRow title="Order ID" value={`#${quote.order.id}`} />
+                }
+                <DataRow title="Sent At" value={formatDateAndTime(quote['sent_to_customer_at'])} />
+                {expiresAt && <DataRow title={expiresAtTitle} value={formatDateAndTime(expiresAt)} />}
+                {isQuoteApproved(quote) && approvedAt && (
+                  <DataRow title="Approved At" value={formatDateAndTime(approvedAt)} />
+                )}
+              </div>
+              <div className="quote-fields-wrapper__images desktop-length">
+                {this.imagesGalleryDesktop()}
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="quote-fields spacing before__is-24">
-          <DataRow title="Customer" value={customerDetails} />
-          <DataRow title="Quote ID" value={`#${quote.id}`} />
-          {
-            this.isUserOwnerOfQuote()
-              ? <DataRow title="Order ID" value={<Link to={this.linkToOrderPage}>#{quote.order.id}</Link>}/>
-              : <DataRow title="Order ID" value={`#${quote.order.id}`} />
-          }
-          <DataRow title="Sent At" value={formatDateAndTime(quote['sent_to_customer_at'])} />
-          {expiresAt && <DataRow title={expiresAtTitle} value={formatDateAndTime(expiresAt)} />}
-          {isQuoteApproved(quote) && approvedAt && (
-            <DataRow title="Approved At" value={formatDateAndTime(approvedAt)} />
-          )}
+        <div className="mobile-length">
+          {this.imagesGalleryMobile()}
         </div>
-      </div>);
+      </>
+    );
   }
 }

@@ -91,6 +91,55 @@
     border-bottom: 1px solid $gray-4;
     padding: $v-12 0;
   }
+  .quote-fields-wrapper {
+    display: flex;
+
+    &__fields {
+      width: 90%;
+    }
+
+    &__images {
+      align-items: center;
+      justify-content: center;
+      width: 10%;
+    }
+  }
+
+  .quote-project-images {
+    float: right;
+    padding: $h-10;
+
+    .image-gallery-container {
+      width: 150px;
+      .image-gallery-thumb {
+        .image-loader__wrapper {
+          max-height: 150px;
+        }
+      }
+    }
+
+    @include phone() {
+      float: none;
+      width: 100%;
+      padding-bottom: $v-16;
+      margin-bottom: $v-12;
+    }
+
+    &__legend {
+      display: flex;
+
+      @include phone() {
+        margin-bottom: $v-6;
+      }
+    }
+
+    .image-gallery-container {
+      margin-bottom: $v-6;
+      a {
+        display: none;
+      }
+    }
+  }
 
   .quote-line {
     page-break-inside: avoid;
@@ -212,7 +261,9 @@
   }
 
   .quote-notes {
-    p, ul, ol {
+    p,
+    ul,
+    ol {
       max-width: 720px;
     }
     h4 {

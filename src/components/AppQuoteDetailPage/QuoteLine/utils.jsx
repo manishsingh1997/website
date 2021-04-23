@@ -1,5 +1,9 @@
+import React from 'react';
 import isEqual from 'lodash/isEqual';
 import {getLabelFromIndex} from '@ergeon/draw-map';
+
+import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
+
 /**
  * Returns matching quoteLine comparing vs itemName
  * @param {Array.<object>} quoteLines
@@ -31,4 +35,15 @@ export const isAllowedUnitDisplay = (isInstallerPreview, catalog) => {
     return true;
   }
   return catalog.type.allows_unit_display;
+};
+
+export const ProjectImagesLegend = () => {
+  return (
+    <div className="quote-project-images__legend">
+      <img alt="" src={iconPhotoPlaceholder} />
+      <span className="spacing left__is-5">
+        Project Images
+      </span>
+    </div>
+  );
 };
