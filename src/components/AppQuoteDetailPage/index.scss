@@ -134,6 +134,10 @@
       @include phone() {
         margin-bottom: $v-6;
       }
+      
+      span {
+        font-size: $font-mobile-size;
+      }
     }
 
     .image-gallery-container {

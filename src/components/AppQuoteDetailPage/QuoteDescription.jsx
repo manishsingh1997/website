@@ -48,7 +48,7 @@ export default class QuoteDescription extends React.Component {
           {imagesArray && !isPDFMode() &&
             <div className="desktop-length">
               <ImageGallery images={imagesArray} />
-              <ProjectImagesLegend />
+              <ProjectImagesLegend imagesLen={imagesArray.length} />
             </div>
           }
         </div>
@@ -64,7 +64,7 @@ export default class QuoteDescription extends React.Component {
         <div className="quote-project-images">
           {imagesArray && !isPDFMode() &&
             <div className="mobile-length">
-              <ProjectImagesLegend />
+              <ProjectImagesLegend imagesLen={imagesArray.length}/>
               <SwipeGallery images={imagesArray} />
             </div>
           }

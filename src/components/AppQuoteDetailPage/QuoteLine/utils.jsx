@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import {getLabelFromIndex} from '@ergeon/draw-map';
 
@@ -37,13 +38,17 @@ export const isAllowedUnitDisplay = (isInstallerPreview, catalog) => {
   return catalog.type.allows_unit_display;
 };
 
-export const ProjectImagesLegend = () => {
+export const ProjectImagesLegend = ({imagesLen}) => {
   return (
     <div className="quote-project-images__legend">
       <img alt="" src={iconPhotoPlaceholder} />
       <span className="spacing left__is-5">
-        Project Images
+        Project Images {imagesLen > 0 && `(${imagesLen})`}
       </span>
     </div>
   );
+};
+
+ProjectImagesLegend.propTypes = {
+  imagesLen: PropTypes.number,
 };
