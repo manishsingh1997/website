@@ -9,7 +9,7 @@ import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import QuoteLines from './QuoteLines';
 import {CARD_TRANSACTION_FEE} from 'website/constants';
-import {formatPrice, isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
+import {isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
 import {Link} from 'react-router-dom';
 import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 import {formatDate} from '../../utils/date';
@@ -25,7 +25,9 @@ export default class QuoteDetails extends React.Component {
     getNewQuoteLink: PropTypes.func,
     isInstallerPreview: PropTypes.bool,
     quote: PropTypes.object,
+    totalPreviouslyApprovedPrice: PropTypes.string,
     totalPrice: PropTypes.string,
+    totalProjectPrice: PropTypes.string,
   };
 
   state = {
@@ -97,24 +99,42 @@ export default class QuoteDetails extends React.Component {
       </Notification>
     );
   }
-  render() {
-    const {quote, asPDF, auth, isInstallerPreview, totalPrice, customerGID} = this.props;
-    const {isLoadingMap} = this.state;
+  renderQuotePriceSection() {
+    const {quote, isInstallerPreview, totalPrice, totalPreviouslyApprovedPrice, totalProjectPrice} = this.props;
     const {
       'parent_quote': parentQuote,
+    } = quote;
+
+    if (!parentQuote) {
+      return (
+        <div className={classNames({'total-price': !isInstallerPreview, 'total-price-noteless': isInstallerPreview})}>
+          <h4>Total: {totalPrice}</h4>
+        </div>
+      );
+    }
+
+    return (
+      <div className={classNames({'total-price': !isInstallerPreview, 'total-price-noteless': isInstallerPreview})}>
+        <h6 className="change-order-quote-price">
+          Total change order price for approval: {totalPrice}
+        </h6>
+        <h6 className="change-order-total-previous-price">
+          Total previously approved
+          ({formatDate(parentQuote['approved_at'])}): {totalPreviouslyApprovedPrice}
+        </h6>
+        <h4>
+          Total project price: {totalProjectPrice}
+        </h4>
+      </div>
+    );
+  }
+
+  render() {
+    const {quote, asPDF, auth, isInstallerPreview, customerGID} = this.props;
+    const {isLoadingMap} = this.state;
+    const {
       'calc_input': calcInput,
     } = quote;
-    let parentQuoteTotalPrice = 0;
-    let parentQuoteTotalPriceText = null;
-
-    if (parentQuote) {
-      parentQuoteTotalPrice = isInstallerPreview ? parentQuote['total_cost'] : parentQuote['total_price'];
-      parentQuoteTotalPriceText = `
-        Total previously approved
-        (${formatDate(parentQuote['approved_at'])}):
-        ${formatPrice(parentQuoteTotalPrice)}
-      `;
-    }
 
     let address = quote.order.house.address;
     if (!address) {
@@ -182,14 +202,7 @@ export default class QuoteDetails extends React.Component {
           asPDF={asPDF}
           isInstallerPreview={isInstallerPreview}
           quote={quote} />
-        <div className={classNames({'total-price': !isInstallerPreview, 'total-price-noteless': isInstallerPreview})}>
-          <h4>Total: {totalPrice}</h4>
-          {parentQuote && (
-            <b className="quote-line-approved-at-label">
-              {parentQuoteTotalPriceText}
-            </b>
-          )}
-        </div>
+        {this.renderQuotePriceSection()}
         {!isInstallerPreview && (
           <div className="asterisk-notes">
             <span className="asterisk">*</span>

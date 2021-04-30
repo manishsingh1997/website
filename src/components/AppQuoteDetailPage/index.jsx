@@ -151,6 +151,16 @@ export default class AppQuoteDetailPage extends React.Component {
     return quote['total_price'];
   }
 
+  getProjectTotalPrice(quote) {
+    const projectQuote = quote.parent_quote ? quote.parent_quote : quote;
+
+    return this.getTotalPrice(projectQuote);
+  }
+
+  getTotalPreviouslyApprovedPrice(quote) {
+    return this.getProjectTotalPrice(quote) - this.getTotalPrice(quote);
+  }
+
   shouldShowBillingForm() {
     const {quote} = this.state;
     const isPDFModeDisabled = !isPDFMode();
@@ -220,7 +230,9 @@ export default class AppQuoteDetailPage extends React.Component {
           getNewQuoteLink={this.getNewQuoteLink.bind(this)}
           isInstallerPreview={this.isInstallerPreview()}
           quote={quote}
-          totalPrice={formatPrice(this.getTotalPrice(quote))}/>
+          totalPreviouslyApprovedPrice={formatPrice(this.getTotalPreviouslyApprovedPrice(quote))}
+          totalPrice={formatPrice(this.getTotalPrice(quote))}
+          totalProjectPrice={formatPrice(this.getProjectTotalPrice(quote))}/>
         {!this.isInstallerPreview() && <ProjectNotes quote={quote}/>}
         {this.shouldShowBillingForm() && <BillingForm
           error={paymentMethodError}
@@ -230,7 +242,7 @@ export default class AppQuoteDetailPage extends React.Component {
           quoteApproved={isQuoteApproved(quote)}
           quoteId={quote['id']}
           termsAndConditionsUrl={termsAndConditionsUrl}
-          total={formatPrice(this.getTotalPrice(quote))} />}
+          total={formatPrice(this.getProjectTotalPrice(quote))} />}
         {
           !this.isInstallerPreview() &&
           <ExplanationSection
