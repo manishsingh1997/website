@@ -73,7 +73,7 @@
 // swipe gallery fix as height overflows current area on mobile for some reason
 .swipe-gallery {
   .image-gallery-image {
-    height: unset;
+    height: unset !important;
   }
 }
 

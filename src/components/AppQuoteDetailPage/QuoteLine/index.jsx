@@ -54,6 +54,7 @@ export default function QuoteLine(props) {
     tags,
     type,
     isInstallerPreview,
+    images,
   } = props;
 
   const imagePreview = useMemo(() => (
@@ -63,12 +64,14 @@ export default function QuoteLine(props) {
   // Used on classNames to correctly trigger pdf classes to modify our layout
   // Note: when removing upcoming flag we should refactor to only check for isPDFMode() on classNames
   // as this will become rendunant
-  const isQuoteLinePDF = useMemo(() => isUpcomingFeaturesEnabled() && isPDFMode(), []);
+  const isQuoteLinePDF = useMemo(() => isUpcomingFeaturesEnabled() && isPDFMode() && images, [images]);
 
   return (
     <div className={classNames('quote-line', {'quote-line__pdf': isQuoteLinePDF})} key={`side-${id}`}>
-      {/* Note: when removing upcoming flag, we should always check for pdfMode, line below should be taken out */}
+      {/* Note: when removing upcoming flag, we should always check for pdfMode,
+      as this modifies our layout to display images underneat */}
       {!isUpcomingFeaturesEnabled() && imagePreview}
+      {isUpcomingFeaturesEnabled() && isPDFMode() && !images && imagePreview}
       {/* Layout changes from desktop to mobile, as we move the gallery depeding on each */}
       <div className="desktop-length">
         {isUpcomingFeaturesEnabled() && !isPDFMode() && imagePreview}
@@ -120,8 +123,8 @@ export default function QuoteLine(props) {
           </div>
         )}
       </div>
-      {/* This is only used on isPDFMode, as we will render all images underneat */}
-      {isUpcomingFeaturesEnabled() && isPDFMode() && (
+      {/* This is only used on isPDFMode, as we will render all images underneat if any */}
+      {isUpcomingFeaturesEnabled() && isPDFMode() && images && (
         <div className="quote-line-images spacing before__is-12 after__is-12">
           {imagePreview}
         </div>
@@ -137,6 +140,7 @@ QuoteLine.propTypes = {
   description: PropTypes.string,
   distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  images: PropTypes.array,
   index: PropTypes.number,
   isInstallerPreview: PropTypes.bool,
   label: PropTypes.string,

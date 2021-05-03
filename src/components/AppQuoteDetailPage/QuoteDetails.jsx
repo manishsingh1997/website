@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import QuoteDescription from './QuoteDescription';
-import {Notification, Spinner, ImageCard} from '@ergeon/core-components';
+import {Notification, Spinner, ImageCard, Title} from '@ergeon/core-components';
 import {googleIntegration} from '@ergeon/core-components';
 import DrawMap from '@ergeon/draw-map';
 import classNames from 'classnames';
@@ -15,7 +15,7 @@ import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 import {formatDate} from '../../utils/date';
 import isEmpty from 'lodash/isEmpty';
 
-import {ProjectImagesLegend} from './QuoteLine/utils';
+import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 
 export default class QuoteDetails extends React.Component {
   static propTypes = {
@@ -47,9 +47,9 @@ export default class QuoteDetails extends React.Component {
     if (isUpcomingFeaturesEnabled() && asPDF && !isEmpty(imagesArray)) {
       return (
         <div className="quote-line-images spacing after__is-24">
-          <div className="spacing after__is-12">
-            <ProjectImagesLegend/>
-          </div>
+          <Title className="spacing after__is-12" icon={iconPhotoPlaceholder}>
+            Project Images
+          </Title>
           <div className="cards two-columns">
             {imagesArray.map((elem) =>
               <ImageCard key={elem.id} title={elem.title} url={elem.file} />)}

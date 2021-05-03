@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {getLabelFromIndex} from '@ergeon/draw-map';
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 
-import {isQuoteLineOfMapKinds, getTagsForQuoteLine} from './utils';
+import {isQuoteLineOfMapKinds, getTagsForQuoteLine, getImagesForQuoteLine} from './utils';
 import QuoteLine from '../QuoteLine';
 
 /**
@@ -47,6 +47,7 @@ export default function QuoteLinesRender(props) {
       // show tags only when calcInput is present
       tags: calcInput ? getTagsForQuoteLine(getLabelFromIndex(i), quote) : undefined,
       price: showPrice ? side.price : 0,
+      images: getImagesForQuoteLine(getLabelFromIndex(i), quote),
     });
 
     const getQuoteLinePropsFromGate = (gate, i) => ({
@@ -62,6 +63,7 @@ export default function QuoteLinesRender(props) {
       price: showPrice ? gate.price : 0,
       // hide distance if calcInput is present
       distance: calcInput ? undefined : gate.distance,
+      images: getImagesForQuoteLine(i + 1, quote),
     });
 
     const getQuoteLinePropsFromAreas = (area, i) => ({
@@ -76,7 +78,6 @@ export default function QuoteLinesRender(props) {
       // hide distance if calcInput is present
       distance: calcInput ? undefined : area.distance,
     });
-
     return [
       ...sides.map(getQuoteLinePropsFromSide),
       ...gates.map(getQuoteLinePropsFromGate),

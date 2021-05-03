@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AppConfigPreview from '../../common/AppConfigPreview';
-import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 
@@ -17,7 +16,7 @@ import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants'
  * }} props
  */
 export default function QuoteLinePreview(props) {
-  const {quote, distance, quoteLine, type, useNoPreviewIcon = false, usePlaceHolder = false} = props;
+  const {quote, distance, quoteLine, type, useNoPreviewIcon = false, usePlaceHolder = false, images} = props;
   // check if address exists, in rare cases in can be null
   const zipCode = quote.order.house.address
     ? quote.order.house.address['zip_code']
@@ -29,10 +28,6 @@ export default function QuoteLinePreview(props) {
   const propertySchemaCodeUrl =
     propertyData && propertyData.replace('schema', 'property_schema').replace('code', 'property_code');
   const showLink = isQuotePreviewPossible && !(usePlaceHolder || useNoPreviewIcon) && Boolean(schemaCodeUrl);
-  let images = null;
-  if (isUpcomingFeaturesEnabled()) {
-    images = quoteLine && quoteLine['mediafile_list'] && quoteLine['mediafile_list'].mediafiles;
-  }
   return (
     <AppConfigPreview
       className="quote-line-preview"
@@ -49,6 +44,7 @@ export default function QuoteLinePreview(props) {
 
 QuoteLinePreview.propTypes = {
   distance: PropTypes.number,
+  images: PropTypes.array,
   quote: PropTypes.object,
   quoteLine: PropTypes.object,
   type: PropTypes.oneOf([CALC_SIDE_TYPE, CALC_GATE_TYPE, CALC_AREA_TYPE]),

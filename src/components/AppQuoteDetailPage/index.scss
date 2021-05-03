@@ -107,14 +107,10 @@
 
   .quote-project-images {
     float: right;
-    padding: $h-10;
 
     .image-gallery-container {
       width: 150px;
       .image-gallery-thumb {
-        .image-loader__wrapper {
-          max-height: 150px;
-        }
         .image-loader__image {
           height: 150px;
         }
@@ -134,17 +130,14 @@
       @include phone() {
         margin-bottom: $v-6;
       }
-      
+
       span {
         font-size: $font-mobile-size;
       }
     }
 
     .image-gallery-container {
-      margin-bottom: $v-6;
-      a {
-        display: none;
-      }
+      margin-bottom: $v-24;
     }
   }
 

@@ -161,7 +161,7 @@ export default class AppConfigPreview extends React.Component {
         {imagesObj &&
           <>
             <div className="desktop-length">
-              <ImageGallery images={imagesObj} />
+              <ImageGallery height={150} images={imagesObj} width={150} />
             </div>
             <div className="mobile-length">
               <SwipeGallery images={imagesObj} />

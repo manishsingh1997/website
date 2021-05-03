@@ -8,6 +8,7 @@ import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 import isEmpty from 'lodash/isEmpty';
 
 import ImgBack from '../../assets/icon-arrow-left.svg';
+import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 
 import {ERGEON_LICENSE_NUMBER} from '../../website/constants';
 import DataRow from '../common/DataRow';
@@ -15,7 +16,6 @@ import {formatDateAndTime} from '../../utils/date';
 import {getExpiresAtTitle} from '../../utils/utils';
 import {getOrderDetailURL} from '../../utils/urls';
 import {isQuoteApproved} from 'utils/app-order';
-import {ProjectImagesLegend} from './QuoteLine/utils';
 
 export default class QuoteDescription extends React.Component {
   static propTypes = {
@@ -47,8 +47,12 @@ export default class QuoteDescription extends React.Component {
         <div className="quote-project-images">
           {imagesArray && !isPDFMode() &&
             <div className="desktop-length">
-              <ImageGallery images={imagesArray} />
-              <ProjectImagesLegend imagesLen={imagesArray.length} />
+              <ImageGallery
+                height={150}
+                images={imagesArray}
+                title="Project Images"
+                titleIcon={iconPhotoPlaceholder}
+                width={150} />
             </div>
           }
         </div>
@@ -64,8 +68,7 @@ export default class QuoteDescription extends React.Component {
         <div className="quote-project-images">
           {imagesArray && !isPDFMode() &&
             <div className="mobile-length">
-              <ProjectImagesLegend imagesLen={imagesArray.length}/>
-              <SwipeGallery images={imagesArray} />
+              <SwipeGallery images={imagesArray} title="Project Images" titleIcon={iconPhotoPlaceholder} />
             </div>
           }
         </div>
