@@ -4,7 +4,6 @@ import {ReactSVG} from 'react-svg';
 import {Link} from 'react-router-dom';
 import {ImageGallery, SwipeGallery} from '@ergeon/core-components';
 import {isPDFMode} from 'utils/utils';
-import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 import isEmpty from 'lodash/isEmpty';
 
 import ImgBack from '../../assets/icon-arrow-left.svg';
@@ -42,7 +41,7 @@ export default class QuoteDescription extends React.Component {
   imagesGalleryDesktop() {
     const imagesArray = this.getMediafileList();
 
-    if (isUpcomingFeaturesEnabled() && !isEmpty(imagesArray)) {
+    if (!isEmpty(imagesArray)) {
       return (
         <div className="quote-project-images">
           {imagesArray && !isPDFMode() &&
@@ -63,7 +62,7 @@ export default class QuoteDescription extends React.Component {
   imagesGalleryMobile() {
     const imagesArray = this.getMediafileList();
 
-    if (isUpcomingFeaturesEnabled() && !isEmpty(imagesArray)) {
+    if (!isEmpty(imagesArray)) {
       return (
         <div className="quote-project-images">
           {imagesArray && !isPDFMode() &&

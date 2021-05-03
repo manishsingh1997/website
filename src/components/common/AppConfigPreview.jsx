@@ -9,7 +9,6 @@ import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {calcUtils} from '@ergeon/3d-lib';
 import {constants as constants3dLib} from '@ergeon/3d-lib';
 import {isPDFMode} from 'utils/utils';
-import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 import {getFencequotingURL} from '../../utils/urls';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
@@ -92,10 +91,10 @@ export default class AppConfigPreview extends React.Component {
     const withLinkAndSchemaUrl = Boolean(withLink && schemaCodeUrl);
     // Note: as images are now part of props enable galleries only if images isn't empty
     // if they are then we should fallback to renderPreviewWithLink/renderPreview
-    if (isUpcomingFeaturesEnabled() && !isEmpty(images)) {
+    if (!isEmpty(images)) {
       return this.renderGalleries();
     }
-    if (!isUpcomingFeaturesEnabled() && withLinkAndSchemaUrl) {
+    if (withLinkAndSchemaUrl) {
       return this.renderPreviewWithLink();
     }
     // !withLinkAndSchemaUrl should land here
@@ -175,7 +174,7 @@ export default class AppConfigPreview extends React.Component {
   render() {
     const {images} = this.props;
     // only for pdf mode so we can show all imageslist
-    if (isUpcomingFeaturesEnabled() && isPDFMode() && !isEmpty(images)) {
+    if (isPDFMode() && !isEmpty(images)) {
       return (
         <div className="cards two-columns">
           {images.map((elem) => <ImageCard key={elem.id} title={elem.title} url={elem.file} />)}

@@ -1,6 +1,5 @@
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
-import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 
 export const isQuoteLineOfMapKinds = (quoteLine, types) => {
   const catalog = quoteLine['catalog'];
@@ -19,8 +18,5 @@ export const getImagesForQuoteLine = (itemName, quote) => {
   const quoteLine = quote['quote_lines'].find((quoteLine) =>
     Boolean(quoteLine.label) && isEqual(quoteLine.label, itemName)
   );
-  if (isUpcomingFeaturesEnabled()) {
-    return get(quoteLine, quoteLine?.mediafile_list, quoteLine?.mediafile_list?.mediafiles);
-  }
-  return undefined;
+  return get(quoteLine, quoteLine?.mediafile_list, quoteLine?.mediafile_list?.mediafiles);
 };

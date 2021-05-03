@@ -11,7 +11,6 @@ import QuoteLines from './QuoteLines';
 import {CARD_TRANSACTION_FEE} from 'website/constants';
 import {isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
 import {Link} from 'react-router-dom';
-import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 import {formatDate} from '../../utils/date';
 import isEmpty from 'lodash/isEmpty';
 
@@ -44,7 +43,7 @@ export default class QuoteDetails extends React.Component {
     const imagesArray = quote && quote['mediafile_list'] &&
       quote['mediafile_list'].mediafiles;
 
-    if (isUpcomingFeaturesEnabled() && asPDF && !isEmpty(imagesArray)) {
+    if (asPDF && !isEmpty(imagesArray)) {
       return (
         <div className="quote-line-images spacing after__is-24">
           <Title className="spacing after__is-12" icon={iconPhotoPlaceholder}>

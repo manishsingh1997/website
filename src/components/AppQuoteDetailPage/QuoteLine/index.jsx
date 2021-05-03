@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
-import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 import {isPDFMode} from 'utils/utils';
 import {formatPrice} from '../../../utils/app-order';
 
@@ -62,24 +61,20 @@ export default function QuoteLine(props) {
   ), [label, props]);
 
   // Used on classNames to correctly trigger pdf classes to modify our layout
-  // Note: when removing upcoming flag we should refactor to only check for isPDFMode() on classNames
-  // as this will become rendunant
-  const isQuoteLinePDF = useMemo(() => isUpcomingFeaturesEnabled() && isPDFMode() && images, [images]);
+  const isQuoteLinePDF = useMemo(() => isPDFMode() && images, [images]);
 
   return (
     <div className={classNames('quote-line', {'quote-line__pdf': isQuoteLinePDF})} key={`side-${id}`}>
-      {/* Note: when removing upcoming flag, we should always check for pdfMode,
-      as this modifies our layout to display images underneat */}
-      {!isUpcomingFeaturesEnabled() && imagePreview}
-      {isUpcomingFeaturesEnabled() && isPDFMode() && !images && imagePreview}
+      {/* Check for pdfMode, as this modifies our layout to display images underneat if we have any */}
+      {isPDFMode() && !images && imagePreview}
       {/* Layout changes from desktop to mobile, as we move the gallery depeding on each */}
       <div className="desktop-length">
-        {isUpcomingFeaturesEnabled() && !isPDFMode() && imagePreview}
+        {!isPDFMode() && imagePreview}
       </div>
       <div className={classNames('quote-line-description', {'quote-line-description__pdf': isQuoteLinePDF})}>
         <Title index={index} label={label} type={type} />
         <div className="mobile-length">
-          {isUpcomingFeaturesEnabled() && !isPDFMode() && imagePreview}
+          {!isPDFMode() && imagePreview}
         </div>
         {/*
             We render quote_lines from the quote data.
@@ -124,7 +119,7 @@ export default function QuoteLine(props) {
         )}
       </div>
       {/* This is only used on isPDFMode, as we will render all images underneat if any */}
-      {isUpcomingFeaturesEnabled() && isPDFMode() && images && (
+      {isPDFMode() && images && (
         <div className="quote-line-images spacing before__is-12 after__is-12">
           {imagePreview}
         </div>
