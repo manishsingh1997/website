@@ -13,6 +13,7 @@ import {
   Input,
   RadioButton,
 } from '@ergeon/core-components';
+import {UPCOMING_FEATURES_PARAM} from '@ergeon/erg-utils-js';
 import {getBaseEventData} from '@ergeon/erg-utms';
 
 import AddNote from './AddNote';
@@ -138,7 +139,7 @@ export default class LeadForm extends React.Component {
         eventData['object'] = {...eventData.object, order};
       }
       if (showUpcomingFeatures()) {
-        eventData['is_upcoming_features_enabled'] = true;
+        eventData[UPCOMING_FEATURES_PARAM] = true;
         if (!user) {
           eventData['auto_sign_in'] = true;
         }
