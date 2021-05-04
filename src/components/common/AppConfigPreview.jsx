@@ -103,14 +103,12 @@ export default class AppConfigPreview extends React.Component {
 
   configPreview() {
     const {className, images} = this.props;
-    const {isLoading, previewImage} = this.state;
-    const isPlaceholder = isEqual(previewImage, previewPlaceholderIcon) || isEqual(previewImage, noPreviewIcon);
+    const {isLoading} = this.state;
     return (
       <div
         className={classNames('config-preview', 'border',
           {
             'gallery-preview': !isEmpty(images),
-            'config-preview__no-preview': isPlaceholder,
             [className]: Boolean(className),
           }
         )}>
