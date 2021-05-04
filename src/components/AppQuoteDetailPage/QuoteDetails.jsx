@@ -121,7 +121,7 @@ export default class QuoteDetails extends React.Component {
           Total previously approved
           ({formatDate(parentQuote['approved_at'])}): {totalPreviouslyApprovedPrice}
         </h6>
-        <h4>
+        <h4 className="change-order-total-project-price">
           Total project price: {totalProjectPrice}
         </h4>
       </div>

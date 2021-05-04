@@ -215,10 +215,16 @@
 
   .change-order-quote-price {
     color: $black-1;
+    font-size: $v-16;
   }
 
   .change-order-total-previous-price {
     color: $black-3;
+    font-size: $v-16;
+  }
+
+  .change-order-total-project-price {
+    font-size: $v-20;
   }
 
   .total-price-noteless {
