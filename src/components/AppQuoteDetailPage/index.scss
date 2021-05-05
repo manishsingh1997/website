@@ -364,6 +364,22 @@
     }
   }
 
+  // properly set quote and quote-line images grid and sizes
+  .quote-line-images {
+    .two-columns {
+      grid-template-columns: repeat(auto-fit, minmax(80mm, 1fr));
+    }
+    .image-loader__wrapper {
+      .image-loader__image {
+        object-position: center center;
+      }
+      img {
+        height: 40mm;
+        width: 100mm;
+      }
+    }
+  }
+
   .customer-app-layout {
     margin-top: 0;
     padding: 0;

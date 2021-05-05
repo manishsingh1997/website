@@ -8,7 +8,11 @@
   width: 150px;
   height: 150px;
   background-color: $white;
-
+  &__no-preview {
+    @include tablet() {
+      display: none;
+    }
+  }
   @include border();
 
   a {
