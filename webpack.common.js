@@ -67,6 +67,11 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
+        enforce: 'pre',
+        loader: ['source-map-loader'],
+      },
+      {
+        test: /\.(js|jsx)$/,
         // transpile non es5 node_modules only on staging/prod to save time on development
         include: IS_DEVELOPMENT ? APP_DIR: [APP_DIR, /node_modules/],
         exclude: IS_DEVELOPMENT ? /node_modules/ : excludeFn,
