@@ -1,3 +1,4 @@
+import {ensureUpcomingFeaturesParamInUrl} from '@ergeon/erg-utils-js';
 import axios from 'axios';
 import config from 'website/config';
 import {authService} from 'utils/auth';
@@ -14,7 +15,7 @@ const getCommonHeaders = () => {
 export const getNodes = (ids) => {
   const idsString = ids.join(',');
   return axios({
-    url: `${getBaseAPIURL()}?node_key=${idsString}`,
+    url: ensureUpcomingFeaturesParamInUrl(`${getBaseAPIURL()}?node_key=${idsString}`),
     method: 'get',
     responseType: 'json',
     headers: getCommonHeaders(),

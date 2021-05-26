@@ -2,11 +2,12 @@ import config from 'website/config';
 import axios from 'axios';
 import {calcUtils, constants, attrs} from '@ergeon/3d-lib';
 import {googleIntegration, Places} from '@ergeon/core-components';
+import {ensureUpcomingFeaturesParamInUrl} from '@ergeon/erg-utils-js';
 const {parsePlace} = Places;
 
 export const submitLeadArrived = (data) => {
   return axios({
-    url: config.leadArrivedApi,
+    url: ensureUpcomingFeaturesParamInUrl(config.leadArrivedApi),
     method: 'post',
     data: JSON.stringify(data),
     responseType: 'json',
@@ -16,7 +17,7 @@ export const submitLeadArrived = (data) => {
 
 export const submitAddressEntered = (data) => {
   return axios({
-    url: config.addressEnteredApi,
+    url: ensureUpcomingFeaturesParamInUrl(config.addressEnteredApi),
     method: 'post',
     data: JSON.stringify(data),
     responseType: 'json',
@@ -28,7 +29,7 @@ export const getCheckedZIP = (zipcode) => {
   const query = `/c/api/v1/product/check-zipcode/${zipcode}/`;
   return axios({
     method: 'get',
-    url: config.apiHost + query,
+    url: ensureUpcomingFeaturesParamInUrl(config.apiHost + query),
     data: JSON.stringify(zipcode),
     responseType: 'json',
     headers: {'Content-Type': 'application/json'},
@@ -41,7 +42,7 @@ export const getPriceAndDescription = (modelState, zipcode = constants.DEFAULT_Z
   const schemaCode = calcUtils.getSchemaCodeFromState(modelState);
   const catalogType = modelState[GATE_TYPE.id] ? CATALOG_TYPE_GATE : CATALOG_TYPE_FENCE;
   const query = `/c/api/v1/product/catalog-price/?${schemaCode}&zipcode=${zipcode}&catalog_type=${catalogType}`;
-  const request = config.apiHost + query;
+  const request = ensureUpcomingFeaturesParamInUrl(config.apiHost + query);
   return axios
     .get(request)
     .then(function(response) {
