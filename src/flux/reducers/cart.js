@@ -1,4 +1,4 @@
-import {localStorage as ls} from '@ergeon/erg-utils-js';
+import ls from 'local-storage';
 import moment from 'moment';
 import * as _ from 'lodash';
 import {calcUtils} from '@ergeon/3d-lib';

@@ -1,5 +1,5 @@
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
-import {localStorage as ls} from '@ergeon/erg-utils-js';
+import ls from 'local-storage';
 import {constants} from '@ergeon/3d-lib';
 import {actionTypes} from '../actions/address';
 import {get} from 'lodash';
