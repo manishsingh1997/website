@@ -4,6 +4,7 @@ import find from 'lodash/find';
 import Carousel, {Modal, ModalGateway} from 'react-images';
 import Masonry from 'react-masonry-component';
 import {NavLink} from 'react-router-dom';
+import isEmpty from 'lodash/isEmpty';
 
 import {Tabs, Breadcrumb, ImageCard} from '@ergeon/core-components';
 
@@ -157,7 +158,7 @@ class PhotoGallery extends React.Component {
         <Masonry
           className="photo-gallery__masonry"
           ref={ref => this.masonry = this.masonry || ref?.masonry}>
-          {photos.map((photoProps, index) => (
+          {!isEmpty(photos) && photos.map((photoProps, index) => (
             <div
               className="photo-gallery__masonry-card"
               gallery-link-id={photoProps.slug}
@@ -259,6 +260,8 @@ class PhotoGallery extends React.Component {
         [PRODUCTS.DRIVEWAY]: [BANNERS.FENCE_BANNER, BANNERS.GATE_BANNER],
       }[productSlug];
 
+      const photos = this.getPhotos();
+
       return (
         <div className="photo-gallery">
           <div className="wrapper-1180">
@@ -286,14 +289,14 @@ class PhotoGallery extends React.Component {
             </div>
             {category.partners && this.renderPartners(category.partners)}
             <ModalGateway>
-              {modalOpened ? (
+              {!isEmpty(photos) && modalOpened ? (
                 <Modal onClose={() => this.handleModalClose()}>
                   <Carousel
                     currentIndex={imageIndex}
                     trackProps={{
-                      onViewChange: index => this.updateLocationHash(this.getPhotos()[index].slug),
+                      onViewChange: index => this.updateLocationHash(photos[index].slug),
                     }}
-                    views={this.getPhotos().map(({caption, url}) => ({caption, src: url}))}/>
+                    views={photos.map(({caption, url}) => ({caption, src: url}))}/>
                 </Modal>
               ) : null}
             </ModalGateway>
