@@ -29,7 +29,7 @@ export default class StyleBrowserWrapper extends React.Component {
   state = {
     model: this.props.initialSchemaCode,
     description: '',
-    price: 0,
+    priceRow: '',
   };
 
   componentDidMount() {
@@ -65,7 +65,7 @@ export default class StyleBrowserWrapper extends React.Component {
     return getPriceAndDescription(modelState, zipcode)
       .then(data => {
         this.setState({
-          price: this.getPriceRow(modelState, data['unit_price']),
+          priceRow: this.getPriceRow(modelState, data['unit_price']),
           description: data.description});
       });
   }
@@ -96,14 +96,14 @@ export default class StyleBrowserWrapper extends React.Component {
     getPriceAndDescription(modelState, zipcode, propertyConfig)
       .then(data => {
         this.setState({
-          price: this.getPriceRow(modelState, data['unit_price']),
+          priceRow: this.getPriceRow(modelState, data['unit_price']),
           description: data.description,
           error: null,
         });
       })
       .catch(error => {
         this.setState({
-          price: '',
+          priceRow: '',
           description: '',
           error: 'Connection error',
         });
@@ -117,7 +117,7 @@ export default class StyleBrowserWrapper extends React.Component {
   }
 
   render() {
-    const {price, model, description, productAvailability, moreStylesUrl} = this.state;
+    const {priceRow, model, description, productAvailability, moreStylesUrl} = this.state;
     return (
       <div className="style-browser-wrapper">
         <PopUp
@@ -136,7 +136,7 @@ export default class StyleBrowserWrapper extends React.Component {
               moreStylesUrl={moreStylesUrl}
               onChange={(model) => this.handleModelChange(model)}
               onComplete={(model) => this.handleSelectionCompleted(model)}
-              price={price}
+              price={priceRow}
               productAvailability={productAvailability}/>
           </div>
 
