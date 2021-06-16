@@ -62,7 +62,7 @@ export const getStripeToken = (data) => {
         }[response.error.code];
 
         if (errorParam) {
-          trackError(response.error);
+          trackError(new Error(errorMsg));
         }
 
         return reject({_error: errorMsg, param: errorParam});
