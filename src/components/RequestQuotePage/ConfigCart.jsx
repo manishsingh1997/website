@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {reduce} from 'lodash';
 
-import {Button, Spinner} from '@ergeon/core-components';
+import {Button, Input, Spinner} from '@ergeon/core-components';
 import {constants, calcUtils} from '@ergeon/3d-lib';
 import {ReactSVG} from 'react-svg';
 import iconPlus from '../../assets/icon-plus.svg';
@@ -78,14 +78,10 @@ class ConfigCart extends React.Component {
     this.props.removeConfig(index);
   }
 
-  onUnitsChange(index, event) {
-    const {value} = event.target;
+  onUnitsChange(value, index) {
     const {configs} = this.props;
     const config = configs[index];
-    this.props.updateConfig(index, {
-      ...config,
-      units: Math.max(Number(value) || 1, 1).toString(),
-    });
+    this.props.updateConfig(index, {...config, units: Number(value)});
   }
 
   onCloseEditorClick() {
@@ -137,6 +133,7 @@ class ConfigCart extends React.Component {
     const {zipcode} = this.props;
 
     const isFenceConfig = this.isItFence(config);
+    const length = (config.units).toString();
 
     return (
       <div key={config.id}>
@@ -201,7 +198,14 @@ class ConfigCart extends React.Component {
                   isFenceConfig &&
                   <div className="config-item__length-field">
                     <span className="config-item__length-label">Length:</span>
-                    <input min="1" onChange={this.onUnitsChange.bind(this, index)} type="number" value={config.units} />
+                    <Input
+                      max={100}
+                      min={0}
+                      onChange={(event, name, value) => this.onUnitsChange(value, index)}
+                      size="small"
+                      step="1"
+                      type="number"
+                      value={length} />
                     <span className="config-item__length-field-unit">ft</span>
                   </div>
                 }
@@ -209,12 +213,15 @@ class ConfigCart extends React.Component {
                   !isFenceConfig &&
                   <div className="config-item__length-field">
                     <span className="config-item__length-label">Count:</span>
-                    <input
+                    <Input
                       className="unit-input"
-                      min="1"
-                      onChange={this.onUnitsChange.bind(this, index)}
+                      max={100}
+                      min={0}
+                      onChange={(event, name, value) => this.onUnitsChange(value, index)}
+                      size="small"
+                      step="1"
                       type="number"
-                      value={config.units} />
+                      value={length} />
                   </div>
                 }
               </div>

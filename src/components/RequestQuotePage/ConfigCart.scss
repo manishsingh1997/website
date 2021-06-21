@@ -162,6 +162,7 @@
         margin-right: 10px;
       }
       .config-item__length-field {
+        display: flex;
         position: relative;
         font-size: $font-mobile-size;
 
@@ -172,6 +173,7 @@
           border-radius: 4px;
           display: inline;
           padding-left: 4px;
+          padding-right: 2px;
           border: 1px solid $gray-2;
         }
 
@@ -183,8 +185,8 @@
 
         .config-item__length-field-unit {
           position: absolute;
-          top: 1px;
-          margin-left: -27px;
+          top: 2px;
+          right: $h-20;
 
           @include phone() {
             position: static;
