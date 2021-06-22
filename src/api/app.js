@@ -120,3 +120,33 @@ export const updateCustomerContacts = (customerGID, data) => {
     data: JSON.stringify(data),
   });
 };
+
+export const getQuoteApprovalDetails = (customerGID, quoteApprovalSecret) => {
+  return axios({
+    url: `${getBaseAPIURL(customerGID)}/quote-approvals/${quoteApprovalSecret}/`,
+    method: 'get',
+    responseType: 'json',
+    headers: getCommonHeaders(),
+  });
+};
+
+export const reviewQuoteApproval = (customerGID, quoteApprovalSecret) => {
+  return axios({
+    url: `${getBaseAPIURL(customerGID)}/quote-approvals/${quoteApprovalSecret}/review/`,
+    method: 'post',
+    responseType: 'json',
+    headers: getCommonHeaders(),
+  });
+};
+
+export const approveQuoteApproval = (customerGID, quoteApprovalSecret, stripeToken) => {
+  return axios({
+    url: `${getBaseAPIURL(customerGID)}/quote-approvals/${quoteApprovalSecret}/approve/`,
+    method: 'post',
+    responseType: 'json',
+    headers: getCommonHeaders(),
+    data: JSON.stringify({
+      'stripe_token': stripeToken,
+    }),
+  });
+};
