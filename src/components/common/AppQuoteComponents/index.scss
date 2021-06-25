@@ -1,0 +1,427 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
+.quote-detail-page {
+  .page-break {
+    @media print {
+      margin-top: $v-24;
+      page-break-before: always !important;
+    }
+  }
+
+  .card {
+    background-color: white;
+    &.padding-40 {
+      @include phone() {
+        padding: $h-20;
+      }
+    }
+  }
+
+  .quote-details {
+    @include phone() {
+      padding: $h-20;
+      margin: 0 auto;
+    }
+
+    &__notification {
+      margin-bottom: $h-20;
+
+      @include tablet() {
+        margin-bottom: $h-10;
+      }
+      @include phone() {
+        margin-bottom: $h-10;
+      }
+    }
+  }
+
+  .quote-labels-map {
+    position: relative;
+    width: 100%;
+    min-height: 300px;
+
+    &__content {
+      opacity: 0;
+    }
+
+    .loaderWrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .Map {
+      height: 100%;
+      position: absolute;
+
+      .MapContent {
+        &,
+        > * {
+          min-height: 300px;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .quote-details-wrapper {
+    margin-right: $h-40;
+    width: 460px;
+    min-width: 460px;
+    @include tablet() {
+      min-width: unset;
+      width: 100%;
+      margin-right: unset;
+    }
+    @include phone() {
+      min-width: unset;
+      width: 100%;
+      margin: 0 0 $v-12 0;
+    }
+    @media print {
+      min-width: unset;
+      width: 100%;
+      margin-right: unset;
+    }
+  }
+
+  .quote-fields {
+    border-top: 1px solid $gray-4;
+    border-bottom: 1px solid $gray-4;
+    padding: $v-12 0;
+  }
+  .quote-fields-wrapper {
+    display: flex;
+
+    &__fields {
+      width: 90%;
+    }
+
+    &__images {
+      align-items: center;
+      justify-content: center;
+      width: 10%;
+    }
+  }
+
+  .quote-project-images {
+    float: right;
+
+    .image-gallery-container {
+      width: 150px;
+      .image-gallery-thumb {
+        .image-loader__image {
+          height: 150px;
+        }
+      }
+    }
+
+    @include phone() {
+      float: none;
+      width: 100%;
+      padding-bottom: $v-16;
+      margin-bottom: $v-12;
+    }
+
+    &__legend {
+      display: flex;
+
+      @include phone() {
+        margin-bottom: $v-6;
+      }
+
+      span {
+        font-size: $font-mobile-size;
+      }
+    }
+
+    .image-gallery-container {
+      margin-bottom: $v-24;
+    }
+  }
+
+  .quote-line {
+    page-break-inside: avoid;
+    border-bottom: 1px solid $gray-5;
+    padding-bottom: $v-24;
+    margin-top: $v-24;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    @include phone() {
+      flex-direction: column;
+    }
+    &__title {
+      display: flex;
+    }
+  }
+
+  .quote-line__pdf {
+    flex-wrap: wrap;
+  }
+
+  .quote-line-preview {
+    margin-top: 0;
+    @include tablet() {
+      margin-bottom: $v-12;
+    }
+    @include phone() {
+      margin-bottom: $v-12;
+    }
+    @media print {
+      margin-right: $h-20;
+    }
+  }
+
+  .quote-line-description {
+    width: 100%;
+    word-break: break-word;
+    white-space: pre-line;
+
+    &__tags {
+      margin: $v-6 0;
+      display: flex;
+      align-items: center;
+
+      .tags {
+        &__title {
+          white-space: nowrap;
+        }
+        &__item {
+          padding: 0 $h-10;
+          margin: $v-6 0 $v-6 $h-10;
+        }
+      }
+    }
+  }
+
+  .quote-line-description__pdf {
+    width: 85%;
+  }
+
+  .quote-line-price {
+    min-width: $h-120;
+    text-align: right;
+  }
+
+  .quote-line-price__pdf {
+    min-width: 15%;
+  }
+
+  .quote-line-images {
+    width: 100%;
+  }
+
+  .change-order-quote-price {
+    color: $black-1;
+    font-size: $v-16;
+  }
+
+  .change-order-total-previous-price {
+    color: $black-3;
+    font-size: $v-16;
+  }
+
+  .change-order-total-project-price {
+    font-size: $v-20;
+  }
+
+  .total-price-noteless {
+    position: relative;
+    margin-top: $v-24;
+    text-align: right;
+  }
+
+  .total-price {
+    @extend .total-price-noteless;
+    &:after {
+      content: '*';
+      color: $red;
+      position: absolute;
+      top: -6px;
+      font-size: $font-label-size;
+    }
+  }
+
+  .asterisk {
+    color: $red;
+    margin-left: $h-5;
+  }
+
+  .asterisk-notes {
+    text-align: right;
+    font-size: $font-label-size;
+  }
+
+  .mobile-length {
+    display: none;
+
+    @include phone() {
+      display: block;
+    }
+  }
+
+  .desktop-length {
+    display: block;
+
+    @include phone() {
+      display: none;
+    }
+  }
+
+  .quote-notes {
+    p,
+    ul,
+    ol {
+      max-width: 720px;
+    }
+    h4 {
+      margin-bottom: $v-12;
+    }
+    @include phone() {
+      padding: $h-20;
+      margin: 0 auto;
+    }
+  }
+
+  .quote-projects-notes {
+    p {
+      margin-bottom: $v-12;
+    }
+    // TODO: reuse ul, li style from core-components
+    ul {
+      padding-left: $v-24;
+      list-style: none;
+
+      > li {
+        margin-bottom: $v-12;
+        position: relative;
+        &:before {
+          content: '';
+          width: $v-12;
+          height: $v-12;
+          position: absolute;
+          left: (-$v-24 / 2 - $v-16 / 2);
+          top: ($v-24 / 2 - $v-16 / 2);
+          background-repeat: no-repeat;
+          background-image: url('../../assets/icon-check-mark.svg');
+          background-size: $v-12 $v-12;
+          display: block;
+        }
+      }
+    }
+  }
+
+  .button-back {
+    padding-left: 0 !important;
+    padding-right: $h-10;
+    &:hover {
+      background-color: $gray-5 !important;
+    }
+  }
+
+  .gray-arrow-fill {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      width: 12px;
+      height: 12px;
+      path {
+        fill: $gray-1;
+      }
+    }
+  }
+}
+
+@media print {
+  * {
+    /*
+      The following lines forces browser to showcase background-images.
+      Without it, the Ergeon logo won't be visible. We can change logo
+      implementation to be an image and remove it in future.
+    */
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  body {
+    zoom: 90%;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  .card {
+    border: none !important;
+    padding: 0;
+    &.padding-40 {
+      padding-bottom: 0 !important;
+    }
+  }
+
+  // properly set quote and quote-line images grid and sizes
+  .quote-line-images {
+    .two-columns {
+      grid-template-columns: repeat(auto-fit, minmax(80mm, 1fr));
+    }
+    .image-loader__wrapper {
+      .image-loader__image {
+        object-position: center center;
+      }
+      img {
+        height: 40mm;
+        width: 100mm;
+      }
+    }
+  }
+
+  .customer-app-layout {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .wrapper-980 {
+    padding-left: 0;
+    padding-right: 0;
+    .phone-number {
+      margin-right: 0;
+    }
+  }
+
+  .quote-details {
+    padding: 0;
+    margin-bottom: 0 !important;
+  }
+
+  .quote-details-wrapper {
+    width: 50% !important;
+    min-width: 50% !important;
+  }
+
+  .quote-details__description {
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .quote-labels-map {
+    width: 47% !important;
+    height: 100% !important;
+    position: absolute !important;
+    right: 0;
+  }
+
+  .quote-line-description__tags {
+    display: none !important;
+  }
+
+  .customer-app-data-row > div:first-child {
+    text-align: right;
+    margin-right: $h-10;
+  }
+}

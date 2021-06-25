@@ -1,0 +1,30 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.explanation-section {
+  .title-wrapper {
+    display: flex;
+    h3 {
+      margin-left: $h-10;
+    }
+  }
+
+  .restricted-720 {
+    max-width: 720px;
+  }
+
+  .text-block {
+    margin-bottom: $v-24;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .card {
+    margin-top: $v-42;
+    &.padding-40 {
+      @include phone() {
+        padding: $h-20 !important;
+      }
+    }
+  }
+}

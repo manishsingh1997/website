@@ -1,6 +1,7 @@
 import {getUnsubscribeCodeFromQuery} from 'utils/app-notifications';
 import config from 'website/config';
 import queryString from 'query-string';
+import {some} from 'lodash';
 import {calcUtils} from '@ergeon/3d-lib';
 
 export const getOrderDetailURL = (customerGID, orderId) => {
@@ -32,7 +33,10 @@ export const getFencequotingURL = (schemaCode, zipCode, fenceSideLength) => {
 };
 
 export const isQuoteDetailURL = (url) => {
-  return url.match(/^\/app\/[^\/]+\/quotes+\/(direct\/|installer\/)?[^\/]+\/?$/g) !== null;
+  return some([
+    url.match(/^\/app\/[^\/]+\/quotes\/(direct\/|installer\/)?[^\/]+\/?$/g) !== null,
+    url.match(/^\/app\/[^\/]+\/quote-approvals\/[^\/]+\/?(direct|installer)?\/?$/g) !== null,
+  ]);
 };
 
 export const isUnsubscribeURL = (urlPathname, urlSearch) => {

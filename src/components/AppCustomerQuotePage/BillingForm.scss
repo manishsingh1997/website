@@ -1,0 +1,350 @@
+@import "~@ergeon/core-components/src/components/variables";
+
+.billing-form {
+  background-color: white;
+  border: 1px solid $gray-4;
+  border-radius: $corner-soft;
+  box-shadow: none;
+  padding: $h-40;
+  margin-top: $v-30;
+  margin-bottom: $v-48;
+
+  @include phone() {
+    display: block;
+    border-radius: 0;
+    padding: $h-20;
+    margin-bottom: $v-30;
+
+    .billing-form__content {
+      display: block;
+      border-radius: 0;
+      padding: 0;
+    }
+
+    .billing-form__information {
+      padding-right: 0;
+      border: 0;
+
+      &:after {
+        display: none;
+      }
+    }
+
+    .billing-form__actions {
+      width: 100%;
+      margin-top: $v-30;
+      border-top: 1px solid $gray-4;
+      padding-top: $v-20;
+      text-align: left;
+    }
+
+    .billing-form__total-pay {
+      display: inline-block;
+      height: $v-64;
+    }
+
+    .billing-form__approve {
+      float: right;
+      margin-top: $v-6;
+    }
+
+    .billing-form__request-changes,
+    .billing-form__terms {
+      display: block;
+      text-align: left;
+      margin-top: $v-6;
+    }
+
+    .billing-form__title-section {
+      flex-wrap: wrap;
+    }
+
+    .billing-form__fields {
+      display: block;
+    }
+
+    .billing-form__card-number {
+      width: 100%;
+      margin-bottom: $v-30;
+    }
+
+    .billing-form__expiration-date,
+    .billing-form__cvc{
+      margin-bottom: $v-6;
+      display: inline-block;
+    }
+  }
+
+  @include phone-small() {
+    .billing-form__approve {
+      float: none;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin: 0;
+  }
+
+  &__error {
+    margin-top: $v-16;
+  }
+
+  &__information {
+    position: relative;
+    flex: 1;
+    padding-right: $h-80;
+    @include tablet() {
+      padding-right: $h-40;
+    }
+
+    &:after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: $h-40;
+      width: 1px;
+      background-color: $gray-4;
+      content: "";
+      @include tablet() {
+        right: $h-20;
+      }
+    }
+  }
+
+  &__title-section {
+    h4 {
+      margin-bottom: $v-20;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon-cards {
+    width: 200px;
+    height: $v-16;
+    margin-right: $h-10;
+  }
+
+  &__icon-secure {
+    height: $v-12;
+    width: $h-20;
+  }
+
+  &__fields {
+    display: flex;
+    padding: $v-30 0 $v-24 0;
+
+    .float-container input {
+      font-size: $font-label-size;
+    }
+  }
+
+  &__card-number {
+    margin-right: $h-20;
+    width: calc(100% - 280px);
+    min-width: $h-120;
+    max-width: 480px;
+  }
+
+  &__expiration-date {
+    margin-right: $h-20;
+    width: $h-120;
+  }
+
+  &__cvc {
+    width: $h-120;
+  }
+
+  &__card-disclaimer {
+    position: relative;
+    padding-left: $h-40;
+    margin-top: $v-16;
+    font-style: italic;
+    font-size: $font-mobile-size;
+    max-width: 500px;
+
+    &-icon {
+      position: absolute;
+      left: 0;
+    }
+
+    &-text {
+      font-style: italic;
+    }
+  }
+
+  &__actions {
+    align-self: flex-start;
+    width: 245px;
+  }
+
+  &__total-pay {
+    color: $gray-1;
+    font-size: $font-mobile-size;
+    font-family: $font-title;
+    height: 96px;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  &__price {
+    font-family: $font-title;
+    color: $black-1;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__approve {
+    margin-bottom: $v-20;
+
+    &-button {
+      padding: 0 $h-20;
+      min-width: 236px;
+
+      &[disabled] {
+        opacity: .2;
+      }
+    }
+  }
+
+  &__request-changes,
+  &__terms-link {
+    outline: 0;
+    color: $green-1;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: $font-mobile-size;
+
+    &:hover {
+      color: $green-2;
+      text-decoration: underline;
+    }
+  }
+
+  &__terms {
+    margin-top: $v-16;
+  }
+
+  &__accept-terms-button {
+    border: 2px solid $gray-3;
+    width: $v-24;
+    min-width: $v-24;
+    height: $v-24;
+    min-height: $v-24;
+    vertical-align: middle;
+    position: relative;
+    border-radius: $corner-default;
+    display: inline-block;
+    background-color: white;
+    transition: all .2s ease-out;
+
+    &:active {
+      background-color: $gray-4;
+    }
+
+    &-icon {
+      transition: all .15s ease-out;
+      position: absolute;
+      width: $h-10;
+      height: $v-12;
+      margin-top: -5px;
+      margin-left: -5px;
+      top: 50%;
+      left: 50%;
+      fill: $green-1;
+      transform: scale(1) rotate(0deg);
+    }
+
+    &--selected {
+      border-color: $green-1;
+    }
+  }
+
+  &__terms-accept {
+    font-size: $font-mobile-size;
+    margin-left: $h-10;
+  }
+
+  &__terms-link {
+  }
+
+  &__payment-method-details {
+
+    &-item {
+      display: flex;
+      align-items: center;
+
+      &-name {
+        margin-right: $h-20;
+        text-align: right;
+        width: $h-120;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        color: $gray-1;
+        font-size: $font-mobile-size;
+
+      }
+
+      &-value {
+        flex-grow: 1;
+        word-break: break-all;
+        font-size: $font-regular-size;
+        line-height: $line-height-regular;
+      }
+    }
+  }
+
+  &__cancel-edit-button {
+    margin-left: $h-10;
+    line-height: $line-height-label;
+  }
+
+  &__cvc,
+  &__expiration-date,
+  &__card-number {
+    position: relative;
+  }
+
+
+  &--with-payment-method-details {
+    .billing-form__icons {
+      display: none;
+    }
+
+    .billing-form__terms {
+      display: none;
+    }
+
+    .billing-form__approve {
+      display: none;
+    }
+  }
+
+  &--loading {
+    .billing-form__accept-terms-button {
+      pointer-events: none;
+      background-color: $gray-4;
+    }
+  }
+
+  .Form-error {
+    position: absolute;
+    font-size: $font-label-size;
+    color: $red-1;
+    line-height: $line-height-label;
+    margin: 0;
+    transition: all .2s ease-out;
+    transition-delay: .3s;
+    top: 100%;
+    margin-top: $v-6;
+    left: 0;
+  }
+}

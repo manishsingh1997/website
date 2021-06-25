@@ -23,6 +23,8 @@ import AppHouseListPage from 'containers/AppHouseListPage';
 import AppLayout from 'containers/AppLayout';
 import AppOrderDetailPage from 'containers/AppOrderDetailPage';
 import AppOrderListPage from 'containers/AppOrderListPage';
+import AppCustomerQuotePage from 'containers/AppCustomerQuotePage';
+import AppInstallerQuotePage from 'containers/AppInstallerQuotePage';
 import AppQuoteDetailPage from 'containers/AppQuoteDetailPage';
 import AppNotificationsPage from 'components/AppNotificationsPage';
 import ErrorBoundary from 'components/ErrorBoundary';
@@ -78,7 +80,21 @@ const CustomerApp = ({match, location}) => (
       <Route component={AppOrderListPage} path={`${match.url}/orders`} />
       <Route component={AppQuoteDetailPage} exact name="quoteDetail" path={`${match.url}/quotes/:secret`} />
       <Route component={AppQuoteDetailPage} exact name="quoteDirect" path={`${match.url}/quotes/:type/:secret`} />
-      <Route component={AppQuoteDetailPage} exact name="quoteInstaller" path={`${match.url}/quotes/:type/:secret`} />
+      <Route
+        component={AppCustomerQuotePage}
+        exact
+        name="customerQuoteDetail"
+        path={`${match.url}/quote-approvals/:secret`} />
+      <Route
+        component={AppInstallerQuotePage}
+        exact
+        name="installerQuoteDetail"
+        path={`${match.url}/quote-approvals/:secret/installer`} />
+      <Route
+        component={AppCustomerQuotePage}
+        exact
+        name="customerQuotePreview"
+        path={`${match.url}/quote-approvals/:secret/:type`} />
       <Route component={AppNotificationsPage} path={`${match.url}/notifications`} />
       <Route component={NotFoundPage} exact path="*"/>
     </Switch>
