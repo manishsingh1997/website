@@ -79,7 +79,7 @@
     "@ergeon/erg-utils-js": "3.7.0",
     "@ergeon/erg-utms": "3.0.0",
     "@ergeon/help-components": "0.17.5",
-    "@ergeon/map-component": "1.11.0",
+    "@ergeon/map-component": "1.14.1",
     "@sentry/browser": "5.27.6",
     "axios": "^0.19.0",
     "babel-plugin-ignore-import": "^1.0.1",
