@@ -116,8 +116,9 @@ module.exports = {
     new htmlWebpackPlugin({
       template: `${APP_DIR}/utm/index.html`,
       chunks: [
-        'utm/assets/bundle',
+        'vendors~assets/bundle',
         'vendors~assets/bundle~utm/assets/bundle',
+        'utm/assets/bundle',
       ],
       filename: `${BUILD_DIR}/utm/index.html`,
     }),
