@@ -17,16 +17,24 @@ export default function QuoteLinesRender(props) {
   const filterByField = isInstallerPreview ? 'display_to_installer' : 'display_to_customer';
 
   const quoteLines = useMemo(() => {
-    const filteredQuoteLines = quote['quote_lines'].filter(quoteLine => quoteLine[filterByField] === true);
-    const sides = filteredQuoteLines.filter(
-      quoteLine => isQuoteLineOfMapKinds(quoteLine, ['line'])
-    );
-    const gates = filteredQuoteLines.filter(
-      quoteLine => isQuoteLineOfMapKinds(quoteLine, ['point', null, undefined])
-    );
-    const areas = filteredQuoteLines.filter(
-      quoteLine => isQuoteLineOfMapKinds(quoteLine, ['area'])
-    );
+    let gates = [], sides = [], areas = [];
+    // if we have calcInput present we will render CalcInfo quotlines,
+    // if not then regular quotelines will be rendered.
+    if (calcInput) {
+      gates = calcInput.gates || [];
+      sides = calcInput.sides || [];
+      areas = calcInput.polygons || [];
+    } else {
+      sides = quote['quote_lines']
+        .filter(quoteLine => isQuoteLineOfMapKinds(quoteLine, ['line']))
+        .filter(quoteLine => quoteLine[filterByField] === true);
+      gates = quote['quote_lines']
+        .filter(quoteLine => isQuoteLineOfMapKinds(quoteLine, ['point', null, undefined]))
+        .filter(quoteLine => quoteLine[filterByField] === true);
+      areas = quote['quote_lines']
+        .filter(quoteLine => isQuoteLineOfMapKinds(quoteLine, ['area']))
+        .filter(quoteLine => quoteLine[filterByField] === true);
+    }
 
     const getQuoteLinePropsFromSide = (side, i) => ({
       ...side,
