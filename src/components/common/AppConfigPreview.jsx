@@ -17,7 +17,8 @@ import './AppConfigPreview.scss';
 
 const USE_CACHE = true;
 const DEFAULT_PREVIEW_WIDTH = 150;
-const DEFAULT_PREVIEW_HEIGTH = 150;
+const DEFAULT_PREVIEW_HEIGHT = 150;
+const PREVIEW_GENERATION_ERROR = "Oh! We couldn't generate a preview image. We have sent the details to Sentry.";
 
 export default class AppConfigPreview extends React.Component {
 
@@ -63,7 +64,7 @@ export default class AppConfigPreview extends React.Component {
       const preview = await calcUtils.getPreviewImage(
         schemaCodeUrl,
         DEFAULT_PREVIEW_WIDTH,
-        DEFAULT_PREVIEW_HEIGTH,
+        DEFAULT_PREVIEW_HEIGHT,
         USE_CACHE,
       );
       this.setState({previewImage: preview});
@@ -76,11 +77,10 @@ export default class AppConfigPreview extends React.Component {
             scope.setExtra('msg', error.msg);
             scope.setExtra('type', error.type);
             scope.setExtra('mode', error.mode);
-            console.error(error.msg);
+            console.error(PREVIEW_GENERATION_ERROR);
           } else {
-            console.error(error);
+            console.error(PREVIEW_GENERATION_ERROR);
           }
-
         });
       }
     }
