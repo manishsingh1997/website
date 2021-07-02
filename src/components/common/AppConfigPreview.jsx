@@ -73,14 +73,10 @@ export default class AppConfigPreview extends React.Component {
       if ((error?.msg || error) !== constants3dLib.UNKNOWN_PRODUCT_ERROR) {
         Sentry.withScope(scope => {
           scope.setExtra('schemaCode', schemaCodeUrl);
-          if (error.msg && error.type && error.mode) {
-            scope.setExtra('msg', error.msg);
-            scope.setExtra('type', error.type);
-            scope.setExtra('mode', error.mode);
-            console.error(PREVIEW_GENERATION_ERROR);
-          } else {
-            console.error(PREVIEW_GENERATION_ERROR);
-          }
+          if (error.msg) scope.setExtra('msg', error.msg);
+          if (error.type) scope.setExtra('type', error.type);
+          if (error.mode) scope.setExtra('mode', error.mode);
+          console.error(PREVIEW_GENERATION_ERROR);
         });
       }
     }
