@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {useLocation, useRouteMatch} from 'react-router-dom';
 import {Helmet} from 'react-helmet';
+import isNil from 'lodash/isNil';
 
 import {getNodes} from 'api/node';
 import metaDictionary from 'data/meta-data.json';
@@ -58,11 +59,13 @@ const MetaTags = () => {
         // Retrieve help meta-data.
         try {
           const {data: [helpNode]} = await getNodes([helpNodeKey]);
-          const {title, short_memo: description} = helpNode;
-          setMeta({
-            title: `${title} | Help & Customer Service | Ergeon.com`,
-            description,
-          });
+          if (!isNil(helpNode)) {
+            const {title, short_memo: description} = helpNode;
+            setMeta({
+              title: `${title} | Help & Customer Service | Ergeon.com`,
+              description,
+            });
+          }
           return;
         } catch (error) {
           // Just warn Sentry in case of an error, do not interfere.
