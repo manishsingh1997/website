@@ -99,6 +99,8 @@ const MetaTags = () => {
   if (notIndexed) {
     return (
       <Helmet>
+        {meta?.title && <title key={meta.title}>{meta.title}</title>}
+        {meta?.description && <meta content={meta.description} name="description" />}
         <meta content="noindex" name="robots" />
       </Helmet>
     );

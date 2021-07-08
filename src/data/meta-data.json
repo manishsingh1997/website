@@ -102,5 +102,17 @@
   "/request-quote": {
     "title": "Request A Free Quote For Your Fence and Driveway | Ergeon.com",
     "description": "Request A Free Quote For Your Fence Installation and Driveway Project. Ergeon is the #1 contractor in the Bay Area."
+  },
+  "/app/sign-in": {
+    "title": "Ergeon Sign-in",
+    "description": "Ergeon Sign-in"
+  },
+  "/app/confirm-sign-in": {
+    "title": "Ergeon Confirm Sign-in",
+    "description": "Ergeon Confirm Sign-in"
+  },
+  "/app/logout": {
+    "title": "Ergeon Logout",
+    "description": "Ergeon Logout"
   }
 }
