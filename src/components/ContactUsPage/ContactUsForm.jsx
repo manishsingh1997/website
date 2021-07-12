@@ -61,6 +61,9 @@ export default class ContactUsForm extends React.Component {
 
   get isValid() {
     const {data: {email, name, comment}} = this.state;
+    if (!email) {
+      return false;
+    }
     return every([isEmail(email), !!name, !!comment]);
   }
 
