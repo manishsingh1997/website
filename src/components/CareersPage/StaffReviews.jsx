@@ -8,7 +8,8 @@ import {Rating} from '@ergeon/core-components';
 
 import './StaffReviews.scss';
 
-const LINKEDIN_FOLLOWERS = '10,459';
+const LINKEDIN_FOLLOWERS = '14,268';
+const RATING = '118';
 
 class StaffReviews extends React.Component {
   render() {
@@ -50,7 +51,7 @@ class StaffReviews extends React.Component {
                     Jiayue He
                   </p>
                   <p className="small-text spacing before__is-6">
-                    71 Ratings
+                    {RATING} Ratings
                   </p>
                 </div>
               </div>
