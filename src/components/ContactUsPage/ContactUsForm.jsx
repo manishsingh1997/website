@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import every from 'lodash/every';
 import React from 'react';
 import PropTypes from 'prop-types';
-import isEmail from 'sane-email-validation';
+import isEmail from 'validator/lib/isEmail';
 import * as Sentry from '@sentry/browser';
 
 import {getBaseEventData} from '@ergeon/erg-utms';
@@ -61,9 +61,6 @@ export default class ContactUsForm extends React.Component {
 
   get isValid() {
     const {data: {email, name, comment}} = this.state;
-    if (!email) {
-      return false;
-    }
     return every([isEmail(email), !!name, !!comment]);
   }
 
