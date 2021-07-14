@@ -45,6 +45,7 @@ export default function QuoteLine(props) {
     distance,
     description,
     label,
+    name,
     price,
     quantity,
     unit,
@@ -72,7 +73,7 @@ export default function QuoteLine(props) {
         {!isPDFMode() && imagePreview}
       </div>
       <div className={classNames('quote-line-description', {'quote-line-description__pdf': isQuoteLinePDF})}>
-        <Title index={index} label={label} type={type} />
+        <Title index={index} label={label} name={name} type={type} />
         <div className="mobile-length">
           {!isPDFMode() && imagePreview}
         </div>

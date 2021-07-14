@@ -21,10 +21,12 @@ const SideTitle = (index, label) => (
  * Returns <MapLabel> as "circle"
  * @param {number} index
  * @param {string} label
+ * @param {string} name
  */
-const PointTitle = (index, label) => (
+const PointTitle = (index, label, name) => (
   <>
     <MapLabel name={label ? label : index + 1} type="Circle" />
+    <h5>{name}</h5>
   </>
 );
 
@@ -41,15 +43,15 @@ const AreaTitle = (index) => (
 
 /**
  * Renders side, gate or area titles, if none matches it returns null
- * @param {{type:string, index:number, label:string}} props
+ * @param {{type:string, index:number, label:string, name:string}} props
  */
-export default function Title({type, index, label}) {
+export default function Title({type, index, label, name}) {
   const getTitle = () => {
     switch (type) {
       case CALC_SIDE_TYPE:
         return SideTitle(index, label);
       case CALC_GATE_TYPE:
-        return PointTitle(index, label);
+        return PointTitle(index, label, name);
       case CALC_AREA_TYPE:
         return AreaTitle(index);
       default:
@@ -62,5 +64,6 @@ export default function Title({type, index, label}) {
 Title.propTypes = {
   index: PropTypes.number,
   label: PropTypes.string,
+  name: PropTypes.string,
   type: PropTypes.oneOf([CALC_SIDE_TYPE, CALC_GATE_TYPE, CALC_AREA_TYPE]),
 };
