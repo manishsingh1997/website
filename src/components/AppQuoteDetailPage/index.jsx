@@ -24,6 +24,7 @@ import AppLoader from 'components/common/AppLoader';
 import {
   DIRECT_PREVIEW_SLUG,
   INSTALLER_PREVIEW_SLUG,
+  QUOTE_STATUS_APPROVED,
 } from 'website/constants';
 import BillingForm from './BillingForm';
 import ExplanationSection from './ExplanationSection';
@@ -152,8 +153,10 @@ export default class AppQuoteDetailPage extends React.Component {
   }
 
   getProjectTotalPrice(quote) {
+    if (quote.parent_quote && quote.status !== QUOTE_STATUS_APPROVED) {
+      return parseFloat(this.getTotalPrice(quote)) + parseFloat(this.getTotalPrice(quote.parent_quote));
+    }
     const projectQuote = quote.parent_quote ? quote.parent_quote : quote;
-
     return this.getTotalPrice(projectQuote);
   }
 
