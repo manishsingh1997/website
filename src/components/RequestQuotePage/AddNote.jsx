@@ -43,6 +43,7 @@ export default class AddNote extends React.Component {
               </a>
             </div>
             <Input
+              className="spacing after__is-24"
               isDisabled={loading}
               isValid={!!comment && !errors?.comment || null}
               label="Note"
