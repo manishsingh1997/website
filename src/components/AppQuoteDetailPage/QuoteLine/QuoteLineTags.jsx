@@ -14,7 +14,6 @@ export default function Tags({tags}) {
   if (pdfModeDisabled && tags && tags.length) {
     tagsNode = (
       <div className="quote-line-description__tags">
-        <span className="tags__title">Tags:</span>
         <div>
           {tags.map((tag, index) => {
             const {name, url} = tag;

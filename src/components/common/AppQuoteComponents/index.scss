@@ -185,12 +185,8 @@
       align-items: center;
 
       .tags {
-        &__title {
-          white-space: nowrap;
-        }
         &__item {
           padding: 0 $h-10;
-          margin: $v-6 0 $v-6 $h-10;
         }
       }
     }

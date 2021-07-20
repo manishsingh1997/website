@@ -185,12 +185,10 @@
       align-items: center;
 
       .tags {
-        &__title {
-          white-space: nowrap;
-        }
         &__item {
           padding: 0 $h-10;
-          margin: 5px 0 5px 10px;
+          margin-right: $h-10;
+          margin-top: $h-10;
         }
       }
     }
