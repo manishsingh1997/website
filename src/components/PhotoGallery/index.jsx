@@ -5,6 +5,7 @@ import Carousel, {Modal, ModalGateway} from 'react-images';
 import Masonry from 'react-masonry-component';
 import {NavLink} from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
+import isNil from 'lodash/isNil';
 
 import {Tabs, Breadcrumb, ImageCard} from '@ergeon/core-components';
 
@@ -191,6 +192,7 @@ class PhotoGallery extends React.Component {
     }
 
     renderPartners(partners = []) {
+      if (isNil(partners)) return;
       return (
         <div className="photo-gallery__partners-area">
           <label className="label uppercase spacing after__is-12">
@@ -287,7 +289,7 @@ class PhotoGallery extends React.Component {
             <div className="cards two-columns spacing before__is-64">
               {banners.map((banner, index) => this.renderBanner(banner, index))}
             </div>
-            {category.partners && this.renderPartners(category.partners)}
+            {category.partners && this.renderPartners(null)}
             <ModalGateway>
               {!isEmpty(photos) && modalOpened ? (
                 <Modal onClose={() => this.handleModalClose()}>
