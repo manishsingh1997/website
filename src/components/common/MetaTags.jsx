@@ -29,14 +29,17 @@ const MetaTags = () => {
   // Remove a ”/” from the end of the pathname.
   const path = useMemo(() => location.pathname.replace(/^(.+)\/$/, '$1'), [location.pathname]);
 
+  // Checks that path starts with `startPath`
+  const pathStartsWith = useCallback(startPath => new RegExp(`^${startPath}`).test(path), [path]);
+
   // Hide a page from search robots.
   const notIndexed = useMemo(() => {
-    if ((/^\/app/).test(path)) {
+    if (pathStartsWith('/app')) {
       // All internal /app/**/* URLs should be hidden from robots.
       return true;
     }
     return false;
-  }, [path]);
+  }, [pathStartsWith]);
 
   // Canonical URL of the page. See https://moz.com/learn/seo/canonicalization for more info.
   const canonical = useMemo(() => {
@@ -72,10 +75,17 @@ const MetaTags = () => {
           console.error(error.message);
         }
       }
-      // Fallback to meta-data.json.
-      setMeta(metaDictionary[path] || null);
+
+      if (metaDictionary[path]) {
+        setMeta(metaDictionary[path]); // Fallback to meta-data.json.
+      } else if (pathStartsWith('/app')) {
+        setMeta({
+          title: 'Private Cabinet',
+          description: '', // to reset the previous state
+        });
+      }
     })();
-  }, [helpNodeKey, path]);
+  }, [helpNodeKey, path, pathStartsWith]);
 
   /**
    * Force meta update fixes title re-writes bug on tab activated,
