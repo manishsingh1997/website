@@ -200,7 +200,7 @@ class ConfigCart extends React.Component {
                     <span className="config-item__length-label">Length:</span>
                     <Input
                       max={100}
-                      min={0}
+                      min={1}
                       onChange={(event, name, value) => this.onUnitsChange(value, index)}
                       size="small"
                       step="1"
@@ -216,7 +216,7 @@ class ConfigCart extends React.Component {
                     <Input
                       className="unit-input"
                       max={100}
-                      min={0}
+                      min={1}
                       onChange={(event, name, value) => this.onUnitsChange(value, index)}
                       size="small"
                       step="1"
