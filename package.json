@@ -81,7 +81,7 @@
     "@ergeon/help-components": "0.18.0",
     "@ergeon/map-component": "1.15.0",
     "@sentry/browser": "5.27.6",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel-plugin-ignore-import": "^1.0.1",
     "classnames": "^2.2.6",
     "core-js": "^3.8.1",
