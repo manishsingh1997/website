@@ -1,6 +1,6 @@
 import config from 'website/config';
 import axios from 'axios';
-import {calcUtils, constants, attrs} from '@ergeon/3d-lib';
+import {calcUtils, constants, attrs, CatalogType} from '@ergeon/3d-lib';
 import {googleIntegration, Places} from '@ergeon/core-components';
 import {ensureUpcomingFeaturesParamInUrl} from '@ergeon/erg-utils-js';
 const {parsePlace} = Places;
@@ -37,10 +37,9 @@ export const getCheckedZIP = (zipcode) => {
 };
 
 export const getPriceAndDescription = (modelState, zipcode = constants.DEFAULT_ZIP) => {
-  const {CATALOG_TYPE_FENCE, CATALOG_TYPE_GATE} = constants;
   const {GATE_TYPE} = attrs;
   const schemaCode = calcUtils.getSchemaCodeFromState(modelState);
-  const catalogType = modelState[GATE_TYPE.id] ? CATALOG_TYPE_GATE : CATALOG_TYPE_FENCE;
+  const catalogType = modelState[GATE_TYPE.id] ? CatalogType.GATE : CatalogType.FENCE;
   const query = `/c/api/v1/product/catalog-price/?${schemaCode}&zipcode=${zipcode}&catalog_type=${catalogType}`;
   const request = ensureUpcomingFeaturesParamInUrl(config.apiHost + query);
   return axios

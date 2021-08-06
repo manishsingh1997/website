@@ -1,6 +1,6 @@
 import {some, random} from 'lodash';
 import {getPriceAndDescription} from 'api/lead';
-import {constants, calcUtils, attrs} from '@ergeon/3d-lib';
+import {CatalogType, calcUtils, attrs} from '@ergeon/3d-lib';
 import moment from 'moment';
 
 export const actionTypes = {
@@ -33,7 +33,6 @@ export const clearConfigs = (lead) => ({
 // eslint-disable-next-line object-shorthand
 export const addConfigFromSchema = function({zipcode, data, schemaCode, length, configs}, index = -1) {
   return dispatch => {
-    const {CATALOG_TYPE_FENCE, CATALOG_TYPE_GATE} = constants;
     const {FRAME_STYLE} = attrs;
     let item;
 
@@ -44,7 +43,7 @@ export const addConfigFromSchema = function({zipcode, data, schemaCode, length, 
         const itemId = random(0, 1, true).toString(36).slice(2);
         item = {
           id: itemId,
-          'catalog_type': data[FRAME_STYLE.id] ? CATALOG_TYPE_FENCE : CATALOG_TYPE_GATE,
+          'catalog_type': data[FRAME_STYLE.id] ? CatalogType.FENCE : CatalogType.GATE,
           code: schemaCode,
           product: data,
           preview: '',

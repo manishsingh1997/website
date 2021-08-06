@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {reduce} from 'lodash';
 
 import {Button, Input, Spinner} from '@ergeon/core-components';
-import {constants, calcUtils} from '@ergeon/3d-lib';
+import {calcUtils, CatalogType} from '@ergeon/3d-lib';
 import {ReactSVG} from 'react-svg';
 import iconPlus from '../../assets/icon-plus.svg';
 import classNames from 'classnames';
@@ -62,8 +62,7 @@ class ConfigCart extends React.Component {
   }
 
   isItFence(config) {
-    const {CATALOG_TYPE_FENCE} = constants;
-    return config.catalog_type === CATALOG_TYPE_FENCE;
+    return config.catalog_type === CatalogType.FENCE;
   }
 
   editConfig(index) {

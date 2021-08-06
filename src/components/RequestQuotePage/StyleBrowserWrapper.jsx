@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {calcUtils, constants, StyleBrowser} from '@ergeon/3d-lib';
+import {CatalogType, calcUtils, constants, StyleBrowser} from '@ergeon/3d-lib';
 import {getPriceAndDescription, getCheckedZIP} from 'api/lead';
 import {tawk} from '@ergeon/erg-utms';
 import {getFencequotingURL} from '../../utils/urls';
@@ -76,7 +76,7 @@ export default class StyleBrowserWrapper extends React.Component {
   }
 
   isFence(modelState) {
-    return getCatalogType(modelState) === constants.CATALOG_TYPE_FENCE;
+    return getCatalogType(modelState) === CatalogType.FENCE;
   }
 
   getPriceRow(modelState, unitPrice) {

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
-import {constants, calcUtils} from '@ergeon/3d-lib';
+import {constants, calcUtils, CatalogType} from '@ergeon/3d-lib';
 import {RadioGroup} from 'react-radio-group';
 import {
   Button,
@@ -223,7 +223,7 @@ export default class LeadForm extends React.Component {
 
   getOrder() {
     const {lead} = this.props;
-    const {CATALOG_TYPE_FENCE, CATALOG_ID_FENCE, CATALOG_ID_GATE} = constants;
+    const {CATALOG_ID_FENCE, CATALOG_ID_GATE} = constants;
 
     return this.props.configs.map(item => {
       let schema = calcUtils.getParams(`?${item.code}`).schema.split(',');
@@ -235,7 +235,7 @@ export default class LeadForm extends React.Component {
           lead.address && lead.address.zipcode
         ),
         'catalog_type': item.catalog_type,
-        'catalog_id': item.catalog_type === CATALOG_TYPE_FENCE ? CATALOG_ID_FENCE : CATALOG_ID_GATE,
+        'catalog_id': item.catalog_type === CatalogType.FENCE ? CATALOG_ID_FENCE : CATALOG_ID_GATE,
         schema,
         code,
         description: item.description,

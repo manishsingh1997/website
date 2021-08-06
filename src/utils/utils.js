@@ -1,5 +1,5 @@
 import {isChristmasTime as baseIsChristmasTime} from '@ergeon/core-components';
-import {constants} from '@ergeon/3d-lib/';
+import {CatalogType} from '@ergeon/3d-lib/';
 import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 
 import {trackError} from './analytics';
@@ -57,10 +57,9 @@ export const showUpcomingFeatures = () => {
 };
 
 export const getAdvancedEditorUrl = (order, zipcode) => {
-  const {CATALOG_TYPE_FENCE} = constants;
   const sep = ',';
   let query = '';
-  if (order['catalog_type'] == CATALOG_TYPE_FENCE) {
+  if (order['catalog_type'] == CatalogType.FENCE) {
     query = '/fence3d?schema=';
   } else {
     query = '/gate3d?schema=';
