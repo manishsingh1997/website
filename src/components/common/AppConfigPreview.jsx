@@ -125,7 +125,7 @@ export default class AppConfigPreview extends React.Component {
 
     return (
       <a
-        href={getFencequotingURL(finalSchemaCodeUrl, zipCode, fenceSideLength)}
+        href={getFencequotingURL(finalSchemaCodeUrl, zipCode, fenceSideLength, /* show options */false)}
         rel="noopener noreferrer"
         target="_blank">
         {this.renderPreview()}

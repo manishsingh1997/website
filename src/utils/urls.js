@@ -18,14 +18,14 @@ export const getQuoteDetailURL = (customerGID, secret) => {
  * @param {number} zipCode
  * @param {number} fenceSideLength
  */
-export const getFencequotingURL = (schemaCode, zipCode, fenceSideLength) => {
+export const getFencequotingURL = (schemaCode, zipCode, fenceSideLength, options = true) => {
   const {getValueFromUrl, getCatalogType} = calcUtils;
   const isItGate = getCatalogType(getValueFromUrl(schemaCode)) === 'fence-gate';
   const baseUrlPath = isItGate ? 'gate3d' : 'fence3d';
   const queryObject = {
     ...queryString.parse(schemaCode),
     mode: '3d',
-    options: 'true',
+    options: options ? 'true' : undefined,
     zipcode: zipCode,
     length: isItGate ? '' : fenceSideLength,
   };
