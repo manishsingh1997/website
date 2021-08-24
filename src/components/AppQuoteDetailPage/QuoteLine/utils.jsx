@@ -1,16 +1,20 @@
-import isEqual from 'lodash/isEqual';
 import {getLabelFromIndex} from '@ergeon/draw-map';
 
 /**
  * Returns matching quoteLine comparing vs itemName
  * @param {Array.<object>} quoteLines
- * @param {string} itemName
+ * @param {string, number} itemName values like A,B,C,1,2,3...
  */
 export const getQuoteLineForCalcInputItem = (quoteLines, itemName) => {
   if (!itemName) {
     return undefined;
   }
-  return quoteLines.find((quoteLine) => Boolean(quoteLine.label) && isEqual(quoteLine.label, itemName));
+  return quoteLines.find((quoteLine) => {
+    let label = quoteLine.label;
+    // to be sure that label will be also number, if there is numveric value
+    if (!isNaN(Number(label))) label = Number(label);
+    return Boolean(label) && (label === itemName);
+  });
 };
 
 /**
