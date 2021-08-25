@@ -1,4 +1,4 @@
-import AboutPage from 'components/AboutPage';
+import AboutPage from '../components/AboutPage';
 import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
 import AuthLogoutPage from 'containers/AuthLogoutPage';
 import AuthSignInPage from 'components/AuthSignInPage';

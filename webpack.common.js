@@ -59,7 +59,7 @@ module.exports = {
         loader: ['source-map-loader'],
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         include: [APP_DIR, includeModules],
         use: ['babel-loader'],
       },
@@ -87,7 +87,7 @@ module.exports = {
   },
   resolve: {
     modules: ['./node_modules'],
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
       'react': path.resolve('./node_modules/react'),
       'react-dom': path.resolve('./node_modules/react-dom'),
