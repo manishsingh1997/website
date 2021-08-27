@@ -12,7 +12,7 @@ const BUILD_DIR = path.resolve(__dirname, './dist');
 const SENTRY_DSN = 'https://f0fe1cc5aa2e4422bec8bbd637bba091@o147577.ingest.sentry.io/1794736';
 let SENTRY_CONSOLE_LEVELS = "['warn', 'error', 'assert']";
 
-const IS_DEVELOPMENT = process.env.NODE_ENV === 'development';
+const IS_DEVELOPMENT = process.env.NODE_ENV === 'development' || process.env.BUILD_ENV === 'development';
 if (process.env.NODE_ENV === 'production') {
   SENTRY_CONSOLE_LEVELS = "['error', 'assert']";
 }

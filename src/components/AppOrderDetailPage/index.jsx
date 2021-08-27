@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
+import {Helmet} from 'react-helmet';
 
 import {Button, SelectFilter} from '@ergeon/core-components';
 import contactIcon from '@ergeon/core-components/src/assets/icon-arrow-left.svg';
@@ -153,6 +154,11 @@ export default class AppOrderDetailPage extends React.Component {
     return order && (
       <React.Fragment>
         <div className="order-details">
+          <Helmet>
+            <title key={Math.random()}>
+              {`Order #${order['id']}, ${order['product']['name']}, ${formatDate(order['ordered_at'])}`}
+            </title>
+          </Helmet>
           <DataRow title="Order" value={`#${order['id']}`} />
           <DataRow title="Status" value={order['customer_deal_status']} />
           <DataRow title="Ordered on" value={formatDate(order['ordered_at'])} />

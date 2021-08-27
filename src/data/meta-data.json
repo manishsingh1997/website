@@ -114,5 +114,27 @@
   "/app/logout": {
     "title": "Ergeon Logout",
     "description": "Ergeon Logout"
+  },
+  "/app": {
+    "appointments": {
+      "title": "Appointments",
+      "description": ""
+    },
+    "contacts": {
+      "title": "Contacts",
+      "description": ""
+    },
+    "houses": {
+      "title": "Houses",
+      "description": ""
+    },
+    "notifications": {
+      "title": "Notifications preferences",
+      "description": ""
+    },
+    "orders": {
+      "title": "Orders",
+      "description": ""
+    }
   }
 }

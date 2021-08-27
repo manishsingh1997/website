@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {ReactSVG} from 'react-svg';
 import {Link} from 'react-router-dom';
+import {Helmet} from 'react-helmet';
 import {ImageGallery, SwipeGallery} from '@ergeon/core-components';
 import {isPDFMode} from 'utils/utils';
 import isEmpty from 'lodash/isEmpty';
@@ -113,6 +114,14 @@ export default class QuoteDescription extends React.Component {
       <>
         <div className="quote-details-wrapper">
           {this.isUserOwnerOfQuote() && !asPDF && this.renderBackButton()}
+          <Helmet>
+            {quote.title && <title key={Math.random()}>{quote.title}</title>}
+            {!quote.title &&
+              <title key={Math.random()}>
+                {`${quote.order.product.name} Quote #${quote.id}`}
+              </title>
+            }
+          </Helmet>
           {quote.title && quote.title.length < 55 ? <h3>{quote.title}</h3> : <h4>{quote.title}</h4>}
           {!quote.title && <h3>{quote.order.product.name} Quote #{quote.id}</h3>}
           <div>
