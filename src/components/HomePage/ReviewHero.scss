@@ -1,4 +1,10 @@
 @import '~@ergeon/core-components/src/components/variables.scss';
+
+// used as half the height on homeAdvisor, google and yelp logos
+%review-logo-height {
+  height: 32px;
+}
+
 .review-hero {
   &__flex-wrapper {
     display: flex;
@@ -50,8 +56,16 @@
       }
     }
     &__home-advisor-logo {
+      @extend %review-logo-height;
       width: 157px;
-      height: 32px;
+    }
+    &__google-logo {
+      @extend %review-logo-height;
+      width: 95px;
+    }
+    &__yelp-logo {
+      @extend %review-logo-height;
+      width: 63px;
     }
     &__rating {
       margin: 12px 0;
@@ -94,5 +108,4 @@
       margin-top: 12px;
     }
   }
-
 }

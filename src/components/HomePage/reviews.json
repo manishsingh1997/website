@@ -1,0 +1,26 @@
+{
+  "homeadvisor": {
+    "variant": "HomeAdvisor",
+    "url": "https://www.homeadvisor.com/rated.ErgeonPaloAlto.66624661.html",
+    "title": "The installation went great!",
+    "text": "Roberto and team were very flexible and took care of few adjustments without making a big deal about it. I would recommend this service to a friend.",
+    "reviewerName": "Taylor K.",
+    "classLogo": "review-hero__customer-reviews__home-advisor-logo"
+  },
+  "google": {
+    "variant": "Google",
+    "url": "https://www.google.com/maps?cid=13156437773994721266&hl=en",
+    "title": "Ergeon has transformed our backyard and I feel safe knowing my family has a beautiful and secure fence now.",
+    "text": "Everyone was very professional, honest and helpful. My quote was prompt and extremely competitive.The job was done way ahead of schedule. If I could give more stars I would.",
+    "reviewerName": "Jonathan M.",
+    "classLogo": "review-hero__customer-reviews__google-logo"
+  },
+  "yelp": {
+    "variant": "Yelp",
+    "url": "https://www.yelp.com/biz/ergeon-palo-alto-3",
+    "title": "The professional service is what puts Ergeon over the top for me.",
+    "text": "Fast response to my questions and the quote was very detailed and professional. There was a lot of great communication throughout the whole process.  I was happy with the quality of the materials and the work.",
+    "reviewerName": "Peter R.",
+    "classLogo": "review-hero__customer-reviews__yelp-logo"
+  }
+}
