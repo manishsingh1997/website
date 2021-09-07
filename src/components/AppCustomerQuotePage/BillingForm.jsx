@@ -209,7 +209,7 @@ export default class BillingForm extends React.Component {
               name="card"
               onBlur={this.handleBlur.bind(this, 'card')}
               onChange={this.handleFieldChange.bind(this)}
-              tabindex="1"
+              tabIndex="1"
               type="tel"
               validationMessage={errors?.card}
               value={card} />
@@ -227,7 +227,7 @@ export default class BillingForm extends React.Component {
               onBlur={this.handleBlur.bind(this, 'expirationDate')}
               onChange={this.handleFieldChange.bind(this)}
               placeholder="MM/YY"
-              tabindex="2"
+              tabIndex="2"
               type="tel"
               validationMessage={errors?.expirationDate}
               value={expirationDate} />
@@ -243,7 +243,7 @@ export default class BillingForm extends React.Component {
               name="cvc"
               onBlur={this.handleBlur.bind(this, 'cvc')}
               onChange={this.handleFieldChange.bind(this)}
-              tabindex="3"
+              tabIndex="3"
               type="tel"
               validationMessage={errors?.cvc}
               value={cvc} />
