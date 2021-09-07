@@ -36,7 +36,7 @@ export default class ExplanationSection extends React.Component {
             <ReactSVG src={ImgCalendar}/>
             <h3 className="additional-header h3">Scheduling</h3>
           </div>
-          After accepting your quote, our project management team will be in touch with you within a week
+          After accepting your quote, our project management team will be in touch with you <b>within a week </b>
           to discuss next steps, and get you scheduled as soon as possible!
         </div>
         <div className="text-block restricted-720">
