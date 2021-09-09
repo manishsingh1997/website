@@ -17,7 +17,7 @@ class AboutPage extends React.Component {
             Our mission
           </h1>
           <p className="subheader h2 center">
-            Simplify home improvement <br/>by empowering skilled local contractors
+            Empower the world to build.
           </p>
         </div>
         <div className="values-container">
@@ -40,24 +40,24 @@ class AboutPage extends React.Component {
         <div className="about-section">
           <h3 className="spacing after__is-24">About Ergeon</h3>
           <p>
-            We set out in 2018 to disrupt the multi trillion dollar construction space with technology.
-            Using proprietary technology coupled with operational excellence we are building the largest,
-            most customer-friendly construction company in the world. We own the consumer-contractor relationship
-            end-to-end. Our ‘tech stack’ delivers a seamless experience for consumers and contractors.
-            As a result, we increase the build capacity of our contractors and deliver projects 3x faster
-            at competitive prices. Starting with outdoor home improvement, we install the highest quality
-            fence and hardscape. In time, we will scale to larger and more complex building projects.
+            We are disrupting the multi-trillion-dollar construction industry with a global skilled workforce and
+            technology. We empower our customers, contractors, and staff to become their own superheroes.
             <br/><br/>
-            Ergeon was founded and is run today by two CS PhD serial entrepreneurs that share a deep passion for
-            utilizing technology to improve how people work. Our innovative technologies help consumers,
-            contractors and our all-remote staff excel.
+            We believe that projects should be done on time, on budget, and with reliable quality. Our customers
+            are provided with the best support from a highly qualified global workforce and they have access to
+            user-friendly, proprietary technology allowing them to visualize, plan and build their projects.
+            This opens the door to fast, responsive, and friendly service, transparent pricing, and quality
+            craftsmanship. As a result, any property owner can make their home better without any stress;
+            and enjoy it more with their family and friends.
             <br/><br/>
-            We believe amazing companies start with amazing people. As an all-remote company (read more &nbsp;
-            <a href="https://medium.com/ergeon">here</a>) we know those people come from all over the world.
-            We have a fast growing and diverse team spread
-            across 20+ countries today. We go to great lengths to ensure that our workforce, everywhere in the
-            world, has access to career growth, an amazing work culture and great benefits.
-            Come join us to transform the construction industry.<br/><br/>
+            Starting with outdoor construction, we install the highest quality fence and hardscape projects and
+            we are on track toward scaling to larger complex building projects. We have completed over 6000
+            fence and hardscape installations in California (license number #1040925, C13, and C27) and are
+            named Best of HomeAdvisor 2020, with over 1000 Yelp and Google reviews at an average rating of 4.6.
+            We work with residential and commercial property owners in the Bay Area, Sacramento, Fresno,
+            Riverside, San Bernardino, Orange County, Ventura, and Los Angeles. Our company was founded and
+            is run today by two CS Ph.D. serial entrepreneurs.
+            <br/><br/>
           </p>
           <div className="special-section">
             <div className="profiles">
