@@ -23,9 +23,17 @@ class CareersPage extends React.Component {
       <div className="careers-page wrapper-1180">
         <div className="spacing before__is-48 after__is-48">
           <h1 className="center spacing after__is-12">Join Us In Changing The Home Services Industry</h1>
-          <p className="subheader h2 center">
-            We’re using technology to democratize the way consumers improve their home.
-            <br/>Simpler.  Faster.  Better Value.
+          <p className="subheader h2 center spacing after__is-24">
+            Everyone should have access to a job they love
+          </p>
+          <p>
+            We believe that everyone has a right to professional growth and respect regardless of their location.
+            Ergeon global staff (aka Ergeoneers) are given meaningful opportunities and support in a kind
+            and diverse community. This ensures that our workforce, around the world, has access to career growth,
+            amazing work culture, and great benefits.
+            <br/><br/>
+            We have a fast-growing and diverse team spread across 30+ countries today. Come join us to transform
+            the construction industry!
           </p>
         </div>
         <div className="careers-page__img-container">
