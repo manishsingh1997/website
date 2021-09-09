@@ -66,7 +66,7 @@ if (process.env.NODE_ENV === PRODUCTION) {
 const website2ndLevelDomain = websiteDomain.match(/\.?(\w+\.\w+)$/i)[1];
 
 // COVID notification URL
-const policyUrl = `${publicWebsite}/help/202000376`;
+const policyUrl = `${publicWebsite}/help/202000377`;
 
 export default {
   addressEnteredApi,
