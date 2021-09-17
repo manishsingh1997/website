@@ -19,7 +19,8 @@ class ErrorBoundary extends React.Component {
     };
   }
 
-  componentDidCatch(error) {
+  componentDidCatch(err) {
+    const error = err instanceof Error ? err : new Error(JSON.stringify(err)); // stringify for plain obj
     Sentry.captureException(error);
   }
 
