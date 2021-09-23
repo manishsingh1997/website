@@ -24,13 +24,13 @@ import './BillingForm.scss';
 
 export default class BillingForm extends React.Component {
   static propTypes = {
+    contractUrl: PropTypes.string,
     error: PropTypes.string,
     houseId: PropTypes.number,
     onSubmit: PropTypes.func,
     paymentMethod: PropTypes.object,
     quoteApproved: PropTypes.bool,
     quoteId: PropTypes.number,
-    termsAndConditionsUrl: PropTypes.string,
     total: PropTypes.string,
   };
 
@@ -281,7 +281,7 @@ export default class BillingForm extends React.Component {
   render() {
     const {form, errors, isLoading} = this.state;
     const {termsAccepted} = form;
-    const {paymentMethod, quoteId, termsAndConditionsUrl, total} = this.props;
+    const {paymentMethod, quoteId, contractUrl, total} = this.props;
     const classes = {
       'billing-form': true,
       'billing-form--with-payment-method-details': this.isQuoteApproved(),
@@ -349,10 +349,10 @@ export default class BillingForm extends React.Component {
               <span className="billing-form__terms-accept">
                 I accept <a
                   className="billing-form__terms-link"
-                  href={termsAndConditionsUrl}
+                  href={contractUrl}
                   rel="noopener noreferrer"
                   target="_blank">
-                  Terms and Conditions
+                  contract Terms and Conditions
                 </a>
               </span>
             </div>

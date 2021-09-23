@@ -139,15 +139,6 @@ export default class AppOrderDetailPage extends React.Component {
     ));
   }
 
-  renderWarrantyLink(warrantyPDFURL, warrantyThumbURL) {
-    const linkContent = warrantyThumbURL ? <img className="warranty-thumb" src={warrantyThumbURL} /> : 'warranty.pdf';
-    return warrantyPDFURL && (
-      <a href={warrantyPDFURL}>
-        {linkContent}
-      </a>
-    );
-  }
-
   renderContent() {
     const {selectedOption} = this.state;
     const order = this.getOrder();
@@ -164,9 +155,7 @@ export default class AppOrderDetailPage extends React.Component {
           <DataRow title="Ordered on" value={formatDate(order['ordered_at'])} />
           <DataRow title="Visit Dates" value={this.renderVisitDates(order['visits'])} />
           <DataRow title="Address" value={getFormattedAddress(order['house'])} />
-          <DataRow
-            title="Warranty"
-            value={this.renderWarrantyLink(order.project_warranty_pdf, order.project_warranty_thumb)} />
+          {/* TODO: ENG-8768 Add data row with order contract url */}
         </div>
         {filterQuotesByStatus(order['quotes'], selectedOption).map(quote => (
           <AppSubCard

@@ -12,18 +12,14 @@ import './ExplanationSection.scss';
 export default class ExplanationSection extends React.Component {
   static propTypes = {
     asPDF: PropTypes.bool,
-    projectWarrantyImage: PropTypes.string,
-    projectWarrantyLink: PropTypes.string,
+    contractUrl: PropTypes.string,
   };
-  renderWarrantyBlock() {
-    const {projectWarrantyLink, projectWarrantyImage} = this.props;
-    const linkContent = projectWarrantyImage ?
-      <img className="spacing before__is-24 restricted-720" src={projectWarrantyImage} /> :
-      <React.Fragment>Read our project warranty here</React.Fragment>;
+  renderContractBlock() {
+    const {contractUrl} = this.props;
     return (
-      projectWarrantyLink && <React.Fragment>
+      contractUrl && <React.Fragment>
         <hr className="gray-line restricted-720"/>
-        <a href={projectWarrantyLink}>{linkContent}</a>
+        <a href={contractUrl}>Read project contract here</a>
       </React.Fragment>
     );
   }
@@ -65,7 +61,7 @@ export default class ExplanationSection extends React.Component {
           charged at the amount listed on your quote. Payments made via credit card will be subject to an
           additional {CARD_TRANSACTION_FEE} transaction fee.
         </div>
-        {!asPDF && this.renderWarrantyBlock()}
+        {!asPDF && this.renderContractBlock()}
       </div>
     );
   }

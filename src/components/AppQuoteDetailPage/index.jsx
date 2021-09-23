@@ -220,14 +220,12 @@ export default class AppQuoteDetailPage extends React.Component {
     const {
       order: {house: {id: houseId}},
     } = quote;
-
-    const projectWarrantyImage = quote.order.project_warranty_image;
-    const projectWarrantyLink = quote.order.project_warranty_pdf;
-    const termsAndConditionsUrl = quote.contract;
+    const contractUrl = quote.contract;
+    const asPDF = isPDFMode();
     return (
       <div className="quote-detail-page">
         <QuoteDetails
-          asPDF={isPDFMode()}
+          asPDF={asPDF}
           auth={auth}
           customerGID={this.customerGID}
           getNewQuoteLink={this.getNewQuoteLink.bind(this)}
@@ -238,20 +236,19 @@ export default class AppQuoteDetailPage extends React.Component {
           totalProjectPrice={formatPrice(this.getProjectTotalPrice(quote))}/>
         {!this.isInstallerPreview() && <ProjectNotes quote={quote}/>}
         {this.shouldShowBillingForm() && <BillingForm
+          contractUrl={contractUrl}
           error={paymentMethodError}
           houseId={houseId}
           onSubmit={this.handleBillingSubmit.bind(this)}
           paymentMethod={paymentMethod}
           quoteApproved={isQuoteApproved(quote)}
           quoteId={quote['id']}
-          termsAndConditionsUrl={termsAndConditionsUrl}
           total={formatPrice(this.getProjectTotalPrice(quote))} />}
         {
           !this.isInstallerPreview() &&
           <ExplanationSection
-            asPDF={isPDFMode()}
-            projectWarrantyImage={projectWarrantyImage}
-            projectWarrantyLink={projectWarrantyLink} />
+            asPDF={asPDF}
+            contractUrl={contractUrl} />
         }
       </div>
     );
