@@ -1,5 +1,6 @@
 import React from 'react';
 import Script from 'react-load-script';
+import {showUpcomingFeatures} from 'utils/utils';
 
 import config from 'website/config';
 import {ERGEON_LICENSE_NUMBER} from 'website/constants';
@@ -28,7 +29,12 @@ class WarrantiesPage extends React.Component {
   }
 
   getWarranties() {
-    const getProductWarranty = product => product.state_warranty_url;
+    const getProductWarranty = product => {
+      if (showUpcomingFeatures()) {
+        return product.state_contract_url;
+      }
+      return product.state_warranty_url;
+    };
     return fetch(WARRANTIES_URL, {mode: 'cors'})
       .then(response => response.json())
       .then(products => products.filter(getProductWarranty).map(product => {
