@@ -59,7 +59,7 @@ export const addConfigFromSchema = function({zipcode, data, schemaCode, length, 
 
         return dispatch(addConfig(item));
       })
-      .then(() => calcUtils.getPreviewImage(schemaCode))
+      .then(() => calcUtils.getPreviewImage({schemaCode}))
       .then(preview => {
         dispatch(updateConfig((index !== -1 ? index : configs.length), {
           ...item,

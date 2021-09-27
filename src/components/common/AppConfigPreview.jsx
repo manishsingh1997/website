@@ -62,10 +62,12 @@ export default class AppConfigPreview extends React.Component {
     this.setState({isLoading: isEmpty(images)});
     try {
       const preview = await calcUtils.getPreviewImage(
-        schemaCodeUrl,
-        DEFAULT_PREVIEW_WIDTH,
-        DEFAULT_PREVIEW_HEIGHT,
-        USE_CACHE,
+        {
+          height: DEFAULT_PREVIEW_HEIGHT,
+          schemaCodeUrl,
+          useCache: USE_CACHE,
+          width: DEFAULT_PREVIEW_WIDTH,
+        }
       );
       this.setState({previewImage: preview});
     } catch (error) {
