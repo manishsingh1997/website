@@ -20,7 +20,7 @@ export default class ExplanationSection extends React.Component {
     return (
       contractUrl && <React.Fragment>
         <hr className="gray-line restricted-720"/>
-        <a href={contractUrl}>Read project contract here</a>
+        <a href={contractUrl}>Read Project Contract and Warranty here</a>
       </React.Fragment>
     );
   }

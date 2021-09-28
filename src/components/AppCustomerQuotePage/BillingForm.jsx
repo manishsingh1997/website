@@ -352,7 +352,7 @@ export default class BillingForm extends React.Component {
                   href={contractUrl}
                   rel="noopener noreferrer"
                   target="_blank">
-                  contract Terms and Conditions
+                  the terms and condition included in the contract
                 </a>
               </span>
             </div>
