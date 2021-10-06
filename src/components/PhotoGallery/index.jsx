@@ -140,7 +140,11 @@ class PhotoGallery extends React.Component {
       const category = this.getCategoryData();
       const group = find(category.categoryGroups, {groupSlug});
 
-      if (groupSlug && group) return group.groupPhotos || [];
+      if (groupSlug && group) return group.groupPhotos.map((elem) => {
+        // there's some groupPhotos that doesn't contain caption, so lets map title to them
+        if (!elem.caption && elem.title) return {caption: elem.title, ...elem};
+        return elem;
+      }) || [];
       return category.categoryPhotos || [];
     }
 
