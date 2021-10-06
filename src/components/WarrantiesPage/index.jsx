@@ -1,6 +1,4 @@
 import React from 'react';
-import Script from 'react-load-script';
-import {showUpcomingFeatures} from 'utils/utils';
 
 import config from 'website/config';
 import {ERGEON_LICENSE_NUMBER} from 'website/constants';
@@ -9,85 +7,83 @@ import certifiedIcon from 'assets/certified@2x.png';
 import licenseImage from 'assets/license.jpg';
 import './index.scss';
 
-const WARRANTIES_URL = `${config.apiHost}/api/store/product-descriptions/`;
+const PRODUCT_DESCRIPTIONS = `${config.apiHost}/api/store/product-descriptions/`;
+const CONTRACTS_DESCRIPTION = 'Our standard contract together with all'
+    + ' the associated warranties,'
+    + ' assurances, terms and conditions are'
+    + ' listed here by state and product';
 
 class WarrantiesPage extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      warranties: [],
-      pdfJSLoaded: false,
+      contracts: [],
     };
-
-    this.getWarranties()
-      .then(warranties => {
-        this.refs = {};
-        warranties.forEach(warranty => this.refs[warranty.slug] = React.createRef());
-        this.setState({warranties});
-      });
-  }
-
-  getWarranties() {
-    const getProductWarranty = product => {
-      if (showUpcomingFeatures()) {
-        return product.state_contract_url;
-      }
-      return product.state_warranty_url;
-    };
-    return fetch(WARRANTIES_URL, {mode: 'cors'})
-      .then(response => response.json())
-      .then(products => products.filter(getProductWarranty).map(product => {
-        const {slug} = product;
-        const warrantyUrl = getProductWarranty(product);
-        return {slug, warrantyUrl};
-      }));
-  }
-
-  generatePdfPreview(canvas, url) {
-    if (!canvas) return;
-    const canvasContext = canvas.getContext('2d');
-    const pdfjsLib = window.pdfjsLib || {};
-
-    return pdfjsLib.getDocument({url})
-      .then(doc => doc.getPage(1))
-      .then(function(page) {
-        const scaleRequired = canvas.width / page.getViewport(1).width;
-        const viewport = page.getViewport(scaleRequired);
-
-        return page.render({
-          canvasContext,
-          viewport,
-        });
-      })
-      .catch(() => {
-        canvas.width = 0;
-        canvas.height = 0;
-      });
-  }
-
-  renderWarranty({slug, warrantyUrl}) {
-    return (
-      <a
-        href={warrantyUrl}
-        key={`warranty-${slug}`}
-        rel="noopener noreferrer"
-        target="_blank">
-        <div className="card soft-border padding-20 shadow__z1 warranty">
-          <canvas
-            className="warranty__canvas"
-            height="250"
-            ref={element => this.generatePdfPreview(element, warrantyUrl)}
-            width="349">
-          </canvas>
-        </div>
-      </a>
+    this.getProductContracts().then(
+      contracts => this.setState({contracts})
     );
   }
 
-  render() {
-    const {warranties, pdfJSLoaded} = this.state;
+  getProductContracts() {
+    return fetch(PRODUCT_DESCRIPTIONS, {mode: 'cors'})
+      .then(response => response.json())
+      .then(products => products.map(product => {
+        const {name, slug, state_products: states} = product;
+        return {name, slug, states};
+      }));
+  }
 
+  renderContractItem(slug, name, contract) {
+    return (
+      <li key={slug}>
+        <a
+          href={contract}
+          rel="noopener noreferrer"
+          target="_blank">
+          {name}
+        </a>
+      </li>
+    );
+  }
+
+  renderContractHeader({name, slug, states}) {
+    const items = states.map(
+      state => {
+        const {state_name: name, contract} = state;
+        const contractSlug = `${slug}-${name}`;
+        return this.renderContractItem(contractSlug, name, contract);
+      }
+    );
+    return (
+      <React.Fragment key={slug}>
+        <h4>{name}</h4>
+        <ul>
+          {items}
+        </ul>
+      </React.Fragment>
+    );
+  }
+
+  renderContractsSection(contracts) {
+    if (contracts && contracts.length) {
+      const contractsSection = contracts.map(
+        contact => this.renderContractHeader(contact)
+      );
+      return (
+        <React.Fragment>
+          <h3 className="spacing after__is-12">Our Warranty</h3>
+          <p className="subheader h2 spacing after__is-30">{CONTRACTS_DESCRIPTION}</p>
+          {contractsSection}
+        </React.Fragment>
+      );
+    }
+    return null;
+  }
+
+  render() {
+    const {contracts} = this.state;
+    const contactsSection = this.renderContractsSection(contracts);
     return (
       <div className="warraties-page">
         <div className="warranties-page__header">
@@ -128,17 +124,7 @@ class WarrantiesPage extends React.Component {
               <img className="certification-image" src={licenseImage} />
             </a>
           </div>
-          <h3 className="spacing after__is-30">Warranty</h3>
-          <Script
-            onLoad={() => this.setState({pdfJSLoaded: true})}
-            url="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.943/build/pdf.min.js" />
-          {
-            pdfJSLoaded && (
-              <div className="warranties cards three-columns">
-                {warranties.map(this.renderWarranty.bind(this))}
-              </div>
-            )
-          }
+          {contactsSection}
         </div>
       </div>
     );
