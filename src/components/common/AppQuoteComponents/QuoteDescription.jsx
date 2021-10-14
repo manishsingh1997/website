@@ -10,7 +10,6 @@ import isEmpty from 'lodash/isEmpty';
 import ImgBack from 'assets/icon-arrow-left.svg';
 import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 
-import {ERGEON_LICENSE_NUMBER} from 'website/constants';
 import DataRow from 'components/common/DataRow';
 import {formatDateAndTime} from 'utils/date';
 import {getExpiresAtTitle} from 'utils/utils';
@@ -124,9 +123,10 @@ export default class QuoteDescription extends React.Component {
           </Helmet>
           {quote.title && quote.title.length < 55 ? <h3>{quote.title}</h3> : <h4>{quote.title}</h4>}
           {!quote.title && <h3>{quote.order.product.name} Quote #{quote.id}</h3>}
-          <div>
-            <i>Quote provided by Ergeon, license CA{ERGEON_LICENSE_NUMBER}</i>
+          {quote.order.house.address.licence && <div>
+            <i>Quote provided by Ergeon, license {quote.order.house.address.licence}</i>
           </div>
+          }
           <div className="quote-fields spacing before__is-24">
             <DataRow title="Customer" value={customerDetails} />
             <div className="quote-fields-wrapper">
