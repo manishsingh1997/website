@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {some} from 'lodash';
+import {isEmpty, some} from 'lodash';
 
 import {isPDFMode} from 'utils/utils';
 import {parseAPIError} from 'utils/api';
@@ -32,6 +32,7 @@ import {prepareQuoteApprovalLines} from './utils';
 import '@ergeon/draw-map/styles.css';
 
 import '../common/AppQuoteComponents/index.scss';
+import AdditionalApproversList from './AdditionalApproversList';
 
 export default class AppCustomerQuotePage extends React.Component {
 
@@ -194,7 +195,12 @@ export default class AppCustomerQuotePage extends React.Component {
     if (!quoteApproval) {
       return null;
     }
-    const {customer, quote, quote_approval_lines: quoteApprovalLines} = quoteApproval;
+    const {
+      customer,
+      quote,
+      quote_approval_lines: quoteApprovalLines,
+      other_quote_approvals: otherQuoteApprovals,
+    } = quoteApproval;
     const {
       order: {
         house: {id: houseId},
@@ -229,6 +235,8 @@ export default class AppCustomerQuotePage extends React.Component {
           paymentMethod={paymentMethod}
           quoteId={quote['id']}
           total={formatPrice(this.getTotalPrice(quoteApproval))} />}
+        {!isEmpty(otherQuoteApprovals) && <AdditionalApproversList
+          additionalQuoteApprovals={otherQuoteApprovals} />}
         <ExplanationSection
           asPDF={asPDF}
           contractUrl={contractUrl} />
