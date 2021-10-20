@@ -82,7 +82,9 @@ export default class AppCustomerQuotePage extends React.Component {
   }
 
   isScopeChange(quoteApproval) {
-    return quoteApproval.quote['is_scope_change'] == true;
+    // TODO: Remove when PRD ENG-8551 is finished
+    // Quote is optional for parent quote approval, must be removed later
+    return quoteApproval.quote && quoteApproval.quote['is_scope_change'] == true;
   }
 
   getNewQuoteLink() {
@@ -152,7 +154,7 @@ export default class AppCustomerQuotePage extends React.Component {
 
   getTotalPrice(quoteApproval) {
     const totalPrice = Number.parseFloat(quoteApproval['total_price']);
-    if (this.isScopeChange(quoteApproval) && showUpcomingFeatures()) {
+    if (showUpcomingFeatures() && this.isScopeChange(quoteApproval)) {
       // calculate total_price minus dropped lines
       const droppedLinesAmount = quoteApproval['quote_approval_lines'].map(
         line => line['quote_line'] // we need only quote_lines

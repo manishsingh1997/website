@@ -108,7 +108,7 @@ export default function QuoteLine(props) {
             <span className="quote-line-additional-info-label"><b> - TO BE REMOVED</b></span>
           )}
           {status === QUOTE_LINE_STATUSES.NEEDS_APPROVAL && isScopeChange && (
-            <span className="quote-line-additional-info-label"><b> - NEW</b></span>
+            <span className="quote-line-additional-info-label"><b>NEW</b></span>
           )}
         </div>
         <div className="quote-line-description-text">{description}</div>
