@@ -15,7 +15,8 @@ import isEmpty from 'lodash/isEmpty';
 
 import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 import {formatDate} from 'utils/date';
-
+import {showUpcomingFeatures} from '../../../utils/utils';
+import {hideDroppedLabels} from './utils';
 export default class QuoteDetails extends React.Component {
   static propTypes = {
     approvedAt: PropTypes.string,
@@ -105,11 +106,12 @@ export default class QuoteDetails extends React.Component {
   }
 
   renderQuoteLinesOnMap() {
-    const {quote, asPDF} = this.props;
+    const {quote, asPDF, quoteLines} = this.props;
     const {isLoadingMap} = this.state;
-    const {
-      'calc_input': calcInput,
-    } = quote;
+    let calcInput = quote['calc_input'];
+    if (showUpcomingFeatures()) {
+      calcInput = hideDroppedLabels(quote['project_calc_input'], quoteLines);
+    }
     let address = quote.order.house.address;
     if (!address) {
       address = quote.order.house.customer['main_address'];

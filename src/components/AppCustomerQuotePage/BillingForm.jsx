@@ -13,6 +13,7 @@ import {
   cardCvcValidation,
   getStripeToken,
 } from 'utils/billing';
+import {showUpcomingFeatures} from '../../utils/utils';
 import {CARD_TRANSACTION_FEE, CONTACT_EMAIL} from 'website/constants';
 
 import IconCards from 'assets/icon-cards.png';
@@ -28,6 +29,7 @@ export default class BillingForm extends React.Component {
     error: PropTypes.string,
     houseId: PropTypes.number,
     isApproved: PropTypes.bool,
+    isScopeChange: PropTypes.bool,
     onSubmit: PropTypes.func,
     paymentMethod: PropTypes.object,
     quoteId: PropTypes.number,
@@ -281,12 +283,14 @@ export default class BillingForm extends React.Component {
   render() {
     const {form, errors, isLoading} = this.state;
     const {termsAccepted} = form;
-    const {paymentMethod, quoteId, contractUrl, total} = this.props;
+    const {paymentMethod, quoteId, contractUrl, total, isScopeChange} = this.props;
     const classes = {
       'billing-form': true,
       'billing-form--with-payment-method-details': this.isQuoteApproved(),
       'billing-form--loading': isLoading,
     };
+
+    const totalPayText = isScopeChange && showUpcomingFeatures() ? 'New total pay' : 'Total pay';
 
     return (
       <div className={classNames(classes)}>
@@ -313,7 +317,7 @@ export default class BillingForm extends React.Component {
           </div>
           <div className="billing-form__actions">
             <div className="billing-form__total-pay">
-              Total pay
+              {totalPayText}
               <div className="billing-form__price">
                 {total}
               </div>

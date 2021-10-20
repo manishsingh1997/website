@@ -5,6 +5,7 @@ import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants'
 
 import {isQuoteLineOfMapKinds, getTagsForQuoteLine, getImagesForQuoteLine} from './utils';
 import QuoteLine from '../QuoteLine';
+import {showUpcomingFeatures} from '../../../../utils/utils';
 
 /**
  *  Builds up sides, gates and areas arrays by using filterByField quoteLines
@@ -22,7 +23,10 @@ export default function QuoteLines({
   quoteLines,
   isInstallerPreview,
 }) {
-  const {'calc_input': calcInput} = quote;
+  let calcInput = quote['calc_input'];
+  if (showUpcomingFeatures()) {
+    calcInput = quote['project_calc_input'];
+  }
   const filterByField = isInstallerPreview ? 'display_to_installer' : 'display_to_customer';
 
   const preparedQuoteLines = useMemo(() => {
@@ -44,6 +48,7 @@ export default function QuoteLines({
       type: CALC_SIDE_TYPE,
       quote,
       index: i,
+      isDropped: side['is_dropped'],
       isInstallerPreview,
       // show tags only when calcInput is present
       tags: calcInput ? getTagsForQuoteLine(getLabelFromIndex(i), quote) : undefined,
@@ -58,6 +63,7 @@ export default function QuoteLines({
       type: CALC_GATE_TYPE,
       quote,
       index: i,
+      isDropped: gate['is_dropped'],
       isInstallerPreview,
       // show tags only when calcInput is present
       tags: calcInput ? getTagsForQuoteLine(i + 1, quote) : undefined,
@@ -73,6 +79,7 @@ export default function QuoteLines({
       approvedAt: area.approved_at,
       type: CALC_AREA_TYPE,
       quote,
+      isDropped: area['is_dropped'],
       index: i,
       isInstallerPreview,
       price: area.price,

@@ -28,6 +28,7 @@ import ProjectNotes from './ProjectNotes';
 import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
 import QuoteError from '../common/AppQuoteComponents/QuoteError';
 import {prepareQuoteApprovalLines} from './utils';
+import {showUpcomingFeatures} from '../../utils/utils';
 
 import '@ergeon/draw-map/styles.css';
 
@@ -78,6 +79,10 @@ export default class AppCustomerQuotePage extends React.Component {
 
   isQuoteApprovalApproved() {
     return this.state.quoteApproval['approved_at'] !== null;
+  }
+
+  isScopeChange(quoteApproval) {
+    return quoteApproval.quote['is_scope_change'] == true;
   }
 
   getNewQuoteLink() {
@@ -146,10 +151,38 @@ export default class AppCustomerQuotePage extends React.Component {
   }
 
   getTotalPrice(quoteApproval) {
-    return Number.parseFloat(quoteApproval['total_price']);
+    const totalPrice = Number.parseFloat(quoteApproval['total_price']);
+    if (this.isScopeChange(quoteApproval) && showUpcomingFeatures()) {
+      // calculate total_price minus dropped lines
+      const droppedLinesAmount = quoteApproval['quote_approval_lines'].map(
+        line => line['quote_line'] // we need only quote_lines
+      ).filter(quoteLine =>
+        quoteLine['is_dropped'] &&
+        quoteLine['dropped_at_quote_id'] == quoteApproval.quote.id // get all lines dropped at this quote
+      ).map(quoteLine => parseFloat(quoteLine.price))
+        .reduce((a, b) => a + b, 0); // calculate dropped amount
+      return totalPrice - droppedLinesAmount;
+    }
+    return totalPrice;
   }
 
   getTotalPreviouslyApprovedPrice(quoteApproval) {
+    if (showUpcomingFeatures() && this.isScopeChange(quoteApproval)) {
+      const {quote_approval_lines: quoteApprovalLines} = quoteApproval;
+      const approvedPreviousQuoteApprovalLines = quoteApprovalLines.filter(
+        (line) => (
+          line.quote_approval_id != quoteApproval.id && // get all previous quote approval lines
+          (
+            !line['quote_line']['is_dropped'] || // where they are either not dropped
+            line['quote_line']['dropped_at_quote_id'] == quoteApproval.quote.id // or dropped at this quote
+          )
+        )
+      );
+      return approvedPreviousQuoteApprovalLines.reduce(
+        (acc, line) => acc + parseFloat(line['quote_line'].price),
+        0
+      );
+    }
     if (quoteApproval.parent_quote_approval) {
       return this.getTotalPrice(quoteApproval.parent_quote_approval);
     }
@@ -207,7 +240,7 @@ export default class AppCustomerQuotePage extends React.Component {
       },
       contract: contractUrl,
     } = quote;
-    const quoteLines = prepareQuoteApprovalLines(quoteApprovalLines);
+    const quoteLines = prepareQuoteApprovalLines(quoteApprovalLines, quote);
     const newQuoteApprovalLink = this.getNewQuoteLink();
     const {auth} = this.props;
     const asPDF = isPDFMode();
@@ -231,10 +264,11 @@ export default class AppCustomerQuotePage extends React.Component {
           error={paymentMethodError}
           houseId={houseId}
           isApproved={this.isQuoteApprovalApproved()}
+          isScopeChange={this.isScopeChange(quoteApproval)}
           onSubmit={this.handleBillingSubmit.bind(this)}
           paymentMethod={paymentMethod}
           quoteId={quote['id']}
-          total={formatPrice(this.getTotalPrice(quoteApproval))} />}
+          total={formatPrice(this.getProjectTotalPrice(quoteApproval))} />}
         {!isEmpty(otherQuoteApprovals) && <AdditionalApproversList
           additionalQuoteApprovals={otherQuoteApprovals} />}
         <ExplanationSection

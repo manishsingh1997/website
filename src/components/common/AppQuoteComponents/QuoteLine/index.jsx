@@ -7,11 +7,14 @@ import {isPDFMode} from 'utils/utils';
 import {formatPrice} from 'utils/app-order';
 
 import {isAllowedUnitDisplay} from './utils';
+import {QUOTE_LINE_STATUSES} from '../../../AppCustomerQuotePage/utils';
 import Tags from './QuoteLineTags';
 import Title from './QuoteLineTitle';
 import PreviewForCalcInfo from './QuoteLinePreviewCalcInfo';
 import PreviewForQuoteLine from './QuoteLinePreviewQuoteLine';
 import {Approved, Area, Distance, QuantityUnit} from './QuoteLineComponents';
+
+import './index.scss';
 
 /**
  * Renders quoteLine using quote data, uses label prop to
@@ -54,7 +57,11 @@ export default function QuoteLine(props) {
     type,
     isInstallerPreview,
     images,
+    status = QUOTE_LINE_STATUSES.NEEDS_APPROVAL,
+    isDropped = false,
   } = props;
+
+  const isScopeChange = quote['is_scope_change'];
 
   const imagePreview = useMemo(() => (
     <div>{label ? <PreviewForQuoteLine {...props} /> : <PreviewForCalcInfo {...props} />}</div>
@@ -63,8 +70,18 @@ export default function QuoteLine(props) {
   // Used on classNames to correctly trigger pdf classes to modify our layout
   const isQuoteLinePDF = useMemo(() => isPDFMode() && images, [images]);
 
+  // quote lines was dropped before this quote
+  if (status === QUOTE_LINE_STATUSES.APPROVED && isDropped) {
+    return null;
+  }
+
   return (
-    <div className={classNames('quote-line', {'quote-line__pdf': isQuoteLinePDF})} key={`side-${id}`}>
+    <div
+      className={classNames(
+        'quote-line',
+        `quote-line-status-${status.toLowerCase()}`,
+        {'quote-line__pdf': isQuoteLinePDF})}
+      key={`side-${id}`}>
       {/* Check for pdfMode, as this modifies our layout to display images underneat if we have any */}
       {isPDFMode() && !images && imagePreview}
       {/* Layout changes from desktop to mobile, as we move the gallery depeding on each */}
@@ -83,10 +100,18 @@ export default function QuoteLine(props) {
             For the quote line that belongs to the quote_lines from the change order quote
             there should be no "APPROVED AT".
           */}
-        {approvedAt && quoteLineQuoteId !== quote.id && (
-          <Approved approvedAt={approvedAt} />
-        )}
-        <div>{description}</div>
+        <div>
+          {approvedAt && quoteLineQuoteId !== quote.id && (
+            <Approved approvedAt={approvedAt} />
+          )}
+          {status === QUOTE_LINE_STATUSES.TO_BE_DROPPED && (
+            <span className="quote-line-additional-info-label"><b> - TO BE REMOVED</b></span>
+          )}
+          {status === QUOTE_LINE_STATUSES.NEEDS_APPROVAL && isScopeChange && (
+            <span className="quote-line-additional-info-label"><b> - NEW</b></span>
+          )}
+        </div>
+        <div className="quote-line-description-text">{description}</div>
         <Tags tags={tags} />
       </div>
       <div className={classNames('quote-line-price', {'quote-line-price__pdf': isQuoteLinePDF})}>
@@ -137,6 +162,7 @@ QuoteLine.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   images: PropTypes.array,
   index: PropTypes.number,
+  isDropped: PropTypes.bool,
   isInstallerPreview: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string,
@@ -144,6 +170,11 @@ QuoteLine.propTypes = {
   quantity: PropTypes.string,
   quote: PropTypes.object,
   quoteLineQuoteId: PropTypes.number,
+  status: PropTypes.oneOf([
+    QUOTE_LINE_STATUSES.APPROVED,
+    QUOTE_LINE_STATUSES.TO_BE_DROPPED,
+    QUOTE_LINE_STATUSES.NEEDS_APPROVAL,
+  ]),
   tags: PropTypes.array,
   type: PropTypes.oneOf([CALC_SIDE_TYPE, CALC_GATE_TYPE, CALC_AREA_TYPE]),
   unit: PropTypes.string,

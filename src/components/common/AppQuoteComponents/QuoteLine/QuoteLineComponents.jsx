@@ -52,9 +52,9 @@ Area.propTypes = {
  * @param {{approvedAt: string}} props
  */
 export const Approved = ({approvedAt}) => (
-  <div>
+  <span>
     <b className="quote-line-approved-at-label">APPROVED AT: {formatDate(approvedAt)}</b>
-  </div>
+  </span>
 );
 
 Approved.propTypes = {
