@@ -36,6 +36,12 @@ export const getCheckedZIP = (zipcode) => {
   });
 };
 
+const requestAbortedNote = `
+Similar issue was introduced with the Axios update to v0.21.2. Possibly, when we remove UI from
+the DOM before the request Promise gets resolved, either browser or React decides to abort this
+request.
+`;
+
 export const getPriceAndDescription = (modelState, zipcode = constants.DEFAULT_ZIP) => {
   const {GATE_TYPE} = attrs;
   const schemaCode = calcUtils.getSchemaCodeFromState(modelState);
@@ -48,6 +54,9 @@ export const getPriceAndDescription = (modelState, zipcode = constants.DEFAULT_Z
       return response.data;
     })
     .catch(function(error) {
+      if ((/Request\saborted/i).test(error.message)) {
+        console.warn(`Axios returned ”Request aborted” for ${query}. ${requestAbortedNote}`);
+      }
       console.error(error);
     });
 };
