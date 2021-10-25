@@ -50,8 +50,10 @@ export const getPriceAndDescription = (modelState, zipcode = constants.DEFAULT_Z
   const request = ensureUpcomingFeaturesParamInUrl(config.apiHost + query);
   return axios
     .get(request)
-    .then(function(response) {
-      return response.data;
+    .then((response) => {
+      if (response?.status === 200) {
+        return response.data;
+      }
     })
     .catch(function(error) {
       if ((/Request\saborted/i).test(error.message)) {

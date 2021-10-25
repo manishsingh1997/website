@@ -18,6 +18,7 @@ export default class StyleBrowserWrapper extends React.Component {
     onClose: PropTypes.func.isRequired,
     onDone: PropTypes.func.isRequired,
     onLoaded: PropTypes.func.isRequired,
+    showLoadingError: PropTypes.func.isRequired,
     zipcode: PropTypes.string,
   };
 
@@ -57,16 +58,20 @@ export default class StyleBrowserWrapper extends React.Component {
   }
 
   updatePrice(modelString) {
-    const {zipcode} = this.props;
+    const {zipcode, showLoadingError} = this.props;
     const modelState = calcUtils.getValueFromUrl(modelString);
     this.setState({
       moreStylesUrl: this.getMoreStylesURL(modelString),
     });
     return getPriceAndDescription(modelState, zipcode)
       .then(data => {
-        this.setState({
-          priceRow: this.getPriceRow(modelState, data['unit_price']),
-          description: data.description});
+        if (data) {
+          this.setState({
+            priceRow: this.getPriceRow(modelState, data['unit_price']),
+            description: data.description});
+        } else {
+          showLoadingError();
+        }
       });
   }
 
@@ -95,11 +100,13 @@ export default class StyleBrowserWrapper extends React.Component {
     });
     getPriceAndDescription(modelState, zipcode, propertyConfig)
       .then(data => {
-        this.setState({
-          priceRow: this.getPriceRow(modelState, data['unit_price']),
-          description: data.description,
-          error: null,
-        });
+        if (data) {
+          this.setState({
+            priceRow: this.getPriceRow(modelState, data['unit_price']),
+            description: data.description,
+            error: null,
+          });
+        }
       })
       .catch(error => {
         this.setState({

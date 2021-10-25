@@ -1,4 +1,5 @@
-import {some, random} from 'lodash';
+import some from 'lodash/some';
+import random from 'lodash/random';
 import {getPriceAndDescription} from 'api/lead';
 import {CatalogType, calcUtils, attrs} from '@ergeon/3d-lib';
 import moment from 'moment';
@@ -40,24 +41,26 @@ export const addConfigFromSchema = function({zipcode, data, schemaCode, length, 
 
     return getPriceAndDescription(data, zipcode)
       .then(priceAndDescription => {
-        const itemId = random(0, 1, true).toString(36).slice(2);
-        item = {
-          id: itemId,
-          'catalog_type': data[FRAME_STYLE.id] ? CatalogType.FENCE : CatalogType.GATE,
-          code: schemaCode,
-          product: data,
-          preview: '',
-          description: priceAndDescription['description'],
-          price: priceAndDescription['unit_price'],
-          units: length || 1,
-          timestamp: moment().unix() * 1000,
-        };
+        if (priceAndDescription) {
+          const itemId = random(0, 1, true).toString(36).slice(2);
+          item = {
+            id: itemId,
+            'catalog_type': data[FRAME_STYLE.id] ? CatalogType.FENCE : CatalogType.GATE,
+            code: schemaCode,
+            product: data,
+            preview: '',
+            description: priceAndDescription['description'],
+            price: priceAndDescription['unit_price'],
+            units: length || 1,
+            timestamp: moment().unix() * 1000,
+          };
 
-        if (index !== -1) {
-          return dispatch(updateConfig(index, item));
+          if (index !== -1) {
+            return dispatch(updateConfig(index, item));
+          }
+
+          return dispatch(addConfig(item));
         }
-
-        return dispatch(addConfig(item));
       })
       .then(() => calcUtils.getPreviewImage({schemaCodeUrl: schemaCode}))
       .then(preview => {

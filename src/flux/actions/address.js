@@ -23,13 +23,16 @@ export const updateLead = function(lead) {
 
     const configUpdates = Promise.all(configs.map(
       (config, index) => getPriceAndDescription(config.product, lead.zipcode).then(
-        priceAndDescription => dispatch(updateConfig(index, {
-          ...config,
-          description: priceAndDescription['description'],
-          price: priceAndDescription['unit_price'],
-        }))
-      )
-    ));
+        priceAndDescription => {
+          if (priceAndDescription) {
+            return dispatch(updateConfig(index, {
+              ...config,
+              description: priceAndDescription['description'],
+              price: priceAndDescription['unit_price'],
+            }));
+          }
+        }
+      )));
 
     return configUpdates.then(() => dispatch({
       type: actionTypes.LEAD_UPDATED,

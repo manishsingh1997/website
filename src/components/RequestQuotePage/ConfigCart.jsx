@@ -9,6 +9,7 @@ import iconPlus from '../../assets/icon-plus.svg';
 import classNames from 'classnames';
 import StyleBrowserWrapper from './StyleBrowserWrapper';
 import {getFencequotingURL} from '../../utils/urls';
+import LoadingErrorModal from '../common/ErroredLoadingModal';
 
 import './ConfigCart.scss';
 
@@ -39,7 +40,11 @@ class ConfigCart extends React.Component {
     this.state = {
       showStyleBrowser: props.showStyleBrowser,
       styleBrowserIndex: -1,
+      isLoadingModalErrored: false,
     };
+
+    this.showLoadingError = this.showLoadingError.bind(this);
+    this.closeLoadingError = this.closeLoadingError.bind(this);
   }
 
   componentDidUpdate() {
@@ -124,8 +129,19 @@ class ConfigCart extends React.Component {
     this.setState({styleBrowserLoaded: true});
   }
 
+  showLoadingError() {
+    this.setState(() => ({isLoadingModalErrored: true}));
+  }
+
+  closeLoadingError() {
+    const {onShowStyleBrowserChange} = this.props;
+    this.setState(() => ({isLoadingModalErrored: false}));
+    onShowStyleBrowserChange();
+  }
+
   renderDescription(config) {
-    return config.description;
+    const description = config.description || 'Cannot get data';
+    return description;
   }
 
   renderConfig(config, index) {
@@ -133,6 +149,7 @@ class ConfigCart extends React.Component {
 
     const isFenceConfig = this.isItFence(config);
     const length = (config.units).toString();
+    const priceText = isFenceConfig ? `~${Math.round(config.price)}/ft` : `~${Math.round(config.price)}`;
 
     return (
       <div key={config.id}>
@@ -152,18 +169,12 @@ class ConfigCart extends React.Component {
                 <span>{isFenceConfig ? 'Fence' : 'Gate'}</span>
                 <span className="config-item__length">
                   {
-                    isFenceConfig &&
+                    config.price &&
                     (
                       <div className="config-item__price">
-                        ~${Math.round(config.price)}/ft
+                        {priceText}
                       </div>
                     )
-                  }
-                  {
-                    !isFenceConfig &&
-                    <div className="config-item__price">
-                      ~${Math.round(config.price)}
-                    </div>
                   }
                 </span>
               </div>
@@ -247,13 +258,14 @@ class ConfigCart extends React.Component {
         onClose={() => this.onCloseEditorClick()}
         onDone={(editorModel) => this.onDoneEditorClick(editorModel, styleBrowserIndex)}
         onLoaded={() => this.onStyleBrowserLoaded()}
+        showLoadingError={this.showLoadingError}
         zipcode={this.props.zipcode}/>
     );
   }
 
   render() {
     const {configs} = this.props;
-    const {showStyleBrowser, styleBrowserIndex, styleBrowserLoaded} = this.state;
+    const {showStyleBrowser, styleBrowserIndex, styleBrowserLoaded, isLoadingModalErrored} = this.state;
     const styleBrowserContainerClasses = classNames({
       'style-browser-loader' : true,
       'loaded' : styleBrowserLoaded,
@@ -267,7 +279,9 @@ class ConfigCart extends React.Component {
       <React.Fragment>
         <div>
           <div className={styleBrowserPreloaderClasses}>
-            <Spinner active={!styleBrowserLoaded} borderWidth={0.16} color="white" size={64}/>
+            {isLoadingModalErrored
+              ? <LoadingErrorModal onClose={this.closeLoadingError} />
+              : <Spinner active={!styleBrowserLoaded} borderWidth={0.16} color="white" size={64}/>}
           </div>
           {(showStyleBrowser)
             ? <div className={styleBrowserContainerClasses}>{this.renderStyleBrowser()}</div>
