@@ -2,8 +2,8 @@
 
 ### Requirements
 ```
-node v11.15.0
-npm v6.13.1
+node v14.17.5
+npm v6.14.14
 ```
 
 ### Installation

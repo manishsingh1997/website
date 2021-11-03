@@ -6,7 +6,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:11.15.0-stretch
+      - image: cimg/python:3.8.12-node
 
     steps:
       - checkout
@@ -18,10 +18,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
-            sudo python get-pip.py pip==20.3.4
-            sudo pip install awscli
-            sudo npm install -g npm@6.13.1
+            pip install awscli
             sudo npm install -g @sentry/cli --unsafe-perm
             echo "//npm.ergeon.in/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             make install
