@@ -15,7 +15,6 @@ import {
   Spinner,
   TopPanel,
 } from '@ergeon/core-components';
-import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 
 import phoneIcon from 'assets/icon-phone.svg';
@@ -61,6 +60,7 @@ export default class Layout extends React.Component {
     children: PropTypes.node,
     getCurrentUser: PropTypes.func.isRequired,
     location: PropTypes.object,
+    phoneNumber: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -150,10 +150,11 @@ export default class Layout extends React.Component {
   }
 
   renderPdfDetails() {
+    const {phoneNumber} = this.props;
     return (
       <div className="phone-number">
         <ReactSVG className="phone-number__icon" src={phoneIcon} />
-        <a className="phone-number__link" href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a>
+        <a className="phone-number__link" href={`tel:${phoneNumber}`}>{formatPhoneNumber(phoneNumber)}</a>
       </div>
     );
   }

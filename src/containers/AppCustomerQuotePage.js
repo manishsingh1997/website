@@ -1,15 +1,16 @@
 import {connect} from 'react-redux';
 
 import AppCustomerQuotePage from 'components/AppCustomerQuotePage';
+import {setPDFHeaderPhoneNumber} from '../flux/actions/layout';
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({auth, layout}) => {
   return {
-    auth,
+    auth, layout,
   };
 };
 
-const mapDispatchToProps = () => {
-  return {};
-};
+const mapDispatchToProps = (dispatch) => ({
+  setPDFHeaderPhoneAction: (phone) => dispatch(setPDFHeaderPhoneNumber(phone)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppCustomerQuotePage);

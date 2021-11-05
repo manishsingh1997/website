@@ -39,6 +39,7 @@ export default class AppCustomerQuotePage extends React.Component {
 
   static propTypes = {
     auth: PropTypes.object,
+    layout: PropTypes.object,
     location: PropTypes.shape({
       pathname: PropTypes.string,
     }),
@@ -48,6 +49,7 @@ export default class AppCustomerQuotePage extends React.Component {
         secret: PropTypes.string,
       }),
     }),
+    setPDFHeaderPhoneAction: PropTypes.func,
   };
 
   state = {
@@ -104,6 +106,16 @@ export default class AppCustomerQuotePage extends React.Component {
         quoteApprovalError: null,
         paymentMethodError: null,
       });
+      const {
+        setPDFHeaderPhoneAction,
+      } = this.props;
+      const {
+        market_phone_number: phoneNumber,
+      } = data.data.quote;
+      const {layout} = this.props;
+      if (phoneNumber && phoneNumber !== layout.phoneNumber && setPDFHeaderPhoneAction) {
+        setPDFHeaderPhoneAction(phoneNumber);
+      }
     } catch (apiError) {
       this.setState({
         quoteApproval: null,

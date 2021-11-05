@@ -4,11 +4,10 @@ import {withRouter} from 'react-router';
 import {getCurrentUser} from 'flux/actions/auth';
 import Layout from 'components/Layout';
 
-const mapStateToProps = ({auth}) => {
-  return {
-    auth,
-  };
-};
+const mapStateToProps = ({auth, layout}) => ({
+  auth,
+  phoneNumber: layout.phoneNumber,
+});
 
 const mapDispatchToProps = (dispatch) => {
   return {
