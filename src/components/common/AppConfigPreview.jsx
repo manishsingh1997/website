@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import * as Sentry from '@sentry/browser';
 
 import {Spinner, ImageGallery, SwipeGallery, ImageCard} from '@ergeon/core-components';
+import preview3DIcon from '@ergeon/core-components/src/assets/icon-3d.svg';
 import previewPlaceholderIcon from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {calcUtils} from '@ergeon/3d-lib';
@@ -131,6 +132,7 @@ export default class AppConfigPreview extends React.Component {
         rel="noopener noreferrer"
         target="_blank">
         {this.renderPreview()}
+        <img className="preview-3d" src={preview3DIcon} />
       </a>
     );
   }

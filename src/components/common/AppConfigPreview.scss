@@ -1,6 +1,7 @@
 @import '~@ergeon/core-components/src/components/variables.scss';
 
 .config-preview {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,6 +25,12 @@
     border-color: $white;
     width: 97%;
     height: auto;
+  }
+
+  .preview-3d {
+    position: absolute;
+    right: $h-5;
+    bottom: $h-5;
   }
 
   .preview-placeholder {
