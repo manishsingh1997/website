@@ -52,7 +52,7 @@ export default function QuoteLine(props) {
     quantity,
     unit,
     quote,
-    quoteLineQuoteId,
+    quoteId,
     tags,
     type,
     isInstallerPreview,
@@ -101,7 +101,7 @@ export default function QuoteLine(props) {
             there should be no "APPROVED AT".
           */}
         <div>
-          {approvedAt && quoteLineQuoteId !== quote.id && (
+          {approvedAt && quoteId !== quote.id && (
             <Approved approvedAt={approvedAt} />
           )}
           {status === QUOTE_LINE_STATUSES.TO_BE_DROPPED && (
@@ -169,7 +169,7 @@ QuoteLine.propTypes = {
   price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   quantity: PropTypes.string,
   quote: PropTypes.object,
-  quoteLineQuoteId: PropTypes.number,
+  quoteId: PropTypes.number,
   status: PropTypes.oneOf([
     QUOTE_LINE_STATUSES.APPROVED,
     QUOTE_LINE_STATUSES.TO_BE_DROPPED,
