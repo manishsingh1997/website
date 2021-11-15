@@ -109,7 +109,7 @@ export default class QuoteDetails extends React.Component {
     const {quote, asPDF, quoteLines} = this.props;
     const {isLoadingMap} = this.state;
     let calcInput = quote['calc_input'];
-    if (showUpcomingFeatures()) {
+    if (showUpcomingFeatures() && quote['project_calc_input']) {
       calcInput = hideDroppedLabels(quote['project_calc_input'], quoteLines);
     }
     let address = quote.order.house.address;
