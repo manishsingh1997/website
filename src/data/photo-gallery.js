@@ -712,6 +712,26 @@ export const FencePhotoData = [
         'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Gate+Installation+-+Ergeon+-+Berkeley+California+-+Single+Gate+2.jpeg',
         'slug': slugify('Redwood Con Heart Nail Up Horizontal Side by Side'),
       },
+      {
+        'caption': 'Redwood Con Common Nail Up Dog Ear with Kickboard',
+        'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Oakland%2C+California+-+Nail+Up+Dog+Ear.jpeg',
+        'slug': slugify('Redwood Con Common Nail Up Dog Ear with Kickboard'),
+      },
+      {
+        'caption': 'Redwood Con Common Picture Frame Board on Board',
+        'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/Redwood+Con+Common+Picture+Frame+Board+on+Board.png',
+        'slug': slugify('Redwood Con Common Picture Frame Board on Board'),
+      },
+      {
+        'caption': 'Redwood Con Common Picture Frame with Lattice',
+        'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+San+Leandro%2C+California+-+Picture+Frame+with+Lattice+1.jpeg',
+        'slug': slugify('Redwood Con Common Picture Frame with Lattice'),
+      },
+      {
+        'caption': 'Redwood Con Common Horizontal',
+        'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Stanford+California+-+Horizontal+4.jpeg',
+        'slug': slugify('Redwood Con Common Horizontal'),
+      },
     ],
   },
   {
