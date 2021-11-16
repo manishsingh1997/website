@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {some} from 'lodash';
 
+import {Redirect} from 'react-router-dom';
+
 import {Notification} from '@ergeon/core-components';
 import {isPDFMode} from 'utils/utils';
 import {parseAPIError} from 'utils/api';
@@ -36,6 +38,7 @@ import ProjectNotes from './ProjectNotes';
 import QuoteDetails from './QuoteDetails';
 import {HTTP_STATUS_NOT_FOUND} from '../../website/constants';
 import NotFoundPage from '../NotFoundPage';
+import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 
 export default class AppQuoteDetailPage extends React.Component {
 
@@ -177,6 +180,21 @@ export default class AppQuoteDetailPage extends React.Component {
     );
   }
 
+  redirectToQuoteApprovalPage() {
+    const {quote: {quote_approvals: quoteApprovals, secret: quoteSecret}} = this.state;
+    const {customer: {gid: customerSecret}, secret: quoteApprovalSecret} = quoteApprovals[0];
+
+    if (this.isInstallerPreview()) {
+      return <Redirect to={`/app/${customerSecret}/quote-approvals/${quoteSecret}/${INSTALLER_PREVIEW_SLUG}`} />;
+    }
+
+    if (this.isDirectPreview()) {
+      return <Redirect to={`/app/${customerSecret}/quote-approvals/${quoteApprovalSecret}/${DIRECT_PREVIEW_SLUG}`} />;
+    }
+
+    return <Redirect to={`/app/${customerSecret}/quote-approvals/${quoteApprovalSecret}`} />;
+  }
+
   renderQuoteError() {
     const {statusCode, data} = this.state.quoteError;
     if (statusCode === HTTP_STATUS_NOT_FOUND) {
@@ -222,6 +240,11 @@ export default class AppQuoteDetailPage extends React.Component {
     } = quote;
     const contractUrl = quote.contract;
     const asPDF = isPDFMode();
+
+    if (isUpcomingFeaturesEnabled()) {
+      return this.redirectToQuoteApprovalPage();
+    }
+
     return (
       <div className="quote-detail-page">
         <QuoteDetails
