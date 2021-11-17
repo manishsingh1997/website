@@ -312,6 +312,7 @@ export default class BillingForm extends React.Component {
               <div className="billing-form__card-disclaimer-text">
                 You <b>will not be charged</b> until after your service is completed.
                 Credit/debit card payments are subject to an additional {CARD_TRANSACTION_FEE} transaction fee.
+                The current payment options we have aside from credit card are bank transfer and check payments.
               </div>
             </div>
           </div>
