@@ -184,15 +184,26 @@ export default class AppQuoteDetailPage extends React.Component {
     const {quote: {quote_approvals: quoteApprovals, secret: quoteSecret}} = this.state;
     const {customer: {gid: customerSecret}, secret: quoteApprovalSecret} = quoteApprovals[0];
 
+    let searchString = '';
+    if (window.location && window.location.search) {
+      searchString = window.location.search;
+    }
+
     if (this.isInstallerPreview()) {
-      return <Redirect to={`/app/${customerSecret}/quote-approvals/${quoteSecret}/${INSTALLER_PREVIEW_SLUG}`} />;
+      return (
+        <Redirect
+          to={`/app/${customerSecret}/quote-approvals/${quoteSecret}/${INSTALLER_PREVIEW_SLUG}/${searchString}`}/>
+      );
     }
 
     if (this.isDirectPreview()) {
-      return <Redirect to={`/app/${customerSecret}/quote-approvals/${quoteApprovalSecret}/${DIRECT_PREVIEW_SLUG}`} />;
+      return (
+        <Redirect
+          to={`/app/${customerSecret}/quote-approvals/${quoteApprovalSecret}/${DIRECT_PREVIEW_SLUG}/${searchString}`} />
+      );
     }
 
-    return <Redirect to={`/app/${customerSecret}/quote-approvals/${quoteApprovalSecret}`} />;
+    return <Redirect to={`/app/${customerSecret}/quote-approvals/${quoteApprovalSecret}/${searchString}`} />;
   }
 
   renderQuoteError() {
