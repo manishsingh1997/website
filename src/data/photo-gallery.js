@@ -578,11 +578,6 @@ export const FencePhotoData = [
     categorySlug: slugify('Boxed Frame'),
     categoryPhotos: [
       {
-        'caption': 'Boxed Wire Fence 2 Rails w/ Cap Rail 14ga wire',
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Tom+Schaal+deer+fence+14ga+wire.jpeg',
-        'slug': slugify('Boxed Wire Fence 2 Rails w/ Cap Rail 14ga wire'),
-      },
-      {
         'caption': 'Boxed Wire Fence 2 rails with Kick board 6ga wire',
         'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Image+from+iOS+(4).jpg',
         'slug': slugify('Boxed Wire Fence 2 rails with Kick board 6ga wire'),
@@ -596,11 +591,6 @@ export const FencePhotoData = [
         'caption': 'Picture Frame Board on Board with wire lattice 14 ga',
         'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Brandi+Yaeger+back+fence+4.jpeg',
         'slug': slugify('Picture Frame Board on Board with wire lattice 14 ga'),
-      },
-      {
-        'caption': 'Boxed Wire Fence 3 rails 14ga wire',
-        'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/14ga+Boxed+Wire+Deer+Fence+2.jpeg',
-        'slug': slugify('Boxed Wire Fence 3 rails 14ga wire'),
       },
     ],
   },
