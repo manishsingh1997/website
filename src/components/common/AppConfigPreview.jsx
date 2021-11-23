@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import * as Sentry from '@sentry/browser';
 
 import {Spinner, ImageGallery, SwipeGallery, ImageCard} from '@ergeon/core-components';
 import preview3DIcon from '@ergeon/core-components/src/assets/icon-3d.svg';
 import previewPlaceholderIcon from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {calcUtils} from '@ergeon/3d-lib';
-import {constants as constants3dLib} from '@ergeon/3d-lib';
 import {isPDFMode} from 'utils/utils';
 import {getFencequotingURL} from '../../utils/urls';
 import isEqual from 'lodash/isEqual';
@@ -19,7 +17,6 @@ import './AppConfigPreview.scss';
 const USE_CACHE = true;
 const DEFAULT_PREVIEW_WIDTH = 150;
 const DEFAULT_PREVIEW_HEIGHT = 150;
-const PREVIEW_GENERATION_ERROR = "Oh! We couldn't generate a preview image. We have sent the details to Sentry.";
 
 export default class AppConfigPreview extends React.Component {
 
@@ -73,15 +70,6 @@ export default class AppConfigPreview extends React.Component {
       this.setState({previewImage: preview});
     } catch (error) {
       this.setState({previewImage: previewPlaceholderIcon, isLoading: false});
-      if ((error?.msg || error) !== constants3dLib.UNKNOWN_PRODUCT_ERROR) {
-        Sentry.withScope(scope => {
-          scope.setExtra('schemaCode', schemaCodeUrl);
-          if (error.msg) scope.setExtra('msg', error.msg);
-          if (error.type) scope.setExtra('type', error.type);
-          if (error.mode) scope.setExtra('mode', error.mode);
-          console.error(PREVIEW_GENERATION_ERROR);
-        });
-      }
     }
   }
 
