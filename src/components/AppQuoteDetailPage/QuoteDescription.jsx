@@ -89,12 +89,12 @@ export default class QuoteDescription extends React.Component {
     const license = quote.licenses && quote.licenses[0];
     return (<div>
       {
-        !isUpcomingFeaturesEnabled() &&
+        isUpcomingFeaturesEnabled() &&
         license &&
         <i><a href={license.url}>{license['quote_string']}</a></i>
       }
       {
-        isUpcomingFeaturesEnabled() &&
+        !isUpcomingFeaturesEnabled() &&
         quote.order.house.address.licence &&
         <i>Quote provided by Ergeon, license {quote.order.house.address.licence}</i>
       }
