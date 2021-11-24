@@ -1,4 +1,4 @@
-// Jest Snapshot v1, c
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sitemap should generate for gallery 1`] = `
 "
@@ -13,12 +13,6 @@ exports[`Sitemap should generate for gallery 1`] = `
       </url>
       <url>
         <loc>http://ergeon.local:6600/gallery/driveway/stamped/casual</loc>
-      </url>
-      <url>
-        <loc>http://ergeon.local:6600/gallery/driveway/stamped/modern</loc>
-      </url>
-      <url>
-        <loc>http://ergeon.local:6600/gallery/driveway/stamped/traditional</loc>
       </url>
       <url>
         <loc>http://ergeon.local:6600/gallery/fence/before-after</loc>
