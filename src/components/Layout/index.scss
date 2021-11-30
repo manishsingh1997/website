@@ -1,6 +1,9 @@
 @import '~@ergeon/core-components/src/components/variables.scss';
 
 .app-layout {
+  overflow-x: hidden;
+  width: 100%;
+
   .dropdown-menu {
     display: block;
     min-width: unset;

@@ -25,6 +25,7 @@ export default class AppConfigPreview extends React.Component {
     configType: PropTypes.string,
     fenceSideLength: PropTypes.number,
     images: PropTypes.array,
+    isMobileWidth: PropTypes.boolean,
     propertySchemaCodeUrl: PropTypes.string,
     schemaCodeUrl: PropTypes.string,
     useNoPreviewIcon: PropTypes.bool,
@@ -74,29 +75,48 @@ export default class AppConfigPreview extends React.Component {
   }
 
   conditionalConfigPreview() {
-    const {withLink, schemaCodeUrl, images} = this.props;
+    const {withLink, schemaCodeUrl, images, isMobileWidth} = this.props;
     const withLinkAndSchemaUrl = Boolean(withLink && schemaCodeUrl);
-    // Note: as images are now part of props enable galleries only if images isn't empty
-    // if they are then we should fallback to renderPreviewWithLink/renderPreview
-    if (!isEmpty(images)) {
-      return this.renderGalleries();
+
+    if (isMobileWidth) {
+      if (!isEmpty(images) && withLinkAndSchemaUrl) {
+        // Render preview together with images swipe-able gallery
+        return (
+          <div className="quote-line-images-wrapper">
+            {this.renderPreviewWithLink()}
+            {this.renderGalleries()}
+          </div>
+        );
+      }
+      if (!isEmpty(images)) {
+        // Only images, render swipe-able gallery full width
+        return this.renderGalleries();
+      }
+      if (withLinkAndSchemaUrl) {
+        // Only schema, render schema
+        return this.renderPreviewWithLink();
+      }
     }
-    if (withLinkAndSchemaUrl) {
+
+    // Desktop
+    if (!isMobileWidth && withLinkAndSchemaUrl) {
+      // Gives priority to schema render and omits images completely
       return this.renderPreviewWithLink();
     }
-    // !withLinkAndSchemaUrl should land here
-    return this.renderPreview();
+
+    // Otherwise nothing, not even a preview
+    return null;
   }
 
   configPreview() {
-    const {className, images} = this.props;
+    const {className, images, isMobileWidth} = this.props;
     const {isLoading, previewImage} = this.state;
     const isPlaceholder = isEqual(previewImage, previewPlaceholderIcon) || isEqual(previewImage, noPreviewIcon);
     return (
       <div
         className={classNames('config-preview', 'border',
           {
-            'gallery-preview': !isEmpty(images),
+            'gallery-preview': !isEmpty(images) && isMobileWidth,
             'config-preview__no-preview': isPlaceholder,
             [className]: Boolean(className),
           }
@@ -116,6 +136,7 @@ export default class AppConfigPreview extends React.Component {
 
     return (
       <a
+        className="preview-box"
         href={getFencequotingURL(finalSchemaCodeUrl, zipCode, fenceSideLength, /* show options */false)}
         rel="noopener noreferrer"
         target="_blank">

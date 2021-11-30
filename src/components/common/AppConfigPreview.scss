@@ -1,15 +1,21 @@
 @import '~@ergeon/core-components/src/components/variables.scss';
 
+$preview-size: 150px;
+
 .config-preview {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 40px;
-  width: 150px;
-  height: 150px;
+  width: $preview-size;
+  height: $preview-size;
   background-color: $white;
+
   &__no-preview {
+    border-color: transparent;
+    min-width: $preview-size;
+
     @include tablet() {
       display: none;
     }
@@ -104,4 +110,69 @@
   .image-loader__wrapper > img {
     height: 400px; // fixed height for pdf mode only as .quote-line-images is only attached on asPDF
   }
+}
+.quote-line-images-wrapper {
+  display: flex;
+  height: $preview-size;
+
+  .quote-line-images {
+    overflow: hidden;
+  }
+
+  .SwipeImage-thumb,
+  > img {
+    max-height: $preview-size;
+    height: $preview-size;
+  }
+
+  .SwipeImage-thumb {
+    opacity: 0;
+    transition: $transition-2;
+  }
+
+  .SwipeImage-thumb.is-selected {
+    opacity: 1;
+  }
+
+  .image-loader__image {
+    min-height: $preview-size - $h-5;
+  }
+
+  .image-loader__wrapper {
+    max-height: unset;
+    width: $preview-size - $h-5;
+  }
+}
+
+.preview-box {
+  $preview-image-white-space-size: 2px;
+
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  min-width: $preview-size;
+  min-height: $preview-size;
+  max-width: $preview-size;
+  padding: $preview-image-white-space-size;
+  border: 1px solid $gray-4;
+  border-radius: $corner-default;
+
+  .preview-image {
+    align-self: center;
+    border-radius: $corner-default;
+    border: 1px solid $white;
+    width: 100%;
+    height: auto;
+  }
+
+  .preview-3d-icon {
+    align-self: flex-end;
+    position: relative;
+    bottom: $v-6;
+    right: $h-20 + $h-10;
+  }
+}
+
+.SwipeCarousel {
+  left: 0;
 }

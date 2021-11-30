@@ -1,5 +1,11 @@
 @import "~@ergeon/core-components/src/components/variables";
 
+// used to extract variables to JS using:
+// getComputedStyle(document.body).getPropertyValue('--screen-sm');
+:root {
+  --screen-sm: #{$screen-sm};
+}
+
 .section-title {
   padding-top: 60px;
   padding-bottom: 48px;

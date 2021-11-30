@@ -16,6 +16,16 @@ export const CALC_AREA_TYPE = 'Area';
 export const CALC_GATE_TYPE = 'Gate';
 export const CALC_SIDE_TYPE = 'Side';
 
+export const MAP_LABEL_TYPE = 'Label';
+export const MAP_LABEL_YELLOW_TYPE = 'LabelYellow';
+export const MAP_CIRCLE_TYPE = 'Circle';
+
+export const CALC_TYPE_TO_MAP_TYPE = {
+  [CALC_AREA_TYPE]: MAP_LABEL_YELLOW_TYPE,
+  [CALC_GATE_TYPE]: MAP_CIRCLE_TYPE,
+  [CALC_SIDE_TYPE]: MAP_LABEL_TYPE,
+};
+
 export const QUOTE_STATUS_APPROVED = 'APP';
 export const QUOTE_STATUS_SENT = 'SNT';
 export const QUOTE_STATUS_CANCELLED = 'CAN';

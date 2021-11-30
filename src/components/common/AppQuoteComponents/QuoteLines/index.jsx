@@ -12,6 +12,7 @@ import {showUpcomingFeatures} from '../../../../utils/utils';
  *  then we render each one with their respective props to correctly display their data.
  * @param {{
  *   asPDF: boolean,
+ *   onBuildDetailsClick(): void,
  *   quote: object,
  *   quoteLines: array<object>,
  *   isInstallerPreview: boolean,
@@ -19,6 +20,7 @@ import {showUpcomingFeatures} from '../../../../utils/utils';
  */
 export default function QuoteLines({
   asPDF,
+  onBuildDetailsClick,
   quote,
   quoteLines,
   isInstallerPreview,
@@ -49,6 +51,7 @@ export default function QuoteLines({
       type: CALC_SIDE_TYPE,
       quote,
       index: i,
+      isBuildSpecAvailable: side.is_build_spec_available,
       isDropped: side['is_dropped'],
       isInstallerPreview,
       // show tags only when calcInput is present
@@ -65,6 +68,7 @@ export default function QuoteLines({
       type: CALC_GATE_TYPE,
       quote,
       index: i,
+      isBuildSpecAvailable: gate.is_build_spec_available,
       isDropped: gate['is_dropped'],
       isInstallerPreview,
       // show tags only when calcInput is present
@@ -82,6 +86,7 @@ export default function QuoteLines({
       quoteId: area.quote_id,
       type: CALC_AREA_TYPE,
       quote,
+      isBuildSpecAvailable: area.is_build_spec_available,
       isDropped: area['is_dropped'],
       index: i,
       isInstallerPreview,
@@ -105,6 +110,7 @@ export default function QuoteLines({
           {preparedQuoteLines.map(quoteLineProps => (
             <QuoteLine
               key={`${quoteLineProps.type}-${quoteLineProps.id}`}
+              onBuildDetailsClick={onBuildDetailsClick}
               {...quoteLineProps} />
           ))}
         </div>
@@ -116,6 +122,7 @@ export default function QuoteLines({
 QuoteLines.propTypes = {
   asPDF: PropTypes.bool,
   isInstallerPreview: PropTypes.bool,
+  onBuildDetailsClick: PropTypes.func,
   quote: PropTypes.object,
   quoteLines: PropTypes.arrayOf(PropTypes.object),
 };

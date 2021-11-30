@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Route} from 'react-router-dom';
 
 import {isPDFMode} from 'utils/utils';
 import {parseAPIError} from 'utils/api';
@@ -9,6 +10,7 @@ import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import {getQuoteDetails} from 'api/app';
 
 import AppLoader from 'components/common/AppLoader';
+import BuildSpecs from 'components/common/AppQuoteComponents/BuildSpecs';
 import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
 import QuoteError from '../common/AppQuoteComponents/QuoteError';
 
@@ -20,10 +22,12 @@ export default class AppInstallerQuotePage extends React.Component {
 
   static propTypes = {
     auth: PropTypes.object,
+    history: PropTypes.object,
     location: PropTypes.shape({
       pathname: PropTypes.string,
     }),
     match: PropTypes.shape({
+      path: PropTypes.string,
       params: PropTypes.shape({
         secret: PropTypes.string,
       }),
@@ -90,6 +94,11 @@ export default class AppInstallerQuotePage extends React.Component {
     return this.getTotalPreviouslyApprovedPrice(quote) + this.getTotalPrice(quote);
   }
 
+  onBuildDetailsClick(configID, label) {
+    const {history, location} = this.props;
+    history.push(`${location.pathname}/config/${configID}`, {label});
+  }
+
   renderQuoteError() {
     return (
       <QuoteError quoteError={this.state.quoteError} />
@@ -97,11 +106,8 @@ export default class AppInstallerQuotePage extends React.Component {
   }
 
   render() {
-    const {
-      isLoading,
-      quote,
-      quoteError,
-    } = this.state;
+    const {match} = this.props;
+    const {isLoading, quote, quoteError} = this.state;
 
     if (isLoading) {
       return <AppLoader />;
@@ -118,20 +124,26 @@ export default class AppInstallerQuotePage extends React.Component {
     const newQuoteLink = this.getNewQuoteLink();
 
     return (
-      <div className="quote-detail-page">
-        <QuoteDetails
-          asPDF={isPDFMode()}
-          auth={this.props.auth}
-          customer={customer}
-          customerGID={this.customerGID}
-          isInstallerPreview={true}
-          newQuoteLink={newQuoteLink}
-          quote={quote}
-          quoteLines={quoteLines}
-          totalPreviouslyApprovedPrice={formatPrice(this.getTotalPreviouslyApprovedPrice(quote))}
-          totalPrice={formatPrice(this.getTotalPrice(quote))}
-          totalProjectPrice={formatPrice(this.getProjectTotalPrice(quote))} />
-      </div>
+      <>
+        <Route exact path={`${match.path}/config/:configID`}>
+          <BuildSpecs />
+        </Route>
+        <div className="quote-detail-page">
+          <QuoteDetails
+            asPDF={isPDFMode()}
+            auth={this.props.auth}
+            customer={customer}
+            customerGID={this.customerGID}
+            isInstallerPreview={true}
+            newQuoteLink={newQuoteLink}
+            onBuildDetailsClick={this.onBuildDetailsClick.bind(this)}
+            quote={quote}
+            quoteLines={quoteLines}
+            totalPreviouslyApprovedPrice={formatPrice(this.getTotalPreviouslyApprovedPrice(quote))}
+            totalPrice={formatPrice(this.getTotalPrice(quote))}
+            totalProjectPrice={formatPrice(this.getProjectTotalPrice(quote))} />
+        </div>
+      </>
     );
   }
 }

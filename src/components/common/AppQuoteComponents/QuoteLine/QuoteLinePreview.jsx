@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppConfigPreview from '../../AppConfigPreview';
 
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
+
+import AppConfigPreview from '../../AppConfigPreview';
+import {useIsMobileWidth} from './customHooks';
 
 /**
  * Process props data and sends to AppConfigPreview as props to render it
@@ -28,12 +30,16 @@ export default function QuoteLinePreview(props) {
   const propertySchemaCodeUrl =
     propertyData && propertyData.replace('schema', 'property_schema').replace('code', 'property_code');
   const showLink = isQuotePreviewPossible && !(usePlaceHolder || useNoPreviewIcon) && Boolean(schemaCodeUrl);
+
+  const isMobileWidth = useIsMobileWidth();
+
   return (
     <AppConfigPreview
       className="quote-line-preview"
       configType={type}
       fenceSideLength={fenceSideLength}
       images={images}
+      isMobileWidth={isMobileWidth}
       propertySchemaCodeUrl={propertySchemaCodeUrl}
       schemaCodeUrl={usePlaceHolder ? null : schemaCodeUrl}
       useNoPreviewIcon={useNoPreviewIcon}

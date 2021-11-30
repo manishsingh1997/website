@@ -1,0 +1,122 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+@import '~@ergeon/core-components/src/components/mixins/reset.scss';
+
+.BuildSpecs-popup {
+  $icon-container-size: $v-48;
+
+  &.popup--container {
+    // Tawk chat icon has inline styles `z-index: 2000000000 !important`
+    $tawk-z-index: 2000000000;
+
+    align-items: flex-start;
+    justify-content: center;
+    z-index: $tawk-z-index + 1;
+  }
+
+  .popup--wrapper {
+    width: 100%;
+    max-width: $screen-sm;
+    padding-bottom: 0;
+  }
+
+  .popup--content {
+    padding-top: $v-124;
+    padding-bottom: $v-124;
+  }
+
+  .popup--cross-icon {
+    top: $v-124 + $v-6;
+    right: $v-6;
+    width: $icon-container-size;
+    height: $icon-container-size;
+  }
+
+  .popup--fog {
+    pointer-events: none;
+  }
+
+  @include phone() {
+    z-index: $z-index-super-top;
+    margin: 0;
+
+    .popup--content {
+      padding-top: $v-48; // top panel height
+      padding-bottom: 0;
+    }
+
+    .popup--cross-icon {
+      display: none;
+    }
+
+    .popup--fog {
+      display: none;
+    }
+  }
+
+  .BuildSpecs-card {
+    background-color: $white;
+
+    @include phone() {
+      min-height: 100vh;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
+
+  .BuildSpecs-table {
+    .table-row {
+      padding: 0 $v-20;
+    }
+
+    @include phone() {
+      padding-bottom: $v-24;
+    }
+  }
+
+  .BuildSpecs-title {
+    margin-bottom: $v-12;
+
+    @include phone() {
+      display: flex;
+      align-items: center;
+      min-height: $v-48;
+      margin-bottom: 0;
+      padding: 0 $h-20;
+      background-color: $gray-6;
+
+      > [class^="map-"] {
+        display: none;
+      }
+    }
+  }
+
+  .BuildSpecs-topPanel {
+    display: none;
+    padding-right: $h-20;
+
+    .top-panel-mobile__center {
+      display: flex;
+      align-items: center;
+    }
+
+    @include phone() {
+      display: flex;
+    }
+  }
+
+  .BuildSpecs-backBtn {
+    @extend %reset-button;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $icon-container-size;
+    height: $icon-container-size;
+
+    > img {
+      height: $font-mobile-size;
+    }
+  }
+}

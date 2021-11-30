@@ -35,7 +35,7 @@ export const getFencequotingURL = (schemaCode, zipCode, fenceSideLength, options
 export const isQuoteDetailURL = (url) => {
   return some([
     url.match(/^\/app\/[^\/]+\/quotes\/(direct\/|installer\/)?[^\/]+\/?$/g) !== null,
-    url.match(/^\/app\/[^\/]+\/quote-approvals\/[^\/]+\/?(direct|installer)?\/?$/g) !== null,
+    url.match(/^\/app\/[^\/]+\/quote-approvals\/[^\/]+\/?(direct|installer)?\/?/g) !== null,
   ]);
 };
 

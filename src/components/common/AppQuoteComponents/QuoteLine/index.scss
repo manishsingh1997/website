@@ -1,3 +1,5 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
 .quote-line-status-to_be_dropped {
   .quote-line-description-text {
     text-decoration: line-through;
@@ -10,3 +12,49 @@
   color: #ff7d59;
 }
 
+.quote-line-buttons {
+  $button-width: 160px;
+
+  padding-top: $v-12;
+
+  .button {
+    min-width: $button-width;
+
+    + .button {
+      margin-left: $h-20;
+    }
+  }
+
+  .BuildSpecs-button {
+    $button-offset: $h-20;
+
+    justify-content: space-between;
+    width: calc(100% + #{$button-offset} * 2);
+    margin: 0 (-1 * $button-offset) $v-20;
+    background-color: $gray-6;
+    border-top: 1px solid $gray-4;
+    border-bottom: 1px solid $gray-4;
+    border-radius: 0;
+  }
+
+  .BuildSpecs-buttonIcon svg {
+    height: $font-mobile-size;
+
+    path {
+      fill: $black-3;
+    }
+  }
+}
+
+.quote-line-imageGallery {
+  position: relative;
+
+  .image-gallery-container {
+    height: 100% !important; // override inline styles
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    width: 100% !important; // override inline styles
+  }
+}

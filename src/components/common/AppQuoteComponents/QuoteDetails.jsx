@@ -26,6 +26,7 @@ export default class QuoteDetails extends React.Component {
     customerGID: PropTypes.string,
     isInstallerPreview: PropTypes.bool,
     newQuoteLink: PropTypes.string,
+    onBuildDetailsClick: PropTypes.func,
     quote: PropTypes.object,
     quoteLines: PropTypes.arrayOf(PropTypes.object),
     totalPreviouslyApprovedPrice: PropTypes.string,
@@ -189,6 +190,7 @@ export default class QuoteDetails extends React.Component {
       customer,
       customerGID,
       isInstallerPreview,
+      onBuildDetailsClick,
       quote,
       quoteLines,
     } = this.props;
@@ -231,6 +233,7 @@ export default class QuoteDetails extends React.Component {
         <QuoteLines
           asPDF={asPDF}
           isInstallerPreview={isInstallerPreview}
+          onBuildDetailsClick={onBuildDetailsClick}
           quote={quote}
           quoteLines={quoteLines} />
         {this.renderQuotePriceSection()}
