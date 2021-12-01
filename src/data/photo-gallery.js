@@ -755,6 +755,47 @@ export const FencePhotoData = [
       },
     ],
   },
+  {
+    categoryName: 'Vinyl',
+    categorySlug: slugify('Vinyl'),
+    categoryPhotos: [
+      {
+        'caption': '6’ Privacy White Vinyl Fence',
+        'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/%5BPrivacy+-+White%5D+%5BRick+M.%5D+%5B2021%5D2.jpg',
+        'slug': slugify('6’ Privacy White Vinyl Fence'),
+      },
+      {
+        'caption': '4’ Privacy White Vinyl Fence',
+        'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/%5BPrivacy+-+White%5D+%5BLaura+T.%5D+%5B2021%5D2.jpeg',
+        'slug': slugify('4’ Privacy White Vinyl Fence'),
+      },
+      {
+        'caption': '6’ Privacy White Vinyl Fence with Slope',
+        'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/6+Ft+White+Vinyl+Privacy+Fence+with+Slope.jpeg',
+        'slug': slugify('6’ Privacy White Vinyl Fence with Slope'),
+      },
+      {
+        'caption': '6’ to 4’ Stepped White Vinyl Fence',
+        'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/Stepped+White+Vinyl+Privacy+Fence.jpeg',
+        'slug': slugify('6’ to 4’ Stepped White Vinyl Fence'),
+      },
+      {
+        'caption': '7’ Privacy White Vinyl Fence',
+        'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/7+Ft+Privacy+White+Vinyl+Fence.jpg',
+        'slug': slugify('7’ Privacy White Vinyl Fence'),
+      },
+      {
+        'caption': '6’ Privacy Tan Vinyl Fence',
+        'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/%5BPrivacy+-+Tan%5D+%5BSylvia+M.%5D+%5B2021%5D1+%5B.jpeg',
+        'slug': slugify('6’ Privacy Tan Vinyl Fence'),
+      },
+      {
+        'caption': '6’ Privacy Tan Vinyl Fence with Slope',
+        'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/6+Ft+Privacy+Tan+Vinyl+Fence+with+Sloped+Top.jpg',
+        'slug': slugify('6’ Privacy Tan Vinyl Fence with Slope'),
+      },
+    ],
+  },
 ];
 
 export const GatePhotoData = [
@@ -933,6 +974,27 @@ export const GatePhotoData = [
           },
         ],
       },
+      {
+        groupName: 'Vinyl',
+        groupSlug: slugify('Vinyl'),
+        groupPhotos: [
+          {
+            'caption': '6’ Tall Privacy White Vinyl Single Gate',
+            'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/gate/%5BPrivacy+-+White%5D+%5BRick+M.%5D+%5B2021%5D1.jpg',
+            'slug': slugify('6’ Tall Privacy White Vinyl Single Gate'),
+          },
+          {
+            'caption': '4’ Tall Privacy White Vinyl Single Gate',
+            'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/gate/%5BPrivacy+-+White%5D+%5BLaura+T.%5D+%5B2021%5D1.jpeg',
+            'slug': slugify('4’ Tall Privacy White Vinyl Single Gate'),
+          },
+          {
+            'caption': '6’ Tall Privacy Tan Vinyl Single Gate',
+            'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/gate/%5BPrivacy+-+Tan%5D+%5BSylvia+M.%5D+%5B2021%5D2.jpeg',
+            'slug': slugify('6’ Tall Privacy Tan Vinyl Single Gate'),
+          },
+        ],
+      },
     ],
   },
   {
@@ -1086,6 +1148,27 @@ export const GatePhotoData = [
             'caption': 'Double Gate Chain Link',
             'url': 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/Rod+Williamson+4.jpg',
             'slug': slugify('Double Gate Chain Link 2'),
+          },
+        ],
+      },
+      {
+        groupName: 'Vinyl',
+        groupSlug: slugify('Vinyl'),
+        groupPhotos: [
+          {
+            'caption': '4’ Tall Privacy White Double Gate (Back)',
+            'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/gate/%5BPrivacy+-+White%5D+%5BAngela+G.%5D+%5B2021%5D1.jpeg',
+            'slug': slugify('4’ Tall Privacy White Double Gate (Back)'),
+          },
+          {
+            'caption': '4’ Tall Privacy White Double Gate (Front)',
+            'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/gate/%5BPrivacy+-+White%5D+%5BAngela+G.%5D+%5B2021%5D2.jpeg',
+            'slug': slugify('4’ Tall Privacy White Double Gate (Front)'),
+          },
+          {
+            'caption': '6’ Tall Privacy Tan Double Gate (Front)',
+            'url': 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/gate/6+Ft+Privacy+Tan+Vinyl+Double+Gate.jpg',
+            'slug': slugify('6’ Tall Privacy Tan Double Gate (Front)'),
           },
         ],
       },

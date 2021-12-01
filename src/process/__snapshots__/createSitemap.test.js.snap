@@ -66,6 +66,9 @@ exports[`Sitemap should generate for gallery 1`] = `
         <loc>http://ergeon.local:6600/gallery/fence/staining/transparent</loc>
       </url>
       <url>
+        <loc>http://ergeon.local:6600/gallery/fence/vinyl</loc>
+      </url>
+      <url>
         <loc>http://ergeon.local:6600/gallery/gate/double/box-frame</loc>
       </url>
       <url>
@@ -76,6 +79,9 @@ exports[`Sitemap should generate for gallery 1`] = `
       </url>
       <url>
         <loc>http://ergeon.local:6600/gallery/gate/double/picture-frame</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local:6600/gallery/gate/double/vinyl</loc>
       </url>
       <url>
         <loc>http://ergeon.local:6600/gallery/gate/double/z-frame</loc>
@@ -91,6 +97,9 @@ exports[`Sitemap should generate for gallery 1`] = `
       </url>
       <url>
         <loc>http://ergeon.local:6600/gallery/gate/single/picture-frame</loc>
+      </url>
+      <url>
+        <loc>http://ergeon.local:6600/gallery/gate/single/vinyl</loc>
       </url>
       <url>
         <loc>http://ergeon.local:6600/gallery/gate/single/z-frame</loc>
