@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Route} from 'react-router-dom';
 import {isEmpty, some} from 'lodash';
 
 import {isPDFMode} from 'utils/utils';
@@ -19,6 +20,7 @@ import {
 } from 'api/app';
 
 import AppLoader from 'components/common/AppLoader';
+import BuildSpecs from 'components/common/AppQuoteComponents/BuildSpecs';
 import {
   DIRECT_PREVIEW_SLUG,
 } from 'website/constants';
@@ -39,11 +41,13 @@ export default class AppCustomerQuotePage extends React.Component {
 
   static propTypes = {
     auth: PropTypes.object,
+    history: PropTypes.object,
     layout: PropTypes.object,
     location: PropTypes.shape({
       pathname: PropTypes.string,
     }),
     match: PropTypes.shape({
+      path: PropTypes.string,
       params: PropTypes.shape({
         type: PropTypes.string,
         secret: PropTypes.string,
@@ -218,6 +222,11 @@ export default class AppCustomerQuotePage extends React.Component {
     );
   }
 
+  onBuildDetailsClick(configID, label) {
+    const {history, location} = this.props;
+    history.push(`${location.pathname}/config/${configID}`, {label});
+  }
+
   renderQuoteApprovalError() {
     return (
       <QuoteError quoteError={this.state.quoteApprovalError} />
@@ -225,6 +234,7 @@ export default class AppCustomerQuotePage extends React.Component {
   }
 
   render() {
+    const {match} = this.props;
     const {
       isLoading,
       quoteApproval,
@@ -259,36 +269,42 @@ export default class AppCustomerQuotePage extends React.Component {
     const {auth} = this.props;
     const asPDF = isPDFMode();
     return (
-      <div className="quote-detail-page">
-        <QuoteDetails
-          asPDF={asPDF}
-          auth={auth}
-          customer={customer}
-          customerGID={this.customerGID}
-          isInstallerPreview={false}
-          newQuoteLink={newQuoteApprovalLink}
-          quote={quote}
-          quoteLines={quoteLines}
-          totalPreviouslyApprovedPrice={formatPrice(this.getTotalPreviouslyApprovedPrice(quoteApproval))}
-          totalPrice={formatPrice(this.getTotalPrice(quoteApproval))}
-          totalProjectPrice={formatPrice(this.getProjectTotalPrice(quoteApproval))} />
-        <ProjectNotes quote={quote}/>
-        {this.shouldShowBillingForm() && <BillingForm
-          contractUrl={contractUrl}
-          error={paymentMethodError}
-          houseId={houseId}
-          isApproved={this.isQuoteApprovalApproved()}
-          isScopeChange={this.isScopeChange(quoteApproval)}
-          onSubmit={this.handleBillingSubmit.bind(this)}
-          paymentMethod={paymentMethod}
-          quoteId={quote['id']}
-          total={formatPrice(this.getProjectTotalPrice(quoteApproval))} />}
-        {!isEmpty(otherQuoteApprovals) && <AdditionalApproversList
-          additionalQuoteApprovals={otherQuoteApprovals} />}
-        <ExplanationSection
-          asPDF={asPDF}
-          contractUrl={contractUrl} />
-      </div>
+      <>
+        <Route exact path={`${match.path}/config/:configID`}>
+          <BuildSpecs />
+        </Route>
+        <div className="quote-detail-page">
+          <QuoteDetails
+            asPDF={asPDF}
+            auth={auth}
+            customer={customer}
+            customerGID={this.customerGID}
+            isInstallerPreview={false}
+            newQuoteLink={newQuoteApprovalLink}
+            onBuildDetailsClick={this.onBuildDetailsClick.bind(this)}
+            quote={quote}
+            quoteLines={quoteLines}
+            totalPreviouslyApprovedPrice={formatPrice(this.getTotalPreviouslyApprovedPrice(quoteApproval))}
+            totalPrice={formatPrice(this.getTotalPrice(quoteApproval))}
+            totalProjectPrice={formatPrice(this.getProjectTotalPrice(quoteApproval))} />
+          <ProjectNotes quote={quote}/>
+          {this.shouldShowBillingForm() && <BillingForm
+            contractUrl={contractUrl}
+            error={paymentMethodError}
+            houseId={houseId}
+            isApproved={this.isQuoteApprovalApproved()}
+            isScopeChange={this.isScopeChange(quoteApproval)}
+            onSubmit={this.handleBillingSubmit.bind(this)}
+            paymentMethod={paymentMethod}
+            quoteId={quote['id']}
+            total={formatPrice(this.getProjectTotalPrice(quoteApproval))} />}
+          {!isEmpty(otherQuoteApprovals) && <AdditionalApproversList
+            additionalQuoteApprovals={otherQuoteApprovals} />}
+          <ExplanationSection
+            asPDF={asPDF}
+            contractUrl={contractUrl} />
+        </div>
+      </>
     );
   }
 }

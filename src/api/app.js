@@ -1,4 +1,5 @@
 import axios from 'axios';
+import isEmpty from 'lodash/isEmpty';
 
 import {ensureUpcomingFeaturesParamInUrl} from '@ergeon/erg-utils-js';
 import {authService} from 'utils/auth';
@@ -17,7 +18,7 @@ const request = (customerGID) => (path, data) => {
     },
     url: ensureUpcomingFeaturesParamInUrl(`${baseURL}${path}`),
     responseType: 'json',
-    data: data && JSON.stringify(data),
+    data: !isEmpty(data) ? JSON.stringify(data) : undefined,
   });
 };
 

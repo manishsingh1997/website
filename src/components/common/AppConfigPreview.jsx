@@ -78,29 +78,21 @@ export default class AppConfigPreview extends React.Component {
     const {withLink, schemaCodeUrl, images, isMobileWidth} = this.props;
     const withLinkAndSchemaUrl = Boolean(withLink && schemaCodeUrl);
 
-    if (isMobileWidth) {
-      if (!isEmpty(images) && withLinkAndSchemaUrl) {
-        // Render preview together with images swipe-able gallery
-        return (
-          <div className="quote-line-images-wrapper">
-            {this.renderPreviewWithLink()}
-            {this.renderGalleries()}
-          </div>
-        );
-      }
-      if (!isEmpty(images)) {
-        // Only images, render swipe-able gallery full width
-        return this.renderGalleries();
-      }
-      if (withLinkAndSchemaUrl) {
-        // Only schema, render schema
-        return this.renderPreviewWithLink();
-      }
+    if (isMobileWidth && !isEmpty(images) && withLinkAndSchemaUrl) {
+      // Render preview together with images swipe-able gallery
+      return (
+        <div className="quote-line-images-wrapper">
+          {this.renderPreviewWithLink()}
+          {this.renderGalleries()}
+        </div>
+      );
     }
-
-    // Desktop
-    if (!isMobileWidth && withLinkAndSchemaUrl) {
-      // Gives priority to schema render and omits images completely
+    if (isMobileWidth && !isEmpty(images)) {
+      // Render swipe-able gallery full width
+      return this.renderGalleries();
+    }
+    if (withLinkAndSchemaUrl) {
+      // Only schema, render schema
       return this.renderPreviewWithLink();
     }
 

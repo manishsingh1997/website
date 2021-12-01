@@ -91,7 +91,6 @@ const CustomerApp = ({match, location}) => (
         path={`${match.url}/quote-approvals/:secret/installer`} />
       <Route
         component={AppCustomerQuotePage}
-        exact
         name="customerQuotePreview"
         path={`${match.url}/quote-approvals/:secret/:type`} />
       <Route component={AppNotificationsPage} path={`${match.url}/notifications`} />
