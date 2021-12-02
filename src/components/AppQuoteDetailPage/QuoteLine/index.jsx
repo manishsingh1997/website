@@ -1,6 +1,9 @@
 import React, {useMemo} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import isEmpty from 'lodash/isEmpty';
+
+import {Button, ImageGallery} from '@ergeon/core-components';
 
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 import {isPDFMode} from 'utils/utils';
@@ -89,6 +92,14 @@ export default function QuoteLine(props) {
         )}
         <div>{description}</div>
         <Tags tags={tags} />
+        {!isPDFMode() && !isEmpty(images) &&
+          <div className="quote-line-buttons desktop-length">
+            <Button className="quote-line-imageGallery" flavor="regular">
+              Images
+              <ImageGallery images={images.map((elem) => ({url: elem.file, ...elem}))} />
+            </Button>
+          </div>
+        }
       </div>
       <div className={classNames('quote-line-price', {'quote-line-price__pdf': isQuoteLinePDF})}>
         {isAllowedUnitDisplay(isInstallerPreview, catalog) && (

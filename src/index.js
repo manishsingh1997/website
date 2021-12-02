@@ -82,7 +82,6 @@ const CustomerApp = ({match, location}) => (
       <Route component={AppQuoteDetailPage} exact name="quoteDirect" path={`${match.url}/quotes/:type/:secret`} />
       <Route
         component={AppCustomerQuotePage}
-        exact
         name="customerQuoteDetail"
         path={`${match.url}/quote-approvals/:secret`} />
       <Route

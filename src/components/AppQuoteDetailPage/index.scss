@@ -161,6 +161,20 @@
     flex-wrap: wrap;
   }
 
+  .quote-line-buttons {
+    $button-width: 160px;
+
+    padding-top: $v-12;
+
+    .button {
+      min-width: $button-width;
+
+      + .button {
+        margin-left: $h-20;
+      }
+    }
+  }
+
   .quote-line-preview {
     margin-top: 0;
     @include tablet() {

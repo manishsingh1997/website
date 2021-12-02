@@ -63,7 +63,7 @@ export default function QuoteLinesRender(props) {
       price: showPrice ? gate.price : 0,
       // hide distance if calcInput is present
       distance: calcInput ? undefined : gate.distance,
-      images: getImagesForQuoteLine(i + 1, quote),
+      images: getImagesForQuoteLine(String(i + 1), quote),
     });
 
     const getQuoteLinePropsFromAreas = (area, i) => ({
