@@ -23,11 +23,11 @@ const request = (customerGID) => (path, data) => {
 };
 
 export const getCustomerContacts = (customerGID) => {
-  return request(customerGID)('/contacts/');
+  return request(customerGID)('/contacts');
 };
 
 export const getCustomerOrders = (customerGID) => {
-  return request(customerGID)('/orders/');
+  return request(customerGID)('/orders');
 };
 
 export const getCustomerOrderDetails = (customerGID, orderId) => {
@@ -35,11 +35,11 @@ export const getCustomerOrderDetails = (customerGID, orderId) => {
 };
 
 export const getCustomerAppointments = (customerGID) => {
-  return request(customerGID)('/appointments/');
+  return request(customerGID)('/appointments');
 };
 
 export const getCustomerHouses = (customerGID) => {
-  return request(customerGID)('/houses/');
+  return request(customerGID)('/houses');
 };
 
 export const getQuoteDetails = (customerGID, quoteSecret) => {
