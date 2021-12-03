@@ -65,7 +65,7 @@ export const updateNotificationPreferences = (customerGID, secret, data) => {
 };
 
 export const updateCustomerContacts = (customerGID, data) => {
-  return request(customerGID)('/contacts/', data);
+  return request(customerGID)('/contacts', data);
 };
 
 export const getQuoteApprovalDetails = (customerGID, quoteApprovalSecret) => {
