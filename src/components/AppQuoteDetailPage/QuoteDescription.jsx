@@ -91,7 +91,7 @@ export default class QuoteDescription extends React.Component {
       {
         isUpcomingFeaturesEnabled() &&
         license &&
-        license.url ? <a href={license.url}><i>{license['quote_string']}</i></a>: <i>{license['quote_string']}</i>
+        <i><a href={license.url}>{license['quote_string']}</a></i>
       }
       {
         !isUpcomingFeaturesEnabled() &&
