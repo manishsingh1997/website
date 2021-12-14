@@ -15,7 +15,6 @@ import {formatDateAndTime} from '../../utils/date';
 import {getExpiresAtTitle} from '../../utils/utils';
 import {getOrderDetailURL} from '../../utils/urls';
 import {isQuoteApproved} from 'utils/app-order';
-import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 
 export default class QuoteDescription extends React.Component {
   static propTypes = {
@@ -89,14 +88,8 @@ export default class QuoteDescription extends React.Component {
     const license = quote.licenses && quote.licenses[0];
     return (<div>
       {
-        isUpcomingFeaturesEnabled() &&
         license &&
         <i><a href={license.url}>{license['quote_string']}</a></i>
-      }
-      {
-        !isUpcomingFeaturesEnabled() &&
-        quote.order.house.address.licence &&
-        <i>Quote provided by Ergeon, license {quote.order.house.address.licence}</i>
       }
     </div>);
   }
