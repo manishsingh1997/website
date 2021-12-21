@@ -1,7 +1,6 @@
 import React from 'react';
 import {Rating} from '@ergeon/core-components';
 import classNames from 'classnames';
-import config from '../../website/config';
 
 type ReviewExperimentTypes = {
   logo: string,
@@ -40,7 +39,7 @@ const ReviewExperiment = (props: ReviewExperimentTypes) => {
         <div className="review-hero__main-review__bottom">
           <span className="label">{reviewerName}</span>
           <span>
-            More reviews on <a href={`${config.projectsGalleryHost}/tags/feedback`}>Project Showcase</a>
+            More reviews on <a href={`${process.env.PROJECTS_GALLERY_HOST}/tags/feedback`}>Project Showcase</a>
           </span>
         </div>
       </div>
