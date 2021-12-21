@@ -96,7 +96,7 @@ export default class AppInstallerQuotePage extends React.Component {
 
   onBuildDetailsClick(configID, label) {
     const {history, location} = this.props;
-    history.push(`${location.pathname}/config/${configID}`, {label});
+    history.push(`${location.pathname.replace(/\/$/, '')}/config/${configID}`, {label});
   }
 
   renderQuoteError() {

@@ -76,7 +76,8 @@ export default class AppCustomerQuotePage extends React.Component {
   }
 
   isDirectPreview() {
-    return this.props.match.params.type === DIRECT_PREVIEW_SLUG;
+    const {match} = this.props;
+    return new RegExp(`${DIRECT_PREVIEW_SLUG}/?`).test(match.path);
   }
 
   isQuoteApprovalReviewed() {
@@ -224,7 +225,7 @@ export default class AppCustomerQuotePage extends React.Component {
 
   onBuildDetailsClick(configID, label) {
     const {history, location} = this.props;
-    history.push(`${location.pathname}/config/${configID}`, {label});
+    history.push(`${location.pathname.replace(/\/$/, '')}/config/${configID}`, {label});
   }
 
   renderQuoteApprovalError() {

@@ -15,6 +15,10 @@ import {
   GatePhotoData,
   DrivewayPhotoData,
 } from 'data/photo-gallery';
+import {
+  INSTALLER_PREVIEW_SLUG,
+  DIRECT_PREVIEW_SLUG,
+} from 'website/constants';
 import customScripts from 'website/custom-scripts';
 
 import AppAppointmentsListPage from 'containers/AppAppointmentsListPage';
@@ -81,17 +85,17 @@ const CustomerApp = ({match, location}) => (
       <Route component={AppQuoteDetailPage} exact name="quoteDetail" path={`${match.url}/quotes/:secret`} />
       <Route component={AppQuoteDetailPage} exact name="quoteDirect" path={`${match.url}/quotes/:type/:secret`} />
       <Route
-        component={AppCustomerQuotePage}
-        name="customerQuoteDetail"
-        path={`${match.url}/quote-approvals/:secret`} />
-      <Route
         component={AppInstallerQuotePage}
         name="installerQuoteDetail"
-        path={`${match.url}/quote-approvals/:secret/installer`} />
+        path={`${match.url}/quote-approvals/:secret/${INSTALLER_PREVIEW_SLUG}`} />
       <Route
         component={AppCustomerQuotePage}
         name="customerQuotePreview"
-        path={`${match.url}/quote-approvals/:secret/:type`} />
+        path={`${match.url}/quote-approvals/:secret/${DIRECT_PREVIEW_SLUG}`} />
+      <Route
+        component={AppCustomerQuotePage}
+        name="customerQuoteDetail"
+        path={`${match.url}/quote-approvals/:secret`} />
       <Route component={AppNotificationsPage} path={`${match.url}/notifications`} />
       <Route component={NotFoundPage} exact path="*"/>
     </Switch>
