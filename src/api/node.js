@@ -1,10 +1,9 @@
 import {ensureUpcomingFeaturesParamInUrl} from '@ergeon/erg-utils-js';
 import axios from 'axios';
-import config from 'website/config';
 import {authService} from 'utils/auth';
 
 const getBaseAPIURL = () => {
-  return `${config.apiHost}/api/help/node/`;
+  return `${process.env.API_HOST}/api/help/node/`;
 };
 
 const getCommonHeaders = () => {

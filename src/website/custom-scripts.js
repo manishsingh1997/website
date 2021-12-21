@@ -3,13 +3,12 @@ import {tawk} from '@ergeon/erg-utms';
 import {init, track} from 'utils/analytics';
 import {OFFLINE_FORM_SUBMIT, CHAT_STARTED} from 'utils/events';
 import {isPDFMode} from 'utils/utils';
-import config from 'website/config';
 
 export default function() {
   // <!--Start of Tawk.to Script-->
   const pdfModeDisabled = !isPDFMode();
   if (pdfModeDisabled) {
-    tawk.initTawk(config.tawkAPIKey);
+    tawk.initTawk(process.env.TAWK_API_KEY);
     tawk.tawkAPILoader.then(TawkAPI => {
       TawkAPI.onOfflineSubmit = function(data) {
         track(OFFLINE_FORM_SUBMIT, data);

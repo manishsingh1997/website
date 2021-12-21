@@ -1,14 +1,13 @@
 import {
   trackError,
 } from 'utils/analytics';
-import config from 'website/config';
 
 const initStripe = (function() {
   let keyInitialized = false;
 
   return function() {
     if (!keyInitialized) {
-      window.Stripe && window.Stripe.setPublishableKey(config.stripePublicKey);
+      window.Stripe && window.Stripe.setPublishableKey(process.env.STRIPE_PUBLIC_KEY);
       keyInitialized = true;
     }
   };

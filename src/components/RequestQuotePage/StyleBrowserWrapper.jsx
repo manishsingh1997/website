@@ -4,7 +4,6 @@ import {CatalogType, calcUtils, constants, StyleBrowser} from '@ergeon/3d-lib';
 import {getPriceAndDescription, getCheckedZIP} from 'api/lead';
 import {tawk} from '@ergeon/erg-utms';
 import {getFencequotingURL} from '../../utils/urls';
-import config from 'website/config';
 
 import './StyleBrowserWrapper.scss';
 import PopUp from './PopUp';
@@ -135,7 +134,7 @@ export default class StyleBrowserWrapper extends React.Component {
               <span className="label uppercase">Design your Fence or Gate</span>
             </div>
             <StyleBrowser
-              citiesUrl={config.citiesUrl}
+              citiesUrl={process.env.CITIES_URL}
               compactView={true}
               description={description}
               doneButtonText={this.props.doneButtonText}

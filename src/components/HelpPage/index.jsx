@@ -4,12 +4,11 @@ import {HelpPage as Help} from '@ergeon/help-components';
 
 import helpDefaultCategories from 'data/help-categories';
 import {HELP_DOMAIN_ID} from 'website/constants';
-import config from 'website/config';
 
 const HelpPage = (props) => {
   return (
     <Help
-      apiHost={config.apiHost}
+      apiHost={process.env.API_HOST}
       categories={helpDefaultCategories}
       domain={HELP_DOMAIN_ID}
       {...props} />

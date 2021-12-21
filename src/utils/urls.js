@@ -1,5 +1,4 @@
 import {getUnsubscribeCodeFromQuery} from 'utils/app-notifications';
-import config from 'website/config';
 import queryString from 'query-string';
 import {some} from 'lodash';
 import {calcUtils} from '@ergeon/3d-lib';
@@ -29,7 +28,7 @@ export const getFencequotingURL = (schemaCode, zipCode, fenceSideLength, options
     zipcode: zipCode,
     length: isItGate ? '' : fenceSideLength,
   };
-  return `${config.fencequotingHost}/${baseUrlPath}?${queryString.stringify(queryObject)}`;
+  return `${process.env.FENCEQUOTING_HOST}/${baseUrlPath}?${queryString.stringify(queryObject)}`;
 };
 
 export const isQuoteDetailURL = (url) => {

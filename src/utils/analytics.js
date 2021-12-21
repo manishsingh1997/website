@@ -2,7 +2,6 @@ import * as Sentry from '@sentry/browser';
 
 import {getBaseEventData, getVisitorId, getCurrentData, tawk} from '@ergeon/erg-utms';
 import {DEFAULT_SOURCE_VALUE} from 'website/constants';
-import config from 'website/config';
 import {isObject} from 'utils/utils';
 import {submitAddressEntered} from 'api/lead';
 import {CUSTOMER_LEAD_CREATED, ADDRESS_ENTERED} from 'utils/events';
@@ -31,7 +30,7 @@ export const track = (eventName, data) => {
     });
   // END: Google Tag manager
 
-  if (config.level !== config.PRODUCTION) {
+  if (process.env.NODE_ENV !== 'production') {
     console.log(`%cEvent %c ${eventName}`,
       'color: #FF8118; font-size:24px;',
       'color: #00B9F3; font-size:24px;',
@@ -126,7 +125,7 @@ export const page = () => {
       trackError(e);
     });
 
-  if (config.level !== config.PRODUCTION) {
+  if (process.env.NODE_ENV !== 'production') {
     console.log(`%cPage %c ${window.location.pathname}`,
       'color: #FF8118; font-size:24px;',
       'color: #00B9F3; font-size:24px;');

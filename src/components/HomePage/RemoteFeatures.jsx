@@ -6,8 +6,6 @@ import imgRemoteOnsite from 'assets/remote-features/icon_video-call@2x.svg';
 import imgRemoteQuote from 'assets/remote-features/icon_monitor@2x.svg';
 import imgContactless from 'assets/remote-features/icon_van@2x.svg';
 
-import config from 'website/config';
-
 import './RemoteFeatures.scss';
 import VideoPopup from './VideoPopup';
 
@@ -72,7 +70,7 @@ class RemoteFeatures extends React.Component {
               title: 'Approve Your Quote & Pay Online',
               desc: 'You can review, approve, and pay for your quote all online!',
               img: imgRemoteQuote,
-              link: `${config.blogHost}/post/how-our-remote-quoting-works`,
+              link: `${process.env.BLOG_HOST}/post/how-our-remote-quoting-works`,
             })}
             <div className="remote-features__card__sep-wrapper">
               <div className="remote-features__card__sep-wrapper__line"/>
@@ -82,7 +80,7 @@ class RemoteFeatures extends React.Component {
               // eslint-disable-next-line max-len
               desc: 'The Construction Team can install with zero physical contact with you and are equipped with full construction details.',
               img: imgContactless,
-              link: `${config.blogHost}/post/contactless-fence-installation`,
+              link: `${process.env.BLOG_HOST}/post/contactless-fence-installation`,
             })}
           </div>
         </div>

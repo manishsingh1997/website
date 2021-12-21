@@ -2,7 +2,6 @@ import React from 'react';
 
 import {BadgesSection} from '@ergeon/core-components';
 
-import config from 'website/config';
 import SliderHero from './SliderHero';
 import ReviewHero from './ReviewHero';
 import ProjectsSection from './ProjectsSection';
@@ -24,7 +23,7 @@ class HomePage extends React.Component {
         <div className="wrapper-1180">
           <ProjectsSection/>
           <PromoBlock
-            btnLink={config.fencequotingHost}
+            btnLink={process.env.FENCEQUOTING_HOST}
             btnName="Fence Calculator"
             img={imgCalc}
             subtitle="Build your dream fence and get an estimate instantly"
@@ -32,7 +31,7 @@ class HomePage extends React.Component {
           <GetStartedSection/>
           <QASection/>
           <PromoBlock
-            btnLink={`${config.projectsGalleryHost}/map`}
+            btnLink={`${process.env.PROJECTS_GALLERY_HOST}/map`}
             btnName="Open Map"
             img={imgMap}
             subtitle="Find fence projects near your house"

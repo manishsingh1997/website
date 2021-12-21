@@ -7,7 +7,6 @@ import get from 'lodash/get';
 import {MetaTags} from '@ergeon/core-components';
 
 import metaDictionary from '../../data/meta-data.json';
-import config from '../../website/config';
 import {logDev} from '../../utils/log';
 
 /**
@@ -47,7 +46,7 @@ const MetaTagsConnected = ({auth = {}}) => {
     if (isPrivateArea) {
       meta.noindex = true; // hide internal /app/**/* URLs from robots
     } else {
-      meta.canonical = `${config.publicWebsite}${path !== '/' ? path : ''}`;
+      meta.canonical = `${process.env.HOME_PAGE}${path !== '/' ? path : ''}`;
     }
 
     // Log the meta to simplify debugging.

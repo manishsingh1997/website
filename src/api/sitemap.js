@@ -1,5 +1,4 @@
 import bent from 'bent';
-import config from 'website/config';
 
 /**
  * This file includes functions used for sitemaps generation.
@@ -14,10 +13,10 @@ const getJSON = bent('json');
  */
 export const getHelpNodesURLs = async function() {
   try {
-    const url = `${config.apiHost}/api/help/node/?domain=1`;
+    const url = `${process.env.API_HOST}/api/help/node/?domain=1`;
     const result = await getJSON(url);
     if (result && result.length) {
-      return result.map(result => `${config.publicWebsite}/help/${result.node_key}`);
+      return result.map(result => `${process.env.HOME_PAGE}/help/${result.node_key}`);
     }
   } catch (e) {
     console.log(`Error while getting node ids ${e}`);

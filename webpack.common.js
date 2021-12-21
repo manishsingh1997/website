@@ -1,5 +1,6 @@
 const fs = require('fs');
 const webpack = require('webpack');
+const dotenv = require('dotenv-webpack');
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -122,9 +123,10 @@ module.exports = {
       ],
       filename: `${BUILD_DIR}/utm/index.html`,
     }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      'process.env.SHOW_UPCOMING_FEATURES': JSON.stringify(process.env.SHOW_UPCOMING_FEATURES),
+    new dotenv({
+      path: './.env.local',
+      defaults: `./.env.${process.env.NODE_ENV}`,
+      expand: true,
     }),
     new CopyPlugin([
       {

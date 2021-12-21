@@ -40,19 +40,18 @@ import {DRAW_MAP_GOOGLE_LIBRARIES} from '@ergeon/draw-map';
 import {ERG_MAP_COMPONENT_LIBRARIES} from '@ergeon/map-component';
 
 import store from 'flux/store';
-import config from 'website/config';
 import publicRoutes from 'routes/public';
 
 import '@ergeon/core-components/dist/main.css';
 import './main.scss';
 
-initUTMs('utm-iframe', config.websiteDomain, [
-  `${config.fencequotingHost}/utm/`,
+initUTMs('utm-iframe', process.env.WEBSITE_DOMAIN, [
+  `${process.env.FENCEQUOTING_HOST}/utm/`,
 ]);
 
 const {initGoogleLoader, ADDRESS_INPUT_LIBRARIES} = googleIntegration;
 initGoogleLoader(
-  config.googleMapsApiKey,
+  process.env.GOOGLE_MAPS_API_KEY,
   ADDRESS_INPUT_LIBRARIES,
   ERG_MAP_COMPONENT_LIBRARIES,
   DRAW_MAP_GOOGLE_LIBRARIES,
@@ -111,7 +110,7 @@ render(
           exact
           path="/pro-advice"
           render={() => {
-            window.location = config.blogHost;
+            window.location = process.env.BLOG_HOST;
           }} />
         <Layout>
           <ErrorBoundary>

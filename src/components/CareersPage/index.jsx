@@ -1,7 +1,5 @@
 import React from 'react';
 
-import config from '../../website/config';
-
 import StaffMap from './StaffMap';
 import JobBoard from './JobBoard';
 import StaffReviews from './StaffReviews';
@@ -52,7 +50,7 @@ class CareersPage extends React.Component {
           <p className="subheader h2 center">
             Our amazing team is global and diverse.<br/>
             We stay connected through strong remote work practices and our love of
-            <a href={config.cookbookWebsite} rel="noopener noreferrer" target="_blank">&nbsp;Food</a>
+            <a href={process.env.COOKBOOK_WEBSITE} rel="noopener noreferrer" target="_blank">&nbsp;Food</a>
           </p>
         </div>
         <StaffMap/>

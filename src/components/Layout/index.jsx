@@ -22,7 +22,6 @@ import {isChristmasTime, isPDFMode, showUpcomingFeatures} from 'utils/utils';
 import {getMenuItems} from 'data/customer-app.js';
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
-import config from 'website/config';
 import COVIDNotification from './COVIDNotification';
 
 import './index.scss';
@@ -179,10 +178,10 @@ export default class Layout extends React.Component {
           <TopPanel
             customerMenu={this.renderDropdownMenu()}
             ergeonUrl="/"
-            fencequotingUrl={`${config.fencequotingHost}/`}
+            fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
             pdfDetails={this.renderPdfDetails()}
             pdfMode={asPDF}
-            projectsGalleryUrl={`${config.projectsGalleryHost}/`}
+            projectsGalleryUrl={`${process.env.PROJECTS_GALLERY_HOST}/`}
             showChristmasHat={this.isChristmasTime}
             widthClass={widthClass}>
           </TopPanel>
@@ -192,9 +191,9 @@ export default class Layout extends React.Component {
             showFooter &&
             <Footer
               ergeonUrl="/"
-              fencequotingUrl={`${config.fencequotingHost}/`}
-              productCatalogUrl={`${config.productCatalogUrl}/`}
-              projectsGalleryUrl={`${config.projectsGalleryHost}/`}
+              fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
+              productCatalogUrl={`${process.env.PRODUCT_CATALOG_URL}/`}
+              projectsGalleryUrl={`${process.env.PROJECTS_GALLERY_HOST}/`}
               widthClass={widthClass} />
           }
           <AddressUpdatePopup />

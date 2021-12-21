@@ -26,6 +26,16 @@ Run development webpack server
 make run
 ```
 
+Settings from `.env.development` will be used.
+It is possible to override them: create `.env.local` file and override any env variable there.
+For example, for easer development, you can use our staging back-end API to not spin it up locally.
+
+To do it, add the following to your `.env.local`:
+
+```
+API_HOST = "https://apidev.ergeon.in"
+```
+
 ### Coding rules
 
 The rules are inspired from this [doc](https://github.com/airbnb/javascript/tree/master/react).

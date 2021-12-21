@@ -1,13 +1,12 @@
 import React from 'react';
 
-import config from 'website/config';
 import {ERGEON_LICENSE_NUMBER} from 'website/constants';
 
 import certifiedIcon from 'assets/certified@2x.png';
 import licenseImage from 'assets/license.jpg';
 import './index.scss';
 
-const PRODUCT_DESCRIPTIONS = `${config.apiHost}/api/store/product-descriptions/`;
+const PRODUCT_DESCRIPTIONS = `${process.env.API_HOST}/api/store/product-descriptions/`;
 const CONTRACTS_DESCRIPTION = 'Our standard contract together with all'
     + ' the associated warranties,'
     + ' assurances, terms and conditions are'

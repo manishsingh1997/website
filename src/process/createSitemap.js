@@ -2,15 +2,23 @@ import fs from 'fs';
 import isEmpty from 'lodash/isEmpty';
 import reduce from 'lodash/reduce';
 import sortBy from 'lodash/sortBy';
+import {config as dotenvConfig} from 'dotenv-defaults';
 
 import {getHelpNodesURLs} from 'api/sitemap';
 import {FencePhotoData, GatePhotoData, DrivewayPhotoData} from 'data/photo-gallery';
 import {authRoutes, basicRoutes, galleryRoutes, helpRoutes} from 'routes/public';
-import config from 'website/config';
 
 import {createDirIfNotExists} from './utils';
 
-const HOME_PAGE_URL = config.publicWebsite;
+// this script is running outside of webpack, need to initialize dotenv directly
+const ENV_CONFIG_FOLDER = `${__dirname}/../..`;
+dotenvConfig({
+  path: `${ENV_CONFIG_FOLDER}/.env.local`,
+  defaults: `${ENV_CONFIG_FOLDER}/.env.${process.env.NODE_ENV}`,
+  expand: true,
+});
+
+const HOME_PAGE_URL = process.env.HOME_PAGE;
 
 const sitemapXMLTemplate = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset
@@ -57,8 +65,8 @@ export const generateErgeonSitemap = async() => {
   const urls = sortBy([
     ...getSitemapUrls(authRoutes),
     ...getSitemapUrls(basicRoutes),
-    config.blogHost,
-    config.storeHost,
+    process.env.BLOG_HOST,
+    process.env.STORE_HOST,
   ]);
   return generateSitemap(urls);
 };

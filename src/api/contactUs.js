@@ -1,10 +1,9 @@
 import {ensureUpcomingFeaturesParamInUrl} from '@ergeon/erg-utils-js';
-import config from 'website/config';
 import axios from 'axios';
 
 export const submitContactUs = (data) => {
   return axios({
-    url: ensureUpcomingFeaturesParamInUrl(config.leadArrivedApi),
+    url: ensureUpcomingFeaturesParamInUrl(process.env.LEAD_ARRIVED_API),
     method: 'post',
     data: JSON.stringify(data),
     responseType: 'json',
