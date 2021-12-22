@@ -6,7 +6,7 @@ const {parsePlace} = Places;
 
 export const submitLeadArrived = (data) => {
   return axios({
-    url: ensureUpcomingFeaturesParamInUrl(process.env.ADDRESS_ENTERED_API),
+    url: ensureUpcomingFeaturesParamInUrl(process.env.LEAD_ARRIVED_API),
     method: 'post',
     data: JSON.stringify(data),
     responseType: 'json',
