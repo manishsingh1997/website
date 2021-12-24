@@ -26,16 +26,16 @@ class QASection extends React.Component {
     try {
       const data = await getNodes(NODES);
       this.setState({
-        questions: data.data,
+        questions: data.data || [],
         nodesError: false,
+        isLoading: false,
       });
     } catch (apiError) {
       this.setState({
         questions: [],
         nodesError: parseAPIError(apiError),
+        isLoading: false,
       });
-    } finally {
-      this.setState({isLoading: false});
     }
   }
   renderSpinner() {
@@ -48,7 +48,7 @@ class QASection extends React.Component {
     );
   }
   renderQuestions(type) {
-    const {questions} = this.state;
+    const {questions = []} = this.state;
     const nodes = (type === 'fence') ? FENCE_NODES : DRIVEWAYS_NODES;
     return nodes.map((id) => {
       const node = questions.filter(q => q['node_key'] === id);
