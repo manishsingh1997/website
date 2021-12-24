@@ -18,6 +18,12 @@ Add the following line to `/etc/hosts` on your host machine
 127.0.0.1  ergeon.local
 ```
 
+Or do it automatically with:
+
+```bash
+make setup-local-domain
+```
+
 ### Development
 
 Run development webpack server
@@ -28,7 +34,7 @@ make run
 
 Settings from `.env.development` will be used.
 It is possible to override them: create `.env.local` file and override any env variable there.
-For example, for easer development, you can use our staging back-end API to not spin it up locally.
+For example, for easier development, you can use our staging back-end API to not spin it up locally.
 
 To do it, add the following to your `.env.local`:
 
