@@ -123,6 +123,10 @@ module.exports = {
       ],
       filename: `${BUILD_DIR}/utm/index.html`,
     }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.SHOW_UPCOMING_FEATURES': JSON.stringify(process.env.SHOW_UPCOMING_FEATURES),
+    }),
     new dotenv({
       path: './.env.local',
       defaults: `./.env.${process.env.NODE_ENV}`,
