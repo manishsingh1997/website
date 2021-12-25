@@ -11,6 +11,7 @@
     align-items: flex-start;
     justify-content: center;
     z-index: $tawk-z-index + 1;
+    margin: 0 auto;
   }
 
   .popup--wrapper {
@@ -86,7 +87,7 @@
       padding: 0 $h-20;
       background-color: $gray-6;
 
-      > [class^="map-"] {
+      > [class^='map-'] {
         display: none;
       }
     }

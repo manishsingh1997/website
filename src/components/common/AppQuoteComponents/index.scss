@@ -108,7 +108,7 @@
   .quote-project-images {
     float: right;
 
-    .image-gallery-container {
+    .ImageGallery-container {
       width: 150px;
       .image-gallery-thumb {
         .image-loader__image {
@@ -136,7 +136,7 @@
       }
     }
 
-    .image-gallery-container {
+    .ImageGallery-container {
       margin-bottom: $v-24;
     }
   }
@@ -340,7 +340,7 @@
       border-bottom: 1px solid #ccc;
     }
     .additional-approvers-list-item:last-child td {
-	  border-bottom: 0;
+      border-bottom: 0;
     }
     .additional-approvers-list-item-name {
       font-weight: bold;
