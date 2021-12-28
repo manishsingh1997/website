@@ -8,7 +8,6 @@ import {isChristmasTime} from 'utils/utils';
 import Slider from './Slider';
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import {getParameterByName} from 'utils/utils';
-import {ERGEON_LICENSE_NUMBER} from 'website/constants';
 
 const AUTO_SLIDE_INTERVAL_SECONDS = 5;
 
@@ -53,8 +52,7 @@ class SliderHero extends React.Component {
         <span className="title-wrapper">
           <h1 className="h0 white center">{data.title}</h1>
           <span className="subheader h2 white center">
-            Servicing the Bay Area, Sacramento, Fresno, Riverside, Orange County and
-            Los Angeles. License {ERGEON_LICENSE_NUMBER}.
+            Servicing Northern California, Southern California, Dallas and Fort Worth.
           </span>
         </span>
 
