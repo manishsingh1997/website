@@ -11,7 +11,11 @@ export default function QuoteLinePrice(props) {
     area,
     catalog,
     distance,
+    index,
     isInstallerPreview,
+    isMultiPartyQuote,
+    label,
+    percentage,
     price,
     quantity,
     unit,
@@ -37,7 +41,13 @@ export default function QuoteLinePrice(props) {
           <Area area={area} />
         )}
       </div>
-      {isPriceShown && <h5>{formatPrice(price)}</h5>}
+      {isPriceShown &&
+        <div>
+          <h5>{formatPrice(price)}</h5>
+          {isMultiPartyQuote && `(${percentage}% price of ${label ? label : index + 1})`}
+        </div>
+      }
+
     </>
   );
 }
@@ -46,7 +56,11 @@ QuoteLinePrice.propTypes = {
   area: PropTypes.number,
   catalog: PropTypes.object,
   distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  index: PropTypes.number,
   isInstallerPreview: PropTypes.bool,
+  isMultiPartyQuote: PropTypes.bool,
+  label: PropTypes.string,
+  percentage: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   quantity: PropTypes.string,
   unit: PropTypes.string,

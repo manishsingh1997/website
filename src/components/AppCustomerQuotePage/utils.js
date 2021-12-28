@@ -4,7 +4,7 @@ export const QUOTE_LINE_STATUSES = {
   TO_BE_DROPPED: 'TO_BE_DROPPED',
 };
 
-export const prepareQuoteApprovalLines = (quoteApprovalLines, quote) => {
+export const prepareQuoteApprovalLines = (quoteApprovalLines, quote, isMultiPartyQuote) => {
   return quoteApprovalLines.map(quoteApprovalLine => {
     let status = QUOTE_LINE_STATUSES.NEEDS_APPROVAL;
 
@@ -22,8 +22,10 @@ export const prepareQuoteApprovalLines = (quoteApprovalLines, quote) => {
 
     return {
       ...quoteLine,
+      percentage: quoteApprovalLine['percentage'],
       price: quoteApprovalLine['amount'],
       status,
+      isMultiPartyQuote,
     };
   });
 };

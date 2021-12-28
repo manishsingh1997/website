@@ -265,7 +265,8 @@ export default class AppCustomerQuotePage extends React.Component {
       },
       contract: contractUrl,
     } = quote;
-    const quoteLines = prepareQuoteApprovalLines(quoteApprovalLines, quote);
+    const isMultiPartyQuote = !isEmpty(otherQuoteApprovals);
+    const quoteLines = prepareQuoteApprovalLines(quoteApprovalLines, quote, isMultiPartyQuote);
     const newQuoteApprovalLink = this.getNewQuoteLink();
     const {auth} = this.props;
     const asPDF = isPDFMode();
@@ -299,7 +300,7 @@ export default class AppCustomerQuotePage extends React.Component {
             paymentMethod={paymentMethod}
             quoteId={quote['id']}
             total={formatPrice(this.getProjectTotalPrice(quoteApproval))} />}
-          {!isEmpty(otherQuoteApprovals) && <AdditionalApproversList
+          {isMultiPartyQuote && <AdditionalApproversList
             additionalQuoteApprovals={otherQuoteApprovals} />}
           <ExplanationSection
             asPDF={asPDF}

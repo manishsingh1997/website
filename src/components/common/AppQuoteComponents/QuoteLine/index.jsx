@@ -35,6 +35,7 @@ export default function QuoteLine(props) {
     distance,
     description,
     label,
+    percentage,
     price,
     quantity,
     unit,
@@ -44,6 +45,7 @@ export default function QuoteLine(props) {
     type,
     isBuildSpecAvailable,
     isInstallerPreview,
+    isMultiPartyQuote,
     onBuildDetailsClick,
     images,
     status = QUOTE_LINE_STATUSES.NEEDS_APPROVAL,
@@ -82,7 +84,11 @@ export default function QuoteLine(props) {
           <QuoteLineDescription {...{approvedAt, description, quote, quoteId, status, tags}} />
         </div>
         <div className="quote-line-price quote-line-price__pdf">
-          <QuoteLinePrice {...{area, catalog, distance, isInstallerPreview, price, quantity, unit}} />
+          <QuoteLinePrice
+            {...{
+              area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote, label, percentage,
+              price, quantity, unit,
+            }} />
         </div>
         {images && (
           // This is only used on isPDFMode, as we will render all images below the content
@@ -113,7 +119,11 @@ export default function QuoteLine(props) {
           <QuoteLineDescription {...{approvedAt, description, quote, quoteId, status, tags}} />
         </div>
         <div className="quote-line-price">
-          <QuoteLinePrice {...{area, catalog, distance, isInstallerPreview, price, quantity, unit}} />
+          <QuoteLinePrice
+            {...{
+              area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote, label, percentage,
+              price, quantity, unit,
+            }} />
         </div>
       </QuoteLineLayout>
     );
@@ -140,7 +150,11 @@ export default function QuoteLine(props) {
         </div>
       </div>
       <div className="quote-line-price">
-        <QuoteLinePrice {...{area, catalog, distance, isInstallerPreview, price, quantity, unit}} />
+        <QuoteLinePrice
+          {...{
+            area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote, label, percentage,
+            price, quantity, unit,
+          }} />
       </div>
     </QuoteLineLayout >
   );
@@ -159,9 +173,11 @@ QuoteLine.propTypes = {
   isBuildSpecAvailable: PropTypes.bool,
   isDropped: PropTypes.bool,
   isInstallerPreview: PropTypes.bool,
+  isMultiPartyQuote: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string,
   onBuildDetailsClick: PropTypes.func,
+  percentage: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   quantity: PropTypes.string,
   quote: PropTypes.object,
