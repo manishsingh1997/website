@@ -262,6 +262,7 @@ export default class AppCustomerQuotePage extends React.Component {
     const {
       order: {
         house: {id: houseId},
+        product: {name: quoteType},
       },
       contract: contractUrl,
     } = quote;
@@ -304,7 +305,8 @@ export default class AppCustomerQuotePage extends React.Component {
             additionalQuoteApprovals={otherQuoteApprovals} />}
           <ExplanationSection
             asPDF={asPDF}
-            contractUrl={contractUrl} />
+            contractUrl={contractUrl}
+            quoteType={quoteType}/>
         </div>
       </>
     );

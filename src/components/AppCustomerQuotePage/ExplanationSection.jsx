@@ -13,14 +13,17 @@ export default class ExplanationSection extends React.Component {
   static propTypes = {
     asPDF: PropTypes.bool,
     contractUrl: PropTypes.string,
+    quoteType: PropTypes.string,
   };
 
   renderContractBlock() {
-    const {contractUrl} = this.props;
+    const {contractUrl, quoteType} = this.props;
+    const isDriveWay = (/driveway/ig).test(quoteType);
+    const quoteLink = `Read Project Contract ${isDriveWay ? '' : 'and Warranty'} here`;
     return (
       contractUrl && <React.Fragment>
         <hr className="gray-line restricted-720"/>
-        <a href={contractUrl}>Read Project Contract here</a>
+        <a href={contractUrl}>{quoteLink}</a>
       </React.Fragment>
     );
   }
