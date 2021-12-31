@@ -10,8 +10,10 @@ import {trackAddressEntered} from 'utils/analytics';
 class AddressForm extends React.Component {
   static propTypes = {
     history: PropTypes.object,
+    onChange: PropTypes.func,
     product: PropTypes.string,
     updateLead: PropTypes.func,
+    value: PropTypes.string,
   };
 
   constructor(props) {
@@ -33,6 +35,13 @@ class AddressForm extends React.Component {
     this.props.history.push('/request-quote');
   }
 
+  handleOnchange(leadValue) {
+    if (this.props.onChange) {
+      this.props.onChange(leadValue);
+    }
+    this.setState({lead: null});
+  }
+
   render() {
     const {product} = this.props;
 
@@ -40,10 +49,11 @@ class AddressForm extends React.Component {
       <div>
         <AddressInput
           getCheckedZIP={getCheckedZIP}
-          onChange={() => this.setState({lead: null})}
+          onChange={this.handleOnchange.bind(this)}
           onSubmit={this.handleAddressSubmit.bind(this)}
           product={product}
-          showButton />
+          showButton
+          value={this.props.value}/>
       </div>
     );
   }

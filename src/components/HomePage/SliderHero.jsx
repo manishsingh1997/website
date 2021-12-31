@@ -20,6 +20,7 @@ class SliderHero extends React.Component {
     this.isChristmasTime = isChristmasTime();
     this.state = {
       slide: getParameterByName('utm_content') === 'driveway' ? 1 : 0,
+      lead:'',
     };
     this.autoSlide = setInterval(
       () => this.setState({slide: (this.state.slide + 1) % 2}),
@@ -40,6 +41,10 @@ class SliderHero extends React.Component {
     this.setState({slide});
   }
 
+  handleAddressInput(leadValue) {
+    this.setState((prev)=>({...prev, lead: leadValue}));
+  }
+
   renderSlide(data) {
     const slideClasses = ClassNames({
       content: true,
@@ -57,7 +62,10 @@ class SliderHero extends React.Component {
         </span>
 
         <div className="form-wrapper">
-          <AddressForm product={product} />
+          <AddressForm
+            onChange={this.handleAddressInput.bind(this)}
+            product={product}
+            value={this.state.lead}/>
         </div>
         <a className="phone-link white" href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a>
       </div>

@@ -28,6 +28,11 @@ class Slider extends React.Component {
     return this.state.currentSlide;
   }
   switchSlide(event) {
+    event.preventDefault();
+    // so as to prevent the hero from sliding upwards or down
+    if (['Up', 'Down'].includes(event.dir)) {
+      return;
+    }
     const targetClass = event.target
       ? event.target.className
       : event.dir // event has dir (direction) if was called by swipe
