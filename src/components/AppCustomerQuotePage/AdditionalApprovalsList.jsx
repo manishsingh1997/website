@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {formatDateAndTime} from 'utils/date';
 
-export default class AdditionalApproversList extends React.Component {
+export default class AdditionalApprovalsList extends React.Component {
   static propTypes = {
     additionalQuoteApprovals: PropTypes.arrayOf(PropTypes.object),
   };

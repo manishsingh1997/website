@@ -24,6 +24,8 @@ export default function QuoteLines({
   quote,
   quoteLines,
   isInstallerPreview,
+  isMultiPartyQuote,
+  isPrimaryQuoteApproval,
 }) {
   let calcInput = quote['calc_input'];
   if (showUpcomingFeatures()) {
@@ -53,7 +55,6 @@ export default function QuoteLines({
       index: i,
       isBuildSpecAvailable: side.is_build_spec_available,
       isDropped: side['is_dropped'],
-      isInstallerPreview,
       // show tags only when calcInput is present
       tags: calcInput ? getTagsForQuoteLine(getLabelFromIndex(i), quote) : undefined,
       price: side.price,
@@ -70,7 +71,6 @@ export default function QuoteLines({
       index: i,
       isBuildSpecAvailable: gate.is_build_spec_available,
       isDropped: gate['is_dropped'],
-      isInstallerPreview,
       // show tags only when calcInput is present
       tags: calcInput ? getTagsForQuoteLine(i + 1, quote) : undefined,
       price: gate.price,
@@ -89,7 +89,6 @@ export default function QuoteLines({
       isBuildSpecAvailable: area.is_build_spec_available,
       isDropped: area['is_dropped'],
       index: i,
-      isInstallerPreview,
       price: area.price,
       // hide distance if calcInput is present
       distance: calcInput ? undefined : area.distance,
@@ -99,7 +98,7 @@ export default function QuoteLines({
       ...gates.map(getQuoteLinePropsFromGate),
       ...areas.map(getQuoteLinePropsFromAreas),
     ];
-  }, [isInstallerPreview, quote, quoteLines, calcInput, filterByField]);
+  }, [quote, quoteLines, calcInput, filterByField]);
 
   return (
     <>
@@ -109,6 +108,9 @@ export default function QuoteLines({
         <div>
           {preparedQuoteLines.map(quoteLineProps => (
             <QuoteLine
+              isInstallerPreview={isInstallerPreview}
+              isMultiPartyQuote={isMultiPartyQuote}
+              isPrimaryQuoteApproval={isPrimaryQuoteApproval}
               key={`${quoteLineProps.type}-${quoteLineProps.id}`}
               onBuildDetailsClick={onBuildDetailsClick}
               {...quoteLineProps} />
@@ -122,6 +124,8 @@ export default function QuoteLines({
 QuoteLines.propTypes = {
   asPDF: PropTypes.bool,
   isInstallerPreview: PropTypes.bool,
+  isMultiPartyQuote: PropTypes.bool,
+  isPrimaryQuoteApproval: PropTypes.bool,
   onBuildDetailsClick: PropTypes.func,
   quote: PropTypes.object,
   quoteLines: PropTypes.arrayOf(PropTypes.object),

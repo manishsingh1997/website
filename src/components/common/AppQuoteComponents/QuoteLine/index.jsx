@@ -42,10 +42,12 @@ export default function QuoteLine(props) {
     quote,
     quoteId,
     tags,
+    totalPrice,
     type,
     isBuildSpecAvailable,
     isInstallerPreview,
     isMultiPartyQuote,
+    isPrimaryQuoteApproval,
     onBuildDetailsClick,
     images,
     status = QUOTE_LINE_STATUSES.NEEDS_APPROVAL,
@@ -86,8 +88,8 @@ export default function QuoteLine(props) {
         <div className="quote-line-price quote-line-price__pdf">
           <QuoteLinePrice
             {...{
-              area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote, label, percentage,
-              price, quantity, unit,
+              area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
+              isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
             }} />
         </div>
         {images && (
@@ -121,8 +123,8 @@ export default function QuoteLine(props) {
         <div className="quote-line-price">
           <QuoteLinePrice
             {...{
-              area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote, label, percentage,
-              price, quantity, unit,
+              area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
+              isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
             }} />
         </div>
       </QuoteLineLayout>
@@ -152,8 +154,8 @@ export default function QuoteLine(props) {
       <div className="quote-line-price">
         <QuoteLinePrice
           {...{
-            area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote, label, percentage,
-            price, quantity, unit,
+            area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
+            isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
           }} />
       </div>
     </QuoteLineLayout >
@@ -174,6 +176,7 @@ QuoteLine.propTypes = {
   isDropped: PropTypes.bool,
   isInstallerPreview: PropTypes.bool,
   isMultiPartyQuote: PropTypes.bool,
+  isPrimaryQuoteApproval: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string,
   onBuildDetailsClick: PropTypes.func,
@@ -188,6 +191,7 @@ QuoteLine.propTypes = {
     QUOTE_LINE_STATUSES.NEEDS_APPROVAL,
   ]),
   tags: PropTypes.array,
+  totalPrice: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   type: PropTypes.oneOf([CALC_SIDE_TYPE, CALC_GATE_TYPE, CALC_AREA_TYPE]),
   unit: PropTypes.string,
 };

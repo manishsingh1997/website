@@ -157,10 +157,6 @@
     }
   }
 
-  .quote-line__pdf {
-    flex-wrap: wrap;
-  }
-
   .quote-line-preview {
     margin-top: 0;
     @include tablet() {
@@ -203,6 +199,12 @@
 
   .quote-line-price__pdf {
     min-width: 15%;
+  }
+
+  .quote-line-price-total-price,.quote-line-price-percentage {
+    line-height: $v-16;
+    font-size: $font-label-size;
+    font-style: italic;
   }
 
   .quote-line-images {

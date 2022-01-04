@@ -35,7 +35,7 @@ import {showUpcomingFeatures} from '../../utils/utils';
 import '@ergeon/draw-map/styles.css';
 
 import '../common/AppQuoteComponents/index.scss';
-import AdditionalApproversList from './AdditionalApproversList';
+import AdditionalApprovalsList from './AdditionalApprovalsList';
 
 export default class AppCustomerQuotePage extends React.Component {
 
@@ -256,6 +256,7 @@ export default class AppCustomerQuotePage extends React.Component {
     const {
       customer,
       quote,
+      is_primary: isPrimaryQuoteApproval,
       quote_approval_lines: quoteApprovalLines,
       other_quote_approvals: otherQuoteApprovals,
     } = quoteApproval;
@@ -267,7 +268,7 @@ export default class AppCustomerQuotePage extends React.Component {
       contract: contractUrl,
     } = quote;
     const isMultiPartyQuote = !isEmpty(otherQuoteApprovals);
-    const quoteLines = prepareQuoteApprovalLines(quoteApprovalLines, quote, isMultiPartyQuote);
+    const quoteLines = prepareQuoteApprovalLines(quoteApprovalLines, quote);
     const newQuoteApprovalLink = this.getNewQuoteLink();
     const {auth} = this.props;
     const asPDF = isPDFMode();
@@ -283,6 +284,8 @@ export default class AppCustomerQuotePage extends React.Component {
             customer={customer}
             customerGID={this.customerGID}
             isInstallerPreview={false}
+            isMultiPartyQuote={isMultiPartyQuote}
+            isPrimaryQuoteApproval={isPrimaryQuoteApproval}
             newQuoteLink={newQuoteApprovalLink}
             onBuildDetailsClick={this.onBuildDetailsClick.bind(this)}
             quote={quote}
@@ -301,7 +304,7 @@ export default class AppCustomerQuotePage extends React.Component {
             paymentMethod={paymentMethod}
             quoteId={quote['id']}
             total={formatPrice(this.getProjectTotalPrice(quoteApproval))} />}
-          {isMultiPartyQuote && <AdditionalApproversList
+          {isMultiPartyQuote && <AdditionalApprovalsList
             additionalQuoteApprovals={otherQuoteApprovals} />}
           <ExplanationSection
             asPDF={asPDF}

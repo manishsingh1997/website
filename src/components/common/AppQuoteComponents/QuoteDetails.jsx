@@ -25,6 +25,8 @@ export default class QuoteDetails extends React.Component {
     customer: PropTypes.object,
     customerGID: PropTypes.string,
     isInstallerPreview: PropTypes.bool,
+    isMultiPartyQuote: PropTypes.bool,
+    isPrimaryQuoteApproval: PropTypes.bool,
     newQuoteLink: PropTypes.string,
     onBuildDetailsClick: PropTypes.func,
     quote: PropTypes.object,
@@ -190,6 +192,8 @@ export default class QuoteDetails extends React.Component {
       customer,
       customerGID,
       isInstallerPreview,
+      isMultiPartyQuote,
+      isPrimaryQuoteApproval,
       onBuildDetailsClick,
       quote,
       quoteLines,
@@ -233,6 +237,8 @@ export default class QuoteDetails extends React.Component {
         <QuoteLines
           asPDF={asPDF}
           isInstallerPreview={isInstallerPreview}
+          isMultiPartyQuote={isMultiPartyQuote}
+          isPrimaryQuoteApproval={isPrimaryQuoteApproval}
           onBuildDetailsClick={onBuildDetailsClick}
           quote={quote}
           quoteLines={quoteLines} />
