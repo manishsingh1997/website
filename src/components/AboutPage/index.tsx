@@ -55,7 +55,7 @@ class AboutPage extends React.Component {
             fence and hardscape installations in California (license number #1040925, C13, and C27) and are
             named Best of HomeAdvisor 2020, with over 1000 Yelp and Google reviews at an average rating of 4.6.
             We work with residential and commercial property owners in the Bay Area, Sacramento, Fresno,
-            Riverside, San Bernardino, Orange County, Ventura, and Los Angeles. Our company was founded and
+            Riverside, San Bernardino, Orange County, Ventura, Los Angeles and Dallas. Our company was founded and
             is run today by two CS Ph.D. serial entrepreneurs.
             <br/><br/>
           </p>
