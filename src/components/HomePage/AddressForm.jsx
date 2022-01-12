@@ -43,7 +43,7 @@ class AddressForm extends React.Component {
   }
 
   render() {
-    const {product} = this.props;
+    const {product, value} = this.props;
 
     return (
       <div>
@@ -53,7 +53,7 @@ class AddressForm extends React.Component {
           onSubmit={this.handleAddressSubmit.bind(this)}
           product={product}
           showButton
-          value={this.props.value}/>
+          value={value}/>
       </div>
     );
   }
