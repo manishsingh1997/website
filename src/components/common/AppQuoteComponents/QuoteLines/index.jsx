@@ -57,7 +57,8 @@ export default function QuoteLines({
       isDropped: side['is_dropped'],
       // show tags only when calcInput is present
       tags: calcInput ? getTagsForQuoteLine(getLabelFromIndex(i), quote) : undefined,
-      price: side.price,
+      // TODO: ENG-11541 remove upcoming-features condition
+      displayPrice: side.display_price ? showUpcomingFeatures() : side.price,
       images: getImagesForQuoteLine(getLabelFromIndex(i), quote),
     });
 
@@ -73,7 +74,8 @@ export default function QuoteLines({
       isDropped: gate['is_dropped'],
       // show tags only when calcInput is present
       tags: calcInput ? getTagsForQuoteLine(i + 1, quote) : undefined,
-      price: gate.price,
+      // TODO: ENG-11541 remove upcoming-features condition
+      displayPrice: gate.display_price ? showUpcomingFeatures() : gate.price,
       // hide distance if calcInput is present
       distance: calcInput ? undefined : gate.distance,
       images: getImagesForQuoteLine(String(i + 1), quote),
@@ -89,7 +91,8 @@ export default function QuoteLines({
       isBuildSpecAvailable: area.is_build_spec_available,
       isDropped: area['is_dropped'],
       index: i,
-      price: area.price,
+      // TODO: ENG-11541 remove upcoming-features condition
+      displayPrice: area.display_price ? showUpcomingFeatures() : area.price,
       // hide distance if calcInput is present
       distance: calcInput ? undefined : area.distance,
     });

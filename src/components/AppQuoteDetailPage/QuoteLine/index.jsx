@@ -49,7 +49,7 @@ export default function QuoteLine(props) {
     description,
     label,
     name,
-    price,
+    displayPrice,
     quantity,
     unit,
     quote,
@@ -115,7 +115,7 @@ export default function QuoteLine(props) {
             )}
           </div>
         )}
-        {!isInstallerPreview && <h5>{formatPrice(price)}</h5>}
+        {!isInstallerPreview && <h5>{formatPrice(displayPrice)}</h5>}
         {isAllowedUnitDisplay(isInstallerPreview, catalog) && (
           <div className="desktop-length spacing before__is-12">
             {distance && (
@@ -145,6 +145,7 @@ QuoteLine.propTypes = {
   area: PropTypes.number,
   catalog: PropTypes.object,
   description: PropTypes.string,
+  displayPrice: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   images: PropTypes.array,
@@ -152,7 +153,6 @@ QuoteLine.propTypes = {
   isInstallerPreview: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string,
-  price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   quantity: PropTypes.string,
   quote: PropTypes.object,
   quoteLineQuoteId: PropTypes.number,

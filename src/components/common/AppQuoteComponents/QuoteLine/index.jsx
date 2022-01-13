@@ -36,7 +36,7 @@ export default function QuoteLine(props) {
     description,
     label,
     percentage,
-    price,
+    displayPrice,
     quantity,
     unit,
     quote,
@@ -89,7 +89,7 @@ export default function QuoteLine(props) {
           <QuoteLinePrice
             {...{
               area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
-              isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
+              isPrimaryQuoteApproval, label, percentage, displayPrice, totalPrice, quantity, unit,
             }} />
         </div>
         {images && (
@@ -124,7 +124,7 @@ export default function QuoteLine(props) {
           <QuoteLinePrice
             {...{
               area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
-              isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
+              isPrimaryQuoteApproval, label, percentage, displayPrice, totalPrice, quantity, unit,
             }} />
         </div>
       </QuoteLineLayout>
@@ -155,7 +155,7 @@ export default function QuoteLine(props) {
         <QuoteLinePrice
           {...{
             area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
-            isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
+            isPrimaryQuoteApproval, label, percentage, displayPrice, totalPrice, quantity, unit,
           }} />
       </div>
     </QuoteLineLayout >
@@ -168,6 +168,7 @@ QuoteLine.propTypes = {
   catalog: PropTypes.object,
   config: PropTypes.object,
   description: PropTypes.string,
+  displayPrice: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   images: PropTypes.array,
@@ -181,7 +182,6 @@ QuoteLine.propTypes = {
   name: PropTypes.string,
   onBuildDetailsClick: PropTypes.func,
   percentage: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   quantity: PropTypes.string,
   quote: PropTypes.object,
   quoteId: PropTypes.number,
