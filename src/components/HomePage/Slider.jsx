@@ -28,10 +28,8 @@ class Slider extends React.Component {
     return this.state.currentSlide;
   }
   switchSlide(event) {
-    // stops slide hero for sliding up * reason unknown*
-    event.preventDefault && event.preventDefault();
     // so as to prevent the hero from sliding upwards or down
-    if (['Up', 'Down'].includes(event.dir)) {
+    if (['mouseup', 'mousedown'].includes(event?.event?.type)) {
       return;
     }
     const targetClass = event.target
