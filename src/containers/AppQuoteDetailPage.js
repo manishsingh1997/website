@@ -2,10 +2,8 @@ import {connect} from 'react-redux';
 
 import AppQuoteDetailPage from 'components/AppQuoteDetailPage';
 
-const mapStateToProps = ({auth}) => {
-  return {
-    auth,
-  };
+const mapStateToProps = () => {
+  return {};
 };
 
 const mapDispatchToProps = () => {
