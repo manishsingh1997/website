@@ -1,3 +1,5 @@
+import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
+
 export const QUOTE_LINE_STATUSES = {
   APPROVED: 'APPROVED',
   NEEDS_APPROVAL: 'NEEDS_APPROVAL',
@@ -24,7 +26,8 @@ export const prepareQuoteApprovalLines = (quoteApprovalLines, quote) => {
       ...quoteLine,
       percentage: quoteApprovalLine['percentage'],
       price: quoteApprovalLine['amount'],
-      totalPrice: quoteLine['price'],
+      // Should be removed in context of ENG-11541
+      totalPrice: isUpcomingFeaturesEnabled() ? quoteLine['display_price'] : quoteLine['price'],
       status,
     };
   });
