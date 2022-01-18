@@ -30,6 +30,7 @@ export default function QuoteLine(props) {
     index,
     approvedAt,
     area,
+    calcInputQuoteLine,
     catalog,
     config,
     distance,
@@ -85,13 +86,15 @@ export default function QuoteLine(props) {
           <Title index={index} label={label} type={type} />
           <QuoteLineDescription {...{approvedAt, description, quote, quoteId, status, tags}} />
         </div>
-        <div className="quote-line-price quote-line-price__pdf">
-          <QuoteLinePrice
-            {...{
-              area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
-              isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
-            }} />
-        </div>
+        {!calcInputQuoteLine && (
+          <div className="quote-line-price quote-line-price__pdf">
+            <QuoteLinePrice
+              {...{
+                area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
+                isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
+              }} />
+          </div>
+        )}
         {images && (
           // This is only used on isPDFMode, as we will render all images below the content
           <div className="quote-line-images spacing before__is-12 after__is-12">
@@ -120,13 +123,15 @@ export default function QuoteLine(props) {
           </div>
           <QuoteLineDescription {...{approvedAt, description, quote, quoteId, status, tags}} />
         </div>
-        <div className="quote-line-price">
-          <QuoteLinePrice
-            {...{
-              area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
-              isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
-            }} />
-        </div>
+        {!calcInputQuoteLine && (
+          <div className="quote-line-price">
+            <QuoteLinePrice
+              {...{
+                area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
+                isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
+              }} />
+          </div>
+        )}
       </QuoteLineLayout>
     );
   }
@@ -151,13 +156,15 @@ export default function QuoteLine(props) {
           }
         </div>
       </div>
-      <div className="quote-line-price">
-        <QuoteLinePrice
-          {...{
-            area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
-            isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
-          }} />
-      </div>
+      {!calcInputQuoteLine && (
+        <div className="quote-line-price">
+          <QuoteLinePrice
+            {...{
+              area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
+              isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
+            }} />
+        </div>
+      )}
     </QuoteLineLayout >
   );
 }
@@ -165,6 +172,7 @@ export default function QuoteLine(props) {
 QuoteLine.propTypes = {
   approvedAt: PropTypes.string,
   area: PropTypes.number,
+  calcInputQuoteLine: PropTypes.bool,
   catalog: PropTypes.object,
   config: PropTypes.object,
   description: PropTypes.string,
