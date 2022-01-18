@@ -71,12 +71,11 @@ export default class AppQuoteDetailPage extends React.Component {
   }
 
   render() {
-    const {isLoading, quote: {quote_approvals: quoteApprovals, secret: quoteSecret}} = this.state;
-    const {customer: {gid: customerSecret}, secret: quoteApprovalSecret} = quoteApprovals[0];
-
-    if (isLoading) {
+    if (this.state.isLoading) {
       return <AppLoader />;
     }
+    const {quote: {quote_approvals: quoteApprovals, secret: quoteSecret}} = this.state;
+    const {customer: {gid: customerSecret}, secret: quoteApprovalSecret} = quoteApprovals[0];
 
     let searchString = '';
     if (window.location && window.location.search) {
