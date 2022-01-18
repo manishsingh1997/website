@@ -93,11 +93,27 @@ export default function QuoteLines({
       // hide distance if calcInput is present
       distance: calcInput ? undefined : area.distance,
     });
-    return [
+
+    // sorts lines using labels by letter first and digit last
+    const sortLines = (lines) => {
+      return lines
+        // include an identifier that we will use to sort
+        .map(line =>
+          [line.label.toLowerCase().replace(/([a-z])|(\d)|./sg,
+            // lets use 1 for letters, 2 for digits and 3 for the rest, should look like this:
+            // '1a', '21'...
+            (match, letter, digit) => (letter ? 1 : digit ? 2 : 3) + match), line]
+        )
+        .sort(([a], [b]) => a.localeCompare(b))
+        // return the original lines sorted
+        .map(line => line[1]);
+    };
+
+    return sortLines([
       ...sides.map(getQuoteLinePropsFromSide),
       ...gates.map(getQuoteLinePropsFromGate),
       ...areas.map(getQuoteLinePropsFromAreas),
-    ];
+    ]);
   }, [quote, quoteLines, calcInput, filterByField]);
 
   return (
