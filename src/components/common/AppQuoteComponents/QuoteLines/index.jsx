@@ -104,9 +104,20 @@ export default function QuoteLines({
   const filterByField = isInstallerPreview ? 'display_to_installer' : 'display_to_customer';
 
   const preparedQuoteLines = useMemo(() => {
-    const sides = getSides(quoteLines, filterByField, calcInput);
-    const gates = getGates(quoteLines, filterByField, calcInput);
-    const areas = getAreas(quoteLines, filterByField, calcInput);
+    let sides, gates, areas, needToSort;
+
+    // TODO: This should stop using calcInput after rolling out ENG-9225
+    if (!isMultiPartyQuote && calcInput) {
+      sides = calcInput.sides || [];
+      gates = calcInput.gates || [];
+      areas = calcInput.areas || [];
+      needToSort = false;
+    } else {
+      sides = getSides(quoteLines, filterByField, calcInput);
+      gates = getGates(quoteLines, filterByField, calcInput);
+      areas = getAreas(quoteLines, filterByField, calcInput);
+      needToSort = true;
+    }
 
     const getQuoteLinePropsFromSide = (side, i) => ({
       ...side,
@@ -159,6 +170,7 @@ export default function QuoteLines({
 
     // sorts lines using labels by letter first and digit last
     const sortLines = (lines) => {
+
       return lines
         // include an identifier that we will use to sort
         .map(line =>
@@ -172,12 +184,14 @@ export default function QuoteLines({
         .map(line => line[1]);
     };
 
-    return sortLines([
+    const preparedQuoteLines = [
       ...sides.map(getQuoteLinePropsFromSide),
       ...gates.map(getQuoteLinePropsFromGate),
       ...areas.map(getQuoteLinePropsFromArea),
-    ]);
-  }, [quote, quoteLines, calcInput, filterByField]);
+    ];
+
+    return needToSort ? sortLines(preparedQuoteLines) : preparedQuoteLines;
+  }, [quote, quoteLines, calcInput, filterByField, isMultiPartyQuote]);
 
   return (
     <>
