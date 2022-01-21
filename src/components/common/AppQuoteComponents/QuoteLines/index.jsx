@@ -110,7 +110,7 @@ export default function QuoteLines({
     if (!isMultiPartyQuote && calcInput) {
       sides = calcInput.sides || [];
       gates = calcInput.gates || [];
-      areas = calcInput.areas || [];
+      areas = calcInput.polygons || [];
       needToSort = false;
     } else {
       sides = getSides(quoteLines, filterByField, calcInput);
