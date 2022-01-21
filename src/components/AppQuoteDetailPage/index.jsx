@@ -10,7 +10,12 @@ import {getQuoteDetails} from 'api/app';
 import AppLoader from 'components/common/AppLoader';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import {parseAPIError} from 'utils/api';
-import {DIRECT_PREVIEW_SLUG, INSTALLER_PREVIEW_SLUG} from 'website/constants';
+import {
+  DIRECT_PREVIEW_SLUG,
+  HTTP_STATUS_NOT_FOUND,
+  INSTALLER_PREVIEW_SLUG,
+  NOT_FOUND_PAGE_PATH,
+} from 'website/constants';
 
 export default class AppQuoteDetailPage extends React.Component {
 
@@ -50,7 +55,6 @@ export default class AppQuoteDetailPage extends React.Component {
       this.setState({
         quote: data.data,
         quoteError: null,
-        paymentMethodError: null,
       });
     } catch (apiError) {
       this.setState({
@@ -74,6 +78,13 @@ export default class AppQuoteDetailPage extends React.Component {
     if (this.state.isLoading) {
       return <AppLoader />;
     }
+
+    if (!this.state.quote && this.state.quoteError && this.state.quoteError.statusCode === HTTP_STATUS_NOT_FOUND) {
+      return (
+        <Redirect to={NOT_FOUND_PAGE_PATH} />
+      );
+    }
+
     const {quote: {quote_approvals: quoteApprovals, secret: quoteSecret}} = this.state;
     const {customer: {gid: customerSecret}, secret: quoteApprovalSecret} = quoteApprovals[0];
 
