@@ -113,6 +113,10 @@ export default function QuoteLines({
       areas = calcInput.polygons || [];
       needToSort = false;
     } else {
+      if (!calcInput) {
+        calcInput = {};
+      }
+
       sides = getSides(quoteLines, filterByField, calcInput);
       gates = getGates(quoteLines, filterByField, calcInput);
       areas = getAreas(quoteLines, filterByField, calcInput);

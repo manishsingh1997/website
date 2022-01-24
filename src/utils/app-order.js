@@ -47,11 +47,11 @@ export const filterQuotesSentToCustomer = (quotes) => {
 };
 
 export const formatPrice = (price) => {
-  return Math.floor(price || 0).toLocaleString('en-US', {
+  return parseFloat(price || 0).toLocaleString('en-US', {
     style: 'currency',
     currency: 'USD',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,  // don't show digits after decimal point (i.e. cents)
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   });
 };
 
