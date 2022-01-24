@@ -9,7 +9,8 @@ $preview-size: 150px;
   align-items: center;
   margin-right: 40px;
   width: $preview-size;
-  height: $preview-size;
+  max-height: $preview-size;
+  height: auto;
   background-color: $white;
 
   &__no-preview {

@@ -48,7 +48,7 @@ const getSides = (quoteLines, filterByField, calcInput) => {
   const quoteLineSides = quoteLines.filter(
     quoteLine => isQuoteLineOfMapKinds(quoteLine, ['line'])
   );
-  const calcInputSides = getAdditionalSidesFromCalcInput(calcInput.sides || [], quoteLineSides);
+  const calcInputSides = getAdditionalSidesFromCalcInput(calcInput?.sides || [], quoteLineSides);
   const filteredQuoteLines = quoteLineSides.filter(quoteLine => quoteLine[filterByField] === true);
   return [...filteredQuoteLines, ...calcInputSides];
 };
@@ -60,7 +60,7 @@ const getGates = (quoteLines, filterByField, calcInput) => {
   const quoteLineGates = quoteLines.filter(
     quoteLine => isQuoteLineOfMapKinds(quoteLine, ['point', null, undefined])
   );
-  const calcInputGates = getAdditionalPointsFromCalcInput(calcInput.gates || [], quoteLineGates);
+  const calcInputGates = getAdditionalPointsFromCalcInput(calcInput?.gates || [], quoteLineGates);
   const filteredQuoteLines = quoteLineGates.filter(quoteLine => quoteLine[filterByField] === true);
   return [...filteredQuoteLines, ...calcInputGates];
 };
@@ -72,7 +72,7 @@ const getAreas = (quoteLines, filterByField, calcInput) => {
   const quoteLineAreas = quoteLines.filter(
     quoteLine => isQuoteLineOfMapKinds(quoteLine, ['area'])
   );
-  const calcInputAreas = getAdditionalPointsFromCalcInput(calcInput.areas || [], quoteLineAreas);
+  const calcInputAreas = getAdditionalPointsFromCalcInput(calcInput?.areas || [], quoteLineAreas);
   const filteredQuoteLines = quoteLineAreas.filter(quoteLine => quoteLine[filterByField] === true);
   return [...filteredQuoteLines, ...calcInputAreas];
 };
