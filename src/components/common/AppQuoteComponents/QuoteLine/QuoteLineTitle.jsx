@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getLabelFromIndex} from '@ergeon/draw-map';
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 import {indexLabel} from './utils';
 import MapLabel from './MapLabel';
@@ -32,10 +31,10 @@ const PointTitle = (index, label) => (
  * Returns <MapLabel> as "LabelYellow" with label wrapped in <h5>
  * @param {number} index
  */
-const AreaTitle = (index) => (
+const AreaTitle = (index, label) => (
   <>
-    <MapLabel name={getLabelFromIndex(index)} type="LabelYellow" />
-    <h5>Area {getLabelFromIndex(index)}</h5>
+    <MapLabel name={indexLabel(index, label)} type="LabelYellow" />
+    <h5>Area {indexLabel(index, label)}</h5>
   </>
 );
 
@@ -51,7 +50,7 @@ export default function Title({type, index, label}) {
       case CALC_GATE_TYPE:
         return PointTitle(index, label);
       case CALC_AREA_TYPE:
-        return AreaTitle(index);
+        return AreaTitle(index, label);
       default:
         return null;
     }
