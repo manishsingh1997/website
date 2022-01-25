@@ -6,7 +6,7 @@ import {isPDFMode} from 'utils/utils';
 /**
  * Renders group of tag buttons
  * @param {{ tags: Array.<object>}} props
-*/
+ */
 export default function Tags({tags}) {
   const pdfModeDisabled = !isPDFMode();
   let tagsNode = null;
