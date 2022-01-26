@@ -97,9 +97,11 @@ export default function QuoteLines({
   isMultiPartyQuote,
   isPrimaryQuoteApproval,
 }) {
-  let calcInput = quote['calc_input'];
-  if (showUpcomingFeatures()) {
-    calcInput = quote['project_calc_input'];
+  let calcInput = quote['calc_input'] || {};
+  const isScopeChange = quote['is_scope_change'];
+
+  if (showUpcomingFeatures() && quote['project_calc_input']) {
+    calcInput = quote['project_calc_input'] || {};
   }
   const filterByField = isInstallerPreview ? 'display_to_installer' : 'display_to_customer';
 
@@ -107,16 +109,12 @@ export default function QuoteLines({
     let sides, gates, areas, needToSort;
 
     // TODO: This should stop using calcInput after rolling out ENG-9225
-    if (!isMultiPartyQuote && calcInput) {
+    if (!isMultiPartyQuote && !isScopeChange && calcInput) {
       sides = calcInput.sides || [];
       gates = calcInput.gates || [];
       areas = calcInput.polygons || [];
       needToSort = false;
     } else {
-      if (!calcInput) {
-        calcInput = {};
-      }
-
       sides = getSides(quoteLines, filterByField, calcInput);
       gates = getGates(quoteLines, filterByField, calcInput);
       areas = getAreas(quoteLines, filterByField, calcInput);
@@ -195,7 +193,7 @@ export default function QuoteLines({
     ];
 
     return needToSort ? sortLines(preparedQuoteLines) : preparedQuoteLines;
-  }, [quote, quoteLines, calcInput, filterByField, isMultiPartyQuote]);
+  }, [quote, quoteLines, calcInput, filterByField, isScopeChange, isMultiPartyQuote]);
 
   return (
     <>
