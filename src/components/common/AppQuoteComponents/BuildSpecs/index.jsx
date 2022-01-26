@@ -42,9 +42,26 @@ const BuildSpecs = () => {
 
   return (
     <section className="BuildSpecs-table">
-      {requestState.data.attributes.map(({id, attribute, name}, idx) => (
-        <TableRow content={name} index={idx} key={id} label={attribute}/>
-      ))}
+      {requestState.data.attributes.map(
+        (
+          {
+            id,
+            attribute,
+            name,
+            external_help_text: externalHelpText,
+            public_help_node: publicHelpNode,
+          },
+          idx
+        ) => (
+          <TableRow
+            content={name}
+            helpLink={publicHelpNode}
+            helpText={externalHelpText}
+            index={idx}
+            key={id}
+            label={attribute}/>
+        )
+      )}
     </section>
   );
 };
