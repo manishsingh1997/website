@@ -30,7 +30,6 @@ import ProjectNotes from './ProjectNotes';
 import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
 import QuoteError from '../common/AppQuoteComponents/QuoteError';
 import {prepareQuoteApprovalLines} from './utils';
-import {showUpcomingFeatures} from '../../utils/utils';
 
 import '@ergeon/draw-map/styles.css';
 
@@ -171,7 +170,7 @@ export default class AppCustomerQuotePage extends React.Component {
 
   getTotalPrice(quoteApproval) {
     const totalPrice = Number.parseFloat(quoteApproval['total_price']);
-    if (showUpcomingFeatures() && this.isScopeChange(quoteApproval)) {
+    if (this.isScopeChange(quoteApproval)) {
       // calculate total_price minus dropped lines
       const droppedLinesAmount = quoteApproval['quote_approval_lines'].map(
         line => line['quote_line'] // we need only quote_lines
@@ -186,7 +185,7 @@ export default class AppCustomerQuotePage extends React.Component {
   }
 
   getTotalPreviouslyApprovedPrice(quoteApproval) {
-    if (showUpcomingFeatures() && this.isScopeChange(quoteApproval)) {
+    if (this.isScopeChange(quoteApproval)) {
       const {quote_approval_lines: quoteApprovalLines} = quoteApproval;
       const approvedPreviousQuoteApprovalLines = quoteApprovalLines.filter(
         (line) => (
