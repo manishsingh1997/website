@@ -14,6 +14,8 @@ import {Link} from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 
 import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
+import {formatDate} from 'utils/date';
+import {showUpcomingFeatures} from '../../../utils/utils';
 import {hideDroppedLabels} from './utils';
 export default class QuoteDetails extends React.Component {
   static propTypes = {
@@ -110,7 +112,7 @@ export default class QuoteDetails extends React.Component {
     const {quote, asPDF, quoteLines} = this.props;
     const {isLoadingMap} = this.state;
     let calcInput = quote['calc_input'];
-    if (quote['project_calc_input']) {
+    if (showUpcomingFeatures() && quote['project_calc_input']) {
       calcInput = hideDroppedLabels(quote['project_calc_input'], quoteLines);
     }
     let address = quote.order.house.address;
@@ -155,10 +157,10 @@ export default class QuoteDetails extends React.Component {
   renderQuotePriceSection() {
     const {quote, isInstallerPreview, totalPrice, totalPreviouslyApprovedPrice, totalProjectPrice} = this.props;
     const {
-      'is_scope_change': isScopeChange,
+      'parent_quote': parentQuote,
     } = quote;
 
-    if (!isScopeChange) {
+    if (!parentQuote) {
       return (
         <div className={classNames({'total-price': !isInstallerPreview, 'total-price-noteless': isInstallerPreview})}>
           <h4>Total: {totalPrice}</h4>
@@ -172,7 +174,8 @@ export default class QuoteDetails extends React.Component {
           Total change order price for approval: {totalPrice}
         </h6>
         <h6 className="change-order-total-previous-price">
-          Total previously approved: {totalPreviouslyApprovedPrice}
+          Total previously approved
+          ({formatDate(parentQuote['approved_at'])}): {totalPreviouslyApprovedPrice}
         </h6>
         <h4 className="change-order-total-project-price">
           Total project price: {totalProjectPrice}

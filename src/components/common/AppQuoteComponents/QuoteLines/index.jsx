@@ -5,6 +5,7 @@ import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants'
 
 import {isQuoteLineOfMapKinds, getTagsForQuoteLine, getImagesForQuoteLine} from './utils';
 import QuoteLine from '../QuoteLine';
+import {showUpcomingFeatures} from '../../../../utils/utils';
 
 /*
  * Filter sides from calcInput that were not found in quote lines.
@@ -99,7 +100,7 @@ export default function QuoteLines({
   let calcInput = quote['calc_input'] || {};
   const isScopeChange = quote['is_scope_change'];
 
-  if (quote['project_calc_input']) {
+  if (showUpcomingFeatures() && quote['project_calc_input']) {
     calcInput = quote['project_calc_input'] || {};
   }
   const filterByField = isInstallerPreview ? 'display_to_installer' : 'display_to_customer';

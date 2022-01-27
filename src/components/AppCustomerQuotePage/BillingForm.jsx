@@ -13,6 +13,7 @@ import {
   cardCvcValidation,
   getStripeToken,
 } from 'utils/billing';
+import {showUpcomingFeatures} from '../../utils/utils';
 import {CARD_TRANSACTION_FEE, CONTACT_EMAIL} from 'website/constants';
 
 import IconCards from 'assets/icon-cards.png';
@@ -289,7 +290,7 @@ export default class BillingForm extends React.Component {
       'billing-form--loading': isLoading,
     };
 
-    const totalPayText = isScopeChange ? 'New total pay' : 'Total pay';
+    const totalPayText = isScopeChange && showUpcomingFeatures() ? 'New total pay' : 'Total pay';
 
     return (
       <div className={classNames(classes)}>
