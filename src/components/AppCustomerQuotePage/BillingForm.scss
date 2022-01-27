@@ -182,7 +182,16 @@
 
   &__actions {
     align-self: flex-start;
-    width: 245px;
+    flex: 0.7;
+  }
+
+  &__total{
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: space-between;
+    // to shrink faster than card component
+    flex-shrink: 10000000;
   }
 
   &__total-pay {
@@ -231,6 +240,7 @@
 
   &__terms {
     margin-top: $v-16;
+    display: flex;
   }
 
   &__accept-terms-button {

@@ -317,23 +317,25 @@ export default class BillingForm extends React.Component {
             </div>
           </div>
           <div className="billing-form__actions">
-            <div className="billing-form__total-pay">
-              {totalPayText}
-              <div className="billing-form__price">
-                {total}
+            <div className="billing-form__total">
+              <div className="billing-form__total-pay">
+                {totalPayText}
+                <div className="billing-form__price">
+                  {total}
+                </div>
               </div>
-            </div>
-            <div className="billing-form__approve">
-              <Button
-                className="billing-form__approve-button"
-                disabled={some(Object.values(errors)) || !termsAccepted || isLoading}
-                size="large">
-                {
-                  isLoading ?
-                    <Spinner active={true} borderWidth={0.15} color="white" size={24}/> :
-                    'Approve and place order'
-                }
-              </Button>
+              <div className="billing-form__approve">
+                <Button
+                  className="billing-form__approve-button"
+                  disabled={some(Object.values(errors)) || !termsAccepted || isLoading}
+                  size="large">
+                  {
+                    isLoading ?
+                      <Spinner active={true} borderWidth={0.15} color="white" size={24}/> :
+                      'Approve and place order'
+                  }
+                </Button>
+              </div>
             </div>
             <a
               className="billing-form__request-changes"
