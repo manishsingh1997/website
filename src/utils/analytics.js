@@ -31,7 +31,7 @@ export const track = (eventName, data) => {
   // END: Google Tag manager
 
   if (process.env.NODE_ENV !== 'production') {
-    console.log(`%cEvent %c ${eventName}`,
+    console.log(`%cEvent %c ${eventName}`, // eslint-disable-line
       'color: #FF8118; font-size:24px;',
       'color: #00B9F3; font-size:24px;',
       data);
@@ -103,7 +103,7 @@ export const trackError = (error, data) => {
     scope.setExtra('data', data);
     Sentry.captureException(error);
   });
-  console.log(error && error.stack || error, data && data.stack);
+  console.error(error && error.stack || error, data && data.stack);
 };
 
 export const page = () => {
@@ -126,7 +126,7 @@ export const page = () => {
     });
 
   if (process.env.NODE_ENV !== 'production') {
-    console.log(`%cPage %c ${window.location.pathname}`,
+    console.log(`%cPage %c ${window.location.pathname}`, // eslint-disable-line
       'color: #FF8118; font-size:24px;',
       'color: #00B9F3; font-size:24px;');
   }

@@ -19,6 +19,6 @@ export const getHelpNodesURLs = async function() {
       return result.map(result => `${process.env.HOME_PAGE}/help/${result.node_key}`);
     }
   } catch (e) {
-    console.log(`Error while getting node ids ${e}`);
+    console.error(`Error while getting node ids ${e}`);
   }
 };

@@ -206,7 +206,8 @@ export default function QuoteLines({
               isInstallerPreview={isInstallerPreview}
               isMultiPartyQuote={isMultiPartyQuote}
               isPrimaryQuoteApproval={isPrimaryQuoteApproval}
-              key={`${quoteLineProps.type}-${quoteLineProps.id}`}
+              // error complaining about mapping to keys with side-undefined
+              key={`${quoteLineProps.type}-${quoteLineProps.id}-${quoteLineProps?.label}`}
               onBuildDetailsClick={onBuildDetailsClick}
               {...quoteLineProps} />
           ))}

@@ -14,7 +14,7 @@ const CACHE_FILE = '_redirects_cache_ts_xMjM0NTY3ODkwIiwibm';  // just unique fi
  * @param {string} to
  */
 const ensureRedirectExists = async function(s3Bucket, from, to) {
-  console.log(`Ensuring 301 redirect exists for S3 "${s3Bucket}": ${from} -> ${to}`);
+  console.warn(`Ensuring 301 redirect exists for S3 "${s3Bucket}": ${from} -> ${to}`);
   await exec(`${AWS_S3_API_CLI} put-object --bucket ${s3Bucket} --key=${from} --website-redirect ${to}`);
 };
 
@@ -25,7 +25,7 @@ const ensureRedirectExists = async function(s3Bucket, from, to) {
  * @param {string} to
  */
 const removeRedirect = async function(s3Bucket, from, to) {
-  console.log(`Removing 301 redirect for S3 "${s3Bucket}": ${from} -> ${to}`);
+  console.warn(`Removing 301 redirect for S3 "${s3Bucket}": ${from} -> ${to}`);
   await exec(`${AWS_S3_API_CLI} delete-object --bucket ${s3Bucket} --key=${from}`);
 };
 
@@ -84,7 +84,7 @@ const setupRedirects = async function(s3Bucket) {
   const cachedMetadata = await getS3ObjectMetaData(s3Bucket, CACHE_FILE);
   const redirectsFileHash = String(getFileHash(REDIRECTS_FILE));
   if (redirectsFileHash === cachedMetadata['redirects-file-hash']) {
-    console.log('Redirects are already in sync, skipping');
+    console.warn('Redirects are already in sync, skipping');
   } else {
     // Setup redirects
     const redirects = readJSONFile(REDIRECTS_FILE);
@@ -96,7 +96,7 @@ const setupRedirects = async function(s3Bucket) {
       }
     }
     // Update the cache
-    console.log(`Updating cache in ${CACHE_FILE}`);
+    console.warn(`Updating cache in ${CACHE_FILE}`);
     await setS3ObjectMetaData(s3Bucket, CACHE_FILE, 'redirects-file-hash', redirectsFileHash);
   }
 };

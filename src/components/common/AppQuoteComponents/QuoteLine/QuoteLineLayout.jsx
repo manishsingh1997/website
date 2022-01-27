@@ -21,7 +21,7 @@ export default function QuoteLineLayout(props) {
 }
 
 QuoteLineLayout.propTypes = {
-  children: PropTypes.children,
+  children: PropTypes.arrayOf(PropTypes.element),
   status: PropTypes.oneOf([
     QUOTE_LINE_STATUSES.APPROVED,
     QUOTE_LINE_STATUSES.TO_BE_DROPPED,

@@ -23,7 +23,7 @@ class JobBoard extends React.Component {
         this.setState({jobList: response.data, loading: false});
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   }
   renderPositions(jobs) {

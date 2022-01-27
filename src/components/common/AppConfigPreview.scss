@@ -157,6 +157,7 @@ $preview-size: 150px;
   padding: $preview-image-white-space-size;
   border: 1px solid $gray-4;
   border-radius: $corner-default;
+  justify-content: center;
 
   .preview-image {
     align-self: center;

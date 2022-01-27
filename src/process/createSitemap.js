@@ -129,8 +129,8 @@ const writeSiteMap = (urls, filePath) => {
   fs.writeFile(filePath, siteMapContent,
     (err) => {
       if (err) throw err;
-      console.log(`Sitemap ${filePath} created, please verify the content of it:`);
-      console.log(siteMapContent);
+      console.warn(`Sitemap ${filePath} created, please verify the content of it:`);
+      console.warn(siteMapContent);
     });
 };
 

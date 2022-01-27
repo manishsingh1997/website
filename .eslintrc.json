@@ -44,6 +44,7 @@
     "no-multi-spaces": 0,
     "import-order/import-order": 0,
     "operator-linebreak": 0,
+    "no-console": ["error", {"allow": ["warn", "error"]}],
     "no-useless-escape": 0,
     "no-nested-ternary": 0,
     "prefer-const": "error",
