@@ -2,7 +2,7 @@ import AboutPage from '../components/AboutPage';
 import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
 import AuthLogoutPage from 'containers/AuthLogoutPage';
 import AuthSignInPage from 'components/AuthSignInPage';
-import CareersPage from 'components/CareersPage';
+import CareersPage from '../components/CareersPage';
 import ContactUsPage from 'components/ContactUsPage';
 import FAQPage from 'components/FAQPage';
 import HelpLandingPage from 'components/HelpLandingPage';

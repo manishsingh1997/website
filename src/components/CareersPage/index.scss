@@ -1,37 +1,61 @@
-@import "~@ergeon/core-components/src/components/variables";
+@import '~@ergeon/core-components/src/components/variables';
 
 .careers-page__img-container {
-  width: 100%;
-  overflow: hidden;
+  padding-inline: $v-20;
+  width: auto;
+
   img {
     width: 100%;
   }
 }
 
-.cards {
-  justify-content: space-between;
-  flex-wrap: wrap;
-  @include phone() {
-    flex-direction: column;
-    grid-template-columns: minmax(100px, 1fr) !important;
+.careers-page {
+  text-align: center;
+  position: relative;
+
+  &__non-breaking-space {
+    white-space: nowrap;
   }
-  &__card {
-    height: 100%;
-    padding: 40px;
-    border-radius: $corner-soft;
-    border: 1px solid $gray-5;
-    margin-bottom: $v-24;
-    background-color: $gray-6;
-    position: relative;
-    z-index: 1;
-    @include phone() {
-      width: 100%;
-      margin-bottom: 12px;
+
+  &__hide-breaks {
+    @include phone {
+      display: none;
     }
-    &__title {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0px;
+  }
+
+  & .subheader {
+    font-weight: bolder;
+  }
+
+  & .subheader-light {
+    font-weight: 500;
+  }
+
+  .cards {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @include phone() {
+      flex-direction: column;
+      grid-template-columns: minmax(100px, 1fr) !important;
+    }
+    &__card {
+      height: 100%;
+      padding: $h-40;
+      border-radius: $corner-soft;
+      border: 1px solid $gray-5;
+      margin-bottom: $v-24;
+      background-color: $gray-6;
+      position: relative;
+      z-index: $z-index-1;
+      @include phone() {
+        width: 100%;
+        margin-bottom: $v-12;
+      }
+      &__title {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0;
+      }
     }
   }
 }

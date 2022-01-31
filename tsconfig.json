@@ -25,5 +25,5 @@
   },
   "include": [
     "./src/**/*.tsx"
-  ]
+, "src/components/CareersPage/index.tsx"  ]
 }

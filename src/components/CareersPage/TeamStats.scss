@@ -1,0 +1,41 @@
+@import '~@ergeon/core-components/src/components/variables';
+
+.team-stats {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  margin-bottom: $v-64;
+
+  &__items {
+    margin-bottom: $v-12;
+    width: 100%;
+    background-color: $gray-6;
+    border-radius: $corner-default;
+    height: $v-124;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+
+    p .highlight {
+      color: $green;
+    }
+  }
+
+  @include not-phone {
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+
+    &__items {
+      margin-inline: $h-10;
+      &:first-child {
+        margin-left: -$h-10;
+      }
+
+      &:last-child {
+        margin-right: -$h-10;
+      }
+    }
+  }
+}
