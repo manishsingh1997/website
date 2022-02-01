@@ -13,6 +13,11 @@ $preview-size: 150px;
   height: auto;
   background-color: $white;
 
+  //allow spinner to stay in the center
+  & .loader-wrapper {
+    position: absolute;
+  }
+
   &__no-preview {
     border-color: transparent;
     min-width: $preview-size;
