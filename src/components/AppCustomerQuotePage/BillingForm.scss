@@ -55,6 +55,10 @@
       margin-top: $v-6;
     }
 
+    .billing-form__terms{
+      display: flex;
+    }
+
     .billing-form__title-section {
       flex-wrap: wrap;
     }
@@ -281,9 +285,6 @@
   &__terms-accept {
     font-size: $font-mobile-size;
     margin-left: $h-10;
-  }
-
-  &__terms-link {
   }
 
   &__payment-method-details {
