@@ -197,7 +197,7 @@ export default function QuoteLines({
 
   return (
     <>
-      <div className="page-break">{asPDF && <h4>Project Scope</h4>}
+      <div className="quote-details__lines page-break">{asPDF && <h4>Project Scope</h4>}
         <div className="quote-details__sides spacing before__is-24">
         </div>
         <div>

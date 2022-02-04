@@ -200,7 +200,7 @@ export default class QuoteDetails extends React.Component {
     } = this.props;
 
     return (
-      <div className="quote-details card padding-40 soft-border spacing after__is-48">
+      <div className="quote-details card soft-border spacing after__is-48">
         {!asPDF && isQuoteCancelled(quote) && (
           <div className="quote-details__notification">
             {this.renderQuoteCancelledMessage()}
@@ -219,8 +219,8 @@ export default class QuoteDetails extends React.Component {
             customer={customer}
             customerGID={customerGID}
             quote={quote} />
-          {this.renderQuoteLinesOnMap()}
         </div>
+        {this.renderQuoteLinesOnMap()}
         {!asPDF && isQuoteExpired(quote) && (
           <Notification mode="embed" type="Information">
             Oops, it looks like your quote has expired.

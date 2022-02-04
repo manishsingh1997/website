@@ -18,8 +18,10 @@
   }
 
   .quote-details {
+    padding: $v-30;
+
     @include phone() {
-      padding: $h-20;
+      padding: 0;
       margin: 0 auto;
     }
 
@@ -33,15 +35,43 @@
         margin-bottom: $h-10;
       }
     }
+
+    &__title {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+
+      @include phone() {
+        align-items: flex-start;
+        flex-direction: column;
+        margin: $v-30 $h-20;
+
+        h4 {
+          margin-bottom: $v-12;
+        }
+      }
+    }
+
+    &__lines {
+      padding: $v-30;
+    }
   }
 
+  $map-min-height: 600px;
   .quote-labels-map {
-    position: relative;
-    width: 100%;
-    min-height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    width: 100%;
+    min-height: $map-min-height;
+
+    @include tablet() {
+      min-height: calc(#{$map-min-height}/ 1.5);
+    }
+    @include phone() {
+      min-height: calc(#{$map-min-height} / 2);
+    }
 
     &__content {
       opacity: 0;
@@ -65,58 +95,174 @@
           height: 100%;
         }
       }
+
+      @include phone() {
+        border-radius: unset;
+      }
     }
   }
 
   .quote-details-wrapper {
-    margin-right: $h-40;
-    width: 460px;
-    min-width: 460px;
-    @include tablet() {
-      min-width: unset;
-      width: 100%;
-      margin-right: unset;
+    width: 100%;
+  }
+
+  .quote-details-title {
+    font-weight: normal;
+  }
+
+  .quote-save-button {
+    min-width: $h-120 + $h-20;
+    img {
+      margin-right: $h-5;
     }
+  }
+
+  .quote-license {
+    display: flex;
+    align-items: center;
+    font-style: normal;
+
+    .notification-container {
+      position: fixed;
+      top: 40%;
+      left: $v-20;
+      width: 90%;
+    }
+  }
+
+  .quote-license-number {
+    color: $green-2;
+  }
+
+  .quote-license-icon {
+    margin-left: $h-5;
+
+    path:first-child {
+      fill: $green;
+    }
+
     @include phone() {
-      min-width: unset;
-      width: 100%;
-      margin: 0 0 $v-12 0;
+      width: $h-80;
     }
-    @media print {
-      min-width: unset;
-      width: 100%;
-      margin-right: unset;
+  }
+
+  .quote-customer-details {
+    display: flex;
+    background-color: $gray-6;
+    border-radius: $corner-default;
+    border: 1px solid $gray-4;
+    margin-bottom: $v-30;
+
+    .data-row {
+      width: 25%;
+    }
+
+    // increase the width of the customer address column
+    > div:nth-child(2) {
+      width: 50%;
+    }
+
+    @include tablet() {
+      flex-wrap: wrap;
+
+      .data-row {
+        width: 100%;
+      }
+
+      > div:nth-child(2) {
+        width: unset;
+      }
     }
   }
 
   .quote-fields {
-    border-top: 1px solid $gray-4;
-    border-bottom: 1px solid $gray-4;
     padding: $v-12 0;
+
+    .data-row {
+      flex-direction: column;
+      margin-top: $v-16;
+      padding: 0 $h-20;
+
+      .data-row-title {
+        font-size: $font-label-size;
+        text-align: left;
+        text-transform: uppercase;
+        line-height: $line-height-label;
+      }
+
+      .data-row-value {
+        font-size: $font-regular-size;
+        line-height: $line-height-mobile;
+      }
+
+      @include phone() {
+        padding: 0;
+      }
+    }
+
+    .Collapsible {
+      padding: $v-12;
+      border-top: 1px solid $gray-4;
+
+      &:first-child {
+        background-color: $gray-6;
+      }
+
+      &:last-child {
+        border-bottom: 1px solid $gray-4;
+      }
+    }
+
+    @include phone() {
+      padding: unset;
+    }
   }
   .quote-fields-wrapper {
     display: flex;
 
     &__fields {
-      width: 90%;
+      width: 70%;
+
+      @include tablet() {
+        width: 100%;
+      }
     }
 
     &__images {
       align-items: center;
       justify-content: center;
-      width: 10%;
+      width: 30%;
+
+      @include tablet() {
+        width: 100%;
+      }
+    }
+
+    @include tablet() {
+      display: block;
     }
   }
 
+  $thumbnail-width: 150px;
   .quote-project-images {
     float: right;
 
     .ImageGallery-container {
-      width: 150px;
+      width: $v-124 * 2;
+
       .image-gallery-thumb {
         .image-loader__image {
           height: 150px;
         }
+      }
+    }
+
+    @include tablet() {
+      float: none;
+      margin-top: $v-16;
+
+      .ImageGallery-container {
+        width: 100%;
       }
     }
 
@@ -137,10 +283,6 @@
       span {
         font-size: $font-mobile-size;
       }
-    }
-
-    .ImageGallery-container {
-      margin-bottom: $v-24;
     }
   }
 
@@ -205,7 +347,8 @@
     min-width: 15%;
   }
 
-  .quote-line-price-total-price,.quote-line-price-percentage {
+  .quote-line-price-total-price,
+  .quote-line-price-percentage {
     line-height: $v-16;
     font-size: $font-label-size;
     font-style: italic;
@@ -231,7 +374,7 @@
 
   .total-price-noteless {
     position: relative;
-    margin-top: $v-24;
+    margin: $v-24 $h-20 0;
     text-align: right;
   }
 
@@ -254,6 +397,7 @@
   .asterisk-notes {
     text-align: right;
     font-size: $font-label-size;
+    margin: 0 $h-20;
   }
 
   .mobile-length {
