@@ -52,7 +52,7 @@ export default class QuoteDetails extends React.Component {
 
     if (asPDF && !isEmpty(imagesArray)) {
       return (
-        <div className="quote-line-images spacing after__is-24">
+        <div className="quote-line-images spacing before__is-24 after__is-24">
           <Title className="spacing after__is-12" icon={iconPhotoPlaceholder}>
             Project Images
           </Title>

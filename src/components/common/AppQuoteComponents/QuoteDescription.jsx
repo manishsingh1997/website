@@ -62,10 +62,10 @@ export default class QuoteDescription extends React.Component {
     const {maxThumbnails, maxThumbnailSize} = this.props;
     const imagesArray = this.getMediafileList();
 
-    if (!isEmpty(imagesArray)) {
+    if (imagesArray && !isEmpty(imagesArray) && !isPDFMode()) {
       return (
-        <div className="quote-project-images">
-          {imagesArray && !isPDFMode() &&
+        <div className="quote-fields-wrapper__images desktop-length">
+          <div className="quote-project-images">
             <div className="desktop-length">
               <Title className="ImageGallery-container link" icon={iconPhotoPlaceholder}>
                 <p className="link">
@@ -78,7 +78,7 @@ export default class QuoteDescription extends React.Component {
                 thumbnailNumDisplay={maxThumbnails}
                 width={maxThumbnailSize} />
             </div>
-          }
+          </div>
         </div>
       );
     }
@@ -204,7 +204,9 @@ export default class QuoteDescription extends React.Component {
     }
     return (
       <>
-        <DataRow title="Customer" value={`${customer.full_name} (${customer.id})`} />
+        <DataRow
+          title="Customer"
+          value={<>{customer.full_name} <span className="quote-customer-id">({customer.id})</span></>} />
         <DataRow title="Address" value={address.formatted_address} />
         <DataRow title="Phone" value={customer.phone_number} />
         <DataRow title="Email" value={customer.email} />
@@ -254,9 +256,7 @@ export default class QuoteDescription extends React.Component {
               </div>
               <div className="quote-fields-wrapper">
                 {this.renderQuoteDetails()}
-                <div className="quote-fields-wrapper__images desktop-length">
-                  {this.imagesGalleryDesktop()}
-                </div>
+                {this.imagesGalleryDesktop()}
               </div>
             </div>
             <div className="mobile-length">

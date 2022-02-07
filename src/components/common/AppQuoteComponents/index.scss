@@ -153,6 +153,10 @@
     border: 1px solid $gray-4;
     margin-bottom: $v-30;
 
+    .quote-customer-id {
+      color: $gray-2;
+    }
+
     .data-row {
       width: 30%;
     }
@@ -572,5 +576,11 @@
   .customer-app-data-row > div:first-child {
     text-align: right;
     margin-right: $h-10;
+  }
+
+  .quote-fields {
+    .quote-fields-wrapper__fields {
+      width: 100% !important;
+    }
   }
 }
