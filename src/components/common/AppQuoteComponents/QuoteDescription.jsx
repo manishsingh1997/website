@@ -204,7 +204,7 @@ export default class QuoteDescription extends React.Component {
     }
     return (
       <>
-        <DataRow title="Customer" value={customer.full_name} />
+        <DataRow title="Customer" value={`${customer.full_name} (${customer.id})`} />
         <DataRow title="Address" value={address.formatted_address} />
         <DataRow title="Phone" value={customer.phone_number} />
         <DataRow title="Email" value={customer.email} />

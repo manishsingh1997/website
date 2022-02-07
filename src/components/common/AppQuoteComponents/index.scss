@@ -154,7 +154,7 @@
     margin-bottom: $v-30;
 
     .data-row {
-      width: 25%;
+      width: 30%;
     }
 
     // increase the width of the customer address column
@@ -559,22 +559,10 @@
     margin-bottom: 0 !important;
   }
 
-  .quote-details-wrapper {
-    width: 50% !important;
-    min-width: 50% !important;
-  }
-
   .quote-details__description {
     position: relative !important;
     margin: 0 !important;
     padding: 0 !important;
-  }
-
-  .quote-labels-map {
-    width: 47% !important;
-    height: 100% !important;
-    position: absolute !important;
-    right: 0;
   }
 
   .quote-line-description__tags {
