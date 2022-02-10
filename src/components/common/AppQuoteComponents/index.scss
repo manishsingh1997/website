@@ -59,12 +59,13 @@
 
   $map-min-height: 600px;
   .quote-labels-map {
+    height: $map-min-height;
+    width: 100%;
+    min-height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 100%;
-    min-height: $map-min-height;
 
     @include tablet() {
       min-height: calc(#{$map-min-height}/ 1.5);
@@ -93,6 +94,11 @@
         > * {
           min-height: 300px;
           height: 100%;
+        }
+        // this should prevent gray out tiles on the map
+        // https://stackoverflow.com/a/53624818
+        div > img {
+          position: absolute;
         }
       }
 
@@ -512,6 +518,12 @@
     -webkit-print-color-adjust: exact !important;
     color-adjust: exact !important;
   }
+  // US standard size is A4 (8-1/4 x 11-3/4 in	210 x 297 mm)
+  // This will prevent messing up with other non us standard sizes and default the print view to it
+  @page {
+    size: a4;
+  }
+
   body {
     zoom: 90%;
   }
@@ -567,6 +579,12 @@
     position: relative !important;
     margin: 0 !important;
     padding: 0 !important;
+  }
+
+  .quote-labels-map {
+    width: 100% !important;
+    max-height: 380px !important; // BEWARE! increasing this value will break side lines and polygons when printing PDFs
+    position: relative !important;
   }
 
   .quote-line-description__tags {

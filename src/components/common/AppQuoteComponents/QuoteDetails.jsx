@@ -211,7 +211,7 @@ export default class QuoteDetails extends React.Component {
             {this.renderQuoteExpiredMessage()}
           </div>
         )}
-        <div className="quote-details__description flex-wrapper spacing after__is-24">
+        <div className="quote-details__description spacing after__is-24">
           <QuoteDescription
             approvedAt={approvedAt}
             asPDF={asPDF}
@@ -219,8 +219,8 @@ export default class QuoteDetails extends React.Component {
             customer={customer}
             customerGID={customerGID}
             quote={quote} />
+          {this.renderQuoteLinesOnMap()}
         </div>
-        {this.renderQuoteLinesOnMap()}
         {!asPDF && isQuoteExpired(quote) && (
           <Notification mode="embed" type="Information">
             Oops, it looks like your quote has expired.
