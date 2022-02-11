@@ -170,7 +170,6 @@ export default class QuoteDescription extends React.Component {
           <h4>
             Quote #{id}
             <span className="quote-details-title">
-              &nbsp;-&nbsp;
               {title ?
                 title :
                 order.product.name
