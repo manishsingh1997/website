@@ -290,7 +290,7 @@ export default class BillingForm extends React.Component {
       'billing-form--loading': isLoading,
     };
 
-    const totalPayText = isScopeChange && showUpcomingFeatures('ENG-8551') ? 'New total pay' : 'Total pay';
+    const totalPayText = isScopeChange && showUpcomingFeatures() ? 'New total pay' : 'Total pay';
 
     return (
       <div className={classNames(classes)}>

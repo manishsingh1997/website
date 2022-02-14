@@ -171,7 +171,7 @@ export default class AppCustomerQuotePage extends React.Component {
 
   getTotalPrice(quoteApproval) {
     const totalPrice = Number.parseFloat(quoteApproval['total_price']);
-    if (showUpcomingFeatures('ENG-9416') && this.isScopeChange(quoteApproval)) {
+    if (showUpcomingFeatures() && this.isScopeChange(quoteApproval)) {
       // calculate total_price minus dropped lines
       const droppedLinesAmount = quoteApproval['quote_approval_lines'].map(
         line => line['quote_line'] // we need only quote_lines
@@ -186,7 +186,7 @@ export default class AppCustomerQuotePage extends React.Component {
   }
 
   getTotalPreviouslyApprovedPrice(quoteApproval) {
-    if (showUpcomingFeatures('ENG-9416') && this.isScopeChange(quoteApproval)) {
+    if (showUpcomingFeatures() && this.isScopeChange(quoteApproval)) {
       const {quote_approval_lines: quoteApprovalLines} = quoteApproval;
       const approvedPreviousQuoteApprovalLines = quoteApprovalLines.filter(
         (line) => (
