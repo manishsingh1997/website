@@ -138,7 +138,7 @@ export default class LeadForm extends React.Component {
       if (product === FENCE_SLUG) {
         eventData['object'] = {...eventData.object, order};
       }
-      if (showUpcomingFeatures()) {
+      if (showUpcomingFeatures('ENG-*')) {
         eventData[UPCOMING_FEATURES_PARAM] = true;
         if (!user) {
           eventData['auto_sign_in'] = true;
