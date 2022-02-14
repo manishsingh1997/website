@@ -629,8 +629,8 @@
 
   .quote-labels-map {
     width: 100% !important;
-    max-height: 380px !important; // BEWARE! increasing this value will break side lines and polygons when printing PDFs
     position: relative !important;
+    zoom: 65%; // BEWARE: this will fix a really weird bug where the lines or polygons are not visible, please do not remove or increase
   }
 
   .quote-line-description__tags {
