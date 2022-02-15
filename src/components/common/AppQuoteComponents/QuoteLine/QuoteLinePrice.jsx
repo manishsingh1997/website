@@ -32,7 +32,7 @@ export default function QuoteLinePrice(props) {
 
   return (
     <>
-      <div className="desktop-length mobile-length spacing before__is-12 after__is-12">
+      <div className="spacing before__is-12 after__is-12">
         {distance && (
           <Distance distance={distance} />
         )}
