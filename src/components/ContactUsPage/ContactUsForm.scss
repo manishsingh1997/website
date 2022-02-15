@@ -28,13 +28,13 @@
   }
 
   .Form-error {
-    margin-top: 4px;
+    margin: 4px 0 $v-12 0;
     font-size: $font-label-size;
     color: $red;
     font-family: $font-content;
     letter-spacing: 0;
     line-height: $line-height-label;
-    position: absolute;
+    position: relative;
     text-align: left;
   }
 
