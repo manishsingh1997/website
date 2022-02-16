@@ -49,11 +49,11 @@ export const isChristmasTime = () => {
   return baseIsChristmasTime(new Date);
 };
 
-export const showUpcomingFeatures = () => {
+export const showUpcomingFeatures = (issueNumber) => {
   if (process.env.SHOW_UPCOMING_FEATURES === 'true') {
     return true;
   }
-  return isUpcomingFeaturesEnabled();
+  return isUpcomingFeaturesEnabled(issueNumber);
 };
 
 export const getAdvancedEditorUrl = (order, zipcode) => {

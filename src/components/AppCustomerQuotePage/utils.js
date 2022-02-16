@@ -26,8 +26,7 @@ export const prepareQuoteApprovalLines = (quoteApprovalLines, quote) => {
       ...quoteLine,
       percentage: quoteApprovalLine['percentage'],
       price: quoteApprovalLine['amount'],
-      // Should be removed in context of ENG-11541
-      totalPrice: isUpcomingFeaturesEnabled() ? quoteLine['display_price'] : quoteLine['price'],
+      totalPrice: isUpcomingFeaturesEnabled('ENG-11541') ? quoteLine['display_price'] : quoteLine['price'],
       status,
     };
   });
