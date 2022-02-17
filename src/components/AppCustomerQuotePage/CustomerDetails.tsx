@@ -44,7 +44,7 @@ const CustomerDetails = (props: CustomerDetailsProps) => {
       <div className="CustomerDetails-Rows">
         <DataRow
           title="Customer"
-          value={<>{customer.full_name} <span className="quote-customer-id">({customer.id})</span></>} />
+          value={<>{customer.full_name} <span className="Quote-CustomerId">({customer.id})</span></>} />
         <DataRow title="Address" value={address.formatted_address} />
         <DataRow title="Phone" value={customer.phone_number} />
         <DataRow title="Email" value={customer.email} />
