@@ -24,6 +24,7 @@ import BuildSpecs from 'components/common/AppQuoteComponents/BuildSpecs';
 import {
   DIRECT_PREVIEW_SLUG,
 } from 'website/constants';
+import CustomerDetails from './CustomerDetails';
 import BillingForm from './BillingForm';
 import ExplanationSection from './ExplanationSection';
 import ProjectNotes from './ProjectNotes';
@@ -294,6 +295,7 @@ export default class AppCustomerQuotePage extends React.Component {
             totalPrice={formatPrice(this.getTotalPrice(quoteApproval))}
             totalProjectPrice={formatPrice(this.getProjectTotalPrice(quoteApproval))} />
           <ProjectNotes quote={quote}/>
+          <CustomerDetails customer={customer} quote={quote} />
           {this.shouldShowBillingForm() && <BillingForm
             contractUrl={contractUrl}
             error={paymentMethodError}

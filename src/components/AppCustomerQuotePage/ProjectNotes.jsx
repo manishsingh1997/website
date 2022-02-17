@@ -11,7 +11,7 @@ export default class ProjectNotes extends React.Component {
     return (
       <React.Fragment>
         {quote['description_html'] && (
-          <div className="quote-notes card padding-40 soft-border spacing after__is-48 page-break">
+          <div className="quote-notes card padding-40 spacing after__is-30 page-break">
             <h4>Project notes</h4>
             <div className="quote-projects-notes">{
               // eslint-disable-next-line react/no-danger

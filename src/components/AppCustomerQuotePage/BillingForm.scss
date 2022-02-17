@@ -1,4 +1,4 @@
-@import "~@ergeon/core-components/src/components/variables";
+@import '~@ergeon/core-components/src/components/variables';
 
 .billing-form {
   background-color: white;
@@ -13,6 +13,7 @@
     display: block;
     border-radius: 0;
     padding: $h-20;
+    margin-top: 0;
     margin-bottom: $v-30;
 
     .billing-form__content {
@@ -55,7 +56,7 @@
       margin-top: $v-6;
     }
 
-    .billing-form__terms{
+    .billing-form__terms {
       display: flex;
     }
 
@@ -73,7 +74,7 @@
     }
 
     .billing-form__expiration-date,
-    .billing-form__cvc{
+    .billing-form__cvc {
       margin-bottom: $v-6;
       display: inline-block;
     }
@@ -112,7 +113,7 @@
       right: $h-40;
       width: 1px;
       background-color: $gray-4;
-      content: "";
+      content: '';
       @include tablet() {
         right: $h-20;
       }
@@ -189,7 +190,7 @@
     flex: 0.7;
   }
 
-  &__total{
+  &__total {
     display: flex;
     flex-wrap: wrap;
     width: auto;
@@ -222,7 +223,7 @@
       min-width: 236px;
 
       &[disabled] {
-        opacity: .2;
+        opacity: 0.2;
       }
     }
   }
@@ -258,14 +259,14 @@
     border-radius: $corner-default;
     display: inline-block;
     background-color: white;
-    transition: all .2s ease-out;
+    transition: all 0.2s ease-out;
 
     &:active {
       background-color: $gray-4;
     }
 
     &-icon {
-      transition: all .15s ease-out;
+      transition: all 0.15s ease-out;
       position: absolute;
       width: $h-10;
       height: $v-12;
@@ -288,7 +289,6 @@
   }
 
   &__payment-method-details {
-
     &-item {
       display: flex;
       align-items: center;
@@ -301,7 +301,6 @@
         flex-shrink: 0;
         color: $gray-1;
         font-size: $font-mobile-size;
-
       }
 
       &-value {
@@ -323,7 +322,6 @@
   &__card-number {
     position: relative;
   }
-
 
   &--with-payment-method-details {
     .billing-form__icons {
@@ -352,8 +350,8 @@
     color: $red-1;
     line-height: $line-height-label;
     margin: 0;
-    transition: all .2s ease-out;
-    transition-delay: .3s;
+    transition: all 0.2s ease-out;
+    transition-delay: 0.3s;
     top: 100%;
     margin-top: $v-6;
     left: 0;

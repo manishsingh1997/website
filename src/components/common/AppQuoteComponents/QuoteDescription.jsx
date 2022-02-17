@@ -126,33 +126,29 @@ export default class QuoteDescription extends React.Component {
     const licenses = quote.licenses.map((license, i) => {
       return (
         <div className="quote-license" key={`license-${i}`}>
-          <p>
+          <div>
             {license['quote_string']} &nbsp;
-            <span className="quote-license-number">
+            <div className="quote-license-number">
               #{license.number}
-            </span>
-          </p>
-          <div className="desktop-length">
-            <Tooltip
-              msg={this.renderLicenseMessage(license)}
-              position="right">
-              <ReactSVG className="quote-license-icon" src={iconInfo} />
-            </Tooltip>
+              <ReactSVG
+                className="quote-license-icon mobile-length"
+                onClick={() => this.setState({displayLicenseNotification: true})}
+                src={iconInfo} />
+              <Tooltip
+                msg={this.renderLicenseMessage(license)}
+                position="right">
+                <ReactSVG className="quote-license-icon desktop-length" src={iconInfo} />
+              </Tooltip>
+            </div>
           </div>
-          <div className="mobile-length">
-            <ReactSVG
-              className="quote-license-icon"
-              onClick={() => this.setState({displayLicenseNotification: true})}
-              src={iconInfo} />
-            {this.state.displayLicenseNotification &&
-              <Notification
-                mode="floating"
-                onClose={() => this.setState({displayLicenseNotification: false})}
-                type="Information">
-                {this.renderLicenseMessage(license)}
-              </Notification>
-            }
-          </div>
+          {this.state.displayLicenseNotification &&
+            <Notification
+              mode="floating"
+              onClose={() => this.setState({displayLicenseNotification: false})}
+              type="Information">
+              {this.renderLicenseMessage(license)}
+            </Notification>
+          }
         </div>
       );
     });
@@ -194,31 +190,18 @@ export default class QuoteDescription extends React.Component {
     );
   }
 
-  renderCustomerDetails() {
-    const {customer, quote} = this.props;
+  renderQuoteDetails() {
+    const {approvedAt, quote} = this.props;
+    const expiresAt = quote['expires_at'];
+    const expiresAtTitle = getExpiresAtTitle(expiresAt);
     const house = quote.order.house;
     let {address} = house;
     if (!address) {
       address = house.customer['main_address'];
     }
     return (
-      <>
-        <DataRow
-          title="Customer"
-          value={<>{customer.full_name} <span className="quote-customer-id">({customer.id})</span></>} />
-        <DataRow title="Address" value={address.formatted_address} />
-        <DataRow title="Phone" value={customer.phone_number} />
-        <DataRow title="Email" value={customer.email} />
-      </>
-    );
-  }
-
-  renderQuoteDetails() {
-    const {approvedAt, quote} = this.props;
-    const expiresAt = quote['expires_at'];
-    const expiresAtTitle = getExpiresAtTitle(expiresAt);
-    return (
       <div className="quote-fields-wrapper__fields">
+        <DataRow title="Order Address" value={address.formatted_address} />
         {this.renderLicenses()}
         {
           this.isUserOwnerOfQuote()
@@ -250,21 +233,12 @@ export default class QuoteDescription extends React.Component {
           {this.renderTitle()}
           <div className="quote-fields">
             <div className="desktop-length">
-              <div className="quote-customer-details">
-                {this.renderCustomerDetails()}
-              </div>
               <div className="quote-fields-wrapper">
                 {this.renderQuoteDetails()}
                 {this.imagesGalleryDesktop()}
               </div>
             </div>
             <div className="mobile-length">
-              <Collapsible
-                isOpen={this.state.customerDetailsOpen}
-                onChangeOpen={() => this.setState({customerDetailsOpen: !this.state.customerDetailsOpen})}
-                title="Customer details">
-                {this.renderCustomerDetails()}
-              </Collapsible>
               <Collapsible
                 isOpen={this.state.quoteDetailsOpen}
                 onChangeOpen={() => this.setState({quoteDetailsOpen: !this.state.quoteDetailsOpen})}

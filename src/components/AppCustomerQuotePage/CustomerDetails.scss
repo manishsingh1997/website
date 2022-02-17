@@ -1,0 +1,79 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
+.CustomerDetails {
+  &-Rows {
+    display: flex;
+    background-color: $gray-6;
+    border-radius: $corner-default;
+    border: 1px solid $gray-4;
+    margin-bottom: $v-30;
+
+    .data-row {
+      width: 20%;
+    }
+
+    // increase the width of the customer name column
+    > div:nth-child(1) {
+      width: 30%;
+    }
+
+    // increase the width of the customer address column
+    > div:nth-child(2) {
+      width: 50%;
+    }
+
+    @include tablet() {
+      flex-wrap: wrap;
+
+      > div:nth-child(1),
+      > div:nth-child(2) {
+        width: 100%;
+      }
+
+      .data-row {
+        width: 100%;
+      }
+    }
+
+    @include phone() {
+      border: unset;
+    }
+  }
+
+  .data-row {
+    flex-direction: column;
+    margin-top: $v-16;
+    padding: 0 $h-20;
+
+    .data-row-title {
+      font-size: $font-label-size;
+      text-align: left;
+      text-transform: uppercase;
+      line-height: $line-height-label;
+      margin-bottom: $v-6;
+    }
+
+    .data-row-value {
+      font-size: $font-regular-size;
+      line-height: $line-height-mobile;
+    }
+
+    @include phone() {
+      padding: 0;
+    }
+  }
+
+  .Collapsible {
+    padding: $v-12 $h-20;
+    border-top: 1px solid $gray-4;
+
+    &:first-child {
+      background-color: $gray-6;
+    }
+
+    .h4 {
+      font-size: $font-regular-size;
+      font-weight: 600;
+    }
+  }
+}
