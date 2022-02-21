@@ -69,7 +69,7 @@ export default class AppConfigPreview extends React.Component {
           width: DEFAULT_PREVIEW_WIDTH,
         }
       );
-      this.setState({previewImage: preview});
+      this.setState({previewImage: preview, isLoading: false});
     } catch (error) {
       this.setState({previewImage: previewPlaceholderIcon, isLoading: false});
     }
