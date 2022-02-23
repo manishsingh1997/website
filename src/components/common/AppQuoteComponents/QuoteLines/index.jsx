@@ -100,7 +100,7 @@ export default function QuoteLines({
   let calcInput = quote['calc_input'] || {};
   const isScopeChange = quote['is_scope_change'];
 
-  if (showUpcomingFeatures() && quote['project_calc_input']) {
+  if (showUpcomingFeatures('ENG-9416') && quote['project_calc_input']) {
     calcInput = quote['project_calc_input'] || {};
   }
   const filterByField = isInstallerPreview ? 'display_to_installer' : 'display_to_customer';
