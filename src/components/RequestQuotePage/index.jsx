@@ -287,7 +287,7 @@ export default class RequestQuotePage extends React.Component {
           <Success
             header="Thanks!"
             text="We will call you within 24 hours" />
-          {(showUpcomingFeatures('ENG-1XX') && !user) &&
+          {(showUpcomingFeatures() && !user) &&
           <span>
             <p className="confirmation-email spacing before__is-24">
               We have sent a confirmation message to your email. Please follow the instructions there.
