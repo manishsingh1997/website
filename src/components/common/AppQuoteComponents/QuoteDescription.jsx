@@ -4,7 +4,15 @@ import {ReactSVG} from 'react-svg';
 import {Link} from 'react-router-dom';
 import {Helmet} from 'react-helmet';
 import {
-  ImageGallery, SwipeGallery, Button, DataRow, Title, Collapsible, Tooltip, Notification,
+  ImageGallery,
+  SwipeGallery,
+  Button,
+  DataRow,
+  Title,
+  Collapsible,
+  Tooltip,
+  Notification,
+  DropdownButton,
 } from '@ergeon/core-components';
 import {isPDFMode} from 'utils/utils';
 import isEmpty from 'lodash/isEmpty';
@@ -13,6 +21,8 @@ import ImgBack from 'assets/icon-arrow-left.svg';
 import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 import iconSave from '@ergeon/core-components/src/assets/icon-save.svg';
 import iconInfo from '@ergeon/core-components/src/assets/icon-info.svg';
+import iconCall from '@ergeon/core-components/src/assets/icon-call.svg';
+import iconEmail from '@ergeon/core-components/src/assets/icon-email.svg';
 
 import {formatDateAndTime} from 'utils/date';
 import {getExpiresAtTitle} from 'utils/utils';
@@ -100,6 +110,33 @@ export default class QuoteDescription extends React.Component {
       );
     }
     return null;
+  }
+
+  onStaffDropdownItemClick(link) {
+    window.open(link, '_self');
+  }
+
+  staffDropdownItems(staff) {
+    const items = [];
+    if (staff.phone_number) {
+      items.push({
+        label: staff.phone_number,
+        icon: iconCall,
+        onClick: () => {
+          this.onStaffDropdownItemClick(`tel:${staff.phone_number}`);
+        },
+      });
+    }
+    if (staff.email) {
+      items.push({
+        label: staff.email,
+        icon: iconEmail,
+        onClick: () => {
+          this.onStaffDropdownItemClick(`mailto:${staff.email}`);
+        },
+      });
+    }
+    return items;
   }
 
   renderBackButton() {
@@ -200,18 +237,38 @@ export default class QuoteDescription extends React.Component {
       address = house.customer['main_address'];
     }
     return (
-      <div className="quote-fields-wrapper__fields">
-        <DataRow title="Order Address" value={address.formatted_address} />
-        {this.renderLicenses()}
-        {
-          this.isUserOwnerOfQuote()
-            ? <DataRow title="Order ID" value={<Link to={this.linkToOrderPage}>#{quote.order.id}</Link>} />
-            : <DataRow title="Order ID" value={`#${quote.order.id}`} />
-        }
-        <DataRow title="Sent At" value={formatDateAndTime(quote['sent_to_customer_at'])} />
-        {expiresAt && <DataRow title={expiresAtTitle} value={formatDateAndTime(expiresAt)} />}
-        {approvedAt && <DataRow title="Approved At" value={formatDateAndTime(approvedAt)} />}
-      </div>
+      <>
+        <div className="quote-fields-wrapper__fields">
+          <DataRow title="Order Address" value={address.formatted_address} />
+          {this.renderLicenses()}
+          {
+            this.isUserOwnerOfQuote()
+              ? <DataRow title="Order ID" value={<Link to={this.linkToOrderPage}>#{quote.order.id}</Link>} />
+              : <DataRow title="Order ID" value={`#${quote.order.id}`} />
+          }
+          <DataRow title="Sent At" value={formatDateAndTime(quote['sent_to_customer_at'])} />
+          {expiresAt && <DataRow title={expiresAtTitle} value={formatDateAndTime(expiresAt)} />}
+          {approvedAt && <DataRow title="Approved At" value={formatDateAndTime(approvedAt)} />}
+        </div>
+        <div className="quote-fields-wrapper__staff-contacts">
+          {quote.order.sales_rep &&
+            <DataRow
+              title="Sales Rep"
+              value={<DropdownButton
+                className="Appointment-DropdownButton"
+                items={this.staffDropdownItems(quote.order.sales_rep)}
+                label={quote.order.sales_rep.full_name} />} />
+          }
+          {quote.order.project_manager &&
+            <DataRow
+              title="Project Manager"
+              value={<DropdownButton
+                className="Appointment-DropdownButton"
+                items={this.staffDropdownItems(quote.order.project_manager)}
+                label={quote.order.project_manager.full_name} />} />
+          }
+        </div>
+      </>
     );
   }
 

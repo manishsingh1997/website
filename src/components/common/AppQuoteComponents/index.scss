@@ -203,6 +203,7 @@
         text-align: left;
         text-transform: uppercase;
         line-height: $line-height-label;
+        max-width: $h-120;
       }
 
       .data-row-value {
@@ -248,14 +249,18 @@
       }
     }
 
-    &__images {
-      align-items: center;
-      justify-content: center;
+    &__images,
+    &__staff-contacts {
       width: 30%;
 
       @include tablet() {
         width: 100%;
       }
+    }
+
+    &__images {
+      align-items: center;
+      justify-content: center;
     }
 
     @include tablet() {
