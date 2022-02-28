@@ -152,7 +152,9 @@ export default class QuoteDescription extends React.Component {
     return (
       <>
         Ergeon’s license is issued by the Contractors State License Board.
-        {license.url && <a href={license.url}>View details</a>}
+        {license.public_help_page_url &&
+          <a href={license.public_help_page_url} rel="noreferrer" target="_blank">View details</a>
+        }
       </>
     );
   }
@@ -161,21 +163,29 @@ export default class QuoteDescription extends React.Component {
     const {quote} = this.props;
 
     const licenses = quote.licenses.map((license, i) => {
+      // validation_url is not nullable, so we need to check if it is empty
+      const isValidationUrlEmpty = license.validation_url === '';
       return (
         <div className="quote-license" key={`license-${i}`}>
           <div>
             {license['quote_string']} &nbsp;
             <div className="quote-license-number">
-              #{license.number}
-              <ReactSVG
-                className="quote-license-icon mobile-length"
-                onClick={() => this.setState({displayLicenseNotification: true})}
-                src={iconInfo} />
-              <Tooltip
-                msg={this.renderLicenseMessage(license)}
-                position="right">
-                <ReactSVG className="quote-license-icon desktop-length" src={iconInfo} />
-              </Tooltip>
+              {!isValidationUrlEmpty &&
+                <a href={license.validation_url} rel="noreferrer" target="_blank">#{license.number}</a>
+              }
+              {license.public_help_page_url &&
+                <>
+                  <ReactSVG
+                    className="quote-license-icon mobile-length"
+                    onClick={() => this.setState({displayLicenseNotification: true})}
+                    src={iconInfo} />
+                  <Tooltip
+                    msg={this.renderLicenseMessage(license)}
+                    position="right">
+                    <ReactSVG className="quote-license-icon desktop-length" src={iconInfo} />
+                  </Tooltip>
+                </>
+              }
             </div>
           </div>
           {this.state.displayLicenseNotification &&
