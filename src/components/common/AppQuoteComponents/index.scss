@@ -253,6 +253,10 @@
     &__staff-contacts {
       width: 30%;
 
+      .DropdownButton {
+        white-space: nowrap;
+      }
+
       @include tablet() {
         width: 100%;
       }
