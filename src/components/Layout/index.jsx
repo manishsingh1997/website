@@ -165,7 +165,7 @@ export default class Layout extends React.Component {
     const {location} = this.props;
     return (
       <div className="app-layout">
-        {showUpcomingFeatures() && (
+        {showUpcomingFeatures('ENG-1XX') && (
           <div className="upcoming-features-wrapper">
             <Notification type="Information">
               <h6 className="additional-header">Experimental mode</h6>
