@@ -25,7 +25,7 @@ export default class AppConfigPreview extends React.Component {
     configType: PropTypes.string,
     fenceSideLength: PropTypes.number,
     images: PropTypes.array,
-    isMobileWidth: PropTypes.oneOf(PropTypes.boolean),
+    isMobileWidth: PropTypes.boolean,
     propertySchemaCodeUrl: PropTypes.string,
     schemaCodeUrl: PropTypes.string,
     useNoPreviewIcon: PropTypes.bool,
