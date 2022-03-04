@@ -21,7 +21,6 @@ import ImgBack from 'assets/icon-arrow-left.svg';
 import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 import iconSave from '@ergeon/core-components/src/assets/icon-save.svg';
 import iconInfo from '@ergeon/core-components/src/assets/icon-info.svg';
-import iconCall from '@ergeon/core-components/src/assets/icon-call.svg';
 import iconEmail from '@ergeon/core-components/src/assets/icon-email.svg';
 
 import {formatDateAndTime} from 'utils/date';
@@ -118,15 +117,6 @@ export default class QuoteDescription extends React.Component {
 
   staffDropdownItems(staff) {
     const items = [];
-    if (staff.phone_number) {
-      items.push({
-        label: staff.phone_number,
-        icon: iconCall,
-        onClick: () => {
-          this.onStaffDropdownItemClick(`tel:${staff.phone_number}`);
-        },
-      });
-    }
     if (staff.email) {
       items.push({
         label: staff.email,
