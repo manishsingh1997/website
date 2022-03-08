@@ -1,35 +1,37 @@
 import {isPastDate} from 'utils/date';
 
 import {
-  QUOTE_STATUS_APPROVED,
-  QUOTE_STATUS_SENT,
-  QUOTE_STATUS_CANCELLED,
+  QUOTE_STATUS_CODE_APPROVED,
+  QUOTE_STATUS_CODE_SENT,
+  QUOTE_STATUS_CODE_CANCELLED,
 } from 'website/constants';
 
 export const QUOTE_FILTERS = [
-  {value: 'active', label: 'Active Quotes', statuses: [QUOTE_STATUS_SENT, QUOTE_STATUS_APPROVED]},
-  {value: 'sent', label: 'Sent Quotes', statuses: [QUOTE_STATUS_SENT]},
-  {value: 'approved', label: 'Approved Quotes', statuses: [QUOTE_STATUS_APPROVED]},
-  {value: 'expired', label: 'Expired Quotes', statuses: [QUOTE_STATUS_SENT, QUOTE_STATUS_CANCELLED]},
-  {value: 'cancelled', label: 'Cancelled Quotes', statuses: [QUOTE_STATUS_CANCELLED]},
+  {value: 'active', label: 'Active Quotes', statuses: [QUOTE_STATUS_CODE_SENT, QUOTE_STATUS_CODE_APPROVED]},
+  {value: 'sent', label: 'Sent Quotes', statuses: [QUOTE_STATUS_CODE_SENT]},
+  {value: 'approved', label: 'Approved Quotes', statuses: [QUOTE_STATUS_CODE_APPROVED]},
+  {value: 'expired', label: 'Expired Quotes', statuses: [QUOTE_STATUS_CODE_SENT, QUOTE_STATUS_CODE_CANCELLED]},
+  {value: 'cancelled', label: 'Cancelled Quotes', statuses: [QUOTE_STATUS_CODE_CANCELLED]},
 ];
 
 export const DEFAULT_QUOTE_FILTER = QUOTE_FILTERS[0];
 
-const QUOTE_ORDERING = [QUOTE_STATUS_APPROVED, QUOTE_STATUS_SENT, QUOTE_STATUS_CANCELLED];
+const QUOTE_ORDERING = [QUOTE_STATUS_CODE_APPROVED, QUOTE_STATUS_CODE_SENT, QUOTE_STATUS_CODE_CANCELLED];
 
 export const filterQuotesByStatus = (quotes, selectedOption) => {
   quotes = quotes.filter((quote) => {
-    return selectedOption['statuses'].includes(quote['status']) && quote['sent_to_customer_at'];
+    return selectedOption['statuses'].includes(quote['quote_status']['code']) && quote['sent_to_customer_at'];
   });
 
   quotes.sort((a, b) => (new Date(b['sent_to_customer_at']).getTime() - new Date(a['sent_to_customer_at']).getTime()));
-  quotes.sort((a, b) => (QUOTE_ORDERING.indexOf(a['status']) - QUOTE_ORDERING.indexOf(b['status'])));
+  quotes.sort((a, b) => (
+    QUOTE_ORDERING.indexOf(a['quote_status']['code']) - QUOTE_ORDERING.indexOf(b['quote_status']['code']))
+  );
 
   if (['active', 'sent'].includes(selectedOption['value'])) {
     quotes = quotes.filter((quote) => {
       const expiresAt = quote['expires_at'];
-      if (!expiresAt && quote['status'] === QUOTE_STATUS_APPROVED) {
+      if (!expiresAt && quote['quote_status']['code'] === QUOTE_STATUS_CODE_APPROVED) {
         return true;
       }
       return expiresAt && !isPastDate(expiresAt);
@@ -60,11 +62,11 @@ export const isQuoteReplaced = (quote) => {
 };
 
 export const isQuoteCancelled = (quote) => {
-  return quote && quote.status === QUOTE_STATUS_CANCELLED;
+  return quote && quote['quote_status']['code'] === QUOTE_STATUS_CODE_CANCELLED;
 };
 
 export const isQuoteApproved = (quote) => {
-  return quote && quote.status === QUOTE_STATUS_APPROVED;
+  return quote && quote['quote_status']['code'] === QUOTE_STATUS_CODE_APPROVED;
 };
 
 export const isQuoteExpired = (quote) => {

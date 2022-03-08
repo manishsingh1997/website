@@ -26,9 +26,9 @@ export const CALC_TYPE_TO_MAP_TYPE = {
   [CALC_SIDE_TYPE]: MAP_LABEL_TYPE,
 };
 
-export const QUOTE_STATUS_APPROVED = 'APP';
-export const QUOTE_STATUS_SENT = 'SNT';
-export const QUOTE_STATUS_CANCELLED = 'CAN';
+export const QUOTE_STATUS_CODE_CANCELLED = 'cancelled';
+export const QUOTE_STATUS_CODE_SENT = 'snt';
+export const QUOTE_STATUS_CODE_APPROVED = 'app';
 
 export const HTTP_STATUS_NOT_FOUND = 404;
 export const NOT_FOUND_PAGE_PATH = '/404';
