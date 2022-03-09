@@ -9,7 +9,7 @@ import {Rating} from '@ergeon/core-components';
 import './StaffReviews.scss';
 
 const LINKEDIN_FOLLOWERS = '14,268';
-const RATING = '118';
+const RATING = '181';
 
 class StaffReviews extends React.Component {
   render() {
@@ -18,19 +18,19 @@ class StaffReviews extends React.Component {
         <div className="staff-reviews__row">
           <div className="mobile-wrap">
             <div className="staff-reviews__row__block">
-              <div className="inner-block">
+              <div className="inner-block right__padding-10 bottom__padding-10">
                 <div className="inner-block__wrap">
                   <img alt="Ninety eight percent of recommendations to a friend" src={imageChartNinetyEight}/>
                   <div className="inner-block__wrap__right-block recommend">
                     <p className="subheader h3 bold">
-                      Recommend to a Friend
+                      Recommend <br className="hideBreaks" />to a Friend
                     </p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="staff-reviews__row__block">
-              <div className="inner-block">
+              <div className="inner-block left__padding-10 right__padding-10 bottom__padding-10">
                 <div className="inner-block__wrap">
                   <img alt="One hundred percent approve of CEO" src={imageChartOneHundred}/>
                   <div className="inner-block__wrap__right-block approve">
@@ -43,7 +43,7 @@ class StaffReviews extends React.Component {
             </div>
           </div>
           <div className="staff-reviews__row__block">
-            <div className="inner-block">
+            <div className="inner-block left__padding-10 bottom__padding-10">
               <div className="inner-block__wrap ceo-image-wrapper">
                 <img src={imageCEO}/>
                 <div className="inner-block__wrap__right-block">
@@ -60,7 +60,7 @@ class StaffReviews extends React.Component {
         </div>
         <div className="staff-reviews__row">
           <div className="staff-reviews__row__block more-space">
-            <div className="inner-block">
+            <div className="inner-block right__padding-10 top__padding-10">
               <div className="inner-block__wrap linkedin-subsc">
                 <img alt="Linkedin logo" src={imageLinkedin}/>
                 <div className="inner-block__wrap__right-block linkedin">
@@ -78,7 +78,7 @@ class StaffReviews extends React.Component {
             </div>
           </div>
           <div className="staff-reviews__row__block">
-            <div className="inner-block">
+            <div className="inner-block left__padding-10 top__padding-10">
               <div className="inner-block__wrap ratings">
                 <div className="inner-block__wrap__top-block">
                   <p className="subheader h3 bold">4.9</p>

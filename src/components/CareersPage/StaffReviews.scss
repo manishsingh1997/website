@@ -1,4 +1,4 @@
-@import "~@ergeon/core-components/src/components/variables";
+@import '~@ergeon/core-components/src/components/variables';
 
 .staff-reviews {
   display: flex;
@@ -32,12 +32,12 @@
     .more-space {
       flex: 2;
     }
-    
+
     &__block {
       flex: 1;
 
       .inner-block {
-        padding: $h-10 $h-10;
+        // padding: $h-10 0 $h-10 $h-10;
 
         @include tablet() {
           padding: $h-5 $h-5;
@@ -50,13 +50,14 @@
           align-items: center;
           background-color: $gray-5;
           border-radius: $corner-soft;
-          padding: $h-40 $v-30;
+          padding: $v-30 $v-20 $v-30 $v-48;
           max-height: 120px;
+          text-align: left;
 
           img {
             width: $v-64;
           }
-          
+
           @include tablet() {
             flex-direction: column;
             padding: $v-16 $v-24;
@@ -111,10 +112,9 @@
             align-items: center;
             p {
               margin-right: $h-20;
-            } 
+            }
           }
-
-        } 
+        }
       }
     }
   }

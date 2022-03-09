@@ -1,41 +1,34 @@
 @import '~@ergeon/core-components/src/components/variables';
 
-.team-stats {
+.cards-stats {
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  margin-bottom: $v-64;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  text-align: left;
+  height: 100%;
 
-  &__items {
-    margin-bottom: $v-12;
-    width: 100%;
-    background-color: $gray-6;
-    border-radius: $corner-default;
-    height: $v-124;
+  &-title {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
+    flex:1;
+    flex-direction: column;
 
-    p .highlight {
-      color: $green;
+    .additional-header{
+      font-weight: 600;
     }
   }
 
-  @include not-phone {
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
+  &-image {
+    width: $v-64;
+    margin-right: $h-20;
 
-    &__items {
-      margin-inline: $h-10;
-      &:first-child {
-        margin-left: -$h-10;
-      }
-
-      &:last-child {
-        margin-right: -$h-10;
-      }
+    img {
+      width: 100%;
     }
+  }
+
+  &-description {
+    line-height: 1.5;
+    margin: $v-6 0 0;
   }
 }

@@ -2,88 +2,90 @@ import React from 'react';
 
 import StaffMap from './StaffMap';
 import StaffReviews from './StaffReviews';
-import JobBoard from './JobBoard';
+import JobBoard from './JobBoard/index';
 
 import Benefits from './Benefits';
 import TeamStats from './TeamStats';
+import Impact from './Impact';
 
 import CareersHero from '../../assets/careers-page/career_hero.jpg';
 import Collage from '../../assets/careers-page/career_collage.jpg';
-import TeamBenefits from '../../assets/careers-page/career_ergeon.jpg';
+import shirt from '../../assets/careers-page/career_shirt.png';
+import glass from '../../assets/careers-page/career_glass.png';
+import bags from '../../assets/careers-page/career_bag.png';
 
 import './index.scss';
 
 const CareersPage = () => {
   return (
-    <>
-      <div className="careers-page__img-container">
-        <img src={CareersHero} />
+    <div className="Careers wrapper-1180 spacing before__is-30 after__is-108">
+      <div className="img-container collage-1">
+        <img alt="collage" src={CareersHero} />
       </div>
-      <div className="careers-page wrapper-1180">
-        <div className="spacing before__is-64 after__is-64">
-          <h1>Everyone should have access to the job they love</h1>
+      <div className="Careers-content page-container spacing before__is-64  after__is-48">
+        <div className="header  spacing after__is-48">
+          <h1>Everyone Should Have Access To The Job They Love</h1>
           <br />
-          <h3 className="subheader">
-            Join us as we make the construction industry friendly and accessible
+          <h3>
+            Join us as we make the construction industry
+            <br className="hideBreaks" /> friendly and accessible
           </h3>
         </div>
+        <Impact />
+        <div className="spacing before__is-48 after__is-48">
+          <p className="subContent width-restricted to-620">
+            We believe everyone has a right to professional growth and respect,
+            no matter their location. Ergeon’s workforce is given meaningful
+            opportunities and is supported by a kind and diverse community.
+            <br />
+            <br />
+            Our global staff (aka&nbsp;Ergeoneers) have access to career growth,
+            amazing work culture, and great benefits.
+            <br className="hideBreaks" />
+            Come join us to transform the construction industry!
+          </p>
+        </div>
         <StaffReviews />
-        <div className="spacing before__is-64">
-          <p className="subheader h2 subheader-light">
-            We believe that everyone has a rigth to professional growth and
-            respect regardless of their location. Ergeon global staff
-            (aka&nbsp;Ergeoneers) are given meaningful opportunities and support
-            in a kind and diverse community. This ensures that our workforce,
-            around the world, has access to career growth, amazing work culture
-            and great benefits.
-            <br />
-            <br />
-            We have a fast-growing and diverse team spread across 35+ countries
-            today. <br className="careers-page__hide-breaks" />
-            Come join us to transform the construction industry!.
-          </p>
-        </div>
       </div>
-      <div className="careers-page__img-container spacing before__is-64 after__is-64">
-        <img src={Collage} />
+
+      <div className="img-container spacing before__is-48">
+        <img alt="company photo" src={Collage}/>
       </div>
-      <div className="careers-page wrapper-1180">
+      <div className="Careers-content page-container before__is-148 collage">
         <JobBoard />
-        <div className="spacing before__is-64">
-          <h2 className="spacing after__is-30">Company benefits</h2>
-          <p className="subheader h2 spacing after__is-48">
-            In addition to flexible work hours, remote happy hours <br />
-            and team events here are the few of the perks we offer.
+      </div>
+      <div className="spacing before__is-96 collage">
+        <div className="spacing after__is-48">
+          <h2 className="spacing after__is-12 light-bold">Company benefits</h2>
+          <p className="subContent width-restricted to-620">
+            Flexible work hours, team events and remote happy hours
+            <br className="hideBreaks" /> are just a few of the perks we offer.
           </p>
-          <Benefits />
+        </div>
+        <Benefits />
+      </div>
+
+      <div className="Careers-showcase spacing before__is-96 collage">
+        <div className="img-container collage3">
+          <img alt="ergeon kits" src={shirt} />
+        </div>
+        <div className="img-container collage3">
+          <img alt="ergeon kits" src={glass} />
+        </div>
+        <div className="img-container collage3">
+          <img alt="ergeon kits" src={bags} />
         </div>
       </div>
-      <div className="careers-page__img-container spacing before__is-64 after__is-64">
-        <img src={TeamBenefits} />
-      </div>
-      <div className="careers-page wrapper-1180">
-        <div>
-          <div className="spacing before__is-48 after__is-48">
-            <h2 className="center spacing after__is-12">Our Team</h2>
-            <p className="subheader h2 center">
-              Our amazing team is global and diverse.
-              <br className="careers-page__hide-breaks" />
-              We stay connected through strong remote work{' '}
-              <br className="careers-page__hide-breaks" />
-              practices and our love of
-              <a
-                href={process.env.COOKBOOK_WEBSITE}
-                rel="noopener noreferrer"
-                target="_blank">
-                &nbsp;Food
-              </a>
-            </p>
-          </div>
+
+      <div>
+        <div className="spacing before__is-96 after__is-48 collage">
+          <h2 className="center spacing after__is-12 light-bold">Our Team</h2>
+          <p className="subContent">Our amazing team is global and diverse.</p>
         </div>
-        <TeamStats />
-        <StaffMap />
       </div>
-    </>
+      <TeamStats />
+      <StaffMap />
+    </div>
   );
 };
 

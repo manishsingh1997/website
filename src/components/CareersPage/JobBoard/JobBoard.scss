@@ -9,25 +9,37 @@
   }
   margin: 0 auto;
   width: 100%;
-  max-width: 940px;
-  padding-bottom: $v-64;
+  max-width: $container-lg;
 }
+
 .job-list {
   position: relative;
+  text-align: left;
+  margin: $v-12 auto $v-36 auto;
+
   &__department {
     padding-bottom: $v-12;
     padding-top: $v-30;
     border-bottom: 1px solid $gray-5;
+    
+    .h4{
+      line-height: 1.36;
+    }
   }
+  
   &__job {
     display: flex;
-    padding: $v-16 0;
+    padding: ($v-16 + 2) 0;
     border-bottom: 1px solid $gray-5;
+    border-top: 1px solid $gray-5;
     justify-content: space-between;
     align-items: baseline;
     text-align: left;
+
     &__location {
       text-align: right;
+      font-size: $h5-size;
+      line-height: 1.5;
     }
   }
 }

@@ -1,46 +1,104 @@
 @import '~@ergeon/core-components/src/components/variables';
+@import './settings';
 
-.careers-page__img-container {
-  padding-inline: $v-20;
-  width: auto;
-
-  img {
-    width: 100%;
-  }
-}
-
-.careers-page {
+.Careers {
   text-align: center;
-  position: relative;
 
-  &__non-breaking-space {
-    white-space: nowrap;
+  .collage-1 {
+    border-radius: $corner-soft;
+    margin-bottom: $v-64;
+
+    img {
+      border-radius: $corner-soft;
+    }
   }
 
-  &__hide-breaks {
+  .collage-1,
+  .collage {
+    @include phone() {
+      margin-bottom: unset;
+      margin-top: $v-30;
+    }
+  }
+  
+  &-content {
+    & .header {
+      h1 {
+        font-size: $h2-size;
+        line-height: 1.25;
+        font-weight: 600;
+      }
+
+      h3 {
+        font-family: $font-content;
+        font-size: $h3-size;
+        font-weight: normal;
+        line-height: 1.33;
+      }
+    }
+  }
+
+  &-showcase {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+
+    .collage3 {
+      border-radius: $corner-soft;
+      overflow: hidden;
+
+      &:nth-child(2) {
+        margin: 0 $h-10;
+      }
+    }
+    @include phone {
+      flex-direction: column;
+      .collage3 {
+        margin: $h-10 0;
+        &:nth-child(2) {
+          margin: $h-10 0;
+        }
+      }
+    }
+  }
+
+  .img-container {
+    width: auto;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .hideBreaks {
     @include phone {
       display: none;
     }
   }
 
-  & .subheader {
-    font-weight: bolder;
+  .light-bold {
+    font-weight: 600;
   }
 
-  & .subheader-light {
-    font-weight: 500;
+  .subContent {
+    margin: auto;
+    font-size: $h4-size;
+    line-height: 1.36;
   }
 
   .cards {
     justify-content: space-between;
     flex-wrap: wrap;
+    text-align: left;
     @include phone() {
       flex-direction: column;
       grid-template-columns: minmax(100px, 1fr) !important;
     }
+
     &__card {
       height: 100%;
-      padding: $h-40;
+      padding: $h-40 $h-40 $h-20 $h-40;
       border-radius: $corner-soft;
       border: 1px solid $gray-5;
       margin-bottom: $v-24;
@@ -51,10 +109,21 @@
         width: 100%;
         margin-bottom: $v-12;
       }
+
       &__title {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 0;
+        margin-bottom: $v-6;
+
+        .additional-header {
+          font-weight: 600;
+          line-height: normal;
+        }
+      }
+
+      &__description {
+        line-height: 1.5;
+        margin: $v-6 0 0;
       }
     }
   }
