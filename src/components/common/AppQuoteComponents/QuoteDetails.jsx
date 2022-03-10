@@ -226,7 +226,7 @@ export default class QuoteDetails extends React.Component {
             Oops, it looks like your quote has expired.
             Lumber and Labor prices can fluctuate depending on a number of
             factors throughout the year, therefore our quotes are only good
-            for 30 days.  Your quote may not change, but we would like to
+            for 15 days.  Your quote may not change, but we would like to
             update it for you. You clicking approve has alerted us and we
             are already in the process of updating your quote and someone
             will be in touch you shortly.  If you would rather not wait,
