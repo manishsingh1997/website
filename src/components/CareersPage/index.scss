@@ -44,12 +44,13 @@
 
   &-showcase {
     $image-count: 3;
+    $top-margin: $h-80 + $v-16;
 
     align-items: stretch;
     display: flex;
     justify-content: center;
     max-width: $container-xl - $h-40;
-    margin: auto;
+    margin: $top-margin auto 0 auto;
     width: 100%;
 
     .collage3 {

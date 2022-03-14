@@ -65,7 +65,7 @@ const CareersPage = () => {
         <Benefits />
       </div>
 
-      <div className="Careers-showcase spacing before__is-96 collage">
+      <div className="Careers-showcase collage">
         <div className="img-container collage3">
           <img alt="ergeon kits" src={shirt} />
         </div>
