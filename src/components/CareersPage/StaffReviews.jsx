@@ -48,7 +48,7 @@ class StaffReviews extends React.Component {
                 <img src={imageCEO}/>
                 <div className="inner-block__wrap__right-block">
                   <p className="subheader h3 bold">
-                    Jiayue He
+                    Jiayue (Jenny) He
                   </p>
                   <p className="small-text spacing before__is-6">
                     {RATING} Ratings

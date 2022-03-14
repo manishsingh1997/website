@@ -18,7 +18,7 @@ import './index.scss';
 
 const CareersPage = () => {
   return (
-    <div className="Careers wrapper-1180 spacing before__is-30 after__is-108">
+    <div className="Careers spacing before__is-30 after__is-108">
       <div className="img-container collage-1">
         <img alt="collage" src={CareersHero} />
       </div>
@@ -56,7 +56,7 @@ const CareersPage = () => {
       </div>
       <div className="spacing before__is-96 collage">
         <div className="spacing after__is-48">
-          <h2 className="spacing after__is-12 light-bold">Company benefits</h2>
+          <h2 className="spacing after__is-12 light-bold">Company Benefits</h2>
           <p className="subContent width-restricted to-620">
             Flexible work hours, team events and remote happy hours
             <br className="hideBreaks" /> are just a few of the perks we offer.

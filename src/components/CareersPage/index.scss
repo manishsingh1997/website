@@ -2,6 +2,10 @@
 @import './settings';
 
 .Careers {
+  $page-margin-bottom: 108px;
+
+  margin: $v-30 auto $page-margin-bottom;
+  max-width: $container-xl;
   text-align: center;
 
   .collage-1 {
@@ -20,7 +24,7 @@
       margin-top: $v-30;
     }
   }
-  
+
   &-content {
     & .header {
       h1 {
@@ -39,25 +43,30 @@
   }
 
   &-showcase {
+    $image-count: 3;
+
+    align-items: stretch;
     display: flex;
+    justify-content: center;
+    max-width: $container-xl - $h-40;
+    margin: auto;
     width: 100%;
-    justify-content: flex-start;
-    align-items: center;
 
     .collage3 {
       border-radius: $corner-soft;
+      display: flex;
+      margin: 0 $h-10;
+      max-width: $h-120 * $image-count;
       overflow: hidden;
-
-      &:nth-child(2) {
-        margin: 0 $h-10;
-      }
     }
+
     @include phone {
       flex-direction: column;
+      padding: 0;
+
       .collage3 {
-        margin: $h-10 0;
         &:nth-child(2) {
-          margin: $h-10 0;
+          margin: $h-20 auto;
         }
       }
     }

@@ -40,7 +40,7 @@ const Benefits = () => {
           <img src={imgTech} />
         </div>
         <p>
-          We reminburse our staff for software tools, workplace improvements and
+          We reimburse our staff for software tools, workplace improvements and
           wellness perks.
         </p>
       </div>
