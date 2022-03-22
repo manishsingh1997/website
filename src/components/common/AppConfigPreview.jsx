@@ -120,6 +120,11 @@ export default class AppConfigPreview extends React.Component {
     );
   }
 
+  isPlaceholder() {
+    const {previewImage} = this.state;
+    return isEqual(previewImage, previewPlaceholderIcon) || isEqual(previewImage, noPreviewIcon);
+  }
+
   renderPreviewWithLink() {
     const {propertySchemaCodeUrl, schemaCodeUrl, zipCode, fenceSideLength} = this.props;
     let finalSchemaCodeUrl = `${schemaCodeUrl}`;
@@ -127,26 +132,38 @@ export default class AppConfigPreview extends React.Component {
       finalSchemaCodeUrl = `${schemaCodeUrl}&${propertySchemaCodeUrl}`;
     }
 
+    // Let's not wrap into a link if we render a placeholder
+    if (this.isPlaceholder()) {
+      return this.renderPreview();
+    }
+
+    const linkToFencequoting = getFencequotingURL(
+      finalSchemaCodeUrl,
+      zipCode,
+      fenceSideLength,
+      /* show options */false);
     return (
-      <a
-        className="preview-box"
-        href={getFencequotingURL(finalSchemaCodeUrl, zipCode, fenceSideLength, /* show options */false)}
-        rel="noopener noreferrer"
-        target="_blank">
+      <a href={linkToFencequoting} rel="noopener noreferrer" target="_blank">
         {this.renderPreview()}
-        <img className="preview-3d" src={preview3DIcon} />
       </a>
     );
   }
 
   renderPreview() {
     const {isLoading, previewImage} = this.state;
-    const isPlaceholder = isEqual(previewImage, previewPlaceholderIcon) || isEqual(previewImage, noPreviewIcon);
+    const previewImageClasses = classNames({
+      'preview-image': true,
+      'preview-placeholder': this.isPlaceholder(),
+      'hidden-img': isLoading,
+    });
     return (
-      <img
-        className={classNames('preview-image', {'preview-placeholder': isPlaceholder, 'hidden-img': isLoading})}
-        onLoad={() => this.setState({isLoading: false})}
-        src={previewImage} />
+      <div className="preview-box">
+        <img
+          className={previewImageClasses}
+          onLoad={() => this.setState({isLoading: false})}
+          src={previewImage} />
+        <img className="preview-3d" src={preview3DIcon} />
+      </div>
     );
   }
 
