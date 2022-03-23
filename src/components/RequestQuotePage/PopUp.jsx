@@ -16,6 +16,12 @@ export default class PopUp extends React.Component {
   static defaultProps = {
     visible: false,
   };
+
+  componentWillUnmount() {
+    document.body.style.overflow = 'unset';
+    document.body.style.height = 'unset';
+  }
+
   render() {
     const {className} = this.props;
     const {visible} = this.props;
