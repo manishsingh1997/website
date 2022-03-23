@@ -8,7 +8,7 @@ import {Rating} from '@ergeon/core-components';
 
 import './StaffReviews.scss';
 
-const LINKEDIN_FOLLOWERS = '14,268';
+const LINKEDIN_FOLLOWERS = '21,518';
 const RATING = '181';
 
 class StaffReviews extends React.Component {
