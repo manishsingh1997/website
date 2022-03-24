@@ -81,7 +81,7 @@ export default class AppOrderDetailPage extends React.Component {
       <React.Fragment>
         <div className="flex-wrapper">
           <div>
-            <DataRow title="Status" value={quote['status_display']} />
+            <DataRow title="Status" value={quote['quote_status']['label']} />
             <DataRow title="Total Price" value={formatPrice(quote['total_price'])} />
             {showTotalLength &&
             <DataRow title="Total length" value={`${quote['total_length']} ${FENCE_QUANTITY_UNIT}`} />}
