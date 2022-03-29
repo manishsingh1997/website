@@ -15,8 +15,8 @@ import isEmpty from 'lodash/isEmpty';
 import './AppConfigPreview.scss';
 
 const USE_CACHE = true;
-const DEFAULT_PREVIEW_WIDTH = 150;
-const DEFAULT_PREVIEW_HEIGHT = 150;
+const DEFAULT_PREVIEW_WIDTH = 300;
+const DEFAULT_PREVIEW_HEIGHT = 300;
 
 export default class AppConfigPreview extends React.Component {
 
