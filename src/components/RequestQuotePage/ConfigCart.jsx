@@ -148,7 +148,7 @@ class ConfigCart extends React.Component {
     const {zipcode} = this.props;
 
     const isFenceConfig = this.isItFence(config);
-    const length = (config.units).toString();
+    const length = (config?.units || 1).toString();
     const priceText = isFenceConfig ? `~${Math.round(config.price)}/ft` : `~${Math.round(config.price)}`;
 
     return (
