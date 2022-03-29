@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes, {oneOfType} from 'prop-types';
-import keys from 'lodash/keys';
 
 import {MAP_LABEL_TYPE, MAP_LABEL_YELLOW_TYPE, MAP_CIRCLE_TYPE} from 'website/constants';
 
@@ -11,7 +10,7 @@ export default class MapLabel extends React.Component {
   static propTypes = {
     isInline: PropTypes.bool,
     name: oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    type: PropTypes.oneOf(keys(MAP_LABEL_TYPE)),
+    type: PropTypes.oneOf([MAP_LABEL_TYPE, MAP_LABEL_YELLOW_TYPE, MAP_CIRCLE_TYPE]),
   };
 
   render() {
