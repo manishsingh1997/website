@@ -34,6 +34,7 @@ export default class QuoteDescription extends React.Component {
     auth: PropTypes.object,
     customer: PropTypes.object,
     customerGID: PropTypes.string,
+    customerPDF: PropTypes.string,
     maxThumbnails: PropTypes.number,
     maxThumbnailSize: PropTypes.number,
     quote: PropTypes.object,
@@ -196,7 +197,8 @@ export default class QuoteDescription extends React.Component {
   }
 
   renderTitle() {
-    const {id, title, order, customer_pdf: customerPdf} = this.props.quote;
+    const {customerPDF} = this.props;
+    const {id, title, order} = this.props.quote;
     return (
       <div className="quote-details__title">
         <div>
@@ -211,12 +213,12 @@ export default class QuoteDescription extends React.Component {
           </h4>
         </div>
         <div>
-          {customerPdf && !isPDFMode() &&
+          {customerPDF && !isPDFMode() &&
             <Button
               asAnchor
               className="quote-save-button"
               flavor="regular"
-              href={customerPdf}
+              href={customerPDF}
               target="_blank">
               <img alt="Save as PDF" src={iconSave} />
               Save as PDF

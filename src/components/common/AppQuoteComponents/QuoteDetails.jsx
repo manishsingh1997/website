@@ -24,6 +24,7 @@ export default class QuoteDetails extends React.Component {
     auth: PropTypes.object,
     customer: PropTypes.object,
     customerGID: PropTypes.string,
+    customerPDF: PropTypes.string,
     isInstallerPreview: PropTypes.bool,
     isMultiPartyQuote: PropTypes.bool,
     isPrimaryQuoteApproval: PropTypes.bool,
@@ -191,6 +192,7 @@ export default class QuoteDetails extends React.Component {
       auth,
       customer,
       customerGID,
+      customerPDF,
       isInstallerPreview,
       isMultiPartyQuote,
       isPrimaryQuoteApproval,
@@ -218,6 +220,7 @@ export default class QuoteDetails extends React.Component {
             auth={auth}
             customer={customer}
             customerGID={customerGID}
+            customerPDF={customerPDF}
             quote={quote} />
           {this.renderQuoteLinesOnMap()}
         </div>

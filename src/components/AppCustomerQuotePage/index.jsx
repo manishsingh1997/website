@@ -260,6 +260,7 @@ export default class AppCustomerQuotePage extends React.Component {
       is_primary: isPrimaryQuoteApproval,
       quote_approval_lines: quoteApprovalLines,
       other_quote_approvals: otherQuoteApprovals,
+      merged_customer_pdf: mergedCustomerPDF,
     } = quoteApproval;
     const {
       order: {
@@ -284,6 +285,7 @@ export default class AppCustomerQuotePage extends React.Component {
             auth={auth}
             customer={customer}
             customerGID={this.customerGID}
+            customerPDF={mergedCustomerPDF}
             isInstallerPreview={false}
             isMultiPartyQuote={isMultiPartyQuote}
             isPrimaryQuoteApproval={isPrimaryQuoteApproval}
