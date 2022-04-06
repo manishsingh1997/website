@@ -22,7 +22,6 @@ import {isChristmasTime, isPDFMode, showUpcomingFeatures} from 'utils/utils';
 import {getMenuItems} from 'data/customer-app.js';
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
-import COVIDNotification from './COVIDNotification';
 
 import './index.scss';
 
@@ -162,7 +161,6 @@ export default class Layout extends React.Component {
     const widthClass = this.checkTemplateWidth()? 'wrapper-980' : 'wrapper-1180';
     const showFooter = !this.isNoFooterTemplate();
     const asPDF = isPDFMode();
-    const {location} = this.props;
     return (
       <div className="app-layout">
         {showUpcomingFeatures('ENG-1XX') && (
@@ -173,7 +171,6 @@ export default class Layout extends React.Component {
             </Notification>
           </div>
         )}
-        <COVIDNotification location={location}/>
         <NavLinkContext.Provider value={NavLink}>
           <TopPanel
             customerMenu={this.renderDropdownMenu()}
