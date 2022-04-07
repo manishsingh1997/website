@@ -2,7 +2,14 @@ import React from 'react';
 import propTypes from 'prop-types';
 import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
+import {
+  blockBodyScroll,
+  unblockBodyScroll,
+  scrollTop,
+} from '@ergeon/core-components';
+
 import crossIcon from '@ergeon/core-components/src/assets/icon-cross-gray.svg';
+
 import './PopUp.scss';
 
 export default class PopUp extends React.Component {
@@ -17,27 +24,27 @@ export default class PopUp extends React.Component {
     visible: false,
   };
 
+  componentDidUpdate(prevProps) {
+    const {visible} = this.props;
+    if (!prevProps.visible && visible) {
+      scrollTop();
+      blockBodyScroll();
+    } else {
+      unblockBodyScroll();
+    }
+  }
+
   componentWillUnmount() {
-    document.body.style.overflow = 'unset';
-    document.body.style.height = 'unset';
+    unblockBodyScroll();
   }
 
   render() {
-    const {className} = this.props;
-    const {visible} = this.props;
+    const {className, children, onHide, visible} = this.props;
     const popupClasses = classNames({
       'popup__container': true,
       [className]: className,
     });
-    const {children, onHide} = this.props;
-    if (visible) {
-      window.scrollTo(0, 0);
-      document.body.style.overflow = 'hidden';
-      document.body.style.height = '100%';
-    } else {
-      document.body.style.overflow = 'unset';
-      document.body.style.height = 'unset';
-    }
+
     return (
       <React.Fragment>
         {visible &&

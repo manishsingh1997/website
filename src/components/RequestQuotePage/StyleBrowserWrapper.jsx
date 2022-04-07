@@ -25,10 +25,12 @@ export default class StyleBrowserWrapper extends React.Component {
 
   state = {
     model: this.props.initialSchemaCode,
+    showPopup: false,
   };
 
   componentDidMount() {
     tawk.tawkAPILoader.then(TawkAPI => TawkAPI.hideWidget());
+    this.openPopup();
     this.checkZipcode();
   }
 
@@ -49,13 +51,22 @@ export default class StyleBrowserWrapper extends React.Component {
     onDone && onDone(model);
   }
 
+  openPopup() {
+    this.setState({showPopup: true});
+  }
+
+  closePopup() {
+    this.props.onClose();
+    this.setState({showPopup: false});
+  }
+
   render() {
-    const {model, productAvailability} = this.state;
+    const {model, productAvailability, showPopup} = this.state;
     return (
       <div className="style-browser-wrapper">
         <PopUp
-          onHide={() => this.props.onClose()}
-          visible={true}>
+          onHide={this.closePopup.bind(this)}
+          visible={showPopup}>
           <div>
             <div className="style-browser-wrapper__title">
               <span className="label uppercase">Design your Fence or Gate</span>
