@@ -7,11 +7,15 @@ $preview-size: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 40px;
+  margin-right: $h-40;
   width: $preview-size;
   max-height: $preview-size;
   height: auto;
   background-color: $white;
+
+  @include phone {
+    margin-right: $h-20;
+  }
 
   //allow spinner to stay in the center
   & .loader-wrapper {

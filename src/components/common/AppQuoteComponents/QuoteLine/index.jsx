@@ -81,26 +81,31 @@ export default function QuoteLine(props) {
   if (isPDFMode()) {
     return (
       <QuoteLineLayout status={status}>
-        {!images && imagePreview}
-        <div className="quote-line-description quote-line-description__pdf">
-          <Title index={index} label={label} type={type} />
-          <QuoteLineDescription {...{approvedAt, description, quote, quoteId, status, tags}} />
+        <div className="quote-line-wrapper">
+          <div className="quote-line-info">
+            {/* if no attached images */}
+            {!images?.length && imagePreview}
+            <div className="quote-line-description quote-line-description__pdf">
+              <Title index={index} label={label} type={type} />
+              <QuoteLineDescription {...{approvedAt, description, quote, quoteId, status, tags}} />
+            </div>
+            {!calcInputQuoteLine && (
+              <div className="quote-line-price quote-line-price__pdf">
+                <QuoteLinePrice
+                  {...{
+                    area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
+                    isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
+                  }} />
+              </div>
+            )}
+          </div>
+          {images?.length ? (
+            // This is only used on isPDFMode, as we will render all images below the content
+            <div className="quote-line-images spacing before__is-12 after__is-12">
+              {imagePreview}
+            </div>
+          ): null}
         </div>
-        {!calcInputQuoteLine && (
-          <div className="quote-line-price quote-line-price__pdf">
-            <QuoteLinePrice
-              {...{
-                area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
-                isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
-              }} />
-          </div>
-        )}
-        {images && (
-          // This is only used on isPDFMode, as we will render all images below the content
-          <div className="quote-line-images spacing before__is-12 after__is-12">
-            {imagePreview}
-          </div>
-        )}
       </QuoteLineLayout>
     );
   }

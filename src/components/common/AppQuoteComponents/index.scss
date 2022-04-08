@@ -344,6 +344,24 @@
     }
   }
 
+  .quote-line-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quote-line-info {
+    width: 100%;
+    display: flex;
+
+    @include phone() {
+      flex-direction: column;
+      margin-bottom: $v-12;
+    }
+  }
+
+
+
   .quote-line-description {
     width: 100%;
     word-break: break-word;
@@ -385,6 +403,12 @@
 
   .quote-line-images {
     width: 100%;
+    display: flex;
+    justify-content: center;
+
+    @include phone {
+      justify-content: flex-start;
+    }
   }
 
   .change-order-quote-price {
