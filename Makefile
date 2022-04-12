@@ -37,9 +37,6 @@ install: .install
 lint: install
 	npm run lint
 
-jest: install
-	npm run test:sitemap
-
 create-sitemap:
 	@if [ -z "$(LEVEL)" ]; then >&2 echo LEVEL must be supplied; exit 1; fi;
 	npm run create-sitemap-$(LEVEL)
@@ -47,7 +44,10 @@ create-sitemap:
 run: install
 	SENTRY_RELEASE_NAME=$(SENTRY_RELEASE_NAME) SHOW_UPCOMING_FEATURES=$(SHOW_UPCOMING_FEATURES) npm run start
 
-test: install lint jest
+test: install lint
+
+coverage:
+	npm run coverage
 
 sentry-create-release:
 	$(SENTRY_CLI) releases new --finalize $(SENTRY_RELEASE_NAME)

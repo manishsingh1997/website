@@ -47,9 +47,14 @@ jobs:
 
           steps:
             - run:
-                name: Run tests
+                name: Run Linters
                 command: |
-                  make test
+                  make lint
+
+            - run:
+                name: Run Tests and Coverage
+                command: |
+                  make coverage
 
             - deploy:
                 name: Deploy

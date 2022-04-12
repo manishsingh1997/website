@@ -4,6 +4,9 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
+  // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
+  transformIgnorePatterns: [],
+
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -20,10 +23,10 @@ module.exports = {
   // clearMocks: false,
 
   // Indicates whether the coverage information should be collected while executing the test
-  // collectCoverage: false,
+  collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  // collectCoverageFrom: null,
+  collectCoverageFrom: ['./src/**/*.{js,jsx,ts,tsx}'],
 
   // The directory where Jest should output its coverage files
   // coverageDirectory: null,
@@ -34,12 +37,11 @@ module.exports = {
   // ],
 
   // A list of reporter names that Jest uses when writing coverage reports
-  // coverageReporters: [
-  //   "json",
-  //   "text",
-  //   "lcov",
-  //   "clover"
-  // ],
+  coverageReporters: [
+    'json-summary',
+    'text',
+    'lcov',
+  ],
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: null,

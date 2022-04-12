@@ -15,7 +15,8 @@
     "lint": "npm run eslint && npm run tslint",
     "lint-fix": "./node_modules/eslint/bin/eslint.js --ext .jsx --ext .js ./src --fix",
     "tslint": "tslint -c tslint.json 'src/**/*.ts'",
-    "test:sitemap": "jest --config=\"src/process/jest.config.js\" --colors --notify --verbose --ci"
+    "test": "jest --colors --notify --verbose --ci --silent",
+    "coverage": "npm test -- --coverage --watchAll=false"
   },
   "repository": {
     "type": "git",
