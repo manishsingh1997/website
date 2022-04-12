@@ -14,6 +14,7 @@ import {
   Notification,
   Spinner,
   TopPanel,
+  SimpleTopPanel,
 } from '@ergeon/core-components';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 
@@ -42,7 +43,7 @@ class WebsiteDropdownMenu extends DropdownMenu {
         }}
         to={href}>
         <div className="menu-title">
-          <span className={'icon'}><ReactSVG src={iconSVG}/></span>
+          <span className={'icon'}><ReactSVG src={iconSVG} /></span>
           <span>{content}</span>
         </div>
       </NavLink>
@@ -72,7 +73,7 @@ export default class Layout extends React.Component {
 
   checkRouteList(routes = []) {
     const {location} = this.props;
-    const pathname = location? location.pathname : '/';
+    const pathname = location ? location.pathname : '/';
     let included = false;
     routes.forEach(path => {
       if (pathname.includes(path)) included = true;
@@ -102,8 +103,8 @@ export default class Layout extends React.Component {
         <Link className="sign-in-link" key="dropp-loading" to="/app/sign-in">
           <li className="link-wrapper">
             <div className="icon-and-arrow">
-              <span><img className="sign-in-icon" src={userIcon}/></span>
-              <Spinner active={true} borderWidth={0.10} color="gray" size={16}/>
+              <span><img className="sign-in-icon" src={userIcon} /></span>
+              <Spinner active={true} borderWidth={0.10} color="gray" size={16} />
             </div>
           </li>
         </Link>
@@ -130,7 +131,7 @@ export default class Layout extends React.Component {
           title={(
             <span key="dropp-user-icon">
               <div className="user-name-menu-item">
-                <img className="sign-in-icon" src={userIcon}/>
+                <img className="sign-in-icon" src={userIcon} />
                 <span className="user-full-name">{user.full_name}</span>
               </div>
             </span>
@@ -140,7 +141,7 @@ export default class Layout extends React.Component {
     return (
       <Link className="sign-in-link" key="dropp-sign-in" to="/app/sign-in">
         <li className="link-wrapper" id={SIGN_IN_LINK_ID}>
-          <img className="sign-in-icon" src={userIcon}/>
+          <img className="sign-in-icon" src={userIcon} />
           <span className="user-full-name">Sign In</span>
         </li>
       </Link>
@@ -158,7 +159,7 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    const widthClass = this.checkTemplateWidth()? 'wrapper-980' : 'wrapper-1180';
+    const widthClass = this.checkTemplateWidth() ? 'wrapper-980' : 'wrapper-1180';
     const showFooter = !this.isNoFooterTemplate();
     const asPDF = isPDFMode();
     return (
@@ -172,16 +173,30 @@ export default class Layout extends React.Component {
           </div>
         )}
         <NavLinkContext.Provider value={NavLink}>
-          <TopPanel
-            customerMenu={this.renderDropdownMenu()}
-            ergeonUrl="/"
-            fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
-            pdfDetails={this.renderPdfDetails()}
-            pdfMode={asPDF}
-            projectsGalleryUrl={`${process.env.PROJECTS_GALLERY_HOST}/`}
-            showChristmasHat={this.isChristmasTime}
-            widthClass={widthClass}>
-          </TopPanel>
+          {!showUpcomingFeatures('ENG-13570') &&
+            <TopPanel
+              customerMenu={this.renderDropdownMenu()}
+              ergeonUrl="/"
+              fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
+              pdfDetails={this.renderPdfDetails()}
+              pdfMode={asPDF}
+              projectsGalleryUrl={`${process.env.PROJECTS_GALLERY_HOST}/`}
+              showChristmasHat={this.isChristmasTime}
+              widthClass={widthClass}>
+            </TopPanel>
+          }
+          {showUpcomingFeatures('ENG-13570') &&
+            <SimpleTopPanel
+              customerMenu={this.renderDropdownMenu()}
+              ergeonUrl="/"
+              fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
+              onGetQuoteClick={() => undefined} // TODO: Include scroll to new quote section
+              pdfDetails={this.renderPdfDetails()}
+              pdfMode={asPDF}
+              showChristmasHat={this.isChristmasTime}
+              widthClass={widthClass}>
+            </SimpleTopPanel>
+          }
           <div>{this.props.children}</div>
           {
             !asPDF &&
