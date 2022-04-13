@@ -31,7 +31,6 @@ import ProjectNotes from './ProjectNotes';
 import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
 import QuoteError from '../common/AppQuoteComponents/QuoteError';
 import {prepareQuoteApprovalLines} from './utils';
-import {showUpcomingFeatures} from '../../utils/utils';
 
 import '@ergeon/draw-map/styles.css';
 
@@ -172,45 +171,18 @@ export default class AppCustomerQuotePage extends React.Component {
 
   getTotalPrice(quoteApproval) {
     const totalPrice = Number.parseFloat(quoteApproval['total_price']);
-    if (showUpcomingFeatures('ENG-9416') && this.isScopeChange(quoteApproval)) {
-      // calculate total_price minus dropped lines
-      const droppedLinesAmount = quoteApproval['quote_approval_lines'].map(
-        line => line['quote_line'] // we need only quote_lines
-      ).filter(quoteLine =>
-        quoteLine['is_dropped'] &&
-        quoteLine['dropped_at_quote_id'] == quoteApproval.quote.id // get all lines dropped at this quote
-      ).map(quoteLine => parseFloat(quoteLine.price))
-        .reduce((a, b) => a + b, 0); // calculate dropped amount
-      return totalPrice - droppedLinesAmount;
-    }
     return totalPrice;
   }
 
   getTotalPreviouslyApprovedPrice(quoteApproval) {
-    if (showUpcomingFeatures('ENG-9416') && this.isScopeChange(quoteApproval)) {
-      const {quote_approval_lines: quoteApprovalLines} = quoteApproval;
-      const approvedPreviousQuoteApprovalLines = quoteApprovalLines.filter(
-        (line) => (
-          line.quote_approval_id != quoteApproval.id && // get all previous quote approval lines
-          (
-            !line['quote_line']['is_dropped'] || // where they are either not dropped
-            line['quote_line']['dropped_at_quote_id'] == quoteApproval.quote.id // or dropped at this quote
-          )
-        )
-      );
-      return approvedPreviousQuoteApprovalLines.reduce(
-        (acc, line) => acc + parseFloat(line['quote_line'].price),
-        0
-      );
-    }
-    if (quoteApproval.parent_quote_approval) {
-      return this.getTotalPrice(quoteApproval.parent_quote_approval);
+    if (this.isScopeChange(quoteApproval)) {
+      return quoteApproval['previously_approved_price'];
     }
     return Number('0');
   }
 
   getProjectTotalPrice(quoteApproval) {
-    return this.getTotalPreviouslyApprovedPrice(quoteApproval) + this.getTotalPrice(quoteApproval);
+    return quoteApproval['project_total_price'];
   }
 
   shouldShowBillingForm() {
