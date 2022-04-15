@@ -2,11 +2,14 @@ import React from 'react';
 
 import {BadgesSection} from '@ergeon/core-components';
 
+import {showUpcomingFeatures} from '../../utils/utils';
+
 import SliderHero from './SliderHero';
 import ReviewHero from './ReviewHero';
 import ProjectsSection from './ProjectsSection';
 import PromoBlock from './PromoBlock';
 import GetStartedSection from './GetStartedSection';
+import UpcomingGetStartedSection from './UpcomingGetStartedSection';
 import QASection from './QASection';
 import imgCalc from 'assets/calc_promo.png';
 import imgMap from 'assets/map_image.png';
@@ -28,7 +31,7 @@ class HomePage extends React.Component {
             img={imgCalc}
             subtitle="Build your dream fence and get an estimate instantly"
             title="Try Our Fence Calculator"/>
-          <GetStartedSection/>
+          {showUpcomingFeatures('ENG-13570') ? <UpcomingGetStartedSection/> : <GetStartedSection/>}
           <QASection/>
           <PromoBlock
             btnLink={`${process.env.PROJECTS_GALLERY_HOST}/map`}

@@ -1,0 +1,22 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+@import './utils';
+
+.GetStarted {
+  &-Wrapper {
+    display: flex;
+    justify-content: space-between;
+    @include phone() {
+      flex-direction: column;
+    }
+  }
+  &-Title {
+    font-weight: 600;
+    @include phone() {
+      text-align: center;
+    }
+  }
+  &-Content {
+    align-items: center;
+    width: 100%;
+  }
+}
