@@ -14,6 +14,7 @@ import QASection from './QASection';
 import imgCalc from 'assets/calc_promo.png';
 import imgMap from 'assets/map_image.png';
 import RemoteFeatures from './RemoteFeatures';
+import TestimonialBanner from './TestimonialBanner';
 
 class HomePage extends React.Component {
 
@@ -21,6 +22,7 @@ class HomePage extends React.Component {
     return (
       <>
         <SliderHero/>
+        {showUpcomingFeatures('ENG-13570') && <TestimonialBanner/>}
         <RemoteFeatures/>
         <ReviewHero/>
         <div className="wrapper-1180">

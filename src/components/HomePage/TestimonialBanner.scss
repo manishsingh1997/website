@@ -1,0 +1,45 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.MobileContainer {
+  height: $h-80;
+  margin-top: $h-40;
+  overflow: hidden;
+
+  &-TestimonialBanner {
+    height: $h-120;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 0 $v-30;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &-Badge {
+    display:inline-block;
+    width:45%;
+    text-align:center;
+  }
+}
+
+.TestimonialBanner {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: $v-20;
+  margin-top: $v-20;
+  padding: $v-48 $h-120 0;
+  width: 100%;
+}
+
+.Badge {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+
+  &--txt {
+    font-size: $font-mobile-size;
+  }
+}
