@@ -84,14 +84,11 @@ export default class AppInstallerQuotePage extends React.Component {
   }
 
   getTotalPreviouslyApprovedPrice(quote) {
-    if (quote.parent_quote) {
-      return this.getTotalPrice(quote.parent_quote);
-    }
-    return Number('0');
+    return Number.parseFloat(quote['previously_approved_total_cost']);
   }
 
   getProjectTotalPrice(quote) {
-    return this.getTotalPreviouslyApprovedPrice(quote) + this.getTotalPrice(quote);
+    return Number.parseFloat(quote['project_total_cost']);
   }
 
   onBuildDetailsClick(configID, label) {
