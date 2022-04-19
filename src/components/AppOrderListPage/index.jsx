@@ -37,7 +37,7 @@ export default class AppOrdersListPage extends React.Component {
       <div key={`quote-${quote['id']}`}>
         <Link to={getQuoteDetailURL(customerGID, quote['secret'])}>
           #{quote['id']}
-        </Link> ({quote['quote_status']['label']})
+        </Link> ({quote['status']['label']})
       </div>
     );
   }
