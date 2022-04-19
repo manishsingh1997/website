@@ -36,6 +36,7 @@ import '@ergeon/draw-map/styles.css';
 
 import '../common/AppQuoteComponents/index.scss';
 import AdditionalApprovalsList from './AdditionalApprovalsList';
+import {showUpcomingFeatures} from '../../utils/utils';
 
 export default class AppCustomerQuotePage extends React.Component {
 
@@ -176,13 +177,16 @@ export default class AppCustomerQuotePage extends React.Component {
 
   getTotalPreviouslyApprovedPrice(quoteApproval) {
     if (this.isScopeChange(quoteApproval)) {
-      return quoteApproval['previously_approved_price'];
+      return Number.parseFloat(quoteApproval['previously_approved_price']);
     }
     return Number('0');
   }
 
   getProjectTotalPrice(quoteApproval) {
-    return quoteApproval['project_total_price'];
+    if (!showUpcomingFeatures('ENG-9416')) {
+      return this.getTotalPrice(quoteApproval);
+    }
+    return Number.parseFloat(quoteApproval['project_total_price']);
   }
 
   shouldShowBillingForm() {
