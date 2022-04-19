@@ -9,8 +9,8 @@
                 <g id="item" transform="translate(40.000000, 94.000000)">
                     <g id="icon-calendar">
                         <polygon id="Rectangle-2" points="0 0 24 0 24 24 0 24"></polygon>
-                        <rect id="Rectangle" fill="#E4F6F0" fill-rule="nonzero" x="0" y="0" width="24" height="24" rx="12"></rect>
-                        <g id="Group" transform="translate(0.000000, 6.000000)" fill="#09A873">
+                        <rect id="Rectangle" fill="#e6f1fb" fill-rule="nonzero" x="0" y="0" width="24" height="24" rx="12"></rect>
+                        <g id="Group" transform="translate(0.000000, 6.000000)" fill="#0970ce">
                             <polygon id="Fill-1" points="12 12 9 12 9 14.25 12 14.25"></polygon>
                             <polygon id="Fill-2" points="8.25 12 5.25 12 5.25 14.25 8.25 14.25"></polygon>
                             <polygon id="Fill-3" points="12 9 9 9 9 11.25 12 11.25"></polygon>

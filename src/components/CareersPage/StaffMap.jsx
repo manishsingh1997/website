@@ -47,7 +47,7 @@ class StaffMap extends React.Component {
       styles,
       ready,
     } = this.state;
-    const loadingPlaceholder = <Spinner active={!ready} color="green" size={48} />;
+    const loadingPlaceholder = <Spinner active={!ready} color="blue" size={48} />;
     const loader = <div className="loader-placeholder">{loadingPlaceholder}</div>;
     return (
       <div className="staff-map">

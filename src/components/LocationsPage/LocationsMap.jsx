@@ -46,7 +46,7 @@ class LocationsMap extends React.Component {
       styles,
       ready,
     } = this.state;
-    const loadingPlaceholder = <Spinner active={!ready} color="green" size={12} />;
+    const loadingPlaceholder = <Spinner active={!ready} color="blue" size={12} />;
     const loader = <div className="loader-placeholder">{loadingPlaceholder}</div>;
     const mapElementClass = 'locations-map';
     return (

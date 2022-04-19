@@ -108,7 +108,7 @@ class AuthConfirmSignInPage extends React.Component {
     return (
       <div className="center">
         <h4 className="center spacing after__is-24">{text}</h4>
-        <Spinner active={true} borderWidth={0.10} color="green" size={48}/>
+        <Spinner active={true} borderWidth={0.10} color="blue" size={48}/>
       </div>
     );
   }

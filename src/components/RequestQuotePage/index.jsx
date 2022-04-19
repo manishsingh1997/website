@@ -233,7 +233,7 @@ export default class RequestQuotePage extends React.Component {
             controls={this.getMapControls()}
             fitBy="width"
             loadGoogleMapsLibrary={googleIntegration.getGoogleLoader()}
-            loadingPlaceholder={<Spinner active={true} color="green" size={32} />}
+            loadingPlaceholder={<Spinner active={true} color="blue" size={32} />}
             markers={[this.getLocationMarker()]}
             popupBehaviour="close"
             styles={styles}

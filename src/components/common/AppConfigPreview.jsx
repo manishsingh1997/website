@@ -114,7 +114,7 @@ export default class AppConfigPreview extends React.Component {
             [className]: Boolean(className),
           }
         )}>
-        {isLoading && <Spinner active borderWidth={.15} color="green" size={64} />}
+        {isLoading && <Spinner active borderWidth={.15} color="blue" size={64} />}
         {this.conditionalConfigPreview()}
       </div>
     );

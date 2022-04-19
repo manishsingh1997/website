@@ -1,4 +1,5 @@
 @import '~@ergeon/core-components/src/components/variables.scss';
+
 .remote-features {
   border-bottom: 1px solid $gray-4;
   padding: $v-42 0 $v-64 0;
@@ -61,7 +62,7 @@
         cursor: pointer;
       }
       img {
-        width: 36px;
+        height: $v-48;
       }
       @include tablet() {
         max-width: unset;

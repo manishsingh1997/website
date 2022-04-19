@@ -138,7 +138,7 @@ export default class QuoteDetails extends React.Component {
         <Spinner
           active={isLoadingMap}
           borderWidth={SPINNER_BORDER_WITH}
-          color="green"
+          color="blue"
           size={SPINNER_SIZE} />
         <DrawMap
           className={classNames({'quote-labels-map__content': isLoadingMap})}

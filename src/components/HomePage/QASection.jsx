@@ -43,7 +43,7 @@ class QASection extends React.Component {
     return (
       <div className="qa-section__loader">
         <Spinner
-          active={isLoading} borderWidth={0.10} color="green" size={64} />
+          active={isLoading} borderWidth={0.10} color="blue" size={64} />
       </div>
     );
   }

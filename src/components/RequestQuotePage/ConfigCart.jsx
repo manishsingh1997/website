@@ -161,7 +161,7 @@ class ConfigCart extends React.Component {
                   <a href={getFencequotingURL(config.code, zipcode, config.units)}>
                     <img src={config.preview}/>
                   </a> :
-                  <Spinner active={true} borderWidth={.2} color="green" size={48} />
+                  <Spinner active={true} borderWidth={.2} color="blue" size={48} />
               }
             </div>
             <div className="config-item__info">
@@ -186,7 +186,7 @@ class ConfigCart extends React.Component {
                   {
                     config.preview ?
                       <img src={config.preview}/> :
-                      <Spinner active={true} borderWidth={.2} color="green" size={36} />
+                      <Spinner active={true} borderWidth={.2} color="blue" size={36} />
                   }
                 </div>
               </div>

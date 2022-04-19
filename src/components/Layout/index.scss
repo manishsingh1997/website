@@ -18,6 +18,10 @@
       height: 20px;
       min-width: 25px;
       text-align: center;
+
+      svg path {
+        fill: $gray-3;
+      }
     }
     .user-name-menu-item {
       display: flex;
@@ -144,7 +148,7 @@
 
   .active-link {
     svg path {
-      fill: $green-1;
+      fill: $blue-1 !important;
     }
   }
 
@@ -158,14 +162,14 @@
     }
 
     &__icon {
-      background: $green-1;
+      background: $blue-1;
       border-radius: 50%;
     }
 
     &__link {
       font-size: 21px;
       padding-left: 8px;
-      color: $green-1;
+      color: $blue-1;
       font-weight: 600;
       @include phone() {
         font-size: 14px;

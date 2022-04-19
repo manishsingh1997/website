@@ -5,8 +5,8 @@ import {NavLink} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
 
-import logOutIcon from '@ergeon/core-components/src/assets/icon-logout.svg';
-import userIcon from '@ergeon/core-components/src/assets/icon-user.svg';
+import logOutIcon from '@ergeon/core-components/src/assets/icon-logout.brand.svg';
+import userIcon from '@ergeon/core-components/src/assets/icon-user.brand.svg';
 import {
   DropdownMenu,
   Footer,
@@ -104,7 +104,7 @@ export default class Layout extends React.Component {
           <li className="link-wrapper">
             <div className="icon-and-arrow">
               <span><img className="sign-in-icon" src={userIcon} /></span>
-              <Spinner active={true} borderWidth={0.10} color="gray" size={16} />
+              <Spinner active={true} borderWidth={0.10} color="blue" size={16} />
             </div>
           </li>
         </Link>

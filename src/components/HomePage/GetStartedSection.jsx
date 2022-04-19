@@ -1,9 +1,9 @@
 import React from 'react';
 import imgGetStarted from 'assets/easy-to-use.png';
-import imgTrusted from 'assets/trusted provider.svg';
-import imgCard from 'assets/card.svg';
-import imgBuck from 'assets/buck.svg';
-import imgSmile from 'assets/smile.svg';
+import imgTrusted from 'assets/trusted/icon-erg-hart.svg';
+import imgCard from 'assets/trusted/icon-lightbulb.svg';
+import imgBuck from 'assets/trusted/icon-reliable-transparent.svg';
+import imgSmile from 'assets/trusted/icon-communication.svg';
 
 import './GetStartedSection.scss';
 

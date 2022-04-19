@@ -5,7 +5,7 @@ import {Spinner} from '@ergeon/core-components';
 const AppLoader = () => {
   return (
     <div className="center">
-      <Spinner active={true} borderWidth={0.10} color="green" size={48}/>
+      <Spinner active={true} borderWidth={0.10} color="blue" size={48}/>
     </div>
   );
 };

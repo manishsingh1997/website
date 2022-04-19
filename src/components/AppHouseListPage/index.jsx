@@ -64,7 +64,7 @@ export default class AppHouseListPage extends React.Component {
               controls={mapControls}
               fitBy="width"
               loadGoogleMapsLibrary={googleIntegration.getGoogleLoader()}
-              loadingPlaceholder={<Spinner active={true} color="green" size={32} />}
+              loadingPlaceholder={<Spinner active={true} color="blue" size={32} />}
               markers={[locationMarker]}
               popupBehaviour="close"
               styles={[{'stylers': [{'saturation': -100}]}]}

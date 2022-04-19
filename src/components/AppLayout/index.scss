@@ -78,6 +78,10 @@
           min-width: 25px;
           margin-right: 10px;
           text-align: center;
+
+          svg path {
+            fill: $gray-3;
+          }
         }
       }
     }
@@ -93,7 +97,7 @@
 
     .active-link {
       svg path {
-        fill: $green-1;
+        fill: $blue-1 !important;
       }
     }
   }

@@ -51,7 +51,7 @@ const JobBoard = () => {
       </div>
       <div className="job-board">
         <div className={loadingClasses}>
-          <Spinner active={loading} color="green" size={48} />
+          <Spinner active={loading} color="blue" size={48} />
         </div>
         <Careers departments={jobList}/>
       </div>

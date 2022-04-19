@@ -2,9 +2,9 @@ import React from 'react';
 
 import {Button} from '@ergeon/core-components';
 
-import imgRemoteOnsite from 'assets/remote-features/icon_video-call@2x.svg';
-import imgRemoteQuote from 'assets/remote-features/icon_monitor@2x.svg';
-import imgContactless from 'assets/remote-features/icon_van@2x.svg';
+import imgRemoteOnsite from 'assets/remote-features/icon-remote-onsite.svg';
+import imgRemoteQuote from 'assets/remote-features/icon-pay-online.svg';
+import imgContactless from 'assets/remote-features/icon-no-contact-install.svg';
 
 import './RemoteFeatures.scss';
 import VideoPopup from './VideoPopup';
@@ -57,9 +57,9 @@ class RemoteFeatures extends React.Component {
           <h3 className="remote-features__title">Our Remote Model</h3>
           <div className="remote-features__cards">
             {this.renderCard({
-              title: 'Video Call for Your Onsite Visit',
+              title: 'Video Call for your Onsite Visit',
               // eslint-disable-next-line max-len
-              desc: 'Our Team is well equipped to guarantee an accurate quote for your project using satellite imagery and a video call.',
+              desc: 'Our Team is well equipped to guarantee an accurate quote for your project using satellite imagery and a video consultation.',
               img: imgRemoteOnsite,
               videoLink: 'https://www.youtube.com/embed/HJh1auVQfV8',
             })}
@@ -67,7 +67,7 @@ class RemoteFeatures extends React.Component {
               <div className="remote-features__card__sep-wrapper__line"/>
             </div>
             {this.renderCard({
-              title: 'Approve Your Quote & Pay Online',
+              title: 'Approve your Quote & Pay Online',
               desc: 'You can review, approve, and pay for your quote all online!',
               img: imgRemoteQuote,
               link: `${process.env.BLOG_HOST}/post/how-our-remote-quoting-works`,
@@ -76,9 +76,9 @@ class RemoteFeatures extends React.Component {
               <div className="remote-features__card__sep-wrapper__line"/>
             </div>
             {this.renderCard({
-              title: 'Stay Inside While We Install Your Fence',
+              title: 'Stay Inside While we Install',
               // eslint-disable-next-line max-len
-              desc: 'The Construction Team can install with zero physical contact with you and are equipped with full construction details.',
+              desc: 'Our Delivery team is fully equipped with all construction details to perform a contact-free installation.',
               img: imgContactless,
               link: `${process.env.BLOG_HOST}/post/contactless-fence-installation`,
             })}
