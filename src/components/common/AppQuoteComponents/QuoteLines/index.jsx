@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {getLabelFromIndex} from '@ergeon/draw-map';
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 
-import {isQuoteLineOfMapKinds, getTagsForQuoteLine, getImagesForQuoteLine} from './utils';
+import {isQuoteLineOfMapKinds, getTagsForQuoteLine, getImagesForQuoteLine, getBuildSpecsForQuoteLine} from './utils';
 import QuoteLine from '../QuoteLine';
 import {showUpcomingFeatures} from '../../../../utils/utils';
 
@@ -97,19 +97,26 @@ export default function QuoteLines({
   isMultiPartyQuote,
   isPrimaryQuoteApproval,
 }) {
-  let calcInput = quote['calc_input'] || {};
-  const isScopeChange = quote['is_scope_change'];
+  const calcInput = useMemo(() => {
+    if (showUpcomingFeatures('ENG-9416') && quote['project_calc_input']) {
+      return quote['project_calc_input'] || {};
+    }
+    return quote['calc_input'] || {};
+  }, [quote]);
 
-  if (showUpcomingFeatures('ENG-9416') && quote['project_calc_input']) {
-    calcInput = quote['project_calc_input'] || {};
-  }
+  // TODO: stop using calcInput after rolling out ENG-9225
+  const isUsingCalcInput = useMemo(() => {
+    const isScopeChange = quote['is_scope_change'];
+
+    return !isMultiPartyQuote && !isScopeChange && Boolean(calcInput);
+  }, [calcInput, isMultiPartyQuote, quote]);
+
   const filterByField = isInstallerPreview ? 'display_to_installer' : 'display_to_customer';
 
   const preparedQuoteLines = useMemo(() => {
     let sides, gates, areas, needToSort;
 
-    // TODO: This should stop using calcInput after rolling out ENG-9225
-    if (!isMultiPartyQuote && !isScopeChange && calcInput) {
+    if (isUsingCalcInput) {
       sides = calcInput.sides || [];
       gates = calcInput.gates || [];
       areas = calcInput.polygons || [];
@@ -124,28 +131,29 @@ export default function QuoteLines({
     const getQuoteLinePropsFromSide = (side, i) => ({
       ...side,
       id: side.map_id,
+      label: getLabelFromIndex(i),
       approvedAt: side.approved_at,
       quoteId: side.quote_id,
       type: CALC_SIDE_TYPE,
       quote,
       index: i,
-      isBuildSpecAvailable: side.is_build_spec_available,
       isDropped: side['is_dropped'],
       // show tags only when calcInput is present
       tags: calcInput ? getTagsForQuoteLine(getLabelFromIndex(i), quote) : undefined,
       price: side.price,
       images: getImagesForQuoteLine(getLabelFromIndex(i), quote),
+      ...getBuildSpecsForQuoteLine(getLabelFromIndex(i), quote),
     });
 
     const getQuoteLinePropsFromGate = (gate, i) => ({
       ...gate,
       id: gate.map_id,
+      label: String(i + 1),
       approvedAt: gate.approved_at,
       quoteId: gate.quote_id,
       type: CALC_GATE_TYPE,
       quote,
       index: i,
-      isBuildSpecAvailable: gate.is_build_spec_available,
       isDropped: gate['is_dropped'],
       // show tags only when calcInput is present
       tags: calcInput ? getTagsForQuoteLine(i + 1, quote) : undefined,
@@ -153,21 +161,24 @@ export default function QuoteLines({
       // hide distance if calcInput is present
       distance: calcInput ? undefined : gate.distance,
       images: getImagesForQuoteLine(String(i + 1), quote),
+      ...getBuildSpecsForQuoteLine(String(i + 1), quote),
     });
 
     const getQuoteLinePropsFromArea = (area, i) => ({
       ...area,
       id: area.map_id,
+      label: getLabelFromIndex(i),
       approvedAt: area.approved_at,
       quoteId: area.quote_id,
       type: CALC_AREA_TYPE,
       quote,
-      isBuildSpecAvailable: area.is_build_spec_available,
       isDropped: area['is_dropped'],
       index: i,
       price: area.price,
       // hide distance if calcInput is present
       distance: calcInput ? undefined : area.distance,
+      images: getImagesForQuoteLine(String(i + 1), quote),
+      ...getBuildSpecsForQuoteLine(String(i + 1), quote),
     });
 
     // sorts lines using labels by letter first and digit last
@@ -193,7 +204,7 @@ export default function QuoteLines({
     ];
 
     return needToSort ? sortLines(preparedQuoteLines) : preparedQuoteLines;
-  }, [quote, quoteLines, calcInput, filterByField, isScopeChange, isMultiPartyQuote]);
+  }, [quote, quoteLines, calcInput, filterByField, isUsingCalcInput]);
 
   return (
     <>
@@ -206,6 +217,7 @@ export default function QuoteLines({
               isInstallerPreview={isInstallerPreview}
               isMultiPartyQuote={isMultiPartyQuote}
               isPrimaryQuoteApproval={isPrimaryQuoteApproval}
+              isUsingCalcInput={isUsingCalcInput}
               // error complaining about mapping to keys with side-undefined
               key={`${quoteLineProps.type}-${quoteLineProps.id}-${quoteLineProps?.label}`}
               onBuildDetailsClick={onBuildDetailsClick}

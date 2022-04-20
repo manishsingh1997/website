@@ -1,5 +1,6 @@
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
+import pick from 'lodash/pick';
 
 export const isQuoteLineOfMapKinds = (quoteLine, types) => {
   const catalog = quoteLine['catalog'];
@@ -7,16 +8,27 @@ export const isQuoteLineOfMapKinds = (quoteLine, types) => {
   return types.some(type => type === quoteType);
 };
 
-export const getTagsForQuoteLine = (itemName, quote) => {
-  const quoteLine = quote['quote_lines'].find((quoteLine) =>
+const getQuoteLineByItemName = (itemName, quote) => {
+  return quote['quote_lines'].find((quoteLine) =>
     Boolean(quoteLine.label) && isEqual(quoteLine.label, itemName)
   );
-  return get(quoteLine, quoteLine?.config, quoteLine?.config?.tags);
+};
+
+export const getTagsForQuoteLine = (itemName, quote) => {
+  const quoteLine = getQuoteLineByItemName(itemName, quote);
+  return get(quoteLine, ['config', 'tags']);
+};
+
+export const getBuildSpecsForQuoteLine = (itemName, quote) => {
+  const quoteLine = getQuoteLineByItemName(itemName, quote);
+  const buildSpecsData = pick(quoteLine, ['is_build_spec_available', 'config']);
+  return {
+    isBuildSpecAvailable: Boolean(buildSpecsData.is_build_spec_available),
+    config: buildSpecsData.config,
+  };
 };
 
 export const getImagesForQuoteLine = (itemName, quote) => {
-  const quoteLine = quote['quote_lines'].find((quoteLine) =>
-    Boolean(quoteLine.label) && isEqual(quoteLine.label, itemName)
-  );
-  return get(quoteLine, quoteLine?.mediafile_list, quoteLine?.mediafile_list?.mediafiles);
+  const quoteLine = getQuoteLineByItemName(itemName, quote);
+  return get(quoteLine, ['mediafile_list', 'mediafiles']);
 };

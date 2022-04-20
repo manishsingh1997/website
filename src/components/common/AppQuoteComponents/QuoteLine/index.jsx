@@ -27,6 +27,15 @@ import './index.scss';
 
 export default function QuoteLine(props) {
   const {
+    isUsingCalcInput,
+    isInstallerPreview,
+    isMultiPartyQuote,
+    isPrimaryQuoteApproval,
+    onBuildDetailsClick,
+    ...quoteLineProps
+  } = props;
+
+  const {
     index,
     approvedAt,
     area,
@@ -46,26 +55,22 @@ export default function QuoteLine(props) {
     totalPrice,
     type,
     isBuildSpecAvailable,
-    isInstallerPreview,
-    isMultiPartyQuote,
-    isPrimaryQuoteApproval,
-    onBuildDetailsClick,
     images,
     status = QUOTE_LINE_STATUSES.NEEDS_APPROVAL,
     isDropped = false,
-  } = props;
+  } = quoteLineProps;
 
   const isMobileWidth = useIsMobileWidth();
 
   const imagePreview = useMemo(() => (
     <div>
       {
-        label ?
+        isUsingCalcInput ?
           <PreviewForQuoteLine {...props} images={images} /> :
           <PreviewForCalcInfo {...props} images={images} />
       }
     </div>
-  ), [images, label, props]);
+  ), [images, isUsingCalcInput, props]);
 
   const onOpenBuildDetails = useCallback(() => {
     if (onBuildDetailsClick) {
@@ -190,6 +195,7 @@ QuoteLine.propTypes = {
   isInstallerPreview: PropTypes.bool,
   isMultiPartyQuote: PropTypes.bool,
   isPrimaryQuoteApproval: PropTypes.bool,
+  isUsingCalcInput: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string,
   onBuildDetailsClick: PropTypes.func,
