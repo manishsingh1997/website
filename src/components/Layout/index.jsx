@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
+import times from 'lodash/times';
+import flatten from 'lodash/flatten';
 
 import logOutIcon from '@ergeon/core-components/src/assets/icon-logout.brand.svg';
 import userIcon from '@ergeon/core-components/src/assets/icon-user.brand.svg';
@@ -15,6 +17,8 @@ import {
   Spinner,
   TopPanel,
   SimpleTopPanel,
+  SimpleFooter,
+  LocationsFooter,
 } from '@ergeon/core-components';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 
@@ -94,6 +98,24 @@ export default class Layout extends React.Component {
       '/request-quote',
     ];
     return this.checkRouteList(noFooterTemplates);
+  }
+
+  getLocationsList() {
+    // TODO: this is for demo purposes, Follow up on https://ergeon.atlassian.net/browse/ENG-13162
+    const citiesExample = [
+      {text: 'Dallas', url: '#'},
+      {text: 'Fort Worth', url: '#'},
+      {text: 'Fresno', url: '#'},
+      {text: 'Los Angeles', url: '#'},
+      {text: 'San Diego', url: '#'},
+      {text: 'San Francisco', url: '#'},
+      {text: 'Thousand Oaks', url: '#'},
+      {text: 'Sacramento', url: '#'},
+      {text: 'Santa Rosa', url: '#'},
+      {text: 'Walnut Creek', url: '#'},
+    ];
+
+    return flatten(times(7, () => citiesExample));
   }
 
   renderDropdownMenu() {
@@ -201,12 +223,28 @@ export default class Layout extends React.Component {
           {
             !asPDF &&
             showFooter &&
+            !showUpcomingFeatures('ENG-13570') &&
             <Footer
               ergeonUrl="/"
               fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
               productCatalogUrl={`${process.env.PRODUCT_CATALOG_URL}/`}
               projectsGalleryUrl={`${process.env.PROJECTS_GALLERY_HOST}/`}
               widthClass={widthClass} />
+          }
+          {
+            !asPDF &&
+            showFooter &&
+            showUpcomingFeatures('ENG-13570') &&
+            (
+              <>
+                <SimpleFooter
+                  ergeonUrl="/"
+                  fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
+                  productCatalogUrl={`${process.env.PRODUCT_CATALOG_URL}/`}
+                  widthClass={widthClass} />
+                <LocationsFooter listArray={this.getLocationsList()} listTitle="Locations" />
+              </>
+            )
           }
           <AddressUpdatePopup />
         </NavLinkContext.Provider>
