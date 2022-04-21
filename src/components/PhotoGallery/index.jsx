@@ -179,18 +179,25 @@ class PhotoGallery extends React.Component {
     renderBanner({imageSrc, header, description, url}, key) {
       return (
         <div className="card soft-border photo-gallery__banner" key={key}>
-          <img className="photo-gallery__banner-photo" src={imageSrc} />
-          <div className="photo-gallery__banner-data">
-            <h4 className="additional-header h2 spacing after__is-6">{header}</h4>
-            <p className="spacing after__is-12">
-              {description}
-            </p>
-            <NavLink
-              className="button button--regular taste__line button--size__medium"
-              to={url}>
-              Open Gallery
-            </NavLink>
+          <div className="photo-gallery__wrapper">
+            <img className="photo-gallery__wrapper-photo" src={imageSrc} />
+            <div className="photo-gallery__wrapper-data">
+              <h4 className="additional-header h2 spacing after__is-6">{header}</h4>
+              <p className="spacing after__is-12">
+                {description}
+              </p>
+              <NavLink
+                className="button button--regular taste__line button--size__medium is__button-desktop"
+                to={url}>
+                Open Gallery
+              </NavLink>
+            </div>
           </div>
+          <NavLink
+            className="button button--regular taste__line button--size__medium is__button-phone"
+            to={url}>
+            Open Gallery
+          </NavLink>
         </div>
       );
     }
@@ -246,7 +253,7 @@ class PhotoGallery extends React.Component {
             </div>
             <div className="wrapper-1180">
               <div className="cards two-columns">
-                {[BANNERS.GATE_BANNER, BANNERS.DRIVEWAY_BANNER, BANNERS.FENCE_BANNER].map(
+                {[BANNERS.FENCE_BANNER, BANNERS.GATE_BANNER, BANNERS.DRIVEWAY_BANNER].map(
                   (banner, index) => this.renderBanner(banner, index)
                 )}
               </div>
