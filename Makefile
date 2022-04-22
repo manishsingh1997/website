@@ -34,7 +34,7 @@ install: .install
 	npm install
 	touch $@
 
-lint: install
+lint:
 	npm run lint
 
 create-sitemap:

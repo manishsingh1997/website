@@ -2,10 +2,12 @@ import {MouseEvent} from 'react';
 import * as Sentry from '@sentry/browser';
 import mapValues from 'lodash/mapValues';
 
+// @ts-ignore
 import {getBaseEventData} from '@ergeon/erg-utms';
+// @ts-ignore
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 
-import {submitContactUs} from 'api/contactUs';
+import {submitContactUs} from '../../api/contactUs';
 import {parseError} from '../../utils/utils';
 import {identify, track, trackError} from '../../utils/analytics';
 import {DEFAULT_SOURCE_VALUE} from '../../website/constants';

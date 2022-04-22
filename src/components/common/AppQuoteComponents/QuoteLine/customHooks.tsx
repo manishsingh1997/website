@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 const SCREEN_SM = 768;
 
-export function getCssPxValue(property: string) {
+export const getCssPxValue = (property: string) => {
   const cssVal = getComputedStyle(document.body).getPropertyValue(property);
   if (cssVal) {
     return Number(cssVal.replace('px', ''));
@@ -14,11 +14,11 @@ export function getCssPxValue(property: string) {
  * Custom hook that checks `window.innerWidth` for resolutions less than or equal to screen SM.
  * @returns {Boolean}
  */
-export function useIsMobileWidth(): boolean {
+export const useIsMobileWidth = (): boolean => {
   const [isMobileWidth, setIsMobileWidth] = useState(false);
 
   useEffect(() => {
-    function handleResize() {
+    const handleResize = () => {
       setIsMobileWidth(window.innerWidth <= (getCssPxValue('--screen-sm') || SCREEN_SM));
     }
     window.addEventListener('resize', handleResize);

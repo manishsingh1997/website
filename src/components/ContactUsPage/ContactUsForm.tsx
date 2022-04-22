@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
 
 import {Button, Spinner, FormField, Input} from '@ergeon/core-components';
+// @ts-ignore
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 
 import useFormValidation, {

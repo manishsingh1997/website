@@ -25,24 +25,24 @@ export default function useFormValidation<T extends Dictionary<string>>(
   );
 }
 
-function validate(predicate: boolean, {error}: {error: string}) {
+const validate = (predicate: boolean, {error}: {error: string}) => {
   if (!predicate) return error;
 }
 
-export function getNotEmptyValidator(error: string): ValidationFn {
+export const getNotEmptyValidator = (error: string): ValidationFn => {
   return (value: string) => validate(!isEmpty(value), {error});
 }
 
-export function getCharactersValidator(
+export const getCharactersValidator = (
   error: string,
   count: number
-): ValidationFn {
+): ValidationFn => {
   return (value: string) =>
     validate(!isEmpty(value) && value.length <= count, {
       error,
     });
 }
 
-export function getEmailValidator(error: string): ValidationFn {
+export const getEmailValidator = (error: string): ValidationFn => {
   return (value: string) => validate(isEmail(value), {error});
 }

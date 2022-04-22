@@ -1,2 +1,4 @@
 dist/*
 src/monitoring/newrelic.js
+jest.config.js
+src/process/*

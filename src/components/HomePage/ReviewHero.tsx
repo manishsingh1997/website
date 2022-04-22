@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Experiment, Variant} from '@marvelapp/react-ab-test';
 import {RatingsData} from '@ergeon/core-components';
 import omit from 'lodash/omit';
@@ -37,13 +37,18 @@ const ReviewHero = () => {
     },
   ];
 
+  const renderReviewExperiment = useCallback((review) => {
+    // @ts-ignore
+      return <ReviewExperiment {...omit(review, ['variant'])} />},
+    []);
+
   return (
     <div className="review-hero">
       <div className="wrapper-1180">
         <Experiment name="customerReviewsExperiment">
           {reviewsArray.map((review, i) => (
             <Variant key={`variant${i}`} name={review.variant}>
-              <ReviewExperiment {...omit(review, ['variant'])} />
+              {renderReviewExperiment(review)}
             </Variant>
           ))}
         </Experiment>

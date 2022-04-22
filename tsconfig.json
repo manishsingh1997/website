@@ -9,7 +9,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "lib": [
       "dom",
       "dom.iterable",
@@ -23,7 +23,5 @@
     "isolatedModules": true,
     "noEmit": true,
   },
-  "include": [
-    "./src/**/*.tsx"
-, "src/components/CareersPage/index.tsx"  ]
+  "include": ["./src", "./src/@types/files.d.ts"]
 }
