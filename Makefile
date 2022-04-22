@@ -46,8 +46,8 @@ run: install
 
 test: install lint
 
-coverage:
-	npm run coverage
+coverage-sitemap:
+	npm run coverage-sitemap
 
 sentry-create-release:
 	$(SENTRY_CLI) releases new --finalize $(SENTRY_RELEASE_NAME)

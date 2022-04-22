@@ -4,19 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "create-sitemap-production": "NODE_ENV=production BABEL_ENV=sitemap babel-node ./src/process/createSitemap.js",
-    "create-sitemap-staging": "NODE_ENV=staging BABEL_ENV=sitemap npx babel-node ./src/process/createSitemap.js",
+    "create-sitemap": "BABEL_ENV=sitemap npx babel-node ./src/process/createSitemap.js",
+    "create-sitemap-production": "NODE_ENV=production npm run create-sitemap",
+    "create-sitemap-staging": "NODE_ENV=staging npm run create-sitemap",
+    "create-sitemap-development": "NODE_ENV=development npm run create-sitemap",
     "start": "NODE_ENV=development webpack-dev-server",
     "start:staging": "NODE_ENV=staging BUILD_ENV=development webpack-dev-server",
     "build-production": "NODE_ENV=production webpack",
     "build-staging": "NODE_ENV=staging webpack",
     "build-development": "NODE_ENV=development webpack",
     "eslint": "./node_modules/eslint/bin/eslint.js --ext .jsx,.js,.ts,.tsx ./src",
-    "lint-fix": "./node_modules/eslint/bin/eslint.js --fix --ext .jsx,.js,.ts,.tsx ./src",
+    "lint-fix": "npm run eslint -- --fix",
     "lint": "npm run eslint && npm run ts",
     "ts": "tsc",
-    "test": "jest --colors --notify --verbose --ci --silent",
-    "coverage": "npm test -- --coverage --watchAll=false"
+    "test-sitemap": "jest --config ./src/process/jest.sitemap-config.js --colors --notify --verbose --ci --silent",
+    "coverage-sitemap": "npm run test-sitemap -- --coverage --watchAll=false"
   },
   "repository": {
     "type": "git",

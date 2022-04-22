@@ -52,9 +52,9 @@ jobs:
                   make lint
 
             - run:
-                name: Run Tests and Coverage
+                name: Run Tests and Coverage For Sitemap
                 command: |
-                  make coverage
+                  make coverage-sitemap
 
             - deploy:
                 name: Deploy
