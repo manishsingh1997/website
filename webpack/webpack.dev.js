@@ -1,10 +1,7 @@
-const merge = require('webpack-merge');
 const webpack = require('webpack');
+const {BUILD_DIR} = require('./constants');
 
-const common = require('./webpack.common.js');
-const BUILD_DIR = common.output.path;
-
-module.exports = merge(common, {
+module.exports = {
   mode: 'development',
   devServer: {
     compress: true,
@@ -18,4 +15,4 @@ module.exports = merge(common, {
     port: 6600,
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
-});
+}

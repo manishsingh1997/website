@@ -6,9 +6,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const {buildIncludeRegexp, checkModules} = require('are-you-es5');
-
-const APP_DIR = path.resolve(__dirname, './src');
-const BUILD_DIR = path.resolve(__dirname, './dist');
+const {BUILD_DIR, APP_DIR} = require('./constants');
 
 const SENTRY_DSN = 'https://f0fe1cc5aa2e4422bec8bbd637bba091@o147577.ingest.sentry.io/1794736';
 let SENTRY_CONSOLE_LEVELS = "['warn', 'error', 'assert']";

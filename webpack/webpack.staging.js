@@ -1,11 +1,8 @@
 const CompressionPlugin = require('compression-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const merge = require('webpack-merge');
 
-const common = require('./webpack.common.js');
-
-module.exports = merge(common, {
+module.exports = {
   mode: 'development',
   performance: {
     hints: 'warning',
@@ -38,4 +35,4 @@ module.exports = merge(common, {
       }),
     ],
   },
-});
+}
