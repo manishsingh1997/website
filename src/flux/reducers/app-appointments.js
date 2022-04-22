@@ -6,7 +6,7 @@ const initialState = {
   listError: null,
 };
 
-const appointmentsReducer = (state=initialState, action) => {
+const appointmentsReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_APPOINTMENTS_START:
       return {...state, isListLoading: true};

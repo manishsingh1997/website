@@ -7,39 +7,36 @@ import licenseImage from 'assets/license.jpg';
 import './index.scss';
 
 const PRODUCT_DESCRIPTIONS = `${process.env.API_HOST}/api/store/product-descriptions/`;
-const CONTRACTS_DESCRIPTION = 'Our standard contract together with all'
-    + ' the associated warranties,'
-    + ' assurances, terms and conditions are'
-    + ' listed here by state and product';
+const CONTRACTS_DESCRIPTION =
+  'Our standard contract together with all' +
+  ' the associated warranties,' +
+  ' assurances, terms and conditions are' +
+  ' listed here by state and product';
 
 class WarrantiesPage extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       contracts: [],
     };
-    this.getProductContracts().then(
-      contracts => this.setState({contracts})
-    );
+    this.getProductContracts().then((contracts) => this.setState({contracts}));
   }
 
   getProductContracts() {
     return fetch(PRODUCT_DESCRIPTIONS, {mode: 'cors'})
-      .then(response => response.json())
-      .then(products => products.map(product => {
-        const {name, slug, state_products: states} = product;
-        return {name, slug, states};
-      }));
+      .then((response) => response.json())
+      .then((products) =>
+        products.map((product) => {
+          const {name, slug, state_products: states} = product;
+          return {name, slug, states};
+        })
+      );
   }
 
   renderContractItem(slug, name, contract) {
     return (
       <li key={slug}>
-        <a
-          href={contract}
-          rel="noopener noreferrer"
-          target="_blank">
+        <a href={contract} rel="noopener noreferrer" target="_blank">
           {name}
         </a>
       </li>
@@ -47,28 +44,22 @@ class WarrantiesPage extends React.Component {
   }
 
   renderContractHeader({name, slug, states}) {
-    const items = states.map(
-      state => {
-        const {state_name: name, contract} = state;
-        const contractSlug = `${slug}-${name}`;
-        return this.renderContractItem(contractSlug, name, contract);
-      }
-    );
+    const items = states.map((state) => {
+      const {state_name: name, contract} = state;
+      const contractSlug = `${slug}-${name}`;
+      return this.renderContractItem(contractSlug, name, contract);
+    });
     return (
       <React.Fragment key={slug}>
         <h4>{name}</h4>
-        <ul>
-          {items}
-        </ul>
+        <ul>{items}</ul>
       </React.Fragment>
     );
   }
 
   renderContractsSection(contracts) {
     if (contracts && contracts.length) {
-      const contractsSection = contracts.map(
-        contact => this.renderContractHeader(contact)
-      );
+      const contractsSection = contracts.map((contact) => this.renderContractHeader(contact));
       return (
         <React.Fragment>
           <h3 className="spacing after__is-12">Our Warranty</h3>
@@ -88,14 +79,11 @@ class WarrantiesPage extends React.Component {
         <div className="warranties-page__header">
           <div className="full-width-block wrapper-1180">
             <div className="spacing after__is-48">
-              <h1 className="white spacing after__is-12">
-                Licenses & Warranty
-              </h1>
+              <h1 className="white spacing after__is-12">Licenses & Warranty</h1>
               <p className="subheader h2 white width-restricted to-620">
                 We are licensed, bonded and insured contractors and promise you&apos;ll be happy with our work.
               </p>
             </div>
-
           </div>
         </div>
         <div className="warranties-page__content wrapper-1180">
@@ -119,7 +107,8 @@ class WarrantiesPage extends React.Component {
               className="certification-image-link card padding-20 soft-border shadow__z2"
               href={licenseImage}
               rel="noopener noreferrer"
-              target="_blank">
+              target="_blank"
+            >
               <img className="certification-image" src={licenseImage} />
             </a>
           </div>

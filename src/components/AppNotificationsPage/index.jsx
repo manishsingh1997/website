@@ -31,7 +31,6 @@ const COMPANY_NEWS_NOTIFICATION_TYPE = 'is_email_newsletter_ok';
  * but remember that option and unsubscibe only once.
  */
 export default class AppNotificationsPage extends React.Component {
-
   static propTypes = {
     location: PropTypes.object,
   };
@@ -55,7 +54,7 @@ export default class AppNotificationsPage extends React.Component {
   async fetchData() {
     await this.getNotificationPreferences();
     if (this.state.unsubscribeAutomatically) {
-      this.setState({'isInitialLoading': true});
+      this.setState({isInitialLoading: true});
       const primaryContact = this.state.primaryContact;
       primaryContact[COMPANY_NEWS_NOTIFICATION_TYPE] = false;
       await this.updateNotificationPreferences([primaryContact]);
@@ -88,7 +87,7 @@ export default class AppNotificationsPage extends React.Component {
     const customerGID = this.context;
     const unsubscribeCode = getUnsubscribeCodeFromQuery(location.search);
     try {
-      this.setState({'isSaving': true, 'isSavedSuccessfully': false});
+      this.setState({isSaving: true, isSavedSuccessfully: false});
       const response = await updateNotificationPreferencesAPI(customerGID, unsubscribeCode, data);
       const primaryContact = this.getPrimaryContactFromResponse(response);
       this.setState({
@@ -106,21 +105,21 @@ export default class AppNotificationsPage extends React.Component {
   }
 
   getPrimaryContactFromResponse(response) {
-    return response.data && response.data.find((contact => contact['is_primary']));
+    return response.data && response.data.find((contact) => contact['is_primary']);
   }
 
   setAutoUnsubscribeFlag() {
     const parsedQuery = queryString.parse(this.props.location.search);
 
     if (parsedQuery.auto === COMPANY_NEWS_NOTIFICATION_TYPE && !this.state.unsubscribeAutomatically) {
-      this.setState({'unsubscribeAutomatically': true});
+      this.setState({unsubscribeAutomatically: true});
     }
   }
 
   /**
-  * If `auto` and `unsubscribeCode` are provided - it is a signal that user used "Unsubscribe" link
-  * from marketing emails. In such case we should unsubscribe him from specific subscription.
-  */
+   * If `auto` and `unsubscribeCode` are provided - it is a signal that user used "Unsubscribe" link
+   * from marketing emails. In such case we should unsubscribe him from specific subscription.
+   */
   shouldUnsubscribe(auto, unsubscribeCode) {
     if (!unsubscribeCode) {
       // The unsubscribe code should be provided for it to work
@@ -137,13 +136,13 @@ export default class AppNotificationsPage extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.updateNotificationPreferences([this.state.primaryContact]);
-    this.setState({'unsubscribeAutomatically': false});
+    this.setState({unsubscribeAutomatically: false});
   }
 
   handleCheckChange(value) {
     const primaryContact = this.state.primaryContact;
     primaryContact[COMPANY_NEWS_NOTIFICATION_TYPE] = value;
-    this.setState({'isSavedSuccessfully': false, primaryContact});
+    this.setState({isSavedSuccessfully: false, primaryContact});
   }
 
   renderContent() {
@@ -156,38 +155,33 @@ export default class AppNotificationsPage extends React.Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div className="spacing after__is-24">
             <div className="label">Email</div>
-            <div className="spacing after__is-24">
-              {primaryEmail}
-            </div>
-            <Checkbox checked={isSubscribedToNews} disabled={isSaving} onClick={value => this.handleCheckChange(value)}>
+            <div className="spacing after__is-24">{primaryEmail}</div>
+            <Checkbox
+              checked={isSubscribedToNews}
+              disabled={isSaving}
+              onClick={(value) => this.handleCheckChange(value)}
+            >
               <div>
-                <div><b>Company News</b></div>
+                <div>
+                  <b>Company News</b>
+                </div>
                 <p>I&apos;m ok to receive interesting home improvement insights from Ergeon over email</p>
               </div>
             </Checkbox>
           </div>
-          <Button
-            className={classNames({'is-loading': isSaving})}
-            disabled={isSaving}
-            size="large"
-            type="submit">
-            {isSaving ? <Spinner active={true} borderWidth={0.10} size={25} /> : 'Update preferences'}
+          <Button className={classNames({'is-loading': isSaving})} disabled={isSaving} size="large" type="submit">
+            {isSaving ? <Spinner active={true} borderWidth={0.1} size={25} /> : 'Update preferences'}
           </Button>
         </form>
         {isSavedSuccessfully && (
-          <Notification
-            mode="embed"
-            type="Success">
-            {this.state.unsubscribeAutomatically ?
-              'You were unsubscribed successfully' :
-              'Notifications preferences updated successfully'
-            }
+          <Notification mode="embed" type="Success">
+            {this.state.unsubscribeAutomatically
+              ? 'You were unsubscribed successfully'
+              : 'Notifications preferences updated successfully'}
           </Notification>
         )}
         {error && (
-          <Notification
-            mode="embed"
-            type="Error">
+          <Notification mode="embed" type="Error">
             {`There was an error during processing your request: ${error}`}
           </Notification>
         )}
@@ -196,7 +190,6 @@ export default class AppNotificationsPage extends React.Component {
   }
 
   render() {
-
     const {location} = this.props;
     const parsedQuery = queryString.parse(location.search);
     const {auto, ...queryWithoutAuto} = parsedQuery;
@@ -216,7 +209,8 @@ export default class AppNotificationsPage extends React.Component {
           fetchData={this.fetchData.bind(this)}
           isLoading={this.state.isInitialLoading}
           renderContent={this.renderContent.bind(this)}
-          renderHeader={() => 'Notifications preferences'} />
+          renderHeader={() => 'Notifications preferences'}
+        />
       </div>
     );
   }

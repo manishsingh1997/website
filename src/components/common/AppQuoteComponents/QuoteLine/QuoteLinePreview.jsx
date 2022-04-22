@@ -44,7 +44,8 @@ export default function QuoteLinePreview(props) {
       schemaCodeUrl={usePlaceHolder ? null : schemaCodeUrl}
       useNoPreviewIcon={useNoPreviewIcon}
       withLink={showLink}
-      zipCode={zipCode} />
+      zipCode={zipCode}
+    />
   );
 }
 

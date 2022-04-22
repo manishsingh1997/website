@@ -8,13 +8,14 @@ import {NavLink} from 'react-router-dom';
  * Original NavLink require full URL to match, including GET query parameters.
  * More details here: https://bit.ly/2DYtPP2
  */
-const PathNavLink = props => (
+const PathNavLink = (props) => (
   <NavLink
     isActive={(_, {pathname}) => {
       const toPathname = queryString.parseUrl(props.to).url;
       return pathname === toPathname;
     }}
-    {...props}/>
+    {...props}
+  />
 );
 
 PathNavLink.propTypes = {

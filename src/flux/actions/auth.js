@@ -2,22 +2,22 @@ import {authService} from 'utils/auth';
 import {parseAPIError} from 'utils/api';
 
 export const actionTypes = {
-  'AUTH_CODE_ACTIVATION_START': 'AUTH_CODE_ACTIVATION_START',
-  'AUTH_CODE_ACTIVATION_DONE': 'AUTH_CODE_ACTIVATION_DONE',
-  'AUTH_CODE_ACTIVATION_ERROR': 'AUTH_CODE_ACTIVATION_ERROR',
-  'AUTH_GET_USER_START': 'AUTH_GET_USER_START',
-  'AUTH_GET_USER_DONE': 'AUTH_GET_USER_DONE',
-  'AUTH_GET_USER_ERROR': 'AUTH_GET_USER_ERROR',
-  'AUTH_LOGOUT_START': 'AUTH_LOGOUT_START',
-  'AUTH_LOGOUT_DONE': 'AUTH_LOGOUT_DONE',
-  'AUTH_LOGOUT_ERROR': 'AUTH_LOGOUT_ERROR',
-  'RESEND_NEW_LINK_START': 'RESEND_NEW_LINK_START',
-  'RESEND_NEW_LINK_DONE': 'RESEND_NEW_LINK_DONE',
-  'RESEND_NEW_LINK_ERROR': 'RESEND_NEW_LINK_ERROR',
+  AUTH_CODE_ACTIVATION_START: 'AUTH_CODE_ACTIVATION_START',
+  AUTH_CODE_ACTIVATION_DONE: 'AUTH_CODE_ACTIVATION_DONE',
+  AUTH_CODE_ACTIVATION_ERROR: 'AUTH_CODE_ACTIVATION_ERROR',
+  AUTH_GET_USER_START: 'AUTH_GET_USER_START',
+  AUTH_GET_USER_DONE: 'AUTH_GET_USER_DONE',
+  AUTH_GET_USER_ERROR: 'AUTH_GET_USER_ERROR',
+  AUTH_LOGOUT_START: 'AUTH_LOGOUT_START',
+  AUTH_LOGOUT_DONE: 'AUTH_LOGOUT_DONE',
+  AUTH_LOGOUT_ERROR: 'AUTH_LOGOUT_ERROR',
+  RESEND_NEW_LINK_START: 'RESEND_NEW_LINK_START',
+  RESEND_NEW_LINK_DONE: 'RESEND_NEW_LINK_DONE',
+  RESEND_NEW_LINK_ERROR: 'RESEND_NEW_LINK_ERROR',
 };
 
 export const resendLink = (otp) => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch({
       type: actionTypes.RESEND_NEW_LINK_START,
     });
@@ -36,7 +36,7 @@ export const resendLink = (otp) => {
 };
 
 export const authenticateUserWithCode = (code) => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch({
       type: actionTypes.AUTH_CODE_ACTIVATION_START,
     });
@@ -59,7 +59,7 @@ export const authenticateUserWithCode = (code) => {
 };
 
 export const getCurrentUser = () => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch({
       type: actionTypes.AUTH_GET_USER_START,
     });
@@ -80,7 +80,7 @@ export const getCurrentUser = () => {
 };
 
 export const logout = () => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch({
       type: actionTypes.AUTH_LOGOUT_START,
     });

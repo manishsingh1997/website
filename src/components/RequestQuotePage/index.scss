@@ -1,4 +1,4 @@
-@import "~@ergeon/core-components/src/components/variables.scss";
+@import '~@ergeon/core-components/src/components/variables.scss';
 
 .request-quote-page {
   max-width: 100%;
@@ -25,7 +25,7 @@
     .subtitle {
       margin-bottom: $v-24;
       max-width: 460px;
-      color: $black-3
+      color: $black-3;
     }
   }
 
@@ -98,7 +98,7 @@
     }
 
     @include phone() {
-     display: none;
+      display: none;
     }
     &-wrapper {
       margin-top: 24px;
@@ -115,7 +115,6 @@
     align-items: center;
 
     .Address {
-
       .AddressStreet {
         font: $font-title;
         font-size: $h6-size;

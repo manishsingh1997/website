@@ -1,85 +1,85 @@
 @import '~@ergeon/core-components/src/components/variables';
 
-.left__padding{
-    &-20{
-      padding-left:$h-20;
-    }
-    &-10{
-      padding-left:$h-10;
-    }
+.left__padding {
+  &-20 {
+    padding-left: $h-20;
+  }
+  &-10 {
+    padding-left: $h-10;
+  }
+}
+
+.right__padding {
+  &-20 {
+    padding-right: $h-20;
+  }
+  &-10 {
+    padding-right: $h-10;
+  }
+}
+
+.top__padding {
+  &-20 {
+    padding-top: $h-20;
+  }
+  &-10 {
+    padding-top: $h-10;
+  }
+}
+
+.bottom__padding {
+  &-20 {
+    padding-bottom: $h-20;
+  }
+  &-10 {
+    padding-bottom: $h-10;
+  }
+}
+
+.img-container {
+  width: auto;
+
+  img {
+    width: 100%;
+  }
+}
+
+.hideBreaks {
+  @include phone {
+    display: none;
+  }
+}
+
+.subContent {
+  margin: auto;
+  font-size: $h4-size;
+  line-height: 1.36;
+}
+
+.before {
+  &__is-148 {
+    margin-top: ($v-124 + $v-24);
   }
 
-  .right__padding{
-    &-20{
-      padding-right:$h-20;
-    }
-    &-10{
-      padding-right:$h-10;
-    }
-  }
-  
-  .top__padding{
-    &-20{
-      padding-top:$h-20;
-    }
-    &-10{
-      padding-top:$h-10;
-    }
+  &__is-108 {
+    margin-top: ($v-48 + $h-60);
   }
 
-  .bottom__padding{
-    &-20{
-      padding-bottom:$h-20;
-    }
-    &-10{
-      padding-bottom:$h-10;
-    }
+  &__is-96 {
+    margin-top: ($h-80 + $v-16);
+  }
+}
+
+.after {
+  &__is-148 {
+    margin-bottom: ($v-124 + $v-24);
   }
 
-  .img-container {
-    width: auto;
-
-    img {
-      width: 100%;
-    }
+  &__is-108 {
+    margin-bottom: ($v-48 + $h-60);
   }
 
-  .hideBreaks {
-    @include phone {
-      display: none;
-    }
+  &__is-96 {
+    margin-bottom: ($h-80 + $v-16);
   }
-
-  .subContent {
-    margin: auto;
-    font-size: $h4-size;
-    line-height: 1.36;
-  }
-
-  .before{
-      &__is-148{
-          margin-top: ($v-124 + $v-24);
-      }
-
-      &__is-108{
-          margin-top: ($v-48 + $h-60);
-      }
-
-      &__is-96{
-          margin-top: ($h-80 + $v-16);
-      }
-  }
-
-  .after{
-      &__is-148{
-          margin-bottom: ($v-124 + $v-24);
-      }
-
-      &__is-108{
-          margin-bottom: ($v-48 + $h-60);
-      }
-
-      &__is-96{
-          margin-bottom: ($h-80 + $v-16);
-      }
-  }
+}

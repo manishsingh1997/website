@@ -8,16 +8,11 @@ import LockIcon from '@ergeon/core-components/src/assets/icon-lock.svg';
 
 import Success from 'components/common/Success';
 import SingleCard from 'components/common/SingleCard';
-import {
-  createValidator,
-  email,
-  required,
-} from 'utils/validation';
+import {createValidator, email, required} from 'utils/validation';
 
 import './index.scss';
 
 class AuthSignInPage extends React.Component {
-
   constructor(props) {
     super(props);
     this.validator = createValidator({
@@ -56,8 +51,12 @@ class AuthSignInPage extends React.Component {
       await authService.requestOTP(email, 'email');
     } catch (signInError) {
       // TODO: move response formatting to erg-customer-auth-js
-      if (signInError.response && signInError.response.status < 500 && signInError.response.data
-          && (signInError.response.data.identifier || signInError.response.data['non_field_errors'])) {
+      if (
+        signInError.response &&
+        signInError.response.status < 500 &&
+        signInError.response.data &&
+        (signInError.response.data.identifier || signInError.response.data['non_field_errors'])
+      ) {
         errors = {
           email: signInError.response.data.identifier,
           global: signInError.response.data['non_field_errors'],
@@ -90,15 +89,23 @@ class AuthSignInPage extends React.Component {
     const {errors} = this.state;
     return (
       <div className="spacing after__is-6">
-        {errors && errors[fieldName] && errors[fieldName].map((error, i) =>
-          <div className="signin-form-error" key={i}>{error}</div>)
-        }
+        {errors &&
+          errors[fieldName] &&
+          errors[fieldName].map((error, i) => (
+            <div className="signin-form-error" key={i}>
+              {error}
+            </div>
+          ))}
       </div>
     );
   }
 
   renderForm() {
-    const {data: {email}, errors, loading} = this.state;
+    const {
+      data: {email},
+      errors,
+      loading,
+    } = this.state;
 
     return (
       <div>
@@ -119,17 +126,14 @@ class AuthSignInPage extends React.Component {
               onChange={this.handleFieldChange}
               placeholder="e.g. username@mail.com"
               type="email"
-              value={email} />
+              value={email}
+            />
             {this.renderErrors('email')}
           </FormField>
           <div className="signin-form-actions">
             {this.renderErrors('global')}
-            <Button
-              className={classNames({'is-loading': loading})}
-              disabled={loading}
-              size="large"
-              type="submit">
-              {loading ? <Spinner active={true} borderWidth={0.10} size={25} /> : 'Sign in with email'}
+            <Button className={classNames({'is-loading': loading})} disabled={loading} size="large" type="submit">
+              {loading ? <Spinner active={true} borderWidth={0.1} size={25} /> : 'Sign in with email'}
             </Button>
           </div>
           <div className="center signin-form-footer spacing before__is-12">
@@ -147,11 +151,8 @@ class AuthSignInPage extends React.Component {
   render() {
     const {isFormSuccess} = this.state;
 
-    return (
-      <SingleCard className="signin-page" content={isFormSuccess ? this.renderSuccess() : this.renderForm()} />
-    );
+    return <SingleCard className="signin-page" content={isFormSuccess ? this.renderSuccess() : this.renderForm()} />;
   }
-
 }
 
 export default AuthSignInPage;

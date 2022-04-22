@@ -33,17 +33,11 @@ export default function QuoteLinePrice(props) {
   return (
     <>
       <div className="spacing before__is-12 after__is-12">
-        {distance && (
-          <Distance distance={distance} />
-        )}
-        {quantity && unit && (
-          <QuantityUnit quantity={quantity} unit={unit} />
-        )}
-        {area && (
-          <Area area={area} />
-        )}
+        {distance && <Distance distance={distance} />}
+        {quantity && unit && <QuantityUnit quantity={quantity} unit={unit} />}
+        {area && <Area area={area} />}
       </div>
-      {isPriceShown &&
+      {isPriceShown && (
         <div>
           <h5>{formatPrice(price)}</h5>
           {isMultiPartyQuote && (
@@ -52,13 +46,10 @@ export default function QuoteLinePrice(props) {
             </div>
           )}
           {isMultiPartyQuote && isPrimaryQuoteApproval && (
-            <div className="quote-line-price-total-price">
-              Total price: {formatPrice(totalPrice)}
-            </div>
+            <div className="quote-line-price-total-price">Total price: {formatPrice(totalPrice)}</div>
           )}
         </div>
-      }
-
+      )}
     </>
   );
 }

@@ -16,13 +16,15 @@ import './ConfigCart.scss';
 class ConfigCart extends React.Component {
   static propTypes = {
     addConfigFromSchema: PropTypes.func,
-    configs: PropTypes.arrayOf(PropTypes.shape({
-      preview: PropTypes.string,
-      price: PropTypes.string,
-      description: PropTypes.string,
-      units: PropTypes.number,
-      code: PropTypes.string,
-    })),
+    configs: PropTypes.arrayOf(
+      PropTypes.shape({
+        preview: PropTypes.string,
+        price: PropTypes.string,
+        description: PropTypes.string,
+        units: PropTypes.number,
+        code: PropTypes.string,
+      })
+    ),
     onShowStyleBrowserChange: PropTypes.func.isRequired,
     removeConfig: PropTypes.func.isRequired,
     showStyleBrowser: PropTypes.bool,
@@ -59,11 +61,7 @@ class ConfigCart extends React.Component {
   }
 
   getTotal() {
-    return reduce(
-      this.props.configs,
-      (total, {price, units}) => total + price * units,
-      0
-    );
+    return reduce(this.props.configs, (total, {price, units}) => total + price * units, 0);
   }
 
   isItFence(config) {
@@ -108,13 +106,16 @@ class ConfigCart extends React.Component {
     this.props.onShowStyleBrowserChange && this.props.onShowStyleBrowserChange(false);
     this.scrollToNode(this.configCardRef);
     const config = configs[index];
-    this.props.addConfigFromSchema({
-      length: index !== -1 ? config.units : 1,
-      data: editorModel,
-      schemaCode,
-      configs,
-      zipcode,
-    }, index);
+    this.props.addConfigFromSchema(
+      {
+        length: index !== -1 ? config.units : 1,
+        data: editorModel,
+        schemaCode,
+        configs,
+        zipcode,
+      },
+      index
+    );
   }
 
   onAddConfigClick() {
@@ -156,56 +157,47 @@ class ConfigCart extends React.Component {
         <div className="config-item">
           <div className="config-item__content">
             <div className="config-item__preview">
-              {
-                config.preview ?
-                  <a href={getFencequotingURL(config.code, zipcode, config.units)}>
-                    <img src={config.preview}/>
-                  </a> :
-                  <Spinner active={true} borderWidth={.2} color="blue" size={48} />
-              }
+              {config.preview ? (
+                <a href={getFencequotingURL(config.code, zipcode, config.units)}>
+                  <img src={config.preview} />
+                </a>
+              ) : (
+                <Spinner active={true} borderWidth={0.2} color="blue" size={48} />
+              )}
             </div>
             <div className="config-item__info">
               <div className="config-item__title">
                 <span>{isFenceConfig ? 'Fence' : 'Gate'}</span>
                 <span className="config-item__length">
-                  {
-                    config.price &&
-                    (
-                      <div className="config-item__price">
-                        {priceText}
-                      </div>
-                    )
-                  }
+                  {config.price && <div className="config-item__price">{priceText}</div>}
                 </span>
               </div>
               <div className="config-item__internal-wrapper">
-                <div className="config-item__description">
-                  {this.renderDescription(config)}
-                </div>
+                <div className="config-item__description">{this.renderDescription(config)}</div>
                 <div className="config-item__preview__in-description">
-                  {
-                    config.preview ?
-                      <img src={config.preview}/> :
-                      <Spinner active={true} borderWidth={.2} color="blue" size={36} />
-                  }
+                  {config.preview ? (
+                    <img src={config.preview} />
+                  ) : (
+                    <Spinner active={true} borderWidth={0.2} color="blue" size={36} />
+                  )}
                 </div>
               </div>
               <div className="config-item__actions">
                 <div className="config-item__buttons">
-                  <Button
-                    flavor="regular"
-                    onClick={() => this.editConfig(index)}
-                    size="small"
-                    taste="line">Edit</Button>
+                  <Button flavor="regular" onClick={() => this.editConfig(index)} size="small" taste="line">
+                    Edit
+                  </Button>
                   <Button
                     className="delete-config-button"
                     flavor="attention"
                     onClick={() => this.removeConfig(index)}
                     size="small"
-                    taste="boundless">Delete</Button>
+                    taste="boundless"
+                  >
+                    Delete
+                  </Button>
                 </div>
-                {
-                  isFenceConfig &&
+                {isFenceConfig && (
                   <div className="config-item__length-field">
                     <span className="config-item__length-label">Length:</span>
                     <Input
@@ -215,12 +207,12 @@ class ConfigCart extends React.Component {
                       size="small"
                       step="1"
                       type="number"
-                      value={length} />
+                      value={length}
+                    />
                     <span className="config-item__length-field-unit">ft</span>
                   </div>
-                }
-                {
-                  !isFenceConfig &&
+                )}
+                {!isFenceConfig && (
                   <div className="config-item__length-field">
                     <span className="config-item__length-label">Count:</span>
                     <Input
@@ -231,9 +223,10 @@ class ConfigCart extends React.Component {
                       size="small"
                       step="1"
                       type="number"
-                      value={length} />
+                      value={length}
+                    />
                   </div>
-                }
+                )}
               </div>
             </div>
           </div>
@@ -247,8 +240,8 @@ class ConfigCart extends React.Component {
     const {styleBrowserIndex} = this.state;
     const {configs} = this.props;
     const config = styleBrowserIndex !== -1 ? configs[styleBrowserIndex] : undefined;
-    const schemaCode = config? `?${config?.code}` : undefined;
-    const doneButtonText = styleBrowserIndex === -1? 'Add to order' : 'Save changes';
+    const schemaCode = config ? `?${config?.code}` : undefined;
+    const doneButtonText = styleBrowserIndex === -1 ? 'Add to order' : 'Save changes';
     const DEFAULT_FENCE_SIDE_LENGTH = 6;
     return (
       <StyleBrowserWrapper
@@ -259,7 +252,8 @@ class ConfigCart extends React.Component {
         onDone={(editorModel) => this.onDoneEditorClick(editorModel, styleBrowserIndex)}
         onLoaded={() => this.onStyleBrowserLoaded()}
         showLoadingError={this.showLoadingError}
-        zipcode={this.props.zipcode}/>
+        zipcode={this.props.zipcode}
+      />
     );
   }
 
@@ -267,44 +261,42 @@ class ConfigCart extends React.Component {
     const {configs} = this.props;
     const {showStyleBrowser, styleBrowserIndex, styleBrowserLoaded, isLoadingModalErrored} = this.state;
     const styleBrowserContainerClasses = classNames({
-      'style-browser-loader' : true,
-      'loaded' : styleBrowserLoaded,
+      'style-browser-loader': true,
+      loaded: styleBrowserLoaded,
     });
     const styleBrowserPreloaderClasses = classNames({
-      'style-browser-preloader' : true,
-      'loaded' : styleBrowserLoaded,
-      'show' : showStyleBrowser,
+      'style-browser-preloader': true,
+      loaded: styleBrowserLoaded,
+      show: showStyleBrowser,
     });
     return (
       <React.Fragment>
         <div>
           <div className={styleBrowserPreloaderClasses}>
-            {isLoadingModalErrored
-              ? <LoadingErrorModal onClose={this.closeLoadingError} />
-              : <Spinner active={!styleBrowserLoaded} borderWidth={0.16} color="white" size={64}/>}
+            {isLoadingModalErrored ? (
+              <LoadingErrorModal onClose={this.closeLoadingError} />
+            ) : (
+              <Spinner active={!styleBrowserLoaded} borderWidth={0.16} color="white" size={64} />
+            )}
           </div>
-          {(showStyleBrowser)
-            ? <div className={styleBrowserContainerClasses}>{this.renderStyleBrowser()}</div>
-            : null
-          }
+          {showStyleBrowser ? <div className={styleBrowserContainerClasses}>{this.renderStyleBrowser()}</div> : null}
         </div>
         <div className="config-cart__wrapper">
-          <div className="config-cart" ref={(node) => this.configCardRef = node}>
+          <div className="config-cart" ref={(node) => (this.configCardRef = node)}>
             <div className="config-cart__title">
               <h4>Selected configurations</h4>
             </div>
             <div className="config-cart__list">
               {configs.map((config, index) => this.renderConfig(config, index))}
-              {
-                !configs.length &&
-                  <div>
-                    <div className="config-cart__no-config-title">
-                      You didn&apos;t add any fence or gate configuration
-                    </div>
-                    <div className="config-cart__no-config-description">Add a config to send with quote request</div>
-                    <hr />
+              {!configs.length && (
+                <div>
+                  <div className="config-cart__no-config-title">
+                    You didn&apos;t add any fence or gate configuration
                   </div>
-              }
+                  <div className="config-cart__no-config-description">Add a config to send with quote request</div>
+                  <hr />
+                </div>
+              )}
             </div>
             <div className="config-cart__resume">
               <Button
@@ -314,17 +306,19 @@ class ConfigCart extends React.Component {
                 flavor="regular"
                 onClick={this.onAddConfigClick.bind(this)}
                 size="large"
-                taste="line">
-                <ReactSVG className="spacing right__is-5" src={iconPlus}/>Add a config
+                taste="line"
+              >
+                <ReactSVG className="spacing right__is-5" src={iconPlus} />
+                Add a config
               </Button>
               <div className="config-cart__total">
                 {this.getTotal() ? `Total estimate: ~$${Math.round(this.getTotal())}` : null}
               </div>
             </div>
             <div className="config-cart__disclaimer">
-              The price shown are for informational purposes only.
-              Actual prices may vary with project complexity, material price fluctuations and additional options.
-              Contact us to speak to an expert and get a personalized full quote.
+              The price shown are for informational purposes only. Actual prices may vary with project complexity,
+              material price fluctuations and additional options. Contact us to speak to an expert and get a
+              personalized full quote.
             </div>
           </div>
         </div>

@@ -26,26 +26,22 @@ export default class AddNote extends React.Component {
       <React.Fragment>
         {showNoteField === false ? (
           <div className="spacing after__is-12">
-            <a
-              className="action-link"
-              onClick={handleAddNote}>
+            <a className="action-link" onClick={handleAddNote}>
               Add a note
             </a>
           </div>
         ) : (
           <div className={classNames('Form-field', {'is-error': errors && errors.comment})}>
             <div className="remove-a-note">
-              <ReactSVG className="remove-a-note__cross-icon" src={crossIcon}/>
-              <a
-                className="remove-a-note__link"
-                onClick={handleRemoveNote}>
+              <ReactSVG className="remove-a-note__cross-icon" src={crossIcon} />
+              <a className="remove-a-note__link" onClick={handleRemoveNote}>
                 Remove
               </a>
             </div>
             <Input
               className="spacing after__is-24"
               isDisabled={loading}
-              isValid={!!comment && !errors?.comment || null}
+              isValid={(!!comment && !errors?.comment) || null}
               label="Note"
               multiline
               name="comment"
@@ -53,7 +49,8 @@ export default class AddNote extends React.Component {
               placeholder="Add your note here"
               type="text"
               validationMessage={errors?.comment}
-              value={comment} />
+              value={comment}
+            />
           </div>
         )}
       </React.Fragment>

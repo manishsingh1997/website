@@ -22,15 +22,18 @@ const BuildSpecs = () => {
     data: null,
   });
 
-  useEffect(function loadConfig() {
-    getConfig(configID)
-      .then(({data: responseData}) => {
-        setRequestState({loading: false, error: null, data: responseData});
-      })
-      .catch(apiError => {
-        setRequestState({loading: false, error: apiError, data: null});
-      });
-  }, [configID]);
+  useEffect(
+    function loadConfig() {
+      getConfig(configID)
+        .then(({data: responseData}) => {
+          setRequestState({loading: false, error: null, data: responseData});
+        })
+        .catch((apiError) => {
+          setRequestState({loading: false, error: apiError, data: null});
+        });
+    },
+    [configID]
+  );
 
   if (requestState.loading) {
     return <AppLoader />;
@@ -43,23 +46,15 @@ const BuildSpecs = () => {
   return (
     <section className="BuildSpecs-table">
       {requestState.data.attributes.map(
-        (
-          {
-            id,
-            attribute,
-            name,
-            external_help_text: externalHelpText,
-            public_help_node: publicHelpNode,
-          },
-          idx
-        ) => (
+        ({id, attribute, name, external_help_text: externalHelpText, public_help_node: publicHelpNode}, idx) => (
           <TableRow
             content={name}
             helpLink={publicHelpNode}
             helpText={externalHelpText}
             index={idx}
             key={id}
-            label={attribute}/>
+            label={attribute}
+          />
         )
       )}
     </section>
@@ -91,21 +86,24 @@ const BuildSpecsPopup = () => {
     setVisible(false);
   }, []);
 
-  useEffect(function processClose() {
-    if (visible) return;
-    if (!location.state) {
-      // Handle direct visit in case someone wants to send a link
-      const prevRoute = location.pathname.replace(/\/config\/\d+\/?$/, '');
-      history.replace(prevRoute);
-    } else {
-      history.goBack();
-    }
-    return () => {
-      // Reset body scroll affected by the PopUp’s render
-      document.body.style.overflow = 'unset';
-      document.body.style.height = 'unset';
-    };
-  }, [history, location.pathname, location.state, visible]);
+  useEffect(
+    function processClose() {
+      if (visible) return;
+      if (!location.state) {
+        // Handle direct visit in case someone wants to send a link
+        const prevRoute = location.pathname.replace(/\/config\/\d+\/?$/, '');
+        history.replace(prevRoute);
+      } else {
+        history.goBack();
+      }
+      return () => {
+        // Reset body scroll affected by the PopUp’s render
+        document.body.style.overflow = 'unset';
+        document.body.style.height = 'unset';
+      };
+    },
+    [history, location.pathname, location.state, visible]
+  );
 
   return (
     <PopUp className="BuildSpecs-popup" onHide={onHide} scrollToTop={false} visible>
@@ -116,18 +114,14 @@ const BuildSpecsPopup = () => {
           </button>
         </TopPanelMobile.Left>
         <TopPanelMobile.Center>
-          {label &&
-            <MapLabel isInline name={label.name} type={label.type} />
-          }
+          {label && <MapLabel isInline name={label.name} type={label.type} />}
           <h3>{title}</h3>
         </TopPanelMobile.Center>
         <TopPanelMobile.Right />
       </TopPanelMobile>
       <div className="BuildSpecs-card card padding-60 soft-border shadow__z3">
         <h2 className="h5 BuildSpecs-title">
-          {label &&
-            <MapLabel isInline name={label.name} type={label.type} />
-          }
+          {label && <MapLabel isInline name={label.name} type={label.type} />}
           <span>Build Specifications</span>
         </h2>
         <BuildSpecs />

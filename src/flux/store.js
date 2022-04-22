@@ -5,16 +5,10 @@ import thunk from 'redux-thunk';
 
 import combinedReducers from './reducers';
 
-const middlewares = [
-  thunk,
-  routerMiddleware(history),
-];
+const middlewares = [thunk, routerMiddleware(history)];
 
 if (process.env.NODE_ENV !== 'production') middlewares.push(logger);
 
-const store = createStore(
-  combinedReducers,
-  applyMiddleware(...middlewares),
-);
+const store = createStore(combinedReducers, applyMiddleware(...middlewares));
 
 export default store;

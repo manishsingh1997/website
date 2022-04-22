@@ -29,18 +29,18 @@ export default class StyleBrowserWrapper extends React.Component {
   };
 
   componentDidMount() {
-    tawk.tawkAPILoader.then(TawkAPI => TawkAPI.hideWidget());
+    tawk.tawkAPILoader.then((TawkAPI) => TawkAPI.hideWidget());
     this.openPopup();
     this.checkZipcode();
   }
 
   componentWillUnmount() {
-    tawk.tawkAPILoader.then(TawkAPI => TawkAPI.showWidget());
+    tawk.tawkAPILoader.then((TawkAPI) => TawkAPI.showWidget());
   }
 
   checkZipcode() {
     const {zipcode, onLoaded} = this.props;
-    return getCheckedZIP(zipcode).then(response => {
+    return getCheckedZIP(zipcode).then((response) => {
       onLoaded();
       this.setState({productAvailability: response.data});
     });
@@ -64,9 +64,7 @@ export default class StyleBrowserWrapper extends React.Component {
     const {model, productAvailability, showPopup} = this.state;
     return (
       <div className="style-browser-wrapper">
-        <PopUp
-          onHide={this.closePopup.bind(this)}
-          visible={showPopup}>
+        <PopUp onHide={this.closePopup.bind(this)} visible={showPopup}>
           <div>
             <div className="style-browser-wrapper__title">
               <span className="label uppercase">Design your Fence or Gate</span>
@@ -77,9 +75,9 @@ export default class StyleBrowserWrapper extends React.Component {
               model={model}
               onComplete={(model) => this.handleSelectionCompleted(model)}
               productAvailability={productAvailability}
-              shouldUpdateUrl={false}/>
+              shouldUpdateUrl={false}
+            />
           </div>
-
         </PopUp>
       </div>
     );

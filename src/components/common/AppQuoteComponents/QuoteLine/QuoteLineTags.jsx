@@ -19,13 +19,7 @@ export default function Tags({tags}) {
             const {name, url} = tag;
 
             return (
-              <Button
-                asAnchor
-                className="tags__item"
-                href={url}
-                key={index}
-                size="small"
-                taste="line">
+              <Button asAnchor className="tags__item" href={url} key={index} size="small" taste="line">
                 {name}
               </Button>
             );

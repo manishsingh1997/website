@@ -17,9 +17,7 @@ class ContactUsPage extends React.Component {
     if (this.state.showSuccess) {
       return (
         <div className="contact-us-page">
-          <Success
-            header="We’ll be in touch shortly"
-            text="Our team will reach out within 24 hours" />
+          <Success header="We’ll be in touch shortly" text="Our team will reach out within 24 hours" />
         </div>
       );
     }
@@ -31,15 +29,13 @@ class ContactUsPage extends React.Component {
             <div className="wrapper-480">
               <h1 className="h2">Contact Us</h1>
               <div className="subheader h6 spacing before__is-6">
-                We’re here to help! Get in touch and our team will
-                answer your questions as soon as possible.
-                You can also find answers on our <Link to="/help">Help Center.</Link>
+                We’re here to help! Get in touch and our team will answer your questions as soon as possible. You can
+                also find answers on our <Link to="/help">Help Center.</Link>
               </div>
             </div>
             <div className="contact-us-area">
               <div className="contact-us-page__contact-us-form card shadow soft-border">
-                <ContactUsForm
-                  onSubmit={() => this.setState({showSuccess: true})}/>
+                <ContactUsForm onSubmit={() => this.setState({showSuccess: true})} />
               </div>
             </div>
           </div>
@@ -47,11 +43,15 @@ class ContactUsPage extends React.Component {
         <div className="contact-us-page__body wrapper-1180">
           <div className="email">
             <p>Email:</p>
-            <p><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+            <p>
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            </p>
           </div>
           <div className="phone">
             <p>Phone:</p>
-            <p><a href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a></p>
+            <p>
+              <a href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a>
+            </p>
           </div>
         </div>
       </div>

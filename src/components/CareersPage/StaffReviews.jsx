@@ -20,10 +20,11 @@ class StaffReviews extends React.Component {
             <div className="staff-reviews__row__block">
               <div className="inner-block right__padding-10 bottom__padding-10">
                 <div className="inner-block__wrap">
-                  <img alt="Ninety eight percent of recommendations to a friend" src={imageChartNinetyEight}/>
+                  <img alt="Ninety eight percent of recommendations to a friend" src={imageChartNinetyEight} />
                   <div className="inner-block__wrap__right-block recommend">
                     <p className="subheader h3 bold">
-                      Recommend <br className="hideBreaks" />to a Friend
+                      Recommend <br className="hideBreaks" />
+                      to a Friend
                     </p>
                   </div>
                 </div>
@@ -32,11 +33,9 @@ class StaffReviews extends React.Component {
             <div className="staff-reviews__row__block">
               <div className="inner-block left__padding-10 right__padding-10 bottom__padding-10">
                 <div className="inner-block__wrap">
-                  <img alt="One hundred percent approve of CEO" src={imageChartOneHundred}/>
+                  <img alt="One hundred percent approve of CEO" src={imageChartOneHundred} />
                   <div className="inner-block__wrap__right-block approve">
-                    <p className="subheader h3 bold">
-                      Approve of CEO
-                    </p>
+                    <p className="subheader h3 bold">Approve of CEO</p>
                   </div>
                 </div>
               </div>
@@ -45,14 +44,10 @@ class StaffReviews extends React.Component {
           <div className="staff-reviews__row__block">
             <div className="inner-block left__padding-10 bottom__padding-10">
               <div className="inner-block__wrap ceo-image-wrapper">
-                <img src={imageCEO}/>
+                <img src={imageCEO} />
                 <div className="inner-block__wrap__right-block">
-                  <p className="subheader h3 bold">
-                    Jiayue (Jenny) He
-                  </p>
-                  <p className="small-text spacing before__is-6">
-                    {RATING} Ratings
-                  </p>
+                  <p className="subheader h3 bold">Jiayue (Jenny) He</p>
+                  <p className="small-text spacing before__is-6">{RATING} Ratings</p>
                 </div>
               </div>
             </div>
@@ -62,11 +57,9 @@ class StaffReviews extends React.Component {
           <div className="staff-reviews__row__block more-space">
             <div className="inner-block right__padding-10 top__padding-10">
               <div className="inner-block__wrap linkedin-subsc">
-                <img alt="Linkedin logo" src={imageLinkedin}/>
+                <img alt="Linkedin logo" src={imageLinkedin} />
                 <div className="inner-block__wrap__right-block linkedin">
-                  <p className="subheader h3 bold">
-                    Ergeon on Linkedin
-                  </p>
+                  <p className="subheader h3 bold">Ergeon on Linkedin</p>
                   <p className="small-text spacing before__is-6">
                     Construction &middot; Palo Alto, California &middot; {LINKEDIN_FOLLOWERS} followers
                   </p>
@@ -86,7 +79,8 @@ class StaffReviews extends React.Component {
                 </div>
                 <div className="inner-block__wrap__bottom-block">
                   <p className="small-text">
-                    More reviews on <a href="https://www.glassdoor.ca/Reviews/Ergeon-Reviews-E2131774_P2.htm">Glassdoor</a>
+                    More reviews on{' '}
+                    <a href="https://www.glassdoor.ca/Reviews/Ergeon-Reviews-E2131774_P2.htm">Glassdoor</a>
                   </p>
                 </div>
               </div>

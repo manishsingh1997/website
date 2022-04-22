@@ -14,13 +14,12 @@ const AUTO_SLIDE_INTERVAL_SECONDS = 5;
 import './SliderHero.scss';
 
 class SliderHero extends React.Component {
-
   constructor(props) {
     super(props);
     this.isChristmasTime = isChristmasTime();
     this.state = {
       slide: getParameterByName('utm_content') === 'driveway' ? 1 : 0,
-      lead:'',
+      lead: '',
     };
     this.autoSlide = setInterval(
       () => this.setState({slide: (this.state.slide + 1) % 2}),
@@ -42,7 +41,7 @@ class SliderHero extends React.Component {
   }
 
   handleAddressInput(leadValue) {
-    this.setState((prev)=>({...prev, lead: leadValue}));
+    this.setState((prev) => ({...prev, lead: leadValue}));
   }
 
   renderSlide(data) {
@@ -62,12 +61,11 @@ class SliderHero extends React.Component {
         </span>
 
         <div className="form-wrapper">
-          <AddressForm
-            onChange={this.handleAddressInput.bind(this)}
-            product={product}
-            value={this.state.lead}/>
+          <AddressForm onChange={this.handleAddressInput.bind(this)} product={product} value={this.state.lead} />
         </div>
-        <a className="phone-link white" href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a>
+        <a className="phone-link white" href={`tel:${PHONE_NUMBER}`}>
+          {formatPhoneNumber(PHONE_NUMBER)}
+        </a>
       </div>
     );
   }
@@ -77,10 +75,7 @@ class SliderHero extends React.Component {
     const {slide} = this.state;
     return (
       <div className="slider-hero">
-        <Slider
-          additionalClassNames={additionalClassNames}
-          onChange={this.handleSlideChange.bind(this)}
-          slide={slide}>
+        <Slider additionalClassNames={additionalClassNames} onChange={this.handleSlideChange.bind(this)} slide={slide}>
           {this.renderSlide({title: 'Fence Installation Service', name: 'fence'})}
           {this.renderSlide({title: 'Driveway Installation Service', name: 'driveway'})}
         </Slider>

@@ -27,32 +27,43 @@ class RemoteFeatures extends React.Component {
     return (
       <div className="remote-features__card">
         <div className="remote-features__card__img">
-          <img alt={title} src={img}/>
+          <img alt={title} src={img} />
         </div>
         <div className="remote-features__card__text-part">
           <h5 className="remote-features__card__title">{title}</h5>
           <p className="remote-features__card__desc">{desc}</p>
-          {videoLink && <Button
-            className="remote-features__card__button"
-            flavor="primary"
-            onClick={() => this.toShowVideo(videoLink)}
-            size="small"
-            taste="line">Learn more</Button>}
-          {link && <Button
-            asAnchor
-            className="remote-features__card__button"
-            flavor="primary"
-            href={link}
-            size="small"
-            taste="line">Learn more</Button>}
+          {videoLink && (
+            <Button
+              className="remote-features__card__button"
+              flavor="primary"
+              onClick={() => this.toShowVideo(videoLink)}
+              size="small"
+              taste="line"
+            >
+              Learn more
+            </Button>
+          )}
+          {link && (
+            <Button
+              asAnchor
+              className="remote-features__card__button"
+              flavor="primary"
+              href={link}
+              size="small"
+              taste="line"
+            >
+              Learn more
+            </Button>
+          )}
         </div>
-      </div>);
+      </div>
+    );
   }
   render() {
     const {currentVideo, videoPopupVisible} = this.state;
     return (
       <div className="remote-features">
-        <VideoPopup linkToVideo={currentVideo} onHide={this.toHideVideo.bind(this)} visible={videoPopupVisible}/>
+        <VideoPopup linkToVideo={currentVideo} onHide={this.toHideVideo.bind(this)} visible={videoPopupVisible} />
         <div className="wrapper-1180">
           <h3 className="remote-features__title">Our Remote Model</h3>
           <div className="remote-features__cards">
@@ -64,7 +75,7 @@ class RemoteFeatures extends React.Component {
               videoLink: 'https://www.youtube.com/embed/HJh1auVQfV8',
             })}
             <div className="remote-features__card__sep-wrapper">
-              <div className="remote-features__card__sep-wrapper__line"/>
+              <div className="remote-features__card__sep-wrapper__line" />
             </div>
             {this.renderCard({
               title: 'Approve your Quote & Pay Online',
@@ -73,7 +84,7 @@ class RemoteFeatures extends React.Component {
               link: `${process.env.BLOG_HOST}/post/how-our-remote-quoting-works`,
             })}
             <div className="remote-features__card__sep-wrapper">
-              <div className="remote-features__card__sep-wrapper__line"/>
+              <div className="remote-features__card__sep-wrapper__line" />
             </div>
             {this.renderCard({
               title: 'Stay Inside While we Install',
@@ -84,7 +95,6 @@ class RemoteFeatures extends React.Component {
             })}
           </div>
         </div>
-
       </div>
     );
   }

@@ -16,7 +16,6 @@ import AppSubCard from 'components/common/AppSubCard';
 import './index.scss';
 
 export default class AppHouseListPage extends React.Component {
-
   static propTypes = {
     getHouses: PropTypes.func.isRequired,
     houses: PropTypes.array,
@@ -33,7 +32,6 @@ export default class AppHouseListPage extends React.Component {
   }
 
   renderListElementContent(house) {
-
     const mapControls = {
       zoomControl: false,
       mapTypeControl: false,
@@ -44,12 +42,12 @@ export default class AppHouseListPage extends React.Component {
     };
 
     const locationMarker = {
-      'info': '',
-      'position': {
-        'lat': house['address'] && house['address']['latitude'],
-        'lng': house['address'] && house['address']['longitude'],
+      info: '',
+      position: {
+        lat: house['address'] && house['address']['latitude'],
+        lng: house['address'] && house['address']['longitude'],
       },
-      'icon': Marker,
+      icon: Marker,
     };
 
     return (
@@ -67,8 +65,9 @@ export default class AppHouseListPage extends React.Component {
               loadingPlaceholder={<Spinner active={true} color="blue" size={32} />}
               markers={[locationMarker]}
               popupBehaviour="close"
-              styles={[{'stylers': [{'saturation': -100}]}]}
-              zoom={14} />
+              styles={[{stylers: [{saturation: -100}]}]}
+              zoom={14}
+            />
           </div>
         )}
       </div>
@@ -80,18 +79,19 @@ export default class AppHouseListPage extends React.Component {
 
     return (
       <React.Fragment>
-        {houses && houses.map((house, cnt) => (
-          <AppSubCard
-            key={`house-${house.id}`}
-            renderContent={this.renderListElementContent.bind(this, house)}
-            renderHeader={() => `House #${cnt + 1}`} />
-        ))}
+        {houses &&
+          houses.map((house, cnt) => (
+            <AppSubCard
+              key={`house-${house.id}`}
+              renderContent={this.renderListElementContent.bind(this, house)}
+              renderHeader={() => `House #${cnt + 1}`}
+            />
+          ))}
       </React.Fragment>
     );
   }
 
   render() {
-
     return (
       <AppPage
         className="house-list-page"
@@ -99,7 +99,8 @@ export default class AppHouseListPage extends React.Component {
         fetchData={this.fetchData.bind(this)}
         isLoading={this.props.isListLoading}
         renderContent={this.renderContent.bind(this)}
-        renderHeader={() => 'Houses'} />
+        renderHeader={() => 'Houses'}
+      />
     );
   }
 }

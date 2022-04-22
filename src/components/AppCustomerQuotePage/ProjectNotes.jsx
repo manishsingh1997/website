@@ -19,6 +19,7 @@ export default class ProjectNotes extends React.Component {
             </div>
           </div>
         )}
-      </React.Fragment>);
+      </React.Fragment>
+    );
   }
 }

@@ -4,12 +4,12 @@ import {getPlaceData, getCheckedZIP, getPriceAndDescription} from 'api/lead';
 import {updateConfig} from './cart';
 
 export const actionTypes = {
-  'LEAD_UPDATED': 'LEAD_UPDATED',
-  'PRODUCT_UPDATED': 'PRODUCT_UPDATED',
-  'MODAL_LEAD_UPDATED': 'MODAL_LEAD_UPDATED',
-  'OPEN_POPUP': 'OPEN_POPUP',
-  'CLOSE_POPUP': 'CLOSE_POPUP',
-  'MODAL_VALUE_UPDATED': 'MODAL_VALUE_UPDATED',
+  LEAD_UPDATED: 'LEAD_UPDATED',
+  PRODUCT_UPDATED: 'PRODUCT_UPDATED',
+  MODAL_LEAD_UPDATED: 'MODAL_LEAD_UPDATED',
+  OPEN_POPUP: 'OPEN_POPUP',
+  CLOSE_POPUP: 'CLOSE_POPUP',
+  MODAL_VALUE_UPDATED: 'MODAL_VALUE_UPDATED',
 };
 
 export const updateProduct = (product) => ({
@@ -17,52 +17,59 @@ export const updateProduct = (product) => ({
   payload: product,
 });
 
-export const updateLead = function(lead) {
+export const updateLead = function (lead) {
   return (dispatch, getState) => {
-    const {cart: {configs}} = getState();
+    const {
+      cart: {configs},
+    } = getState();
 
-    const configUpdates = Promise.all(configs.map(
-      (config, index) => getPriceAndDescription(config.product, lead.zipcode).then(
-        priceAndDescription => {
+    const configUpdates = Promise.all(
+      configs.map((config, index) =>
+        getPriceAndDescription(config.product, lead.zipcode).then((priceAndDescription) => {
           if (priceAndDescription) {
-            return dispatch(updateConfig(index, {
-              ...config,
-              description: priceAndDescription['description'],
-              price: priceAndDescription['unit_price'],
-            }));
+            return dispatch(
+              updateConfig(index, {
+                ...config,
+                description: priceAndDescription['description'],
+                price: priceAndDescription['unit_price'],
+              })
+            );
           }
-        }
-      )));
+        })
+      )
+    );
 
-    return configUpdates.then(() => dispatch({
-      type: actionTypes.LEAD_UPDATED,
-      payload: lead,
-    }));
+    return configUpdates.then(() =>
+      dispatch({
+        type: actionTypes.LEAD_UPDATED,
+        payload: lead,
+      })
+    );
   };
 };
 
 // eslint-disable-next-line object-shorthand
-export const updateLeadFromAddress = function({address, product, zipcode}) {
+export const updateLeadFromAddress = function ({address, product, zipcode}) {
   const {DEFAULT_ZIP} = constants;
 
   return (dispatch) => {
     return getPlaceData(address)
-      .then(
-        placeData => getCheckedZIP(placeData.zipcode).then(
-          checkedZipResponse => {
-            zipcode = checkedZipResponse.data.products[product] ? placeData.zipcode : DEFAULT_ZIP;
-            dispatch(updateLead({
+      .then((placeData) =>
+        getCheckedZIP(placeData.zipcode).then((checkedZipResponse) => {
+          zipcode = checkedZipResponse.data.products[product] ? placeData.zipcode : DEFAULT_ZIP;
+          dispatch(
+            updateLead({
               address: placeData,
-              'product_slug': product,
+              product_slug: product,
               productAvailability: checkedZipResponse.data,
               zipcode,
-            }));
+            })
+          );
 
-            return zipcode;
-          }
-        )
+          return zipcode;
+        })
       )
-      .catch(error => {
+      .catch((error) => {
         console.error('error trying to update lead', error);
         return DEFAULT_ZIP;
       });

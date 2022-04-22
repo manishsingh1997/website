@@ -13,8 +13,6 @@ export default class COVIDNotification extends React.Component {
   }
   render() {
     const {location} = this.props;
-    return (
-      location.pathname === '/' && <EmergencyNotification policyUrl={policyUrl}/>
-    );
+    return location.pathname === '/' && <EmergencyNotification policyUrl={policyUrl} />;
   }
 }

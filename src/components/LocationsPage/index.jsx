@@ -10,25 +10,23 @@ import './index.scss';
  * component might not be rendered anymore.
  */
 class LocationsPage extends React.Component {
-
   renderPhoneNumber(phone) {
     return (
-      <p className="p_phone">Phone: <a href={`tel:+1${phone}`}>{phone}</a></p>
+      <p className="p_phone">
+        Phone: <a href={`tel:+1${phone}`}>{phone}</a>
+      </p>
     );
   }
 
   render() {
-    const locationsContent = (
-      'We provide service to over 4.3 million households and businesses in the Bay Area, Sacramento and Fresno.'
-    );
-    const locationsMap = <LocationsMap/>;
+    const locationsContent =
+      'We provide service to over 4.3 million households and businesses in the Bay Area, Sacramento and Fresno.';
+    const locationsMap = <LocationsMap />;
     return (
       <div className="locations-page wrapper-1180">
         <div className="locations__header">
           <h1 className="h2">Our Locations</h1>
-          <p className="paragraph-3">
-            {locationsContent}
-          </p>
+          <p className="paragraph-3">{locationsContent}</p>
         </div>
         <div className="nice_view_map">{locationsMap}</div>
         <div className="locations">

@@ -6,7 +6,6 @@ import {MAP_LABEL_TYPE, MAP_LABEL_YELLOW_TYPE, MAP_CIRCLE_TYPE} from 'website/co
 import './MapLabel.scss';
 
 export default class MapLabel extends React.Component {
-
   static propTypes = {
     isInline: PropTypes.bool,
     name: oneOfType([PropTypes.string, PropTypes.number]).isRequired,

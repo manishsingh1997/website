@@ -6,7 +6,7 @@ const initialState = {
   listError: null,
 };
 
-const contactsReducer = (state=initialState, action) => {
+const contactsReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_CONTACTS_START:
       return {...state, isListLoading: true};

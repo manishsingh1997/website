@@ -54,8 +54,8 @@ export const getPriceAndDescription = (modelState, zipcode = constants.DEFAULT_Z
         return response.data;
       }
     })
-    .catch(function(error) {
-      if ((/Request\saborted/i).test(error.message)) {
+    .catch(function (error) {
+      if (/Request\saborted/i.test(error.message)) {
         console.warn(`Axios returned ”Request aborted” for ${query}. ${requestAbortedNote}`);
       }
       console.error(error);
@@ -64,16 +64,19 @@ export const getPriceAndDescription = (modelState, zipcode = constants.DEFAULT_Z
 
 export const getPlaceData = (address) => {
   return new Promise((resolve, reject) => {
-    googleIntegration.getGoogleLoader().load().then(google => {
-      const geocode = new google.maps.Geocoder();
-      geocode.geocode({address}, (results, status) => {
-        if (results.length) {
-          resolve(parsePlace(results[0]));
-        } else if (status !== google.maps.GeocoderStatus.OK) {
-          console.error('Google Geocoder error:', status);
-          reject(results, status);
-        }
+    googleIntegration
+      .getGoogleLoader()
+      .load()
+      .then((google) => {
+        const geocode = new google.maps.Geocoder();
+        geocode.geocode({address}, (results, status) => {
+          if (results.length) {
+            resolve(parsePlace(results[0]));
+          } else if (status !== google.maps.GeocoderStatus.OK) {
+            console.error('Google Geocoder error:', status);
+            reject(results, status);
+          }
+        });
       });
-    });
   });
 };

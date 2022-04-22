@@ -42,16 +42,15 @@ class QASection extends React.Component {
     const {isLoading} = this.state;
     return (
       <div className="qa-section__loader">
-        <Spinner
-          active={isLoading} borderWidth={0.10} color="blue" size={64} />
+        <Spinner active={isLoading} borderWidth={0.1} color="blue" size={64} />
       </div>
     );
   }
   renderQuestions(type) {
     const {questions = []} = this.state;
-    const nodes = (type === 'fence') ? FENCE_NODES : DRIVEWAYS_NODES;
+    const nodes = type === 'fence' ? FENCE_NODES : DRIVEWAYS_NODES;
     return nodes.map((id) => {
-      const node = questions.filter(q => q['node_key'] === id);
+      const node = questions.filter((q) => q['node_key'] === id);
       if (node && node[0]) {
         return this.renderQuestion(node[0], id);
       }

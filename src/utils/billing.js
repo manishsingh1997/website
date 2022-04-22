@@ -1,11 +1,9 @@
-import {
-  trackError,
-} from 'utils/analytics';
+import {trackError} from 'utils/analytics';
 
-const initStripe = (function() {
+const initStripe = (function () {
   let keyInitialized = false;
 
-  return function() {
+  return function () {
     if (!keyInitialized) {
       window.Stripe && window.Stripe.setPublishableKey(process.env.STRIPE_PUBLIC_KEY);
       keyInitialized = true;
@@ -26,7 +24,7 @@ export const cardExpDateValidation = (value) => {
 
   if (value) {
     value = value.split('/');
-    if (value.length !== 2 || window.Stripe && !window.Stripe.card.validateExpiry(value[0], value[1])) {
+    if (value.length !== 2 || (window.Stripe && !window.Stripe.card.validateExpiry(value[0], value[1]))) {
       return error;
     }
   } else {
@@ -44,30 +42,33 @@ export const getStripeToken = (data) => {
   initStripe();
   const expDateParts = data.expirationDate.split('/');
   return new Promise((resolve, reject) => {
-    window.Stripe.card.createToken({
-      number: data.card,
-      cvc: data.cvc,
-      'exp_month': expDateParts[0],
-      'exp_year': expDateParts[1],
-    }, (status, response) => {
-      if (response.error) {
-        const errorMsg = response.error.message;
-        const errorParam = {
-          'invalid_expiry_month': 'expirationDate',
-          'invalid_expiry_year': 'expirationDate',
-          'invalid_number': 'card',
-          'invalid_card_type': 'card',
-          'invalid_cvc': 'cvc',
-        }[response.error.code];
+    window.Stripe.card.createToken(
+      {
+        number: data.card,
+        cvc: data.cvc,
+        exp_month: expDateParts[0],
+        exp_year: expDateParts[1],
+      },
+      (status, response) => {
+        if (response.error) {
+          const errorMsg = response.error.message;
+          const errorParam = {
+            invalid_expiry_month: 'expirationDate',
+            invalid_expiry_year: 'expirationDate',
+            invalid_number: 'card',
+            invalid_card_type: 'card',
+            invalid_cvc: 'cvc',
+          }[response.error.code];
 
-        if (errorParam) {
-          trackError(new Error(errorMsg));
+          if (errorParam) {
+            trackError(new Error(errorMsg));
+          }
+
+          return reject({_error: errorMsg, param: errorParam});
         }
-
-        return reject({_error: errorMsg, param: errorParam});
+        return resolve(response.id);
       }
-      return resolve(response.id);
-    });
+    );
   });
 };
 

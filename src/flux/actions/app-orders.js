@@ -2,16 +2,16 @@ import {getCustomerOrders, getCustomerOrderDetails} from 'api/app';
 import {parseAPIError} from 'utils/api';
 
 export const actionTypes = {
-  'GET_ORDERS_START': 'GET_ORDERS_START',
-  'GET_ORDERS_DONE': 'GET_ORDERS_DONE',
-  'GET_ORDERS_ERROR': 'GET_ORDERS_ERROR',
-  'GET_ORDER_START': 'GET_ORDER_START',
-  'GET_ORDER_DONE': 'GET_ORDER_DONE',
-  'GET_ORDER_ERROR': 'GET_ORDER_ERROR',
+  GET_ORDERS_START: 'GET_ORDERS_START',
+  GET_ORDERS_DONE: 'GET_ORDERS_DONE',
+  GET_ORDERS_ERROR: 'GET_ORDERS_ERROR',
+  GET_ORDER_START: 'GET_ORDER_START',
+  GET_ORDER_DONE: 'GET_ORDER_DONE',
+  GET_ORDER_ERROR: 'GET_ORDER_ERROR',
 };
 
 export const getOrders = (customerGID) => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch({
       type: actionTypes.GET_ORDERS_START,
     });
@@ -32,7 +32,7 @@ export const getOrders = (customerGID) => {
 };
 
 export const getOrder = (customerGID, orderId) => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch({
       type: actionTypes.GET_ORDER_START,
     });

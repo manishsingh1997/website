@@ -7,7 +7,6 @@ import christmasSparkles from '../../assets/christmas-pics/sparkles.png';
 import './Success.scss';
 
 class Success extends React.Component {
-
   static propTypes = {
     header: PropTypes.string,
     scrollOnMount: PropTypes.bool,

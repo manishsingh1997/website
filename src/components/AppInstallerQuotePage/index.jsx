@@ -19,7 +19,6 @@ import '@ergeon/draw-map/styles.css';
 import '../common/AppQuoteComponents/index.scss';
 
 export default class AppInstallerQuotePage extends React.Component {
-
   static propTypes = {
     auth: PropTypes.object,
     history: PropTypes.object,
@@ -52,7 +51,9 @@ export default class AppInstallerQuotePage extends React.Component {
 
   getNewQuoteLink() {
     const {location, match} = this.props;
-    const {quote: {replaced_by_quote: replacedByQuote}} = this.state;
+    const {
+      quote: {replaced_by_quote: replacedByQuote},
+    } = this.state;
     if (!replacedByQuote) {
       return null;
     }
@@ -97,9 +98,7 @@ export default class AppInstallerQuotePage extends React.Component {
   }
 
   renderQuoteError() {
-    return (
-      <QuoteError quoteError={this.state.quoteError} />
-    );
+    return <QuoteError quoteError={this.state.quoteError} />;
   }
 
   render() {
@@ -138,7 +137,8 @@ export default class AppInstallerQuotePage extends React.Component {
             quoteLines={quoteLines}
             totalPreviouslyApprovedPrice={formatPrice(this.getTotalPreviouslyApprovedPrice(quote))}
             totalPrice={formatPrice(this.getTotalPrice(quote))}
-            totalProjectPrice={formatPrice(this.getProjectTotalPrice(quote))} />
+            totalProjectPrice={formatPrice(this.getProjectTotalPrice(quote))}
+          />
         </div>
       </>
     );

@@ -10,15 +10,8 @@ import {Router, Route, Switch, Redirect} from 'react-router-dom';
 import {initUTMs} from '@ergeon/erg-utms';
 import omit from 'lodash/omit';
 
-import {
-  FencePhotoData,
-  GatePhotoData,
-  DrivewayPhotoData,
-} from 'data/photo-gallery';
-import {
-  INSTALLER_PREVIEW_SLUG,
-  DIRECT_PREVIEW_SLUG,
-} from 'website/constants';
+import {FencePhotoData, GatePhotoData, DrivewayPhotoData} from 'data/photo-gallery';
+import {INSTALLER_PREVIEW_SLUG, DIRECT_PREVIEW_SLUG} from 'website/constants';
 import customScripts from 'website/custom-scripts';
 
 import AppAppointmentsListPage from 'containers/AppAppointmentsListPage';
@@ -45,16 +38,14 @@ import publicRoutes from 'routes/public';
 import '@ergeon/core-components/dist/main.css';
 import './main.scss';
 
-initUTMs('utm-iframe', process.env.WEBSITE_DOMAIN, [
-  `${process.env.FENCEQUOTING_HOST}/utm/`,
-]);
+initUTMs('utm-iframe', process.env.WEBSITE_DOMAIN, [`${process.env.FENCEQUOTING_HOST}/utm/`]);
 
 const {initGoogleLoader, ADDRESS_INPUT_LIBRARIES} = googleIntegration;
 initGoogleLoader(
   process.env.GOOGLE_MAPS_API_KEY,
   ADDRESS_INPUT_LIBRARIES,
   ERG_MAP_COMPONENT_LIBRARIES,
-  DRAW_MAP_GOOGLE_LIBRARIES,
+  DRAW_MAP_GOOGLE_LIBRARIES
 );
 
 export const history = createBrowserHistory();
@@ -69,7 +60,8 @@ const renderPhotoGalleryRedirect = (productSlug, category) => {
       exact
       from={`/gallery/${productSlug}/${category.categorySlug}`}
       key={`${productSlug}-${category.categorySlug}`}
-      to={`/gallery/${productSlug}/${category.categorySlug}/${groupSlug}`} />
+      to={`/gallery/${productSlug}/${category.categorySlug}/${groupSlug}`}
+    />
   );
 };
 
@@ -86,17 +78,20 @@ const CustomerApp = ({match, location}) => (
       <Route
         component={AppInstallerQuotePage}
         name="installerQuoteDetail"
-        path={`${match.url}/quote-approvals/:secret/${INSTALLER_PREVIEW_SLUG}`} />
+        path={`${match.url}/quote-approvals/:secret/${INSTALLER_PREVIEW_SLUG}`}
+      />
       <Route
         component={AppCustomerQuotePage}
         name="customerQuotePreview"
-        path={`${match.url}/quote-approvals/:secret/${DIRECT_PREVIEW_SLUG}`} />
+        path={`${match.url}/quote-approvals/:secret/${DIRECT_PREVIEW_SLUG}`}
+      />
       <Route
         component={AppCustomerQuotePage}
         name="customerQuoteDetail"
-        path={`${match.url}/quote-approvals/:secret`} />
+        path={`${match.url}/quote-approvals/:secret`}
+      />
       <Route component={AppNotificationsPage} path={`${match.url}/notifications`} />
-      <Route component={NotFoundPage} exact path="*"/>
+      <Route component={NotFoundPage} exact path="*" />
     </Switch>
   </AppLayout>
 );
@@ -111,21 +106,25 @@ render(
           path="/pro-advice"
           render={() => {
             window.location = process.env.BLOG_HOST;
-          }} />
+          }}
+        />
         <Layout>
           <ErrorBoundary>
             <Switch>
               {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
               {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
               {DrivewayPhotoData.map(renderPhotoGalleryRedirect.bind(this, 'driveway'))}
-              {publicRoutes.map(props => <Route key={props.path} {...omit(props, 'sitemap')} />)}
+              {publicRoutes.map((props) => (
+                <Route key={props.path} {...omit(props, 'sitemap')} />
+              ))}
               <Route component={CustomerApp} path="/app/:customerGid" />
               <Redirect
                 exact
                 from="/gallery/driveway"
                 key="gallery-driveway-redirect"
-                to="/gallery/driveway/stamped/casual" />
-              <Route component={NotFoundPage} exact path="*"/>
+                to="/gallery/driveway/stamped/casual"
+              />
+              <Route component={NotFoundPage} exact path="*" />
               {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
             </Switch>
           </ErrorBoundary>
@@ -134,7 +133,7 @@ render(
     </Router>
   </Provider>,
   document.getElementById('root'),
-  customScripts(),
+  customScripts()
 );
 
 CustomerApp.propTypes = {

@@ -11,10 +11,10 @@ export default function QuoteLineLayout(props) {
 
   return (
     <div
-      className={classNames(
-        'quote-line',
-        `quote-line-status-${status.toLowerCase()}`,
-        {'quote-line__pdf': isPDFMode()})}>
+      className={classNames('quote-line', `quote-line-status-${status.toLowerCase()}`, {
+        'quote-line__pdf': isPDFMode(),
+      })}
+    >
       {children}
     </div>
   );

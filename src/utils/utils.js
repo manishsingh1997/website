@@ -11,7 +11,7 @@ export const parseError = (error) => {
 
     for (const key in json) {
       const value = json[key];
-      return `${Array.isArray(value) ? value[0] : value }: '${key}'`;
+      return `${Array.isArray(value) ? value[0] : value}: '${key}'`;
     }
   } catch (e) {
     return error.statusText;
@@ -21,7 +21,7 @@ export const parseError = (error) => {
 export const getParameterByName = (name, url) => {
   if (!url) url = window.location.href;
   name = name.replace(/[\[\]]/g, '\\$&');
-  const regex = new RegExp(`[?&]${ name }(=([^&#]*)|&|#|$)`),
+  const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`),
     results = regex.exec(url);
   if (!results) return null;
   if (!results[2]) return '';
@@ -46,7 +46,7 @@ export const getExpiresAtTitle = (expiresAt) => {
 };
 
 export const isChristmasTime = () => {
-  return baseIsChristmasTime(new Date);
+  return baseIsChristmasTime(new Date());
 };
 
 export const showUpcomingFeatures = (issueNumber) => {
@@ -64,12 +64,12 @@ export const getAdvancedEditorUrl = (order, zipcode) => {
   } else {
     query = '/gate3d?schema=';
   }
-  order.schema.forEach(key => {
+  order.schema.forEach((key) => {
     query += key + sep;
   });
   query = query.slice(0, -1);
   query += '&code=';
-  order.code.forEach(key => {
+  order.code.forEach((key) => {
     query += key + sep;
   });
   query = query.slice(0, -1);
@@ -97,7 +97,7 @@ export const scrollTop = () => {
  * @param {string} funcName
  * @param {number} timeout ms
  */
-export const rejectOnTimeout = function(promise, funcName, timeout = 500) {
+export const rejectOnTimeout = function (promise, funcName, timeout = 500) {
   const timeoutPromise = new Promise((resolve, reject) => {
     const timeoutID = setTimeout(() => {
       clearTimeout(timeoutID);
@@ -113,7 +113,7 @@ export const rejectOnTimeout = function(promise, funcName, timeout = 500) {
  * @param {string} funcName
  * @param {number} timeout ms
  */
-export const resolveOnTimeout = function(promise, funcName, timeout = 500) {
+export const resolveOnTimeout = function (promise, funcName, timeout = 500) {
   return new Promise((resolve) => {
     rejectOnTimeout(promise, funcName, timeout).finally(resolve);
   });

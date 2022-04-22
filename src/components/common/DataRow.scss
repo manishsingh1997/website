@@ -6,7 +6,6 @@
   justify-content: left;
   margin: $v-12 0;
 
-
   @include phone() {
     margin: $v-6 0;
 
@@ -29,7 +28,7 @@
   }
 
   > div:nth-child(2) {
-    min-width: 0;  // allow element to shrink https://stackoverflow.com/a/36247448/821594
+    min-width: 0; // allow element to shrink https://stackoverflow.com/a/36247448/821594
     overflow-wrap: break-word;
   }
 }

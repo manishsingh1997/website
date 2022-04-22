@@ -1,4 +1,5 @@
-/* eslint-disable */
+// (!) This config is used only for sitemap generation. All other files are not covered with tests.
+// And we cannot write tests for any other part of application with this config
 
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html

@@ -11,7 +11,6 @@ import {trackAddressEntered} from 'utils/analytics';
 import './AddressUpdatePopup.scss';
 
 class AddressUpdatePopup extends React.Component {
-
   static propTypes = {
     closeAddressUpdatePopup: PropTypes.func.isRequired,
     lead: PropTypes.object,
@@ -29,9 +28,9 @@ class AddressUpdatePopup extends React.Component {
   };
 
   handleAddressSelected(lead) {
-    const zipcode = get(lead, `productAvailability.products[${lead.product_slug}]`) ?
-      lead.address.zipcode :
-      constants.DEFAULT_ZIP;
+    const zipcode = get(lead, `productAvailability.products[${lead.product_slug}]`)
+      ? lead.address.zipcode
+      : constants.DEFAULT_ZIP;
 
     this.props.updateModalLead({
       ...lead,
@@ -79,19 +78,25 @@ class AddressUpdatePopup extends React.Component {
               }}
               onSubmit={this.handleAddressSelected.bind(this)}
               product={product}
-              value={value}/>
+              value={value}
+            />
             <hr className="Separator" />
             <div className="Buttons">
-              <Button flavor="regular" onClick={this.handleClose.bind(this)}>Cancel</Button>
+              <Button flavor="regular" onClick={this.handleClose.bind(this)}>
+                Cancel
+              </Button>
               <Button
                 className="submit-button"
-                disabled={(!lead || loading)}
-                flavor={(!lead || loading) ? 'regular' : 'primary'}
-                onClick={this.handleAddressSubmit.bind(this)}>
+                disabled={!lead || loading}
+                flavor={!lead || loading ? 'regular' : 'primary'}
+                onClick={this.handleAddressSubmit.bind(this)}
+              >
                 Update Address
               </Button>
             </div>
-            <div className="Popup-close" onClick={this.handleClose.bind(this)}>×</div>
+            <div className="Popup-close" onClick={this.handleClose.bind(this)}>
+              ×
+            </div>
           </div>
         </div>
       </Portal>

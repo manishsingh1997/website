@@ -81,12 +81,14 @@
             }
           }
 
-          &.p, &__right-block {
+          &.p,
+          &__right-block {
             margin-left: $h-10;
           }
 
           &__right-block {
-            &.approve, &.recommend {
+            &.approve,
+            &.recommend {
               @include tablet() {
                 margin-left: 0;
                 p {

@@ -9,7 +9,10 @@ export default class AdditionalApprovalsList extends React.Component {
   };
 
   renderQuoteApproval(quoteApproval) {
-    const {customer: {full_name: fullName}, approved_at: approvedAt} = quoteApproval;
+    const {
+      customer: {full_name: fullName},
+      approved_at: approvedAt,
+    } = quoteApproval;
     const status = approvedAt ? `Approved at ${formatDateAndTime(approvedAt)}` : 'Pending approval';
 
     return (
@@ -27,9 +30,7 @@ export default class AdditionalApprovalsList extends React.Component {
       <React.Fragment>
         <div className="additional-approvers card padding-40 soft-border spacing after__is-48">
           <h4>Additional Approvers</h4>
-          <table className="additional-approvers-list">
-            {additionalQuoteApprovals.map(this.renderQuoteApproval)}
-          </table>
+          <table className="additional-approvers-list">{additionalQuoteApprovals.map(this.renderQuoteApproval)}</table>
         </div>
       </React.Fragment>
     );

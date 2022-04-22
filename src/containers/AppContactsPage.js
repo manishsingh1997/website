@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
         data,
       });
     },
-    updateUser: async(newUserData) => {
+    updateUser: async (newUserData) => {
       const user = await authService.getUser();
       dispatch({
         type: authActionTypes.AUTH_GET_USER_DONE,

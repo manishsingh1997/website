@@ -9,16 +9,14 @@ import helpDefaultCategories from 'data/help-categories';
 const HelpLandingPage = (props) => {
   const subtitle = [
     'Feel free to ',
-    <a href={`tel:${PHONE_NUMBER}`} key="call-us-number">call us</a>,
+    <a href={`tel:${PHONE_NUMBER}`} key="call-us-number">
+      call us
+    </a>,
     ' if you don’t find your answer here',
   ];
 
   return (
-    <HelpLanding
-      categories={helpDefaultCategories}
-      subtitle={subtitle}
-      title="Help & Customer Service"
-      {...props}/>
+    <HelpLanding categories={helpDefaultCategories} subtitle={subtitle} title="Help & Customer Service" {...props} />
   );
 };
 

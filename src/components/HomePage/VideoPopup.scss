@@ -1,4 +1,4 @@
-@import "../../../node_modules/@ergeon/core-components/src/components/variables";
+@import '../../../node_modules/@ergeon/core-components/src/components/variables';
 .video-popup {
   position: absolute;
   z-index: 2;
@@ -28,5 +28,4 @@
     backdrop-filter: blur(4px);
     pointer-events: unset;
   }
-
 }

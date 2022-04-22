@@ -8,9 +8,9 @@
 
   select {
     background: url(../../assets/drop_down.svg) no-repeat 95% 50%;
-    background-color: #F8FBF7;
+    background-color: #f8fbf7;
     background-size: 10px;
-    border: 1px solid rgba(191,196,189,0.55);
+    border: 1px solid rgba(191, 196, 189, 0.55);
     border-radius: 4px;
     height: 48px;
     -webkit-appearance: none;
@@ -26,18 +26,18 @@
     width: 100%;
     &:focus {
       outline: 0;
-      border: 1px solid rgba(0,0,0,0.50);
-      background-color: #FFFFFF;
-      -webkit-box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.2);
-      -moz-box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.2);
-      box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.2);
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      background-color: #ffffff;
+      -webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.2);
     }
   }
   input {
     padding: 14px 12px;
-    border: 1px solid rgba(191, 196, 189, 0.50);
+    border: 1px solid rgba(191, 196, 189, 0.5);
     border-radius: 4px;
-    background: #F8FBF7;
+    background: #f8fbf7;
     height: 48px;
     padding-top: 24px;
     font-family: 'Open Sans', sans-serif;
@@ -51,23 +51,23 @@
     }
     &:focus {
       outline: 0;
-      border: 1px solid rgba(0, 0, 0, 0.50);
-      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      background: #ffffff;
       -webkit-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.2);
       -moz-box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.2);
       box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.2);
       &::placeholder {
-        color: #787E75;
+        color: #787e75;
       }
-      & +label {
-        transform: translate(0, -42px) scale(.75);
+      & + label {
+        transform: translate(0, -42px) scale(0.75);
       }
     }
   }
   label {
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
-    color: #777E71;
+    color: #777e71;
     letter-spacing: 0;
     margin-left: 12px;
     font-size: 14px;
@@ -75,7 +75,7 @@
     position: absolute;
     transform-origin: top left;
     transform: translate(0, -32px) scale(1);
-    transition: all .1s ease-in-out;  //speed
+    transition: all 0.1s ease-in-out; //speed
     pointer-events: none;
     position: absolute;
     left: 0;
@@ -84,7 +84,7 @@
   &.is-hasValue {
     label {
       //move the x coordinate and reduce size
-      transform: translate(0, -42px) scale(.75);
+      transform: translate(0, -42px) scale(0.75);
     }
   }
 }

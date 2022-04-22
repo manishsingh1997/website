@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 import './DataRow.scss';
 
-const DataRow = ({title, value, defaultValue='-'}) => {
-
+const DataRow = ({title, value, defaultValue = '-'}) => {
   return (
     <div className="customer-app-data-row">
       <div>{title}</div>

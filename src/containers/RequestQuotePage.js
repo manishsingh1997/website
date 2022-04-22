@@ -1,15 +1,7 @@
 import {connect} from 'react-redux';
 
-import {
-  updateLead,
-  updateProduct,
-  updateLeadFromAddress,
-  openAddressUpdatePopup,
-} from '../flux/actions/address';
-import {
-  addConfig,
-  addConfigFromSchema,
-} from '../flux/actions/cart';
+import {updateLead, updateProduct, updateLeadFromAddress, openAddressUpdatePopup} from '../flux/actions/address';
+import {addConfig, addConfigFromSchema} from '../flux/actions/cart';
 import RequestQuotePage from 'components/RequestQuotePage';
 
 const mapStateToProps = ({address, cart, auth}) => {
@@ -40,30 +32,38 @@ const mapDispatchToProps = (dispatch) => {
     updateLeadAndConfig: ({address, product, zipcode, data, schemaCode, length, configs}) => {
       let updateLead = null;
       if (address) {
-        updateLead = dispatch(updateLeadFromAddress({
-          address,
-          product,
-          zipcode,
-        }));
+        updateLead = dispatch(
+          updateLeadFromAddress({
+            address,
+            product,
+            zipcode,
+          })
+        );
       }
 
       if (data && schemaCode) {
         if (updateLead) {
-          updateLead.then(zipcode => dispatch(addConfigFromSchema({
-            zipcode,
-            data,
-            schemaCode,
-            length,
-            configs,
-          })));
+          updateLead.then((zipcode) =>
+            dispatch(
+              addConfigFromSchema({
+                zipcode,
+                data,
+                schemaCode,
+                length,
+                configs,
+              })
+            )
+          );
         } else {
-          dispatch(addConfigFromSchema({
-            zipcode,
-            data,
-            schemaCode,
-            length,
-            configs,
-          }));
+          dispatch(
+            addConfigFromSchema({
+              zipcode,
+              data,
+              schemaCode,
+              length,
+              configs,
+            })
+          );
         }
       }
     },

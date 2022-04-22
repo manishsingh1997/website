@@ -1,7 +1,6 @@
 @import '~@ergeon/core-components/src/components/variables.scss';
 
 .appointment-list-page {
-
   .appointment-filters {
     display: flex;
     justify-content: end;
@@ -13,13 +12,12 @@
     }
 
     .react-select-filter {
-
       &__value-container {
         width: 80px;
       }
 
       &__indicator {
-        padding: 2px
+        padding: 2px;
       }
 
       &-container {

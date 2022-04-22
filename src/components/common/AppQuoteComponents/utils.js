@@ -13,11 +13,11 @@ export const hideDroppedLabels = (projectCalcInput, quoteLines) => {
     gates: [],
   };
   const calcInputKeys = Object.keys(newCalcInput);
-  calcInputKeys.forEach(fieldName => {
+  calcInputKeys.forEach((fieldName) => {
     if (!projectCalcInput[fieldName]) {
       return;
     }
-    (projectCalcInput[fieldName]).forEach((item, index) => {
+    projectCalcInput[fieldName].forEach((item, index) => {
       let label;
       if (fieldName === 'sides' || fieldName === 'polygons') {
         label = getLabelFromIndex(index);
@@ -28,7 +28,7 @@ export const hideDroppedLabels = (projectCalcInput, quoteLines) => {
       const isLabelDropped = linesByLabel[label] === true;
       newCalcInput[fieldName].push({
         ...item,
-        'is_dropped': isLabelDropped,
+        is_dropped: isLabelDropped,
       });
     });
   });

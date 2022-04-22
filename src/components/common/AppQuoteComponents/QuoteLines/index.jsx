@@ -11,45 +11,47 @@ import {showUpcomingFeatures} from '../../../../utils/utils';
  * Filter sides from calcInput that were not found in quote lines.
  */
 const getAdditionalSidesFromCalcInput = (calcInputSides, quoteLineSides) => {
-  return calcInputSides.map((side, index) => {
-    const sideLabel = getLabelFromIndex(index);
-    return {
-      ...side,
-      label: sideLabel,
-      calcInputQuoteLine: true,
-    };
-  }).filter(side => {
-    const existingQuoteLineSide = quoteLineSides.find(quoteLineSide => quoteLineSide.label == side.label);
-    return existingQuoteLineSide === undefined;
-  });
+  return calcInputSides
+    .map((side, index) => {
+      const sideLabel = getLabelFromIndex(index);
+      return {
+        ...side,
+        label: sideLabel,
+        calcInputQuoteLine: true,
+      };
+    })
+    .filter((side) => {
+      const existingQuoteLineSide = quoteLineSides.find((quoteLineSide) => quoteLineSide.label == side.label);
+      return existingQuoteLineSide === undefined;
+    });
 };
 
 /*
  * Filter gates and areas from calcInput that were not found in quote lines.
  */
 const getAdditionalPointsFromCalcInput = (calcInputPoints, quoteLinePoints) => {
-  return calcInputPoints.map((point, index) => {
-    const pointLabel = (index + 1).toString();
-    return {
-      ...point,
-      label: pointLabel,
-      calcInputQuoteLine: true,
-    };
-  }).filter(point => {
-    const existingQuoteLinePoint = quoteLinePoints.find(quoteLinePoint => quoteLinePoint.label == point.label);
-    return existingQuoteLinePoint === undefined;
-  });
+  return calcInputPoints
+    .map((point, index) => {
+      const pointLabel = (index + 1).toString();
+      return {
+        ...point,
+        label: pointLabel,
+        calcInputQuoteLine: true,
+      };
+    })
+    .filter((point) => {
+      const existingQuoteLinePoint = quoteLinePoints.find((quoteLinePoint) => quoteLinePoint.label == point.label);
+      return existingQuoteLinePoint === undefined;
+    });
 };
 
 /**
  * Get sides from the quote lines. In addition it tries to extract sides from the `calcInput`.
  */
 const getSides = (quoteLines, filterByField, calcInput) => {
-  const quoteLineSides = quoteLines.filter(
-    quoteLine => isQuoteLineOfMapKinds(quoteLine, ['line'])
-  );
+  const quoteLineSides = quoteLines.filter((quoteLine) => isQuoteLineOfMapKinds(quoteLine, ['line']));
   const calcInputSides = getAdditionalSidesFromCalcInput(calcInput?.sides || [], quoteLineSides);
-  const filteredQuoteLines = quoteLineSides.filter(quoteLine => quoteLine[filterByField] === true);
+  const filteredQuoteLines = quoteLineSides.filter((quoteLine) => quoteLine[filterByField] === true);
   return [...filteredQuoteLines, ...calcInputSides];
 };
 
@@ -57,11 +59,9 @@ const getSides = (quoteLines, filterByField, calcInput) => {
  * Get gates from the quote lines. In addition it tries to extract gates from the `calcInput`.
  */
 const getGates = (quoteLines, filterByField, calcInput) => {
-  const quoteLineGates = quoteLines.filter(
-    quoteLine => isQuoteLineOfMapKinds(quoteLine, ['point', null, undefined])
-  );
+  const quoteLineGates = quoteLines.filter((quoteLine) => isQuoteLineOfMapKinds(quoteLine, ['point', null, undefined]));
   const calcInputGates = getAdditionalPointsFromCalcInput(calcInput?.gates || [], quoteLineGates);
-  const filteredQuoteLines = quoteLineGates.filter(quoteLine => quoteLine[filterByField] === true);
+  const filteredQuoteLines = quoteLineGates.filter((quoteLine) => quoteLine[filterByField] === true);
   return [...filteredQuoteLines, ...calcInputGates];
 };
 
@@ -69,11 +69,9 @@ const getGates = (quoteLines, filterByField, calcInput) => {
  * Get areas from the quote lines. In addition it tries to extract areas from the `calcInput`.
  */
 const getAreas = (quoteLines, filterByField, calcInput) => {
-  const quoteLineAreas = quoteLines.filter(
-    quoteLine => isQuoteLineOfMapKinds(quoteLine, ['area'])
-  );
+  const quoteLineAreas = quoteLines.filter((quoteLine) => isQuoteLineOfMapKinds(quoteLine, ['area']));
   const calcInputAreas = getAdditionalPointsFromCalcInput(calcInput?.areas || [], quoteLineAreas);
-  const filteredQuoteLines = quoteLineAreas.filter(quoteLine => quoteLine[filterByField] === true);
+  const filteredQuoteLines = quoteLineAreas.filter((quoteLine) => quoteLine[filterByField] === true);
   return [...filteredQuoteLines, ...calcInputAreas];
 };
 
@@ -183,18 +181,22 @@ export default function QuoteLines({
 
     // sorts lines using labels by letter first and digit last
     const sortLines = (lines) => {
-
-      return lines
-        // include an identifier that we will use to sort
-        .map(line =>
-          [line.label.toLowerCase().replace(/([a-z])|(\d)|./sg,
-            // lets use 1 for letters, 2 for digits and 3 for the rest, should look like this:
-            // '1a', '21'...
-            (match, letter, digit) => (letter ? 1 : digit ? 2 : 3) + match), line]
-        )
-        .sort(([a], [b]) => a.localeCompare(b))
-        // return the original lines sorted
-        .map(line => line[1]);
+      return (
+        lines
+          // include an identifier that we will use to sort
+          .map((line) => [
+            line.label.toLowerCase().replace(
+              /([a-z])|(\d)|./gs,
+              // lets use 1 for letters, 2 for digits and 3 for the rest, should look like this:
+              // '1a', '21'...
+              (match, letter, digit) => (letter ? 1 : digit ? 2 : 3) + match
+            ),
+            line,
+          ])
+          .sort(([a], [b]) => a.localeCompare(b))
+          // return the original lines sorted
+          .map((line) => line[1])
+      );
     };
 
     const preparedQuoteLines = [
@@ -208,11 +210,11 @@ export default function QuoteLines({
 
   return (
     <>
-      <div className="quote-details__lines page-break">{asPDF && <h4>Project Scope</h4>}
-        <div className="quote-details__sides spacing before__is-24">
-        </div>
+      <div className="quote-details__lines page-break">
+        {asPDF && <h4>Project Scope</h4>}
+        <div className="quote-details__sides spacing before__is-24"></div>
         <div>
-          {preparedQuoteLines.map(quoteLineProps => (
+          {preparedQuoteLines.map((quoteLineProps) => (
             <QuoteLine
               isInstallerPreview={isInstallerPreview}
               isMultiPartyQuote={isMultiPartyQuote}
@@ -221,7 +223,8 @@ export default function QuoteLines({
               // error complaining about mapping to keys with side-undefined
               key={`${quoteLineProps.type}-${quoteLineProps.id}-${quoteLineProps?.label}`}
               onBuildDetailsClick={onBuildDetailsClick}
-              {...quoteLineProps} />
+              {...quoteLineProps}
+            />
           ))}
         </div>
       </div>

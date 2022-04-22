@@ -27,7 +27,7 @@
         position: relative;
         &:before {
           color: $gray-2;
-          content: "\2022";
+          content: '\2022';
           display: inline-block;
           font-size: 20px;
           left: -15px;
@@ -36,9 +36,8 @@
         }
         &:last-child {
           margin-bottom: 0;
-        };
+        }
       }
-
     }
     margin-bottom: 24px;
     padding-bottom: 12px;

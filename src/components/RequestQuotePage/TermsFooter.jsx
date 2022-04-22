@@ -22,14 +22,20 @@ export default class TermsFooter extends React.Component {
           <a
             href="https://s3-us-west-2.amazonaws.com/ergeon-terms/terms-of-use.pdf"
             rel="noopener noreferrer"
-            target="_blank">Terms of Use</a> and&nbsp;
+            target="_blank"
+          >
+            Terms of Use
+          </a>{' '}
+          and&nbsp;
           <a
             href="https://s3-us-west-2.amazonaws.com/ergeon-terms/privacy-policy.pdf"
             rel="noopener noreferrer"
-            target="_blank">Privacy Policy</a>
+            target="_blank"
+          >
+            Privacy Policy
+          </a>
         </div>
       </div>
     );
   }
 }
-

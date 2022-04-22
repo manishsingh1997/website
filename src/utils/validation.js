@@ -1,11 +1,12 @@
-export const isEmpty = value => value === undefined || value === null || value === '';
+export const isEmpty = (value) => value === undefined || value === null || value === '';
 const join = (rules) => {
   return (value, data) => {
-    const errors = rules.map(rule => rule(value, data)).filter(error => !!error);
+    const errors = rules.map((rule) => rule(value, data)).filter((error) => !!error);
     return errors[0];
   };
 };
-const emailRe = /^[\w!#$%&'*+\/=?`{|}~^-]+(?:\.[\w!#$%&'*+\/=?`{|}~^-]+)*@(?:[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]\.)+[a-zA-Z]{2,}$/i; // eslint-disable-line max-len
+const emailRe =
+  /^[\w!#$%&'*+\/=?`{|}~^-]+(?:\.[\w!#$%&'*+\/=?`{|}~^-]+)*@(?:[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]\.)+[a-zA-Z]{2,}$/i; // eslint-disable-line max-len
 const phoneRe = /^\(\d{0,3}\) \d{0,3}\-\d{0,4}$/;
 
 export const email = (value) => {
@@ -30,7 +31,7 @@ export const phone = (value) => {
 };
 
 export const required = (value, fields, errorMessage = 'This field is required') => {
-  if (isEmpty(value) || (value.length === 0) || value && value.choices && !value.value) {
+  if (isEmpty(value) || value.length === 0 || (value && value.choices && !value.value)) {
     return errorMessage;
   }
 };

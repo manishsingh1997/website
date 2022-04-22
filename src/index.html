@@ -1,132 +1,221 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <link rel="manifest" href="/manifest.webmanifest">
-        <link rel="apple-touch-icon" href="/ergeon-logo.png">
-        <!-- Site verification -->
-        <meta name="ahrefs-site-verification" content="61bc53dbe1944efa51f1525d4d4622f26f1b5591c69674d789ef481f295d6bd7">
-        <meta name="google-site-verification" content="G5VXCqECKztk3Qu6D1aOvEU9d8zjoobfMLxQjnsD93o"/>
-        <meta name="facebook-domain-verification" content="9dryy06dp4boumm06kzohd2mbqchuz" />
-        <meta name="p:domain_verify" content="76589da3e980eb289bf856d04b12b55c"/> <!-- Pinterest account -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/ergeon-logo.png" />
+    <!-- Site verification -->
+    <meta name="ahrefs-site-verification" content="61bc53dbe1944efa51f1525d4d4622f26f1b5591c69674d789ef481f295d6bd7" />
+    <meta name="google-site-verification" content="G5VXCqECKztk3Qu6D1aOvEU9d8zjoobfMLxQjnsD93o" />
+    <meta name="facebook-domain-verification" content="9dryy06dp4boumm06kzohd2mbqchuz" />
+    <meta name="p:domain_verify" content="76589da3e980eb289bf856d04b12b55c" />
+    <!-- Pinterest account -->
 
-        <script>
-          var GTM_KEY =
-              document.location.host === 'www.ergeon.com'
-              ? 'GTM-K83QLN2'
-              : 'GTM-PWDZM7N';
-          var MIXPANEL_KEY =
-              document.location.host === 'www.ergeon.com'
-              ? 'da4d547ba7f43c46612e7354fca68002'
-              : '46b95ea487f0162bc81c864d5a8c9e1c';
-        </script>
+    <script>
+      var GTM_KEY = document.location.host === 'www.ergeon.com' ? 'GTM-K83QLN2' : 'GTM-PWDZM7N';
+      var MIXPANEL_KEY =
+        document.location.host === 'www.ergeon.com'
+          ? 'da4d547ba7f43c46612e7354fca68002'
+          : '46b95ea487f0162bc81c864d5a8c9e1c';
+    </script>
 
-        <!-- Init sentry as first step, to not miss errors during starting up -->
-        <script src="https://browser.sentry-cdn.com/5.27.6/bundle.min.js" integrity="sha384-rtZLZkLLKTQnK3HpcN1IG6wMYrx+O3GraPVH74SyT/gzvTfX6O/XLR7Ww65yd1w+" crossorigin="anonymous">
-        </script>
-        <script src="https://browser.sentry-cdn.com/5.27.6/captureconsole.min.js" crossorigin="anonymous"></script>
-        <script type="text/javascript">
-          if (<%= htmlWebpackPlugin.options.environment %> !== "development") {
-            Sentry.init({
-              "dsn": <%= htmlWebpackPlugin.options.sentryDSN %>,
-              "environment": <%= htmlWebpackPlugin.options.environment %>,
-              "integrations": [
-                new Sentry.Integrations.CaptureConsole({"levels": <%= htmlWebpackPlugin.options.sentryConsoleLevels %>}),
-              ],
-              "release": <%= htmlWebpackPlugin.options.sentryRelease %>,
-              "ignoreErrors": [
-                /* Random plugins/extensions */
-                "top.GLOBALS",
-                /* See: http://blog.errorception.com/2012/03/tale-of-unfindable-js-error.html */
-                "originalCreateNotification",
-                "canvas.contentDocument",
-                "MyApp_RemoveAllHighlights",
-                "http://tt.epicplay.com",
-                "Can't find variable: ZiteReader",
-                "jigsaw is not defined",
-                "ComboSearch is not defined",
-                "http://loading.retry.widdit.com/",
-                "atomicFindClose",
-                /* Facebook borked */
-                "fb_xd_fragment",
-                /*
-                  ISP "optimizing" proxy - `Cache-Control: no-transform` seems to
-                  reduce this. (thanks @acdha)
-                  See http://stackoverflow.com/questions/4113268
-                */
-                "bmi_SafeAddOnload",
-                "EBCallBackMessageReceived",
-                /* See http://toolbar.conduit.com/Developer/HtmlAndGadget/Methods/JSInjection.aspx */
-                "conduitPage",
-                /* External error - https://ergeon.atlassian.net/browse/ENG-3788 */
-                'Could not load "util"',
-                /*
-                  From instagram or FB messenger inapp browsers:
-                  https://developers.facebook.com/community/threads/320013549791141/
-                */
-                "Can't find variable: _AutofillCallbackHandler",
-                /*
-                  Some weird error coming from navigator.sendBeacon function
-                  no way to reproduce
-                */
-                "Illegal invocation",
-                "Argument not optional",
-                // Not critical https://stackoverflow.com/a/50387233
-                "ResizeObserver loop limit exceeded",
-                /^Socket server did not execute the callback/,
-                /You are currently using minified code outside of NODE_ENV === "production"./,
-              ],
-              "denyUrls": [
-                /* Our externals */
-                /ads\.nextdoor\.com/,
-                /embed\.tawk\.to/,
-                /static-v\.tawk\.to/,
-                /newrelic\.js/,
-                /* COMMUNITY SUPPORTED */
-                /* Facebook */
-                /graph\.facebook\.com/i,
-                /connect\.facebook\.net\/en_US\/all\.js/i,
-                /* Chrome extensions */
-                /extensions\//i,
-                /^chrome:\/\//i,
-                /^chrome-extension:\/\//i,
-                /^safari-extension:\/\//i,
-                /* Google tag */
-                /gtag\/js/i,
-                /* Other plugins */
-                /127\.0\.0\.1:4001\/isrunning/i, /* Cacaoweb */
-                /webappstoolbarba\.texthelp\.com\//i,
-                /metrics\.itunes\.apple\.com\.edgesuite\.net\//i,
-              ],
-            });
-          }
-        </script>
-        <!-- END Sentry Init -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
-        <% if (htmlWebpackPlugin.options.isProd) { %>
-        <script type="text/javascript" src="/assets/newrelic.js" defer></script>
-        <% } %>
-        <script type="text/javascript" src="https://js.stripe.com/v2/" defer></script>
-    </head>
-    <body>
-        <div id="utm-iframe" style="display:none"></div>
-        <div id="root"></div>
+    <!-- Init sentry as first step, to not miss errors during starting up -->
+    <script
+      src="https://browser.sentry-cdn.com/5.27.6/bundle.min.js"
+      integrity="sha384-rtZLZkLLKTQnK3HpcN1IG6wMYrx+O3GraPVH74SyT/gzvTfX6O/XLR7Ww65yd1w+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://browser.sentry-cdn.com/5.27.6/captureconsole.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      if (<%= htmlWebpackPlugin.options.environment %> !== "development") {
+        Sentry.init({
+          "dsn": <%= htmlWebpackPlugin.options.sentryDSN %>,
+          "environment": <%= htmlWebpackPlugin.options.environment %>,
+          "integrations": [
+            new Sentry.Integrations.CaptureConsole({"levels": <%= htmlWebpackPlugin.options.sentryConsoleLevels %>}),
+          ],
+          "release": <%= htmlWebpackPlugin.options.sentryRelease %>,
+          "ignoreErrors": [
+            /* Random plugins/extensions */
+            "top.GLOBALS",
+            /* See: http://blog.errorception.com/2012/03/tale-of-unfindable-js-error.html */
+            "originalCreateNotification",
+            "canvas.contentDocument",
+            "MyApp_RemoveAllHighlights",
+            "http://tt.epicplay.com",
+            "Can't find variable: ZiteReader",
+            "jigsaw is not defined",
+            "ComboSearch is not defined",
+            "http://loading.retry.widdit.com/",
+            "atomicFindClose",
+            /* Facebook borked */
+            "fb_xd_fragment",
+            /*
+              ISP "optimizing" proxy - `Cache-Control: no-transform` seems to
+              reduce this. (thanks @acdha)
+              See http://stackoverflow.com/questions/4113268
+            */
+            "bmi_SafeAddOnload",
+            "EBCallBackMessageReceived",
+            /* See http://toolbar.conduit.com/Developer/HtmlAndGadget/Methods/JSInjection.aspx */
+            "conduitPage",
+            /* External error - https://ergeon.atlassian.net/browse/ENG-3788 */
+            'Could not load "util"',
+            /*
+              From instagram or FB messenger inapp browsers:
+              https://developers.facebook.com/community/threads/320013549791141/
+            */
+            "Can't find variable: _AutofillCallbackHandler",
+            /*
+              Some weird error coming from navigator.sendBeacon function
+              no way to reproduce
+            */
+            "Illegal invocation",
+            "Argument not optional",
+            // Not critical https://stackoverflow.com/a/50387233
+            "ResizeObserver loop limit exceeded",
+            /^Socket server did not execute the callback/,
+            /You are currently using minified code outside of NODE_ENV === "production"./,
+          ],
+          "denyUrls": [
+            /* Our externals */
+            /ads\.nextdoor\.com/,
+            /embed\.tawk\.to/,
+            /static-v\.tawk\.to/,
+            /newrelic\.js/,
+            /* COMMUNITY SUPPORTED */
+            /* Facebook */
+            /graph\.facebook\.com/i,
+            /connect\.facebook\.net\/en_US\/all\.js/i,
+            /* Chrome extensions */
+            /extensions\//i,
+            /^chrome:\/\//i,
+            /^chrome-extension:\/\//i,
+            /^safari-extension:\/\//i,
+            /* Google tag */
+            /gtag\/js/i,
+            /* Other plugins */
+            /127\.0\.0\.1:4001\/isrunning/i, /* Cacaoweb */
+            /webappstoolbarba\.texthelp\.com\//i,
+            /metrics\.itunes\.apple\.com\.edgesuite\.net\//i,
+          ],
+        });
+      }
+    </script>
+    <!-- END Sentry Init -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <% if (htmlWebpackPlugin.options.isProd) { %>
+    <script type="text/javascript" src="/assets/newrelic.js" defer></script>
+    <% } %>
+    <script type="text/javascript" src="https://js.stripe.com/v2/" defer></script>
+  </head>
+  <body>
+    <div id="utm-iframe" style="display: none"></div>
+    <div id="root"></div>
 
-        <!-- Google Tag Manager -->
-        <script type="text/javascript" defer>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer',GTM_KEY);</script>
-        <!-- End Google Tag Manager -->
-        <!-- start Mixpanel -->
-        <script type="text/javascript" defer>(function(c,a){if(!a.__SV){var b=window;try{var d,m,j,k=b.location,f=k.hash;d=function(a,b){return(m=a.match(RegExp(b+"=([^&]*)")))?m[1]:null};f&&d(f,"state")&&(j=JSON.parse(decodeURIComponent(d(f,"state"))),"mpeditor"===j.action&&(b.sessionStorage.setItem("_mpcehash",f),history.replaceState(j.desiredHash||"",c.title,k.pathname+k.search)))}catch(n){}var l,h;window.mixpanel=a;a._i=[];a.init=function(b,d,g){function c(b,i){var a=i.split(".");2==a.length&&(b=b[a[0]],i=a[1]);b[i]=function(){b.push([i].concat(Array.prototype.slice.call(arguments,
-        0)))}}var e=a;"undefined"!==typeof g?e=a[g]=[]:g="mixpanel";e.people=e.people||[];e.toString=function(b){var a="mixpanel";"mixpanel"!==g&&(a+="."+g);b||(a+=" (stub)");return a};e.people.toString=function(){return e.toString(1)+".people (stub)"};l="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
-        for(h=0;h<l.length;h++)c(e,l[h]);var f="set set_once union unset remove delete".split(" ");e.get_group=function(){function a(c){b[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));e.push([d,call2])}}for(var b={},d=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<f.length;c++)a(f[c]);return b};a._i.push([b,d,g])};a.__SV=1.2;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
-        MIXPANEL_CUSTOM_LIB_URL:"file:"===c.location.protocol&&"//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js";d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d)}})(document,window.mixpanel||[]);
-        mixpanel.init(MIXPANEL_KEY);</script>
-        <!-- end Mixpanel -->
-    </body>
+    <!-- Google Tag Manager -->
+    <script type="text/javascript" defer>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', GTM_KEY);
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- start Mixpanel -->
+    <script type="text/javascript" defer>
+      (function (c, a) {
+        if (!a.__SV) {
+          var b = window;
+          try {
+            var d,
+              m,
+              j,
+              k = b.location,
+              f = k.hash;
+            d = function (a, b) {
+              return (m = a.match(RegExp(b + '=([^&]*)'))) ? m[1] : null;
+            };
+            f &&
+              d(f, 'state') &&
+              ((j = JSON.parse(decodeURIComponent(d(f, 'state')))),
+              'mpeditor' === j.action &&
+                (b.sessionStorage.setItem('_mpcehash', f),
+                history.replaceState(j.desiredHash || '', c.title, k.pathname + k.search)));
+          } catch (n) {}
+          var l, h;
+          window.mixpanel = a;
+          a._i = [];
+          a.init = function (b, d, g) {
+            function c(b, i) {
+              var a = i.split('.');
+              2 == a.length && ((b = b[a[0]]), (i = a[1]));
+              b[i] = function () {
+                b.push([i].concat(Array.prototype.slice.call(arguments, 0)));
+              };
+            }
+            var e = a;
+            'undefined' !== typeof g ? (e = a[g] = []) : (g = 'mixpanel');
+            e.people = e.people || [];
+            e.toString = function (b) {
+              var a = 'mixpanel';
+              'mixpanel' !== g && (a += '.' + g);
+              b || (a += ' (stub)');
+              return a;
+            };
+            e.people.toString = function () {
+              return e.toString(1) + '.people (stub)';
+            };
+            l =
+              'disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove'.split(
+                ' '
+              );
+            for (h = 0; h < l.length; h++) c(e, l[h]);
+            var f = 'set set_once union unset remove delete'.split(' ');
+            e.get_group = function () {
+              function a(c) {
+                b[c] = function () {
+                  call2_args = arguments;
+                  call2 = [c].concat(Array.prototype.slice.call(call2_args, 0));
+                  e.push([d, call2]);
+                };
+              }
+              for (
+                var b = {}, d = ['get_group'].concat(Array.prototype.slice.call(arguments, 0)), c = 0;
+                c < f.length;
+                c++
+              )
+                a(f[c]);
+              return b;
+            };
+            a._i.push([b, d, g]);
+          };
+          a.__SV = 1.2;
+          b = c.createElement('script');
+          b.type = 'text/javascript';
+          b.async = !0;
+          b.src =
+            'undefined' !== typeof MIXPANEL_CUSTOM_LIB_URL
+              ? MIXPANEL_CUSTOM_LIB_URL
+              : 'file:' === c.location.protocol && '//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js'.match(/^\/\//)
+              ? 'https://cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js'
+              : '//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js';
+          d = c.getElementsByTagName('script')[0];
+          d.parentNode.insertBefore(b, d);
+        }
+      })(document, window.mixpanel || []);
+      mixpanel.init(MIXPANEL_KEY);
+    </script>
+    <!-- end Mixpanel -->
+  </body>
 </html>

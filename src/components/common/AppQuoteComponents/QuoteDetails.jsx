@@ -48,8 +48,7 @@ export default class QuoteDetails extends React.Component {
   renderProjectImages() {
     const {asPDF, quote} = this.props;
 
-    const imagesArray = quote && quote['mediafile_list'] &&
-      quote['mediafile_list'].mediafiles;
+    const imagesArray = quote && quote['mediafile_list'] && quote['mediafile_list'].mediafiles;
 
     if (asPDF && !isEmpty(imagesArray)) {
       return (
@@ -58,8 +57,9 @@ export default class QuoteDetails extends React.Component {
             Project Images
           </Title>
           <div className="cards two-columns">
-            {imagesArray.map((elem) =>
-              <ImageCard key={elem.id} title={elem.title} url={elem.file} />)}
+            {imagesArray.map((elem) => (
+              <ImageCard key={elem.id} title={elem.title} url={elem.file} />
+            ))}
           </div>
         </div>
       );
@@ -72,26 +72,19 @@ export default class QuoteDetails extends React.Component {
 
     if (this.isQuoteReplaced() && newQuoteLink) {
       return (
-        <Notification
-          mode="embed"
-          type="Information">
+        <Notification mode="embed" type="Information">
           This quote has been revised. Click
-          <Link
-            className="link"
-            rel="noopener"
-            target={'_blank'}
-            to={newQuoteLink}>
+          <Link className="link" rel="noopener" target={'_blank'} to={newQuoteLink}>
             &nbsp;here
-          </Link> to display the new revision.
+          </Link>{' '}
+          to display the new revision.
         </Notification>
       );
     }
 
     return (
       <div className="spacing after__is-24">
-        <Notification
-          mode="embed"
-          type="Warning">
+        <Notification mode="embed" type="Warning">
           This quote has been cancelled.
         </Notification>
       </div>
@@ -100,11 +93,9 @@ export default class QuoteDetails extends React.Component {
 
   renderQuoteExpiredMessage() {
     return (
-      <Notification
-        mode="embed"
-        type="Error">
-        This quote is expired.
-        Call <a href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a> to request a new quote revision.
+      <Notification mode="embed" type="Error">
+        This quote is expired. Call <a href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a> to request a
+        new quote revision.
       </Notification>
     );
   }
@@ -120,13 +111,15 @@ export default class QuoteDetails extends React.Component {
     if (!address) {
       address = quote.order.house.customer['main_address'];
     }
-    let gates = [], sides = [], polygons = [];
+    let gates = [],
+      sides = [],
+      polygons = [];
     if (calcInput) {
       gates = calcInput.gates || [];
       sides = calcInput.sides || [];
       polygons = calcInput.polygons || [];
     }
-    const SPINNER_BORDER_WITH = 0.10;
+    const SPINNER_BORDER_WITH = 0.1;
     const SPINNER_SIZE = 64;
     const location = {
       lat: address.latitude,
@@ -135,11 +128,7 @@ export default class QuoteDetails extends React.Component {
 
     return (
       <div className="quote-labels-map">
-        <Spinner
-          active={isLoadingMap}
-          borderWidth={SPINNER_BORDER_WITH}
-          color="blue"
-          size={SPINNER_SIZE} />
+        <Spinner active={isLoadingMap} borderWidth={SPINNER_BORDER_WITH} color="blue" size={SPINNER_SIZE} />
         <DrawMap
           className={classNames({'quote-labels-map__content': isLoadingMap})}
           disabled
@@ -150,16 +139,15 @@ export default class QuoteDetails extends React.Component {
             this.setState({isLoadingMap: false});
           }}
           restoreFrom={{gates, sides, polygons}}
-          showControls={false} />
+          showControls={false}
+        />
       </div>
     );
   }
 
   renderQuotePriceSection() {
     const {quote, isInstallerPreview, totalPrice, totalPreviouslyApprovedPrice, totalProjectPrice} = this.props;
-    const {
-      'parent_quote': parentQuote,
-    } = quote;
+    const {parent_quote: parentQuote} = quote;
 
     if (!parentQuote) {
       return (
@@ -171,16 +159,11 @@ export default class QuoteDetails extends React.Component {
 
     return (
       <div className={classNames({'total-price': !isInstallerPreview, 'total-price-noteless': isInstallerPreview})}>
-        <h6 className="change-order-quote-price">
-          Total change order price for approval: {totalPrice}
-        </h6>
+        <h6 className="change-order-quote-price">Total change order price for approval: {totalPrice}</h6>
         <h6 className="change-order-total-previous-price">
-          Total previously approved
-          ({formatDate(parentQuote['approved_at'])}): {totalPreviouslyApprovedPrice}
+          Total previously approved ({formatDate(parentQuote['approved_at'])}): {totalPreviouslyApprovedPrice}
         </h6>
-        <h4 className="change-order-total-project-price">
-          Total project price: {totalProjectPrice}
-        </h4>
+        <h4 className="change-order-total-project-price">Total project price: {totalProjectPrice}</h4>
       </div>
     );
   }
@@ -204,14 +187,10 @@ export default class QuoteDetails extends React.Component {
     return (
       <div className="quote-details card soft-border spacing after__is-48">
         {!asPDF && isQuoteCancelled(quote) && (
-          <div className="quote-details__notification">
-            {this.renderQuoteCancelledMessage()}
-          </div>
+          <div className="quote-details__notification">{this.renderQuoteCancelledMessage()}</div>
         )}
         {!asPDF && isQuoteExpired(quote) && (
-          <div className="quote-details__notification">
-            {this.renderQuoteExpiredMessage()}
-          </div>
+          <div className="quote-details__notification">{this.renderQuoteExpiredMessage()}</div>
         )}
         <div className="quote-details__description spacing after__is-24">
           <QuoteDescription
@@ -221,19 +200,17 @@ export default class QuoteDetails extends React.Component {
             customer={customer}
             customerGID={customerGID}
             customerPDF={customerPDF}
-            quote={quote} />
+            quote={quote}
+          />
           {this.renderQuoteLinesOnMap()}
         </div>
         {!asPDF && isQuoteExpired(quote) && (
           <Notification mode="embed" type="Information">
-            Oops, it looks like your quote has expired.
-            Lumber and Labor prices can fluctuate depending on a number of
-            factors throughout the year, therefore our quotes are only good
-            for 15 days.  Your quote may not change, but we would like to
-            update it for you. You clicking approve has alerted us and we
-            are already in the process of updating your quote and someone
-            will be in touch you shortly.  If you would rather not wait,
-            simply contact us at <a href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a>.
+            Oops, it looks like your quote has expired. Lumber and Labor prices can fluctuate depending on a number of
+            factors throughout the year, therefore our quotes are only good for 15 days. Your quote may not change, but
+            we would like to update it for you. You clicking approve has alerted us and we are already in the process of
+            updating your quote and someone will be in touch you shortly. If you would rather not wait, simply contact
+            us at <a href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a>.
           </Notification>
         )}
         {this.renderProjectImages()}
@@ -244,13 +221,16 @@ export default class QuoteDetails extends React.Component {
           isPrimaryQuoteApproval={isPrimaryQuoteApproval}
           onBuildDetailsClick={onBuildDetailsClick}
           quote={quote}
-          quoteLines={quoteLines} />
+          quoteLines={quoteLines}
+        />
         {this.renderQuotePriceSection()}
         {!isInstallerPreview && (
           <div className="asterisk-notes">
             <span className="asterisk">*</span>
             <i> – An additional {CARD_TRANSACTION_FEE} fee will be added for credit/debit cards</i>
-          </div>)}
-      </div>);
+          </div>
+        )}
+      </div>
+    );
   }
 }

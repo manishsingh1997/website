@@ -7,10 +7,8 @@ module.exports = declare(() => {
     visitor: {
       ImportDeclaration(path, state) {
         const {pathPattern} = state.opts;
-        if (pathPattern && (new RegExp(pathPattern)).test(path.node.source.value)) {
-          path.replaceWith(
-            template.ast`var ${path.node.specifiers[0].local.name} = null;`
-          );
+        if (pathPattern && new RegExp(pathPattern).test(path.node.source.value)) {
+          path.replaceWith(template.ast`var ${path.node.specifiers[0].local.name} = null;`);
         }
       },
     },

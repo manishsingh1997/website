@@ -33,7 +33,7 @@ export default function AppContactsPage({contacts, getContacts, updateContacts, 
 
   // will set initial user state, used by cancel button and in initial load state
   const resetUser = (userContacts = contacts) => {
-    const primaryContact = userContacts && userContacts.find((contact => contact['is_primary']));
+    const primaryContact = userContacts && userContacts.find((contact) => contact['is_primary']);
     const primaryEmailInfo = getField(primaryContact, 'primary_email');
     const primaryPhoneInfo = getField(primaryContact, 'primary_phone');
 
@@ -82,14 +82,14 @@ export default function AppContactsPage({contacts, getContacts, updateContacts, 
 
     newData[index] = {
       ...newData[index],
-      'formatted_identifier': value,
+      formatted_identifier: value,
       identifier: value,
     };
 
     setAdditionalContacts(newData);
   };
 
-  const onSave = async(event) => {
+  const onSave = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
     setIsSuccess(false);
@@ -106,20 +106,17 @@ export default function AppContactsPage({contacts, getContacts, updateContacts, 
         }
         return contact;
       });
-      const response = await updateCustomerContacts(
-        customerGID,
-        {
-          'id': primaryContact.id,
-          'full_name': primaryContact.name,
-          'phone_number': primaryContact.phone,
-          'additional_contacts': cleanedContacts,
-        }
-      );
+      const response = await updateCustomerContacts(customerGID, {
+        id: primaryContact.id,
+        full_name: primaryContact.name,
+        phone_number: primaryContact.phone,
+        additional_contacts: cleanedContacts,
+      });
 
       updateContacts(response.data);
       await updateUser({
-        'phone_number': primaryContact.phone,
-        'full_name': primaryContact.name,
+        phone_number: primaryContact.phone,
+        full_name: primaryContact.name,
       });
       setIsSuccess(true);
       setEditing(false);
@@ -141,10 +138,7 @@ export default function AppContactsPage({contacts, getContacts, updateContacts, 
       type: type.toLowerCase(),
     };
 
-    setAdditionalContacts([
-      ...additionalContacts,
-      contactInfo,
-    ]);
+    setAdditionalContacts([...additionalContacts, contactInfo]);
   };
 
   const onRemoveContactInfo = (id) => {
@@ -227,9 +221,16 @@ export default function AppContactsPage({contacts, getContacts, updateContacts, 
       <>
         Contacts
         {editing ? (
-          <Button flavor="regular" onClick={onEditingClick} size="small">Cancel</Button>)
-          : (<Button onClick={onEditingClick} size="small">Edit</Button>)}
-      </>);
+          <Button flavor="regular" onClick={onEditingClick} size="small">
+            Cancel
+          </Button>
+        ) : (
+          <Button onClick={onEditingClick} size="small">
+            Edit
+          </Button>
+        )}
+      </>
+    );
   };
 
   const renderContent = () => {
@@ -247,7 +248,8 @@ export default function AppContactsPage({contacts, getContacts, updateContacts, 
             onPrimaryChange={onPrimaryChange}
             onRemoveContactInfo={onRemoveContactInfo}
             onSave={onSave}
-            primaryContact={primaryContact}/>
+            primaryContact={primaryContact}
+          />
         </>
       );
     }
@@ -268,7 +270,8 @@ export default function AppContactsPage({contacts, getContacts, updateContacts, 
       fetchData={fetchData}
       isLoading={isListLoading}
       renderContent={renderContent}
-      renderHeader={renderHeader} />
+      renderHeader={renderHeader}
+    />
   );
 }
 

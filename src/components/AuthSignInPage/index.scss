@@ -1,7 +1,6 @@
 @import '@ergeon/core-components/src/components/variables.scss';
 
 .signin-page {
-
   .icon-lock {
     width: 20px;
   }
@@ -20,7 +19,6 @@
 }
 
 .signin-form {
-
   button {
     width: 100%;
   }
@@ -30,13 +28,13 @@
     position: relative;
   }
   .signin-form-error {
-      margin-top: 4px;
-      font-size: $font-label-size;
-      color: $red;
-      font-family: $font-content;
-      letter-spacing: 0;
-      line-height: $line-height-label;
-      text-align: left;
+    margin-top: 4px;
+    font-size: $font-label-size;
+    color: $red;
+    font-family: $font-content;
+    letter-spacing: 0;
+    line-height: $line-height-label;
+    text-align: left;
   }
   .signin-form-footer {
     font-size: 12px;

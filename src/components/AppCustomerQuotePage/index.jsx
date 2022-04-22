@@ -5,12 +5,7 @@ import {isEmpty, some} from 'lodash';
 
 import {isPDFMode} from 'utils/utils';
 import {parseAPIError} from 'utils/api';
-import {
-  formatPrice,
-  isQuoteReplaced,
-  isQuoteCancelled,
-  isQuoteExpired,
-} from 'utils/app-order';
+import {formatPrice, isQuoteReplaced, isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 
 import {
@@ -21,9 +16,7 @@ import {
 
 import AppLoader from 'components/common/AppLoader';
 import BuildSpecs from 'components/common/AppQuoteComponents/BuildSpecs';
-import {
-  DIRECT_PREVIEW_SLUG,
-} from 'website/constants';
+import {DIRECT_PREVIEW_SLUG} from 'website/constants';
 import CustomerDetails from './CustomerDetails';
 import BillingForm from './BillingForm';
 import ExplanationSection from './ExplanationSection';
@@ -39,7 +32,6 @@ import AdditionalApprovalsList from './AdditionalApprovalsList';
 import {showUpcomingFeatures} from '../../utils/utils';
 
 export default class AppCustomerQuotePage extends React.Component {
-
   static propTypes = {
     auth: PropTypes.object,
     history: PropTypes.object,
@@ -97,7 +89,9 @@ export default class AppCustomerQuotePage extends React.Component {
 
   getNewQuoteLink() {
     const {location, match} = this.props;
-    const {quoteApproval: {new_quote_approval: newQuoteApproval}} = this.state;
+    const {
+      quoteApproval: {new_quote_approval: newQuoteApproval},
+    } = this.state;
     if (!newQuoteApproval) {
       return null;
     }
@@ -112,12 +106,8 @@ export default class AppCustomerQuotePage extends React.Component {
         quoteApprovalError: null,
         paymentMethodError: null,
       });
-      const {
-        setPDFHeaderPhoneAction,
-      } = this.props;
-      const {
-        market_phone_number: phoneNumber,
-      } = data.data.quote;
+      const {setPDFHeaderPhoneAction} = this.props;
+      const {market_phone_number: phoneNumber} = data.data.quote;
       const {layout} = this.props;
       if (phoneNumber && phoneNumber !== layout.phoneNumber && setPDFHeaderPhoneAction) {
         setPDFHeaderPhoneAction(phoneNumber);
@@ -134,13 +124,7 @@ export default class AppCustomerQuotePage extends React.Component {
 
   async reviewQuoteApproval() {
     const {quoteApproval} = this.state;
-    if (
-      quoteApproval && !some([
-        this.isDirectPreview(),
-        this.isQuoteApprovalReviewed(),
-        isPDFMode(),
-      ])
-    ) {
+    if (quoteApproval && !some([this.isDirectPreview(), this.isQuoteApprovalReviewed(), isPDFMode()])) {
       try {
         await reviewQuoteApprovalAPI(this.context, this.props.match.params.secret);
       } catch (apiError) {
@@ -206,20 +190,12 @@ export default class AppCustomerQuotePage extends React.Component {
   }
 
   renderQuoteApprovalError() {
-    return (
-      <QuoteError quoteError={this.state.quoteApprovalError} />
-    );
+    return <QuoteError quoteError={this.state.quoteApprovalError} />;
   }
 
   render() {
     const {match} = this.props;
-    const {
-      isLoading,
-      quoteApproval,
-      quoteApprovalError,
-      paymentMethod,
-      paymentMethodError,
-    } = this.state;
+    const {isLoading, quoteApproval, quoteApprovalError, paymentMethod, paymentMethodError} = this.state;
 
     if (isLoading) {
       return <AppLoader />;
@@ -271,25 +247,25 @@ export default class AppCustomerQuotePage extends React.Component {
             quoteLines={quoteLines}
             totalPreviouslyApprovedPrice={formatPrice(this.getTotalPreviouslyApprovedPrice(quoteApproval))}
             totalPrice={formatPrice(this.getTotalPrice(quoteApproval))}
-            totalProjectPrice={formatPrice(this.getProjectTotalPrice(quoteApproval))} />
-          <ProjectNotes quote={quote}/>
+            totalProjectPrice={formatPrice(this.getProjectTotalPrice(quoteApproval))}
+          />
+          <ProjectNotes quote={quote} />
           <CustomerDetails customer={customer} quote={quote} />
-          {this.shouldShowBillingForm() && <BillingForm
-            contractUrl={contractUrl}
-            error={paymentMethodError}
-            houseId={houseId}
-            isApproved={this.isQuoteApprovalApproved()}
-            isScopeChange={this.isScopeChange(quoteApproval)}
-            onSubmit={this.handleBillingSubmit.bind(this)}
-            paymentMethod={paymentMethod}
-            quoteId={quote['id']}
-            total={formatPrice(this.getProjectTotalPrice(quoteApproval))} />}
-          {isMultiPartyQuote && <AdditionalApprovalsList
-            additionalQuoteApprovals={otherQuoteApprovals} />}
-          <ExplanationSection
-            asPDF={asPDF}
-            contractUrl={contractUrl}
-            quoteType={quoteType}/>
+          {this.shouldShowBillingForm() && (
+            <BillingForm
+              contractUrl={contractUrl}
+              error={paymentMethodError}
+              houseId={houseId}
+              isApproved={this.isQuoteApprovalApproved()}
+              isScopeChange={this.isScopeChange(quoteApproval)}
+              onSubmit={this.handleBillingSubmit.bind(this)}
+              paymentMethod={paymentMethod}
+              quoteId={quote['id']}
+              total={formatPrice(this.getProjectTotalPrice(quoteApproval))}
+            />
+          )}
+          {isMultiPartyQuote && <AdditionalApprovalsList additionalQuoteApprovals={otherQuoteApprovals} />}
+          <ExplanationSection asPDF={asPDF} contractUrl={contractUrl} quoteType={quoteType} />
         </div>
       </>
     );

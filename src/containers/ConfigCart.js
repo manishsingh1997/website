@@ -1,11 +1,6 @@
 import {connect} from 'react-redux';
 
-import {
-  addConfig,
-  updateConfig,
-  removeConfig,
-  addConfigFromSchema,
-} from '../flux/actions/cart';
+import {addConfig, updateConfig, removeConfig, addConfigFromSchema} from '../flux/actions/cart';
 import ConfigCart from 'components/RequestQuotePage/ConfigCart';
 
 const mapStateToProps = ({address, cart}) => {
@@ -27,13 +22,18 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(removeConfig(index));
     },
     addConfigFromSchema: ({zipcode, data, configs, schemaCode, length}, index) => {
-      dispatch(addConfigFromSchema({
-        zipcode,
-        data,
-        schemaCode,
-        length,
-        configs,
-      }, index));
+      dispatch(
+        addConfigFromSchema(
+          {
+            zipcode,
+            data,
+            schemaCode,
+            length,
+            configs,
+          },
+          index
+        )
+      );
     },
   };
 };

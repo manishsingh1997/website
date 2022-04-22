@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useCallback,
-  useEffect,
-  FocusEvent,
-  ChangeEvent,
-} from 'react';
+import React, {useState, useCallback, useEffect, FocusEvent, ChangeEvent} from 'react';
 import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
 
@@ -12,11 +6,7 @@ import {Button, Spinner, FormField, Input} from '@ergeon/core-components';
 // @ts-ignore
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 
-import useFormValidation, {
-  getNotEmptyValidator,
-  getCharactersValidator,
-  getEmailValidator,
-} from './useValidation';
+import useFormValidation, {getNotEmptyValidator, getCharactersValidator, getEmailValidator} from './useValidation';
 
 import './ContactUsForm.scss';
 import ErrorField from './ErrorField';
@@ -25,7 +15,7 @@ interface ContactUsFormProps {
   onSubmit(): void;
 }
 
-type formKey = 'name' | 'email' | 'message'
+type formKey = 'name' | 'email' | 'message';
 
 export default function ContactUsForm({onSubmit}: ContactUsFormProps) {
   const [loading, setLoading] = useState(false);
@@ -111,7 +101,8 @@ export default function ContactUsForm({onSubmit}: ContactUsFormProps) {
           onChange={onChange}
           placeholder={'e.g. John Smith'}
           type={'text'}
-          value={form['name']}/>
+          value={form['name']}
+        />
         {blur['name'] && <ErrorField error={error?.name || ''} />}
       </FormField>
       <FormField>
@@ -124,7 +115,8 @@ export default function ContactUsForm({onSubmit}: ContactUsFormProps) {
           onChange={onChange}
           placeholder={'e.g. johnsmith@mail.com'}
           type={'email'}
-          value={form['email']}/>
+          value={form['email']}
+        />
         {blur['email'] && <ErrorField error={error?.email || ''} />}
       </FormField>
       <FormField>
@@ -138,7 +130,8 @@ export default function ContactUsForm({onSubmit}: ContactUsFormProps) {
           onChange={onChange}
           placeholder={'e.g. Thanks ....'}
           type={'text'}
-          value={form['message']}/>
+          value={form['message']}
+        />
         {blur['message'] && <ErrorField error={error?.message || ''} />}
       </FormField>
       <div className="Form-actions">
@@ -147,12 +140,9 @@ export default function ContactUsForm({onSubmit}: ContactUsFormProps) {
           className={classNames({'is-loading': loading})}
           disabled={enableSubmit() || loading}
           size="large"
-          type="submit">
-          {loading ? (
-            <Spinner active={true} borderWidth={0.1} size={25} />
-          ) : (
-            'Submit'
-          )}
+          type="submit"
+        >
+          {loading ? <Spinner active={true} borderWidth={0.1} size={25} /> : 'Submit'}
         </Button>
       </div>
     </form>

@@ -4,42 +4,17 @@ import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
 import {constants, calcUtils, CatalogType} from '@ergeon/3d-lib';
 import {RadioGroup} from 'react-radio-group';
-import {
-  Button,
-  Checkbox,
-  FormField,
-  PhoneInput,
-  Spinner,
-  Input,
-  RadioButton,
-} from '@ergeon/core-components';
+import {Button, Checkbox, FormField, PhoneInput, Spinner, Input, RadioButton} from '@ergeon/core-components';
 import {UPCOMING_FEATURES_PARAM} from '@ergeon/erg-utils-js';
 import {getBaseEventData} from '@ergeon/erg-utms';
 
 import AddNote from './AddNote';
 
-import {
-  createValidator,
-  phone,
-  email,
-  required,
-} from 'utils/validation';
-import {
-  submitLeadArrived,
-} from 'api/lead';
-import {
-  parseError,
-  showUpcomingFeatures,
-} from 'utils/utils';
-import {
-  identify,
-  track,
-  trackError,
-  trackTawkLeadEvent,
-} from 'utils/analytics';
-import {
-  CUSTOMER_LEAD_CREATED,
-} from 'utils/events';
+import {createValidator, phone, email, required} from 'utils/validation';
+import {submitLeadArrived} from 'api/lead';
+import {parseError, showUpcomingFeatures} from 'utils/utils';
+import {identify, track, trackError, trackTawkLeadEvent} from 'utils/analytics';
+import {CUSTOMER_LEAD_CREATED} from 'utils/events';
 import {DEFAULT_SOURCE_VALUE} from 'website/constants';
 import {DRIVEWAY_SLUG, FENCE_SLUG} from '@ergeon/core-components/src/constants';
 
@@ -58,7 +33,6 @@ const stringifyAddress = (address) => {
     return addressParts.join(', ');
   }
   return '';
-
 };
 
 const getInitialState = (showNoteField = false, props = {}) => {
@@ -66,13 +40,13 @@ const getInitialState = (showNoteField = false, props = {}) => {
     validateOnChange: false,
     showNoteField,
     data: {
-      email: props.user && props.user.email || '',
-      name: props.user && props.user.full_name || '',
-      phone: props.user && props.user.phone_number || '',
+      email: (props.user && props.user.email) || '',
+      name: (props.user && props.user.full_name) || '',
+      phone: (props.user && props.user.phone_number) || '',
       comment: '',
       product: FENCE_SLUG,
-      'string_address': stringifyAddress(props.lead && props.lead.address),
-      'is_subscribed_to_news': true,
+      string_address: stringifyAddress(props.lead && props.lead.address),
+      is_subscribed_to_news: true,
     },
     validFields: null,
     errors: null,
@@ -113,7 +87,7 @@ export default class LeadForm extends React.Component {
     };
     const errors = this.validator(data);
     const validFields = {};
-    Object.keys(data).forEach(key => {
+    Object.keys(data).forEach((key) => {
       validFields[key] = !(errors && key in errors);
     });
     if (errors) {
@@ -184,13 +158,13 @@ export default class LeadForm extends React.Component {
   handleAddConfig = () => {
     const {onAddConfigClick} = this.props;
     onAddConfigClick();
-  }
+  };
   handleFieldChange(event, name, value) {
     const {data, validateOnChange} = this.state;
     const newState = {
       data: {
         ...data,
-        'string_address' : stringifyAddress(name === 'address' ? value : this.props.lead.address),
+        string_address: stringifyAddress(name === 'address' ? value : this.props.lead.address),
         [name]: value,
       },
     };
@@ -198,7 +172,7 @@ export default class LeadForm extends React.Component {
     if (validateOnChange) {
       newState.errors = this.validator(newState.data);
       const validFields = {};
-      Object.keys(newState.data).forEach(key => {
+      Object.keys(newState.data).forEach((key) => {
         let valid = true;
         if (newState.errors && key in newState.errors) valid = false;
         validFields[key] = valid;
@@ -217,7 +191,7 @@ export default class LeadForm extends React.Component {
   }
   handleCheckChange(value) {
     this.setState({
-      data: {...this.state.data, 'is_subscribed_to_news': value},
+      data: {...this.state.data, is_subscribed_to_news: value},
     });
   }
 
@@ -225,17 +199,17 @@ export default class LeadForm extends React.Component {
     const {lead} = this.props;
     const {CATALOG_ID_FENCE, CATALOG_ID_GATE} = constants;
 
-    return this.props.configs.map(item => {
+    return this.props.configs.map((item) => {
       let schema = calcUtils.getParams(`?${item.code}`).schema.split(',');
-      schema = schema.map(number => parseInt(number, 10));
+      schema = schema.map((number) => parseInt(number, 10));
       const code = calcUtils.getParams(`?${item.code}`).code.split(',');
       return {
         advancedEditorUrl: getAdvancedEditorUrl(
-          {schema, code, 'catalog_type': item.catalog_type},
+          {schema, code, catalog_type: item.catalog_type},
           lead.address && lead.address.zipcode
         ),
-        'catalog_type': item.catalog_type,
-        'catalog_id': item.catalog_type === CatalogType.FENCE ? CATALOG_ID_FENCE : CATALOG_ID_GATE,
+        catalog_type: item.catalog_type,
+        catalog_id: item.catalog_type === CatalogType.FENCE ? CATALOG_ID_FENCE : CATALOG_ID_GATE,
         schema,
         code,
         description: item.description,
@@ -246,7 +220,11 @@ export default class LeadForm extends React.Component {
   }
 
   render() {
-    const {lead: {address}, mobileAddressField, product} = this.props;
+    const {
+      lead: {address},
+      mobileAddressField,
+      product,
+    } = this.props;
     const {
       data: {email, name, phone, comment, is_subscribed_to_news: isSubscribedToNews},
       errors,
@@ -264,14 +242,11 @@ export default class LeadForm extends React.Component {
           <RadioGroup
             name="ergeon-service"
             onChange={this.handleProductChange.bind(this)}
-            selectedValue={this.props.product}>
+            selectedValue={this.props.product}
+          >
             <ul className="product-radio-list no-padding">
-              <RadioButton value={FENCE_SLUG}>
-                Fences & Gates
-              </RadioButton>
-              <RadioButton value={DRIVEWAY_SLUG}>
-                Driveways & Patios
-              </RadioButton>
+              <RadioButton value={FENCE_SLUG}>Fences & Gates</RadioButton>
+              <RadioButton value={DRIVEWAY_SLUG}>Driveways & Patios</RadioButton>
             </ul>
           </RadioGroup>
         </FormField>
@@ -285,7 +260,8 @@ export default class LeadForm extends React.Component {
             onChange={this.handleFieldChange.bind(this)}
             placeholder="e.g. John Smith"
             validationMessage={errors?.name}
-            value={name} />
+            value={name}
+          />
         </FormField>
         <FormField>
           <PhoneInput
@@ -295,7 +271,8 @@ export default class LeadForm extends React.Component {
             name="phone"
             onChange={this.handleFieldChange.bind(this)}
             validationMessage={errors?.phone}
-            value={phone} />
+            value={phone}
+          />
         </FormField>
         <FormField>
           <Input
@@ -307,7 +284,8 @@ export default class LeadForm extends React.Component {
             placeholder="e.g. username@mail.com"
             type="email"
             validationMessage={errors?.email}
-            value={email} />
+            value={email}
+          />
         </FormField>
         <div className="Form-action-links">
           <AddNote
@@ -317,11 +295,10 @@ export default class LeadForm extends React.Component {
             handleFieldChange={this.handleFieldChange.bind(this)}
             handleRemoveNote={this.handleRemoveNote.bind(this)}
             loading={loading}
-            showNoteField={showNoteField}/>
+            showNoteField={showNoteField}
+          />
           <div className={addConfigLinkClasses}>
-            <a
-              className="action-link"
-              onClick={this.handleAddConfig}>
+            <a className="action-link" onClick={this.handleAddConfig}>
               Design your Fence or Gate
             </a>
             <label className="label">And get an estimate instantly</label>
@@ -333,8 +310,9 @@ export default class LeadForm extends React.Component {
             className={classNames('AddressButton', 'spacing after__is-24', {'is-loading': loading})}
             disabled={loading}
             size="large"
-            type="submit">
-            {loading ? <Spinner active={true} borderWidth={0.10} size={25} /> : 'Get a quote'}
+            type="submit"
+          >
+            {loading ? <Spinner active={true} borderWidth={0.1} size={25} /> : 'Get a quote'}
           </Button>
           <div className="newsletter-checkbox">
             <Checkbox checked={isSubscribedToNews} onClick={this.handleCheckChange.bind(this)}>

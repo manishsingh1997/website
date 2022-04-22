@@ -15,7 +15,7 @@ export const track = (eventName, data) => {
     trackError('No GTM');
   }
   getVisitorId()
-    .then(visitorId => {
+    .then((visitorId) => {
       dataLayer.push({
         event: eventName,
         data: {
@@ -25,16 +25,18 @@ export const track = (eventName, data) => {
         },
       });
     })
-    .catch(e => {
+    .catch((e) => {
       trackError(e);
     });
   // END: Google Tag manager
 
   if (process.env.NODE_ENV !== 'production') {
-    console.log(`%cEvent %c ${eventName}`, // eslint-disable-line
+    console.info(
+      `%cEvent %c ${eventName}`, // eslint-disable-line
       'color: #FF8118; font-size:24px;',
       'color: #00B9F3; font-size:24px;',
-      data);
+      data
+    );
   }
 };
 
@@ -68,7 +70,7 @@ export const identify = (_gidOrTraits, _traits) => {
   }
 
   getVisitorId()
-    .then(visitorId => {
+    .then((visitorId) => {
       if (gid) {
         mixpanel.alias(gid);
         mixpanel.identify(gid, traits, {
@@ -80,30 +82,30 @@ export const identify = (_gidOrTraits, _traits) => {
         });
       }
     })
-    .catch(e => {
+    .catch((e) => {
       trackError(e);
     });
 
   getVisitorId()
-    .then(visitorId => {
-      Sentry.configureScope(scope => {
+    .then((visitorId) => {
+      Sentry.configureScope((scope) => {
         scope.setUser({
           ...traits,
           uuid: visitorId,
         });
       });
     })
-    .catch(e => {
+    .catch((e) => {
       trackError(e);
     });
 };
 
 export const trackError = (error, data) => {
-  Sentry.withScope(scope => {
+  Sentry.withScope((scope) => {
     scope.setExtra('data', data);
     Sentry.captureException(error);
   });
-  console.error(error && error.stack || error, data && data.stack);
+  console.error((error && error.stack) || error, data && data.stack);
 };
 
 export const page = () => {
@@ -114,26 +116,28 @@ export const page = () => {
   }
 
   getVisitorId()
-    .then(visitorId => {
+    .then((visitorId) => {
       mixpanel.track('Loaded a Page', {
         uuid: visitorId,
         path: window.location.pathname,
         title: document.title,
       });
     })
-    .catch(e => {
+    .catch((e) => {
       trackError(e);
     });
 
   if (process.env.NODE_ENV !== 'production') {
-    console.log(`%cPage %c ${window.location.pathname}`, // eslint-disable-line
+    console.info(
+      `%cPage %c ${window.location.pathname}`, // eslint-disable-line
       'color: #FF8118; font-size:24px;',
-      'color: #00B9F3; font-size:24px;');
+      'color: #00B9F3; font-size:24px;'
+    );
   }
 };
 
 export const init = () => {
-  getVisitorId().then(visitorId => {
+  getVisitorId().then((visitorId) => {
     identify(visitorId);
     page();
   });
@@ -155,8 +159,8 @@ export const trackAddressEntered = (lead) => {
     };
   } else {
     enteredAddressData['location'] = {
-      lat: address.location? address.location.lat : null,
-      lng: address.location? address.location.lng : null,
+      lat: address.location ? address.location.lat : null,
+      lng: address.location ? address.location.lng : null,
     };
   }
   enteredAddressData['state'] = address.state_abbreviation;
@@ -184,7 +188,7 @@ export const trackAddressEntered = (lead) => {
 };
 
 export const trackTawkLeadEvent = (submitData) => {
-  return tawk.tawkAPILoader.then(TawkAPI => {
+  return tawk.tawkAPILoader.then((TawkAPI) => {
     TawkAPI.setAttributes({
       email: submitData.email,
       name: submitData.name,

@@ -26,39 +26,38 @@
     form {
       margin-block-end: 0;
     }
-  
+
     .contacts-page-additional-buttons {
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
-  
+
       button {
         margin-left: $h-20;
       }
     }
-  
-  
+
     .additional-contacts {
       padding-top: $v-12;
       padding-bottom: $v-6;
       margin-bottom: $v-30;
       border-bottom: 1px solid #e4e9e2;
-  
+
       .additional-contact-info-row {
         display: flex;
         flex-direction: row;
         width: 100%;
         margin-bottom: $v-24;
-    
+
         &.additional-contact-info-row_last {
           margin-bottom: $v-12;
         }
-        
+
         .additional-contact-info-row-input {
           flex-grow: 2;
           margin-right: $v-12;
         }
-    
+
         .additional-contact-info-row-button > button {
           height: $v-48;
           width: $v-48;
@@ -68,19 +67,19 @@
             width: $v-16;
 
             path {
-              fill: $red-1
+              fill: $red-1;
             }
           }
         }
       }
-    
+
       .additional-contact-info-add-button {
         cursor: pointer;
         padding-left: 0;
         display: inline-flex;
         justify-content: center;
         align-items: center;
-    
+
         span {
           color: $green-1;
           font-size: $font-mobile-size;
@@ -93,17 +92,17 @@
           width: $v-16;
         }
       }
-    
+
       .additional-contacts-sub-header {
         padding-bottom: $v-16;
         margin-bottom: $v-30;
-        border-bottom: 1px solid #e4e9e2
+        border-bottom: 1px solid #e4e9e2;
       }
     }
-  
+
     .customer-app-data-row {
       margin-bottom: $v-24;
-  
+
       > div:nth-child(1) {
         line-height: $v-48;
       }

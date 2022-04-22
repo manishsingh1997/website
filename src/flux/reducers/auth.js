@@ -14,7 +14,7 @@ const initialAuthState = {
   isResendLinkSuccess: false,
 };
 
-const authReducer = (state=initialAuthState, action) => {
+const authReducer = (state = initialAuthState, action) => {
   switch (action.type) {
     case actionTypes.AUTH_CODE_ACTIVATION_START:
       return {...state, isAuthLoading: true};

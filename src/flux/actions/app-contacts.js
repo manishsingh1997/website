@@ -2,13 +2,13 @@ import {getCustomerContacts} from 'api/app';
 import {parseAPIError} from 'utils/api';
 
 export const actionTypes = {
-  'GET_CONTACTS_START': 'GET_CONTACTS_START',
-  'GET_CONTACTS_DONE': 'GET_CONTACTS_DONE',
-  'GET_CONTACTS_ERROR': 'GET_CONTACTS_ERROR',
+  GET_CONTACTS_START: 'GET_CONTACTS_START',
+  GET_CONTACTS_DONE: 'GET_CONTACTS_DONE',
+  GET_CONTACTS_ERROR: 'GET_CONTACTS_ERROR',
 };
 
 export const getContacts = (customerGID) => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch({
       type: actionTypes.GET_CONTACTS_START,
     });

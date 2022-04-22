@@ -1,10 +1,6 @@
 import {isPastDate} from 'utils/date';
 
-import {
-  QUOTE_STATUS_CODE_APPROVED,
-  QUOTE_STATUS_CODE_SENT,
-  QUOTE_STATUS_CODE_CANCELLED,
-} from 'website/constants';
+import {QUOTE_STATUS_CODE_APPROVED, QUOTE_STATUS_CODE_SENT, QUOTE_STATUS_CODE_CANCELLED} from 'website/constants';
 
 export const QUOTE_FILTERS = [
   {value: 'active', label: 'Active Quotes', statuses: [QUOTE_STATUS_CODE_SENT, QUOTE_STATUS_CODE_APPROVED]},
@@ -23,10 +19,8 @@ export const filterQuotesByStatus = (quotes, selectedOption) => {
     return selectedOption['statuses'].includes(quote['status']['code']) && quote['sent_to_customer_at'];
   });
 
-  quotes.sort((a, b) => (new Date(b['sent_to_customer_at']).getTime() - new Date(a['sent_to_customer_at']).getTime()));
-  quotes.sort((a, b) => (
-    QUOTE_ORDERING.indexOf(a['status']['code']) - QUOTE_ORDERING.indexOf(b['status']['code']))
-  );
+  quotes.sort((a, b) => new Date(b['sent_to_customer_at']).getTime() - new Date(a['sent_to_customer_at']).getTime());
+  quotes.sort((a, b) => QUOTE_ORDERING.indexOf(a['status']['code']) - QUOTE_ORDERING.indexOf(b['status']['code']));
 
   if (['active', 'sent'].includes(selectedOption['value'])) {
     quotes = quotes.filter((quote) => {
@@ -45,7 +39,7 @@ export const filterQuotesByStatus = (quotes, selectedOption) => {
 };
 
 export const filterQuotesSentToCustomer = (quotes) => {
-  return quotes.filter(quote => quote['sent_to_customer_at']);
+  return quotes.filter((quote) => quote['sent_to_customer_at']);
 };
 
 export const formatPrice = (price) => {

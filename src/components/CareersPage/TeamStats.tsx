@@ -17,9 +17,7 @@ const TeamStats = () => {
           </div>
           <div className="cards-stats-title spacing after__is-6">
             <p className="additional-header h2">Countries represented</p>
-            <p className="cards-stats-description">
-              Our growing team is spread across the globe.
-            </p>
+            <p className="cards-stats-description">Our growing team is spread across the globe.</p>
           </div>
         </div>
       </div>
@@ -30,9 +28,7 @@ const TeamStats = () => {
           </div>
           <div className="cards-stats-title spacing after__is-6">
             <p className="additional-header h2">Women at Ergeon</p>
-            <p className="cards-stats-description">
-              Compared to 1 of 30 in the Construction industry.
-            </p>
+            <p className="cards-stats-description">Compared to 1 of 30 in the Construction industry.</p>
           </div>
         </div>
       </div>
@@ -43,9 +39,7 @@ const TeamStats = () => {
           </div>
           <div className="cards-stats-title spacing after__is-6">
             <p className="additional-header h2">Women Ownership</p>
-            <p className="cards-stats-description">
-              Ergeon is a female-owned company.
-            </p>
+            <p className="cards-stats-description">Ergeon is a female-owned company.</p>
           </div>
         </div>
       </div>
@@ -56,9 +50,7 @@ const TeamStats = () => {
           </div>
           <div className="cards-stats-title spacing after__is-6">
             <p className="additional-header h2">Minority Leadership</p>
-            <p className="cards-stats-description">
-              Two-thirds of our leadership team are minorities.
-            </p>
+            <p className="cards-stats-description">Two-thirds of our leadership team are minorities.</p>
           </div>
         </div>
       </div>

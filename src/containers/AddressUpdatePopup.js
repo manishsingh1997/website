@@ -1,11 +1,6 @@
 import {connect} from 'react-redux';
 
-import {
-  updateLead,
-  updateModalLead,
-  updateModalValue,
-  closeAddressUpdatePopup,
-} from '../flux/actions/address';
+import {updateLead, updateModalLead, updateModalValue, closeAddressUpdatePopup} from '../flux/actions/address';
 
 import AddressUpdatePopup from 'components/Layout/AddressUpdatePopup';
 

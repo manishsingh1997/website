@@ -18,13 +18,15 @@ export default class ExplanationSection extends React.Component {
 
   renderContractBlock() {
     const {contractUrl, quoteType} = this.props;
-    const isDriveWay = (/driveway/ig).test(quoteType);
+    const isDriveWay = /driveway/gi.test(quoteType);
     const quoteLink = `Read Project Contract ${isDriveWay ? '' : 'and Warranty'} here`;
     return (
-      contractUrl && <React.Fragment>
-        <hr className="gray-line restricted-720"/>
-        <a href={contractUrl}>{quoteLink}</a>
-      </React.Fragment>
+      contractUrl && (
+        <React.Fragment>
+          <hr className="gray-line restricted-720" />
+          <a href={contractUrl}>{quoteLink}</a>
+        </React.Fragment>
+      )
     );
   }
 
@@ -35,7 +37,7 @@ export default class ExplanationSection extends React.Component {
         <h4 className="spacing after__is-24">After you approve the quote</h4>
         <div className="text-block restricted-720">
           <div className="title-wrapper spacing after__is-12">
-            <ReactSVG src={ImgCalendar}/>
+            <ReactSVG src={ImgCalendar} />
             <h3 className="additional-header h3">Scheduling</h3>
           </div>
           After accepting your quote, our project management team will be in touch with you <b>within a week </b>
@@ -43,28 +45,28 @@ export default class ExplanationSection extends React.Component {
         </div>
         <div className="text-block restricted-720">
           <div className="title-wrapper spacing after__is-12">
-            <ReactSVG src={ImgInitial}/>
+            <ReactSVG src={ImgInitial} />
             <h3 className="additional-header h3">Initial walkthrough</h3>
           </div>
-          The day of the project start, we ask you to please be home between 8–10am, so you can go over
-          the project specifications with our installer.
+          The day of the project start, we ask you to please be home between 8–10am, so you can go over the project
+          specifications with our installer.
         </div>
         <div className="text-block restricted-720">
           <div className="title-wrapper spacing after__is-12">
-            <ReactSVG src={ImgFinal}/>
+            <ReactSVG src={ImgFinal} />
             <h3 className="additional-header h3">Final walkthrough and sign off</h3>
           </div>
-          At the end of the job, we’ll do a final walkthrough to confirm you’re happy with
-          the project and get your sign off.
+          At the end of the job, we’ll do a final walkthrough to confirm you’re happy with the project and get your sign
+          off.
         </div>
         <div className="text-block restricted-720">
           <div className="title-wrapper spacing after__is-12">
-            <ReactSVG src={ImgBilling}/>
+            <ReactSVG src={ImgBilling} />
             <h3 className="additional-header h3">Billing</h3>
           </div>
-          You’ll be charged after your project is complete. Payments made via paper check or e-check will be
-          charged at the amount listed on your quote. Payments made via credit card will be subject to an
-          additional {CARD_TRANSACTION_FEE} transaction fee.
+          You’ll be charged after your project is complete. Payments made via paper check or e-check will be charged at
+          the amount listed on your quote. Payments made via credit card will be subject to an additional{' '}
+          {CARD_TRANSACTION_FEE} transaction fee.
         </div>
         {!asPDF && this.renderContractBlock()}
       </div>

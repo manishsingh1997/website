@@ -7,8 +7,8 @@ const UnknownErrorPage = () => (
   <ErrorPage
     description="We are already notified about this. Please try to refresh the page."
     image={whaleIcon}
-    title="Oops, something unexpected happened">
-  </ErrorPage>
+    title="Oops, something unexpected happened"
+  ></ErrorPage>
 );
 
 export default UnknownErrorPage;

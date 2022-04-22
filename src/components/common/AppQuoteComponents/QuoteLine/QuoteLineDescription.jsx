@@ -7,14 +7,7 @@ import QuoteLineStatus from './QuoteLineStatus';
 import Tags from './QuoteLineTags';
 
 export default function QuoteLineDescription(props) {
-  const {
-    approvedAt,
-    description,
-    quote,
-    quoteId,
-    status,
-    tags,
-  } = props;
+  const {approvedAt, description, quote, quoteId, status, tags} = props;
 
   const isApprovedAtShown = approvedAt && quoteId !== quote.id;
 
@@ -28,9 +21,7 @@ export default function QuoteLineDescription(props) {
         there should be no "APPROVED AT".
       */}
       <div>
-        {isApprovedAtShown && (
-          <Approved approvedAt={approvedAt} />
-        )}
+        {isApprovedAtShown && <Approved approvedAt={approvedAt} />}
         <QuoteLineStatus {...{quote, status}} />
       </div>
       <div className="quote-line-description-text">{description}</div>

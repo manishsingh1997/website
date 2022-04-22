@@ -7,7 +7,7 @@ export const QUOTE_LINE_STATUSES = {
 };
 
 export const prepareQuoteApprovalLines = (quoteApprovalLines, quote) => {
-  return quoteApprovalLines.map(quoteApprovalLine => {
+  return quoteApprovalLines.map((quoteApprovalLine) => {
     let status = QUOTE_LINE_STATUSES.NEEDS_APPROVAL;
 
     const quoteLine = quoteApprovalLine['quote_line'];

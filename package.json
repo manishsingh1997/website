@@ -12,8 +12,8 @@
     "build-staging": "NODE_ENV=staging webpack --config webpack.staging.js",
     "build-development": "NODE_ENV=development webpack --config webpack.dev.js",
     "eslint": "./node_modules/eslint/bin/eslint.js --ext .jsx,.js,.ts,.tsx ./src",
-    "lint": "npm run eslint && npm run ts",
     "lint-fix": "./node_modules/eslint/bin/eslint.js --fix --ext .jsx,.js,.ts,.tsx ./src",
+    "lint": "npm run eslint && npm run ts",
     "ts": "tsc",
     "test": "jest --colors --notify --verbose --ci --silent",
     "coverage": "npm test -- --coverage --watchAll=false"
@@ -77,6 +77,7 @@
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "path": "^0.12.7",
+    "prettier": "2.6.2",
     "raw-loader": "^2.0.0",
     "request": "^2.88.0",
     "s3": "^4.4.0",

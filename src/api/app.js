@@ -51,7 +51,7 @@ export const reviewQuote = (customerGID, quoteSecret) => {
 
 export const approveAndPayQuote = (customerGID, quoteSecret, stripeToken) => {
   return request(customerGID)(`/quotes/${quoteSecret}/approve-and-pay/`, {
-    'stripe_token': stripeToken,
+    stripe_token: stripeToken,
   });
 };
 
@@ -77,7 +77,7 @@ export const reviewQuoteApproval = (customerGID, quoteApprovalSecret) => {
 
 export const approveQuoteApproval = (customerGID, quoteApprovalSecret, stripeToken) => {
   return request(customerGID)(`/quote-approvals/${quoteApprovalSecret}/approve/`, {
-    'stripe_token': stripeToken,
+    stripe_token: stripeToken,
   });
 };
 

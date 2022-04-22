@@ -18,7 +18,6 @@ import ConfigCart from 'containers/ConfigCart';
 import './index.scss';
 
 export default class RequestQuotePage extends React.Component {
-
   static propTypes = {
     addConfig: PropTypes.func.isRequired,
     address: PropTypes.string,
@@ -47,8 +46,8 @@ export default class RequestQuotePage extends React.Component {
     const schema = getParameterByName('schema');
     const code = getParameterByName('code');
     const length = getParameterByName('length');
-    const data = (schema && code) ? calcUtils.getValueFromUrl(window.location.search) : null;
-    const schemaCode = (schema && code) ? calcUtils.getSchemaCodeFromState(data) : null;
+    const data = schema && code ? calcUtils.getValueFromUrl(window.location.search) : null;
+    const schemaCode = schema && code ? calcUtils.getSchemaCodeFromState(data) : null;
 
     this.props.updateLeadAndConfig({
       address,
@@ -89,10 +88,12 @@ export default class RequestQuotePage extends React.Component {
   isItSupportedArea() {
     const {lead, product} = this.props;
 
-    return !!(lead &&
+    return !!(
+      lead &&
       lead.productAvailability &&
       lead.productAvailability.supported &&
-      lead.productAvailability.products[product]);
+      lead.productAvailability.products[product]
+    );
   }
 
   openAddressUpdatePopup() {
@@ -121,7 +122,9 @@ export default class RequestQuotePage extends React.Component {
   }
 
   getLocationMarker() {
-    const {lead: {address}} = this.props;
+    const {
+      lead: {address},
+    } = this.props;
     let location;
 
     if (typeof address.location.lat === 'function') {
@@ -131,14 +134,14 @@ export default class RequestQuotePage extends React.Component {
       };
     } else {
       location = {
-        lat: address.location? address.location.lat : null,
-        lng: address.location? address.location.lng : null,
+        lat: address.location ? address.location.lat : null,
+        lng: address.location ? address.location.lng : null,
       };
     }
 
     return {
-      'info': '',
-      'position': location,
+      info: '',
+      position: location,
       icon: Marker,
     };
   }
@@ -157,7 +160,7 @@ export default class RequestQuotePage extends React.Component {
   get isConfigCartDisplayed() {
     const {showConfigCart} = this.state;
     const {product, configs} = this.props;
-    return (product === FENCE_SLUG) && (showConfigCart || configs.length > 0);
+    return product === FENCE_SLUG && (showConfigCart || configs.length > 0);
   }
 
   renderHeaderMessage() {
@@ -178,10 +181,13 @@ export default class RequestQuotePage extends React.Component {
         <div className="request-quote-page__header-message">
           <h1 className="h3 title">We&apos;re not in your area yet</h1>
           <p className="subtitle">
-            Your house is not in a neighborhood we support right now.
-            We&apos;re showing prices for San Francisco Bay Area.
-            See where we are currently available
-            <a href="https://www.ergeon.com/cities/" rel="noopener noreferrer" target="_blank"> here</a>.
+            Your house is not in a neighborhood we support right now. We&apos;re showing prices for San Francisco Bay
+            Area. See where we are currently available
+            <a href="https://www.ergeon.com/cities/" rel="noopener noreferrer" target="_blank">
+              {' '}
+              here
+            </a>
+            .
           </p>
         </div>
       );
@@ -191,8 +197,8 @@ export default class RequestQuotePage extends React.Component {
       <div className="request-quote-page__header-message">
         <h1 className="h3 title">Get your free custom quote</h1>
         <p className="subtitle">
-          Enter your contact information below and our experts will be
-          in touch within 24 hours to discuss your project further.
+          Enter your contact information below and our experts will be in touch within 24 hours to discuss your project
+          further.
         </p>
       </div>
     );
@@ -200,7 +206,7 @@ export default class RequestQuotePage extends React.Component {
 
   renderSignupMap() {
     const {lead} = this.props;
-    const styles = [{'stylers': [{'saturation': -100}]}];
+    const styles = [{stylers: [{saturation: -100}]}];
 
     if (!lead || !lead.address) {
       return null;
@@ -210,19 +216,16 @@ export default class RequestQuotePage extends React.Component {
       <div className="request-quote-page__signup-map">
         <div className="AddressContainer">
           <div className="Address">
-            <div className="AddressStreet">
-              {this.getStreetAddress()}
-            </div>
-            <div className="AddressCity">
-              {this.getCityAddress()}
-            </div>
+            <div className="AddressStreet">{this.getStreetAddress()}</div>
+            <div className="AddressCity">{this.getCityAddress()}</div>
           </div>
           <Button
             className="EditButton"
             flavor="regular"
             onClick={this.openAddressUpdatePopup.bind(this)}
             size="small"
-            taste="line">
+            taste="line"
+          >
             Edit
           </Button>
         </div>
@@ -237,7 +240,8 @@ export default class RequestQuotePage extends React.Component {
             markers={[this.getLocationMarker()]}
             popupBehaviour="close"
             styles={styles}
-            zoom={16} />
+            zoom={16}
+          />
         </div>
       </div>
     );
@@ -246,23 +250,19 @@ export default class RequestQuotePage extends React.Component {
   renderMobileAddress() {
     return (
       <div className="lead-area__mobile-address">
-        <div
-          className="lead-area__mobile-address__field"
-          onClick={this.openAddressUpdatePopup.bind(this)}>
+        <div className="lead-area__mobile-address__field" onClick={this.openAddressUpdatePopup.bind(this)}>
           <div className="left-part">
             <div className="label">Street address:</div>
             {this.getStreetAddress()}
           </div>
           <div className="right-part">
-            <Button
-              flavor="regular"
-              onClick={this.openAddressUpdatePopup.bind(this)}
-              size="small"
-              taste="line">
-              Edit</Button>
+            <Button flavor="regular" onClick={this.openAddressUpdatePopup.bind(this)} size="small" taste="line">
+              Edit
+            </Button>
           </div>
         </div>
-      </div>);
+      </div>
+    );
   }
 
   render() {
@@ -278,26 +278,25 @@ export default class RequestQuotePage extends React.Component {
     const {showStyleBrowser} = this.state;
 
     if (isAuthLoading || isUserLoading) {
-      return <AppLoader/>;
+      return <AppLoader />;
     }
 
     if (this.state.showThankYou) {
       return (
         <div className="request-quote-page">
-          <Success
-            header="Thanks!"
-            text="We will call you within 24 hours" />
-          {(showUpcomingFeatures('ENG-1XX') && !user) &&
-          <span>
-            <p className="confirmation-email spacing before__is-24">
-              We have sent a confirmation message to your email. Please follow the instructions there.
-            </p>
-          </span>}
+          <Success header="Thanks!" text="We will call you within 24 hours" />
+          {showUpcomingFeatures('ENG-1XX') && !user && (
+            <span>
+              <p className="confirmation-email spacing before__is-24">
+                We have sent a confirmation message to your email. Please follow the instructions there.
+              </p>
+            </span>
+          )}
         </div>
       );
     }
     const footerClassNames = classNames({
-      'top-border' : !this.isConfigCartDisplayed,
+      'top-border': !this.isConfigCartDisplayed,
     });
     return (
       <div className="request-quote-page">
@@ -305,28 +304,30 @@ export default class RequestQuotePage extends React.Component {
           {this.renderHeaderMessage()}
           <div className="lead-area__flex-wrapper">
             <div className="request-quote-page__lead-form">
-              {<LeadForm
-                configs={configs}
-                lead={lead || {}}
-                mobileAddressField={this.getStreetAddress() && this.renderMobileAddress()}
-                onAddConfigClick={() => this.setState({showStyleBrowser: true, showConfigCart: true})}
-                onProductChange={product => updateProduct(product)}
-                onSubmit={() => this.setState({showThankYou: true})}
-                product={product}
-                user={user}/>
+              {
+                <LeadForm
+                  configs={configs}
+                  lead={lead || {}}
+                  mobileAddressField={this.getStreetAddress() && this.renderMobileAddress()}
+                  onAddConfigClick={() => this.setState({showStyleBrowser: true, showConfigCart: true})}
+                  onProductChange={(product) => updateProduct(product)}
+                  onSubmit={() => this.setState({showThankYou: true})}
+                  product={product}
+                  user={user}
+                />
               }
             </div>
             {this.renderSignupMap()}
           </div>
         </div>
-        {
-          this.isConfigCartDisplayed &&
+        {this.isConfigCartDisplayed && (
           <ConfigCart
             onShowStyleBrowserChange={(value) => this.setState({showStyleBrowser: value})}
             showStyleBrowser={showStyleBrowser}
-            zipcode={zipcode}/>
-        }
-        <TermsFooter className={footerClassNames}/>
+            zipcode={zipcode}
+          />
+        )}
+        <TermsFooter className={footerClassNames} />
       </div>
     );
   }

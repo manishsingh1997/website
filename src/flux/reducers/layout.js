@@ -5,7 +5,7 @@ const initialState = {
   phoneNumber: PHONE_NUMBER,
 };
 
-const layoutReducer = (state=initialState, action) => {
+const layoutReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_PDF_HEADER_PHONE:
       return {

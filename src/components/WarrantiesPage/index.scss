@@ -1,13 +1,13 @@
-@import "@ergeon/core-components/src/components/variables.scss";
+@import '@ergeon/core-components/src/components/variables.scss';
 
 .warranties-page {
-
   &__header {
     height: 480px;
-    background-image: radial-gradient(circle farthest-corner at 100% 0%, transparent, rgba($black-1, 0.5)), url('../../assets/img-hero-warranties.jpg');
+    background-image: radial-gradient(circle farthest-corner at 100% 0%, transparent, rgba($black-1, 0.5)),
+      url('../../assets/img-hero-warranties.jpg');
     background-position: right;
     background-size: auto, cover;
-    background-repeat:  no-repeat;
+    background-repeat: no-repeat;
   }
 
   &__content {
@@ -87,20 +87,20 @@
 }
 
 .warranties {
-    display: flex;
-    margin-bottom: $v-24;
-    flex-flow: wrap;
-    min-height: 278px;
-  }
+  display: flex;
+  margin-bottom: $v-24;
+  flex-flow: wrap;
+  min-height: 278px;
+}
 
 .warranty {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &__canvas {
-      vertical-align: bottom;
-      max-width: 100%;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__canvas {
+    vertical-align: bottom;
+    max-width: 100%;
+  }
 }
 
 .heading-16 {

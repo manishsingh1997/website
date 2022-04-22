@@ -23,18 +23,10 @@ interface SubmitFormProps {
   setForm(arg: FormFieldState): void;
 }
 
-const useSubmitForm = ({
-  form,
-  error,
-  onSubmit,
-  setLoading,
-  setErrors,
-  setForm,
-}: SubmitFormProps) => {
+const useSubmitForm = ({form, error, onSubmit, setLoading, setErrors, setForm}: SubmitFormProps) => {
   return async (e: MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const isHasError =
-      error?.['email'] || error?.['message'] || error?.['name'];
+    const isHasError = error?.['email'] || error?.['message'] || error?.['name'];
     if (isHasError) {
       return;
     }
@@ -65,10 +57,7 @@ const useSubmitForm = ({
       setLoading(false);
       return response;
     } catch (err) {
-      trackError(
-        new Error(`Contact us message submit error: ${parseError(err)}`),
-        eventData
-      );
+      trackError(new Error(`Contact us message submit error: ${parseError(err)}`), eventData);
       setErrors({...error, global: parseError(err)});
       setLoading(false);
     }

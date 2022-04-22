@@ -90,7 +90,7 @@ module.exports = {
     modules: ['./node_modules'],
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
-      'react': path.resolve('./node_modules/react'),
+      react: path.resolve('./node_modules/react'),
       'react-dom': path.resolve('./node_modules/react-dom'),
     },
   },
@@ -101,11 +101,7 @@ module.exports = {
   plugins: [
     new htmlWebpackPlugin({
       template: `${APP_DIR}/index.html`,
-      chunks: [
-        'vendors~assets/bundle',
-        'vendors~assets/bundle~utm/assets/bundle',
-        'assets/bundle',
-      ],
+      chunks: ['vendors~assets/bundle', 'vendors~assets/bundle~utm/assets/bundle', 'assets/bundle'],
       favicon: `${APP_DIR}/assets/favicon.png`,
       filename: `${BUILD_DIR}/index.html`,
       environment: JSON.stringify(process.env.NODE_ENV),
@@ -116,11 +112,7 @@ module.exports = {
     }),
     new htmlWebpackPlugin({
       template: `${APP_DIR}/utm/index.html`,
-      chunks: [
-        'vendors~assets/bundle',
-        'vendors~assets/bundle~utm/assets/bundle',
-        'utm/assets/bundle',
-      ],
+      chunks: ['vendors~assets/bundle', 'vendors~assets/bundle~utm/assets/bundle', 'utm/assets/bundle'],
       filename: `${BUILD_DIR}/utm/index.html`,
     }),
     new webpack.DefinePlugin({
@@ -140,15 +132,11 @@ module.exports = {
     ]),
     new CopyPlugin([
       {from: './node_modules/@ergeon/3d-lib/assets/3d-data', to: '3d-data'},
-      {from: './node_modules/@ergeon/3d-lib/assets',
-        to: 'assets',
-        ignore: ['3d-data/*'],
-      },
+      {from: './node_modules/@ergeon/3d-lib/assets', to: 'assets', ignore: ['3d-data/*']},
     ]),
+    new CopyPlugin([{from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`}]),
     new CopyPlugin([
-      {from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`},
-    ]),
-    new CopyPlugin([ // SEO
+      // SEO
       {from: robotsPath, to: `${BUILD_DIR}/robots.txt`, force: true},
       {from: './src/data/sitemap.xml', to: `${BUILD_DIR}/`, force: true},
       {from: './src/data/gallery/sitemap.xml', to: `${BUILD_DIR}/gallery/`, force: true},

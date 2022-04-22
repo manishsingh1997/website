@@ -1,7 +1,6 @@
-@import "@ergeon/core-components/src/components/variables.scss";
+@import '@ergeon/core-components/src/components/variables.scss';
 
 .faq-page {
-
   &__header {
     height: 480px;
     background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.3)), url('../../assets/img-hero-faq.jpg');

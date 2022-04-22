@@ -43,7 +43,7 @@ export default class QuoteDescription extends React.Component {
   static defaultProps = {
     maxThumbnails: 4,
     maxThumbnailSize: 150,
-  }
+  };
 
   state = {
     customerDetailsOpen: false,
@@ -52,20 +52,33 @@ export default class QuoteDescription extends React.Component {
   };
 
   get linkToOrderPage() {
-    const {quote: {order_id: orderID, order: {house: {customer}}}} = this.props;
+    const {
+      quote: {
+        order_id: orderID,
+        order: {
+          house: {customer},
+        },
+      },
+    } = this.props;
     return getOrderDetailURL(customer.gid, orderID);
   }
 
   isUserOwnerOfQuote() {
-    const {auth: {user}, quote: {order: {house: customer}}} = this.props;
+    const {
+      auth: {user},
+      quote: {
+        order: {house: customer},
+      },
+    } = this.props;
     return !!user && user.gid === customer.gid;
   }
 
   getMediafileList() {
     const {quote} = this.props;
     // check if we have mediafiles, if so map url to elem.file as our Galleries need it
-    return quote && quote['mediafile_list'] &&
-      quote['mediafile_list'].mediafiles.map((elem) => ({url: elem.file, ...elem}));
+    return (
+      quote && quote['mediafile_list'] && quote['mediafile_list'].mediafiles.map((elem) => ({url: elem.file, ...elem}))
+    );
   }
 
   imagesGalleryDesktop() {
@@ -78,15 +91,14 @@ export default class QuoteDescription extends React.Component {
           <div className="quote-project-images">
             <div className="desktop-length">
               <Title className="ImageGallery-container link" icon={iconPhotoPlaceholder}>
-                <p className="link">
-                  Project Images ({imagesArray.length})
-                </p>
+                <p className="link">Project Images ({imagesArray.length})</p>
               </Title>
               <ImageGallery
                 height={maxThumbnailSize}
                 images={imagesArray}
                 thumbnailNumDisplay={maxThumbnails}
-                width={maxThumbnailSize} />
+                width={maxThumbnailSize}
+              />
             </div>
           </div>
         </div>
@@ -101,11 +113,11 @@ export default class QuoteDescription extends React.Component {
     if (!isEmpty(imagesArray)) {
       return (
         <div className="quote-project-images">
-          {imagesArray && !isPDFMode() &&
+          {imagesArray && !isPDFMode() && (
             <div className="mobile-length">
               <SwipeGallery images={imagesArray} title="Project Images" titleIcon={iconPhotoPlaceholder} />
             </div>
-          }
+          )}
         </div>
       );
     }
@@ -134,8 +146,11 @@ export default class QuoteDescription extends React.Component {
     return (
       <Link
         className="button button--regular button--size__small taste__boundless button-back"
-        to={this.linkToOrderPage}>
-        <ReactSVG className="gray-arrow-fill" src={ImgBack} />Back to order</Link>
+        to={this.linkToOrderPage}
+      >
+        <ReactSVG className="gray-arrow-fill" src={ImgBack} />
+        Back to order
+      </Link>
     );
   }
 
@@ -143,9 +158,11 @@ export default class QuoteDescription extends React.Component {
     return (
       <>
         Ergeon’s license is issued by the Contractors State License Board.
-        {license.public_help_page_url &&
-          <a href={license.public_help_page_url} rel="noreferrer" target="_blank">View details</a>
-        }
+        {license.public_help_page_url && (
+          <a href={license.public_help_page_url} rel="noreferrer" target="_blank">
+            View details
+          </a>
+        )}
       </>
     );
   }
@@ -161,39 +178,39 @@ export default class QuoteDescription extends React.Component {
           <div>
             {license['quote_string']} &nbsp;
             <div className="quote-license-number">
-              {!isValidationUrlEmpty &&
-                <a href={license.validation_url} rel="noreferrer" target="_blank">#{license.number}</a>
-              }
-              {license.public_help_page_url &&
+              {!isValidationUrlEmpty && (
+                <a href={license.validation_url} rel="noreferrer" target="_blank">
+                  #{license.number}
+                </a>
+              )}
+              {license.public_help_page_url && (
                 <>
                   <ReactSVG
                     className="quote-license-icon mobile-length"
                     onClick={() => this.setState({displayLicenseNotification: true})}
-                    src={iconInfo} />
-                  <Tooltip
-                    msg={this.renderLicenseMessage(license)}
-                    position="right">
+                    src={iconInfo}
+                  />
+                  <Tooltip msg={this.renderLicenseMessage(license)} position="right">
                     <ReactSVG className="quote-license-icon desktop-length" src={iconInfo} />
                   </Tooltip>
                 </>
-              }
+              )}
             </div>
           </div>
-          {this.state.displayLicenseNotification &&
+          {this.state.displayLicenseNotification && (
             <Notification
               mode="floating"
               onClose={() => this.setState({displayLicenseNotification: false})}
-              type="Information">
+              type="Information"
+            >
               {this.renderLicenseMessage(license)}
             </Notification>
-          }
+          )}
         </div>
       );
     });
 
-    return (
-      <DataRow title="Licenses" value={licenses} />
-    );
+    return <DataRow title="Licenses" value={licenses} />;
   }
 
   renderTitle() {
@@ -204,26 +221,16 @@ export default class QuoteDescription extends React.Component {
         <div>
           <h4>
             Quote #{id}
-            <span className="quote-details-title">
-              {title ?
-                title :
-                order.product.name
-              }
-            </span>
+            <span className="quote-details-title">{title ? title : order.product.name}</span>
           </h4>
         </div>
         <div>
-          {customerPDF && !isPDFMode() &&
-            <Button
-              asAnchor
-              className="quote-save-button"
-              flavor="regular"
-              href={customerPDF}
-              target="_blank">
+          {customerPDF && !isPDFMode() && (
+            <Button asAnchor className="quote-save-button" flavor="regular" href={customerPDF} target="_blank">
               <img alt="Save as PDF" src={iconSave} />
               Save as PDF
             </Button>
-          }
+          )}
         </div>
       </div>
     );
@@ -243,32 +250,40 @@ export default class QuoteDescription extends React.Component {
         <div className="quote-fields-wrapper__fields">
           <DataRow title="Order Address" value={address.formatted_address} />
           {this.renderLicenses()}
-          {
-            this.isUserOwnerOfQuote()
-              ? <DataRow title="Order ID" value={<Link to={this.linkToOrderPage}>#{quote.order.id}</Link>} />
-              : <DataRow title="Order ID" value={`#${quote.order.id}`} />
-          }
+          {this.isUserOwnerOfQuote() ? (
+            <DataRow title="Order ID" value={<Link to={this.linkToOrderPage}>#{quote.order.id}</Link>} />
+          ) : (
+            <DataRow title="Order ID" value={`#${quote.order.id}`} />
+          )}
           <DataRow title="Sent At" value={formatDateAndTime(quote['sent_to_customer_at'])} />
           {expiresAt && <DataRow title={expiresAtTitle} value={formatDateAndTime(expiresAt)} />}
           {approvedAt && <DataRow title="Approved At" value={formatDateAndTime(approvedAt)} />}
         </div>
         <div className="quote-fields-wrapper__staff-contacts">
-          {quote.order.sales_rep &&
+          {quote.order.sales_rep && (
             <DataRow
               title="Sales Rep"
-              value={<DropdownButton
-                className="Appointment-DropdownButton"
-                items={this.staffDropdownItems(quote.order.sales_rep)}
-                label={quote.order.sales_rep.full_name} />} />
-          }
-          {quote.order.project_manager &&
+              value={
+                <DropdownButton
+                  className="Appointment-DropdownButton"
+                  items={this.staffDropdownItems(quote.order.sales_rep)}
+                  label={quote.order.sales_rep.full_name}
+                />
+              }
+            />
+          )}
+          {quote.order.project_manager && (
             <DataRow
               title="Project Manager"
-              value={<DropdownButton
-                className="Appointment-DropdownButton"
-                items={this.staffDropdownItems(quote.order.project_manager)}
-                label={quote.order.project_manager.full_name} />} />
-          }
+              value={
+                <DropdownButton
+                  className="Appointment-DropdownButton"
+                  items={this.staffDropdownItems(quote.order.project_manager)}
+                  label={quote.order.project_manager.full_name}
+                />
+              }
+            />
+          )}
         </div>
       </>
     );
@@ -283,11 +298,7 @@ export default class QuoteDescription extends React.Component {
           {this.isUserOwnerOfQuote() && !asPDF && this.renderBackButton()}
           <Helmet>
             {quote.title && <title key={Math.random()}>{quote.title}</title>}
-            {!quote.title &&
-              <title key={Math.random()}>
-                {`${quote.order.product.name} Quote #${quote.id}`}
-              </title>
-            }
+            {!quote.title && <title key={Math.random()}>{`${quote.order.product.name} Quote #${quote.id}`}</title>}
           </Helmet>
           {this.renderTitle()}
           <div className="quote-fields">
@@ -301,15 +312,14 @@ export default class QuoteDescription extends React.Component {
               <Collapsible
                 isOpen={this.state.quoteDetailsOpen}
                 onChangeOpen={() => this.setState({quoteDetailsOpen: !this.state.quoteDetailsOpen})}
-                title="Quote details">
+                title="Quote details"
+              >
                 {this.renderQuoteDetails()}
               </Collapsible>
             </div>
           </div>
         </div>
-        <div className="mobile-length">
-          {this.imagesGalleryMobile()}
-        </div>
+        <div className="mobile-length">{this.imagesGalleryMobile()}</div>
       </>
     );
   }

@@ -36,35 +36,29 @@ class LocationsMap extends React.Component {
     });
   }
   render() {
-    const {
-      markers,
-      polygons,
-      legend,
-      aspectRatio,
-      popupBehaviour,
-      controls,
-      styles,
-      ready,
-    } = this.state;
+    const {markers, polygons, legend, aspectRatio, popupBehaviour, controls, styles, ready} = this.state;
     const loadingPlaceholder = <Spinner active={!ready} color="blue" size={12} />;
     const loader = <div className="loader-placeholder">{loadingPlaceholder}</div>;
     const mapElementClass = 'locations-map';
     return (
       <React.Fragment>
         {!ready && loader}
-        {ready && <MapComponent
-          asFragment={true}
-          aspectRatio={aspectRatio}
-          controls={controls}
-          fitBy="none"
-          legend={legend}
-          loadGoogleMapsLibrary={googleIntegration.getGoogleLoader()}
-          loadingPlaceholder={loadingPlaceholder}
-          mapElementClass={mapElementClass}
-          markers={markers}
-          polygons={polygons}
-          popupBehaviour={popupBehaviour}
-          styles={styles} />}
+        {ready && (
+          <MapComponent
+            asFragment={true}
+            aspectRatio={aspectRatio}
+            controls={controls}
+            fitBy="none"
+            legend={legend}
+            loadGoogleMapsLibrary={googleIntegration.getGoogleLoader()}
+            loadingPlaceholder={loadingPlaceholder}
+            mapElementClass={mapElementClass}
+            markers={markers}
+            polygons={polygons}
+            popupBehaviour={popupBehaviour}
+            styles={styles}
+          />
+        )}
       </React.Fragment>
     );
   }

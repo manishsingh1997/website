@@ -62,16 +62,16 @@ export default class BillingForm extends React.Component {
     const {houseId} = this.props;
 
     return this.props.onSubmit({
-      'stripe_token': token,
-      'house': houseId,
+      stripe_token: token,
+      house: houseId,
     });
   };
 
   handleFieldChange(event, name, value) {
     const validation = {
-      'card': cardNumberValidation,
-      'expirationDate': cardExpDateValidation,
-      'cvc': cardCvcValidation,
+      card: cardNumberValidation,
+      expirationDate: cardExpDateValidation,
+      cvc: cardCvcValidation,
     }[name];
 
     this.setState({
@@ -111,14 +111,14 @@ export default class BillingForm extends React.Component {
         expirationDate: form.expirationDate,
         cvc: form.cvc,
       })
-        .then(token => {
+        .then((token) => {
           this.setState({
             errors: {},
             errorMessage: null,
           });
           return this.submitToken(token);
         })
-        .catch(result => {
+        .catch((result) => {
           if (result.param) {
             this.setState({
               errors: {
@@ -170,10 +170,9 @@ export default class BillingForm extends React.Component {
 
     return (
       <div className="billing-form__error">
-        <Notification
-          mode="embed"
-          type="Error">
-          There was an error trying to approve payment.<br />
+        <Notification mode="embed" type="Error">
+          There was an error trying to approve payment.
+          <br />
           {error}
         </Notification>
       </div>
@@ -189,7 +188,8 @@ export default class BillingForm extends React.Component {
         flavor="regular"
         onClick={this.handleEditClick.bind(this)}
         size="small"
-        taste="solid">
+        taste="solid"
+      >
         {editMode ? 'Cancel' : 'Edit'}
       </Button>
     );
@@ -214,7 +214,8 @@ export default class BillingForm extends React.Component {
               tabIndex="1"
               type="tel"
               validationMessage={errors?.card}
-              value={card} />
+              value={card}
+            />
           </FormField>
         </div>
         <div className="billing-form__expiration-date">
@@ -232,7 +233,8 @@ export default class BillingForm extends React.Component {
               tabIndex="2"
               type="tel"
               validationMessage={errors?.expirationDate}
-              value={expirationDate} />
+              value={expirationDate}
+            />
           </FormField>
         </div>
         <div className="billing-form__cvc">
@@ -248,7 +250,8 @@ export default class BillingForm extends React.Component {
               tabIndex="3"
               type="tel"
               validationMessage={errors?.cvc}
-              value={cvc} />
+              value={cvc}
+            />
           </FormField>
         </div>
       </div>
@@ -261,17 +264,11 @@ export default class BillingForm extends React.Component {
     return (
       <div className="billing-form__payment-method-details">
         <div className="billing-form__payment-method-details-item">
-          <div className="billing-form__payment-method-details-item-name">
-            Card number
-          </div>
-          <div className="billing-form__payment-method-details-item-value">
-            {lastDigits && `*${lastDigits}`}
-          </div>
+          <div className="billing-form__payment-method-details-item-name">Card number</div>
+          <div className="billing-form__payment-method-details-item-value">{lastDigits && `*${lastDigits}`}</div>
         </div>
         <div className="billing-form__payment-method-details-item">
-          <div className="billing-form__payment-method-details-item-name">
-            Exp. date
-          </div>
+          <div className="billing-form__payment-method-details-item-name">Exp. date</div>
           <div className="billing-form__payment-method-details-item-value">
             {paymentMethod && paymentMethod['card_expiration_date_short']}
           </div>
@@ -297,12 +294,10 @@ export default class BillingForm extends React.Component {
         <form className="billing-form__content" onSubmit={this.handleSubmit.bind(this)}>
           <div className="billing-form__information">
             <div className="billing-form__title-section">
-              <h4>
-                Billing Information
-              </h4>
+              <h4>Billing Information</h4>
               <div className="billing-form__icons">
-                <img className="billing-form__icon-cards" src={IconCards}/>
-                <img className="billing-form__icon-secure" src={IconSSL}/>
+                <img className="billing-form__icon-cards" src={IconCards} />
+                <img className="billing-form__icon-secure" src={IconSSL} />
               </div>
             </div>
             {!this.isQuoteApproved() && this.renderFormFields()}
@@ -310,9 +305,9 @@ export default class BillingForm extends React.Component {
             <div className="billing-form__card-disclaimer">
               <img className="billing-form__card-disclaimer-icon" src={IconCardSecure} />
               <div className="billing-form__card-disclaimer-text">
-                You <b>will not be charged</b> until after your service is completed.
-                Credit/debit card payments are subject to an additional {CARD_TRANSACTION_FEE} transaction fee.
-                The current payment options we have aside from credit card are bank transfer and check payments.
+                You <b>will not be charged</b> until after your service is completed. Credit/debit card payments are
+                subject to an additional {CARD_TRANSACTION_FEE} transaction fee. The current payment options we have
+                aside from credit card are bank transfer and check payments.
               </div>
             </div>
           </div>
@@ -320,45 +315,40 @@ export default class BillingForm extends React.Component {
             <div className="billing-form__total">
               <div className="billing-form__total-pay">
                 {totalPayText}
-                <div className="billing-form__price">
-                  {total}
-                </div>
+                <div className="billing-form__price">{total}</div>
               </div>
               <div className="billing-form__approve">
                 <Button
                   className="billing-form__approve-button"
                   disabled={some(Object.values(errors)) || !termsAccepted || isLoading}
-                  size="large">
-                  {
-                    isLoading ?
-                      <Spinner active={true} borderWidth={0.15} color="white" size={24}/> :
-                      'Approve and place order'
-                  }
+                  size="large"
+                >
+                  {isLoading ? (
+                    <Spinner active={true} borderWidth={0.15} color="white" size={24} />
+                  ) : (
+                    'Approve and place order'
+                  )}
                 </Button>
               </div>
             </div>
             <a
               className="billing-form__request-changes"
-              href={`mailto:${CONTACT_EMAIL}?subject=Quote change request: ${quoteId}`}>
+              href={`mailto:${CONTACT_EMAIL}?subject=Quote change request: ${quoteId}`}
+            >
               Request changes to quote
             </a>
             <div className="billing-form__terms">
               <div
-                className={classNames(
-                  'billing-form__accept-terms-button',
-                  {'billing-form__accept-terms-button--selected': termsAccepted}
-                )}
-                onClick={this.handleTermsCheck.bind(this, !termsAccepted)}>
-                {termsAccepted && <img
-                  className="billing-form__accept-terms-button-icon"
-                  src={IconMarkGreen} />}
+                className={classNames('billing-form__accept-terms-button', {
+                  'billing-form__accept-terms-button--selected': termsAccepted,
+                })}
+                onClick={this.handleTermsCheck.bind(this, !termsAccepted)}
+              >
+                {termsAccepted && <img className="billing-form__accept-terms-button-icon" src={IconMarkGreen} />}
               </div>
               <span className="billing-form__terms-accept">
-                I accept <a
-                  className="billing-form__terms-link"
-                  href={contractUrl}
-                  rel="noopener noreferrer"
-                  target="_blank">
+                I accept{' '}
+                <a className="billing-form__terms-link" href={contractUrl} rel="noopener noreferrer" target="_blank">
                   the terms and condition included in the contract
                 </a>
               </span>

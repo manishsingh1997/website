@@ -1,6 +1,5 @@
 @import '~@ergeon/core-components/src/components/variables.scss';
 
-
 .customer-app-layout {
   max-width: 1060px;
   padding-left: $h-20;
@@ -89,7 +88,6 @@
     .sidebar-title {
       display: none;
     }
-
 
     @include phone() {
       display: none;

@@ -35,17 +35,17 @@ class Slider extends React.Component {
     const targetClass = event.target
       ? event.target.className
       : event.dir // event has dir (direction) if was called by swipe
-        ? event.dir
-        : null;
+      ? event.dir
+      : null;
     const currentSlide = this.getCurrentSlide();
     const {slidesCount} = this.state;
     const {onChange} = this.props;
-    let nextSlide = Number(event.target? event.target.getAttribute('data-key') : 0) || 0;
+    let nextSlide = Number(event.target ? event.target.getAttribute('data-key') : 0) || 0;
     if (targetClass.toLowerCase().includes('right')) {
-      nextSlide = currentSlide === slidesCount - 1? 0 : currentSlide + 1;
+      nextSlide = currentSlide === slidesCount - 1 ? 0 : currentSlide + 1;
     }
     if (targetClass.toLowerCase().includes('left')) {
-      nextSlide = currentSlide === 0? slidesCount - 1 : currentSlide - 1;
+      nextSlide = currentSlide === 0 ? slidesCount - 1 : currentSlide - 1;
     }
     this.setState({currentSlide: nextSlide});
     onChange && onChange(nextSlide);
@@ -65,12 +65,14 @@ class Slider extends React.Component {
         <div className="slider">
           {children.map((slide, index) => {
             const slideClasses = classNames({
-              'slide': true,
-              'active': currentSlide === index,
+              slide: true,
+              active: currentSlide === index,
             });
             return (
               <Swipeable key={index} onSwiped={(eventData) => this.switchSlide(eventData)} {...swipeConfig}>
-                <div className={slideClasses} key={index}>{slide}</div>
+                <div className={slideClasses} key={index}>
+                  {slide}
+                </div>
               </Swipeable>
             );
           })}
@@ -78,15 +80,14 @@ class Slider extends React.Component {
         <div className="points">
           {children.map((slide, index) => {
             if (currentSlide === index) {
-              return <div className="point active" data-key={index} key={index} onClick={this.switchSlide}/>;
+              return <div className="point active" data-key={index} key={index} onClick={this.switchSlide} />;
             }
-            return <div className="point" data-key={index} key={index} onClick={this.switchSlide}/>;
+            return <div className="point" data-key={index} key={index} onClick={this.switchSlide} />;
           })}
         </div>
-        <div className="arrow left" onClick={this.switchSlide} onTouchEnd={this.switchSlide}/>
-        <div className="arrow right" onClick={this.switchSlide} onTouchEnd={this.switchSlide}/>
+        <div className="arrow left" onClick={this.switchSlide} onTouchEnd={this.switchSlide} />
+        <div className="arrow right" onClick={this.switchSlide} onTouchEnd={this.switchSlide} />
       </div>
-
     );
   }
 }

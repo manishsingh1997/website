@@ -6,7 +6,7 @@ const initialState = {
   listError: null,
 };
 
-const housesReducer = (state=initialState, action) => {
+const housesReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_HOUSES_START:
       return {...state, isListLoading: true};

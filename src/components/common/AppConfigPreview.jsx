@@ -19,7 +19,6 @@ const DEFAULT_PREVIEW_WIDTH = 300;
 const DEFAULT_PREVIEW_HEIGHT = 300;
 
 export default class AppConfigPreview extends React.Component {
-
   static propTypes = {
     className: PropTypes.string,
     configType: PropTypes.string,
@@ -37,7 +36,7 @@ export default class AppConfigPreview extends React.Component {
     withLink: false,
     fenceSideLength: 6,
     isMobileWidth: false,
-  }
+  };
 
   state = {
     previewImage: undefined,
@@ -61,14 +60,12 @@ export default class AppConfigPreview extends React.Component {
     // check if images is empty, if thats the case isLoading will be set on the image onLoad callback
     this.setState({isLoading: isEmpty(images)});
     try {
-      const preview = await calcUtils.getPreviewImage(
-        {
-          height: DEFAULT_PREVIEW_HEIGHT,
-          schemaCodeUrl,
-          useCache: USE_CACHE,
-          width: DEFAULT_PREVIEW_WIDTH,
-        }
-      );
+      const preview = await calcUtils.getPreviewImage({
+        height: DEFAULT_PREVIEW_HEIGHT,
+        schemaCodeUrl,
+        useCache: USE_CACHE,
+        width: DEFAULT_PREVIEW_WIDTH,
+      });
       this.setState({previewImage: preview, isLoading: false});
     } catch (error) {
       this.setState({previewImage: previewPlaceholderIcon, isLoading: false});
@@ -107,14 +104,13 @@ export default class AppConfigPreview extends React.Component {
     const isPlaceholder = isEqual(previewImage, previewPlaceholderIcon) || isEqual(previewImage, noPreviewIcon);
     return (
       <div
-        className={classNames('config-preview', 'border',
-          {
-            'gallery-preview': !isEmpty(images) && isMobileWidth,
-            'config-preview__no-preview': isPlaceholder,
-            [className]: Boolean(className),
-          }
-        )}>
-        {isLoading && <Spinner active borderWidth={.15} color="blue" size={64} />}
+        className={classNames('config-preview', 'border', {
+          'gallery-preview': !isEmpty(images) && isMobileWidth,
+          'config-preview__no-preview': isPlaceholder,
+          [className]: Boolean(className),
+        })}
+      >
+        {isLoading && <Spinner active borderWidth={0.15} color="blue" size={64} />}
         {this.conditionalConfigPreview()}
       </div>
     );
@@ -141,7 +137,8 @@ export default class AppConfigPreview extends React.Component {
       finalSchemaCodeUrl,
       zipCode,
       fenceSideLength,
-      /* show options */false);
+      /* show options */ false
+    );
     return (
       <a href={linkToFencequoting} rel="noopener noreferrer" target="_blank">
         {this.renderPreview()}
@@ -158,10 +155,7 @@ export default class AppConfigPreview extends React.Component {
     });
     return (
       <div className="preview-box">
-        <img
-          className={previewImageClasses}
-          onLoad={() => this.setState({isLoading: false})}
-          src={previewImage} />
+        <img className={previewImageClasses} onLoad={() => this.setState({isLoading: false})} src={previewImage} />
         <img className="preview-3d" src={preview3DIcon} />
       </div>
     );
@@ -176,7 +170,7 @@ export default class AppConfigPreview extends React.Component {
     }
     return (
       <>
-        {imagesObj &&
+        {imagesObj && (
           <>
             <div className="desktop-length">
               <ImageGallery height={150} images={imagesObj} width={150} />
@@ -185,7 +179,7 @@ export default class AppConfigPreview extends React.Component {
               <SwipeGallery images={imagesObj} />
             </div>
           </>
-        }
+        )}
       </>
     );
   }
@@ -196,7 +190,9 @@ export default class AppConfigPreview extends React.Component {
     if (isPDFMode() && !isEmpty(images)) {
       return (
         <div className="cards two-columns">
-          {images.map((elem) => <ImageCard key={elem.id} title={elem.title} url={elem.file} />)}
+          {images.map((elem) => (
+            <ImageCard key={elem.id} title={elem.title} url={elem.file} />
+          ))}
         </div>
       );
     }

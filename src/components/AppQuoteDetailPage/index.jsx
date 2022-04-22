@@ -18,7 +18,6 @@ import {
 } from 'website/constants';
 
 export default class AppQuoteDetailPage extends React.Component {
-
   static propTypes = {
     location: PropTypes.shape({
       pathname: PropTypes.string,
@@ -80,13 +79,16 @@ export default class AppQuoteDetailPage extends React.Component {
     }
 
     if (!this.state.quote && this.state.quoteError && this.state.quoteError.statusCode === HTTP_STATUS_NOT_FOUND) {
-      return (
-        <Redirect to={NOT_FOUND_PAGE_PATH} />
-      );
+      return <Redirect to={NOT_FOUND_PAGE_PATH} />;
     }
 
-    const {quote: {quote_approvals: quoteApprovals, secret: quoteSecret}} = this.state;
-    const {customer: {gid: customerSecret}, secret: quoteApprovalSecret} = quoteApprovals[0];
+    const {
+      quote: {quote_approvals: quoteApprovals, secret: quoteSecret},
+    } = this.state;
+    const {
+      customer: {gid: customerSecret},
+      secret: quoteApprovalSecret,
+    } = quoteApprovals[0];
 
     let searchString = '';
     if (window.location && window.location.search) {
@@ -96,14 +98,16 @@ export default class AppQuoteDetailPage extends React.Component {
     if (this.isInstallerPreview()) {
       return (
         <Redirect
-          to={`/app/${customerSecret}/quote-approvals/${quoteSecret}/${INSTALLER_PREVIEW_SLUG}/${searchString}`}/>
+          to={`/app/${customerSecret}/quote-approvals/${quoteSecret}/${INSTALLER_PREVIEW_SLUG}/${searchString}`}
+        />
       );
     }
 
     if (this.isDirectPreview()) {
       return (
         <Redirect
-          to={`/app/${customerSecret}/quote-approvals/${quoteApprovalSecret}/${DIRECT_PREVIEW_SLUG}/${searchString}`} />
+          to={`/app/${customerSecret}/quote-approvals/${quoteApprovalSecret}/${DIRECT_PREVIEW_SLUG}/${searchString}`}
+        />
       );
     }
 

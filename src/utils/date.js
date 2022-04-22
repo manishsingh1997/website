@@ -13,21 +13,21 @@ export const isPastDate = (date) => {
   return moment(date) < now;
 };
 
-export const formatDate = (date, format=DEFAULT_DATE_FORMAT) => {
+export const formatDate = (date, format = DEFAULT_DATE_FORMAT) => {
   if (!date) {
     return null;
   }
   return moment(date).format(format);
 };
 
-export const formatTime = (time, format=DEFAULT_TIME_FORMAT) => {
+export const formatTime = (time, format = DEFAULT_TIME_FORMAT) => {
   if (!time) {
     return null;
   }
   return moment(time, 'HH:mm:ss').format(format);
 };
 
-export const formatDateAndTime = (date, format=DEFAULT_DATE_TIME_FORMAT) => {
+export const formatDateAndTime = (date, format = DEFAULT_DATE_TIME_FORMAT) => {
   if (!date) {
     return null;
   }

@@ -1,7 +1,7 @@
-@import "@ergeon/core-components/src/components/variables.scss";
+@import '@ergeon/core-components/src/components/variables.scss';
 .header-border {
- box-shadow: 0 50px 50px 0 $gray-6, 0 2px 0 0 $gray-5;
- margin-bottom: $v-24;
+  box-shadow: 0 50px 50px 0 $gray-6, 0 2px 0 0 $gray-5;
+  margin-bottom: $v-24;
   @include phone() {
     margin-bottom: $v-12;
   }
@@ -24,20 +24,20 @@
     height: auto;
     padding: $v-20;
 
-    .is__button-phone{
+    .is__button-phone {
       display: none;
     }
 
     @include phone {
       margin-bottom: $v-20;
 
-      .is__button-phone{
+      .is__button-phone {
         width: 100%;
         display: flex;
         margin-top: $v-20;
       }
-  
-      .is__button-desktop{
+
+      .is__button-desktop {
         display: none;
       }
     }
@@ -176,11 +176,11 @@
       // Set columns. -1 for tablets and phones.
       $columns: 3;
 
-      width: 100/$columns * 1%;
+      width: 100 / $columns * 1%;
       padding: $h-10;
 
       @include tablet() {
-        width: 100/max($columns - 1, 1) * 1%;
+        width: 100 / max($columns - 1, 1) * 1%;
       }
 
       @include phone() {
@@ -205,7 +205,7 @@
     height: 24px;
     &.home {
       display: inline-block;
-      background-image: url("../../assets/icon-home-black.svg");
+      background-image: url('../../assets/icon-home-black.svg');
       background-size: auto;
       background-repeat: no-repeat;
       background-position: 50% 50%;

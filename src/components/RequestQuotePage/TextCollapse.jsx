@@ -29,7 +29,8 @@ export default class TextCollapse extends React.Component {
           className="text-collapse__button"
           flavor="primary"
           onClick={() => this.setState({expanded: true})}
-          taste="boundless">
+          taste="boundless"
+        >
           Show more
         </Button>
       </React.Fragment>
@@ -45,7 +46,8 @@ export default class TextCollapse extends React.Component {
           className="text-collapse__button"
           flavor="primary"
           onClick={() => this.setState({expanded: false})}
-          taste="boundless">
+          taste="boundless"
+        >
           Show less
         </Button>
       </React.Fragment>
@@ -58,7 +60,7 @@ export default class TextCollapse extends React.Component {
 
     return (
       <div className="text-collapse">
-        {(expanded || children.length <= length) ? this.renderExpanded() : this.renderCollapsed()}
+        {expanded || children.length <= length ? this.renderExpanded() : this.renderCollapsed()}
       </div>
     );
   }

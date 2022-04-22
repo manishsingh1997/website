@@ -37,32 +37,26 @@ class StaffMap extends React.Component {
     });
   }
   render() {
-    const {
-      markers,
-      polygons,
-      legend,
-      aspectRatio,
-      popupBehaviour,
-      controls,
-      styles,
-      ready,
-    } = this.state;
+    const {markers, polygons, legend, aspectRatio, popupBehaviour, controls, styles, ready} = this.state;
     const loadingPlaceholder = <Spinner active={!ready} color="blue" size={48} />;
     const loader = <div className="loader-placeholder">{loadingPlaceholder}</div>;
     return (
       <div className="staff-map">
         {!ready && loader}
-        {ready && <MapComponent
-          aspectRatio={aspectRatio}
-          controls={controls}
-          fitBy="width"
-          legend={legend}
-          loadGoogleMapsLibrary={googleIntegration.getGoogleLoader()}
-          loadingPlaceholder={loadingPlaceholder}
-          markers={markers}
-          polygons={polygons}
-          popupBehaviour={popupBehaviour}
-          styles={styles} />}
+        {ready && (
+          <MapComponent
+            aspectRatio={aspectRatio}
+            controls={controls}
+            fitBy="width"
+            legend={legend}
+            loadGoogleMapsLibrary={googleIntegration.getGoogleLoader()}
+            loadingPlaceholder={loadingPlaceholder}
+            markers={markers}
+            polygons={polygons}
+            popupBehaviour={popupBehaviour}
+            styles={styles}
+          />
+        )}
       </div>
     );
   }

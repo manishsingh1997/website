@@ -28,7 +28,6 @@ import AppConfigPreview from 'components/common/AppConfigPreview';
 import './index.scss';
 import {getExpiresAtTitle} from '../../utils/utils';
 export default class AppOrderDetailPage extends React.Component {
-
   static propTypes = {
     error: PropTypes.object,
     fetchOrder: PropTypes.func.isRequired,
@@ -83,10 +82,10 @@ export default class AppOrderDetailPage extends React.Component {
           <div>
             <DataRow title="Status" value={quote['status']['label']} />
             <DataRow title="Total Price" value={formatPrice(quote['total_price'])} />
-            {showTotalLength &&
-            <DataRow title="Total length" value={`${quote['total_length']} ${FENCE_QUANTITY_UNIT}`} />}
-            {showTotalArea &&
-            <DataRow title="Total area" value={`${quote['total_area']} ${DRIVEWAY_QUANTITY_UNIT}`} />}
+            {showTotalLength && (
+              <DataRow title="Total length" value={`${quote['total_length']} ${FENCE_QUANTITY_UNIT}`} />
+            )}
+            {showTotalArea && <DataRow title="Total area" value={`${quote['total_area']} ${DRIVEWAY_QUANTITY_UNIT}`} />}
             <DataRow title="Sent At" value={formatDateAndTime(quote['sent_to_customer_at'])} />
             {quote['approved_at'] && <DataRow title="Approved At" value={formatDateAndTime(quote['approved_at'])} />}
             {quote['cancelled_at'] && <DataRow title="Cancelled At" value={formatDateAndTime(quote['cancelled_at'])} />}
@@ -98,7 +97,9 @@ export default class AppOrderDetailPage extends React.Component {
         </div>
         <div>
           <Link className="spacing left__is-10" to={getQuoteDetailURL(customerGID, quote['secret'])}>
-            <Button size="large" type="submit">View Full Quote</Button>
+            <Button size="large" type="submit">
+              View Full Quote
+            </Button>
           </Link>
         </div>
       </React.Fragment>
@@ -113,10 +114,12 @@ export default class AppOrderDetailPage extends React.Component {
     return (
       <React.Fragment>
         <Link className="order-title" to={`/app/${customerGID}/orders`}>
-          <div><ReactSVG  src={contactIcon} /></div>
-          <div>{order ? `${order['product']['name']}`: null}</div>
+          <div>
+            <ReactSVG src={contactIcon} />
+          </div>
+          <div>{order ? `${order['product']['name']}` : null}</div>
         </Link>
-        {order && filterQuotesSentToCustomer(order['quotes']).length !== 0 &&
+        {order && filterQuotesSentToCustomer(order['quotes']).length !== 0 && (
           <div className="quote-filters">
             <SelectFilter
               className="react-select-filter-container"
@@ -124,14 +127,16 @@ export default class AppOrderDetailPage extends React.Component {
               name="quote_filter"
               onChange={this.handleChange}
               options={QUOTE_FILTERS}
-              value={selectedOption} />
-          </div>}
+              value={selectedOption}
+            />
+          </div>
+        )}
       </React.Fragment>
     );
   }
 
   renderVisitDates(visits) {
-    return visits.map(visit => (
+    return visits.map((visit) => (
       <React.Fragment key={`visit-${visit.id}`}>
         {formatDate(visit['estimated_start_time'])}
         <br />
@@ -142,28 +147,31 @@ export default class AppOrderDetailPage extends React.Component {
   renderContent() {
     const {selectedOption} = this.state;
     const order = this.getOrder();
-    return order && (
-      <React.Fragment>
-        <div className="order-details">
-          <Helmet>
-            <title key={Math.random()}>
-              {`Order #${order['id']}, ${order['product']['name']}, ${formatDate(order['ordered_at'])}`}
-            </title>
-          </Helmet>
-          <DataRow title="Order" value={`#${order['id']}`} />
-          <DataRow title="Status" value={order['customer_deal_status']} />
-          <DataRow title="Ordered on" value={formatDate(order['ordered_at'])} />
-          <DataRow title="Visit Dates" value={this.renderVisitDates(order['visits'])} />
-          <DataRow title="Address" value={getFormattedAddress(order['house'])} />
-          {/* TODO: ENG-8768 Add data row with order contract url */}
-        </div>
-        {filterQuotesByStatus(order['quotes'], selectedOption).map(quote => (
-          <AppSubCard
-            key={`quote-${quote.id}`}
-            renderContent={this.renderListElementContent.bind(this, quote)}
-            renderHeader={this.renderListElementHeader.bind(this, quote)} />
-        ))}
-      </React.Fragment>
+    return (
+      order && (
+        <React.Fragment>
+          <div className="order-details">
+            <Helmet>
+              <title key={Math.random()}>
+                {`Order #${order['id']}, ${order['product']['name']}, ${formatDate(order['ordered_at'])}`}
+              </title>
+            </Helmet>
+            <DataRow title="Order" value={`#${order['id']}`} />
+            <DataRow title="Status" value={order['customer_deal_status']} />
+            <DataRow title="Ordered on" value={formatDate(order['ordered_at'])} />
+            <DataRow title="Visit Dates" value={this.renderVisitDates(order['visits'])} />
+            <DataRow title="Address" value={getFormattedAddress(order['house'])} />
+            {/* TODO: ENG-8768 Add data row with order contract url */}
+          </div>
+          {filterQuotesByStatus(order['quotes'], selectedOption).map((quote) => (
+            <AppSubCard
+              key={`quote-${quote.id}`}
+              renderContent={this.renderListElementContent.bind(this, quote)}
+              renderHeader={this.renderListElementHeader.bind(this, quote)}
+            />
+          ))}
+        </React.Fragment>
+      )
     );
   }
 
@@ -175,7 +183,8 @@ export default class AppOrderDetailPage extends React.Component {
         fetchData={this.fetchData.bind(this)}
         isLoading={this.props.isLoading}
         renderContent={this.renderContent.bind(this)}
-        renderHeader={this.renderHeader.bind(this)} />
+        renderHeader={this.renderHeader.bind(this)}
+      />
     );
   }
 }

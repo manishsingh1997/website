@@ -25,24 +25,17 @@ export default function AdditionalContactInfo({title, label, contactInfos, onAdd
       validationMessage: contactInfo.error,
     };
 
-    const ContactInput = label === 'Email' ?
-      <Input {...inputProps} type="email"/> : <PhoneInput {...inputProps}/>;
+    const ContactInput = label === 'Email' ? <Input {...inputProps} type="email" /> : <PhoneInput {...inputProps} />;
 
-    const classes = classnames(
-      'additional-contact-info-row',
-      {'additional-contact-info-row_last': index === contactInfos.length - 1}
-    );
+    const classes = classnames('additional-contact-info-row', {
+      'additional-contact-info-row_last': index === contactInfos.length - 1,
+    });
     return (
-      <div className={classes}  key={contactInfo.id}>
-        <div className="additional-contact-info-row-input">
-          {ContactInput}
-        </div>
+      <div className={classes} key={contactInfo.id}>
+        <div className="additional-contact-info-row-input">{ContactInput}</div>
         <div className="additional-contact-info-row-button">
-          <Button
-            flavor="regular"
-            onClick={() => onRemove(contactInfo.id)}
-            taste="line">
-            <ReactSVG src={MinusIcon}/>
+          <Button flavor="regular" onClick={() => onRemove(contactInfo.id)} taste="line">
+            <ReactSVG src={MinusIcon} />
           </Button>
         </div>
       </div>
@@ -52,10 +45,8 @@ export default function AdditionalContactInfo({title, label, contactInfos, onAdd
   const rowValue = (
     <>
       {contactsRender}
-      <a
-        className="additional-contact-info-add-button" onClick={onAddHandler}
-        taste="boundless">
-        <ReactSVG className="spacing right__is-5" src={PlusIcon}/>
+      <a className="additional-contact-info-add-button" onClick={onAddHandler} taste="boundless">
+        <ReactSVG className="spacing right__is-5" src={PlusIcon} />
         <span>Add {label.toLowerCase()} field</span>
       </a>
     </>
@@ -64,7 +55,7 @@ export default function AdditionalContactInfo({title, label, contactInfos, onAdd
   const classes = classnames({'additional-contacts-empty': contactInfos.length === 0});
   return (
     <div className={classes}>
-      <DataRow title={title} value={rowValue}/>
+      <DataRow title={title} value={rowValue} />
     </div>
   );
 }

@@ -7,7 +7,6 @@ import AppLoader from 'components/common/AppLoader';
 import './AppPage.scss';
 
 export default class AppPage extends React.Component {
-
   static propTypes = {
     className: PropTypes.string,
     error: PropTypes.object,
@@ -18,7 +17,7 @@ export default class AppPage extends React.Component {
   };
 
   state = {
-    isFetchStarted: false,  // needed to not render content before `fetchData` starts
+    isFetchStarted: false, // needed to not render content before `fetchData` starts
   };
 
   componentDidMount() {
@@ -32,18 +31,18 @@ export default class AppPage extends React.Component {
 
   renderError(error) {
     console.warn('Error during rendering customer-app page', error);
-    const errorMessage = error.data && Object.values(error.data).map((message, index) => (
-      <p key={`app-error-${index}`}>{message}</p>
-    ));
+    const errorMessage =
+      error.data && Object.values(error.data).map((message, index) => <p key={`app-error-${index}`}>{message}</p>);
     return (
       <div className="center error">
-        {errorMessage ?
-          <React.Fragment>{errorMessage}</React.Fragment> :
+        {errorMessage ? (
+          <React.Fragment>{errorMessage}</React.Fragment>
+        ) : (
           <React.Fragment>
             <p>Something unexpected happened, we are already notified about this.</p>
             <p>Please try to reload the page.</p>
           </React.Fragment>
-        }
+        )}
       </div>
     );
   }
@@ -59,17 +58,12 @@ export default class AppPage extends React.Component {
   }
 
   render() {
-
     const {className, renderHeader} = this.props;
 
     return (
       <div className={classNames({'app-page': true, [className]: !!className})}>
-        <h4 className="flex-row align-center">
-          {renderHeader()}
-        </h4>
-        <div>
-          {this.renderContent()}
-        </div>
+        <h4 className="flex-row align-center">{renderHeader()}</h4>
+        <div>{this.renderContent()}</div>
       </div>
     );
   }

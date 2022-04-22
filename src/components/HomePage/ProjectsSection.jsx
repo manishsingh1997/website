@@ -17,7 +17,7 @@ class ProjectsSection extends React.Component {
       <div className="card padding-20 soft-border">
         <div className="card__img-container">
           <a href={link}>
-            <img src={img}/>
+            <img src={img} />
           </a>
         </div>
         <div className="card__content">
@@ -40,21 +40,24 @@ class ProjectsSection extends React.Component {
             {this.renderCard({
               img: photoWoodenFences,
               title: 'Wooden Fences',
-              content: 'Wooden fences are easy to install, versatile and visually appealing.' +
+              content:
+                'Wooden fences are easy to install, versatile and visually appealing.' +
                 ' Choose from a variety of styles such as Nail Up, Picture Frame, with Lattice and more.',
               link: '/gallery/fence/picture-frame/without-lattice',
             })}
             {this.renderCard({
               img: photoChainLink,
               title: 'Chain Link Fences ',
-              content: 'Chain link fences are made of robust galvanized mesh and metal posts.' +
+              content:
+                'Chain link fences are made of robust galvanized mesh and metal posts.' +
                 ' It is a durable and cost effective option that can be built at different heights. ',
               link: '/gallery/fence/chain-link',
             })}
             {this.renderCard({
               img: photoGate,
               title: 'Gates',
-              content: 'Add a wooden or chain link gate. Choose from single gates,' +
+              content:
+                'Add a wooden or chain link gate. Choose from single gates,' +
                 ' double swing gates or sliding gates. Customize your gate with arched tops or lattice. ',
               link: '/gallery/gate/sliding',
             })}
@@ -63,22 +66,25 @@ class ProjectsSection extends React.Component {
             {this.renderCard({
               img: photoBrushed,
               title: 'Brushed Concrete',
-              content: 'This style of paving features poured concrete finished by pulling ' +
-                    'a brush over the fresh concrete surface. Brushed Concrete is suitable for high vehicular ' +
-                    'and foot traffic areas.',
+              content:
+                'This style of paving features poured concrete finished by pulling ' +
+                'a brush over the fresh concrete surface. Brushed Concrete is suitable for high vehicular ' +
+                'and foot traffic areas.',
               link: '/gallery/driveway/brushed/natural',
             })}
             {this.renderCard({
               img: photoStamped,
               title: 'Stamped Concrete',
-              content: 'This style of paving features poured concrete, then patterned stamped on top of the fresh ' +
-                    'concrete surface. This finish will create patterns and textures that looks like natural stone.',
+              content:
+                'This style of paving features poured concrete, then patterned stamped on top of the fresh ' +
+                'concrete surface. This finish will create patterns and textures that looks like natural stone.',
               link: '/gallery/driveway/stamped/casual',
             })}
             {this.renderCard({
               img: photoEnhanced,
               title: 'Enhanced Concrete',
-              content: 'This style of paving features poured concrete that is enhanced with the addition' +
+              content:
+                'This style of paving features poured concrete that is enhanced with the addition' +
                 ' of colors or natural stones.',
               link: '/gallery/driveway/enhanced/enhanced',
             })}

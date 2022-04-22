@@ -7,7 +7,6 @@ import {HTTP_STATUS_NOT_FOUND} from 'website/constants';
 import NotFoundPage from 'components/NotFoundPage';
 
 export default class QuoteError extends React.Component {
-
   static propTypes = {
     quoteError: PropTypes.shape({
       statusCode: PropTypes.number,
@@ -19,7 +18,7 @@ export default class QuoteError extends React.Component {
     const {statusCode, data} = this.props.quoteError;
 
     if (statusCode === HTTP_STATUS_NOT_FOUND) {
-      return <NotFoundPage/>;
+      return <NotFoundPage />;
     }
 
     let error = '';
@@ -28,8 +27,9 @@ export default class QuoteError extends React.Component {
     }
 
     return (
-      <Notification mode="embed" type="Error" >
-        There was an error trying to retrieve quote.<br />
+      <Notification mode="embed" type="Error">
+        There was an error trying to retrieve quote.
+        <br />
         {error}
       </Notification>
     );

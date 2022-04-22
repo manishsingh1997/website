@@ -7,12 +7,16 @@ export default function QuoteLineStatus({status, quote}) {
   switch (status) {
     case QUOTE_LINE_STATUSES.TO_BE_DROPPED:
       return (
-        <span className="quote-line-additional-info-label"><b> - TO BE REMOVED</b></span>
+        <span className="quote-line-additional-info-label">
+          <b> - TO BE REMOVED</b>
+        </span>
       );
     case QUOTE_LINE_STATUSES.NEEDS_APPROVAL:
       if (quote['is_scope_change']) {
         return (
-          <span className="quote-line-additional-info-label"><b>NEW</b></span>
+          <span className="quote-line-additional-info-label">
+            <b>NEW</b>
+          </span>
         );
       }
       break;

@@ -5,7 +5,7 @@ const crypto = require('crypto');
 
 const REDIRECTS_FILE = `${__dirname}/redirects.json`;
 const AWS_S3_API_CLI = 'aws --region us-west-2 s3api';
-const CACHE_FILE = '_redirects_cache_ts_xMjM0NTY3ODkwIiwibm';  // just unique filename
+const CACHE_FILE = '_redirects_cache_ts_xMjM0NTY3ODkwIiwibm'; // just unique filename
 
 /**
  * Ensure redirect exists in S3 Bucket.
@@ -13,7 +13,7 @@ const CACHE_FILE = '_redirects_cache_ts_xMjM0NTY3ODkwIiwibm';  // just unique fi
  * @param {string} from
  * @param {string} to
  */
-const ensureRedirectExists = async function(s3Bucket, from, to) {
+const ensureRedirectExists = async function (s3Bucket, from, to) {
   console.warn(`Ensuring 301 redirect exists for S3 "${s3Bucket}": ${from} -> ${to}`);
   await exec(`${AWS_S3_API_CLI} put-object --bucket ${s3Bucket} --key=${from} --website-redirect ${to}`);
 };
@@ -24,7 +24,7 @@ const ensureRedirectExists = async function(s3Bucket, from, to) {
  * @param {string} from
  * @param {string} to
  */
-const removeRedirect = async function(s3Bucket, from, to) {
+const removeRedirect = async function (s3Bucket, from, to) {
   console.warn(`Removing 301 redirect for S3 "${s3Bucket}": ${from} -> ${to}`);
   await exec(`${AWS_S3_API_CLI} delete-object --bucket ${s3Bucket} --key=${from}`);
 };
@@ -33,7 +33,7 @@ const removeRedirect = async function(s3Bucket, from, to) {
  * Read JSON data from file.
  * @param {string} filePath
  */
-const readJSONFile = function(filePath) {
+const readJSONFile = function (filePath) {
   const rawData = fs.readFileSync(filePath);
   return JSON.parse(rawData);
 };
@@ -42,7 +42,7 @@ const readJSONFile = function(filePath) {
  * Return hash of file (sha1 of it's content)
  * @param {string} filePath
  */
-const getFileHash = function(filePath) {
+const getFileHash = function (filePath) {
   const rawData = fs.readFileSync(filePath);
   const shasum = crypto.createHash('sha1');
   shasum.update(rawData);
@@ -54,7 +54,7 @@ const getFileHash = function(filePath) {
  * @param {string} s3Bucket
  * @param {string} path
  */
-const getS3ObjectMetaData = async function(s3Bucket, path) {
+const getS3ObjectMetaData = async function (s3Bucket, path) {
   try {
     const {stdout} = await exec(`${AWS_S3_API_CLI} head-object --bucket ${s3Bucket} --key=${path}`);
     const parsedResult = JSON.parse(stdout);
@@ -71,7 +71,7 @@ const getS3ObjectMetaData = async function(s3Bucket, path) {
  * @param {string} key
  * @param {string} value
  */
-const setS3ObjectMetaData = async function(s3Bucket, path, key, value) {
+const setS3ObjectMetaData = async function (s3Bucket, path, key, value) {
   await exec(`${AWS_S3_API_CLI} put-object --bucket ${s3Bucket} --key=${path} --metadata ${key}=${value}`);
 };
 
@@ -79,7 +79,7 @@ const setS3ObjectMetaData = async function(s3Bucket, path, key, value) {
  * Setup redirects. Entry point of this script
  * @param {string} s3Bucket
  */
-const setupRedirects = async function(s3Bucket) {
+const setupRedirects = async function (s3Bucket) {
   // first check, do we have updates since last sync. If not - we can skip it.
   const cachedMetadata = await getS3ObjectMetaData(s3Bucket, CACHE_FILE);
   const redirectsFileHash = String(getFileHash(REDIRECTS_FILE));
@@ -104,7 +104,7 @@ const setupRedirects = async function(s3Bucket) {
 /**
  * Get command line arguments
  */
-const getArugments = function() {
+const getArugments = function () {
   return process.argv.slice(2);
 };
 

@@ -11,12 +11,12 @@ const getJSON = bent('json');
   and returns and url for each of them.
   Each of the urls will looks like https://www.ergeon.com/help/201900019
  */
-export const getHelpNodesURLs = async function() {
+export const getHelpNodesURLs = async function () {
   try {
     const url = `${process.env.API_HOST}/api/help/node/?domain=1`;
     const result = await getJSON(url);
     if (result && result.length) {
-      return result.map(result => `${process.env.HOME_PAGE}/help/${result.node_key}`);
+      return result.map((result) => `${process.env.HOME_PAGE}/help/${result.node_key}`);
     }
   } catch (e) {
     console.error(`Error while getting node ids ${e}`);

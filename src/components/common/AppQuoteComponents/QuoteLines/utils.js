@@ -5,13 +5,11 @@ import pick from 'lodash/pick';
 export const isQuoteLineOfMapKinds = (quoteLine, types) => {
   const catalog = quoteLine['catalog'];
   const quoteType = catalog && catalog['type'] && catalog['type']['map_kind'];
-  return types.some(type => type === quoteType);
+  return types.some((type) => type === quoteType);
 };
 
 const getQuoteLineByItemName = (itemName, quote) => {
-  return quote['quote_lines'].find((quoteLine) =>
-    Boolean(quoteLine.label) && isEqual(quoteLine.label, itemName)
-  );
+  return quote['quote_lines'].find((quoteLine) => Boolean(quoteLine.label) && isEqual(quoteLine.label, itemName));
 };
 
 export const getTagsForQuoteLine = (itemName, quote) => {

@@ -5,10 +5,10 @@ import {CatalogType, calcUtils, attrs} from '@ergeon/3d-lib';
 import moment from 'moment';
 
 export const actionTypes = {
-  'ADD_CONFIG': 'ADD_CONFIG',
-  'REMOVE_CONFIG': 'REMOVE_CONFIG',
-  'UPDATE_CONFIG': 'UPDATE_CONFIG',
-  'CLEAR_CONFIGS': 'CLEAR_CONFIGS',
+  ADD_CONFIG: 'ADD_CONFIG',
+  REMOVE_CONFIG: 'REMOVE_CONFIG',
+  UPDATE_CONFIG: 'UPDATE_CONFIG',
+  CLEAR_CONFIGS: 'CLEAR_CONFIGS',
 };
 
 export const addConfig = (config) => ({
@@ -32,20 +32,20 @@ export const clearConfigs = (lead) => ({
 });
 
 // eslint-disable-next-line object-shorthand
-export const addConfigFromSchema = function({zipcode, data, schemaCode, length, configs}, index = -1) {
-  return dispatch => {
+export const addConfigFromSchema = function ({zipcode, data, schemaCode, length, configs}, index = -1) {
+  return (dispatch) => {
     const {FRAME_STYLE} = attrs;
     let item;
 
-    if (some(configs, config => config.code === schemaCode)) return;
+    if (some(configs, (config) => config.code === schemaCode)) return;
 
     return getPriceAndDescription(data, zipcode)
-      .then(priceAndDescription => {
+      .then((priceAndDescription) => {
         if (priceAndDescription) {
           const itemId = random(0, 1, true).toString(36).slice(2);
           item = {
             id: itemId,
-            'catalog_type': data[FRAME_STYLE.id] ? CatalogType.FENCE : CatalogType.GATE,
+            catalog_type: data[FRAME_STYLE.id] ? CatalogType.FENCE : CatalogType.GATE,
             code: schemaCode,
             product: data,
             preview: '',
@@ -63,11 +63,13 @@ export const addConfigFromSchema = function({zipcode, data, schemaCode, length, 
         }
       })
       .then(() => calcUtils.getPreviewImage({schemaCodeUrl: schemaCode}))
-      .then(preview => {
-        dispatch(updateConfig((index !== -1 ? index : configs.length), {
-          ...item,
-          preview,
-        }));
+      .then((preview) => {
+        dispatch(
+          updateConfig(index !== -1 ? index : configs.length, {
+            ...item,
+            preview,
+          })
+        );
       });
   };
 };

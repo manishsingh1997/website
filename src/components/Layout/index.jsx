@@ -34,7 +34,6 @@ const SIGN_IN_LINK_ID = 'app-sign-in-link';
 
 // TODO: Update DropdownMenu in core-components so it can render <Link to=""> instead of <a href="">
 class WebsiteDropdownMenu extends DropdownMenu {
-
   renderMenuItem({content, href, iconSVG, special, onClick}, index) {
     return (
       <NavLink
@@ -45,19 +44,20 @@ class WebsiteDropdownMenu extends DropdownMenu {
           this.setState({showMenu: false});
           onClick && onClick();
         }}
-        to={href}>
+        to={href}
+      >
         <div className="menu-title">
-          <span className={'icon'}><ReactSVG src={iconSVG} /></span>
+          <span className={'icon'}>
+            <ReactSVG src={iconSVG} />
+          </span>
           <span>{content}</span>
         </div>
       </NavLink>
     );
   }
-
 }
 
 export default class Layout extends React.Component {
-
   static propTypes = {
     auth: PropTypes.object.isRequired,
     children: PropTypes.node,
@@ -79,24 +79,19 @@ export default class Layout extends React.Component {
     const {location} = this.props;
     const pathname = location ? location.pathname : '/';
     let included = false;
-    routes.forEach(path => {
+    routes.forEach((path) => {
       if (pathname.includes(path)) included = true;
     });
     return included;
   }
 
   checkTemplateWidth() {
-    const narrowTemplates = [
-      '/request-quote',
-      '/app/',
-    ];
+    const narrowTemplates = ['/request-quote', '/app/'];
     return this.checkRouteList(narrowTemplates);
   }
 
   isNoFooterTemplate() {
-    const noFooterTemplates = [
-      '/request-quote',
-    ];
+    const noFooterTemplates = ['/request-quote'];
     return this.checkRouteList(noFooterTemplates);
   }
 
@@ -119,28 +114,30 @@ export default class Layout extends React.Component {
   }
 
   renderDropdownMenu() {
-    const {auth: {isAuthLoading, isUserLoading, user}} = this.props;
+    const {
+      auth: {isAuthLoading, isUserLoading, user},
+    } = this.props;
     if (isUserLoading || isAuthLoading) {
       return (
         <Link className="sign-in-link" key="dropp-loading" to="/app/sign-in">
           <li className="link-wrapper">
             <div className="icon-and-arrow">
-              <span><img className="sign-in-icon" src={userIcon} /></span>
-              <Spinner active={true} borderWidth={0.10} color="blue" size={16} />
+              <span>
+                <img className="sign-in-icon" src={userIcon} />
+              </span>
+              <Spinner active={true} borderWidth={0.1} color="blue" size={16} />
             </div>
           </li>
         </Link>
       );
     }
     if (user) {
-      const menuItems = getMenuItems(`/app/${user.gid}`).map(
-        menuItem => ({
-          content: menuItem.title,
-          href: menuItem.path,
-          iconSVG: menuItem.iconSVG,
-        })
-      );
-      menuItems[menuItems.length - 1].special = true;   // bottom line will be shown for special
+      const menuItems = getMenuItems(`/app/${user.gid}`).map((menuItem) => ({
+        content: menuItem.title,
+        href: menuItem.path,
+        iconSVG: menuItem.iconSVG,
+      }));
+      menuItems[menuItems.length - 1].special = true; // bottom line will be shown for special
       menuItems.push({
         content: 'Log out',
         href: '/app/logout',
@@ -150,14 +147,15 @@ export default class Layout extends React.Component {
         <WebsiteDropdownMenu
           items={menuItems}
           key="dropp-user"
-          title={(
+          title={
             <span key="dropp-user-icon">
               <div className="user-name-menu-item">
                 <img className="sign-in-icon" src={userIcon} />
                 <span className="user-full-name">{user.full_name}</span>
               </div>
             </span>
-          )} />
+          }
+        />
       );
     }
     return (
@@ -175,7 +173,9 @@ export default class Layout extends React.Component {
     return (
       <div className="phone-number">
         <ReactSVG className="phone-number__icon" src={phoneIcon} />
-        <a className="phone-number__link" href={`tel:${phoneNumber}`}>{formatPhoneNumber(phoneNumber)}</a>
+        <a className="phone-number__link" href={`tel:${phoneNumber}`}>
+          {formatPhoneNumber(phoneNumber)}
+        </a>
       </div>
     );
   }
@@ -195,7 +195,7 @@ export default class Layout extends React.Component {
           </div>
         )}
         <NavLinkContext.Provider value={NavLink}>
-          {!showUpcomingFeatures('ENG-13570') &&
+          {!showUpcomingFeatures('ENG-13570') && (
             <TopPanel
               customerMenu={this.renderDropdownMenu()}
               ergeonUrl="/"
@@ -204,10 +204,10 @@ export default class Layout extends React.Component {
               pdfMode={asPDF}
               projectsGalleryUrl={`${process.env.PROJECTS_GALLERY_HOST}/`}
               showChristmasHat={this.isChristmasTime}
-              widthClass={widthClass}>
-            </TopPanel>
-          }
-          {showUpcomingFeatures('ENG-13570') &&
+              widthClass={widthClass}
+            ></TopPanel>
+          )}
+          {showUpcomingFeatures('ENG-13570') && (
             <SimpleTopPanel
               customerMenu={this.renderDropdownMenu()}
               ergeonUrl="/"
@@ -216,36 +216,30 @@ export default class Layout extends React.Component {
               pdfDetails={this.renderPdfDetails()}
               pdfMode={asPDF}
               showChristmasHat={this.isChristmasTime}
-              widthClass={widthClass}>
-            </SimpleTopPanel>
-          }
+              widthClass={widthClass}
+            ></SimpleTopPanel>
+          )}
           <div>{this.props.children}</div>
-          {
-            !asPDF &&
-            showFooter &&
-            !showUpcomingFeatures('ENG-13570') &&
+          {!asPDF && showFooter && !showUpcomingFeatures('ENG-13570') && (
             <Footer
               ergeonUrl="/"
               fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
               productCatalogUrl={`${process.env.PRODUCT_CATALOG_URL}/`}
               projectsGalleryUrl={`${process.env.PROJECTS_GALLERY_HOST}/`}
-              widthClass={widthClass} />
-          }
-          {
-            !asPDF &&
-            showFooter &&
-            showUpcomingFeatures('ENG-13570') &&
-            (
-              <>
-                <SimpleFooter
-                  ergeonUrl="/"
-                  fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
-                  productCatalogUrl={`${process.env.PRODUCT_CATALOG_URL}/`}
-                  widthClass={widthClass} />
-                <LocationsFooter listArray={this.getLocationsList()} listTitle="Locations" />
-              </>
-            )
-          }
+              widthClass={widthClass}
+            />
+          )}
+          {!asPDF && showFooter && showUpcomingFeatures('ENG-13570') && (
+            <>
+              <SimpleFooter
+                ergeonUrl="/"
+                fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
+                productCatalogUrl={`${process.env.PRODUCT_CATALOG_URL}/`}
+                widthClass={widthClass}
+              />
+              <LocationsFooter listArray={this.getLocationsList()} listTitle="Locations" />
+            </>
+          )}
           <AddressUpdatePopup />
         </NavLinkContext.Provider>
       </div>

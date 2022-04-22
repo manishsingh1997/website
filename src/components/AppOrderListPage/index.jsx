@@ -15,7 +15,6 @@ import AppPage from 'components/common/AppPage';
 import AppSubCard from 'components/common/AppSubCard';
 
 export default class AppOrdersListPage extends React.Component {
-
   static propTypes = {
     getOrders: PropTypes.func.isRequired,
     isListLoading: PropTypes.bool.isRequired,
@@ -35,16 +34,14 @@ export default class AppOrdersListPage extends React.Component {
     const customerGID = this.context;
     return (
       <div key={`quote-${quote['id']}`}>
-        <Link to={getQuoteDetailURL(customerGID, quote['secret'])}>
-          #{quote['id']}
-        </Link> ({quote['status']['label']})
+        <Link to={getQuoteDetailURL(customerGID, quote['secret'])}>#{quote['id']}</Link> ({quote['status']['label']})
       </div>
     );
   }
 
   renderQuotes(order) {
     const quotes = filterQuotesByStatus(order['quotes'], DEFAULT_QUOTE_FILTER);
-    return quotes.length > 0 ? quotes.map(quote => this.renderQuote(quote)): null;
+    return quotes.length > 0 ? quotes.map((quote) => this.renderQuote(quote)) : null;
   }
 
   renderListElementHeader(order) {
@@ -55,10 +52,7 @@ export default class AppOrdersListPage extends React.Component {
         <div>{order['product']['name']}</div>
         <div>
           <Link to={getOrderDetailURL(customerGID, order['id'])}>
-            <Button
-              flavor="cta"
-              size="small"
-              type="submit">
+            <Button flavor="cta" size="small" type="submit">
               Order Details
             </Button>
           </Link>
@@ -92,12 +86,14 @@ export default class AppOrdersListPage extends React.Component {
 
     return (
       <React.Fragment>
-        {orders && orders.map(order => (
-          <AppSubCard
-            key={`order-${order.id}`}
-            renderContent={this.renderListElementContent.bind(this, order)}
-            renderHeader={this.renderListElementHeader.bind(this, order)} />
-        ))}
+        {orders &&
+          orders.map((order) => (
+            <AppSubCard
+              key={`order-${order.id}`}
+              renderContent={this.renderListElementContent.bind(this, order)}
+              renderHeader={this.renderListElementHeader.bind(this, order)}
+            />
+          ))}
       </React.Fragment>
     );
   }
@@ -109,7 +105,8 @@ export default class AppOrdersListPage extends React.Component {
         fetchData={this.fetchData.bind(this)}
         isLoading={this.props.isListLoading}
         renderContent={this.renderContent.bind(this)}
-        renderHeader={this.renderHeader.bind(this)} />
+        renderHeader={this.renderHeader.bind(this)}
+      />
     );
   }
 }

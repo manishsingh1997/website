@@ -53,7 +53,8 @@ class AddressForm extends React.Component {
           onSubmit={this.handleAddressSubmit.bind(this)}
           product={product}
           showButton
-          value={value}/>
+          value={value}
+        />
       </div>
     );
   }

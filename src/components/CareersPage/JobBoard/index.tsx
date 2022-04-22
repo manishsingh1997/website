@@ -20,11 +20,9 @@ const JobBoard = () => {
   const [jobList, setJobList] = useState<JobList[]>([]);
   const [loading, setloading] = useState(true);
 
-  const getJobList = useCallback(async() => {
+  const getJobList = useCallback(async () => {
     try {
-      const response = await axios.get(
-        'https://boards-api.greenhouse.io/v1/boards/ergeon/departments'
-      );
+      const response = await axios.get('https://boards-api.greenhouse.io/v1/boards/ergeon/departments');
       setJobList(response.data.departments ?? []);
       setloading(false);
     } catch (error) {
@@ -33,16 +31,21 @@ const JobBoard = () => {
     }
   }, [setJobList, setloading]);
 
-  const loadingClasses = useMemo(() =>(
-    classNames({
-      'loading-placeholder': true,
-      visible: loading,
-    })
-  ), [loading]);
+  const loadingClasses = useMemo(
+    () =>
+      classNames({
+        'loading-placeholder': true,
+        visible: loading,
+      }),
+    [loading]
+  );
 
-  useEffect(function init() {
-    getJobList();
-  }, [getJobList]);
+  useEffect(
+    function init() {
+      getJobList();
+    },
+    [getJobList]
+  );
 
   return (
     <div>
@@ -53,7 +56,7 @@ const JobBoard = () => {
         <div className={loadingClasses}>
           <Spinner active={loading} color="blue" size={48} />
         </div>
-        <Careers departments={jobList}/>
+        <Careers departments={jobList} />
       </div>
     </div>
   );

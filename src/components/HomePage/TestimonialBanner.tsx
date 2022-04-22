@@ -27,7 +27,7 @@ const renderBadge = (props: BadgeProps) => {
     <div className={className}>
       <ReactSVG src={icon} />
       <div className="badge--txt">
-        {rating} {typeof(rating) === 'string' ? 'rated' : 'rating'}
+        {rating} {typeof rating === 'string' ? 'rated' : 'rating'}
       </div>
     </div>
   );
@@ -55,13 +55,9 @@ const TestimonialBanner = () => {
   return (
     <div>
       <div className="mobile-length">
-        <div className="MobileContainer">
-          {renderBanner({isMobile: true})}
-        </div>
+        <div className="MobileContainer">{renderBanner({isMobile: true})}</div>
       </div>
-      <div className="desktop-length">
-        {renderBanner({isMobile: false})}
-      </div>
+      <div className="desktop-length">{renderBanner({isMobile: false})}</div>
     </div>
   );
 };

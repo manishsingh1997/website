@@ -22,38 +22,41 @@ const MetaTagsConnected = ({auth = {}}) => {
    * 2. By retrieving help meta-data if `helpNodeKey` is in the path,
    * 3. Private area meta-data if the path starts with `/app`.
    */
-  const getMeta = useCallback(async(path) => {
-    let meta = {};
+  const getMeta = useCallback(
+    async (path) => {
+      let meta = {};
 
-    const isPrivateArea = (/^\/app/i).test(path);
+      const isPrivateArea = /^\/app/i.test(path);
 
-    if (metaDictionary[path]) {
-      meta = {...meta, ...metaDictionary[path]};
-    } else if (isPrivateArea) {
-      const getPathAfterUserGIDRegex = new RegExp(/^\/app\/[\w\-]{16}\/(.+)/i);
-      const subPath = get(path.match(getPathAfterUserGIDRegex), 1);
-      let customerMeta = subPath ? metaDictionary['/app'][subPath] : {};
-      customerMeta = {
-        title: compact([user?.full_name || 'Customer', customerMeta?.title]).join(' | '),
-        description: '',
-      };
-      meta = {...meta, ...customerMeta};
-    } else {
-      return null; // no meta
-    }
+      if (metaDictionary[path]) {
+        meta = {...meta, ...metaDictionary[path]};
+      } else if (isPrivateArea) {
+        const getPathAfterUserGIDRegex = new RegExp(/^\/app\/[\w\-]{16}\/(.+)/i);
+        const subPath = get(path.match(getPathAfterUserGIDRegex), 1);
+        let customerMeta = subPath ? metaDictionary['/app'][subPath] : {};
+        customerMeta = {
+          title: compact([user?.full_name || 'Customer', customerMeta?.title]).join(' | '),
+          description: '',
+        };
+        meta = {...meta, ...customerMeta};
+      } else {
+        return null; // no meta
+      }
 
-    // Either noindex or canonical should present
-    if (isPrivateArea) {
-      meta.noindex = true; // hide internal /app/**/* URLs from robots
-    } else {
-      meta.canonical = `${process.env.HOME_PAGE}${path !== '/' ? path : ''}`;
-    }
+      // Either noindex or canonical should present
+      if (isPrivateArea) {
+        meta.noindex = true; // hide internal /app/**/* URLs from robots
+      } else {
+        meta.canonical = `${process.env.HOME_PAGE}${path !== '/' ? path : ''}`;
+      }
 
-    // Log the meta to simplify debugging.
-    logDev('META', JSON.stringify(meta, null, 2));
+      // Log the meta to simplify debugging.
+      logDev('META', JSON.stringify(meta, null, 2));
 
-    return meta;
-  }, [user]);
+      return meta;
+    },
+    [user]
+  );
 
   return <MetaTags {...{getMeta}} />;
 };
@@ -61,4 +64,7 @@ MetaTagsConnected.propTypes = {
   auth: PropTypes.object,
 };
 
-export default connect(({auth}) => ({auth}), () => ({}))(MetaTagsConnected);
+export default connect(
+  ({auth}) => ({auth}),
+  () => ({})
+)(MetaTagsConnected);

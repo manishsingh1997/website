@@ -1,5 +1,4 @@
-
-export interface FormFieldState{
+export interface FormFieldState {
   name: string;
   email: string;
   message: string;

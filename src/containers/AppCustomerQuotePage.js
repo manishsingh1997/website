@@ -5,7 +5,8 @@ import {setPDFHeaderPhoneNumber} from '../flux/actions/layout';
 
 const mapStateToProps = ({auth, layout}) => {
   return {
-    auth, layout,
+    auth,
+    layout,
   };
 };
 

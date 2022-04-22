@@ -39,8 +39,8 @@ const ReviewHero = () => {
 
   const renderReviewExperiment = useCallback((review) => {
     // @ts-ignore
-      return <ReviewExperiment {...omit(review, ['variant'])} />},
-    []);
+    return <ReviewExperiment {...omit(review, ['variant'])} />;
+  }, []);
 
   return (
     <div className="review-hero">

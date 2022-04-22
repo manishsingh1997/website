@@ -133,9 +133,4 @@ export const authRoutes = [
   },
 ];
 
-export default [
-  ...basicRoutes,
-  ...galleryRoutes,
-  ...helpRoutes,
-  ...authRoutes,
-];
+export default [...basicRoutes, ...galleryRoutes, ...helpRoutes, ...authRoutes];

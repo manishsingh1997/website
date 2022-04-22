@@ -34,13 +34,12 @@ const CareersPage = () => {
         <Impact />
         <div className="spacing before__is-48 after__is-48">
           <p className="subContent width-restricted to-620">
-            We believe everyone has a right to professional growth and respect,
-            no matter their location. Ergeon’s workforce is given meaningful
-            opportunities and is supported by a kind and diverse community.
+            We believe everyone has a right to professional growth and respect, no matter their location. Ergeon’s
+            workforce is given meaningful opportunities and is supported by a kind and diverse community.
             <br />
             <br />
-            Our global staff (aka&nbsp;Ergeoneers) have access to career growth,
-            amazing work culture, and great benefits.
+            Our global staff (aka&nbsp;Ergeoneers) have access to career growth, amazing work culture, and great
+            benefits.
             <br className="hideBreaks" />
             Come join us to transform the construction industry!
           </p>
@@ -49,7 +48,7 @@ const CareersPage = () => {
       </div>
 
       <div className="img-container spacing before__is-48">
-        <img alt="company photo" src={Collage}/>
+        <img alt="company photo" src={Collage} />
       </div>
       <div className="Careers-content page-container before__is-148 collage">
         <JobBoard />

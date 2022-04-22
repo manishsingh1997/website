@@ -8,19 +8,20 @@ import {actionTypes} from '../actions/cart';
 const getSavedCartData = () => {
   let cartData = ls.get(LS_ERGEON_CART_DATA) || [];
   let isRequiredUpdate = false;
-  _.isArray(cartData) && cartData.forEach(item => {
-    if (!item.timestamp && item.code && item.product) {
-      isRequiredUpdate = true;
-      item.product = calcUtils.getValueFromUrl(item.code, (error) => {
-        console.warn(`It seems the config saved in cart is wrong or no longer supported. Config: ${item.code}`);
-        console.warn(error);
-        item.unsupported = true;
-      });
-      item.code = calcUtils.getSchemaCodeFromState(item.product);
-      item.timestamp = moment().unix() * 1000;
-    }
-  });
-  cartData = cartData.filter(item => !item.unsupported);
+  _.isArray(cartData) &&
+    cartData.forEach((item) => {
+      if (!item.timestamp && item.code && item.product) {
+        isRequiredUpdate = true;
+        item.product = calcUtils.getValueFromUrl(item.code, (error) => {
+          console.warn(`It seems the config saved in cart is wrong or no longer supported. Config: ${item.code}`);
+          console.warn(error);
+          item.unsupported = true;
+        });
+        item.code = calcUtils.getSchemaCodeFromState(item.product);
+        item.timestamp = moment().unix() * 1000;
+      }
+    });
+  cartData = cartData.filter((item) => !item.unsupported);
   if (isRequiredUpdate) {
     ls.set(LS_ERGEON_CART_DATA, cartData);
   }

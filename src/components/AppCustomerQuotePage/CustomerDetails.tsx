@@ -8,22 +8,22 @@ type CustomerData = {
   full_name: string;
   phone_number: string;
   email: string;
-}
+};
 
 type QuoteData = {
   order: {
     house: {
       address: {
         formatted_address: string;
-      },
+      };
       customer: {
         main_address: {
           formatted_address: string;
-        },
-      }
-    }
-  }
-}
+        };
+      };
+    };
+  };
+};
 
 type CustomerDetailsProps = {
   customer: CustomerData;
@@ -52,14 +52,9 @@ const CustomerDetails = (props: CustomerDetailsProps) => {
 
   return (
     <div className="CustomerDetails">
-      <div className="desktop-length">
-        {customerDetails}
-      </div>
+      <div className="desktop-length">{customerDetails}</div>
       <div className="mobile-length">
-        <Collapsible
-          isOpen={isOpen}
-          onChangeOpen={() => setIsOpen(!isOpen)}
-          title="Customer details">
+        <Collapsible isOpen={isOpen} onChangeOpen={() => setIsOpen(!isOpen)} title="Customer details">
           {customerDetails}
         </Collapsible>
       </div>

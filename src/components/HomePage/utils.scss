@@ -2,44 +2,44 @@
 
 $img-max-width: 128px;
 
-  .ImgContainer {
-    width: 150%;
-    overflow: hidden;
-    @include tablet() {
-      max-width: $img-max-width;
-    }
-
-    img {
-      width: 100%;
-      @include border-soft();
-      @include phone {
-        display: none;
-      }
-    }
+.ImgContainer {
+  width: 150%;
+  overflow: hidden;
+  @include tablet() {
+    max-width: $img-max-width;
   }
 
-  .is-RightMargin{
-    &--20{
-      margin-right: $h-20;
+  img {
+    width: 100%;
+    @include border-soft();
+    @include phone {
+      display: none;
     }
   }
+}
 
-  .is-Before{
-      &--60{
-          margin-top: $h-60;
-      }
+.is-RightMargin {
+  &--20 {
+    margin-right: $h-20;
+  }
+}
 
-      &--36{
-          margin-top: $v-36;
-      }
-
-      &--16{
-          margin-top: $v-16;
-      }
+.is-Before {
+  &--60 {
+    margin-top: $h-60;
   }
 
-  .is-After{
-      &--24{
-          margin-bottom: $v-24;
-      }
+  &--36 {
+    margin-top: $v-36;
   }
+
+  &--16 {
+    margin-top: $v-16;
+  }
+}
+
+.is-After {
+  &--24 {
+    margin-bottom: $v-24;
+  }
+}

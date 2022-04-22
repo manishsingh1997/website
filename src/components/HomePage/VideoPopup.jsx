@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import './VideoPopup.scss';
 
 class VideoPopup extends React.Component {
-
   static propTypes = {
     linkToVideo: PropTypes.string,
     onHide: PropTypes.func,
@@ -25,7 +24,7 @@ class VideoPopup extends React.Component {
     });
     const fogClasses = classNames({
       'fog-popup': true,
-      'display' : visible,
+      display: visible,
     });
     const aspectRatio = 1.5;
     const suggestedWidth = window.innerWidth - window.innerWidth * 0.2;
@@ -33,17 +32,19 @@ class VideoPopup extends React.Component {
     const iframeHeight = iframeWidth / aspectRatio;
     return (
       <div className="video-popup__wrapper">
-        {visible &&
-        <div className={containerClasses}>
-          <iframe
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-            frameBorder="0"
-            height={iframeHeight}
-            src={`${linkToVideo}?autoplay=1`}
-            width={iframeWidth}/>
-        </div>}
-        <div className={fogClasses} onClick={onHide}/>
+        {visible && (
+          <div className={containerClasses}>
+            <iframe
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              frameBorder="0"
+              height={iframeHeight}
+              src={`${linkToVideo}?autoplay=1`}
+              width={iframeWidth}
+            />
+          </div>
+        )}
+        <div className={fogClasses} onClick={onHide} />
       </div>
     );
   }

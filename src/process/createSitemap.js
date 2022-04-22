@@ -34,14 +34,14 @@ const sitemapXMLTemplate = `<?xml version="1.0" encoding="UTF-8"?>
  * Get XML-tags from string URLs array.
  * @param {string[]} urls
  */
-const generateSitemap = urls => {
+const generateSitemap = (urls) => {
   const urlsAsXMLTags = reduce(
     urls,
     (xml, url) => `${xml}
       <url>
         <loc>${url}</loc>
       </url>`,
-    '',
+    ''
   );
   return urlsAsXMLTags;
 };
@@ -50,18 +50,18 @@ const generateSitemap = urls => {
  * Return URLs from route config.
  * @param {{component, exact, sitemap, path}} routes
  */
-const getSitemapUrls = routes => {
+const getSitemapUrls = (routes) => {
   const paths = routes
-    .filter(route => route.sitemap !== false)
-    .filter(route => !route.path.includes(':'))
-    .map(route => route.path);
-  return paths.map(path => `${HOME_PAGE_URL}${path}`);
+    .filter((route) => route.sitemap !== false)
+    .filter((route) => !route.path.includes(':'))
+    .map((route) => route.path);
+  return paths.map((path) => `${HOME_PAGE_URL}${path}`);
 };
 
 /**
  * Get the main sitemap.
  */
-export const generateErgeonSitemap = async() => {
+export const generateErgeonSitemap = async () => {
   const urls = sortBy([
     ...getSitemapUrls(authRoutes),
     ...getSitemapUrls(basicRoutes),
@@ -78,26 +78,24 @@ export const generateErgeonSitemap = async() => {
  */
 const getGalleryURLs = (galleryData, type) => {
   const urls = [];
-  galleryData.forEach(
-    ({categorySlug, categoryGroups}) => {
-      if (!isEmpty(categoryGroups)) {
-        // Add sub-categories to the Sitemap.
-        categoryGroups.forEach(({groupSlug}) => {
-          urls.push(`${HOME_PAGE_URL}/gallery/${type}/${categorySlug}/${groupSlug}`);
-        });
-      } else {
-        // No sub-categories, add just the category page itself.
-        urls.push(`${HOME_PAGE_URL}/gallery/${type}/${categorySlug}`);
-      }
+  galleryData.forEach(({categorySlug, categoryGroups}) => {
+    if (!isEmpty(categoryGroups)) {
+      // Add sub-categories to the Sitemap.
+      categoryGroups.forEach(({groupSlug}) => {
+        urls.push(`${HOME_PAGE_URL}/gallery/${type}/${categorySlug}/${groupSlug}`);
+      });
+    } else {
+      // No sub-categories, add just the category page itself.
+      urls.push(`${HOME_PAGE_URL}/gallery/${type}/${categorySlug}`);
     }
-  );
+  });
   return urls;
 };
 
 /**
  * Get the sitemap for the /gallery section of the website.
  */
-export const generateGallerySitemap = async() => {
+export const generateGallerySitemap = async () => {
   const urls = sortBy([
     ...getSitemapUrls(galleryRoutes),
     ...getGalleryURLs(FencePhotoData, 'fence'),
@@ -110,11 +108,8 @@ export const generateGallerySitemap = async() => {
 /**
  * Get the sitemap for the /help section of the website.
  */
-export const generateHelpSitemap = async() => {
-  const urls = sortBy(
-    getSitemapUrls(helpRoutes)
-      .concat(await getHelpNodesURLs()),
-  );
+export const generateHelpSitemap = async () => {
+  const urls = sortBy(getSitemapUrls(helpRoutes).concat(await getHelpNodesURLs()));
   return generateSitemap(urls);
 };
 
@@ -126,19 +121,18 @@ export const generateHelpSitemap = async() => {
 const writeSiteMap = (urls, filePath) => {
   const siteMapContent = sitemapXMLTemplate.replace('{{urls}}', urls);
   createDirIfNotExists(filePath);
-  fs.writeFile(filePath, siteMapContent,
-    (err) => {
-      if (err) throw err;
-      console.warn(`Sitemap ${filePath} created, please verify the content of it:`);
-      console.warn(siteMapContent);
-    });
+  fs.writeFile(filePath, siteMapContent, (err) => {
+    if (err) throw err;
+    console.warn(`Sitemap ${filePath} created, please verify the content of it:`);
+    console.warn(siteMapContent);
+  });
 };
 
 if (typeof jest !== 'undefined') {
   // Just skip in tests
 } else {
   // Generate all sitemaps
-  (async() => {
+  (async () => {
     writeSiteMap(await generateErgeonSitemap(), './src/data/sitemap.xml');
     writeSiteMap(await generateGallerySitemap(), './src/data/gallery/sitemap.xml');
     writeSiteMap(await generateHelpSitemap(), './src/data/help/sitemap.xml');

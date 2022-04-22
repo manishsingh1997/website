@@ -1,7 +1,6 @@
 @import '@ergeon/core-components/src/components/variables.scss';
 
 .order-detail-page {
-
   .order-title {
     display: flex;
     color: unset;
@@ -54,7 +53,7 @@
       }
 
       &__indicator {
-        padding: 2px
+        padding: 2px;
       }
 
       &-container {
@@ -76,7 +75,6 @@
     @include border();
 
     img {
-
       @include border();
       border-color: $white;
       width: 97%;

@@ -22,14 +22,14 @@
     max-width: 480px;
     box-shadow: 0 5px 50px $gray-1;
     overflow: auto;
-    animation: fs-zoom .4s forwards ease 1;
+    animation: fs-zoom 0.4s forwards ease 1;
     border-radius: 4px;
   }
 
   .Popup-overlay {
-    background: rgba(8,34,20,.4);
+    background: rgba(8, 34, 20, 0.4);
     position: fixed;
-    animation: fs-fadein .4s forwards ease 1;
+    animation: fs-fadein 0.4s forwards ease 1;
     top: 0;
     right: 0;
     bottom: 0;
@@ -126,13 +126,13 @@
     }
   }
   .Form-error {
-      margin-top: 4px;
-      font-size: $font-label-size;
-      color: $red;
-      font-family: $font-content;
-      letter-spacing: 0;
-      line-height: $line-height-label;
-      text-align: left;
+    margin-top: 4px;
+    font-size: $font-label-size;
+    color: $red;
+    font-family: $font-content;
+    letter-spacing: 0;
+    line-height: $line-height-label;
+    text-align: left;
   }
   .Form-footer {
     text-align: center;
@@ -153,11 +153,18 @@
 }
 
 @keyframes fs-zoom {
-  from { opacity:0; transform:translateY(20%) scale(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20%) scale(0);
+  }
 }
 @keyframes fs-fadein {
-  from { opacity:0; }
-  to { opacity:1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .LeadForm {

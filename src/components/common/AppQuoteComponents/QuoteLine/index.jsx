@@ -6,12 +6,7 @@ import isEmpty from 'lodash/isEmpty';
 import {Button, ImageGallery} from '@ergeon/core-components';
 import IconArrowRight from '@ergeon/core-components/src/assets/icon-arrow-right.svg';
 
-import {
-  CALC_AREA_TYPE,
-  CALC_GATE_TYPE,
-  CALC_SIDE_TYPE,
-  CALC_TYPE_TO_MAP_TYPE,
-} from 'website/constants';
+import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE, CALC_TYPE_TO_MAP_TYPE} from 'website/constants';
 import {isPDFMode} from 'utils/utils';
 
 import {QUOTE_LINE_STATUSES} from '../../../AppCustomerQuotePage/utils';
@@ -62,15 +57,18 @@ export default function QuoteLine(props) {
 
   const isMobileWidth = useIsMobileWidth();
 
-  const imagePreview = useMemo(() => (
-    <div>
-      {
-        isUsingCalcInput ?
-          <PreviewForQuoteLine {...props} images={images} /> :
+  const imagePreview = useMemo(
+    () => (
+      <div>
+        {isUsingCalcInput ? (
+          <PreviewForQuoteLine {...props} images={images} />
+        ) : (
           <PreviewForCalcInfo {...props} images={images} />
-      }
-    </div>
-  ), [images, isUsingCalcInput, props]);
+        )}
+      </div>
+    ),
+    [images, isUsingCalcInput, props]
+  );
 
   const onOpenBuildDetails = useCallback(() => {
     if (onBuildDetailsClick) {
@@ -98,18 +96,28 @@ export default function QuoteLine(props) {
               <div className="quote-line-price quote-line-price__pdf">
                 <QuoteLinePrice
                   {...{
-                    area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
-                    isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
-                  }} />
+                    area,
+                    catalog,
+                    distance,
+                    index,
+                    isInstallerPreview,
+                    isMultiPartyQuote,
+                    isPrimaryQuoteApproval,
+                    label,
+                    percentage,
+                    price,
+                    totalPrice,
+                    quantity,
+                    unit,
+                  }}
+                />
               </div>
             )}
           </div>
           {images?.length ? (
             // This is only used on isPDFMode, as we will render all images below the content
-            <div className="quote-line-images spacing before__is-12 after__is-12">
-              {imagePreview}
-            </div>
-          ): null}
+            <div className="quote-line-images spacing before__is-12 after__is-12">{imagePreview}</div>
+          ) : null}
         </div>
       </QuoteLineLayout>
     );
@@ -122,14 +130,14 @@ export default function QuoteLine(props) {
           <Title index={index} label={label} type={type} />
           {imagePreview}
           <div className="quote-line-buttons">
-            {isBuildSpecAvailable &&
+            {isBuildSpecAvailable && (
               <Button className="BuildSpecs-button" flavor="regular" onClick={onOpenBuildDetails} size="large">
                 <span>Build Specifications</span>
                 <div className="BuildSpecs-buttonIcon">
-                  <ReactSVG src={IconArrowRight}/>
+                  <ReactSVG src={IconArrowRight} />
                 </div>
               </Button>
-            }
+            )}
           </div>
           <QuoteLineDescription {...{approvedAt, description, quote, quoteId, status, tags}} />
         </div>
@@ -137,9 +145,21 @@ export default function QuoteLine(props) {
           <div className="quote-line-price">
             <QuoteLinePrice
               {...{
-                area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
-                isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
-              }} />
+                area,
+                catalog,
+                distance,
+                index,
+                isInstallerPreview,
+                isMultiPartyQuote,
+                isPrimaryQuoteApproval,
+                label,
+                percentage,
+                price,
+                totalPrice,
+                quantity,
+                unit,
+              }}
+            />
           </div>
         )}
       </QuoteLineLayout>
@@ -153,29 +173,41 @@ export default function QuoteLine(props) {
         <Title index={index} label={label} type={type} />
         <QuoteLineDescription {...{approvedAt, description, quote, quoteId, status, tags}} />
         <div className="quote-line-buttons">
-          {!isEmpty(images) &&
+          {!isEmpty(images) && (
             <Button className="quote-line-imageGallery" flavor="regular">
               Images
               <ImageGallery images={images.map((elem) => ({url: elem.file, ...elem}))} />
             </Button>
-          }
-          {isBuildSpecAvailable &&
+          )}
+          {isBuildSpecAvailable && (
             <Button flavor="regular" onClick={onOpenBuildDetails}>
               Build Specifications
             </Button>
-          }
+          )}
         </div>
       </div>
       {!calcInputQuoteLine && (
         <div className="quote-line-price">
           <QuoteLinePrice
             {...{
-              area, catalog, distance, index, isInstallerPreview, isMultiPartyQuote,
-              isPrimaryQuoteApproval, label, percentage, price, totalPrice, quantity, unit,
-            }} />
+              area,
+              catalog,
+              distance,
+              index,
+              isInstallerPreview,
+              isMultiPartyQuote,
+              isPrimaryQuoteApproval,
+              label,
+              percentage,
+              price,
+              totalPrice,
+              quantity,
+              unit,
+            }}
+          />
         </div>
       )}
-    </QuoteLineLayout >
+    </QuoteLineLayout>
   );
 }
 
