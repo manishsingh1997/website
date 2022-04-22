@@ -1,5 +1,7 @@
 # Website ergeon.com
 
+[![CircleCI](https://circleci.com/gh/ergeon/website/tree/develop.svg?style=shield&circle-token=e57a10563d37a3aaa49ec37fdd3c85d343563100)](https://circleci.com/gh/ergeon/website/tree/develop)
+
 ### Requirements
 ```
 node v14.17.5
