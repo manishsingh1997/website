@@ -269,4 +269,8 @@
       font-size: $font-mobile-size;
     }
   }
+
+  &__logo {
+    border-radius: $corner-soft;
+  }
 }

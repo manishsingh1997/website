@@ -99,7 +99,7 @@ class AboutPage extends React.Component {
               </div>
             </div>
             <div className="tile">
-              <img alt="" src={imgLogoMark} width="67" />
+              <img alt="" className="tile__logo" src={imgLogoMark} width="67" />
               <p className="tile__description">
                 If you crave an opportunity for impact and rapid career growth, join us!
               </p>
