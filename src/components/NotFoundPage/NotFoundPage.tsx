@@ -1,15 +1,14 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
-
-import errorPage from '@ergeon/core-components/src/assets/error-page.svg';
 import ErrorPage from '../common/ErrorPage';
+import {getPageNotFoundImage} from './utils';
 
 const NotFoundPage = () => (
   <>
     <Helmet>
       <meta content="noindex" name="robots" />
     </Helmet>
-    <ErrorPage image={errorPage} title="Not Found"></ErrorPage>
+    <ErrorPage image={getPageNotFoundImage()} title="Page Not Found"/>
   </>
 );
 

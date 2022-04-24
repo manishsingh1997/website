@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {Notification} from '@ergeon/core-components';
 
 import {HTTP_STATUS_NOT_FOUND} from 'website/constants';
-import NotFoundPage from 'components/NotFoundPage';
+import NotFoundPage from '../../../components/NotFoundPage';
 
 export default class QuoteError extends React.Component {
   static propTypes = {

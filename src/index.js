@@ -26,7 +26,7 @@ import AppQuoteDetailPage from 'containers/AppQuoteDetailPage';
 import AppNotificationsPage from 'components/AppNotificationsPage';
 import ErrorBoundary from 'components/ErrorBoundary';
 import Layout from 'containers/Layout';
-import NotFoundPage from 'components/NotFoundPage';
+import NotFoundPage from './components/NotFoundPage';
 import MetaTags from 'components/common/MetaTags';
 import {googleIntegration} from '@ergeon/core-components';
 import {DRAW_MAP_GOOGLE_LIBRARIES} from '@ergeon/draw-map';

@@ -45,6 +45,7 @@ run: install
 	SENTRY_RELEASE_NAME=$(SENTRY_RELEASE_NAME) SHOW_UPCOMING_FEATURES=$(SHOW_UPCOMING_FEATURES) npm run start
 
 test: install lint
+	npm run test
 
 coverage-sitemap:
 	npm run coverage-sitemap
