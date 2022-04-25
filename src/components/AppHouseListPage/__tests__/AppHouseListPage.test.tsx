@@ -3,7 +3,7 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import {Provider} from 'react-redux';
 import {mockHouseA, mockHouseB} from '../__mocks__/mockHouses';
-import AppHouseListPage from '../index';
+import AppHouseListPage from '../AppHouseListPage';
 import {store} from '../__mocks__/mockStore';
 
 jest.mock('@ergeon/core-components', () => ({

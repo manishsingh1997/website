@@ -1,27 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-import {Spinner} from '@ergeon/core-components';
+// @ts-ignore
 import MapComponent from '@ergeon/map-component';
-import {googleIntegration} from '@ergeon/core-components';
-
-import Marker from 'assets/marker.svg';
-import CustomerGIDContext from 'context-providers/CustomerGIDContext';
-import DataRow from 'components/common/DataRow';
-import {getFormattedAddress} from 'utils/app-house';
-
-import AppPage from 'components/common/AppPage';
-import AppSubCard from 'components/common/AppSubCard';
+import {Spinner, googleIntegration} from '@ergeon/core-components';
+import iconMarker from 'assets/marker.svg';
+import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
+import DataRow from '../../components/common/DataRow';
+import {getFormattedAddress} from '../../utils/app-house';
+import AppPage from '../../components/common/AppPage';
+import AppSubCard from '../../components/common/AppSubCard';
+import {HouseType} from './types';
 
 import './index.scss';
 
-export default class AppHouseListPage extends React.Component {
-  static propTypes = {
-    getHouses: PropTypes.func.isRequired,
-    houses: PropTypes.array,
-    isListLoading: PropTypes.bool.isRequired,
-    listError: PropTypes.object,
-  };
+type AppHouseListPageProps = {
+  getHouses: (customerGID: number) => HouseType[],
+  houses: HouseType[],
+  isListLoading: boolean,
+  listError: null | []
+}
+
+export default class AppHouseListPage extends React.Component<AppHouseListPageProps> {
 
   static contextType = CustomerGIDContext;
 
@@ -31,7 +29,7 @@ export default class AppHouseListPage extends React.Component {
     getHouses(customerGID);
   }
 
-  renderListElementContent(house) {
+  renderListElementContent(house: HouseType) {
     const mapControls = {
       zoomControl: false,
       mapTypeControl: false,
@@ -47,7 +45,7 @@ export default class AppHouseListPage extends React.Component {
         lat: house['address'] && house['address']['latitude'],
         lng: house['address'] && house['address']['longitude'],
       },
-      icon: Marker,
+      icon: iconMarker,
     };
 
     return (

@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
 import {getHouses} from 'flux/actions/app-houses';
-import AppHouseListPage from 'components/AppHouseListPage';
+import AppHouseListPage from '../components/AppHouseListPage';
 
 const mapStateToProps = ({houses}) => {
   return {
