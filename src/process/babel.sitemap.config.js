@@ -12,23 +12,25 @@ module.exports = {
         root: ['./src'],
       },
     ],
+    [
+      './babel-plugin-nullify-import.js',
+      {
+        pathPattern: 'components|containers',
+      },
+    ],
   ],
   env: {
     test: {
       plugins: [
         '@babel/plugin-transform-runtime',
-      ],
-    },
-    sitemap: {
-      plugins: [
-        '@babel/plugin-transform-runtime',
+        // Ignore in Jest sitemaps testing too
         [
-          './src/process/babel-plugin-nullify-import.js',
+          './babel-plugin-nullify-import.js',
           {
             pathPattern: 'components|containers',
           },
         ],
       ],
-    }
+    },
   },
 };

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "create-sitemap": "BABEL_ENV=sitemap npx babel-node ./src/process/createSitemap.js",
+    "create-sitemap": "npx babel-node ./src/process/createSitemap.js --config-file ./src/process/babel.sitemap.config.js",
     "create-sitemap-production": "NODE_ENV=production npm run create-sitemap",
     "create-sitemap-staging": "NODE_ENV=staging npm run create-sitemap",
     "create-sitemap-development": "NODE_ENV=development npm run create-sitemap",
@@ -18,7 +18,7 @@
     "lint": "npm run eslint && npm run ts",
     "ts": "tsc",
     "test": "jest",
-    "test-sitemap": "jest --config ./src/process/jest.sitemap-config.js --colors --notify --verbose --ci --silent",
+    "test-sitemap": "BABEL_ENV=sitemap jest --config ./src/process/jest.sitemap-config.js --colors --notify --verbose --ci --silent",
     "coverage-sitemap": "npm run test-sitemap -- --coverage --watchAll=false"
   },
   "repository": {
@@ -42,6 +42,10 @@
     "@babel/preset-typescript": "^7.16.7",
     "@babel/template": "^7.16.7",
     "@ergeon/eslint-config-ergeon": "^1.0.0",
+    "@reduxjs/toolkit": "^1.8.1",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^14.1.1",
     "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.182",
     "@types/marvelapp__react-ab-test": "^3.1.0",
@@ -52,9 +56,6 @@
     "@types/validator": "^13.7.2",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^14.1.1",
     "are-you-es5": "^2.1.2",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^26.5.2",
