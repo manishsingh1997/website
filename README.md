@@ -45,6 +45,9 @@ To do it, add the following to your `.env.local`:
 API_HOST = "https://apidev.ergeon.in"
 ```
 
+Do **NOT** copy entire `.env.staging` to your `.env.local`, copy only needed variables.
+In this case, **only** `API_HOST` must be redefined and nothing else.
+
 ### Coding rules
 
 The rules are inspired from this [doc](https://github.com/airbnb/javascript/tree/master/react).
