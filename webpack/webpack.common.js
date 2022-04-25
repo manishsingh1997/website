@@ -103,6 +103,7 @@ module.exports = {
       favicon: `${APP_DIR}/assets/favicon.png`,
       filename: `${BUILD_DIR}/index.html`,
       environment: JSON.stringify(process.env.NODE_ENV),
+      enableSentry: !IS_DEVELOPMENT,
       sentryConsoleLevels: SENTRY_CONSOLE_LEVELS,
       sentryDSN: JSON.stringify(SENTRY_DSN),
       sentryRelease: JSON.stringify(process.env.SENTRY_RELEASE_NAME || null),

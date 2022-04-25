@@ -19,6 +19,7 @@
           : '46b95ea487f0162bc81c864d5a8c9e1c';
     </script>
 
+    <% if (htmlWebpackPlugin.options.enableSentry) { %>
     <!-- Init sentry as first step, to not miss errors during starting up -->
     <script
       src="https://browser.sentry-cdn.com/5.27.6/bundle.min.js"
@@ -27,7 +28,6 @@
     ></script>
     <script src="https://browser.sentry-cdn.com/5.27.6/captureconsole.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      if (<%= htmlWebpackPlugin.options.environment %> !== "development") {
         Sentry.init({
           "dsn": <%= htmlWebpackPlugin.options.sentryDSN %>,
           "environment": <%= htmlWebpackPlugin.options.environment %>,
@@ -80,9 +80,8 @@
           "denyUrls": [
             /* Our externals */
             /ads\.nextdoor\.com/,
-            /embed\.tawk\.to/,
-            /static-v\.tawk\.to/,
-            /newrelic\.js/,
+            /newrelic/,
+            /tawk/,
             /* COMMUNITY SUPPORTED */
             /* Facebook */
             /graph\.facebook\.com/i,
@@ -100,9 +99,10 @@
             /metrics\.itunes\.apple\.com\.edgesuite\.net\//i,
           ],
         });
-      }
     </script>
     <!-- END Sentry Init -->
+    <% } %>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
