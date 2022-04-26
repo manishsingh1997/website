@@ -88,8 +88,8 @@ class WarrantiesPage extends React.Component {
         </div>
         <div className="warranties-page__content wrapper-1180">
           <h3>Our Licenses</h3>
-          <div className="licenses">
-            <div className="certifications">
+          <div className="licenses spacing after__is-48">
+            <div className="certifications spacing after__is-48">
               <div className="certification-item">
                 <img className="certified-icon" src={certifiedIcon} />
                 <h4>C13 - Fencing</h4>
@@ -99,6 +99,12 @@ class WarrantiesPage extends React.Component {
               <div className="certification-item">
                 <img className="certified-icon" src={certifiedIcon} />
                 <h4>C27 - Landscaping</h4>
+                <p>Ergeon inc</p>
+                <p>License {ERGEON_LICENSE_NUMBER}</p>
+              </div>
+              <div className="certification-item">
+                <img className="certified-icon" src={certifiedIcon} />
+                <h4>C8 - Concrete</h4>
                 <p>Ergeon inc</p>
                 <p>License {ERGEON_LICENSE_NUMBER}</p>
               </div>

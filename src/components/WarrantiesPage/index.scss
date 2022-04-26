@@ -2,7 +2,7 @@
 
 .warranties-page {
   &__header {
-    height: 480px;
+    height: $v-30 * 16;
     background-image: radial-gradient(circle farthest-corner at 100% 0%, transparent, rgba($black-1, 0.5)),
       url('../../assets/img-hero-warranties.jpg');
     background-position: right;
@@ -11,13 +11,16 @@
   }
 
   &__content {
-    padding-top: 60px;
+    $content-padding: $h-60;
+
+    padding-top: $content-padding;
 
     .licenses {
       display: flex;
+      flex-direction: column;
       flex: 0 auto;
-      padding-bottom: 60px;
-      margin-top: 30px;
+      margin-top: $v-30;
+      width: 100%;
 
       @include tablet {
         justify-content: space-between;
@@ -25,58 +28,77 @@
 
       @include phone {
         flex-direction: column;
-        padding-top: 0px;
+        padding-top: 0;
+        width: 100%;
       }
 
       @include phone-small {
-        padding: 0px;
+        padding: 0;
       }
     }
 
     .certifications {
       display: flex;
-      width: 80%;
-      min-width: 580px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
       flex: 0 auto;
 
       @include tablet {
-        min-width: 380px;
+        justify-content: flex-start;
+        width: 80%;
+        margin: auto;
       }
 
       @include phone {
         width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: $v-20;
         min-width: auto;
       }
     }
 
     .certification-item {
-      border-radius: 20px;
+      $corner-radius: $v-20;
+
+      border-radius: $corner-radius;
       margin-bottom: $v-24;
       background-image: linear-gradient(180deg, rgba(#2372b3, 0.1), rgba($white, 0));
-      font-size: 16px;
+      font-size: $font-regular-size;
       text-align: center;
-      margin-right: 20px;
-      width: 100%;
+      margin-right: $v-16;
+      width: $h-40 * 7;
       padding: $v-30 $h-20;
-      &:last-child {
+
+      &:nth-child(3) {
         margin-right: 0;
+      }
+
+      @include phone() {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: $v-16;
       }
 
       .certified-icon {
         display: block;
         margin-right: auto;
-        margin-bottom: 20px;
+        margin-bottom: $v-20;
         margin-left: auto;
-        width: 100px;
+        width: $h-120 - $h-20;
       }
     }
 
     .certification-image-link {
+      $cert-image-max-width: 872px;
+
       width: 100%;
+      max-width: $cert-image-max-width;
       display: inline-block;
-      margin-left: $h-20;
+      height: auto;
+      align-self: center;
+
       @include phone() {
+        width: 100%;
         margin-left: 0;
       }
       .certification-image {
@@ -87,10 +109,12 @@
 }
 
 .warranties {
+  $warranties-min-width: 278px;
+
   display: flex;
   margin-bottom: $v-24;
   flex-flow: wrap;
-  min-height: 278px;
+  min-height: $warranties-min-width;
 }
 
 .warranty {
@@ -104,7 +128,7 @@
 }
 
 .heading-16 {
-  margin-bottom: 6px;
-  font-size: 16px;
+  margin-bottom: $v-6;
+  font-size: $font-regular-size;
   text-align: center;
 }
