@@ -129,7 +129,7 @@ export default function QuoteLines({
     const getQuoteLinePropsFromSide = (side, i) => ({
       ...side,
       id: side.map_id,
-      label: getLabelFromIndex(i),
+      label: side.label || getLabelFromIndex(i),
       approvedAt: side.approved_at,
       quoteId: side.quote_id,
       type: CALC_SIDE_TYPE,
@@ -146,7 +146,7 @@ export default function QuoteLines({
     const getQuoteLinePropsFromGate = (gate, i) => ({
       ...gate,
       id: gate.map_id,
-      label: String(i + 1),
+      label: gate.label || String(i + 1),
       approvedAt: gate.approved_at,
       quoteId: gate.quote_id,
       type: CALC_GATE_TYPE,
@@ -165,7 +165,7 @@ export default function QuoteLines({
     const getQuoteLinePropsFromArea = (area, i) => ({
       ...area,
       id: area.map_id,
-      label: getLabelFromIndex(i),
+      label: area.label || getLabelFromIndex(i),
       approvedAt: area.approved_at,
       quoteId: area.quote_id,
       type: CALC_AREA_TYPE,
