@@ -14,7 +14,6 @@ import {Link} from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 
 import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
-import {formatDate} from 'utils/date';
 import {showUpcomingFeatures} from '../../../utils/utils';
 import {hideDroppedLabels} from './utils';
 export default class QuoteDetails extends React.Component {
@@ -161,7 +160,7 @@ export default class QuoteDetails extends React.Component {
       <div className={classNames({'total-price': !isInstallerPreview, 'total-price-noteless': isInstallerPreview})}>
         <h6 className="change-order-quote-price">Total change order price for approval: {totalPrice}</h6>
         <h6 className="change-order-total-previous-price">
-          Total previously approved ({formatDate(parentQuote['approved_at'])}): {totalPreviouslyApprovedPrice}
+          Total previously approved: {totalPreviouslyApprovedPrice}
         </h6>
         <h4 className="change-order-total-project-price">Total project price: {totalProjectPrice}</h4>
       </div>

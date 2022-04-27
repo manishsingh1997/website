@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {QUOTE_LINE_STATUSES} from '../../../AppCustomerQuotePage/utils';
+import {QUOTE_LINE_STATUSES} from '../utils';
 
 export default function QuoteLineStatus({status, quote}) {
   switch (status) {

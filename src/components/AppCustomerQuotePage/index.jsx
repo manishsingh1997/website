@@ -23,7 +23,7 @@ import ExplanationSection from './ExplanationSection';
 import ProjectNotes from './ProjectNotes';
 import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
 import QuoteError from '../common/AppQuoteComponents/QuoteError';
-import {prepareQuoteApprovalLines} from './utils';
+import {prepareQuoteApprovalLines} from '../common/AppQuoteComponents/utils';
 
 import '@ergeon/draw-map/styles.css';
 

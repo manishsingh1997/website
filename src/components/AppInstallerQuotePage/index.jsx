@@ -13,7 +13,7 @@ import AppLoader from 'components/common/AppLoader';
 import BuildSpecs from 'components/common/AppQuoteComponents/BuildSpecs';
 import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
 import QuoteError from '../common/AppQuoteComponents/QuoteError';
-
+import {prepareQuoteLines} from '../common/AppQuoteComponents/utils';
 import '@ergeon/draw-map/styles.css';
 
 import '../common/AppQuoteComponents/index.scss';
@@ -116,7 +116,10 @@ export default class AppInstallerQuotePage extends React.Component {
     }
 
     const {customer} = quote.order.house;
-    const quoteLines = quote['quote_lines'];
+    const quoteLines = prepareQuoteLines(
+      quote['quote_lines'],
+      quote,
+    );
     const newQuoteLink = this.getNewQuoteLink();
 
     return (

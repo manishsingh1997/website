@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import {isPDFMode} from 'utils/utils';
 
-import {QUOTE_LINE_STATUSES} from '../../../AppCustomerQuotePage/utils';
+import {QUOTE_LINE_STATUSES} from '../utils';
 
 export default function QuoteLineLayout(props) {
   const {children, status} = props;
