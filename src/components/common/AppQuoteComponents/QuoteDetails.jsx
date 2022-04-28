@@ -56,8 +56,8 @@ export default class QuoteDetails extends React.Component {
             Project Images
           </Title>
           <div className="cards two-columns">
-            {imagesArray.map((elem) => (
-              <ImageCard key={elem.id} title={elem.title} url={elem.file} />
+            {imagesArray.map((elem, idx) => (
+              <ImageCard key={`${elem.id}_${idx}`} title={elem.title} url={elem.file} />
             ))}
           </div>
         </div>

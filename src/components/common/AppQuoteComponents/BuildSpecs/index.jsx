@@ -52,7 +52,7 @@ const BuildSpecs = () => {
             helpLink={publicHelpNode}
             helpText={externalHelpText}
             index={idx}
-            key={id}
+            key={`${id}_${idx}`}
             label={attribute}
           />
         )

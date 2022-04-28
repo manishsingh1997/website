@@ -8,7 +8,7 @@ export default class AdditionalApprovalsList extends React.Component {
     additionalQuoteApprovals: PropTypes.arrayOf(PropTypes.object),
   };
 
-  renderQuoteApproval(quoteApproval) {
+  renderQuoteApproval(quoteApproval, idx) {
     const {
       customer: {full_name: fullName},
       approved_at: approvedAt,
@@ -16,7 +16,7 @@ export default class AdditionalApprovalsList extends React.Component {
     const status = approvedAt ? `Approved at ${formatDateAndTime(approvedAt)}` : 'Pending approval';
 
     return (
-      <tr className="additional-approvers-list-item" key={`additional-approver-${quoteApproval.id}`}>
+      <tr className="additional-approvers-list-item" key={`additional-approver-${quoteApproval.id}_${idx}`}>
         <td className="additional-approvers-list-item-name">{fullName}</td>
         <td className="additional-approvers-list-item-status">{status}</td>
       </tr>

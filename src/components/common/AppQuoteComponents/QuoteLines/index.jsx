@@ -214,14 +214,14 @@ export default function QuoteLines({
         {asPDF && <h4>Project Scope</h4>}
         <div className="quote-details__sides spacing before__is-24"></div>
         <div>
-          {preparedQuoteLines.map((quoteLineProps) => (
+          {preparedQuoteLines.map((quoteLineProps, idx) => (
             <QuoteLine
               isInstallerPreview={isInstallerPreview}
               isMultiPartyQuote={isMultiPartyQuote}
               isPrimaryQuoteApproval={isPrimaryQuoteApproval}
               isUsingCalcInput={isUsingCalcInput}
               // error complaining about mapping to keys with side-undefined
-              key={`${quoteLineProps.type}-${quoteLineProps.id}-${quoteLineProps?.label}`}
+              key={`${quoteLineProps.type}-${quoteLineProps.id}-${quoteLineProps?.label}-${idx}`}
               onBuildDetailsClick={onBuildDetailsClick}
               {...quoteLineProps}
             />
