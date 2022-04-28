@@ -36,6 +36,8 @@
           ],
           "release": <%= htmlWebpackPlugin.options.sentryRelease %>,
           "ignoreErrors": [
+            /* Weird Firefox */
+            "can't redefine non-configurable property \"userAgent\"",
             /* Random plugins/extensions */
             "top.GLOBALS",
             /* See: http://blog.errorception.com/2012/03/tale-of-unfindable-js-error.html */
@@ -72,7 +74,7 @@
             */
             "Illegal invocation",
             "Argument not optional",
-            // Not critical https://stackoverflow.com/a/50387233
+            /* Not critical https://stackoverflow.com/a/50387233 */
             "ResizeObserver loop limit exceeded",
             /^Socket server did not execute the callback/,
             /You are currently using minified code outside of NODE_ENV === "production"./,
