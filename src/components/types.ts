@@ -6,4 +6,4 @@ export type HouseType = {
     latitude: number,
     longitude: number,
   }
-}
+};

@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {ThunkActionDispatch} from 'redux-thunk';
 
 import AppHouseListPage from '../components/AppHouseListPage';
-import {HouseType} from '../components/AppHouseListPage/types';
+import {HouseType} from '../components/types';
 import {getHouses} from '../flux/actions/app-houses';
 import {GetHouseDispatcher} from '../flux/actions/types';
 import {Action} from '../flux/store';

@@ -1,5 +1,5 @@
 import {Action} from 'redux';
-import {HouseType} from '../../components/AppHouseListPage/types';
+import {HouseType} from '../../components/types';
 import {ParsedAPIErrorType} from '../../utils/types';
 
 export interface GetHouseRequest {

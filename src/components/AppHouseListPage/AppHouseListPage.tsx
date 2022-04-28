@@ -8,7 +8,7 @@ import DataRow from '../../components/common/DataRow';
 import {getFormattedAddress} from '../../utils/app-house';
 import AppPage from '../../components/common/AppPage';
 import AppSubCard from '../../components/common/AppSubCard';
-import {HouseType} from './types';
+import {HouseType} from '../types';
 
 import './index.scss';
 
