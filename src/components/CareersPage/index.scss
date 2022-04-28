@@ -1,27 +1,31 @@
-@import '~@ergeon/core-components/src/components/variables';
-@import './settings';
+@import "~@ergeon/core-components/src/components/variables";
 
 .Careers {
-  $page-margin-bottom: 108px;
+  // Career wrapper padding
+  $outer-padding-top: $v-30 + 4px;
+  $outer-padding-top-mobile: $v-24;
+  $outer-padding-bottom: 108px;
+  $outer-padding-bottom-mobile: $v-48;
 
-  margin: $v-30 auto $page-margin-bottom;
+  padding: $outer-padding-top $h-20 $outer-padding-bottom;
+  margin: auto;
   max-width: $container-xl;
   text-align: center;
+  @include tablet {
+    padding: $outer-padding-top-mobile $h-20 0;
+  }
 
   .collage-1 {
     border-radius: $corner-soft;
-    margin-bottom: $v-64;
 
     img {
       border-radius: $corner-soft;
     }
   }
 
-  .collage-1,
   .collage {
     @include phone() {
       margin-bottom: unset;
-      margin-top: $v-30;
     }
   }
 
@@ -31,6 +35,10 @@
         font-size: $h2-size;
         line-height: 1.25;
         font-weight: 600;
+
+        @include phone {
+          font-size: $h3-size;
+        }
       }
 
       h3 {
@@ -38,6 +46,64 @@
         font-size: $h3-size;
         font-weight: normal;
         line-height: 1.33;
+
+        @include phone {
+          font-size: $h4-size;
+          line-height: $h4-line-height;
+        }
+      }
+    }
+  }
+
+  .staff-reviews {
+    .staff-reviewsWrapper {
+      align-items: stretch;
+    }
+
+    .glassdoor-desc {
+      @include tablet {
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      @include phone {
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+    }
+
+    .inner-block {
+      height: 100%;
+    }
+
+    .inner-block-mobile-padding {
+      @include phone {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    .inner-block__wrap {
+      height: 100%;
+      justify-content: center;
+      padding: $v-30 $h-10;
+      margin: auto;
+    }
+
+    .inner-block__wrap__top-block {
+      flex-wrap: nowrap;
+      margin-bottom: $v-6;
+
+      h3 {
+        margin-right: $h-10;
+      }
+
+      ul {
+        white-space: nowrap;
+      }
+
+      .stars-group {
+        margin: 0;
       }
     }
   }
@@ -50,51 +116,16 @@
     display: flex;
     justify-content: center;
     max-width: $container-xl - $h-40;
-    margin: $top-margin auto 0 auto;
+    margin: auto;
     width: 100%;
 
-    .collage3 {
+    .collage-3 {
       border-radius: $corner-soft;
       display: flex;
       margin: 0 $h-10;
       max-width: $h-120 * $image-count;
       overflow: hidden;
     }
-
-    @include phone {
-      flex-direction: column;
-      padding: 0;
-
-      .collage3 {
-        &:nth-child(2) {
-          margin: $h-20 auto;
-        }
-      }
-    }
-  }
-
-  .img-container {
-    width: auto;
-
-    img {
-      width: 100%;
-    }
-  }
-
-  .hideBreaks {
-    @include phone {
-      display: none;
-    }
-  }
-
-  .light-bold {
-    font-weight: 600;
-  }
-
-  .subContent {
-    margin: auto;
-    font-size: $h4-size;
-    line-height: 1.36;
   }
 
   .cards {
@@ -135,6 +166,116 @@
         line-height: 1.5;
         margin: $v-6 0 0;
       }
+    }
+  }
+
+  // shared spacing
+  .Careers-spacing {
+    &.is-bottom-148 {
+      margin-bottom: 148px;
+    }
+
+    &.is-bottom-96 {
+      margin-bottom: 96px;
+    }
+
+    &.is-bottom-64 {
+      margin-bottom: $v-64;
+    }
+
+    &.is-bottom-64 {
+      margin-bottom: $v-48;
+    }
+
+    &.is-bottomMobile-48 {
+      @include phone {
+        margin-bottom: $v-48;
+      }
+    }
+
+    &.is-bottomMobile-30 {
+      @include phone {
+        margin-bottom: $v-30;
+      }
+    }
+
+    &.is-bottomMobile-20 {
+      @include phone {
+        margin-bottom: $v-20;
+      }
+    }
+  }
+
+  // shared padding
+  .left-padding {
+    &-20 {
+      padding-left: $h-20;
+    }
+    &-10 {
+      padding-left: $h-10;
+    }
+  }
+
+  .right-padding {
+    &-20 {
+      padding-right: $h-20;
+    }
+    &-10 {
+      padding-right: $h-10;
+    }
+  }
+
+  .top-padding {
+    &-20 {
+      padding-top: $h-20;
+    }
+    &-10 {
+      padding-top: $h-10;
+    }
+  }
+
+  .bottom-padding {
+    &-20 {
+      padding-bottom: $h-20;
+    }
+    &-10 {
+      padding-bottom: $h-10;
+    }
+  }
+
+  .font-weight-600 {
+    font-weight: 600;
+  }
+
+  .img-container {
+    width: auto;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .hide-mobile {
+    @include phone {
+      display: none;
+    }
+  }
+
+  .show-mobile {
+    display: none;
+    @include phone {
+      display: block;
+    }
+  }
+
+  .sub-content {
+    text-align: center;
+    font-size: $h4-size;
+    line-height: 1.36;
+    margin: auto;
+
+    @include phone {
+      font-size: $h5-size;
     }
   }
 }

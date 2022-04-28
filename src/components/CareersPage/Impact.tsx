@@ -7,7 +7,7 @@ import imgGlobe from '@ergeon/core-components/src/assets/careers-page/icon-globe
 
 const Impact = () => {
   return (
-    <div className="cards two-columns restricted-940">
+    <div className="cards two-columns restricted-940 Careers-spacing is-bottom-64 is-bottomMobile-20">
       <div className="card cards__card">
         <div className="cards__card__title spacing after__is-6">
           <p className="additional-header h2">Positively Impact Lives</p>

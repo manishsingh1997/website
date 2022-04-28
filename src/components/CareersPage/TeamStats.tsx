@@ -9,7 +9,7 @@ import './TeamStats.scss';
 
 const TeamStats = () => {
   return (
-    <div className="cards two-columns restricted-940 spacing after__is-48">
+    <div className="cards two-columns restricted-940">
       <div className="card cards__card">
         <div className="cards-stats">
           <div className="cards-stats-image">

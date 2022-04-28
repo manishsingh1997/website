@@ -50,7 +50,7 @@ const JobBoard = () => {
   return (
     <div>
       <div className="section-title">
-        <h2 className="center light-bold">Current Job Openings</h2>
+        <h2 className="center light-bold font-weight-600">Current Job Openings</h2>
       </div>
       <div className="job-board">
         <div className={loadingClasses}>

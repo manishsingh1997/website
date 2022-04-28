@@ -28,7 +28,7 @@ const Careers = (props: {departments: CareerProps[]}) => {
       {departmentList.map((department, i) => (
         <div className={jobListClasses} key={i}>
           <div className="card job-list__careers spacing after__is-12">
-            <span className="h4">{department.name}</span>
+            <span className="h4 font-weight-600">{department.name}</span>
           </div>
           <Positions jobs={department.jobs} />
         </div>

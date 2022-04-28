@@ -1,10 +1,12 @@
 import React from 'react';
 
+import {Rating} from '@ergeon/core-components';
+
 import imageChartNinetyEight from 'assets/chart-98.svg';
 import imageChartOneHundred from 'assets/chart-100.svg';
 import imageLinkedin from 'assets/linkedin@2x.png';
 import imageCEO from 'assets/jenny@2x.jpg';
-import {Rating} from '@ergeon/core-components';
+import imageGlassDoor from '@ergeon/core-components/src/assets/icon-glassdoor.svg';
 
 import './StaffReviews.scss';
 
@@ -16,14 +18,14 @@ class StaffReviews extends React.Component {
     return (
       <div className="staff-reviews">
         <div className="staff-reviews__row">
-          <div className="mobile-wrap">
+          <div className="mobile-wrap staff-reviewsWrapper">
             <div className="staff-reviews__row__block">
-              <div className="inner-block right__padding-10 bottom__padding-10">
+              <div className="inner-block right-padding-10 bottom-padding-10">
                 <div className="inner-block__wrap">
                   <img alt="Ninety eight percent of recommendations to a friend" src={imageChartNinetyEight} />
                   <div className="inner-block__wrap__right-block recommend">
                     <p className="subheader h3 bold">
-                      Recommend <br className="hideBreaks" />
+                      Recommend <br className="hide-mobile" />
                       to a Friend
                     </p>
                   </div>
@@ -31,7 +33,7 @@ class StaffReviews extends React.Component {
               </div>
             </div>
             <div className="staff-reviews__row__block">
-              <div className="inner-block left__padding-10 right__padding-10 bottom__padding-10">
+              <div className="inner-block left-padding-10 right-padding-10 bottom-padding-10">
                 <div className="inner-block__wrap">
                   <img alt="One hundred percent approve of CEO" src={imageChartOneHundred} />
                   <div className="inner-block__wrap__right-block approve">
@@ -42,7 +44,7 @@ class StaffReviews extends React.Component {
             </div>
           </div>
           <div className="staff-reviews__row__block">
-            <div className="inner-block left__padding-10 bottom__padding-10">
+            <div className="inner-block inner-block-mobile-padding left-padding-10 bottom-padding-10">
               <div className="inner-block__wrap ceo-image-wrapper">
                 <img src={imageCEO} />
                 <div className="inner-block__wrap__right-block">
@@ -55,13 +57,16 @@ class StaffReviews extends React.Component {
         </div>
         <div className="staff-reviews__row">
           <div className="staff-reviews__row__block more-space">
-            <div className="inner-block right__padding-10 top__padding-10">
+            <div className="inner-block inner-block-mobile-padding right-padding-10 top-padding-10">
               <div className="inner-block__wrap linkedin-subsc">
                 <img alt="Linkedin logo" src={imageLinkedin} />
                 <div className="inner-block__wrap__right-block linkedin">
                   <p className="subheader h3 bold">Ergeon on Linkedin</p>
                   <p className="small-text spacing before__is-6">
-                    Construction &middot; Palo Alto, California &middot; {LINKEDIN_FOLLOWERS} followers
+                    Construction
+                    <span className="hide-mobile">
+                      &middot; Palo Alto, California
+                    </span>&middot; {LINKEDIN_FOLLOWERS} followers
                   </p>
                   <a className="small-text" href="https://www.linkedin.com/company/ergeoninc/">
                     Follow us
@@ -71,17 +76,19 @@ class StaffReviews extends React.Component {
             </div>
           </div>
           <div className="staff-reviews__row__block">
-            <div className="inner-block left__padding-10 top__padding-10">
-              <div className="inner-block__wrap ratings">
-                <div className="inner-block__wrap__top-block">
-                  <p className="subheader h3 bold">4.9</p>
-                  <Rating value={4.9} />
-                </div>
-                <div className="inner-block__wrap__bottom-block">
-                  <p className="small-text">
-                    More reviews on{' '}
-                    <a href="https://www.glassdoor.ca/Reviews/Ergeon-Reviews-E2131774_P2.htm">Glassdoor</a>
-                  </p>
+            <div className="inner-block inner-block-mobile-padding  left-padding-10 top-padding-10">
+              <div className="inner-block__wrap glassdoor-desc">
+                <img alt="Linkedin logo" src={imageGlassDoor}/>
+                <div className="inner-block__wrap__right-block">
+                  <div className="inner-block__wrap__top-block">
+                    <p className="subheader h3 bold">4.9</p>
+                    <Rating value={4.9} />
+                  </div>
+                  <div className="inner-block__wrap__bottom-block">
+                    <p className="small-text">
+                      More reviews on <a href="https://www.glassdoor.ca/Reviews/Ergeon-Reviews-E2131774_P2.htm">Glassdoor</a>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

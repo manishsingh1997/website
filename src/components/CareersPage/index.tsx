@@ -18,71 +18,69 @@ import './index.scss';
 
 const CareersPage = () => {
   return (
-    <div className="Careers spacing before__is-30 after__is-108">
-      <div className="img-container collage-1">
+    <div className="Careers">
+      <div className="Careers-spacing is-bottom-64 is-bottomMobile-30 img-container collage-1">
         <img alt="collage" src={CareersHero} />
       </div>
-      <div className="Careers-content page-container spacing before__is-64  after__is-48">
-        <div className="header  spacing after__is-48">
+      <div className="Careers-content page-container Careers-spacing is-bottom-64">
+        <div className="header Careers-spacing is-bottom-64 is-bottomMobile-20">
           <h1>Everyone Should Have Access To The Job They Love</h1>
           <br />
           <h3>
-            Join us as we make the construction industry
-            <br className="hideBreaks" /> friendly and accessible
+            Join us as we make the  <br className="show-mobile" />construction industry
+            <br className="hide-mobile" /> friendly <br className="show-mobile" /> and accessible
           </h3>
         </div>
         <Impact />
-        <div className="spacing before__is-48 after__is-48">
-          <p className="subContent width-restricted to-620">
+        <div className="Careers-spacing is-bottom-64">
+          <p className="sub-content width-restricted to-620">
             We believe everyone has a right to professional growth and respect, no matter their location. Ergeon’s
             workforce is given meaningful opportunities and is supported by a kind and diverse community.
             <br />
             <br />
             Our global staff (aka&nbsp;Ergeoneers) have access to career growth, amazing work culture, and great
             benefits.
-            <br className="hideBreaks" />
+            <br className="hide-mobile" />
             Come join us to transform the construction industry!
           </p>
         </div>
         <StaffReviews />
       </div>
 
-      <div className="img-container spacing before__is-48">
-        <img alt="company photo" src={Collage} />
+      <div className="img-container Careers-spacing is-bottom-148 is-bottomMobile-30">
+        <img alt="company photo" src={Collage}/>
       </div>
-      <div className="Careers-content page-container before__is-148 collage">
+      <div className="Careers-content page-container collage Careers-spacing is-bottom-96 is-bottomMobile-48">
         <JobBoard />
       </div>
-      <div className="spacing before__is-96 collage">
-        <div className="spacing after__is-48">
-          <h2 className="spacing after__is-12 light-bold">Company Benefits</h2>
-          <p className="subContent width-restricted to-620">
+      <div className="spacing collage Careers-spacing is-bottomMobile-48 is-bottom-96">
+        <div className="spacing after__is-48 Careers-spacing is-bottomMobile-20">
+          <h2 className="spacing after__is-12 light-bold font-weight-600">Company Benefits</h2>
+          <p className="sub-content width-restricted to-620">
             Flexible work hours, team events and remote happy hours
-            <br className="hideBreaks" /> are just a few of the perks we offer.
+            <br className="hide-mobile" /> are just a few of the perks we offer.
           </p>
         </div>
         <Benefits />
       </div>
 
-      <div className="Careers-showcase collage">
-        <div className="img-container collage3">
+      <div className="Careers-showcase collage Careers-spacing is-bottom-96 is-bottomMobile-48">
+        <div className="img-container collage-3">
           <img alt="ergeon kits" src={shirt} />
         </div>
-        <div className="img-container collage3">
+        <div className="img-container collage-3">
           <img alt="ergeon kits" src={glass} />
         </div>
-        <div className="img-container collage3">
+        <div className="img-container collage-3">
           <img alt="ergeon kits" src={bags} />
         </div>
       </div>
 
-      <div>
-        <div className="spacing before__is-96 after__is-48 collage">
-          <h2 className="center spacing after__is-12 light-bold">Our Team</h2>
-          <p className="subContent">Our amazing team is global and diverse.</p>
-        </div>
+      <div className="Careers-spacing is-bottomMobile-20 is-bottom-64 collage">
+          <h2 className="center spacing after__is-12 light-bold font-weight-600">Our Team</h2>
+          <p className="sub-content spacing after__is-12">Our amazing team is global and diverse.</p>
+          <TeamStats />
       </div>
-      <TeamStats />
       <StaffMap />
     </div>
   );

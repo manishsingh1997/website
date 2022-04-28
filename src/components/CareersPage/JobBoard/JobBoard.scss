@@ -1,4 +1,5 @@
 @import '~@ergeon/core-components/src/components/variables';
+
 .job-board {
   .loading-placeholder {
     margin: 0 auto;
@@ -35,11 +36,23 @@
     justify-content: space-between;
     align-items: baseline;
     text-align: left;
+    line-height: $line-height-regular;
 
     &__location {
       text-align: right;
       font-size: $h5-size;
-      line-height: 1.5;
+      font-weight: 500;
     }
+  }
+
+  @include phone {
+    &__job {
+      font-size: $font-mobile-size;
+  
+      &__location {
+        font-size: $font-label-size;
+        color: $gray-1;
+      }
+    } 
   }
 }
