@@ -22,9 +22,7 @@ class AuthSignInPage extends React.Component {
 
   state = {
     isFormSuccess: false,
-    data: {
-      email: null,
-    },
+    email: '',
     errors: null,
     loading: false,
   };
@@ -32,10 +30,10 @@ class AuthSignInPage extends React.Component {
   async handleSubmit(e) {
     e.preventDefault();
 
-    const {data} = this.state;
-    let errors = this.validator(data);
+    const {email} = this.state;
+    let errors = this.validator({email});
     if (!errors) {
-      errors = await this.requestSignIn.bind(this)(data.email);
+      errors = await this.requestSignIn.bind(this)(email);
     }
     if (errors) {
       this.setState({errors});
@@ -73,15 +71,10 @@ class AuthSignInPage extends React.Component {
   }
 
   handleFieldChange = (event, name, value) => {
-    const {data} = this.state;
     const newState = {
-      data: {
-        ...data,
-        [name]: value,
-      },
+      email: value,
       errors: null,
     };
-
     this.setState(newState);
   };
 
@@ -101,12 +94,7 @@ class AuthSignInPage extends React.Component {
   }
 
   renderForm() {
-    const {
-      data: {email},
-      errors,
-      loading,
-    } = this.state;
-
+    const {email, errors, loading} = this.state;
     return (
       <div>
         <div className="center spacing after__is-24">
@@ -118,6 +106,7 @@ class AuthSignInPage extends React.Component {
         </p>
         <form className="signin-form" onSubmit={this.handleSubmit.bind(this)}>
           <FormField>
+            <>
             <Input
               isDisabled={loading}
               isValid={errors?.email ? !errors?.email : null}
@@ -129,6 +118,7 @@ class AuthSignInPage extends React.Component {
               value={email}
             />
             {this.renderErrors('email')}
+            </>
           </FormField>
           <div className="signin-form-actions">
             {this.renderErrors('global')}
