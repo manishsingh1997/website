@@ -16,7 +16,7 @@ import customScripts from 'website/custom-scripts';
 
 import AppAppointmentsListPage from 'containers/AppAppointmentsListPage';
 import AppContactsPage from 'containers/AppContactsPage';
-import AppHouseListPage from 'containers/AppHouseListPage';
+import AppHouseListPage from './containers/AppHouseListPage';
 import AppLayout from 'containers/AppLayout';
 import AppOrderDetailPage from 'containers/AppOrderDetailPage';
 import AppOrderListPage from 'containers/AppOrderListPage';
@@ -32,7 +32,7 @@ import {googleIntegration} from '@ergeon/core-components';
 import {DRAW_MAP_GOOGLE_LIBRARIES} from '@ergeon/draw-map';
 import {ERG_MAP_COMPONENT_LIBRARIES} from '@ergeon/map-component';
 
-import store from 'flux/store';
+import store from './flux/store';
 import publicRoutes from 'routes/public';
 
 import '@ergeon/core-components/dist/main.css';

@@ -40,6 +40,11 @@ const nonES5 = [
 
 const includeModules = buildIncludeRegexp(nonES5);
 
+const srcAliases = {};
+fs.readdirSync('./src', {withFileTypes: true})
+  .filter(dir => dir.isDirectory())
+  .forEach(dir => srcAliases[dir.name] = path.resolve(`./src/${dir.name}`));
+
 module.exports = {
   entry: {
     'assets/bundle': `${APP_DIR}/index.js`,
@@ -85,9 +90,11 @@ module.exports = {
     ],
   },
   resolve: {
+    roots: [path.resolve('./src')],
     modules: ['./node_modules'],
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
+      ...srcAliases,
       react: path.resolve('./node_modules/react'),
       'react-dom': path.resolve('./node_modules/react-dom'),
     },

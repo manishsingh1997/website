@@ -1,4 +1,6 @@
-export const parseAPIError = (error) => {
+import {ErrorResponse, ParsedAPIErrorType} from './types';
+
+export const parseAPIError = (error: {response?: ErrorResponse}): ParsedAPIErrorType => {
   return {
     response: error.response,
     statusCode: error.response && error.response.status,

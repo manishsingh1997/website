@@ -12,8 +12,8 @@ import {HouseType} from './types';
 
 import './index.scss';
 
-type AppHouseListPageProps = {
-  getHouses: (customerGID: number) => HouseType[],
+export type AppHouseListPageProps = {
+  getHouses: (customerGID: number) => void,
   houses: HouseType[],
   isListLoading: boolean,
   listError: null | []
