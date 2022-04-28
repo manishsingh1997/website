@@ -22,11 +22,11 @@
     <% if (htmlWebpackPlugin.options.enableSentry) { %>
     <!-- Init sentry as first step, to not miss errors during starting up -->
     <script
-      src="https://browser.sentry-cdn.com/5.27.6/bundle.min.js"
+      src="https://browser.sentry-cdn.com/5.30.0/bundle.min.js"
       integrity="sha384-rtZLZkLLKTQnK3HpcN1IG6wMYrx+O3GraPVH74SyT/gzvTfX6O/XLR7Ww65yd1w+"
       crossorigin="anonymous"
     ></script>
-    <script src="https://browser.sentry-cdn.com/5.27.6/captureconsole.min.js" crossorigin="anonymous"></script>
+    <script src="https://browser.sentry-cdn.com/5.30.0/captureconsole.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         Sentry.init({
           "dsn": <%= htmlWebpackPlugin.options.sentryDSN %>,
