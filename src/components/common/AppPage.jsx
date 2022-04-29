@@ -34,7 +34,7 @@ export default class AppPage extends React.Component {
     const errorMessage =
       error.data && Object.values(error.data).map((message, index) => <p key={`app-error-${index}`}>{message}</p>);
     return (
-      <div className="center error">
+      <div className="center error" data-testid="error">
         {errorMessage ? (
           <React.Fragment>{errorMessage}</React.Fragment>
         ) : (

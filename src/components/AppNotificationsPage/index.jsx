@@ -169,7 +169,12 @@ export default class AppNotificationsPage extends React.Component {
               </div>
             </Checkbox>
           </div>
-          <Button className={classNames({'is-loading': isSaving})} disabled={isSaving} size="large" type="submit">
+          <Button 
+            className={classNames({'is-loading': isSaving})}
+            data-testid='update-preferences'
+            disabled={isSaving}
+            size="large"
+            type="submit">
             {isSaving ? <Spinner active={true} borderWidth={0.1} size={25} /> : 'Update preferences'}
           </Button>
         </form>
