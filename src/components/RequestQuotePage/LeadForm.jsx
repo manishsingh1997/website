@@ -197,12 +197,12 @@ export default class LeadForm extends React.Component {
 
   getOrder() {
     const {lead} = this.props;
-    const {CATALOG_ID_FENCE, CATALOG_ID_GATE} = constants;
-
+    const {CATALOG_ID_FENCE, CATALOG_ID_GATE} = constants;  
+    // TODO Rename item.code attribute to the correct schemaCode
     return this.props.configs.map((item) => {
-      let schema = calcUtils.getParams(`?${item.code}`).schema.split(',');
+      let schema = (calcUtils.getParams(`?${item.code}`).schema || '').split(',');
       schema = schema.map((number) => parseInt(number, 10));
-      const code = calcUtils.getParams(`?${item.code}`).code.split(',');
+      const code = (calcUtils.getParams(`?${item.code}`).code || '').split(',');
       return {
         advancedEditorUrl: getAdvancedEditorUrl(
           {schema, code, catalog_type: item.catalog_type},
