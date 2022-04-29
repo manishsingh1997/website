@@ -1,36 +1,100 @@
 @import '@ergeon/core-components/src/components/variables.scss';
+@mixin skew-container ($width, $height: 100%, $position: absolute, $display: flex) {
+  content: '';
+  position: $position;
+  display: $display;
+  border-radius: $corner-soft;
+  width: $width;
+  height: $height;
+  top: 0;
+  background-image: linear-gradient(180deg, $blue-3, $blue-2);
+}
+
+@mixin skew-display ($right: none, $left: none, $skewX: 0, $zIndex: none, $middle: 0) {
+  right: $right;
+  left: $left;
+  z-index: $zIndex;
+  transform: skewX($skewX);
+
+  @if $middle != 1 {
+    @include tablet {
+      transform: skewX(0);
+      display: none;
+    }
+  }
+  @if $middle = 1 {
+    transform: skewX(-$skewX);
+    > * {
+      transform: skewX($skewX);
+    }
+
+    @include tablet {
+      width: 100%;
+      transform: none;
+      > * {
+        transform: none;
+      }
+    }
+  }
+}
+
 .short_line {
+  $short_heart: 4px;
+
   display: block;
-  width: 60px;
-  height: 4px;
-  margin: 12px auto;
+  width: $h-60;
+  height: $short_heart;
+  margin: $v-12 auto;
   background-color: $gray-4;
 }
 .values-container {
   display: flex;
   max-width: 940px;
-  margin-right: auto;
-  margin-left: auto;
+  margin: auto;
   justify-content: space-between;
-  background-image: url('../../assets/skew_bg.png');
-  background-position: 0px 0px;
-  background-size: 940px;
-  background-repeat: no-repeat;
-  margin-top: 40px;
+  margin-top: $v-20 * 2;
 
   .values-item {
+    $item-width: 270px;
+    $item-skew-distance: -30px;
+    $item-max-width: $v-30 * 10;
+    $item-height: $v-20 * 10;
+    $skew-width: $h-60 + $h-20;
+    $corner-custom: 10px;
+    $skew-degrees: 10deg;
+
     display: flex;
-    width: 300px;
-    height: 200px;
+    width: $item-width;
+    height: $item-height;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
-    background-image: none;
+    border-radius: $corner-custom;
+    background-image: linear-gradient(180deg, $blue-3, $blue-2);
     text-align: center;
+    position: relative;
+
+    &:nth-child(2) {
+      $is-middle: 1;
+
+      @include skew-container($width: $item-max-width, $height: $item-height, $position: relative, $display: flex);
+      @include skew-display($skewX: 10deg, $middle: $is-middle);
+    }
+
+    &:nth-child(1)::after {
+      @include skew-container($width: $skew-width, $display: block);
+      @include skew-display($right: $item-skew-distance, $skewX: -$skew-degrees, $zIndex: $z-index-under-layer);
+      // unknown but this fixes an overwriting error
+      transform: skewX(-$skew-degrees);
+    }
+
+    &:nth-child(3)::before {
+      @include skew-container($width: $skew-width);
+      @include skew-display($left: $item-skew-distance, $skewX: $skew-degrees, $zIndex: $z-index-under-layer);
+    }
 
     .image-24 {
-      margin-bottom: 12px;
+      margin-bottom: $v-12;
     }
 
     &__title {
@@ -47,19 +111,22 @@
   }
 }
 .about-section {
-  max-width: 940px;
-  margin-top: 60px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 60px 120px;
-  border-radius: 20px;
+  $about-max-width: 940px;
+  $v-60: $v-30 * 2;
+  $corner-custom: 20px;
+
+  max-width: $about-max-width;
+  margin: auto;
+  margin-top: $v-60;
+  padding: $v-60 $h-120;
+  border-radius: $corner-custom;
   background-image: linear-gradient(180deg, $gray-6, rgba($white, 0));
   font-family: $font-content;
   font-size: $font-regular-size;
   line-height: $line-height-regular;
 
   .about__title {
-    margin-bottom: 12px;
+    margin-bottom: $v-12;
     font-family: 'Hind Vadodara', sans-serif;
     font-size: $h4-size;
     line-height: $h4-line-height;
@@ -76,10 +143,9 @@
 
     .values-item {
       position: relative;
-      z-index: 2;
-      margin-right: 10px;
-      margin-left: 10px;
-      padding: 20px;
+      z-index: $z-index-2;
+      margin: 0 $h-10;
+      padding: $v-20;
     }
   }
 
@@ -108,15 +174,14 @@
     .values-item {
       width: 100%;
       height: auto;
-      margin-bottom: 20px;
+      margin-bottom: $v-20;
       flex: 0 auto;
-      background-image: linear-gradient(180deg, #f2fdf7, #e1f9eb);
     }
   }
 
   .about-section {
-    margin-top: 30px;
-    padding: 30px 40px;
+    margin-top: $v-30;
+    padding: $v-30 $h-40;
     font-size: $font-mobile-size;
     line-height: $line-height-mobile;
 
@@ -127,13 +192,16 @@
   }
 
   .career-section {
+    $section-width-max: 520px;
+    $v-60: $v-30 * 2;
+
     .tile {
       display: flex;
-      max-width: 520px;
-      margin-top: 60px;
+      max-width: $section-width-max;
+      margin-top: $v-60;
       margin-right: auto;
       margin-left: auto;
-      padding: 40px;
+      padding: $h-40;
       float: none;
     }
   }
@@ -146,12 +214,12 @@
 
     .values-item {
       max-width: 100%;
-      padding-bottom: 36px;
+      padding-bottom: $v-36;
     }
   }
 
   .about-section {
-    padding: 20px;
+    padding: $v-20;
 
     &__title {
       margin-top: 0px;
@@ -159,22 +227,25 @@
   }
 
   .profile {
-    margin-top: 24px;
+    margin-top: $v-24;
+    $v-22: 22px;
+    $v-26: 26px;
+    $v-4: 4px;
+    $line-height-22: 22px;
 
     .linkedin-link {
-      height: 22px;
-      margin-top: 4px;
-      padding-left: 26px;
-      background-size: 20px 20px;
-      line-height: 22px;
+      height: $v-22;
+      margin-top: $v-4;
+      padding-left: $v-26;
+      background-size: $v-20 $h-20;
+      line-height: $line-height-22;
     }
   }
 
   .career-section {
     .tile {
-      margin-top: 30px;
-      margin-bottom: 30px;
-      padding: 20px;
+      margin: $v-30 0;
+      padding: $v-20;
 
       .button {
         max-width: 100%;
@@ -193,7 +264,9 @@
 }
 
 .profiles {
-  min-width: 270px;
+  $h-270: 270px;
+
+  min-width: $h-270;
   @include tablet() {
     display: flex;
     justify-content: flex-start;
@@ -204,16 +277,16 @@
 }
 .profile {
   display: flex;
-  margin-top: 40px;
+  margin-top: $h-40;
   align-items: flex-start;
   @include tablet() {
-    margin-right: 40px;
+    margin-right: $h-40;
   }
   @include phone() {
     margin-right: unset;
   }
   .profile__info {
-    margin-left: 20px;
+    margin-left: $h-20;
 
     .profile__title {
       color: #787e75;
@@ -223,30 +296,38 @@
     }
 
     .linkedin-link {
+      $v-26: 26px;
+      $h-29: 29px;
+
       display: block;
-      height: 26px;
-      margin-top: 12px;
-      padding-left: 29px;
+      height: $v-26;
+      margin-top: $v-12;
+      padding-left: $h-29;
       background-image: url('../../assets/linkedin.svg');
       background-position: 0px 50%;
       background-repeat: no-repeat;
       color: #187fb8;
-      line-height: 26px;
+      line-height: $v-26;
     }
   }
 }
 .tile {
-  z-index: 2;
+  $h-620: 620px;
+  $h-30: $h-20 + $h-10;
+  $v-320: 320px;
+  $v-40: $v-20 * 2;
+
+  z-index: $z-index-2;
   position: relative;
-  min-width: 620px;
-  margin-left: 30px;
+  min-width: $h-620;
+  margin-left: $h-30;
   display: flex;
-  margin-top: 40px;
-  padding: 47px 60px 60px;
+  margin-top: $v-40;
+  padding: $v-48 $h-60 $h-60;
   flex-direction: column;
   align-items: center;
   border: 1px solid $gray-4;
-  border-radius: 12px;
+  border-radius: $corner-soft;
   background-color: $white;
   box-shadow: 0 5px 15px 0 rgba(black, 0.1);
   text-align: left;
@@ -256,12 +337,12 @@
   }
   @include phone() {
     min-width: unset;
-    padding: 30px;
+    padding: $h-30;
   }
   &__description {
     display: block;
-    max-width: 320px;
-    margin: 17px auto 30px;
+    max-width: $v-320;
+    margin: $v-16 auto $h-30;
     font-size: $h5-size;
     text-align: center;
     @include phone() {
