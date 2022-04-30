@@ -56,6 +56,22 @@ describe('Should test the App House List Page', () => {
     expect(houseNumber2).toBeInTheDocument();
     expect(houseAddress1).toBeInTheDocument();
     expect(houseAddress2).toBeInTheDocument();
-  })
+  });
+
+  test('Should render error message if there is no house data', () => {
+    const mockProps = {
+      houses: [],
+      isListLoading: false,
+      listError: null,
+      getHouses: () => [],
+    };
+    render(
+      <Provider store={store}>
+        <AppHouseListPage {...mockProps}/>
+      </Provider>
+    );
+    const notification = screen.getByText('There are no houses associated with your account yet.');
+    expect(notification).toBeInTheDocument();
+  });
 
 });

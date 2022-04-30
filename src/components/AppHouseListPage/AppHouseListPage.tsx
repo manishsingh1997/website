@@ -1,13 +1,8 @@
-import React from 'react';
-// @ts-ignore
-import MapComponent from '@ergeon/map-component';
-import {Spinner, googleIntegration} from '@ergeon/core-components';
-import iconMarker from 'assets/marker.svg';
+import {Notification} from '@ergeon/core-components';
+import React, {Fragment, useCallback, useContext} from 'react';
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
-import DataRow from '../../components/common/DataRow';
-import {getFormattedAddress} from '../../utils/app-house';
 import AppPage from '../../components/common/AppPage';
-import AppSubCard from '../../components/common/AppSubCard';
+import HouseCard from './HouseCard';
 import {HouseType} from '../types';
 
 import './index.scss';
@@ -19,86 +14,44 @@ export type AppHouseListPageProps = {
   listError: null | []
 }
 
-export default class AppHouseListPage extends React.Component<AppHouseListPageProps> {
+const AppHouseListPage = (props: AppHouseListPageProps) => {
+  const {getHouses, houses, listError, isListLoading} = props;
 
-  static contextType = CustomerGIDContext;
+  const customerGID = useContext(CustomerGIDContext);
 
-  fetchData() {
-    const {getHouses} = this.props;
-    const customerGID = this.context;
+  const fetchData = useCallback(() => {
     getHouses(customerGID);
-  }
+  }, [customerGID]);
 
-  renderListElementContent(house: HouseType) {
-    const mapControls = {
-      zoomControl: false,
-      mapTypeControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      rotateControl: false,
-      fullscreenControl: false,
-    };
-
-    const locationMarker = {
-      info: '',
-      position: {
-        lat: house['address'] && house['address']['latitude'],
-        lng: house['address'] && house['address']['longitude'],
-      },
-      icon: iconMarker,
-    };
-
+  const renderContent = useCallback(() => {
+    const isEmptyHouseList = !houses || houses.length === 0;
+    if (isEmptyHouseList) {
+      return (
+        <Notification
+          mode="embed"
+          type="Information">
+          There are no houses associated with your account yet.
+        </Notification>
+      )
+    }
     return (
-      <div className="flex-wrapper">
-        <div>
-          <DataRow title="Address" value={getFormattedAddress(house)} />
-        </div>
-        {house['address'] && (
-          <div className="map-wrapper">
-            <MapComponent
-              aspectRatio="4:3"
-              controls={mapControls}
-              fitBy="width"
-              loadGoogleMapsLibrary={googleIntegration.getGoogleLoader()}
-              loadingPlaceholder={<Spinner active={true} color="blue" size={32} />}
-              markers={[locationMarker]}
-              popupBehaviour="close"
-              styles={[{stylers: [{saturation: -100}]}]}
-              zoom={14}
-            />
-          </div>
-        )}
-      </div>
+      <Fragment>
+        {houses.map((house, index) =>
+          <HouseCard house={house} houseNumber={index + 1} key={`house-${house.id}`}/>)}
+      </Fragment>
     );
-  }
+  }, [houses]);
 
-  renderContent() {
-    const {houses} = this.props;
-
-    return (
-      <React.Fragment>
-        {houses &&
-          houses.map((house, cnt) => (
-            <AppSubCard
-              key={`house-${house.id}`}
-              renderContent={this.renderListElementContent.bind(this, house)}
-              renderHeader={() => `House #${cnt + 1}`}
-            />
-          ))}
-      </React.Fragment>
-    );
-  }
-
-  render() {
-    return (
-      <AppPage
-        className="house-list-page"
-        error={this.props.listError}
-        fetchData={this.fetchData.bind(this)}
-        isLoading={this.props.isListLoading}
-        renderContent={this.renderContent.bind(this)}
-        renderHeader={() => 'Houses'}
-      />
-    );
-  }
+  return (
+    <AppPage
+      className="house-list-page"
+      error={listError}
+      fetchData={fetchData}
+      isLoading={isListLoading}
+      renderContent={renderContent}
+      renderHeader={() => 'Houses'}
+    />
+  )
 }
+
+export default AppHouseListPage;

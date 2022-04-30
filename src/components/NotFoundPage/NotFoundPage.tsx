@@ -5,7 +5,6 @@ import {getPageNotFoundImage} from './utils';
 
 const NotFoundPage = () => (
   <>
-    {/* @ts-ignore */}
     <Helmet>
       <meta content="noindex" name="robots" />
     </Helmet>

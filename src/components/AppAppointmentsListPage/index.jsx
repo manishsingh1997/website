@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import {SelectFilter} from '@ergeon/core-components';
 
 import {formatDate, formatTime} from 'utils/date';
-import {getFormattedAddress} from 'utils/app-house';
+import {getFormattedAddress} from '../../utils/app-house';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import DataRow from 'components/common/DataRow';
 
