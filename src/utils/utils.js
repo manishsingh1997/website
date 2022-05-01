@@ -36,11 +36,6 @@ export const getParameterByName = (name, url) => {
   return parameterValue;
 };
 
-export const isObject = (value) => {
-  const type = typeof value;
-  return value != null && (type === 'object' || type === 'function');
-};
-
 export const getExpiresAtTitle = (expiresAt) => {
   return isPastDate(expiresAt) ? 'Expired At' : 'Expires At';
 };

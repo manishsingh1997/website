@@ -1,5 +1,5 @@
 import {getCustomerAppointments} from 'api/app';
-import {parseAPIError} from 'utils/api';
+import {parseAPIError} from 'utils/api.ts';
 
 export const actionTypes = {
   GET_APPOINTMENTS_START: 'GET_APPOINTMENTS_START',

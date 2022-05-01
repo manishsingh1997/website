@@ -1,6 +1,6 @@
 import {actionTypes} from '../actions/auth';
 
-const initialAuthState = {
+export const initialAuthState = {
   user: null,
   isAuthLoading: false,
   authError: null,

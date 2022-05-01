@@ -1,5 +1,5 @@
 import {authService} from 'utils/auth';
-import {parseAPIError} from 'utils/api';
+import {parseAPIError} from 'utils/api.ts';
 
 export const actionTypes = {
   AUTH_CODE_ACTIVATION_START: 'AUTH_CODE_ACTIVATION_START',

@@ -12,7 +12,7 @@ import {
 } from 'api/app';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import {getUnsubscribeCodeFromQuery} from 'utils/app-notifications';
-import {parseAPIError} from 'utils/api';
+import {parseAPIError} from 'utils/api.ts';
 
 const COMPANY_NEWS_NOTIFICATION_TYPE = 'is_email_newsletter_ok';
 

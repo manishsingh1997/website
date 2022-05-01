@@ -9,7 +9,7 @@ import {Redirect} from 'react-router-dom';
 import {getQuoteDetails} from 'api/app';
 import AppLoader from 'components/common/AppLoader';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
-import {parseAPIError} from 'utils/api';
+import {parseAPIError} from 'utils/api.ts';
 import {
   DIRECT_PREVIEW_SLUG,
   HTTP_STATUS_NOT_FOUND,

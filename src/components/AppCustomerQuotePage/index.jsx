@@ -4,7 +4,7 @@ import {Route} from 'react-router-dom';
 import {isEmpty, some} from 'lodash';
 
 import {isPDFMode} from 'utils/utils';
-import {parseAPIError} from 'utils/api';
+import {parseAPIError} from 'utils/api.ts';
 import {formatPrice, isQuoteReplaced, isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 

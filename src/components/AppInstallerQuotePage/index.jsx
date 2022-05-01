@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Route} from 'react-router-dom';
 
 import {isPDFMode} from 'utils/utils';
-import {parseAPIError} from 'utils/api';
+import {parseAPIError} from 'utils/api.ts';
 import {formatPrice} from 'utils/app-order';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 

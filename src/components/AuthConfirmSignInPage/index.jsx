@@ -67,7 +67,7 @@ class AuthConfirmSignInPage extends React.Component {
           <img className="icon-invalid-lock" src={ErrorIcon} />
         </div>
         <h4 className="center spacing after__is-12">
-          {`Sorry, unexpected error happened (${errorCode}) . Please try again.`}
+          {`Sorry, unexpected error happened (${errorCode}). Please try again.`}
         </h4>
       </div>
     );
@@ -89,6 +89,7 @@ class AuthConfirmSignInPage extends React.Component {
       </form>
     );
   }
+
   renderLoader(text) {
     return (
       <div className="center">

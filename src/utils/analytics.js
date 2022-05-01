@@ -2,10 +2,14 @@ import * as Sentry from '@sentry/browser';
 
 import {getBaseEventData, getVisitorId, getCurrentData, tawk} from '@ergeon/erg-utms';
 import {DEFAULT_SOURCE_VALUE} from 'website/constants';
-import {isObject} from 'utils/utils';
 import {submitAddressEntered} from 'api/lead';
 import {CUSTOMER_LEAD_CREATED, ADDRESS_ENTERED} from 'utils/events';
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
+
+const isObject = (value) => {
+  const type = typeof value;
+  return value != null && (type === 'object' || type === 'function');
+};
 
 export const track = (eventName, data) => {
   // BEGIN: Google Tag manager

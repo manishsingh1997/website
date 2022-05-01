@@ -1,5 +1,5 @@
 import {getCustomerContacts} from 'api/app';
-import {parseAPIError} from 'utils/api';
+import {parseAPIError} from 'utils/api.ts';
 
 export const actionTypes = {
   GET_CONTACTS_START: 'GET_CONTACTS_START',

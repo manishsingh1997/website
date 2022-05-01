@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import PaneSwitcher from './PaneSwitcher';
 import {getParameterByName} from 'utils/utils';
 import {getNodes} from 'api/node';
-import {parseAPIError} from 'utils/api';
+import {parseAPIError} from 'utils/api.ts';
 import {Spinner} from '@ergeon/core-components';
 import './QASection.scss';
 
