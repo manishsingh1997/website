@@ -13,7 +13,7 @@ type HousesProps = {
   listError: null | []
 }
 
-const mapStateToProps = ({houses}: {houses: HousesProps }) => {
+const mapStateToProps = ({houses}: {houses: HousesProps}) => {
   return {
     houses: houses.data,
     isListLoading: houses.isListLoading,

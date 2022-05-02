@@ -11,7 +11,7 @@ export type AppHouseListPageProps = {
   getHouses: (customerGID: number) => void,
   houses: HouseType[],
   isListLoading: boolean,
-  listError: null | []
+  listError: [] | null
 }
 
 const AppHouseListPage = (props: AppHouseListPageProps) => {

@@ -58,7 +58,7 @@ describe('Rendering of App Appointments List Page', () => {
       <Router history={createMemoryHistory()}>
         <AppAppointmentsListPage
           appointments={[mockUpcomingAppointment, mockPastAppointment]}
-          getAppointments={() => [mockUpcomingAppointment, mockPastAppointment]}
+          getAppointments={jest.fn}
           isListLoading={false}
           listError={null}
         />
