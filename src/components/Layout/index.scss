@@ -7,16 +7,16 @@
   .dropdown-menu {
     display: block;
     min-width: unset;
-    max-width: 300px;
+    max-width: $h-60 * 5;
     position: relative;
 
     .special {
       border-bottom: 1px solid $gray-4;
     }
     .icon {
-      margin-right: 10px;
-      height: 20px;
-      min-width: 25px;
+      margin-right: $h-10;
+      height: $v-20;
+      min-width: $h-20 + $h-5;
       text-align: center;
 
       svg path {
@@ -30,7 +30,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 120px;
+      max-width: $h-120;
     }
     .link {
       height: $v-36;
@@ -43,7 +43,7 @@
     }
 
     @include phone() {
-      min-width: 20px;
+      min-width: $h-20;
     }
   }
 
@@ -52,6 +52,8 @@
     right: 0;
     .menu-item {
       width: inherit;
+      margin-right: 0;
+      padding-right: $h-20;
     }
 
     .menu-title {
@@ -64,17 +66,18 @@
       border: 1px solid rgba(0, 0, 0, 0.05);
       background: $white;
       box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
-      min-width: 200px;
+      min-width: $h-20 * 10;
       right: -12;
-      margin-top: 6px;
-      margin-right: 10px;
+      margin-top: $v-6;
+      margin-right: $h-10;
 
       .menu-item {
-        padding: 6px 12px;
-        line-height: 32px;
+        padding:$h-5 $h-10 + 2;
+        line-height: $h4-line-height;
         border-radius: unset;
         font-weight: normal;
         font-size: $font-mobile-size;
+        margin-left: 0;
       }
     }
   }
@@ -103,7 +106,7 @@
       }
     }
     li {
-      border-radius: 4px;
+      border-radius: $corner-default;
       margin: unset;
 
       @include phone {
@@ -112,7 +115,7 @@
     }
     .sign-in-icon {
       vertical-align: middle;
-      margin-right: 5px;
+      margin-right: $h-5;
       padding-bottom: 2px;
 
       @include phone() {
@@ -123,7 +126,7 @@
 
   .sign-in-icon {
     vertical-align: middle;
-    margin-right: 5px;
+    margin-right: $h-5;
 
     @include phone() {
       margin-right: unset;
@@ -142,7 +145,7 @@
   .loaderWrapper {
     @include phone {
       padding-top: unset;
-      padding-left: 5px;
+      padding-left: $h-5;
     }
   }
 
@@ -154,10 +157,10 @@
 
   .phone-number {
     display: flex;
-    margin-right: 18px;
+    margin-right: $h-20 - 2;
     @include phone() {
       position: absolute;
-      top: 12px;
+      top: $v-12;
       right: 0;
     }
 
@@ -167,12 +170,12 @@
     }
 
     &__link {
-      font-size: 21px;
+      font-size: $h4-size;
       padding-left: 8px;
       color: $blue-1;
       font-weight: 600;
       @include phone() {
-        font-size: 14px;
+        font-size: $font-mobile-size;
       }
     }
   }
@@ -181,7 +184,7 @@
     position: fixed;
     bottom: $v-20;
     left: $h-20;
-    z-index: 99;
+    z-index: $z-index-100;
     animation-name: move-it-out;
     animation-duration: 2s;
     animation-delay: 4s;
@@ -194,10 +197,10 @@
       bottom: $v-20;
     }
     25% {
-      bottom: 40px;
+      bottom: $v-42 - 2;
     }
     100% {
-      bottom: -500px;
+      bottom: -1 * $h-10 * 50;
       display: none;
     }
   }
