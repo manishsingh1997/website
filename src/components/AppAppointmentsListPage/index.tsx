@@ -59,7 +59,7 @@ export default class AppAppointmentsListPage extends React.Component<AppAppointm
   };
 
   isAppointmentsEmpty(appointments: Appointment[]) {
-    return appointments.length === 0;
+    return !appointments || appointments.length === 0;
   }
 
   renderListElementContent(appointment: Appointment) {
