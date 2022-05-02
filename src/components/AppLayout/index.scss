@@ -38,7 +38,7 @@
 
   .customer-app-sidebar {
     max-width: 260px;
-    padding: 5px;
+    overflow: hidden;
     margin: 10px;
     width: 100%;
 
@@ -54,7 +54,7 @@
         align-items: center;
 
         padding: 8px 20px;
-        margin: 2px 0px 2px 0px;
+        margin: 0;
         position: relative;
         color: $black-1;
         font-weight: normal;
