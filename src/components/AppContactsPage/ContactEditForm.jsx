@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Button, Input, PhoneInput, Spinner} from '@ergeon/core-components';
-import AdditionalContactInfo from './AdditionalContactInfo';
-
 import DataRow from 'components/common/DataRow';
+import AdditionalContactInfo from './AdditionalContactInfo';
 
 const ContactEditForm = (props) => {
   const {

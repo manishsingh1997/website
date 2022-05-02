@@ -2,8 +2,8 @@ import React, {useMemo} from 'react';
 import {getFormattedAddress} from '../../utils/app-house';
 import AppSubCard from '../common/AppSubCard';
 import DataRow from '../common/DataRow';
-import HouseMap from './HouseMap';
 import {HouseType} from '../types';
+import HouseMap from './HouseMap';
 
 const HouseCard = ({house, houseNumber} : {house: HouseType, houseNumber: number}) => {
 

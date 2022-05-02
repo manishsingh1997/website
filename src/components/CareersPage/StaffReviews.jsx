@@ -2,11 +2,11 @@ import React from 'react';
 
 import {Rating} from '@ergeon/core-components';
 
+import imageGlassDoor from '@ergeon/core-components/src/assets/icon-glassdoor.svg';
 import imageChartNinetyEight from 'assets/chart-98.svg';
 import imageChartOneHundred from 'assets/chart-100.svg';
 import imageLinkedin from 'assets/linkedin@2x.png';
 import imageCEO from 'assets/jenny@2x.jpg';
-import imageGlassDoor from '@ergeon/core-components/src/assets/icon-glassdoor.svg';
 
 import './StaffReviews.scss';
 

@@ -5,6 +5,7 @@ import {ReactSVG} from 'react-svg';
 
 import {Button} from '@ergeon/core-components';
 
+import somethingWrongIcon from '@ergeon/core-components/src/assets/icon-something-wrong@2x.svg';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import AppLoader from 'components/common/AppLoader';
 import SingleCard from 'components/common/SingleCard';
@@ -14,7 +15,6 @@ import {isQuoteDetailURL, isUnsubscribeURL} from 'utils/urls';
 import {getUnsubscribeCodeFromQuery} from 'utils/app-notifications';
 
 import './index.scss';
-import somethingWrongIcon from '@ergeon/core-components/src/assets/icon-something-wrong@2x.svg';
 
 export default class AppLayout extends React.Component {
   static propTypes = {

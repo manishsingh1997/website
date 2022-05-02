@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {constants, StyleBrowser} from '@ergeon/3d-lib';
-import {getCheckedZIP} from 'api/lead';
 import {tawk} from '@ergeon/erg-utms';
+import {getCheckedZIP} from 'api/lead';
 import PopUp from './PopUp';
 import './StyleBrowserWrapper.scss';
 

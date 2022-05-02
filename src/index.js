@@ -10,13 +10,15 @@ import {Router, Route, Switch, Redirect} from 'react-router-dom';
 import {initUTMs} from '@ergeon/erg-utms';
 import omit from 'lodash/omit';
 
+import {googleIntegration} from '@ergeon/core-components';
+import {DRAW_MAP_GOOGLE_LIBRARIES} from '@ergeon/draw-map';
+import {ERG_MAP_COMPONENT_LIBRARIES} from '@ergeon/map-component';
 import {FencePhotoData, GatePhotoData, DrivewayPhotoData} from 'data/photo-gallery';
 import {INSTALLER_PREVIEW_SLUG, DIRECT_PREVIEW_SLUG} from 'website/constants';
 import customScripts from 'website/custom-scripts';
 
 import AppAppointmentsListPage from 'containers/AppAppointmentsListPage';
 import AppContactsPage from 'containers/AppContactsPage';
-import AppHouseListPage from './containers/AppHouseListPage';
 import AppLayout from 'containers/AppLayout';
 import AppOrderDetailPage from 'containers/AppOrderDetailPage';
 import AppOrderListPage from 'containers/AppOrderListPage';
@@ -26,14 +28,12 @@ import AppQuoteDetailPage from 'containers/AppQuoteDetailPage';
 import AppNotificationsPage from 'components/AppNotificationsPage';
 import ErrorBoundary from 'components/ErrorBoundary';
 import Layout from 'containers/Layout';
-import NotFoundPage from './components/NotFoundPage';
 import MetaTags from 'components/common/MetaTags';
-import {googleIntegration} from '@ergeon/core-components';
-import {DRAW_MAP_GOOGLE_LIBRARIES} from '@ergeon/draw-map';
-import {ERG_MAP_COMPONENT_LIBRARIES} from '@ergeon/map-component';
+import publicRoutes from 'routes/public';
+import NotFoundPage from './components/NotFoundPage';
 
 import store from './flux/store';
-import publicRoutes from 'routes/public';
+import AppHouseListPage from './containers/AppHouseListPage';
 
 import '@ergeon/core-components/dist/main.css';
 import './main.scss';

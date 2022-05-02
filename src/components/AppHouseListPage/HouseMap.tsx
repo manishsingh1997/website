@@ -1,8 +1,8 @@
 import {googleIntegration, Spinner} from '@ergeon/core-components';
 // @ts-ignore
 import MapComponent from '@ergeon/map-component';
-import iconMarker from 'assets/marker.svg';
 import React from 'react';
+import iconMarker from 'assets/marker.svg';
 import {HouseAddress} from '../types';
 
 const HouseMap = ({address}: {address: HouseAddress}) => {

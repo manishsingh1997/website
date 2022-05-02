@@ -1,7 +1,6 @@
+import {CALC_SIDE_TYPE, CALC_AREA_TYPE, CALC_GATE_TYPE} from 'website/constants';
 import QuoteLinePreview from './QuoteLinePreview';
 import {getQuoteLineForCalcInputItem, indexLabel} from './utils';
-
-import {CALC_SIDE_TYPE, CALC_AREA_TYPE, CALC_GATE_TYPE} from 'website/constants';
 
 /**
  * Extracts correct quoteLine and returns "side" preview

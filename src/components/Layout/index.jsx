@@ -1,8 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
-import {NavLink} from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
 import times from 'lodash/times';
 import flatten from 'lodash/flatten';

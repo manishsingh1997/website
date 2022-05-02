@@ -1,9 +1,9 @@
+import {AnyAction} from 'redux';
+import thunk, {ThunkAction, ThunkMiddleware} from 'redux-thunk';
 import {configureStore} from '@reduxjs/toolkit';
 import {createMemoryHistory} from 'history';
-import {AnyAction} from 'redux';
 import {routerMiddleware} from 'react-router-redux';
 import {logger} from 'redux-logger';
-import thunk, {ThunkAction, ThunkMiddleware} from 'redux-thunk';
 
 import combinedReducers from './reducers';
 

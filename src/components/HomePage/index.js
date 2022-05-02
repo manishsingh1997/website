@@ -2,6 +2,8 @@ import React from 'react';
 
 import {BadgesSection} from '@ergeon/core-components';
 
+import imgCalc from 'assets/calc_promo.png';
+import imgMap from 'assets/map_image.png';
 import {showUpcomingFeatures} from '../../utils/utils';
 
 import SliderHero from './SliderHero';
@@ -11,8 +13,6 @@ import PromoBlock from './PromoBlock';
 import GetStartedSection from './GetStartedSection';
 import UpcomingGetStartedSection from './UpcomingGetStartedSection';
 import QASection from './QASection';
-import imgCalc from 'assets/calc_promo.png';
-import imgMap from 'assets/map_image.png';
 import RemoteFeatures from './RemoteFeatures';
 import TestimonialBanner from './TestimonialBanner';
 

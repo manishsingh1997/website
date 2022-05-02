@@ -1,5 +1,5 @@
-import {connect} from 'react-redux';
 import {ThunkActionDispatch} from 'redux-thunk';
+import {connect} from 'react-redux';
 
 import {getAppointments} from '../flux/actions/app-appointments';
 import AppAppointmentsListPage from '../components/AppAppointmentsListPage';

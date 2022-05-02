@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Route} from 'react-router-dom';
 import {isEmpty, some} from 'lodash';
 
-import {isPDFMode} from 'utils/utils';
+import {isPDFMode, showUpcomingFeatures} from 'utils/utils';
 import {parseAPIError} from 'utils/api.ts';
 import {formatPrice, isQuoteReplaced, isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
@@ -17,19 +17,18 @@ import {
 import AppLoader from 'components/common/AppLoader';
 import BuildSpecs from 'components/common/AppQuoteComponents/BuildSpecs';
 import {DIRECT_PREVIEW_SLUG} from 'website/constants';
+import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
+import QuoteError from '../common/AppQuoteComponents/QuoteError';
+import {prepareQuoteApprovalLines} from '../common/AppQuoteComponents/utils';
 import CustomerDetails from './CustomerDetails';
 import BillingForm from './BillingForm';
 import ExplanationSection from './ExplanationSection';
 import ProjectNotes from './ProjectNotes';
-import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
-import QuoteError from '../common/AppQuoteComponents/QuoteError';
-import {prepareQuoteApprovalLines} from '../common/AppQuoteComponents/utils';
 
 import '@ergeon/draw-map/styles.css';
 
 import '../common/AppQuoteComponents/index.scss';
 import AdditionalApprovalsList from './AdditionalApprovalsList';
-import {showUpcomingFeatures} from '../../utils/utils';
 
 export default class AppCustomerQuotePage extends React.Component {
   static propTypes = {

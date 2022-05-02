@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import {getLabelFromIndex} from '@ergeon/draw-map';
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 
-import {isQuoteLineOfMapKinds, getTagsForQuoteLine, getImagesForQuoteLine, getBuildSpecsForQuoteLine} from './utils';
 import QuoteLine from '../QuoteLine';
 import {showUpcomingFeatures} from '../../../../utils/utils';
+import {isQuoteLineOfMapKinds, getTagsForQuoteLine, getImagesForQuoteLine, getBuildSpecsForQuoteLine} from './utils';
 
 /*
  * Filter sides from calcInput that were not found in quote lines.

@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {Button, Spinner} from '@ergeon/core-components';
-import {googleIntegration} from '@ergeon/core-components';
+import {Button, Spinner, googleIntegration} from '@ergeon/core-components';
 import {calcUtils} from '@ergeon/3d-lib';
 import MapComponent from '@ergeon/map-component';
 
+import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import AppLoader from 'components/common/AppLoader';
 import Marker from 'assets/marker.svg';
-import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import {getParameterByName, showUpcomingFeatures} from 'utils/utils';
 import Success from 'components/common/Success';
+import ConfigCart from 'containers/ConfigCart';
 import LeadForm from './LeadForm';
 import TermsFooter from './TermsFooter';
-import ConfigCart from 'containers/ConfigCart';
 
 import './index.scss';
 

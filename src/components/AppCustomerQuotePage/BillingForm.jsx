@@ -13,13 +13,13 @@ import {
   cardCvcValidation,
   getStripeToken,
 } from 'utils/billing';
-import {showUpcomingFeatures} from '../../utils/utils';
 import {CARD_TRANSACTION_FEE, CONTACT_EMAIL} from 'website/constants';
 
 import IconCards from 'assets/icon-cards.png';
 import IconSSL from 'assets/icon-ssl.svg';
 import IconCardSecure from 'assets/icon-card-secure.svg';
 import IconMarkGreen from 'assets/icon-check-mark.svg';
+import {showUpcomingFeatures} from '../../utils/utils';
 
 import './BillingForm.scss';
 

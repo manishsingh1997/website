@@ -8,18 +8,16 @@ import {Button, Checkbox, FormField, PhoneInput, Spinner, Input, RadioButton} fr
 import {UPCOMING_FEATURES_PARAM} from '@ergeon/erg-utils-js';
 import {getBaseEventData} from '@ergeon/erg-utms';
 
-import AddNote from './AddNote';
-
+import {DRIVEWAY_SLUG, FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import {createValidator, phone, email, required} from 'utils/validation';
 import {submitLeadArrived} from 'api/lead';
-import {parseError, showUpcomingFeatures} from 'utils/utils';
+import {parseError, showUpcomingFeatures, getAdvancedEditorUrl} from 'utils/utils';
 import {identify, track, trackError, trackTawkLeadEvent} from 'utils/analytics';
 import {CUSTOMER_LEAD_CREATED} from 'utils/events';
 import {DEFAULT_SOURCE_VALUE} from 'website/constants';
-import {DRIVEWAY_SLUG, FENCE_SLUG} from '@ergeon/core-components/src/constants';
 
 import './LeadForm.scss';
-import {getAdvancedEditorUrl} from '../../utils/utils';
+import AddNote from './AddNote';
 
 const stringifyAddress = (address) => {
   if (address !== null && address !== undefined) {

@@ -1,5 +1,10 @@
 import React from 'react';
 
+import CareersHero from '../../assets/careers-page/career_hero.jpg';
+import Collage from '../../assets/careers-page/career_collage.jpg';
+import shirt from '../../assets/careers-page/career_shirt.png';
+import glass from '../../assets/careers-page/career_glass.png';
+import bags from '../../assets/careers-page/career_bag.png';
 import StaffMap from './StaffMap';
 import StaffReviews from './StaffReviews';
 import JobBoard from './JobBoard/index';
@@ -7,12 +12,6 @@ import JobBoard from './JobBoard/index';
 import Benefits from './Benefits';
 import TeamStats from './TeamStats';
 import Impact from './Impact';
-
-import CareersHero from '../../assets/careers-page/career_hero.jpg';
-import Collage from '../../assets/careers-page/career_collage.jpg';
-import shirt from '../../assets/careers-page/career_shirt.png';
-import glass from '../../assets/careers-page/career_glass.png';
-import bags from '../../assets/careers-page/career_bag.png';
 
 import './index.scss';
 

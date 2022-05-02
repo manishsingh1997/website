@@ -1,7 +1,7 @@
-import {getUnsubscribeCodeFromQuery} from 'utils/app-notifications';
 import queryString from 'query-string';
 import {some} from 'lodash';
 import {calcUtils} from '@ergeon/3d-lib';
+import {getUnsubscribeCodeFromQuery} from 'utils/app-notifications';
 
 export const getOrderDetailURL = (customerGID, orderId) => {
   return `/app/${customerGID}/orders/${orderId}`;

@@ -1,5 +1,5 @@
-import {connect} from 'react-redux';
 import {ThunkActionDispatch} from 'redux-thunk';
+import {connect} from 'react-redux';
 
 import AppHouseListPage from '../components/AppHouseListPage';
 import {HouseType} from '../components/types';

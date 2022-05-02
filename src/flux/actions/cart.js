@@ -1,8 +1,8 @@
 import some from 'lodash/some';
 import random from 'lodash/random';
-import {getPriceAndDescription} from 'api/lead';
 import {CatalogType, calcUtils, attrs} from '@ergeon/3d-lib';
 import moment from 'moment';
+import {getPriceAndDescription} from 'api/lead';
 
 export const actionTypes = {
   ADD_CONFIG: 'ADD_CONFIG',

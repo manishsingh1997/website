@@ -1,13 +1,11 @@
 import React from 'react';
 import ClassNames from 'classnames';
 
-import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
+import {PHONE_NUMBER,FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import AddressForm from 'containers/AddressForm';
-import {isChristmasTime} from 'utils/utils';
+import {isChristmasTime,getParameterByName} from 'utils/utils';
 import Slider from './Slider';
-import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
-import {getParameterByName} from 'utils/utils';
 
 const AUTO_SLIDE_INTERVAL_SECONDS = 5;
 

@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
-import {addConfig, updateConfig, removeConfig, addConfigFromSchema} from '../flux/actions/cart';
 import ConfigCart from 'components/RequestQuotePage/ConfigCart';
+import {addConfig, updateConfig, removeConfig, addConfigFromSchema} from '../flux/actions/cart';
 
 const mapStateToProps = ({address, cart}) => {
   return {

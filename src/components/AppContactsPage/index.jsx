@@ -5,9 +5,9 @@ import classnames from 'classnames';
 import {Button, Notification} from '@ergeon/core-components';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import AppPage from 'components/common/AppPage';
+import {updateCustomerContacts} from '../../api/app';
 import ContactEditForm from './ContactEditForm';
 import ContactReadonlyForm from './ContactReadonlyForm';
-import {updateCustomerContacts} from '../../api/app';
 
 import './index.scss';
 

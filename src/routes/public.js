@@ -1,8 +1,6 @@
-import AboutPage from '../components/AboutPage';
 import AuthConfirmSignInPage from 'containers/AuthConfirmSignInPage';
 import AuthLogoutPage from 'containers/AuthLogoutPage';
 import AuthSignInPage from 'components/AuthSignInPage';
-import CareersPage from '../components/CareersPage';
 import ContactUsPage from 'components/ContactUsPage';
 import FAQPage from 'components/FAQPage';
 import HelpLandingPage from 'components/HelpLandingPage';
@@ -12,6 +10,8 @@ import LocationsPage from 'components/LocationsPage';
 import PhotoGallery from 'components/PhotoGallery';
 import RequestQuotePage from 'containers/RequestQuotePage';
 import WarrantiesPage from 'components/WarrantiesPage';
+import CareersPage from '../components/CareersPage';
+import AboutPage from '../components/AboutPage';
 
 /**
  * This routes can be visited without any authentication.

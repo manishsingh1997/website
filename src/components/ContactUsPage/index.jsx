@@ -2,11 +2,11 @@ import React from 'react';
 
 import './index.scss';
 import {Link} from 'react-router-dom';
-import ContactUsForm from './ContactUsForm';
-import Success from '../common/Success';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import {CONTACT_EMAIL} from 'website/constants';
+import Success from '../common/Success';
+import ContactUsForm from './ContactUsForm';
 
 class ContactUsPage extends React.Component {
   state = {

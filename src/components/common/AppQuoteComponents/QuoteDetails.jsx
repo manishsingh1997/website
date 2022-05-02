@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import QuoteDescription from './QuoteDescription';
-import {Notification, Spinner, ImageCard, Title} from '@ergeon/core-components';
-import {googleIntegration} from '@ergeon/core-components';
+import {Notification, Spinner, ImageCard, Title, googleIntegration} from '@ergeon/core-components';
 import DrawMap from '@ergeon/draw-map';
 import classNames from 'classnames';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
-import QuoteLines from './QuoteLines';
-import {CARD_TRANSACTION_FEE} from 'website/constants';
-import {isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
 import {Link} from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 
 import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
+import {isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
+import {CARD_TRANSACTION_FEE} from 'website/constants';
 import {showUpcomingFeatures} from '../../../utils/utils';
+import QuoteLines from './QuoteLines';
+import QuoteDescription from './QuoteDescription';
 import {hideDroppedLabels} from './utils';
 export default class QuoteDetails extends React.Component {
   static propTypes = {
@@ -130,8 +129,8 @@ export default class QuoteDetails extends React.Component {
         <Spinner active={isLoadingMap} borderWidth={SPINNER_BORDER_WITH} color="blue" size={SPINNER_SIZE} />
         <DrawMap
           className={classNames({'quote-labels-map__content': isLoadingMap})}
-          disabled
           disableMapUI={asPDF}
+          disabled
           googleLoader={googleIntegration.getGoogleLoader()}
           location={location}
           onTilesLoaded={() => {

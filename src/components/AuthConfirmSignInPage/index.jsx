@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-import {Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 import ExpiredLinkIcon from '@ergeon/core-components/src/assets/icon-expired-link.svg';
 import InvalidLockIcon from '@ergeon/core-components/src/assets/icon-link-is-not-valid.svg';

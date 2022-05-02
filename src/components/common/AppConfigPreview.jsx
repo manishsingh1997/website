@@ -7,10 +7,10 @@ import preview3DIcon from '@ergeon/core-components/src/assets/icon-3d.svg';
 import previewPlaceholderIcon from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {calcUtils} from '@ergeon/3d-lib';
-import {isPDFMode} from 'utils/utils';
-import {getFencequotingURL} from '../../utils/urls';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
+import {isPDFMode} from 'utils/utils';
+import {getFencequotingURL} from '../../utils/urls';
 
 import './AppConfigPreview.scss';
 

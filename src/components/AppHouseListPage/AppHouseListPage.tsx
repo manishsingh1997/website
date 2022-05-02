@@ -2,8 +2,8 @@ import {Notification} from '@ergeon/core-components';
 import React, {Fragment, useCallback, useContext} from 'react';
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
 import AppPage from '../../components/common/AppPage';
-import HouseCard from './HouseCard';
 import {HouseType} from '../types';
+import HouseCard from './HouseCard';
 
 import './index.scss';
 

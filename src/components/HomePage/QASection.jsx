@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import PaneSwitcher from './PaneSwitcher';
+import {Spinner} from '@ergeon/core-components';
 import {getParameterByName} from 'utils/utils';
 import {getNodes} from 'api/node';
 import {parseAPIError} from 'utils/api.ts';
-import {Spinner} from '@ergeon/core-components';
+import PaneSwitcher from './PaneSwitcher';
 import './QASection.scss';
 
 const FENCE_NODES = ['201900373', '202000553', '201900363', '201900318'];
