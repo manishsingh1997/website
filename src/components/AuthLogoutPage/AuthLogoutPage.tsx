@@ -1,88 +1,24 @@
-import classNames from 'classnames';
-import React from 'react';
-import {Link, Redirect} from 'react-router-dom';
-import {Button, Spinner} from '@ergeon/core-components';
-import SingleCard from '../../components/common/SingleCard';
-import Success from '../../components/common/Success';
-import {AuthType} from './types';
+import React, {useMemo} from 'react';
+import {AUTH_STATE} from './constants';
+import LogoutConfirmation from './components/LogoutConfirmation';
+import LogoutSuccess from './components/LogoutSuccess';
+import NotLoggedIn from './components/NotLoggedIn';
+import {AuthLogoutPageProps} from './types';
+import {getAuthState} from './utils';
 
-type AuthLogoutPageProps = {
-  auth: AuthType,
-  logout: () => void,
-}
+const AuthLogoutPage = (props: AuthLogoutPageProps) => {
+  const { auth } = props;
 
-class AuthLogoutPage extends React.Component<AuthLogoutPageProps> {
-  state = {
-    redirectNow: false,
-  };
+  const authState = useMemo(() => getAuthState(auth), [auth]);
 
-  handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    this.props.logout();
+  switch (authState) {
+    case AUTH_STATE.USER_LOGGED_OUT:
+      return <LogoutSuccess/>;
+    case AUTH_STATE.USER_NOT_LOGGED_IN:
+      return <NotLoggedIn/>;
+    default:
+      return <LogoutConfirmation auth={props.auth} logout={props.logout}/>;
   }
-
-  renderConfirmation() {
-    const {auth: {isAuthLoading, logoutError}} = this.props;
-
-    return (
-      <div className="center">
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <h4 className="spacing after__is-12">Logout</h4>
-          <p className="spacing after__is-24">Are you sure you want to logout?</p>
-          {logoutError && (
-            <p className="error spacing after__is-12 small-text">Something unexpected happened, please try again</p>
-          )}
-          <Button
-            className={classNames({'is-loading': isAuthLoading})}
-            disabled={isAuthLoading}
-            size="large"
-            type="submit"
-          >
-            {isAuthLoading ? <Spinner active={true} borderWidth={0.1} size={25} /> : 'Yes, Logout'}
-          </Button>
-        </form>
-      </div>
-    );
-  }
-
-  renderNotLoggedIn() {
-    return (
-      <div className="center">
-        <h4>Not signed in</h4>
-        <p>Sorry, you are not signed it yet</p>
-        <Link to="/app/sign-in">
-          <Button className="spacing before__is-12" size="large" type="submit">
-            Sign In
-          </Button>
-        </Link>
-      </div>
-    );
-  }
-
-  renderSuccess() {
-    setTimeout(() => this.setState({redirectNow: true}), 2500);
-    return <Success header="Hope to see you soon!" text="You'll be redirected to home page shortly" />;
-  }
-
-  render() {
-    const {redirectNow} = this.state;
-    const {auth: {user, isUserLoggedOut}} = this.props;
-
-    if (redirectNow) {
-      return <Redirect to="/" />;
-    }
-
-    let content = null;
-    if (isUserLoggedOut) {
-      content = this.renderSuccess();
-    } else if (!user) {
-      content = this.renderNotLoggedIn();
-    } else {
-      content = this.renderConfirmation();
-    }
-
-    return <SingleCard content={content} />;
-  }
-}
+};
 
 export default AuthLogoutPage;

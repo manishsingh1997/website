@@ -1,0 +1,6 @@
+export enum AUTH_STATE {
+  USER_LOGGED_OUT,
+  USER_NOT_LOGGED_IN,
+}
+
+export const AUTH_LOGOUT_SUCCESS_DELAY = 2500;

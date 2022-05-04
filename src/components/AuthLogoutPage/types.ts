@@ -4,3 +4,8 @@ export type AuthType = {
   isAuthLoading: boolean,
   logoutError: string | null,
 }
+
+export type AuthLogoutPageProps = {
+  auth: AuthType,
+  logout: () => void,
+}

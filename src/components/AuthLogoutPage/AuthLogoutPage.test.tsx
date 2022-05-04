@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 import '@testing-library/jest-dom';
 import { BrowserRouter } from 'react-router-dom';
-import {mockLoggedInAuth, mockNotLoggedInAuth, mockLoggedOutAuth} from './__mocks__/mockAuth';
+import { mockLoggedInAuth, mockNotLoggedInAuth, mockLoggedOutAuth } from './__mocks__/mockAuth';
 import AuthLogoutPage from './AuthLogoutPage';
 
 jest.mock('../../components/common/Success');
@@ -15,7 +15,7 @@ describe('Should test the Auth Logout Page', () => {
     };
     render(
       <BrowserRouter>
-        <AuthLogoutPage {...mockProps}/>
+        <AuthLogoutPage {...mockProps} />
       </BrowserRouter>
     );
 
@@ -30,7 +30,7 @@ describe('Should test the Auth Logout Page', () => {
     };
     render(
       <BrowserRouter>
-        <AuthLogoutPage {...mockProps}/>
+        <AuthLogoutPage {...mockProps} />
       </BrowserRouter>
     );
 
@@ -45,7 +45,7 @@ describe('Should test the Auth Logout Page', () => {
     };
     render(
       <BrowserRouter>
-        <AuthLogoutPage {...mockProps}/>
+        <AuthLogoutPage {...mockProps} />
       </BrowserRouter>
     );
 
