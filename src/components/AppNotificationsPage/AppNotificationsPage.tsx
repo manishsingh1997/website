@@ -1,18 +1,23 @@
-import React from 'react';
-import {Redirect} from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, {FormEvent} from 'react';
 import classNames from 'classnames';
 import queryString from 'query-string';
+import {Redirect} from 'react-router-dom';
 
 import {Button, Checkbox, Notification, Spinner} from '@ergeon/core-components';
-import AppPage from 'components/common/AppPage';
 import {
   getNotificationPreferences as getNotificationPreferencesAPI,
   updateNotificationPreferences as updateNotificationPreferencesAPI,
-} from 'api/app';
-import CustomerGIDContext from 'context-providers/CustomerGIDContext';
-import {getUnsubscribeCodeFromQuery} from 'utils/app-notifications';
-import {parseAPIError} from 'utils/api.ts';
+} from '../../api/app';
+import {getUnsubscribeCodeFromQuery} from '../../utils/app-notifications';
+import {parseAPIError} from '../../utils/api';
+import AppPage from '../common/AppPage';
+import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
+import {ParsedAPIErrorType} from '../../utils/types';
+import {
+  NotificationPreference,
+  UpdateNotificationPreferences,
+  AppNotificationsState
+} from './types';
 
 const COMPANY_NEWS_NOTIFICATION_TYPE = 'is_email_newsletter_ok';
 
@@ -30,10 +35,12 @@ const COMPANY_NEWS_NOTIFICATION_TYPE = 'is_email_newsletter_ok';
  * the page from history), redirect user to the same page without "auto" argument,
  * but remember that option and unsubscibe only once.
  */
-export default class AppNotificationsPage extends React.Component {
-  static propTypes = {
-    location: PropTypes.object,
-  };
+
+type AppNotificationsProps = {
+  location: Location;
+};
+
+export default class AppNotificationsPage extends React.Component<AppNotificationsProps, AppNotificationsState> {
 
   state = {
     isInitialLoading: true,
@@ -55,9 +62,12 @@ export default class AppNotificationsPage extends React.Component {
     await this.getNotificationPreferences();
     if (this.state.unsubscribeAutomatically) {
       this.setState({isInitialLoading: true});
-      const primaryContact = this.state.primaryContact;
-      primaryContact[COMPANY_NEWS_NOTIFICATION_TYPE] = false;
-      await this.updateNotificationPreferences([primaryContact]);
+      let primaryContact: NotificationPreference;
+      if (this.state.primaryContact) {
+        primaryContact = this.state.primaryContact;
+        primaryContact.is_email_newsletter_ok = false;
+        await this.updateNotificationPreferences([primaryContact]);
+      }
     }
   }
 
@@ -68,49 +78,47 @@ export default class AppNotificationsPage extends React.Component {
     try {
       // we support primary contact only for now
       const response = await getNotificationPreferencesAPI(customerGID, unsubscribeCode);
-      const primaryContact = this.getPrimaryContactFromResponse(response);
+      const primaryContact = this.getPrimaryContactFromResponse(response) || null;
       this.setState({
         primaryContact,
         initialError: null,
       });
     } catch (apiError) {
-      this.setState({
-        primaryContact: null,
-        initialError: parseAPIError(apiError),
-      });
+      this.setState({primaryContact: null, initialError: parseAPIError(apiError as ParsedAPIErrorType)});
     } finally {
       this.setState({isInitialLoading: false});
     }
   }
 
-  async updateNotificationPreferences(data) {
+  async updateNotificationPreferences(data: UpdateNotificationPreferences) {
     const customerGID = this.context;
     const unsubscribeCode = getUnsubscribeCodeFromQuery(location.search);
     try {
       this.setState({isSaving: true, isSavedSuccessfully: false});
       const response = await updateNotificationPreferencesAPI(customerGID, unsubscribeCode, data);
-      const primaryContact = this.getPrimaryContactFromResponse(response);
+      const primaryContact = this.getPrimaryContactFromResponse(response) || null;
       this.setState({
         error: null,
         isSavedSuccessfully: true,
-        primaryContact,
+        primaryContact
       });
     } catch (apiError) {
       this.setState({
-        error: parseAPIError(apiError),
+        error: parseAPIError(apiError as ParsedAPIErrorType),
       });
     } finally {
       this.setState({isInitialLoading: false, isSaving: false});
     }
   }
 
-  getPrimaryContactFromResponse(response) {
-    return response.data && response.data.find((contact) => contact['is_primary']);
+  getPrimaryContactFromResponse(response: {data: NotificationPreference[]}): NotificationPreference | undefined {
+    if (response.data) {
+      return response.data.find((contact) => contact['is_primary']);
+    }
   }
 
   setAutoUnsubscribeFlag() {
     const parsedQuery = queryString.parse(this.props.location.search);
-
     if (parsedQuery.auto === COMPANY_NEWS_NOTIFICATION_TYPE && !this.state.unsubscribeAutomatically) {
       this.setState({unsubscribeAutomatically: true});
     }
@@ -120,12 +128,12 @@ export default class AppNotificationsPage extends React.Component {
    * If `auto` and `unsubscribeCode` are provided - it is a signal that user used "Unsubscribe" link
    * from marketing emails. In such case we should unsubscribe him from specific subscription.
    */
-  shouldUnsubscribe(auto, unsubscribeCode) {
+  shouldUnsubscribe(subscribeParameter: string, unsubscribeCode: string) {
     if (!unsubscribeCode) {
       // The unsubscribe code should be provided for it to work
       return false;
     }
-    switch (auto) {
+    switch (subscribeParameter) {
       case COMPANY_NEWS_NOTIFICATION_TYPE:
         return true;
       default:
@@ -133,16 +141,19 @@ export default class AppNotificationsPage extends React.Component {
     }
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     this.updateNotificationPreferences([this.state.primaryContact]);
     this.setState({unsubscribeAutomatically: false});
   }
 
-  handleCheckChange(value) {
-    const primaryContact = this.state.primaryContact;
-    primaryContact[COMPANY_NEWS_NOTIFICATION_TYPE] = value;
-    this.setState({isSavedSuccessfully: false, primaryContact});
+  handleCheckChange(value: boolean) {
+    let primaryContact: NotificationPreference;
+    if (this.state.primaryContact) {
+      primaryContact = this.state.primaryContact;
+      primaryContact[COMPANY_NEWS_NOTIFICATION_TYPE] = value;
+      this.setState({isSavedSuccessfully: false, primaryContact});
+    }
   }
 
   renderContent() {
@@ -159,7 +170,7 @@ export default class AppNotificationsPage extends React.Component {
             <Checkbox
               checked={isSubscribedToNews}
               disabled={isSaving}
-              onClick={(value) => this.handleCheckChange(value)}
+              onClick={(value: boolean) => this.handleCheckChange(value)}
             >
               <div>
                 <div>
@@ -169,7 +180,7 @@ export default class AppNotificationsPage extends React.Component {
               </div>
             </Checkbox>
           </div>
-          <Button 
+          <Button
             className={classNames({'is-loading': isSaving})}
             data-testid='update-preferences'
             disabled={isSaving}
@@ -198,9 +209,9 @@ export default class AppNotificationsPage extends React.Component {
     const {location} = this.props;
     const parsedQuery = queryString.parse(location.search);
     const {auto, ...queryWithoutAuto} = parsedQuery;
-    const unsubscribeCode = getUnsubscribeCodeFromQuery(location.search);
+    const unsubscribeCode: string = getUnsubscribeCodeFromQuery(location.search);
 
-    if (this.shouldUnsubscribe(auto, unsubscribeCode)) {
+    if (this.shouldUnsubscribe(auto as string, unsubscribeCode)) {
       const pathName = location.pathname;
       const search = queryString.stringify(queryWithoutAuto);
       return <Redirect to={`${pathName}?${search}`} />;
