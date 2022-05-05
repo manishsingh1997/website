@@ -249,7 +249,7 @@ export default class AppCustomerQuotePage extends React.Component {
             totalProjectPrice={formatPrice(this.getProjectTotalPrice(quoteApproval))}
           />
           <ProjectNotes quote={quote} />
-          <CustomerDetails customer={customer} quote={quote} />
+          <CustomerDetails customer={customer} />
           {this.shouldShowBillingForm() && (
             <BillingForm
               contractUrl={contractUrl}
