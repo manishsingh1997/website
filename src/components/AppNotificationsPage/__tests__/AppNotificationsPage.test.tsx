@@ -36,11 +36,13 @@ describe('App notifications page', () => {
   test('Should return error interface and render correctly', () => {
     // @ts-ignore
     axios.default = null;
+    const consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation();
     render(
       <AppNotificationsPage location={mockLocation} />
     );
 
     const error = screen.queryByTestId('error');
     expect(error).toBeInTheDocument();
+    consoleWarnMock.mockRestore();
   });
 });

@@ -15,8 +15,6 @@ import {
   QUOTE_FILTERS,
   DEFAULT_QUOTE_FILTER,
 } from 'utils/app-order';
-import {getFormattedAddress} from 'utils/app-house';
-import {getQuoteDetailURL} from 'utils/urls';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import {DRIVEWAY_QUANTITY_UNIT, FENCE_QUANTITY_UNIT} from 'website/constants';
 import DataRow from 'components/common/DataRow';
@@ -24,9 +22,12 @@ import DataRow from 'components/common/DataRow';
 import AppPage from 'components/common/AppPage';
 import AppSubCard from 'components/common/AppSubCard';
 import AppConfigPreview from 'components/common/AppConfigPreview';
+import {getFormattedAddress} from '../../utils/app-house';
+import {getQuoteDetailURL} from '../../utils/urls';
 
 import './index.scss';
 import {getExpiresAtTitle} from '../../utils/utils';
+
 export default class AppOrderDetailPage extends React.Component {
   static propTypes = {
     error: PropTypes.object,
