@@ -13,24 +13,41 @@ type CustomerData = {
   }
 };
 
+type QuoteData = {
+  order: {
+    house: {
+      address: {
+        formatted_address: string;
+      };
+      customer: {
+        main_address: {
+          formatted_address: string;
+        };
+      };
+    };
+  };
+};
+
 type CustomerDetailsProps = {
   customer: CustomerData;
+  quote: QuoteData;
 };
 
 const CustomerDetails = (props: CustomerDetailsProps) => {
-  const { customer } = props;
+  const { customer, quote } = props;
   const [isOpen, setIsOpen] = useState(false);
 
   const customerDetails = useMemo(() => {
+    const customerAddress = customer.main_address?.formatted_address ?? quote.order.house.address.formatted_address;
     return (
       <div className="CustomerDetails-Rows">
         <DataRow title="Customer" value={customer.full_name} />
-        <DataRow title="Address" value={customer.main_address.formatted_address} />
+        <DataRow title="Address" value={customerAddress} />
         <DataRow title="Phone" value={customer.phone_number} />
         <DataRow title="Email" value={customer.email} />
       </div>
     );
-  }, [customer]);
+  }, [customer, quote.order.house]);
 
   return (
     <div className="CustomerDetails">
