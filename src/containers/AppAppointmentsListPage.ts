@@ -8,14 +8,14 @@ import {Action} from '../flux/store';
 import {GetAppointmentDispatcher} from '../flux/actions/types';
 
 type AppointmentsProps = {
-  data: Appointment[],
+  data: Appointment[] | null,
   isListLoading: boolean,
   listError: [] | null,
 }
 
 const mapStateToProps = ({appointments}: {appointments: AppointmentsProps}) => {
   return {
-    appointments: appointments.data,
+    appointments: appointments.data ?? [],
     isListLoading: appointments.isListLoading,
     listError: appointments.listError,
   };

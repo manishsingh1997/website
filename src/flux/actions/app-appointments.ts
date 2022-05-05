@@ -19,7 +19,7 @@ export const getAppointments = (customerGID: number) => {
     request.then(response => {
       dispatch({
         type: AppointmentsActionTypes.GET_APPOINTMENTS_DONE,
-        data: response.data,
+        data: response.data ?? [],
       });
     });
 
