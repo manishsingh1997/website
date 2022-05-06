@@ -114,7 +114,7 @@
     "@ergeon/core-components": "^4.2.0",
     "@ergeon/draw-map": "4.5.4",
     "@ergeon/erg-customer-auth": "0.4.0",
-    "@ergeon/erg-utils-js": "5.2.0",
+    "@ergeon/erg-utils-js": "5.2.1",
     "@ergeon/erg-utms": "3.0.3",
     "@ergeon/help-components": "0.31.2",
     "@ergeon/map-component": "1.15.0",
