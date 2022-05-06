@@ -34,6 +34,7 @@ const nonES5 = [
   '@ergeon',
   '@react-spring',
   'google-maps',
+  '@googlemaps/js-api-loader',
   'redux',
   ...modules.es6Modules,
 ];
