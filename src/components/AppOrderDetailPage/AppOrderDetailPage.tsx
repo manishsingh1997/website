@@ -1,42 +1,54 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-import {ReactSVG} from 'react-svg';
-import {Helmet} from 'react-helmet';
+import { Link } from 'react-router-dom';
+import { ReactSVG } from 'react-svg';
+import { Helmet } from 'react-helmet';
 
-import {Button, SelectFilter} from '@ergeon/core-components';
+import { Button, SelectFilter } from '@ergeon/core-components';
 import contactIcon from '@ergeon/core-components/src/assets/icon-arrow-left.svg';
 
-import {formatDate, formatDateAndTime} from 'utils/date';
+import { formatDate, formatDateAndTime } from '../../utils/date';
 import {
   filterQuotesByStatus,
   filterQuotesSentToCustomer,
   formatPrice,
   QUOTE_FILTERS,
   DEFAULT_QUOTE_FILTER,
-} from 'utils/app-order';
-import CustomerGIDContext from 'context-providers/CustomerGIDContext';
-import {DRIVEWAY_QUANTITY_UNIT, FENCE_QUANTITY_UNIT} from 'website/constants';
-import DataRow from 'components/common/DataRow';
+} from '../../utils/app-order';
+import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
+import { DRIVEWAY_QUANTITY_UNIT, FENCE_QUANTITY_UNIT } from '../../website/constants';
+import DataRow from '../../components/common/DataRow';
 
-import AppPage from 'components/common/AppPage';
-import AppSubCard from 'components/common/AppSubCard';
-import AppConfigPreview from 'components/common/AppConfigPreview';
-import {getFormattedAddress} from '../../utils/app-house';
-import {getQuoteDetailURL} from '../../utils/urls';
+import AppPage from '../../components/common/AppPage';
+import AppSubCard from '../../components/common/AppSubCard';
+import AppConfigPreview from '../../components/common/AppConfigPreview';
+import { getFormattedAddress } from '../../utils/app-house';
+import { getQuoteDetailURL } from '../../utils/urls';
+import { getExpiresAtTitle } from '../../utils/utils';
+import { Order, Quote, Visits } from './types';
 
 import './index.scss';
-import {getExpiresAtTitle} from '../../utils/utils';
 
-export default class AppOrderDetailPage extends React.Component {
-  static propTypes = {
-    error: PropTypes.object,
-    fetchOrder: PropTypes.func.isRequired,
-    isLoading: PropTypes.bool.isRequired,
-    match: PropTypes.object,
-    orders: PropTypes.object,
-  };
+type AppOrderDetailPageProps = {
+  error?: Error,
+  fetchOrder: (customerGID: string, orderId: number) => void,
+  isLoading: boolean,
+  match: {
+    params: { orderId: number }
+  },
+  orders: { [key: number]: Order },
+};
 
+type SelectedOption = {
+  value: string,
+  label: string,
+  statuses: string[],
+}
+
+type AppOrderDetailPageState = {
+  selectedOption: SelectedOption,
+}
+
+export default class AppOrderDetailPage extends React.Component<AppOrderDetailPageProps, AppOrderDetailPageState> {
   state = {
     selectedOption: DEFAULT_QUOTE_FILTER,
   };
@@ -44,7 +56,7 @@ export default class AppOrderDetailPage extends React.Component {
   static contextType = CustomerGIDContext;
 
   fetchData() {
-    const {fetchOrder} = this.props;
+    const { fetchOrder } = this.props;
     const customerGID = this.context;
     const orderId = this.props.match.params.orderId;
     fetchOrder(customerGID, orderId);
@@ -55,11 +67,11 @@ export default class AppOrderDetailPage extends React.Component {
     return this.props.orders[orderId];
   }
 
-  handleChange = (selectedOption) => {
-    this.setState({selectedOption});
+  handleChange = (selectedOption: SelectedOption) => {
+    this.setState({ selectedOption });
   };
 
-  renderListElementHeader(quote) {
+  renderListElementHeader(quote: Quote) {
     return (
       <React.Fragment>
         <div>{`Quote #${quote['id']}`}</div>
@@ -67,7 +79,7 @@ export default class AppOrderDetailPage extends React.Component {
     );
   }
 
-  renderListElementContent(quote) {
+  renderListElementContent(quote: Quote) {
     const customerGID = this.context;
 
     const schemaCodeUrl = quote['preview_quote_line'] && quote['preview_quote_line']['config']['schema_code_url'];
@@ -108,7 +120,7 @@ export default class AppOrderDetailPage extends React.Component {
   }
 
   renderHeader() {
-    const {selectedOption} = this.state;
+    const { selectedOption } = this.state;
     const customerGID = this.context;
     const order = this.getOrder();
 
@@ -136,7 +148,7 @@ export default class AppOrderDetailPage extends React.Component {
     );
   }
 
-  renderVisitDates(visits) {
+  renderVisitDates(visits: Visits[]) {
     return visits.map((visit) => (
       <React.Fragment key={`visit-${visit.id}`}>
         {formatDate(visit['estimated_start_time'])}
@@ -146,7 +158,7 @@ export default class AppOrderDetailPage extends React.Component {
   }
 
   renderContent() {
-    const {selectedOption} = this.state;
+    const { selectedOption } = this.state;
     const order = this.getOrder();
     return (
       order && (
@@ -164,7 +176,7 @@ export default class AppOrderDetailPage extends React.Component {
             <DataRow title="Address" value={getFormattedAddress(order['house'])} />
             {/* TODO: ENG-8768 Add data row with order contract url */}
           </div>
-          {filterQuotesByStatus(order['quotes'], selectedOption).map((quote) => (
+          {filterQuotesByStatus(order['quotes'], selectedOption).map((quote: Quote) => (
             <AppSubCard
               key={`quote-${quote.id}`}
               renderContent={this.renderListElementContent.bind(this, quote)}

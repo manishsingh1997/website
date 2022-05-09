@@ -27,7 +27,6 @@ describe('Rendering of App Order Detail Page', () => {
     render(
       <Router history={createMemoryHistory()}>
         <AppOrderDetailPage
-          error={null}
           fetchOrder={() => mockOrders[mockFirstOrderId]}
           isLoading={true}
           match={fakeMatch()}
@@ -44,7 +43,6 @@ describe('Rendering of App Order Detail Page', () => {
     render(
       <Router history={createMemoryHistory()}>
         <AppOrderDetailPage
-          error={null}
           fetchOrder={() => mockOrders[mockFirstOrderId]}
           isLoading={false}
           match={fakeMatch()}
@@ -73,7 +71,7 @@ describe('Rendering of App Order Detail Page', () => {
     render(
       <Router history={createMemoryHistory()}>
         <AppOrderDetailPage
-          error={{ reason: 'ERROR!!!!' }}
+          error={(new Error('ERROR!!!!') as unknown) as Error}
           fetchOrder={() => mockOrders[mockFirstOrderId]}
           isLoading={false}
           match={fakeMatch()}

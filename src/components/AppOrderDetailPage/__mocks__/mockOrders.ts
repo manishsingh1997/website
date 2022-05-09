@@ -51,7 +51,8 @@ export const mockOrders = {
           label: 'Draft',
           sequence: 1
         }
-      }],
+      }
+    ],
     project_manager: null,
     visits: [],
   } as Order,
