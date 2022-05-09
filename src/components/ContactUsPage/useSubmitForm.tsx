@@ -12,7 +12,13 @@ import {parseError} from '../../utils/utils';
 import {identify, track, trackError} from '../../utils/analytics';
 import {DEFAULT_SOURCE_VALUE} from '../../website/constants';
 import {CONTACT_US_MESSAGE_ENTERED} from '../../utils/events';
-import {FormFieldState} from './typings';
+
+export interface FormFieldState {
+  name: string;
+  email: string;
+  message: string;
+  product: string;
+}
 
 interface SubmitFormProps {
   form: FormFieldState;

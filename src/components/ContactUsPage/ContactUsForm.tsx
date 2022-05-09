@@ -8,9 +8,11 @@ import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 
 import useFormValidation, {getNotEmptyValidator, getCharactersValidator, getEmailValidator} from './useValidation';
 
-import './ContactUsForm.scss';
 import ErrorField from './ErrorField';
 import useSubmitForm from './useSubmitForm';
+
+import './ContactUsForm.scss';
+
 interface ContactUsFormProps {
   onSubmit(): void;
 }
@@ -53,9 +55,9 @@ export default function ContactUsForm({onSubmit}: ContactUsFormProps) {
     setErrors(errors);
   }, [form, error, getValidationErrors]);
 
-  const onBlur = (e: FocusEvent<HTMLInputElement>) => {
+  const onBlur = useCallback((e: FocusEvent<HTMLInputElement>) => {
     setBlur({...blur, [e.target.name]: true});
-  };
+  }, [setBlur, blur]);
 
   useEffect(() => {
     validateForm();
@@ -92,47 +94,53 @@ export default function ContactUsForm({onSubmit}: ContactUsFormProps) {
     <form className="ContactUsForm" onSubmit={handleSubmit}>
       <h4 className="center spacing after__is-30">Send us a message</h4>
       <FormField>
-        <Input
-          isDisabled={loading}
-          isValid={isValid('name')}
-          label={'Your name'}
-          name={'name'}
-          onBlur={onBlur}
-          onChange={onChange}
-          placeholder={'e.g. John Smith'}
-          type={'text'}
-          value={form['name']}
-        />
-        {blur['name'] && <ErrorField error={error?.name || ''} />}
+        <>
+          <Input
+            isDisabled={loading}
+            isValid={isValid('name')}
+            label={'Your name'}
+            name={'name'}
+            onBlur={onBlur}
+            onChange={onChange}
+            placeholder={'e.g. John Smith'}
+            type={'text'}
+            value={form.name}
+          />
+          {blur['name'] && <ErrorField error={error?.name || ''} />}
+        </>
       </FormField>
       <FormField>
-        <Input
-          isDisabled={loading}
-          isValid={isValid('email')}
-          label={'Your email'}
-          name={'email'}
-          onBlur={onBlur}
-          onChange={onChange}
-          placeholder={'e.g. johnsmith@mail.com'}
-          type={'email'}
-          value={form['email']}
-        />
-        {blur['email'] && <ErrorField error={error?.email || ''} />}
+        <>
+          <Input
+            isDisabled={loading}
+            isValid={isValid('email')}
+            label={'Your email'}
+            name={'email'}
+            onBlur={onBlur}
+            onChange={onChange}
+            placeholder={'e.g. johnsmith@mail.com'}
+            type={'email'}
+            value={form.email}
+          />
+          {blur['email'] && <ErrorField error={error?.email || ''} />}
+        </>
       </FormField>
       <FormField>
-        <Input
-          isDisabled={loading}
-          isMultiline={true}
-          isValid={isValid('message')}
-          label={'Your message'}
-          name={'message'}
-          onBlur={onBlur}
-          onChange={onChange}
-          placeholder={'e.g. Thanks ....'}
-          type={'text'}
-          value={form['message']}
-        />
-        {blur['message'] && <ErrorField error={error?.message || ''} />}
+        <>
+          <Input
+            isDisabled={loading}
+            isMultiline={true}
+            isValid={isValid('message')}
+            label={'Your message'}
+            name={'message'}
+            onBlur={onBlur}
+            onChange={onChange}
+            placeholder={'e.g. Thanks ....'}
+            type={'text'}
+            value={form.message}
+          />
+          {blur['message'] && <ErrorField error={error?.message || ''} />}
+        </>
       </FormField>
       <div className="Form-actions">
         {!enableSubmit() && <div className="Form-error">{error?.global}</div>}
