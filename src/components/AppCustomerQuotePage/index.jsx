@@ -206,6 +206,7 @@ export default class AppCustomerQuotePage extends React.Component {
       return null;
     }
     const {
+      contract_pdf: contractUrl,
       customer,
       quote,
       is_primary: isPrimaryQuoteApproval,
@@ -218,7 +219,6 @@ export default class AppCustomerQuotePage extends React.Component {
         house: { id: houseId },
         product: { name: quoteType },
       },
-      contract: contractUrl,
     } = quote;
     const isMultiPartyQuote = !isEmpty(otherQuoteApprovals);
     const quoteLines = prepareQuoteApprovalLines(quoteApprovalLines, quote);
