@@ -78,6 +78,8 @@
             "ResizeObserver loop limit exceeded",
             /^Socket server did not execute the callback/,
             /You are currently using minified code outside of NODE_ENV === "production"./,
+            // User blocked ads/trackers: https://stackoverflow.com/questions/60174224/refenceerror-uet-is-not-defined/60788592#60788592
+            /UET is not defined/,
           ],
           "denyUrls": [
             /* Our externals */
