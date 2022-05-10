@@ -54,7 +54,7 @@ class SliderHero extends React.Component {
         <span className="title-wrapper">
           <h1 className="h0 white center">{data.title}</h1>
           <span className="subheader h2 white center">
-            Servicing Northern California, Southern California, Dallas, Fort Worth, and Houston.
+          Servicing Northern California, Southern California, Dallas, Fort Worth, Houston, and Atlanta.
           </span>
         </span>
 
