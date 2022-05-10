@@ -128,7 +128,7 @@ export default class AppNotificationsPage extends React.Component<AppNotificatio
    * If `auto` and `unsubscribeCode` are provided - it is a signal that user used "Unsubscribe" link
    * from marketing emails. In such case we should unsubscribe him from specific subscription.
    */
-  shouldUnsubscribe(subscribeParameter: string, unsubscribeCode: string) {
+  shouldUnsubscribe(subscribeParameter: string, unsubscribeCode: string | null) {
     if (!unsubscribeCode) {
       // The unsubscribe code should be provided for it to work
       return false;
@@ -209,7 +209,7 @@ export default class AppNotificationsPage extends React.Component<AppNotificatio
     const {location} = this.props;
     const parsedQuery = queryString.parse(location.search);
     const {auto, ...queryWithoutAuto} = parsedQuery;
-    const unsubscribeCode: string = getUnsubscribeCodeFromQuery(location.search);
+    const unsubscribeCode = getUnsubscribeCodeFromQuery(location.search) as string | null;
 
     if (this.shouldUnsubscribe(auto as string, unsubscribeCode)) {
       const pathName = location.pathname;

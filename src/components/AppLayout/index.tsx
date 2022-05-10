@@ -1,28 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
 
 import {Button} from '@ergeon/core-components';
 
 import somethingWrongIcon from '@ergeon/core-components/src/assets/icon-something-wrong@2x.svg';
-import CustomerGIDContext from 'context-providers/CustomerGIDContext';
-import AppLoader from 'components/common/AppLoader';
-import SingleCard from 'components/common/SingleCard';
-import PathNavLink from 'components/common/PathNavLink';
-import {getMenuItems} from 'data/customer-app';
-import {isQuoteDetailURL, isUnsubscribeURL} from 'utils/urls';
-import {getUnsubscribeCodeFromQuery} from 'utils/app-notifications';
-
+import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
+import AppLoader from '../common/AppLoader';
+import SingleCard from '../common/SingleCard';
+import PathNavLink from '../common/PathNavLink';
+import {getMenuItems} from '../../data/customer-app';
+import {isQuoteDetailURL, isUnsubscribeURL} from '../../utils/urls';
+import {getUnsubscribeCodeFromQuery} from '../../utils/app-notifications';
+import {AppLayoutProps} from './types';
 import './index.scss';
 
-export default class AppLayout extends React.Component {
-  static propTypes = {
-    auth: PropTypes.object,
-    children: PropTypes.node,
-    location: PropTypes.object,
-    match: PropTypes.object,
-  };
+export default class AppLayout extends React.Component<AppLayoutProps> {
+
   renderAnonymousUser() {
     const content = (
       <div className="center">
@@ -40,7 +34,7 @@ export default class AppLayout extends React.Component {
 
   renderSideBar() {
     const {location, match} = this.props;
-    const unsubscribedCode = getUnsubscribeCodeFromQuery(location.search);
+    const unsubscribedCode = getUnsubscribeCodeFromQuery(location.search) as string | null;
 
     return (
       <div>
@@ -60,7 +54,7 @@ export default class AppLayout extends React.Component {
     );
   }
 
-  renderChildren(isLoading) {
+  renderChildren(isLoading: boolean) {
     const {match} = this.props;
 
     if (isLoading) {

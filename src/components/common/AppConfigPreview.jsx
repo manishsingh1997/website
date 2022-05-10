@@ -10,7 +10,7 @@ import {calcUtils} from '@ergeon/3d-lib';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import {isPDFMode} from 'utils/utils';
-import {getFencequotingURL} from '../../utils/urls';
+import {getFencequotingURL} from '../../utils/urls.ts';
 
 import './AppConfigPreview.scss';
 

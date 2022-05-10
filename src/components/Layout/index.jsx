@@ -23,7 +23,7 @@ import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 
 import phoneIcon from 'assets/icon-phone.svg';
 import {isChristmasTime, isPDFMode, showUpcomingFeatures} from 'utils/utils';
-import {getMenuItems} from 'data/customer-app.js';
+import {getMenuItems} from 'data/customer-app.ts';
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
 

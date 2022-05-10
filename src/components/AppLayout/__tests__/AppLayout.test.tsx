@@ -6,12 +6,13 @@ import {mockLoggedInAuth, mockNotLoggedInAuth} from '../../AuthLogoutPage/__mock
 
 const LEAD_ID = 'AdBh0inoUKGlH';
 const LOADER_TEST_ID = 'loader-image';
+const mockLocation = document.location;
 const appLayoutProps = {
   auth: {
     ...mockLoggedInAuth,
   },
-  location: {search: '', pathname: `/app/${LEAD_ID}`},
-  match: {params: {customerGid: LEAD_ID}},
+  location: {...mockLocation, search: '', pathname: `/app/${LEAD_ID}`},
+  match: {params: {customerGid: LEAD_ID}, url: ''},
 };
 
 // Run react-router-dom without wrapping into a <Router />
@@ -25,10 +26,9 @@ describe('App Layout page', () => {
     const props = {
       ...appLayoutProps,
       auth: {
+        ...mockNotLoggedInAuth,
         isAuthLoading: true,
-        isUserLoading: true,
-        user: null,
-        userError: null,
+        isUserLoading: true
       },
     };
 
@@ -46,11 +46,14 @@ describe('App Layout page', () => {
         userError: 'An Error occured',
       },
     };
+    const consoleErrorMock = jest.spyOn(console, 'error').mockImplementation();
 
     const {getByText} = render(<AppLayout {...props} />);
 
     const text = getByText('Sorry, but something went wrong');
     expect(text).toBeInTheDocument();
+    expect(consoleErrorMock).toBeCalled()
+    consoleErrorMock.mockRestore();
   });
 
   test('Should render AnonymousUser component', () => {
@@ -70,7 +73,7 @@ describe('App Layout page', () => {
   test('Should render Quotepage component', () => {
     const props = {
       ...appLayoutProps,
-      location: {search: '', pathname: `/app/${LEAD_ID}/quotes/direct`},
+      location: {...mockLocation, search: '', pathname: `/app/${LEAD_ID}/quotes/direct`},
     };
 
     const {getByText} = render(
@@ -86,7 +89,7 @@ describe('App Layout page', () => {
   test('Should render Notifications component', () => {
     const props = {
       ...appLayoutProps,
-      location: {search: '', pathname: `/app/${LEAD_ID}/notifications/`},
+      location: {...mockLocation, search: '', pathname: `/app/${LEAD_ID}/notifications/`},
     };
 
     const {getByText} = render(

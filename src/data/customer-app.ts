@@ -3,9 +3,9 @@ import houseIcon from '@ergeon/core-components/src/assets/icon-house.svg';
 import orderIcon from '@ergeon/core-components/src/assets/icon-order.svg';
 import appointmentsIcon from '@ergeon/core-components/src/assets/icon-appointments.svg';
 import notificationIcon from '@ergeon/core-components/src/assets/icon-notification.svg';
-import {UNSUBSCRIBE_CODE_QUERY_NAME} from 'utils/app-notifications';
+import {UNSUBSCRIBE_CODE_QUERY_NAME} from '../utils/app-notifications';
 
-export const getMenuItems = (basePath, unsubscribeCode) => {
+export const getMenuItems = (basePath: string, unsubscribeCode: string | null) => {
   const notificationsSearchQuery = unsubscribeCode ? `?${UNSUBSCRIBE_CODE_QUERY_NAME}=${unsubscribeCode}` : '';
 
   const menuItems = [

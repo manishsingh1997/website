@@ -3,6 +3,8 @@ export type AuthType = {
   isUserLoggedOut: boolean,
   isAuthLoading: boolean,
   logoutError: string | null,
+  isUserLoading: boolean,
+  userError: string | null
 }
 
 export type AuthLogoutPageProps = {

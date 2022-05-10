@@ -1,13 +1,13 @@
 import queryString from 'query-string';
 import {some} from 'lodash';
 import {calcUtils} from '@ergeon/3d-lib';
-import {getUnsubscribeCodeFromQuery} from 'utils/app-notifications';
+import {getUnsubscribeCodeFromQuery} from './app-notifications';
 
-export const getOrderDetailURL = (customerGID, orderId) => {
+export const getOrderDetailURL = (customerGID: string, orderId: string) => {
   return `/app/${customerGID}/orders/${orderId}`;
 };
 
-export const getQuoteDetailURL = (customerGID, secret) => {
+export const getQuoteDetailURL = (customerGID: string, secret: string) => {
   return `/app/${customerGID}/quotes/${secret}`;
 };
 
@@ -17,7 +17,7 @@ export const getQuoteDetailURL = (customerGID, secret) => {
  * @param {number} zipCode
  * @param {number} fenceSideLength
  */
-export const getFencequotingURL = (schemaCode, zipCode, fenceSideLength, options = true) => {
+export const getFencequotingURL = (schemaCode: string, zipCode: number, fenceSideLength: number, options = true) => {
   const {getValueFromUrl, getCatalogType} = calcUtils;
   const isItGate = getCatalogType(getValueFromUrl(schemaCode)) === 'fence-gate';
   const baseUrlPath = isItGate ? 'gate3d' : 'fence3d';
@@ -31,14 +31,14 @@ export const getFencequotingURL = (schemaCode, zipCode, fenceSideLength, options
   return `${process.env.FENCEQUOTING_HOST}/${baseUrlPath}?${queryString.stringify(queryObject)}`;
 };
 
-export const isQuoteDetailURL = (url) => {
+export const isQuoteDetailURL = (url: string) => {
   return some([
     url.match(/^\/app\/[^\/]+\/quotes\/(direct\/|installer\/)?[^\/]+\/?$/g) !== null,
     url.match(/^\/app\/[^\/]+\/quote-approvals\/[^\/]+\/?(direct|installer)?\/?/g) !== null,
   ]);
 };
 
-export const isUnsubscribeURL = (urlPathname, urlSearch) => {
+export const isUnsubscribeURL = (urlPathname: string, urlSearch: string): boolean => {
   const unsubscribeCode = getUnsubscribeCodeFromQuery(urlSearch);
-  return urlPathname.match(/^\/app\/[^\/]+\/notifications\/?/g) !== null && unsubscribeCode;
+  return Boolean(urlPathname.match(/^\/app\/[^\/]+\/notifications\/?/g) !== null && unsubscribeCode);
 };

@@ -7,7 +7,7 @@ import {calcUtils, CatalogType} from '@ergeon/3d-lib';
 import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
 import iconPlus from '../../assets/icon-plus.svg';
-import {getFencequotingURL} from '../../utils/urls';
+import {getFencequotingURL} from '../../utils/urls.ts';
 import LoadingErrorModal from '../common/ErroredLoadingModal';
 import StyleBrowserWrapper from './StyleBrowserWrapper';
 
