@@ -228,6 +228,11 @@ export default class QuoteDetails extends React.Component {
             <i> – An additional {CARD_TRANSACTION_FEE} fee will be added for credit/debit cards</i>
           </div>
         )}
+        {asPDF &&
+          <div className="print-copyright">
+            <p className="print-copyright__text">&copy; {new Date().getFullYear()} Ergeon Inc.</p>
+          </div>
+        }
       </div>
     );
   }

@@ -642,4 +642,14 @@
       width: 100% !important;
     }
   }
+
+  .print-copyright {
+    position: fixed;
+    bottom: $v-6;
+    right: $h-5;
+
+    &__text {
+      font-size: $font-label-size;
+    }
+  }
 }
