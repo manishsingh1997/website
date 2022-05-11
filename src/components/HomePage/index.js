@@ -3,7 +3,7 @@ import React from 'react';
 import {BadgesSection} from '@ergeon/core-components';
 
 import imgCalc from 'assets/calc_promo.png';
-import imgMap from 'assets/map_image.png';
+import imgMap from 'assets/map_image.jpg';
 import {showUpcomingFeatures} from '../../utils/utils';
 
 import SliderHero from './SliderHero';

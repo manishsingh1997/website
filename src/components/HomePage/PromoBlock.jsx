@@ -21,7 +21,7 @@ class PromoBlock extends React.Component {
     return (
       <div className={promoClasses}>
         <div className="promo-block__img-container">
-          <img src={img} />
+          <a href={btnLink}><img alt={title} src={img} /></a>
         </div>
         <div className="promo-block__content">
           <div className="promot-block__content__wrapper">
