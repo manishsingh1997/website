@@ -11,13 +11,13 @@
   }
 
   &-title {
-    $offset-desktop: -1 * 250px;
+    $offset-desktop: -1 * 100%;
 
     width: auto;
     margin: 0 $offset-desktop $v-24 $offset-desktop;
     padding: $vertical-margin 0 $v-64 0;
     text-align: center;
-    background-image: linear-gradient(to top, #fff 10%, #f7f6fb 30%);
+    background-image: linear-gradient(to top, #fff 10%, $gray-6 30%);
 
     @include phone() {
       $offset-mobile: -1 * $v-20;
