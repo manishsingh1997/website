@@ -1,4 +1,4 @@
-import {authService} from 'utils/auth';
+import {authService} from 'utils/auth.ts';
 import {parseAPIError} from 'utils/api.ts';
 
 export const actionTypes = {

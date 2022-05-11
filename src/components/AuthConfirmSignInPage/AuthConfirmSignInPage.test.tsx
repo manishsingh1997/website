@@ -1,9 +1,9 @@
 import React from 'react';
-import {fireEvent, render, screen} from '@testing-library/react';
+import {act, fireEvent, render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import faker from '@faker-js/faker';
 
-import {initialAuthState} from '../../flux/reducers/auth';
+import {AuthState, initialAuthState} from '../../flux/reducers/auth';
 import AuthConfirmSignInPage from './index';
 
 // Replaces the original implementation of `setTimeout()` and other timer functions
@@ -22,9 +22,9 @@ jest.mock('../../components/common/Success');
 // Generate minimal fake `window.location`
 const fakeLocation = (otpCode?: string) => {
   if (otpCode) {
-    return {search: `?code=${otpCode}`};
+    return {search: `?code=${otpCode}`} as Location;
   }
-  return {search: ''};
+  return {search: ''} as Location;
 };
 
 describe('AuthConfirmSignInPage', () => {
@@ -39,7 +39,7 @@ describe('AuthConfirmSignInPage', () => {
   it('should render ”verifying code” by default', () => {
     render(
       <AuthConfirmSignInPage
-        auth={initialAuthState}
+        auth={initialAuthState as AuthState}
         authenticateUserWithCode={authenticateUserWithCode}
         location={fakeLocation()}
         resendLink={resendLink} />
@@ -67,35 +67,37 @@ describe('AuthConfirmSignInPage', () => {
   it('should render successful authentication', () => {
     const userGID = faker.datatype.uuid();
 
-    render(
-      <AuthConfirmSignInPage
-        auth={{
-          ...initialAuthState,
-          isAuthLoading: false,
-          isUserLoading: false,
-          user: {gid: userGID},
-          userSetByCode: true,
-        }}
-        authenticateUserWithCode={authenticateUserWithCode}
-        location={fakeLocation()}
-        resendLink={resendLink} />
-    );
+    act(() => {
+      render(
+        <AuthConfirmSignInPage
+          auth={{
+            ...initialAuthState,
+            isAuthLoading: false,
+            isUserLoading: false,
+            user: {gid: userGID},
+            userSetByCode: true,
+          }}
+          authenticateUserWithCode={authenticateUserWithCode}
+          location={fakeLocation()}
+          resendLink={resendLink} />
+      );
 
-    expect(
-      screen.getByText("You'll be redirected shortly")
-    ).toBeInTheDocument();
+      expect(
+        screen.getByText("You'll be redirected shortly")
+      ).toBeInTheDocument();
 
-    // Force redirect timeout execution
-    jest.runAllTimers();
+      // Force redirect timeout execution
+      jest.runAllTimers();
 
-    expect(
-      screen.getByText(`Redirect to /app/${userGID}/orders`)
-    ).toBeInTheDocument();
+      expect(
+        screen.getByText(`Redirect to /app/${userGID}/orders`)
+      ).toBeInTheDocument();
+    });
   });
 
   it('should render failed authentication', () => {
-    const authInvalidError = {data: {otp: {errorCode: 'invalid'}}};
-    const authExpiredError = {data: {otp: {errorCode: 'expired'}}};
+    const authInvalidError = {statusCode: 400, data: {otp: {errorCode: 'invalid'}}};
+    const authExpiredError = {statusCode: 400, data: {otp: {errorCode: 'expired'}}};
     const authUnexpectedError = {statusCode: 500, data: {}};
 
     const {rerender} = render(
@@ -156,7 +158,7 @@ describe('AuthConfirmSignInPage', () => {
 
   it('should resend code', () => {
     const otpCode = faker.datatype.uuid();
-    const authExpiredError = {data: {otp: {errorCode: 'expired'}}};
+    const authExpiredError = {statusCode: 400, data: {otp: {errorCode: 'expired'}}};
 
     render(
       <AuthConfirmSignInPage

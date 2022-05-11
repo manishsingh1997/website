@@ -2,7 +2,7 @@ import axios from 'axios';
 import isEmpty from 'lodash/isEmpty';
 
 import {ensureUpcomingFeaturesParamInUrl} from '@ergeon/erg-utils-js';
-import {authService} from 'utils/auth';
+import {authService} from 'utils/auth.ts';
 
 const request = (customerGID) => (path, data) => {
   let baseURL = `${process.env.API_HOST}/c/api/v1/customer`;

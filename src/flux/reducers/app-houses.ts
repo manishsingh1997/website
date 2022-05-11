@@ -11,7 +11,7 @@ type HouseReducerState = {
 type HouseReducerAction = {
   data: HouseType[];
   error: ParsedAPIErrorType;
-  type: string;
+  type: keyof typeof HouseActionTypes;
 }
 
 const initialState: HouseReducerState = {

@@ -1,6 +1,32 @@
+import { ParsedAPIErrorType } from '../../utils/types';
 import {actionTypes} from '../actions/auth';
 
-export const initialAuthState = {
+type AuthUser = {
+  gid: string
+};
+
+type AuthError = {
+  statusCode: string | number,
+  data: {
+    otp?: {errorCode: string},
+  },
+};
+
+export type AuthState = {
+  authError: AuthError | null,
+  isAuthLoading: boolean,
+  isResendLinkLoading: boolean,
+  isResendLinkSuccess: boolean,
+  isUserLoading: boolean,
+  isUserLoggedOut: boolean,
+  logoutError: AuthError | null,
+  resendLinkError: object | null,
+  user: AuthUser | null,
+  userError: AuthError | null,
+  userSetByCode: boolean,
+};
+
+export const initialAuthState: AuthState = {
   user: null,
   isAuthLoading: false,
   authError: null,
@@ -14,7 +40,13 @@ export const initialAuthState = {
   isResendLinkSuccess: false,
 };
 
-const authReducer = (state = initialAuthState, action) => {
+type AuthAction = {
+  user: AuthUser,
+  error: ParsedAPIErrorType,
+  type: keyof typeof actionTypes,
+}
+
+const authReducer = (state = initialAuthState, action: AuthAction) => {
   switch (action.type) {
     case actionTypes.AUTH_CODE_ACTIVATION_START:
       return {...state, isAuthLoading: true};
