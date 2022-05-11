@@ -1,0 +1,125 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
+.remote-features {
+  $vertical-margin: 96px;
+
+  margin: $vertical-margin auto;
+
+  &-wrapper {
+    width: 100%;
+    margin: auto;
+  }
+
+  &-title {
+    $offset-desktop: -1 * 250px;
+
+    width: auto;
+    margin: 0 $offset-desktop $v-24 $offset-desktop;
+    padding: $vertical-margin 0 $v-64 0;
+    text-align: center;
+    background-image: linear-gradient(to top, #fff 10%, #f7f6fb 30%);
+
+    @include phone() {
+      $offset-mobile: -1 * $v-20;
+
+      padding: $v-48 $v-20 $v-48 $v-20;
+      margin: 0 $offset-mobile $v-24 $offset-mobile;
+    }
+  }
+
+  &-cards {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    @include tablet() {
+      flex-direction: column;
+    }
+  }
+
+  &-card {
+    $card-width: 335px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: $v-42;
+    max-width: $card-width;
+    width: 100%;
+    margin: 0 auto;
+
+    &-details {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &-info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: center;
+    }
+
+    &-img {
+      width: $v-48;
+      height: $v-48;
+      margin-bottom: $v-24;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      @include phone() {
+        margin-bottom: $v-12;
+      }
+    }
+
+    &-title,
+    &-desc {
+      margin-bottom: $v-12;
+    }
+
+    &-desc {
+      font-size: $font-regular-size;
+      @include tablet {
+        font-size: $font-mobile-size;
+      }
+    }
+
+    &-button {
+      width: 100%;
+      margin-top: $v-20;
+    }
+
+    &-sep-wrapper {
+      height: $v-124 + $v-36;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: $h-60;
+      @include tablet() {
+        display: none;
+      }
+
+      &-line {
+        height: $v-42;
+        width: 1px;
+        background-color: $gray-4;
+        display: block;
+        @include phone() {
+          display: none;
+          height: 1px;
+          width: $h-40;
+        }
+      }
+    }
+  }
+}

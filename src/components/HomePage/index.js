@@ -15,17 +15,17 @@ import UpcomingGetStartedSection from './UpcomingGetStartedSection';
 import QASection from './QASection';
 import RemoteFeatures from './RemoteFeatures';
 import TestimonialBanner from './TestimonialBanner';
+import UpcomingRemoteFeatures from './UpcomingRemoveFeatures';
 
-class HomePage extends React.Component {
-  render() {
+const HomePage = () => {
     return (
       <>
         <SliderHero />
         {showUpcomingFeatures('ENG-13570') && <TestimonialBanner />}
-        <RemoteFeatures />
         <ReviewHero />
         <div className="wrapper-1180">
           <ProjectsSection />
+          {showUpcomingFeatures('ENG-13167') ? <UpcomingRemoteFeatures/> : <RemoteFeatures />}
           <PromoBlock
             btnLink={process.env.FENCEQUOTING_HOST}
             btnName="Fence Calculator"
@@ -46,7 +46,6 @@ class HomePage extends React.Component {
         </div>
       </>
     );
-  }
 }
 
 export default HomePage;

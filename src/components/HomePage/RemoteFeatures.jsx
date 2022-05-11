@@ -37,7 +37,7 @@ class RemoteFeatures extends React.Component {
               className="remote-features__card__button"
               flavor="primary"
               onClick={() => this.toShowVideo(videoLink)}
-              size="small"
+              size="medium"
               taste="line"
             >
               Learn more
@@ -49,7 +49,7 @@ class RemoteFeatures extends React.Component {
               className="remote-features__card__button"
               flavor="primary"
               href={link}
-              size="small"
+              size="medium"
               taste="line"
             >
               Learn more
@@ -62,17 +62,17 @@ class RemoteFeatures extends React.Component {
   render() {
     const {currentVideo, videoPopupVisible} = this.state;
     return (
-      <div className="remote-features">
+      <div className="remote-feature">
         <VideoPopup linkToVideo={currentVideo} onHide={this.toHideVideo.bind(this)} visible={videoPopupVisible} />
         <div className="wrapper-1180">
-          <h3 className="remote-features__title">Our Remote Model</h3>
+          <h3 className="remote-features__title">How We Make Home Improvement Easy</h3>
           <div className="remote-features__cards">
             {this.renderCard({
               title: 'Video Call for your Onsite Visit',
               // eslint-disable-next-line max-len
-              desc: 'Our Team is well equipped to guarantee an accurate quote for your project using satellite imagery and a video consultation.',
+              desc: 'Our Team is well equipped to guarantee an accurate quote for your project using satellite imagery and a video call.',
               img: imgRemoteOnsite,
-              videoLink: 'https://www.youtube.com/embed/HJh1auVQfV8',
+              link: `${process.env.BLOG_HOST}/post/a-walk-through-of-our-remote-experience`,
             })}
             <div className="remote-features__card__sep-wrapper">
               <div className="remote-features__card__sep-wrapper__line" />
@@ -87,9 +87,9 @@ class RemoteFeatures extends React.Component {
               <div className="remote-features__card__sep-wrapper__line" />
             </div>
             {this.renderCard({
-              title: 'Stay Inside While we Install',
+              title: 'Stay Inside While We Install Your Fence',
               // eslint-disable-next-line max-len
-              desc: 'Our Delivery team is fully equipped with all construction details to perform a contact-free installation.',
+              desc: 'The Construction Team can install with zero physical contact with you and are equipped with full construction details.',
               img: imgContactless,
               link: `${process.env.BLOG_HOST}/post/contactless-fence-installation`,
             })}
