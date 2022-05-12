@@ -8,8 +8,8 @@ import '@testing-library/jest-dom';
 
 jest.mock('../../../components/common/Success');
 
-jest.mock('utils/auth', () => ({
-  ...jest.requireActual('utils/auth'),
+jest.mock('../../../utils/auth', () => ({
+  ...jest.requireActual('../../../utils/auth'),
   authService: {requestOTP: jest.fn()},
 }));
 

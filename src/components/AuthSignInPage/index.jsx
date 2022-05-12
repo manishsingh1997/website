@@ -4,11 +4,11 @@ import {Link} from 'react-router-dom';
 
 import {Button, FormField, Input, Spinner} from '@ergeon/core-components';
 import LockIcon from '@ergeon/core-components/src/assets/icon-lock.svg';
-import {authService} from 'utils/auth';
 
 import Success from 'components/common/Success';
 import SingleCard from 'components/common/SingleCard';
 import {createValidator, email, required} from 'utils/validation';
+import {authService} from '../../utils/auth';
 
 import './index.scss';
 
