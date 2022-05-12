@@ -4,75 +4,30 @@ import {getLabelFromIndex} from '@ergeon/draw-map';
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 
 import QuoteLine from '../QuoteLine';
-import {showUpcomingFeatures} from '../../../../utils/utils';
-import {isQuoteLineOfMapKinds, getTagsForQuoteLine, getImagesForQuoteLine, getBuildSpecsForQuoteLine} from './utils';
-
-/*
- * Filter sides from calcInput that were not found in quote lines.
- */
-const getAdditionalSidesFromCalcInput = (calcInputSides, quoteLineSides) => {
-  return calcInputSides
-    .map((side, index) => {
-      const sideLabel = getLabelFromIndex(index);
-      return {
-        ...side,
-        label: sideLabel,
-        calcInputQuoteLine: true,
-      };
-    })
-    .filter((side) => {
-      const existingQuoteLineSide = quoteLineSides.find((quoteLineSide) => quoteLineSide.label == side.label);
-      return existingQuoteLineSide === undefined;
-    });
-};
-
-/*
- * Filter gates and areas from calcInput that were not found in quote lines.
- */
-const getAdditionalPointsFromCalcInput = (calcInputPoints, quoteLinePoints) => {
-  return calcInputPoints
-    .map((point, index) => {
-      const pointLabel = (index + 1).toString();
-      return {
-        ...point,
-        label: pointLabel,
-        calcInputQuoteLine: true,
-      };
-    })
-    .filter((point) => {
-      const existingQuoteLinePoint = quoteLinePoints.find((quoteLinePoint) => quoteLinePoint.label == point.label);
-      return existingQuoteLinePoint === undefined;
-    });
-};
+import {isQuoteLineOfMapKinds, getImagesForQuoteLine, getBuildSpecsForQuoteLine} from './utils';
 
 /**
- * Get sides from the quote lines. In addition it tries to extract sides from the `calcInput`.
+ * Get sides from the quote lines.
  */
-const getSides = (quoteLines, filterByField, calcInput) => {
+const getSides = (quoteLines, filterByField) => {
   const quoteLineSides = quoteLines.filter((quoteLine) => isQuoteLineOfMapKinds(quoteLine, ['line']));
-  const calcInputSides = getAdditionalSidesFromCalcInput(calcInput?.sides || [], quoteLineSides);
-  const filteredQuoteLines = quoteLineSides.filter((quoteLine) => quoteLine[filterByField] === true);
-  return [...filteredQuoteLines, ...calcInputSides];
+  return quoteLineSides.filter((quoteLine) => quoteLine[filterByField] === true);
 };
 
 /**
- * Get gates from the quote lines. In addition it tries to extract gates from the `calcInput`.
+ * Get gates from the quote lines.
  */
-const getGates = (quoteLines, filterByField, calcInput) => {
+const getGates = (quoteLines, filterByField) => {
   const quoteLineGates = quoteLines.filter((quoteLine) => isQuoteLineOfMapKinds(quoteLine, ['point', null, undefined]));
-  const calcInputGates = getAdditionalPointsFromCalcInput(calcInput?.gates || [], quoteLineGates);
-  const filteredQuoteLines = quoteLineGates.filter((quoteLine) => quoteLine[filterByField] === true);
-  return [...filteredQuoteLines, ...calcInputGates];
+  return quoteLineGates.filter((quoteLine) => quoteLine[filterByField] === true);
 };
 
 /**
- * Get areas from the quote lines. In addition it tries to extract areas from the `calcInput`.
+ * Get areas from the quote lines.
  */
-const getAreas = (quoteLines, filterByField, calcInput) => {
+const getAreas = (quoteLines, filterByField) => {
   const quoteLineAreas = quoteLines.filter((quoteLine) => isQuoteLineOfMapKinds(quoteLine, ['area']));
-  const calcInputAreas = getAdditionalPointsFromCalcInput(calcInput?.areas || [], quoteLineAreas);
-  const filteredQuoteLines = quoteLineAreas.filter((quoteLine) => quoteLine[filterByField] === true);
-  return [...filteredQuoteLines, ...calcInputAreas];
+  return quoteLineAreas.filter((quoteLine) => quoteLine[filterByField] === true);
 };
 
 /**
@@ -95,86 +50,47 @@ export default function QuoteLines({
   isMultiPartyQuote,
   isPrimaryQuoteApproval,
 }) {
-  const calcInput = useMemo(() => {
-    if (showUpcomingFeatures('ENG-9416') && quote['project_calc_input']) {
-      return quote['project_calc_input'] || {};
-    }
-    return quote['calc_input'] || {};
-  }, [quote]);
-
-  // TODO: stop using calcInput after rolling out ENG-9225
-  const isUsingCalcInput = useMemo(() => {
-    const isScopeChange = quote['is_scope_change'];
-
-    return !isMultiPartyQuote && !isScopeChange && Boolean(calcInput);
-  }, [calcInput, isMultiPartyQuote, quote]);
-
   const filterByField = isInstallerPreview ? 'display_to_installer' : 'display_to_customer';
 
   const preparedQuoteLines = useMemo(() => {
-    let sides, gates, areas, needToSort;
-
-    if (isUsingCalcInput) {
-      sides = calcInput.sides || [];
-      gates = calcInput.gates || [];
-      areas = calcInput.polygons || [];
-      needToSort = false;
-    } else {
-      sides = getSides(quoteLines, filterByField, calcInput);
-      gates = getGates(quoteLines, filterByField, calcInput);
-      areas = getAreas(quoteLines, filterByField, calcInput);
-      needToSort = true;
-    }
+    let sides = getSides(quoteLines, filterByField);
+    let gates = getGates(quoteLines, filterByField);
+    let areas = getAreas(quoteLines, filterByField);
 
     const getQuoteLinePropsFromSide = (side, i) => ({
       ...side,
-      id: side.map_id,
-      label: side.label || getLabelFromIndex(i),
-      approvedAt: side.approved_at,
-      quoteId: side.quote_id,
+      approvedAt: side['approved_at'],
+      quoteId: side['quote_id'],
       type: CALC_SIDE_TYPE,
       quote,
       index: i,
       isDropped: side['is_dropped'],
-      // show tags only when calcInput is present
-      tags: calcInput ? getTagsForQuoteLine(getLabelFromIndex(i), quote) : undefined,
-      price: side.price,
+      tags: side.config.tags,
       images: getImagesForQuoteLine(getLabelFromIndex(i), quote),
       ...getBuildSpecsForQuoteLine(getLabelFromIndex(i), quote),
     });
 
     const getQuoteLinePropsFromGate = (gate, i) => ({
       ...gate,
-      id: gate.map_id,
-      label: gate.label || String(i + 1),
-      approvedAt: gate.approved_at,
-      quoteId: gate.quote_id,
+      approvedAt: gate['approved_at'],
+      quoteId: gate['quote_id'],
       type: CALC_GATE_TYPE,
       quote,
       index: i,
       isDropped: gate['is_dropped'],
-      // show tags only when calcInput is present
-      tags: calcInput ? getTagsForQuoteLine(i + 1, quote) : undefined,
-      price: gate.price,
-      // hide distance if calcInput is present
-      distance: calcInput ? undefined : gate.distance,
+      tags: gate.config.tags,
       images: getImagesForQuoteLine(String(i + 1), quote),
       ...getBuildSpecsForQuoteLine(String(i + 1), quote),
     });
 
     const getQuoteLinePropsFromArea = (area, i) => ({
       ...area,
-      id: area.map_id,
-      label: area.label || getLabelFromIndex(i),
-      approvedAt: area.approved_at,
-      quoteId: area.quote_id,
+      approvedAt: area['approved_at'],
+      quoteId: area['quote_id'],
       type: CALC_AREA_TYPE,
       quote,
       isDropped: area['is_dropped'],
       index: i,
-      price: area.price,
-      // hide distance if calcInput is present
-      distance: calcInput ? undefined : area.distance,
       images: getImagesForQuoteLine(String(i + 1), quote),
       ...getBuildSpecsForQuoteLine(String(i + 1), quote),
     });
@@ -205,8 +121,8 @@ export default function QuoteLines({
       ...areas.map(getQuoteLinePropsFromArea),
     ];
 
-    return needToSort ? sortLines(preparedQuoteLines) : preparedQuoteLines;
-  }, [quote, quoteLines, calcInput, filterByField, isUsingCalcInput]);
+    return sortLines(preparedQuoteLines);
+  }, [quote, quoteLines, filterByField]);
 
   return (
     <>
@@ -219,7 +135,6 @@ export default function QuoteLines({
               isInstallerPreview={isInstallerPreview}
               isMultiPartyQuote={isMultiPartyQuote}
               isPrimaryQuoteApproval={isPrimaryQuoteApproval}
-              isUsingCalcInput={isUsingCalcInput}
               // error complaining about mapping to keys with side-undefined
               key={`${quoteLineProps.type}-${quoteLineProps.id}-${quoteLineProps?.label}-${idx}`}
               onBuildDetailsClick={onBuildDetailsClick}
