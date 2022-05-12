@@ -85,7 +85,7 @@
       bottom: 0;
     }
     &__sep-wrapper {
-      height: 150px;
+      height: $v-124 + $v-30 - 4;
       display: flex;
       align-items: center;
       justify-content: center;

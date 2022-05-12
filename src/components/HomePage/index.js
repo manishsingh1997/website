@@ -26,6 +26,7 @@ const HomePage = () => {
         <div className="wrapper-1180">
           <ProjectsSection />
           {showUpcomingFeatures('ENG-13167') ? <UpcomingRemoteFeatures/> : <RemoteFeatures />}
+          {showUpcomingFeatures('ENG-13570') ? <UpcomingGetStartedSection /> : <GetStartedSection />}
           <PromoBlock
             btnLink={process.env.FENCEQUOTING_HOST}
             btnName="Fence Calculator"
@@ -33,7 +34,6 @@ const HomePage = () => {
             subtitle="Build your dream fence and get an estimate instantly"
             title="Try Our Fence Calculator"
           />
-          {showUpcomingFeatures('ENG-13570') ? <UpcomingGetStartedSection /> : <GetStartedSection />}
           <QASection />
           <PromoBlock
             btnLink={`${process.env.PROJECTS_GALLERY_HOST}/map`}
