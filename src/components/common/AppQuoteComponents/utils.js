@@ -1,5 +1,4 @@
 import {getLabelFromIndex} from '@ergeon/draw-map';
-import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 
 export const QUOTE_LINE_STATUSES = {
   APPROVED: 'APPROVED',
@@ -59,7 +58,7 @@ export const prepareQuoteLines = (quoteLines, quote) => {
 
     return {
       ...quoteLine,
-      totalPrice: isUpcomingFeaturesEnabled('ENG-11541') ? quoteLine['display_price'] : quoteLine['price'],
+      totalPrice: quoteLine['display_price'],
       status,
     };
   });
