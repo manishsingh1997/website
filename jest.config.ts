@@ -11,6 +11,16 @@ module.exports = {
     '<rootDir>/.jest/setupEnvVars.js',
   ],
 
+  // Indicates whether the coverage information should be collected while executing the test
+  collectCoverage: true,
+
+  // A list of reporter names that Jest uses when writing coverage reports
+  coverageReporters: [
+    'json-summary',
+    'text',
+    'lcov',
+  ],
+
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: ['/dist/', 'src/process/*'],
 

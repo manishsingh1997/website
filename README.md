@@ -1,6 +1,7 @@
 # Website ergeon.com
 
 [![CircleCI](https://circleci.com/gh/ergeon/website/tree/develop.svg?style=shield&circle-token=e57a10563d37a3aaa49ec37fdd3c85d343563100)](https://circleci.com/gh/ergeon/website/tree/develop)
+[![Coverage Status](https://coveralls.io/repos/github/ergeon/website/badge.svg?branch=develop&t=sx2PhQ)](https://coveralls.io/github/ergeon/website?branch=develop)
 
 ### Requirements
 

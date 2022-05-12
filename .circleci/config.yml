@@ -3,6 +3,8 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 
 version: 2.1
+orbs:
+  coveralls: ergeon/coveralls-orb@1.0.9
 jobs:
   build:
     docker:
@@ -52,12 +54,22 @@ jobs:
                   make lint
 
             - run:
-                name: Run Tests and Coverage For Sitemap
+                name: Run Tests and Coverage
                 command: |
-                  make coverage-sitemap
+                  make coverage
+
+            - coveralls/upload
 
             - deploy:
                 name: Deploy
                 command: |
                   if [ "$CIRCLE_BRANCH" = "develop" ]; then make deploy-staging; fi
                   if [ "$CIRCLE_BRANCH" = "master" ]; then make deploy-production; fi
+
+workflows:
+  main:
+    jobs:
+      - build:
+          context:
+            - "DEFAULT ERGEON"
+            - github-secrets

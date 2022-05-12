@@ -16,9 +16,10 @@
     "lint-fix": "npm run eslint -- --fix",
     "lint": "npm run eslint && npm run ts",
     "ts": "tsc",
-    "test": "jest",
+    "test": "jest --detectOpenHandles --colors --notify --verbose --ci --silent",
     "test-sitemap": "BABEL_ENV=sitemap jest --config ./src/process/jest.sitemap-config.js --colors --notify --verbose --ci --silent",
-    "coverage-sitemap": "npm run test-sitemap -- --coverage --watchAll=false"
+    "coverage-sitemap": "npm run test-sitemap -- --coverage --watchAll=false",
+    "coverage": "npm run test -- --coverage --watchAll=false"
   },
   "repository": {
     "type": "git",

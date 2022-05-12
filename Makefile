@@ -50,6 +50,9 @@ test: install lint
 coverage-sitemap:
 	npm run coverage-sitemap
 
+coverage:
+	npm run coverage
+
 sentry-create-release:
 	$(SENTRY_CLI) releases new --finalize $(SENTRY_RELEASE_NAME)
 
