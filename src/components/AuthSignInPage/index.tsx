@@ -1,37 +1,40 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, {FormEvent} from 'react';
 import {Link} from 'react-router-dom';
 
 import {Button, FormField, Input, Spinner} from '@ergeon/core-components';
 import LockIcon from '@ergeon/core-components/src/assets/icon-lock.svg';
 
-import Success from 'components/common/Success';
-import SingleCard from 'components/common/SingleCard';
-import {createValidator, email, required} from 'utils/validation';
+import SingleCard from '../common/SingleCard';
+import {createValidator, email, required} from '../../utils/validation';
 import {authService} from '../../utils/auth';
+import Success from '../common/Success';
 
 import './index.scss';
+import {ParsedAPIErrorType} from '../../utils/types';
+import {AuthSignInErrors, AuthSignInPageState, AuthSignInProps} from './types';
 
-class AuthSignInPage extends React.Component {
-  constructor(props) {
+class AuthSignInPage extends React.Component<AuthSignInProps, AuthSignInPageState> {
+  validator: (values?: object) => object | null;
+  constructor(props: AuthSignInProps) {
     super(props);
     this.validator = createValidator({
       email: [required, email],
     });
   }
 
-  state = {
+  state: AuthSignInPageState = {
     isFormSuccess: false,
     email: '',
     errors: null,
     loading: false,
   };
 
-  async handleSubmit(e) {
+  async handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const {email} = this.state;
-    let errors = this.validator({email});
+    let errors = this.validator({email}) as AuthSignInErrors;
     if (!errors) {
       errors = await this.requestSignIn.bind(this)(email);
     }
@@ -42,23 +45,24 @@ class AuthSignInPage extends React.Component {
     }
   }
 
-  async requestSignIn(email) {
+  async requestSignIn(email: string) {
     this.setState({loading: true});
     let errors = null;
     try {
       await authService.requestOTP(email, 'email');
     } catch (signInError) {
       // TODO: move response formatting to erg-customer-auth-js
+      const response = (signInError as ParsedAPIErrorType).response;
       if (
-        signInError.response &&
-        signInError.response.status < 500 &&
-        signInError.response.data &&
-        (signInError.response.data.identifier || signInError.response.data['non_field_errors'])
+        response &&
+        Number(response.status) < 500 &&
+        response.data &&
+        (response.data.identifier || response.data['non_field_errors'])
       ) {
         errors = {
-          email: signInError.response.data.identifier,
-          global: signInError.response.data['non_field_errors'],
-          ...signInError.response.data,
+          email: [response.data.identifier],
+          global: response.data['non_field_errors'],
+          ...response.data,
         };
       } else {
         console.error(signInError);
@@ -70,7 +74,7 @@ class AuthSignInPage extends React.Component {
     return errors;
   }
 
-  handleFieldChange = (event, name, value) => {
+  handleFieldChange = (_event: Event, _name: string, value: string) => {
     const newState = {
       email: value,
       errors: null,
@@ -78,13 +82,14 @@ class AuthSignInPage extends React.Component {
     this.setState(newState);
   };
 
-  renderErrors(fieldName) {
+  renderErrors(fieldName: 'global' | 'email') {
     const {errors} = this.state;
+    const fieldErrors = errors?.[fieldName];
     return (
       <div className="spacing after__is-6">
-        {errors &&
-          errors[fieldName] &&
-          errors[fieldName].map((error, i) => (
+        {
+          fieldErrors &&
+          fieldErrors.map((error: string, i: React.Key) => (
             <div className="signin-form-error" key={i}>
               {error}
             </div>
@@ -107,17 +112,17 @@ class AuthSignInPage extends React.Component {
         <form className="signin-form" onSubmit={this.handleSubmit.bind(this)}>
           <FormField>
             <>
-            <Input
-              isDisabled={loading}
-              isValid={errors?.email ? !errors?.email : null}
-              label="Email"
-              name="email"
-              onChange={this.handleFieldChange}
-              placeholder="e.g. username@mail.com"
-              type="email"
-              value={email}
-            />
-            {this.renderErrors('email')}
+              <Input
+                isDisabled={loading}
+                isValid={errors && errors.email ? !errors.email : null}
+                label="Email"
+                name="email"
+                onChange={this.handleFieldChange}
+                placeholder="e.g. username@mail.com"
+                type="email"
+                value={email}
+              />
+              {this.renderErrors('email')}
             </>
           </FormField>
           <div className="signin-form-actions">
