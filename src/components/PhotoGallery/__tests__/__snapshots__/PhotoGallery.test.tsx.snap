@@ -1,0 +1,798 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Photo gallery page with params should match with snapshot 1`] = `
+<div>
+  <div
+    class="photo-gallery"
+  >
+    <div
+      class="wrapper-1180"
+    >
+      <span
+        class="breadcrumbs"
+      >
+        NavLink to /
+        <ul>
+          <li>
+            NavLink to /gallery/
+          </li>
+        </ul>
+      </span>
+      <h1
+        class="h2"
+      >
+        Picture Frame
+         
+        Without Lattice
+         
+        Fence Photos
+      </h1>
+    </div>
+    <div
+      class="header-border"
+    >
+      <div
+        class="photo-gallery__categories wrapper-1180"
+      >
+        <ul
+          class="tabs tabs--with-nav-links"
+        >
+          <li
+            class="navlink"
+          >
+            NavLink to /gallery/fence/picture-frame
+          </li>
+          <li
+            class="navlink"
+          >
+            NavLink to /gallery/fence/nail-up
+          </li>
+          <li
+            class="navlink"
+          >
+            NavLink to /gallery/fence/horizontal
+          </li>
+          <li
+            class="navlink"
+          >
+            NavLink to /gallery/fence/chain-link
+          </li>
+          <li
+            class="navlink"
+          >
+            NavLink to /gallery/fence/boxed-frame
+          </li>
+          <li
+            class="navlink"
+          >
+            NavLink to /gallery/fence/staining
+          </li>
+          <li
+            class="navlink"
+          >
+            NavLink to /gallery/fence/lumber
+          </li>
+          <li
+            class="navlink"
+          >
+            NavLink to /gallery/fence/before-after
+          </li>
+          <li
+            class="navlink"
+          >
+            NavLink to /gallery/fence/vinyl
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="wrapper-1180"
+    >
+      <div
+        class="photo-gallery__groups spacing after__is-24"
+      >
+        <div
+          class="breadcrumb"
+        >
+          <div
+            class="breadcrumb--group"
+          >
+            NavLink to /gallery/fence/picture-frame/without-lattice
+            NavLink to /gallery/fence/picture-frame/with-lattice
+            NavLink to /gallery/fence/picture-frame/short-fence
+          </div>
+        </div>
+      </div>
+      <div
+        class="photo-gallery__masonry"
+        style="position: relative; height: 0px;"
+      >
+        <div
+          class="photo-gallery__masonry-card"
+          gallery-link-id="picture-frame-side-by-side-stepped-top"
+          style="position: absolute; left: 0px;"
+        >
+          <div
+            class="card padding-20 soft-border shadow__z1"
+          >
+            <div
+              class="image-loader__wrapper is-loading"
+            >
+              <div
+                class="image-loader__spinner"
+              >
+                <div
+                  class="loader-wrapper"
+                  style="width: 64px; height: 64px;"
+                >
+                  <div
+                    class="lightgray loader"
+                  >
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="Picture Frame Side by Side Stepped Top"
+                class="image-loader__image"
+                src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/pf+sbs+2.jpg"
+              />
+            </div>
+            <div
+              class="additional-header h2 spacing before__is-6 after__is-6"
+            />
+            <p />
+            <p>
+              Picture Frame Side by Side Stepped Top
+            </p>
+          </div>
+        </div>
+        <div
+          class="photo-gallery__masonry-card"
+          gallery-link-id="picture-frame-side-by-side"
+          style="position: absolute; left: 0px;"
+        >
+          <div
+            class="card padding-20 soft-border shadow__z1"
+          >
+            <div
+              class="image-loader__wrapper is-loading"
+            >
+              <div
+                class="image-loader__spinner"
+              >
+                <div
+                  class="loader-wrapper"
+                  style="width: 64px; height: 64px;"
+                >
+                  <div
+                    class="lightgray loader"
+                  >
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="Picture Frame Side by Side"
+                class="image-loader__image"
+                src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/PF+sbs.jpeg"
+              />
+            </div>
+            <div
+              class="additional-header h2 spacing before__is-6 after__is-6"
+            />
+            <p />
+            <p>
+              Picture Frame Side by Side
+            </p>
+          </div>
+        </div>
+        <div
+          class="photo-gallery__masonry-card"
+          gallery-link-id="picture-frame-louvered-with-kickboard-1"
+          style="position: absolute; left: 0px;"
+        >
+          <div
+            class="card padding-20 soft-border shadow__z1"
+          >
+            <div
+              class="image-loader__wrapper is-loading"
+            >
+              <div
+                class="image-loader__spinner"
+              >
+                <div
+                  class="loader-wrapper"
+                  style="width: 64px; height: 64px;"
+                >
+                  <div
+                    class="lightgray loader"
+                  >
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="Picture Frame Louvered with Kickboard"
+                class="image-loader__image"
+                src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/pf+louvered.png"
+              />
+            </div>
+            <div
+              class="additional-header h2 spacing before__is-6 after__is-6"
+            />
+            <p />
+            <p>
+              Picture Frame Louvered with Kickboard
+            </p>
+          </div>
+        </div>
+        <div
+          class="photo-gallery__masonry-card"
+          gallery-link-id="picture-frame-louvered-with-kickboard-2"
+          style="position: absolute; left: 0px;"
+        >
+          <div
+            class="card padding-20 soft-border shadow__z1"
+          >
+            <div
+              class="image-loader__wrapper is-loading"
+            >
+              <div
+                class="image-loader__spinner"
+              >
+                <div
+                  class="loader-wrapper"
+                  style="width: 64px; height: 64px;"
+                >
+                  <div
+                    class="lightgray loader"
+                  >
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="Picture Frame Louvered with Kickboard"
+                class="image-loader__image"
+                src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/pf+louvered+3.png"
+              />
+            </div>
+            <div
+              class="additional-header h2 spacing before__is-6 after__is-6"
+            />
+            <p />
+            <p>
+              Picture Frame Louvered with Kickboard
+            </p>
+          </div>
+        </div>
+        <div
+          class="photo-gallery__masonry-card"
+          gallery-link-id="vallejo-ca-picture-frame-flat-top-with-kickboard"
+          style="position: absolute; left: 0px;"
+        >
+          <div
+            class="card padding-20 soft-border shadow__z1"
+          >
+            <div
+              class="image-loader__wrapper is-loading"
+            >
+              <div
+                class="image-loader__spinner"
+              >
+                <div
+                  class="loader-wrapper"
+                  style="width: 64px; height: 64px;"
+                >
+                  <div
+                    class="lightgray loader"
+                  >
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="Vallejo, CA - Picture Frame Board on Board with Kickboard"
+                class="image-loader__image"
+                src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5cc086dd9e1f671c728112fe_vallejo%2520picture%2520frame.jpg"
+              />
+            </div>
+            <div
+              class="additional-header h2 spacing before__is-6 after__is-6"
+            />
+            <p />
+            <p>
+              Vallejo, CA - Picture Frame Board on Board with Kickboard
+            </p>
+          </div>
+        </div>
+        <div
+          class="photo-gallery__masonry-card"
+          gallery-link-id="palo-alto-ca-picture-frame-board-on-board-with-an-integrated-3-retaining-wall"
+          style="position: absolute; left: 0px;"
+        >
+          <div
+            class="card padding-20 soft-border shadow__z1"
+          >
+            <div
+              class="image-loader__wrapper is-loading"
+            >
+              <div
+                class="image-loader__spinner"
+              >
+                <div
+                  class="loader-wrapper"
+                  style="width: 64px; height: 64px;"
+                >
+                  <div
+                    class="lightgray loader"
+                  >
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="Palo Alto, CA - Picture Frame Board on Board with an integrated 3' Retaining Wall"
+                class="image-loader__image"
+                src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5cc085e10a5c75c28bbabb01_paloalto%2520pictureframe%2520stepped.jpg"
+              />
+            </div>
+            <div
+              class="additional-header h2 spacing before__is-6 after__is-6"
+            />
+            <p />
+            <p>
+              Palo Alto, CA - Picture Frame Board on Board with an integrated 3' Retaining Wall
+            </p>
+          </div>
+        </div>
+        <div
+          class="photo-gallery__masonry-card"
+          gallery-link-id="pleasanton-ca-picture-frame-board-on-board-flat-top-on-concrete-retaining-wall"
+          style="position: absolute; left: 0px;"
+        >
+          <div
+            class="card padding-20 soft-border shadow__z1"
+          >
+            <div
+              class="image-loader__wrapper is-loading"
+            >
+              <div
+                class="image-loader__spinner"
+              >
+                <div
+                  class="loader-wrapper"
+                  style="width: 64px; height: 64px;"
+                >
+                  <div
+                    class="lightgray loader"
+                  >
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="Pleasanton, CA - Picture Frame Board on Board, Flat Top on Concrete Retaining Wall"
+                class="image-loader__image"
+                src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c61e57becd0150b0107494c_picture%2520frame%2520concrete%2520retaining%2520wall.jpg"
+              />
+            </div>
+            <div
+              class="additional-header h2 spacing before__is-6 after__is-6"
+            />
+            <p />
+            <p>
+              Pleasanton, CA - Picture Frame Board on Board, Flat Top on Concrete Retaining Wall
+            </p>
+          </div>
+        </div>
+        <div
+          class="photo-gallery__masonry-card"
+          gallery-link-id="berkeley-ca-picture-frame-side-by-side-with-1-gap-flat-top"
+          style="position: absolute; left: 0px;"
+        >
+          <div
+            class="card padding-20 soft-border shadow__z1"
+          >
+            <div
+              class="image-loader__wrapper is-loading"
+            >
+              <div
+                class="image-loader__spinner"
+              >
+                <div
+                  class="loader-wrapper"
+                  style="width: 64px; height: 64px;"
+                >
+                  <div
+                    class="lightgray loader"
+                  >
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="Berkeley, CA - Picture Frame Side by Side with 1\\" gap, Flat Top"
+                class="image-loader__image"
+                src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c5e07a7364f641708f5375c_picture%2520frame%2520flat%2520top%2520side%2520gap%2520between%2520pickets.jpg"
+              />
+            </div>
+            <div
+              class="additional-header h2 spacing before__is-6 after__is-6"
+            />
+            <p />
+            <p>
+              Berkeley, CA - Picture Frame Side by Side with 1" gap, Flat Top
+            </p>
+          </div>
+        </div>
+        <div
+          class="photo-gallery__masonry-card"
+          gallery-link-id="american-canyon-ca-picture-frame-board-on-board-flat-top-with-size-trim"
+          style="position: absolute; left: 0px;"
+        >
+          <div
+            class="card padding-20 soft-border shadow__z1"
+          >
+            <div
+              class="image-loader__wrapper is-loading"
+            >
+              <div
+                class="image-loader__spinner"
+              >
+                <div
+                  class="loader-wrapper"
+                  style="width: 64px; height: 64px;"
+                >
+                  <div
+                    class="lightgray loader"
+                  >
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="American Canyon, CA - Picture Frame Board on Board, Flat Top with Side Trim"
+                class="image-loader__image"
+                src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c5e068532efce2920608182_picture%2520frame%2520flat%2520top%2520side%2520trim.jpg"
+              />
+            </div>
+            <div
+              class="additional-header h2 spacing before__is-6 after__is-6"
+            />
+            <p />
+            <p>
+              American Canyon, CA - Picture Frame Board on Board, Flat Top with Side Trim
+            </p>
+          </div>
+        </div>
+        <div
+          class="photo-gallery__masonry-card"
+          gallery-link-id="sacramento-ca-picture-frame-board-on-board-flat-top"
+          style="position: absolute; left: 0px;"
+        >
+          <div
+            class="card padding-20 soft-border shadow__z1"
+          >
+            <div
+              class="image-loader__wrapper is-loading"
+            >
+              <div
+                class="image-loader__spinner"
+              >
+                <div
+                  class="loader-wrapper"
+                  style="width: 64px; height: 64px;"
+                >
+                  <div
+                    class="lightgray loader"
+                  >
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="Sacramento, CA - Picture Frame Board on Board, Flat Top "
+                class="image-loader__image"
+                src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c5e05712f64c67364650967_picture%2520frame%2520flat%2520top%25203.jpg"
+              />
+            </div>
+            <div
+              class="additional-header h2 spacing before__is-6 after__is-6"
+            />
+            <p />
+            <p>
+              Sacramento, CA - Picture Frame Board on Board, Flat Top 
+            </p>
+          </div>
+        </div>
+        <div
+          class="photo-gallery__masonry-card"
+          gallery-link-id="albany-ca-picture-frame-board-on-board-with-flat-top"
+          style="position: absolute; left: 0px;"
+        >
+          <div
+            class="card padding-20 soft-border shadow__z1"
+          >
+            <div
+              class="image-loader__wrapper is-loading"
+            >
+              <div
+                class="image-loader__spinner"
+              >
+                <div
+                  class="loader-wrapper"
+                  style="width: 64px; height: 64px;"
+                >
+                  <div
+                    class="lightgray loader"
+                  >
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="Albany, CA - Picture Frame Board on Board, Flat Top "
+                class="image-loader__image"
+                src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c5e03d18d94f53b1769ea82_picture%2520frame%2520flat%2520top.jpg"
+              />
+            </div>
+            <div
+              class="additional-header h2 spacing before__is-6 after__is-6"
+            />
+            <p />
+            <p>
+              Albany, CA - Picture Frame Board on Board, Flat Top 
+            </p>
+          </div>
+        </div>
+        <div
+          class="photo-gallery__masonry-card"
+          gallery-link-id="woodside-ca-picture-frame-board-on-board-with-an-integrated-3-retaining-wall"
+          style="position: absolute; left: 0px;"
+        >
+          <div
+            class="card padding-20 soft-border shadow__z1"
+          >
+            <div
+              class="image-loader__wrapper is-loading"
+            >
+              <div
+                class="image-loader__spinner"
+              >
+                <div
+                  class="loader-wrapper"
+                  style="width: 64px; height: 64px;"
+                >
+                  <div
+                    class="lightgray loader"
+                  >
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="Woodside, CA - Picture Frame Board on Board with an integrated 3' Retaining Wall"
+                class="image-loader__image"
+                src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c2530874fdbbaf99bbf2625_retaining%2520wall%2520fence6.jpg"
+              />
+            </div>
+            <div
+              class="additional-header h2 spacing before__is-6 after__is-6"
+            />
+            <p />
+            <p>
+              Woodside, CA - Picture Frame Board on Board with an integrated 3' Retaining Wall
+            </p>
+          </div>
+        </div>
+        <div
+          class="photo-gallery__masonry-card"
+          gallery-link-id="morgan-hill-ca-picture-frame-with-1-x1-s-top-and-bottom-board-on-board-with-an-integrated-1-retaining-wall"
+          style="position: absolute; left: 0px;"
+        >
+          <div
+            class="card padding-20 soft-border shadow__z1"
+          >
+            <div
+              class="image-loader__wrapper is-loading"
+            >
+              <div
+                class="image-loader__spinner"
+              >
+                <div
+                  class="loader-wrapper"
+                  style="width: 64px; height: 64px;"
+                >
+                  <div
+                    class="lightgray loader"
+                  >
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                    <div
+                      style="border-width: 10px; width: 64px; height: 64px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="Morgan Hill, CA - Picture Frame Board on Board with an integrated 1' Retaining Wall"
+                class="image-loader__image"
+                src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/5c2530164fdbba8288bf2532_retaining%2520wall%2520fence5.jpg"
+              />
+            </div>
+            <div
+              class="additional-header h2 spacing before__is-6 after__is-6"
+            />
+            <p />
+            <p>
+              Morgan Hill, CA - Picture Frame Board on Board with an integrated 1' Retaining Wall
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="cards two-columns spacing before__is-64"
+      >
+        <div
+          class="card soft-border photo-gallery__banner"
+        >
+          <div
+            class="photo-gallery__wrapper"
+          >
+            <img
+              class="photo-gallery__wrapper-photo"
+              src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/previews/banner_gate.jpg"
+            />
+            <div
+              class="photo-gallery__wrapper-data"
+            >
+              <h4
+                class="additional-header h2 spacing after__is-6"
+              >
+                Gate Photos
+              </h4>
+              <p
+                class="spacing after__is-12"
+              >
+                Picture Frame, Nail Up, Horizontal, Gates, Before & After
+              </p>
+              NavLink to /gallery/gate/single
+            </div>
+          </div>
+          NavLink to /gallery/gate/single
+        </div>
+        <div
+          class="card soft-border photo-gallery__banner"
+        >
+          <div
+            class="photo-gallery__wrapper"
+          >
+            <img
+              class="photo-gallery__wrapper-photo"
+              src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/previews/banner_driveway.jpg"
+            />
+            <div
+              class="photo-gallery__wrapper-data"
+            >
+              <h4
+                class="additional-header h2 spacing after__is-6"
+              >
+                Driveway Photos
+              </h4>
+              <p
+                class="spacing after__is-12"
+              >
+                Stamped & Stained Concrete, Brushed Concrete, Pavers
+              </p>
+              NavLink to /gallery/driveway/stamped
+            </div>
+          </div>
+          NavLink to /gallery/driveway/stamped
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
