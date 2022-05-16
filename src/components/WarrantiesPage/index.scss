@@ -38,10 +38,14 @@
     }
 
     .certifications {
+      $cert-max-width: 872px;
+
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       width: 100%;
+      max-width: $cert-max-width;
+      margin: auto;
       flex: 0 auto;
 
       @include tablet {
@@ -71,6 +75,14 @@
 
       &:nth-child(3) {
         margin-right: 0;
+
+        @include tablet {
+          margin-right: $v-16;
+        }
+
+        @include phone {
+          margin-right: 0;
+        }
       }
 
       @include phone() {

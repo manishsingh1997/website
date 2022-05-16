@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ERGEON_LICENSE_NUMBER} from 'website/constants';
+import {ERGEON_LICENSE_NUMBER, ERGEON_GEORGIA_LICENSE_NUMBER} from 'website/constants';
 
 import certifiedIcon from 'assets/certified@2x.png';
 import licenseImage from 'assets/license.jpg';
@@ -107,6 +107,12 @@ class WarrantiesPage extends React.Component {
                 <h4>C8 - Concrete</h4>
                 <p>Ergeon inc</p>
                 <p>License {ERGEON_LICENSE_NUMBER}</p>
+              </div>
+              <div className="certification-item">
+                <img className="certified-icon" src={certifiedIcon} />
+                <h4>Residential/General contractor</h4>
+                <p>Ergeon inc</p>
+                <p>License {ERGEON_GEORGIA_LICENSE_NUMBER}</p>
               </div>
             </div>
             <a
