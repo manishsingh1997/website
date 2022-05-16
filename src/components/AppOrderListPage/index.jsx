@@ -6,13 +6,13 @@ import {Button} from '@ergeon/core-components';
 
 import {formatDate} from 'utils/date';
 import {getOrderDetailURL, getQuoteDetailURL} from 'utils/urls';
-import {filterQuotesByStatus, DEFAULT_QUOTE_FILTER} from 'utils/app-order';
-import {getFormattedAddress} from 'utils/app-house';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 import DataRow from 'components/common/DataRow';
 
 import AppPage from 'components/common/AppPage';
 import AppSubCard from 'components/common/AppSubCard';
+import {filterQuotesByStatus, DEFAULT_QUOTE_FILTER} from '../../utils/app-order';
+import {getFormattedAddress} from '../../utils/app-house';
 
 export default class AppOrdersListPage extends React.Component {
   static propTypes = {
