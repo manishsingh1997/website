@@ -2,9 +2,9 @@ import {render, screen} from '@testing-library/react';
 import {createMemoryHistory} from 'history';
 import React from 'react';
 import {Provider} from 'react-redux';
-import { Router } from 'react-router-dom';
+import {Router} from 'react-router-dom';
 import AppOrderListPage from '../';
-import { mockOrders } from '../__mocks__/mockOrders';
+import {mockOrders} from '../__mocks__/mockOrders';
 import { store } from '../__mocks__/mockStore';
 
 jest.mock('@ergeon/core-components', () => ({
