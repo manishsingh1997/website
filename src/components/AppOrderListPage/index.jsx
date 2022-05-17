@@ -8,8 +8,8 @@ import DataRow from 'components/common/DataRow';
 
 import AppPage from 'components/common/AppPage';
 import AppSubCard from 'components/common/AppSubCard';
-import {getOrderDetailURL, getQuoteDetailURL} from '../../utils/urls';
 import {formatDate} from '../../utils/date';
+import {getOrderDetailURL, getQuoteDetailURL} from '../../utils/urls';
 import {filterQuotesByStatus, DEFAULT_QUOTE_FILTER} from '../../utils/app-order';
 import {getFormattedAddress} from '../../utils/app-house';
 

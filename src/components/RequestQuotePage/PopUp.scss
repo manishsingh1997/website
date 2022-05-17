@@ -9,7 +9,6 @@
     background-color: rgba($black-1, 0.8);
     box-shadow: 0 200px 50px 200px rgba($black-1, 0.8);
     backdrop-filter: blur(4px);
-    z-index: 100;
     height: 100%;
     width: 100%;
   }
@@ -25,21 +24,20 @@
     right: 0;
     pointer-events: none;
     margin: $v-24 auto;
+    z-index: $z-index-1;
     @include tablet() {
       padding: 0;
     }
   }
   &__wrapper {
-    z-index: 101;
     position: relative;
     .popup__content {
-      z-index: 101;
       pointer-events: auto;
       border-radius: $corner-soft;
       background-color: $white;
-      padding: 0 $h-20 $h-20 $h-20;
-      @include tablet() {
-        padding: 0 0 $h-20 0;
+      overflow: hidden;
+      .style-browser-layout {
+        border: unset;
       }
     }
     padding-bottom: $v-42;
@@ -53,7 +51,6 @@
     top: $h-10;
     width: $v-24;
     height: $v-24;
-    z-index: 102;
     cursor: pointer;
     pointer-events: auto;
     border-radius: $corner-default;

@@ -70,7 +70,6 @@ export default class StyleBrowserWrapper extends React.Component {
               <span className="label uppercase">Design your Fence or Gate</span>
             </div>
             <StyleBrowser
-              compactView={true}
               doneButtonText={this.props.doneButtonText}
               model={model}
               onComplete={(model) => this.handleSelectionCompleted(model)}
