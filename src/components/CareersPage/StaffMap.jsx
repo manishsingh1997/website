@@ -4,6 +4,9 @@ import {Spinner, googleIntegration} from '@ergeon/core-components';
 import {STAFF_MAP_GID} from 'website/constants';
 import {getMapData} from 'api/map';
 import './StaffMap.scss';
+import {retryRequest} from '../../utils/utils';
+
+const REQUEST_COUNT = 5;
 
 class StaffMap extends React.Component {
   constructor(props) {
@@ -16,34 +19,57 @@ class StaffMap extends React.Component {
       styles: [],
       aspectRatio: '16:9',
       ready: false,
+      error: false,
     };
   }
   componentDidMount() {
-    getMapData(STAFF_MAP_GID).then((response) => {
-      const mapData = response.data;
-      const {markers, polygons, legend} = mapData;
-      const {aspectRatio, popupBehaviour, controls, styles} = mapData.config;
-      this.setState({
-        markers,
-        polygons,
-        legend,
-        aspectRatio,
-        popupBehaviour,
-        controls,
-        styles,
-        ready: true,
-      });
+    retryRequest(REQUEST_COUNT, async (error) => {
+      if (error) {
+        console.warn(error.message);
+        this.setState((prevState) => {
+          return {...prevState, error: true};
+        });
+        return;
+      }
+      await this.fetchMapData();
     });
   }
+
+  async fetchMapData() {
+    const {data: mapData} = await getMapData(STAFF_MAP_GID);
+    if (!mapData) {
+      throw new Error('Failed requesting map data');
+    }
+    const {markers = [], polygons = [], legend} = mapData;
+    const {aspectRatio, popupBehaviour, controls, styles} = mapData?.config ?? this.state;
+    this.setState({
+      markers,
+      polygons,
+      legend,
+      aspectRatio,
+      popupBehaviour,
+      controls,
+      styles,
+      ready: true,
+    });
+  }
+
   render() {
-    const {markers, polygons, legend, aspectRatio, popupBehaviour, controls, styles, ready} = this.state;
+    const {markers, polygons, legend, aspectRatio, popupBehaviour, controls, styles, ready, error} = this.state;
     const loadingPlaceholder = <Spinner active={!ready} color="blue" size={48} />;
     const loader = <div className="loader-placeholder">{loadingPlaceholder}</div>;
+
+    if (error) {
+      return null;
+    }
+
+    if (!ready) {
+      return loader;
+    }
+
     return (
       <div className="staff-map">
-        {!ready && loader}
-        {ready && (
-          <MapComponent
+        <MapComponent
             aspectRatio={aspectRatio}
             controls={controls}
             fitBy="width"
@@ -55,7 +81,6 @@ class StaffMap extends React.Component {
             popupBehaviour={popupBehaviour}
             styles={styles}
           />
-        )}
       </div>
     );
   }
