@@ -1,5 +1,4 @@
 import React from 'react';
-import {ReactSVG} from 'react-svg';
 import {RatingsData} from '@ergeon/core-components';
 
 import yelpLogo from '../../assets/testimonial-icons/yelp.svg';
@@ -13,51 +12,34 @@ import './TestimonialBanner.scss';
 type BadgeProps = {
   rating: number | string;
   icon: string;
-  className: string;
-};
-
-type BannerProps = {
-  isMobile: boolean;
-};
-
-const renderBadge = (props: BadgeProps) => {
-  const {rating, icon, className} = props;
-
-  return (
-    <div className={className}>
-      <ReactSVG src={icon} />
-      <div className="badge--txt">
-        {rating} {typeof rating === 'string' ? 'rated' : 'rating'}
-      </div>
-    </div>
-  );
-};
-
-const renderBanner = (props: BannerProps) => {
-  const {isMobile} = props;
-  const {yelp, google, homeadvisor, thumbtack} = RatingsData;
-
-  const bannerClass = isMobile ? 'MobileContainer-TestimonialBanner' : 'TestimonialBanner';
-  const badgeClass = isMobile ? 'MobileContainer-Badge' : 'Badge';
-
-  return (
-    <div className={bannerClass}>
-      {renderBadge({rating: yelp.rating, icon: yelpLogo, className: badgeClass})}
-      {renderBadge({rating: google.rating, icon: googleLogo, className: badgeClass})}
-      {renderBadge({rating: homeadvisor.rating, icon: homeadvisorLogo, className: badgeClass})}
-      {renderBadge({rating: thumbtack.rating, icon: thumbtackLogo, className: badgeClass})}
-      {renderBadge({rating: 'A', icon: bbbLogo, className: badgeClass})}
-    </div>
-  );
+  reviews?: number,
 };
 
 const TestimonialBanner = () => {
-  return (
-    <div>
-      <div className="mobile-length">
-        <div className="MobileContainer">{renderBanner({isMobile: true})}</div>
+  const {yelp, google, homeadvisor, thumbtack} = RatingsData;
+
+  const renderBadge = (props: BadgeProps) => {
+    const {rating, icon, reviews} = props;
+
+    return (
+      <div className="TestimonialBanner-badge">
+        <img alt="testimonial organization" src={icon} />
+        <span className="badge--txt">{rating} rating</span>
+        {reviews
+          ? <span className="badge--txt is-grey">{reviews} REVIEWS</span>
+          : <span className="badge--txt is-grey">ACCREDITED</span>
+        }
       </div>
-      <div className="desktop-length">{renderBanner({isMobile: false})}</div>
+    );
+  };
+
+  return (
+    <div className="TestimonialBanner">
+      {renderBadge({rating: thumbtack.rating, icon: thumbtackLogo, reviews: 38})}
+      {renderBadge({rating: yelp.rating, icon: yelpLogo, reviews: 2127})}
+      {renderBadge({rating: google.rating, icon: googleLogo, reviews: 441})}
+      {renderBadge({rating: homeadvisor.rating, icon: homeadvisorLogo, reviews: 156})}
+      {renderBadge({rating: 'A', icon: bbbLogo, reviews: 0})}
     </div>
   );
 };

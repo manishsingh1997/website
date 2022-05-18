@@ -16,14 +16,17 @@ import QASection from './QASection';
 import RemoteFeatures from './RemoteFeatures';
 import TestimonialBanner from './TestimonialBanner';
 import UpcomingRemoteFeatures from './UpcomingRemoveFeatures';
+import CustomerReview from './CustomerReview';
 
 const HomePage = () => {
     return (
       <>
         <SliderHero />
-        {showUpcomingFeatures('ENG-13570') && <TestimonialBanner />}
-        <ReviewHero />
         <div className="wrapper-1180">
+          {showUpcomingFeatures('ENG-13570') && <TestimonialBanner />}
+          {showUpcomingFeatures('ENG-13166') && <CustomerReview />}
+          <RemoteFeatures />
+          <ReviewHero />
           <ProjectsSection />
           {showUpcomingFeatures('ENG-13167') ? <UpcomingRemoteFeatures/> : <RemoteFeatures />}
           {showUpcomingFeatures('ENG-13570') ? <UpcomingGetStartedSection /> : <GetStartedSection />}

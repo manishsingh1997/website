@@ -1,45 +1,53 @@
 @import '@ergeon/core-components/src/components/variables.scss';
 
-.MobileContainer {
-  height: $h-80;
-  margin-top: $h-40;
-  overflow: hidden;
+.TestimonialBanner {
+  height: auto;
+  width: 100%;
+  margin-top: $v-12;
+  display: flex;
+  justify-content: space-between;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
-  &-TestimonialBanner {
-    height: $h-120;
-    white-space: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    padding: 0 $v-30;
-    -webkit-overflow-scrolling: touch;
+  @include phone {
+    width: auto;
+    margin: 0 -1 * $h-20;
+    padding: $v-12 $h-20;
   }
 
   &-Badge {
-    display: inline-block;
-    width: 45%;
+    display: flex;
+    flex-direction: column;
+    max-width: $h-80;
+    width: 100%;
+    padding-bottom: $v-12;
     text-align: center;
+
+    img {
+      max-height: $v-30 - 2;
+    }
+
+    @include phone {
+      width: max-content;
+      padding-left: $h-5;
+      margin-right: $h-60 - $h-10;
+      font-size: $font-mobile-size;
+    }
   }
-}
 
-.TestimonialBanner {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 0 auto;
-  margin-bottom: $v-20;
-  margin-top: $v-20;
-  padding: $v-48 $h-120 0;
-  width: 100%;
-}
+  .badge--txt {
+    font-size: $font-label-size;
+    white-space: nowrap;
+  }
 
-.Badge {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  width: 33%;
-
-  &--txt {
-    font-size: $font-mobile-size;
+  .is {
+    &-grey {
+      color: $gray-2;
+    }
   }
 }
