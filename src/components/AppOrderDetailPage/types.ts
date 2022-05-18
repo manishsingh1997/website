@@ -75,6 +75,9 @@ export type Quote = {
   id: number,
   title: string | null,
   sent_to_customer_at: string | null,
+  total: {
+    area: string,
+  },
   total_price: string,
   total_cost: string,
   approved_at: string | null,
@@ -109,3 +112,10 @@ export type Order = {
   quotes: Quote[],
   visits: Visits[],
 }
+
+export type SelectedOption = {
+  value: string,
+  label: string,
+  statuses: string[],
+}
+
