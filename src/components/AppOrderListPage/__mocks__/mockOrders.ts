@@ -1,9 +1,10 @@
+import { Order } from '../../types';
 import {mockHouseA, mockHouseB} from '../../__mocks__/mockHouses';
 
 export const mockUpcomingAppointmentId = 420;
 export const mockPastAppointmentId = 69;
 
-export const mockOrders = [
+export const mockOrders: Order[] = [
   {
     id: mockUpcomingAppointmentId,
     ordered_at: '2022-04-26T00:37:39.668634-07:00',
@@ -45,6 +46,17 @@ export const mockOrders = [
         }
       }
     ],
+    project_manager: null,
+    visits: [],
+    customer_deal_status: 'Cancelled',
+    sales_rep: {
+      id: 1,
+      email: 'johnsmith@ergeon.com',
+      full_name: 'John Smith',
+      phone_number: '(123) 456-7890',
+    },
+    status: 'CAN',
+    status_display: 'Cancelled',
   },{
     id: mockPastAppointmentId,
     ordered_at: '2022-05-26T00:37:39.668634-07:00',
@@ -85,5 +97,16 @@ export const mockOrders = [
         }
       }
     ],
+    project_manager: null,
+    visits: [],
+    customer_deal_status: 'Cancelled',
+    sales_rep: {
+      id: 1,
+      email: 'johnsmith@ergeon.com',
+      full_name: 'John Smith',
+      phone_number: '(123) 456-7890',
+    },
+    status: 'CAN',
+    status_display: 'Cancelled',
   }
 ];

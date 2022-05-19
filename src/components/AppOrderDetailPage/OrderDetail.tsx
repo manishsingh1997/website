@@ -13,10 +13,11 @@ import DataRow from '../common/DataRow';
 
 import AppSubCard from '../common/AppSubCard';
 import AppConfigPreview from '../common/AppConfigPreview';
+import { Order, Quote, Visits } from '../types';
 import { getFormattedAddress } from '../../utils/app-house';
 import { getQuoteDetailURL } from '../../utils/urls';
 import { getExpiresAtTitle } from '../../utils/utils';
-import { Order, Quote, Visits, SelectedOption } from './types';
+import { SelectedOption } from './types';
 
 type OrderDetailsProps = {
   order: Order,

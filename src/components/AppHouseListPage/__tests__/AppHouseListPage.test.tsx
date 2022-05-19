@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import {Provider} from 'react-redux';
 import {mockHouseA, mockHouseB} from '../../__mocks__/mockHouses';
 import AppHouseListPage from '../AppHouseListPage';
-import {store} from '../__mocks__/mockStore';
+import {store} from '../../__mocks__/mockStore';
 
 jest.mock('@ergeon/core-components', () => ({
   ...jest.requireActual('@ergeon/core-components'),

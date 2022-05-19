@@ -1,26 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
-
 import {Button} from '@ergeon/core-components';
-import CustomerGIDContext from 'context-providers/CustomerGIDContext';
-import DataRow from 'components/common/DataRow';
-
-import AppPage from 'components/common/AppPage';
-import AppSubCard from 'components/common/AppSubCard';
 import {formatDate} from '../../utils/date';
 import {getOrderDetailURL, getQuoteDetailURL} from '../../utils/urls';
+import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
+import DataRow from '../../components/common/DataRow';
+import AppPage from '../../components/common/AppPage';
+import AppSubCard from '../../components/common/AppSubCard';
 import {filterQuotesByStatus, DEFAULT_QUOTE_FILTER} from '../../utils/app-order';
 import {getFormattedAddress} from '../../utils/app-house';
+import {Order, Quote} from '../types';
+import {AppOrdersListPageProps} from './types';
 
-export default class AppOrdersListPage extends React.Component {
-  static propTypes = {
-    getOrders: PropTypes.func.isRequired,
-    isListLoading: PropTypes.bool.isRequired,
-    listError: PropTypes.object,
-    orders: PropTypes.array,
-  };
-
+export default class AppOrdersListPage extends Component <AppOrdersListPageProps> {
   static contextType = CustomerGIDContext;
 
   fetchData() {
@@ -29,7 +21,7 @@ export default class AppOrdersListPage extends React.Component {
     getOrders(customerGID);
   }
 
-  renderQuote(quote) {
+  renderQuote(quote: Quote) {
     const customerGID = this.context;
     return (
       <div key={`quote-${quote['id']}`}>
@@ -38,16 +30,16 @@ export default class AppOrdersListPage extends React.Component {
     );
   }
 
-  renderQuotes(order) {
+  renderQuotes(order: Order) {
     const quotes = filterQuotesByStatus(order['quotes'], DEFAULT_QUOTE_FILTER);
-    return quotes.length > 0 ? quotes.map((quote) => this.renderQuote(quote)) : null;
+    return quotes.length > 0 ? quotes.map((quote: Quote) => this.renderQuote(quote)) : null;
   }
 
-  renderListElementHeader(order) {
+  renderListElementHeader(order: Order) {
     const customerGID = this.context;
 
     return (
-      <React.Fragment>
+      <Fragment>
         <div>{order['product']['name']}</div>
         <div>
           <Link to={getOrderDetailURL(customerGID, order['id'])}>
@@ -56,27 +48,27 @@ export default class AppOrdersListPage extends React.Component {
             </Button>
           </Link>
         </div>
-      </React.Fragment>
+      </Fragment>
     );
   }
 
-  renderListElementContent(order) {
+  renderListElementContent(order: Order) {
     return (
-      <React.Fragment>
+      <Fragment>
         <DataRow title="Order" value={`#${order['id']}`} />
         <DataRow title="Status" value={order['customer_deal_status']} />
         <DataRow title="Ordered on" value={formatDate(order['ordered_at'])} />
         <DataRow title="Address" value={getFormattedAddress(order['house'])} />
         <DataRow title="Quotes" value={this.renderQuotes(order)} />
-      </React.Fragment>
+      </Fragment>
     );
   }
 
   renderHeader() {
     return (
-      <React.Fragment>
+      <Fragment>
         <div>Orders</div>
-      </React.Fragment>
+      </Fragment>
     );
   }
 
@@ -84,7 +76,7 @@ export default class AppOrdersListPage extends React.Component {
     const {orders} = this.props;
 
     return (
-      <React.Fragment>
+      <Fragment>
         {orders &&
           orders.map((order) => (
             <AppSubCard
@@ -93,7 +85,7 @@ export default class AppOrdersListPage extends React.Component {
               renderHeader={this.renderListElementHeader.bind(this, order)}
             />
           ))}
-      </React.Fragment>
+      </Fragment>
     );
   }
 

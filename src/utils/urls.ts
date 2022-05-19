@@ -3,7 +3,7 @@ import {some} from 'lodash';
 import {calcUtils} from '@ergeon/3d-lib';
 import {getUnsubscribeCodeFromQuery} from './app-notifications';
 
-export const getOrderDetailURL = (customerGID: string, orderId: string) => {
+export const getOrderDetailURL = (customerGID: string, orderId: number) => {
   return `/app/${customerGID}/orders/${orderId}`;
 };
 

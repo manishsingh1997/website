@@ -1,5 +1,5 @@
+import { Order } from '../../types';
 import { mockHouseA } from '../../__mocks__/mockHouses';
-import { Order } from '../types';
 
 export const mockFirstOrderId = 61255;
 

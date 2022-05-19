@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { SelectFilter } from '@ergeon/core-components';
 import contactIcon from '@ergeon/core-components/src/assets/icon-arrow-left.svg';
+import { Order } from '../types';
 import { filterQuotesSentToCustomer, QUOTE_FILTERS } from '../../utils/app-order';
-import { Order, SelectedOption } from './types';
+import { SelectedOption } from './types';
 
 type AppOrderDetailPageProps = {
   customerGID: string,
