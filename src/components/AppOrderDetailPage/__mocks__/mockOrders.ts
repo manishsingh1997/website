@@ -41,9 +41,6 @@ export const mockOrders = {
         preview_quote_line: null,
         secret: '1kPPKQ6ZiKmRxznu',
         expires_at: null,
-        total: {
-          area: '0',
-        },
         total_length: '0',
         total_area: '0',
         status: {

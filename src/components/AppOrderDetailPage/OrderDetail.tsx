@@ -31,7 +31,7 @@ const OrderDetail = (props: OrderDetailsProps) => {
     const schemaCodeUrl = quote.preview_quote_line?.config.schema_code_url;
 
     const showTotalLength = Boolean(quote.total_length) && quote.total_length !== '0';
-    const showTotalArea = Boolean(quote.total.area) && quote.total.area !== '0';
+    const showTotalArea = Boolean(quote.total_area) && quote.total_area !== '0';
     const expiresAt = quote.expires_at;
     const expiresAtTitle = getExpiresAtTitle(expiresAt);
 
@@ -44,14 +44,14 @@ const OrderDetail = (props: OrderDetailsProps) => {
             {showTotalLength && (
               <DataRow title="Total length" value={`${quote.total_length} ${FENCE_QUANTITY_UNIT}`} />
             )}
-            {showTotalArea && <DataRow title="Total area" value={`${quote.total.area} ${DRIVEWAY_QUANTITY_UNIT}`} />}
+            {showTotalArea && <DataRow title="Total area" value={`${quote.total_area} ${DRIVEWAY_QUANTITY_UNIT}`} />}
             <DataRow title="Sent At" value={formatDateAndTime(quote.sent_to_customer_at)} />
             {quote.approved_at && <DataRow title="Approved At" value={formatDateAndTime(quote.approved_at)} />}
             {quote.cancelled_at && <DataRow title="Cancelled At" value={formatDateAndTime(quote.cancelled_at)} />}
             {expiresAt && <DataRow title={expiresAtTitle} value={formatDateAndTime(expiresAt)} />}
           </div>
           <div>
-            <AppConfigPreview className="quote-preview" schemaCodeUrl={schemaCodeUrl} />
+            <AppConfigPreview className="quote-preview" schemaCodeUrl={schemaCodeUrl} withLink />
           </div>
         </div>
         <div>
@@ -101,8 +101,8 @@ const OrderDetail = (props: OrderDetailsProps) => {
         {filterQuotesByStatus(order.quotes, selectedOption).map((quote: Quote) => (
           <AppSubCard
             key={`quote-${quote.id}`}
-            renderContent={renderListElementContent(quote)}
-            renderHeader={renderListElementHeader(quote)}
+            renderContent={() => renderListElementContent(quote)}
+            renderHeader={() => renderListElementHeader(quote)}
           />
         ))}
       </>
