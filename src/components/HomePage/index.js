@@ -25,10 +25,10 @@ const HomePage = () => {
         <div className="wrapper-1180">
           {showUpcomingFeatures('ENG-13570') && <TestimonialBanner />}
           {showUpcomingFeatures('ENG-13166') && <CustomerReview />}
-          <RemoteFeatures />
+          {!showUpcomingFeatures('ENG-13167') && <RemoteFeatures />}
           <ReviewHero />
           <ProjectsSection />
-          {showUpcomingFeatures('ENG-13167') ? <UpcomingRemoteFeatures/> : <RemoteFeatures />}
+          {showUpcomingFeatures('ENG-13167') && <UpcomingRemoteFeatures/>}
           {showUpcomingFeatures('ENG-13570') ? <UpcomingGetStartedSection /> : <GetStartedSection />}
           <PromoBlock
             btnLink={process.env.FENCEQUOTING_HOST}
