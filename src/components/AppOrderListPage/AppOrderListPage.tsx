@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment, useCallback, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import {Button} from '@ergeon/core-components';
 import {formatDate} from '../../utils/date';
@@ -12,32 +12,28 @@ import {getFormattedAddress} from '../../utils/app-house';
 import {Order, Quote} from '../types';
 import {AppOrdersListPageProps} from './types';
 
-export default class AppOrdersListPage extends Component <AppOrdersListPageProps> {
-  static contextType = CustomerGIDContext;
+const AppOrdersListPage = (props: AppOrdersListPageProps) => {
+  const {getOrders, orders, listError, isListLoading} = props;
+  const customerGID = useContext(CustomerGIDContext);
 
-  fetchData() {
-    const {getOrders} = this.props;
-    const customerGID = this.context;
+  const fetchData = useCallback(() => {
     getOrders(customerGID);
-  }
+  }, [getOrders, customerGID])
 
-  renderQuote(quote: Quote) {
-    const customerGID = this.context;
+  const renderQuote = useCallback((quote: Quote) => {
     return (
       <div key={`quote-${quote['id']}`}>
         <Link to={getQuoteDetailURL(customerGID, quote['secret'])}>#{quote['id']}</Link> ({quote['status']['label']})
       </div>
     );
-  }
+  }, [getQuoteDetailURL, customerGID])
 
-  renderQuotes(order: Order) {
+  const renderQuotes = useCallback((order: Order) => {
     const quotes = filterQuotesByStatus(order['quotes'], DEFAULT_QUOTE_FILTER);
-    return quotes.length > 0 ? quotes.map((quote: Quote) => this.renderQuote(quote)) : null;
-  }
+    return quotes.length > 0 ? quotes.map((quote: Quote) => renderQuote(quote)) : null;
+  }, [filterQuotesByStatus, renderQuote])
 
-  renderListElementHeader(order: Order) {
-    const customerGID = this.context;
-
+  const renderListElementHeader = useCallback((order: Order) => {
     return (
       <Fragment>
         <div>{order['product']['name']}</div>
@@ -50,54 +46,52 @@ export default class AppOrdersListPage extends Component <AppOrdersListPageProps
         </div>
       </Fragment>
     );
-  }
+  }, [getOrderDetailURL, customerGID])
 
-  renderListElementContent(order: Order) {
+  const renderListElementContent = useCallback((order: Order) => {
     return (
       <Fragment>
         <DataRow title="Order" value={`#${order['id']}`} />
         <DataRow title="Status" value={order['customer_deal_status']} />
         <DataRow title="Ordered on" value={formatDate(order['ordered_at'])} />
         <DataRow title="Address" value={getFormattedAddress(order['house'])} />
-        <DataRow title="Quotes" value={this.renderQuotes(order)} />
+        <DataRow title="Quotes" value={renderQuotes(order)} />
       </Fragment>
     );
-  }
+  }, [formatDate, getFormattedAddress, renderQuotes])
 
-  renderHeader() {
+  const renderHeader = useCallback(() => {
     return (
       <Fragment>
         <div>Orders</div>
       </Fragment>
     );
-  }
+  }, [])
 
-  renderContent() {
-    const {orders} = this.props;
-
+  const renderContent = useCallback(() => {
     return (
       <Fragment>
         {orders &&
           orders.map((order) => (
             <AppSubCard
               key={`order-${order.id}`}
-              renderContent={this.renderListElementContent.bind(this, order)}
-              renderHeader={this.renderListElementHeader.bind(this, order)}
+              renderContent={() => renderListElementContent(order)}
+              renderHeader={() => renderListElementHeader(order)}
             />
           ))}
       </Fragment>
     );
-  }
+  }, [orders, renderListElementContent, renderListElementHeader])
 
-  render() {
     return (
       <AppPage
-        error={this.props.listError}
-        fetchData={this.fetchData.bind(this)}
-        isLoading={this.props.isListLoading}
-        renderContent={this.renderContent.bind(this)}
-        renderHeader={this.renderHeader.bind(this)}
+        error={listError}
+        fetchData={fetchData}
+        isLoading={isListLoading}
+        renderContent={renderContent}
+        renderHeader={renderHeader}
       />
     );
-  }
 }
+
+export default AppOrdersListPage;
