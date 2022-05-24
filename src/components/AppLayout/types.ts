@@ -5,7 +5,7 @@ interface MatchParams {
   customerGid: string;
 }
 
-interface MatchProps {
+export interface MatchProps {
   url: string;
   params: MatchParams;
 }

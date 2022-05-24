@@ -28,7 +28,7 @@ describe('App Layout page', () => {
       auth: {
         ...mockNotLoggedInAuth,
         isAuthLoading: true,
-        isUserLoading: true
+        isUserLoading: true,
       },
     };
 
@@ -52,7 +52,7 @@ describe('App Layout page', () => {
 
     const text = getByText('Sorry, but something went wrong');
     expect(text).toBeInTheDocument();
-    expect(consoleErrorMock).toBeCalled()
+    expect(consoleErrorMock).toBeCalled();
     consoleErrorMock.mockRestore();
   });
 

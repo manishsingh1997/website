@@ -15,6 +15,7 @@ import {showUpcomingFeatures} from '../../../utils/utils';
 import QuoteLines from './QuoteLines';
 import QuoteDescription from './QuoteDescription';
 import {hideDroppedLabels} from './utils';
+
 export default class QuoteDetails extends React.Component {
   static propTypes = {
     approvedAt: PropTypes.string,
