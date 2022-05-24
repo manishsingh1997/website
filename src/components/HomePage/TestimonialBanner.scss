@@ -3,13 +3,13 @@
 .TestimonialBanner {
   height: auto;
   width: 100%;
-  margin-top: $v-12;
+  margin-top: $v-24;
   display: flex;
   justify-content: space-between;
   overflow-x: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -17,19 +17,23 @@
   @include phone {
     width: auto;
     margin: 0 -1 * $h-20;
-    padding: $v-12 $h-20;
+    padding: $h-20;
   }
 
   &-Badge {
     display: flex;
     flex-direction: column;
-    max-width: $h-80;
+    max-width: $h-80 * 2 + $h-40;
     width: 100%;
     padding-bottom: $v-12;
     text-align: center;
 
     img {
-      max-height: $v-30 - 2;
+      max-height: $v-48 + 2;
+
+      @include phone {
+        max-height: ($v-48 + 2) / 2;
+      }
     }
 
     @include phone {
@@ -48,6 +52,9 @@
   .is {
     &-grey {
       color: $gray-2;
+    }
+    &-bold {
+      font-weight: 600;
     }
   }
 }
