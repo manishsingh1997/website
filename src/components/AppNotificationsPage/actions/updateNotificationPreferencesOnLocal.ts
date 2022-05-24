@@ -1,0 +1,27 @@
+import {Dispatch} from 'react';
+import {Action, ActionType} from '../appNotificationPageReducer';
+import {getNotificationPreferenceFromResponse} from '../utils';
+import {getNotificationPreferences} from '../../../api/app';
+import {getUnsubscribeCodeFromQuery} from '../../../utils/app-notifications';
+import {parseAPIError} from '../../../utils/api';
+import {ParsedAPIErrorType} from '../../../utils/types';
+
+// We don't need this data in redux store for now, so calling API directly
+const updateNotificationPreferencesOnLocal = 
+  async (customerGID: string, dispatch: Dispatch<Action>, location: Location) => {
+    const unsubscribeCode = getUnsubscribeCodeFromQuery(location.search);
+    try {
+      // we support primary contact only for now
+      const response = await getNotificationPreferences(customerGID, unsubscribeCode);
+      const data = getNotificationPreferenceFromResponse(response) || null;
+      dispatch({type: ActionType.UPDATE_NOTIFICATION_PREFERENCE, notificationPreference: data});
+      dispatch({type: ActionType.UPDATE_INITIAL_ERROR, initialError: null});
+    } catch (apiError) {
+      dispatch({type: ActionType.UPDATE_NOTIFICATION_PREFERENCE, notificationPreference: null});
+      dispatch({type: ActionType.UPDATE_INITIAL_ERROR, initialError: parseAPIError(apiError as ParsedAPIErrorType)});
+    } finally {
+      dispatch({type: ActionType.UPDATE_IS_INITIAL_LOADING, isInitialLoading: false});
+    }
+  }
+
+export default updateNotificationPreferencesOnLocal;

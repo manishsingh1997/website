@@ -1,31 +1,28 @@
-import {ParsedAPIErrorType} from '../../utils/types';
-
-type ContactType = {
-  formatted_identifier: string;
+type NotificationCustomData = {
   id: number;
-  identifier: string;
-  label: string | null;
   type: string;
+  identifier: string;
+  formatted_identifier: string;
+  label: string | null;
 };
 
-export type AppNotificationsState = {
-  error: ParsedAPIErrorType | null;
-  initialError: ParsedAPIErrorType | null;
-  isInitialLoading: boolean;
-  isSavedSuccessfully: boolean;
-  isSaving: boolean;
-  primaryContact: NotificationPreference | null;
-  unsubscribeAutomatically: boolean;
+export type Location = {
+  pathname: string;
+  search: string;
+};
+
+export type AppNotificationsProps = {
+  location: Location;
 };
 
 export type NotificationPreference = {
-  additional_emails: ContactType[];
-  additional_phones: ContactType[];
   id: number;
-  is_email_newsletter_ok: boolean;
+  primary_email: NotificationCustomData;
+  primary_phone: NotificationCustomData,
+  additional_emails: [];
+  additional_phones: [];
   is_primary: boolean;
-  primary_email: ContactType;
-  primary_phone: ContactType,
+  is_email_newsletter_ok: boolean;
 };
 
-export type UpdateNotificationPreferences = (NotificationPreference | null)[] | null;
+export type UpdateNotificationPreferencesProps = (NotificationPreference | null)[] | null;
