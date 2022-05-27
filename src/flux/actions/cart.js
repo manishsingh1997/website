@@ -35,25 +35,29 @@ export const clearConfigs = (lead) => ({
 export const addConfigFromSchema = function ({zipcode, data, schemaCode, length, configs}, index = -1) {
   return (dispatch) => {
     const {FRAME_STYLE} = attrs;
-    let item;
 
     if (some(configs, (config) => config.code === schemaCode)) return;
+    const itemId = random(0, 1, true).toString(36).slice(2);
+
+    const item = {
+      id: itemId,
+      catalog_type: data[FRAME_STYLE.id] ? CatalogType.FENCE : CatalogType.GATE,
+      code: schemaCode,
+      product: data,
+      preview: '',
+      description: '',
+      price: '',
+      units: length || 1,
+      timestamp: moment().unix() * 1000,
+    };
 
     return getPriceAndDescription(data, zipcode)
       .then((priceAndDescription) => {
         if (priceAndDescription) {
-          const itemId = random(0, 1, true).toString(36).slice(2);
-          item = {
-            id: itemId,
-            catalog_type: data[FRAME_STYLE.id] ? CatalogType.FENCE : CatalogType.GATE,
-            code: schemaCode,
-            product: data,
-            preview: '',
-            description: priceAndDescription['description'],
-            price: priceAndDescription['unit_price'],
-            units: length || 1,
-            timestamp: moment().unix() * 1000,
-          };
+
+          item.description = priceAndDescription['description']
+          item.price = priceAndDescription['unit_price']
+          item.timestamp = moment().unix() * 1000
 
           if (index !== -1) {
             return dispatch(updateConfig(index, item));

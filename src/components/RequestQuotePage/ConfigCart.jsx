@@ -94,9 +94,9 @@ class ConfigCart extends React.Component {
     this.props.onShowStyleBrowserChange(false);
   }
 
-  onDoneEditorClick(editorModel, index = -1) {
+  onDoneEditorClick(schemaCode, index = -1) {
     const {configs, zipcode} = this.props;
-    const schemaCode = calcUtils.getSchemaCodeFromState(editorModel);
+    const modelState = calcUtils.getValueFromUrl(schemaCode)
 
     this.setState({
       showStyleBrowser: false,
@@ -109,7 +109,7 @@ class ConfigCart extends React.Component {
     this.props.addConfigFromSchema(
       {
         length: index !== -1 ? config.units : 1,
-        data: editorModel,
+        data: modelState,
         schemaCode,
         configs,
         zipcode,
