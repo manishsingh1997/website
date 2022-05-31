@@ -109,7 +109,6 @@ export const trackError = (error, data) => {
 };
 
 export const page = () => {
-  const mixpanel = window.mixpanel;
 
   if (!mixpanel) {
     trackError('No Mixpanel');
