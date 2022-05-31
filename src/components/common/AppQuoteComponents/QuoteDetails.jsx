@@ -11,7 +11,6 @@ import isEmpty from 'lodash/isEmpty';
 import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 import {isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
 import {CARD_TRANSACTION_FEE} from 'website/constants';
-import {showUpcomingFeatures} from '../../../utils/utils';
 import QuoteLines from './QuoteLines';
 import QuoteDescription from './QuoteDescription';
 import {hideDroppedLabels} from './utils';
@@ -103,7 +102,7 @@ export default class QuoteDetails extends React.Component {
     const {quote, asPDF, quoteLines} = this.props;
     const {isLoadingMap} = this.state;
     let calcInput = quote['calc_input'];
-    if (showUpcomingFeatures('ENG-9416') && quote['project_calc_input']) {
+    if (quote['project_calc_input']) {
       calcInput = hideDroppedLabels(quote['project_calc_input'], quoteLines);
     }
     let address = quote.order.house.address;
@@ -146,9 +145,9 @@ export default class QuoteDetails extends React.Component {
 
   renderQuotePriceSection() {
     const {quote, isInstallerPreview, totalPrice, totalPreviouslyApprovedPrice, totalProjectPrice} = this.props;
-    const {parent_quote: parentQuote} = quote;
+    const {is_scope_change: isScopeChange} = quote;
 
-    if (!parentQuote) {
+    if (!isScopeChange) {
       return (
         <div className={classNames({'total-price': !isInstallerPreview, 'total-price-noteless': isInstallerPreview})}>
           <h4>Total: {totalPrice}</h4>

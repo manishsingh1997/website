@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import { isEmpty, some } from 'lodash';
 
-import { isPDFMode, showUpcomingFeatures } from 'utils/utils';
+import { isPDFMode } from 'utils/utils';
 import { parseAPIError } from 'utils/api.ts';
 import { formatPrice, isQuoteReplaced, isQuoteCancelled, isQuoteExpired } from 'utils/app-order';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
@@ -81,8 +81,6 @@ export default class AppCustomerQuotePage extends React.Component {
   }
 
   isScopeChange(quoteApproval) {
-    // TODO: Remove when PRD ENG-8551 is finished
-    // Quote is optional for parent quote approval, must be removed later
     return quoteApproval.quote && quoteApproval.quote['is_scope_change'] == true;
   }
 
@@ -166,9 +164,6 @@ export default class AppCustomerQuotePage extends React.Component {
   }
 
   getProjectTotalPrice(quoteApproval) {
-    if (!showUpcomingFeatures('ENG-9416')) {
-      return this.getTotalPrice(quoteApproval);
-    }
     return Number.parseFloat(quoteApproval['project_total_price']);
   }
 

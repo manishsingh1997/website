@@ -19,7 +19,6 @@ import IconCards from 'assets/icon-cards.png';
 import IconSSL from 'assets/icon-ssl.svg';
 import IconCardSecure from 'assets/icon-card-secure.svg';
 import IconMarkGreen from 'assets/icon-check-mark.svg';
-import {showUpcomingFeatures} from '../../utils/utils';
 
 import './BillingForm.scss';
 
@@ -287,7 +286,7 @@ export default class BillingForm extends React.Component {
       'billing-form--loading': isLoading,
     };
 
-    const totalPayText = isScopeChange && showUpcomingFeatures('ENG-8551') ? 'New total pay' : 'Total pay';
+    const totalPayText = isScopeChange ? 'New total pay' : 'Total pay';
 
     return (
       <div className={classNames(classes)}>
