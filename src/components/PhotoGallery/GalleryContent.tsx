@@ -1,7 +1,9 @@
 import React, {useMemo, useState} from 'react';
 import find from 'lodash/find';
 
-import {FencePhotoData, GatePhotoData, DrivewayPhotoData} from '../../data/photo-gallery';
+import NotFoundPage from '../NotFoundPage';
+
+import {FencePhotoData, GatePhotoData} from '../../data/photo-gallery';
 import GalleryPartners, {Partners} from './GalleryPartners';
 import GalleryPhotos from './GalleryPhotos';
 
@@ -16,7 +18,6 @@ import {PhotoGalleryProps} from '.';
 const PRODUCTS = {
   FENCE: 'fence',
   GATE: 'gate',
-  DRIVEWAY: 'driveway',
 };
 
 export type Photo = {
@@ -49,7 +50,6 @@ const GalleryContent = ({match, history}: PhotoGalleryProps) => {
     const productGalleryNames = {
       [PRODUCTS.FENCE]: 'Fence Photos',
       [PRODUCTS.GATE]: 'Gate Photos',
-      [PRODUCTS.DRIVEWAY]: 'Driveway Photos',
     };
 
     return productGalleryNames[productSlug];
@@ -59,7 +59,6 @@ const GalleryContent = ({match, history}: PhotoGalleryProps) => {
     const dataByProduct = {
       [PRODUCTS.FENCE]: FencePhotoData,
       [PRODUCTS.GATE]: GatePhotoData,
-      [PRODUCTS.DRIVEWAY]: DrivewayPhotoData,
     };
     return dataByProduct[productSlug] || dataByProduct[PRODUCTS.FENCE];
   }, [productSlug]);
@@ -70,7 +69,7 @@ const GalleryContent = ({match, history}: PhotoGalleryProps) => {
   }, [productData, productSlug, categorySlug]);
 
   const breadcrumbGroups = useMemo(() => {
-    const categoryGroups = categoryData.categoryGroups || [];
+    const categoryGroups = categoryData?.categoryGroups || [];
 
     return categoryGroups.map((group) => ({
       name: group.groupName,
@@ -80,13 +79,13 @@ const GalleryContent = ({match, history}: PhotoGalleryProps) => {
   }, [categoryData, productSlug, categorySlug, groupSlug]);
 
   const photos = useMemo(() => {
-    const groupedBySlug = find(categoryData.categoryGroups, {groupSlug});
+    const groupedBySlug = find(categoryData?.categoryGroups, {groupSlug});
 
     if (groupedBySlug) {
       return fillCaptionsInPhotos(groupedBySlug.groupPhotos);
     }
 
-    return categoryData.categoryPhotos || [];
+    return categoryData?.categoryPhotos || [];
   }, [categoryData, productSlug, categorySlug, groupSlug]);
 
   const updateLocationHash = (slug: string) => {
@@ -111,6 +110,10 @@ const GalleryContent = ({match, history}: PhotoGalleryProps) => {
 
   const activeGroup = find(breadcrumbGroups, {highlighted: true});
 
+  if (!productGalleryName) {
+    return <NotFoundPage />;
+  }
+
   return (
     <div className="photo-gallery">
       <div className="wrapper-1180">
@@ -124,7 +127,7 @@ const GalleryContent = ({match, history}: PhotoGalleryProps) => {
         {breadcrumbGroups.length > 1 && <GalleryBreadcrumbs category={categoryData} match={match} />}
         <GalleryPhotos onPhotoClick={handlePhotoClick} photos={photos} />
         <GalleryBannersList productSlug={productSlug} products={PRODUCTS} />
-        {categoryData.partners && <GalleryPartners partners={[]} />}
+        {categoryData?.partners && <GalleryPartners partners={[]} />}
         <GalleryModal
           handleModalClose={() => handleModalClose()}
           handleViewChange={(index) => updateLocationHash(photos[index].slug)}

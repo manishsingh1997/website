@@ -1,12 +1,8 @@
 import React from 'react';
-import {getParameterByName} from 'utils/utils';
 
 import photoWoodenFences from 'assets/promo-projects/wooden-fences.jpg';
 import photoGate from 'assets/promo-projects/gate-sliding.jpg';
 import photoChainLink from 'assets/promo-projects/chain-link-fence.jpg';
-import photoBrushed from 'assets/promo-projects/brushed_concrete.jpg';
-import photoStamped from 'assets/promo-projects/stumped_concrete.jpg';
-import photoEnhanced from 'assets/promo-projects/enhanced_concrete.jpg';
 import PaneSwitcher from './PaneSwitcher';
 
 import './ProjectsSection.scss';
@@ -35,7 +31,7 @@ class ProjectsSection extends React.Component {
       <div className="projects-section">
         <h3 className="">Professional Installation Services</h3>
         <p>We provide installation services for residential and commercial properties</p>
-        <PaneSwitcher defaultPane={getParameterByName('utm_content') === 'driveway' ? 1 : 0}>
+        <PaneSwitcher defaultPane={0}>
           <div className="projects-section__project-cards" data-name="Fences and Gates">
             {this.renderCard({
               img: photoWoodenFences,
@@ -60,33 +56,6 @@ class ProjectsSection extends React.Component {
                 'Add a wooden or chain link gate. Choose from single gates,' +
                 ' double swing gates or sliding gates. Customize your gate with arched tops or lattice. ',
               link: '/gallery/gate/sliding',
-            })}
-          </div>
-          <div className="projects-section__project-cards" data-name="Hardscape">
-            {this.renderCard({
-              img: photoBrushed,
-              title: 'Brushed Concrete',
-              content:
-                'This style of paving features poured concrete finished by pulling ' +
-                'a brush over the fresh concrete surface. Brushed Concrete is suitable for high vehicular ' +
-                'and foot traffic areas.',
-              link: '/gallery/driveway/brushed/natural',
-            })}
-            {this.renderCard({
-              img: photoStamped,
-              title: 'Stamped Concrete',
-              content:
-                'This style of paving features poured concrete, then patterned stamped on top of the fresh ' +
-                'concrete surface. This finish will create patterns and textures that looks like natural stone.',
-              link: '/gallery/driveway/stamped/casual',
-            })}
-            {this.renderCard({
-              img: photoEnhanced,
-              title: 'Enhanced Concrete',
-              content:
-                'This style of paving features poured concrete that is enhanced with the addition' +
-                ' of colors or natural stones.',
-              link: '/gallery/driveway/enhanced/enhanced',
             })}
           </div>
         </PaneSwitcher>

@@ -13,7 +13,7 @@ import omit from 'lodash/omit';
 import {googleIntegration} from '@ergeon/core-components';
 import {DRAW_MAP_GOOGLE_LIBRARIES} from '@ergeon/draw-map';
 import {ERG_MAP_COMPONENT_LIBRARIES} from '@ergeon/map-component';
-import {FencePhotoData, GatePhotoData, DrivewayPhotoData} from 'data/photo-gallery';
+import {FencePhotoData, GatePhotoData} from 'data/photo-gallery';
 import {INSTALLER_PREVIEW_SLUG, DIRECT_PREVIEW_SLUG} from 'website/constants';
 import customScripts from 'website/custom-scripts';
 
@@ -113,17 +113,10 @@ render(
             <Switch>
               {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
               {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
-              {DrivewayPhotoData.map(renderPhotoGalleryRedirect.bind(this, 'driveway'))}
               {publicRoutes.map((props) => (
                 <Route key={props.path} {...omit(props, 'sitemap')} />
               ))}
               <Route component={CustomerApp} path="/app/:customerGid" />
-              <Redirect
-                exact
-                from="/gallery/driveway"
-                key="gallery-driveway-redirect"
-                to="/gallery/driveway/stamped/casual"
-              />
               <Route component={NotFoundPage} exact path="*" />
               {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
             </Switch>

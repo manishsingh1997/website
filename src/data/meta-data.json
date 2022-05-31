@@ -1,7 +1,7 @@
 {
   "/": {
-    "title": "Ergeon Fence and Driveway Contractors, Installation and Repair",
-    "description": "Ergeon Fence Installation and Repair Company. Driveway Contractors. We build High-Quality wooden fences, gates, patios, driveways, and walkways. Get a free quote."
+    "title": "Ergeon Fence Contractors Installation and Repair",
+    "description": "Ergeon Fence Installation and Repair Company. We build High-Quality wooden fences, gates, patios, and walkways. Get a free quote."
   },
   "/about-ergeon": {
     "title": "Learn About Us, Our Mission, and Values | Ergeon.com",
@@ -13,7 +13,7 @@
   },
   "/gallery": {
     "title": "Photo Gallery | Ergeon.com",
-    "description": "Check out our satisfied customer's Fence, gate, and driveway installation photos."
+    "description": "Check out our satisfied customer's fence and gate installation photos."
   },
   "/gallery/fence/picture-frame/without-lattice": {
     "title": "Picture Frame, Without Lattice | Fence Photos | Photo Gallery | Ergeon.com",
@@ -58,26 +58,6 @@
   "/gallery/gate/horizontal": {
     "title": "Horizontal | Photo Gallery | Gate Photos | Ergeon.com",
     "description": "Check out our satisfied customer's horizontal gate installation photos."
-  },
-  "/gallery/driveway/brushed/natural": {
-    "title": "Brushed Concrete | Driveway Photos | Photo Gallery | Ergeon.com",
-    "description": "Check out our satisfied customer's natural brushed concrete driveway installation photos."
-  },
-  "/gallery/driveway/stamped/casual": {
-    "title": "Stamped Concrete, Casual | Driveway Photos | Photo Gallery | Ergeon.com",
-    "description": "Check out our satisfied customer's casual stamped concrete driveway installation photos."
-  },
-  "/gallery/driveway/stamped/traditional": {
-    "title": "Stamped Concrete, Traditional | Driveway Photos | Photo Gallery | Ergeon.com",
-    "description": "Check out our satisfied customer's traditional stamped concrete driveway installation photos."
-  },
-  "/gallery/driveway/stamped/modern": {
-    "title": "Stamped Concrete, Modern | Driveway Photos | Photo Gallery | Ergeon.com",
-    "description": ""
-  },
-  "/gallery/driveway/enhanced/enhanced": {
-    "title": "Enhanced | Driveway Photos | Photo Gallery | Ergeon.com",
-    "description": "Check out our satisfied customer's enhanced driveway installation photos."
   },
   "/careers": {
     "title": "Ergeon Careers, Join Our Global Team",

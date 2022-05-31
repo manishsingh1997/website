@@ -5,7 +5,7 @@ import sortBy from 'lodash/sortBy';
 import {config as dotenvConfig} from 'dotenv-defaults';
 
 import {getHelpNodesURLs} from 'api/sitemap';
-import {FencePhotoData, GatePhotoData, DrivewayPhotoData} from 'data/photo-gallery';
+import {FencePhotoData, GatePhotoData} from 'data/photo-gallery';
 import {authRoutes, basicRoutes, galleryRoutes, helpRoutes} from 'routes/public';
 
 import {createDirIfNotExists} from './utils';
@@ -73,8 +73,8 @@ export const generateErgeonSitemap = async () => {
 
 /**
  * Prepare gallery URLs for adding to the Sitemap.
- * @param {FencePhotoData|GatePhotoData|DrivewayPhotoData} galleryData
- * @param {fence|gate|driveway} type
+ * @param {FencePhotoData|GatePhotoData} galleryData
+ * @param {fence|gate} type
  */
 const getGalleryURLs = (galleryData, type) => {
   const urls = [];
@@ -100,7 +100,6 @@ export const generateGallerySitemap = async () => {
     ...getSitemapUrls(galleryRoutes),
     ...getGalleryURLs(FencePhotoData, 'fence'),
     ...getGalleryURLs(GatePhotoData, 'gate'),
-    ...getGalleryURLs(DrivewayPhotoData, 'driveway'),
   ]);
   return generateSitemap(urls);
 };

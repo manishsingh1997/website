@@ -110,21 +110,6 @@
     "active": true
   },
   {
-    "from": "driveway",
-    "to": "/gallery/driveway/stamped/casual",
-    "active": true
-  },
-  {
-    "from": "driveway-categories/pavers",
-    "to": "/gallery/driveway/stamped/casual",
-    "active": true
-  },
-  {
-    "from": "driveway-photos",
-    "to": "/gallery/driveway/stamped/casual",
-    "active": true
-  },
-  {
     "from": "faq",
     "to": "/help",
     "active": true
@@ -257,11 +242,6 @@
   {
     "from": "help/7oiKY-I_pEYrl2WL",
     "to": "/help",
-    "active": true
-  },
-  {
-    "from": "hidden-pages/driveway-photos",
-    "to": "/gallery/driveway/stamped/casual",
     "active": true
   },
   {

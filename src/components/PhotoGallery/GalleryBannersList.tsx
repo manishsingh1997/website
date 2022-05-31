@@ -9,9 +9,8 @@ type GalleryBannersListProps = {
 
 const GalleryBannersList = ({productSlug, products}: GalleryBannersListProps) => {
   const banners = {
-    [products.FENCE]: [GALLERY_BANNERS.GATE_BANNER, GALLERY_BANNERS.DRIVEWAY_BANNER],
-    [products.GATE]: [GALLERY_BANNERS.FENCE_BANNER, GALLERY_BANNERS.DRIVEWAY_BANNER],
-    [products.DRIVEWAY]: [GALLERY_BANNERS.FENCE_BANNER, GALLERY_BANNERS.GATE_BANNER],
+    [products.FENCE]: [GALLERY_BANNERS.GATE_BANNER],
+    [products.GATE]: [GALLERY_BANNERS.FENCE_BANNER],
   }[productSlug];
 
   return (

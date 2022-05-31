@@ -763,34 +763,6 @@ exports[`Photo gallery page with params should match with snapshot 1`] = `
           </div>
           NavLink to /gallery/gate/single
         </div>
-        <div
-          class="card soft-border photo-gallery__banner"
-        >
-          <div
-            class="photo-gallery__wrapper"
-          >
-            <img
-              class="photo-gallery__wrapper-photo"
-              src="https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/previews/banner_driveway.jpg"
-            />
-            <div
-              class="photo-gallery__wrapper-data"
-            >
-              <h4
-                class="additional-header h2 spacing after__is-6"
-              >
-                Driveway Photos
-              </h4>
-              <p
-                class="spacing after__is-12"
-              >
-                Stamped & Stained Concrete, Brushed Concrete, Pavers
-              </p>
-              NavLink to /gallery/driveway/stamped
-            </div>
-          </div>
-          NavLink to /gallery/driveway/stamped
-        </div>
       </div>
     </div>
   </div>

@@ -10,11 +10,13 @@ class PaneSwitcher extends React.Component {
     defaultPane: PropTypes.number,
   };
   constructor(props) {
+    const children = React.Children.toArray(props.children);
+    
     super();
     this.state = {
-      tabsCount: (props.children && props.children.length) || 0,
+      tabsCount: (children && children.length) || 0,
       currentPane: props.defaultPane || 0,
-      tabNames: props.children && props.children.map((child) => child.props['data-name']),
+      tabNames: children && children.map((child) => child.props['data-name']),
     };
   }
   switchPane(paneIndex) {
@@ -36,7 +38,7 @@ class PaneSwitcher extends React.Component {
     return <div className="tab-switcher bottom-line">{tabs.map((tab) => tab)}</div>;
   }
   render() {
-    const children = this.props.children;
+    const children = React.Children.toArray(this.props.children);
     const {tabNames, currentPane} = this.state;
     return (
       <div className="panes">
