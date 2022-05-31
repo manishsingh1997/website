@@ -8,7 +8,7 @@ import {Button, Checkbox, FormField, PhoneInput, Spinner, Input, RadioButton} fr
 import {UPCOMING_FEATURES_PARAM} from '@ergeon/erg-utils-js';
 import {getBaseEventData} from '@ergeon/erg-utms';
 
-import {DRIVEWAY_SLUG, FENCE_SLUG} from '@ergeon/core-components/src/constants';
+import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import {createValidator, phone, email, required} from 'utils/validation';
 import {submitLeadArrived} from 'api/lead';
 import {parseError, showUpcomingFeatures, getAdvancedEditorUrl} from 'utils/utils';
@@ -244,7 +244,6 @@ export default class LeadForm extends React.Component {
           >
             <ul className="product-radio-list no-padding">
               <RadioButton value={FENCE_SLUG}>Fences & Gates</RadioButton>
-              <RadioButton value={DRIVEWAY_SLUG}>Driveways & Patios</RadioButton>
             </ul>
           </RadioGroup>
         </FormField>
