@@ -2,6 +2,7 @@ import * as Sentry from '@sentry/browser';
 
 import {getBaseEventData, getVisitorId, getCurrentData, tawk} from '@ergeon/erg-utms';
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
+import mixpanel from 'mixpanel-browser';
 import {DEFAULT_SOURCE_VALUE} from 'website/constants';
 import {submitAddressEntered} from 'api/lead';
 import {CUSTOMER_LEAD_CREATED, ADDRESS_ENTERED} from 'utils/events';
@@ -50,7 +51,6 @@ const addCampaignParams = (params) => {
 };
 
 export const identify = (_gidOrTraits, _traits) => {
-  const mixpanel = window.mixpanel;
 
   if (!mixpanel) {
     trackError('No Mixpanel');
@@ -77,13 +77,9 @@ export const identify = (_gidOrTraits, _traits) => {
     .then((visitorId) => {
       if (gid) {
         mixpanel.alias(gid);
-        mixpanel.identify(gid, traits, {
-          anonymousId: visitorId,
-        });
+        mixpanel.identify(gid);
       } else {
-        mixpanel.identify(traits, {
-          anonymousId: visitorId,
-        });
+        mixpanel.identify(visitorId);
       }
     })
     .catch((e) => {
@@ -141,6 +137,7 @@ export const page = () => {
 };
 
 export const init = () => {
+  mixpanel.init(process.env.MIXPANEL_KEY);
   getVisitorId().then((visitorId) => {
     identify(visitorId);
     page();
