@@ -48,12 +48,6 @@
     align-items: center;
     flex-direction: column;
     padding: 20px;
-    &.driveway {
-      background-image: url('../../assets/img-hero-nice-driveway.jpg');
-      background-size: cover;
-      background-position: top;
-    }
-
     &.fence {
       background-image: url('../../assets/img-hero-fence.jpg');
       background-size: cover;

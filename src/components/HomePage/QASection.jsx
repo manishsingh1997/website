@@ -1,14 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Spinner} from '@ergeon/core-components';
-import {getParameterByName} from 'utils/utils';
 import {getNodes} from 'api/node';
 import {parseAPIError} from 'utils/api.ts';
 import PaneSwitcher from './PaneSwitcher';
 import './QASection.scss';
 
 const FENCE_NODES = ['201900373', '202000553', '201900363', '201900318'];
-const DRIVEWAYS_NODES = ['201900007', '201900009', '201900011', '201900010'];
 
 class QASection extends React.Component {
   constructor(props) {
@@ -22,7 +20,7 @@ class QASection extends React.Component {
     await this.fetchQuestions();
   }
   async fetchQuestions() {
-    const NODES = [...FENCE_NODES, ...DRIVEWAYS_NODES];
+    const NODES = [...FENCE_NODES];
     try {
       const data = await getNodes(NODES);
       this.setState({
@@ -46,9 +44,9 @@ class QASection extends React.Component {
       </div>
     );
   }
-  renderQuestions(type) {
+  renderQuestions() {
     const {questions = []} = this.state;
-    const nodes = type === 'fence' ? FENCE_NODES : DRIVEWAYS_NODES;
+    const nodes = FENCE_NODES;
     return nodes.map((id) => {
       const node = questions.filter((q) => q['node_key'] === id);
       if (node && node[0]) {
@@ -71,18 +69,12 @@ class QASection extends React.Component {
     return (
       <div className="qa-section">
         <h3 className="">Questions & Answers</h3>
-        <PaneSwitcher defaultPane={getParameterByName('utm_content') === 'driveway' ? 1 : 0}>
+        <PaneSwitcher defaultPane={0}>
           <div data-name="Fence 101">
             <div className="qa-section__questions-wrapper">
-              {isLoading ? this.renderSpinner() : this.renderQuestions('fence')}
+              {isLoading ? this.renderSpinner() : this.renderQuestions()}
             </div>
             <Link to="/help/201900004">Read more →</Link>
-          </div>
-          <div data-name="Driveway 101">
-            <div className="qa-section__questions-wrapper">
-              {isLoading ? this.renderSpinner() : this.renderQuestions('driveways')}
-            </div>
-            <Link to="/help/201900003">Read more →</Link>
           </div>
         </PaneSwitcher>
       </div>

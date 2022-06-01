@@ -1,5 +1,4 @@
 import IconErgeon from 'assets/icon-ergeon.svg';
-import IconDriveway from 'assets/icon-driveway-101.svg';
 import IconFence from 'assets/icon-fence-101.svg';
 import IconService from 'assets/icon-service.svg';
 import IconPricing from 'assets/icon-pricing.svg';
@@ -9,11 +8,6 @@ const helpDefaultCategories = [
     title: 'About Ergeon',
     icon: IconErgeon,
     nodeKey: '201900002',
-  },
-  {
-    title: 'Driveways',
-    icon: IconDriveway,
-    nodeKey: '201900003',
   },
   {
     title: 'Fences',

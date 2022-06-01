@@ -51,13 +51,14 @@ class Slider extends React.Component {
     onChange && onChange(nextSlide);
   }
   render() {
-    const {children, additionalClassNames} = this.props;
+    const {additionalClassNames} = this.props;
+    const children = React.Children.toArray(this.props.children);
     const currentSlide = this.getCurrentSlide();
     const swipeConfig = {
       // delta: 10,
-      preventDefaultTouchmoveEvent: false,
-      trackTouch: true,
-      trackMouse: true,
+      preventDefaultTouchmoveEvent: true,
+      trackTouch: false,
+      trackMouse: false,
     };
 
     return (
@@ -85,8 +86,6 @@ class Slider extends React.Component {
             return <div className="point" data-key={index} key={index} onClick={this.switchSlide} />;
           })}
         </div>
-        <div className="arrow left" onClick={this.switchSlide} onTouchEnd={this.switchSlide} />
-        <div className="arrow right" onClick={this.switchSlide} onTouchEnd={this.switchSlide} />
       </div>
     );
   }
