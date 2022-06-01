@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {useHistory, useLocation, useParams} from 'react-router';
 import {connect} from 'react-redux';
-import {PopUp, TableRow, TopPanelMobile} from '@ergeon/core-components';
+import {PopUp, SpecificationTable, TopPanelMobile} from '@ergeon/core-components';
 import IconArrowLeft from '@ergeon/core-components/src/assets/icon-arrow-left.svg';
 
 import {getConfig} from 'api/app';
@@ -21,6 +21,15 @@ const BuildSpecs = () => {
     error: null,
     data: null,
   });
+
+  const attrs = useMemo(() => {
+    return requestState.data?.attributes?.map((attr) => ({
+      image_thumbnail: attr.image_thumbnail,
+      image: attr.image,
+      subtitle: attr.name,
+      title: attr.attribute,
+    }));
+  }, [requestState.data]);
 
   useEffect(
     function loadConfig() {
@@ -45,18 +54,7 @@ const BuildSpecs = () => {
 
   return (
     <section className="BuildSpecs-table">
-      {requestState.data.attributes.map(
-        ({id, attribute, name, external_help_text: externalHelpText, public_help_node: publicHelpNode}, idx) => (
-          <TableRow
-            content={name}
-            helpLink={publicHelpNode}
-            helpText={externalHelpText}
-            index={idx}
-            key={`${id}_${idx}`}
-            label={attribute}
-          />
-        )
-      )}
+      <SpecificationTable attrs={attrs} />
     </section>
   );
 };

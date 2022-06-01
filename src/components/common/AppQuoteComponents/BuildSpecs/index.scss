@@ -67,10 +67,6 @@
   }
 
   .BuildSpecs-table {
-    .table-row {
-      padding: 0 $v-20;
-    }
-
     @include phone() {
       padding-bottom: $v-24;
     }
