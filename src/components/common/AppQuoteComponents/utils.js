@@ -28,7 +28,8 @@ export const hideDroppedLabels = (projectCalcInput, quoteLines) => {
       if (fieldName === 'sides' || fieldName === 'polygons') {
         label = getLabelFromIndex(index);
       } else {
-        label = index.toString();
+        // labels are starting from 1, but index from 0
+        label = (index + 1).toString();
       }
 
       const isLabelDropped = linesByLabel[label] === true;
