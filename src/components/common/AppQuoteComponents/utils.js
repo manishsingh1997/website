@@ -18,9 +18,10 @@ export const hideDroppedLabels = (projectCalcInput, quoteLines) => {
     polygons: [],
     gates: [],
   };
+  const processFields = ['sides', 'polygons', 'gates'];
   const calcInputKeys = Object.keys(newCalcInput);
   calcInputKeys.forEach((fieldName) => {
-    if (!projectCalcInput[fieldName]) {
+    if (!projectCalcInput[fieldName] || !processFields.includes(fieldName)) {
       return;
     }
     projectCalcInput[fieldName].forEach((item, index) => {
