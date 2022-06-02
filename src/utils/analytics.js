@@ -51,11 +51,6 @@ const addCampaignParams = (params) => {
 };
 
 export const identify = (_gidOrTraits, _traits) => {
-
-  if (!mixpanel) {
-    trackError('No Mixpanel');
-  }
-
   let gid;
   let traits;
 
@@ -110,10 +105,6 @@ export const trackError = (error, data) => {
 
 export const page = () => {
 
-  if (!mixpanel) {
-    trackError('No Mixpanel');
-  }
-
   getVisitorId()
     .then((visitorId) => {
       mixpanel.track('Loaded a Page', {
@@ -135,8 +126,17 @@ export const page = () => {
   }
 };
 
+const initMixpanel = () => {
+  if (process.env.MIXPANEL_KEY) {
+    mixpanel.init(process.env.MIXPANEL_KEY);
+    window.mixpanel = mixpanel;
+  } else {
+    trackError('No Mixpanel');
+  }
+}
+
 export const init = () => {
-  mixpanel.init(process.env.MIXPANEL_KEY);
+  initMixpanel();
   getVisitorId().then((visitorId) => {
     identify(visitorId);
     page();
