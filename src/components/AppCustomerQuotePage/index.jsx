@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import { isEmpty, some } from 'lodash';
@@ -222,6 +223,9 @@ export default class AppCustomerQuotePage extends React.Component {
     const asPDF = isPDFMode();
     return (
       <>
+        <Helmet>
+          <script defer src="https://js.stripe.com/v2/" type="text/javascript"></script>
+        </Helmet>
         <Route exact path={`${match.path}/config/:configID`}>
           <BuildSpecs />
         </Route>
