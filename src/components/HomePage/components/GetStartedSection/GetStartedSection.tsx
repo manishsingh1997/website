@@ -1,12 +1,13 @@
 import React from 'react';
-
+import {showUpcomingFeatures} from '../../../../utils/utils';
+import FeaturesBlock from '../FeaturesBlock';
 import imgGetStarted from '../../../../assets/easy-to-use.jpg';
 
-import './UpcomingGetStartedSection.scss';
+import './GetStartedSection.scss';
 
-const UpcomingGetStartedSection = () => {
+const GetStartedSection = () => {
   return (
-    <div className="GetStarted is-Before--60">
+    <div className="GetStarted">
       <div className="GetStarted-Wrapper">
         <div className="GetStarted-Content is-Before--16 is-RightMargin--20">
           <div>
@@ -23,8 +24,9 @@ const UpcomingGetStartedSection = () => {
           <img className="GetStarted-Image" src={imgGetStarted} />
         </div>
       </div>
+      {!showUpcomingFeatures('ENG-13570') && <FeaturesBlock/>}
     </div>
   );
 };
 
-export default UpcomingGetStartedSection;
+export default GetStartedSection;

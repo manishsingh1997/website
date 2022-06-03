@@ -9,7 +9,6 @@ import SliderHero from './SliderHero';
 import ReviewHero from './ReviewHero';
 import ProjectsSection from './ProjectsSection';
 import GetStartedSection from './components/GetStartedSection';
-import UpcomingGetStartedSection from './components/UpcomingGetStartedSection';
 import QASection from './QASection';
 import RemoteFeatures from './components/RemoteFeatures';
 import TestimonialBanner from './components/TestimonialBanner';
@@ -28,7 +27,7 @@ const HomePage = () => {
           <ReviewHero />
           <ProjectsSection />
           {showUpcomingFeatures('ENG-13167') && <UpcomingRemoteFeatures/>}
-          {showUpcomingFeatures('ENG-13570') ? <UpcomingGetStartedSection /> : <GetStartedSection />}
+          <GetStartedSection />
           <FenceCalculatorPromo/>
           <QASection />
           <BrowseProjectsPromo/>

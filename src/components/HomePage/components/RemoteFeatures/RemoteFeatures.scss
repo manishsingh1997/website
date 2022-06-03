@@ -24,13 +24,13 @@
   &__card {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     @include tablet() {
       margin-right: $h-10;
       margin-left: $h-10;
       min-width: unset;
-      padding-bottom: $v-42;
       &:last-child {
         margin-right: unset;
         padding-bottom: unset;
@@ -44,6 +44,12 @@
       margin-left: unset;
       align-items: center;
       justify-content: center;
+    }
+    &__image-and-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
     }
     &__text-part {
       display: flex;
@@ -80,20 +86,20 @@
     &__desc {
       text-align: center;
       margin-bottom: $v-12;
+      @include phone() {
+        margin-bottom: unset;
+      }
     }
     &__button {
-      position: absolute;
-      bottom: 0;
+      margin-top: $v-24;
     }
     &__sep-wrapper {
-      height: $v-124 + $v-30 - 4;
+      height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
       min-width: $h-60;
-      @include tablet() {
-        display: none;
-      }
+
       @include phone() {
         display: flex;
         justify-content: center;
@@ -106,7 +112,6 @@
         background-color: $gray-4;
         display: block;
         @include phone() {
-          display: none;
           height: 1px;
           width: $h-40;
         }

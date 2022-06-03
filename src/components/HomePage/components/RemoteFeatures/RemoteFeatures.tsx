@@ -39,12 +39,16 @@ class RemoteFeatures extends React.Component<Record<string, never>, RemoteFeatur
   renderCard({title, desc, img, link, videoLink}: renderCardProps) {
     return (
       <div className="remote-feature__card">
-        <div className="remote-feature__card__img">
-          <img alt={title} src={img} />
+        <div className="remote-feature__card__image-and-text">
+          <div className="remote-feature__card__img">
+            <img alt={title} src={img} />
+          </div>
+          <div className="remote-feature__card__text-part">
+            <h5 className="remote-feature__card__title">{title}</h5>
+            <p className="remote-feature__card__desc">{desc}</p>
+          </div>
         </div>
-        <div className="remote-feature__card__text-part">
-          <h5 className="remote-feature__card__title">{title}</h5>
-          <p className="remote-feature__card__desc">{desc}</p>
+        <div>
           {videoLink && (
             <Button
               className="remote-feature__card__button"
