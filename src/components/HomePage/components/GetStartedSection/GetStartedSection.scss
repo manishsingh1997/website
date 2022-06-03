@@ -1,6 +1,8 @@
 @import '@ergeon/core-components/src/components/variables.scss';
+@import '../../utils';
+
 .get-started {
-  margin-top: 60px;
+  @include add-big-margins();
   &__content {
     display: flex;
     align-items: center;
@@ -9,6 +11,9 @@
     ol {
       margin-top: $v-24;
     }
+    li {
+      padding: 0;
+    }
     @include phone() {
       margin-bottom: 30px;
     }
@@ -16,7 +21,7 @@
   &__img-container {
     width: 100%;
     max-width: 560px;
-    border-radius: 12px;
+    border-radius: $corner-soft;
     overflow: hidden;
     @include tablet() {
       max-width: 380px;

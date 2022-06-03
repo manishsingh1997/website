@@ -1,6 +1,6 @@
 import React from 'react';
 
-import imgGetStarted from 'assets/easy-to-use.png';
+import imgGetStarted from '../../../../assets/easy-to-use.jpg';
 
 import './UpcomingGetStartedSection.scss';
 
@@ -19,8 +19,8 @@ const UpcomingGetStartedSection = () => {
             </ol>
           </div>
         </div>
-        <div className="ImgContainer">
-          <img src={imgGetStarted} />
+        <div className="GetStarted-ImgContainer">
+          <img className="GetStarted-Image" src={imgGetStarted} />
         </div>
       </div>
     </div>

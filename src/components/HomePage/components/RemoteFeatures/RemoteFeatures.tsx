@@ -2,28 +2,41 @@ import React from 'react';
 
 import {Button} from '@ergeon/core-components';
 
-import imgRemoteOnsite from 'assets/remote-features/icon-remote-onsite.svg';
-import imgRemoteQuote from 'assets/remote-features/icon-pay-online.svg';
-import imgContactless from 'assets/remote-features/icon-no-contact-install.svg';
+import imgRemoteOnsite from '../../../../assets/remote-features/icon-remote-onsite.svg';
+import imgRemoteQuote from '../../../../assets/remote-features/icon-pay-online.svg';
+import imgContactless from '../../../../assets/remote-features/icon-no-contact-install.svg';
+import VideoPopup from '../../VideoPopup';
 
 import './RemoteFeatures.scss';
-import VideoPopup from './VideoPopup';
 
-class RemoteFeatures extends React.Component {
-  constructor(props) {
+type RemoteFeaturesState = {
+  currentVideo: null | string,
+  videoPopupVisible: boolean,
+}
+
+type renderCardProps = {
+  title: string,
+  desc: string,
+  img: string,
+  link: string,
+  videoLink?: string,
+}
+
+class RemoteFeatures extends React.Component<Record<string, never>, RemoteFeaturesState> {
+  constructor(props: never) {
     super(props);
     this.state = {
       currentVideo: null,
       videoPopupVisible: false,
     };
   }
-  toShowVideo(link) {
+  toShowVideo(link: string) {
     this.setState({currentVideo: link, videoPopupVisible: true});
   }
   toHideVideo() {
     this.setState({videoPopupVisible: false});
   }
-  renderCard({title, desc, img, link, videoLink}) {
+  renderCard({title, desc, img, link, videoLink}: renderCardProps) {
     return (
       <div className="remote-feature__card">
         <div className="remote-feature__card__img">
@@ -69,8 +82,8 @@ class RemoteFeatures extends React.Component {
           <div className="remote-feature__cards">
             {this.renderCard({
               title: 'Video Call for your Onsite Visit',
-              // eslint-disable-next-line max-len
-              desc: 'Our Team is well equipped to guarantee an accurate quote for your project using satellite imagery and a video call.',
+              desc: 'Our Team is well equipped to guarantee an accurate quote for your project using satellite' +
+                ' imagery and a video call.',
               img: imgRemoteOnsite,
               link: `${process.env.BLOG_HOST}/post/a-walk-through-of-our-remote-experience`,
             })}
@@ -88,8 +101,8 @@ class RemoteFeatures extends React.Component {
             </div>
             {this.renderCard({
               title: 'Stay Inside While We Install Your Fence',
-              // eslint-disable-next-line max-len
-              desc: 'The Construction Team can install with zero physical contact with you and are equipped with full construction details.',
+              desc: 'The Construction Team can install with zero physical contact with you and are equipped with' +
+                ' full construction details.',
               img: imgContactless,
               link: `${process.env.BLOG_HOST}/post/contactless-fence-installation`,
             })}

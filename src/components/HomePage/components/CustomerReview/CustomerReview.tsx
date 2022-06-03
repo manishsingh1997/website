@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Customer from '../../assets/customer-linden.png';
-import Quote from '../../assets/quote.svg';
+import Customer from '../../../../assets/customer-linden.png';
+import Quote from '../../../../assets/quote.svg';
 
 import './CustomerReview.scss';
 

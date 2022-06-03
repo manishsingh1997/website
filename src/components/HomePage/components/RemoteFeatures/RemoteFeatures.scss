@@ -1,4 +1,4 @@
-@import '~@ergeon/core-components/src/components/variables.scss';
+@import '~@ergeon/core-components/src/components/variables';
 
 .remote-feature {
   border-bottom: 1px solid $gray-4;
@@ -26,13 +26,14 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    padding-bottom: $v-42;
     @include tablet() {
       margin-right: $h-10;
       margin-left: $h-10;
       min-width: unset;
+      padding-bottom: $v-42;
       &:last-child {
         margin-right: unset;
+        padding-bottom: unset;
       }
       &:first-child {
         margin-left: unset;

@@ -1,9 +1,9 @@
 import React from 'react';
-import imgGetStarted from 'assets/easy-to-use.png';
-import imgTrusted from 'assets/trusted/icon-erg-hart.svg';
-import imgCard from 'assets/trusted/icon-lightbulb.svg';
-import imgBuck from 'assets/trusted/icon-reliable-transparent.svg';
-import imgSmile from 'assets/trusted/icon-communication.svg';
+import imgGetStarted from '../../../../assets/easy-to-use.jpg';
+import imgTrusted from '../../../../assets/trusted/icon-erg-hart.svg';
+import imgCard from '../../../../assets/trusted/icon-lightbulb.svg';
+import imgBuck from '../../../../assets/trusted/icon-reliable-transparent.svg';
+import imgSmile from '../../../../assets/trusted/icon-communication.svg';
 
 import './GetStartedSection.scss';
 

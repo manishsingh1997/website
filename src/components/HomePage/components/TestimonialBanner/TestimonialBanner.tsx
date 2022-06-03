@@ -1,11 +1,11 @@
 import React from 'react';
 import {RatingsData} from '@ergeon/core-components';
 
-import yelpLogo from '../../assets/testimonial-icons/yelp.svg';
-import googleLogo from '../../assets/testimonial-icons/google.svg';
-import homeadvisorLogo from '../../assets/testimonial-icons/angi.svg';
-import thumbtackLogo from '../../assets/testimonial-icons/thumbtack.svg';
-import bbbLogo from '../../assets/testimonial-icons/bbb.svg';
+import yelpLogo from '../../../../assets/testimonial-icons/yelp.svg';
+import googleLogo from '../../../../assets/testimonial-icons/google.svg';
+import angiLogo from '../../../../assets/testimonial-icons/angi.svg';
+import thumbtackLogo from '../../../../assets/testimonial-icons/thumbtack.svg';
+import bbbLogo from '../../../../assets/testimonial-icons/bbb.svg';
 
 import './TestimonialBanner.scss';
 
@@ -38,7 +38,7 @@ const TestimonialBanner = () => {
       {renderBadge({rating: thumbtack.rating, icon: thumbtackLogo, reviews: 38})}
       {renderBadge({rating: yelp.rating, icon: yelpLogo, reviews: 2127})}
       {renderBadge({rating: google.rating, icon: googleLogo, reviews: 441})}
-      {renderBadge({rating: homeadvisor.rating, icon: homeadvisorLogo, reviews: 156})}
+      {renderBadge({rating: homeadvisor.rating, icon: angiLogo, reviews: 156})}
       {renderBadge({rating: 'A', icon: bbbLogo, reviews: 0})}
     </div>
   );

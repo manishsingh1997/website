@@ -1,9 +1,13 @@
-@import '~@ergeon/core-components/src/components/variables.scss';
+@import '~@ergeon/core-components/src/components/variables';
+@import '../../utils';
 
 .remote-features {
-  $vertical-margin: 96px;
-
-  margin: $vertical-margin auto;
+  margin-top: 60px;
+  margin-bottom: 120px;
+  @include tablet() {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
 
   &-wrapper {
     width: 100%;
@@ -12,18 +16,15 @@
 
   &-title {
     $offset-desktop: -1 * 100%;
-
     width: auto;
-    margin: 0 $offset-desktop $v-24 $offset-desktop;
-    padding: $vertical-margin 0 $v-64 0;
+    margin: 0 $offset-desktop;
+    padding: $h-60 0 $v-36 0;
     text-align: center;
-    background-image: linear-gradient(to top, #fff 10%, $gray-6 30%);
+    background-image: linear-gradient(to top, #fff 0%, $gray-6 100%);
 
     @include phone() {
-      $offset-mobile: -1 * $v-20;
-
-      padding: $v-48 $v-20 $v-48 $v-20;
-      margin: 0 $offset-mobile $v-24 $offset-mobile;
+      margin: 0 -20px;
+      padding: $v-48 $v-20 $v-36 $v-20;
     }
   }
 
@@ -43,16 +44,22 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-bottom: $v-42;
     max-width: $card-width;
     width: 100%;
     margin: 0 auto;
+    @include tablet() {
+      padding-bottom: $v-42;
+      &:last-child {
+        padding-bottom: unset;
+      }
+    }
 
     &-details {
       width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
+      align-items: center;
       justify-content: space-between;
     }
 
@@ -95,7 +102,7 @@
     }
 
     &-button {
-      width: 100%;
+      width: 120px;
       margin-top: $v-20;
     }
 
