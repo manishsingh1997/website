@@ -41,14 +41,17 @@ create-sitemap:
 	@if [ -z "$(LEVEL)" ]; then >&2 echo LEVEL must be supplied; exit 1; fi;
 	npm run create-sitemap-$(LEVEL)
 
+parse-cities-data:
+	npm run parse:cities
+
 run: install
 	SENTRY_RELEASE_NAME=$(SENTRY_RELEASE_NAME) SHOW_UPCOMING_FEATURES=$(SHOW_UPCOMING_FEATURES) npm run start
 
 test: install lint
 	npm run test
 
-coverage-sitemap:
-	npm run coverage-sitemap
+coverage-process:
+	npm run coverage-process
 
 coverage:
 	npm run coverage

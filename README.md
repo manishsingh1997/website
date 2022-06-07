@@ -104,6 +104,44 @@ It's possible to create a sitemap manually by running the following command,
 make create-sitemap
 ```
 
+### Parse cities data
+The cities data parsing takes 3 steps:
+
+1. Connect to the City Page Data (Google Spreadsheet). Parse it and create cities full data JSON file, cities min data JSON file, city full data JSON file per each city.
+2. Download assets (Google Drive links within the document).
+3. Manually load these assets to staging and production S3 under `ASSETS_FOLDER_NAME` folder.
+    1. The folder name is stored as a constant in `src/process/cities/constants.json`.
+
+> Currently, step 3 is done manually. In the future we should be able to automate it by syncing cities assets folder with the corresponding folder in S3.
+
+For 1-2 run:
+```bash
+make parse-cities-data
+```
+
+NOTE 1!
+
+You will have to setup Google OAuth credentials and save them under `[MAIN_PROJECT_DIRECTORY]/.google/credentials.json`:
+```json
+{
+  "installed": {
+    "client_id": "[CLIENT_ID]",
+    "project_id": "www-ergeon-com-local",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "[CLIENT_SECRET]",
+    "redirect_uris": [
+      "http://localhost"
+    ]
+  }
+}
+```
+
+NOTE 2!
+
+Google authentication requires sign in to your ergeon’s Google account. You will be guided through the console. After that, the token will be saved under `[MAIN_PROJECT_DIRECTORY]/.google/token.json` and re-used.
+
 ### Redirects
 
 Sometimes it is needed to setup redirects at server-side level for SEO purposes.

@@ -6,15 +6,6 @@ exports[`Sitemap should generate for gallery 1`] = `
         <loc>http://ergeon.local:6600/gallery</loc>
       </url>
       <url>
-        <loc>http://ergeon.local:6600/gallery/driveway/brushed/natural</loc>
-      </url>
-      <url>
-        <loc>http://ergeon.local:6600/gallery/driveway/enhanced/enhanced</loc>
-      </url>
-      <url>
-        <loc>http://ergeon.local:6600/gallery/driveway/stamped/casual</loc>
-      </url>
-      <url>
         <loc>http://ergeon.local:6600/gallery/fence/before-after</loc>
       </url>
       <url>

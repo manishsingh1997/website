@@ -87,6 +87,9 @@ src/data/sitemap.xml
 src/data/gallery/sitemap.xml
 src/data/help/sitemap.xml
 
+# Google API auth
+.google
+
 dist/
 .idea
 .DS_Store

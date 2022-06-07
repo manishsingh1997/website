@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "create-sitemap": "npx babel-node ./src/process/createSitemap.js --config-file ./src/process/babel.sitemap.config.js",
+    "create-sitemap": "npx babel-node ./src/process/createSitemap.js --config-file ./src/process/babel.node.config.js",
     "create-sitemap-production": "NODE_ENV=production npm run create-sitemap",
     "create-sitemap-staging": "NODE_ENV=staging npm run create-sitemap",
     "create-sitemap-development": "NODE_ENV=development npm run create-sitemap",
@@ -17,9 +17,11 @@
     "lint": "npm run eslint && npm run ts",
     "ts": "tsc",
     "test": "jest --detectOpenHandles --colors --notify --verbose --ci --silent",
-    "test-sitemap": "BABEL_ENV=sitemap jest --config ./src/process/jest.sitemap-config.js --colors --notify --verbose --ci --silent",
-    "coverage-sitemap": "npm run test-sitemap -- --coverage --watchAll=false",
-    "coverage": "npm run test -- --coverage --watchAll=false"
+    "test-process": "BABEL_ENV=jestNode jest --config ./src/process/jest.node-config.js --colors --notify --verbose --ci --silent",
+    "test-process:update-snapshots": "BABEL_ENV=jestNode jest --config ./src/process/jest.node-config.js --updateSnapshot",
+    "coverage-process": "npm run test-process -- --coverage --watchAll=false",
+    "coverage": "npm run test -- --coverage --watchAll=false",
+    "parse:cities": "node src/process/cities"
   },
   "repository": {
     "type": "git",
@@ -87,13 +89,18 @@
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.4.0",
     "file-loader": "^3.0.1",
+    "googleapis": "^39.2.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.5",
+    "imagemin": "^8.0.1",
+    "imagemin-jpegoptim": "^8.0.0",
     "jest": "^26.5.3",
     "mini-css-extract-plugin": "^1.3.1",
     "node-sass": "^4.12.0",
+    "node-xlsx": "^0.21.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "path": "^0.12.7",
+    "png-to-jpeg": "^1.0.1",
     "prettier": "2.6.2",
     "raw-loader": "^2.0.0",
     "request": "^2.88.0",
@@ -109,7 +116,8 @@
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.11.3",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "xlsx": "^0.18.5"
   },
   "dependencies": {
     "@ergeon/3d-lib": "8.39.0",

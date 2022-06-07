@@ -19,7 +19,7 @@ module.exports = {
         '@babel/plugin-transform-runtime',
       ],
     },
-    sitemap: {
+    jestNode: {
       plugins: [
         '@babel/plugin-transform-runtime',
         [

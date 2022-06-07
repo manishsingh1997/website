@@ -23,7 +23,7 @@ module.exports = {
     test: {
       plugins: [
         '@babel/plugin-transform-runtime',
-        // Ignore in Jest sitemaps testing too
+        // Ignore in Jest node testing too
         [
           './babel-plugin-nullify-import.js',
           {

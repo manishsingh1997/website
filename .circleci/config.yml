@@ -21,6 +21,8 @@ jobs:
           name: Install Dependencies
           command: |
             pip install awscli
+            sudo apt-get update
+            sudo apt-get install libjpeg-dev
             sudo npm install -g @sentry/cli --unsafe-perm
             echo "//npm.ergeon.in/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             make install
