@@ -34,7 +34,7 @@ export default function QuoteLinePrice(props) {
     <>
       <div className="spacing before__is-12 after__is-12">
         {distance && <Distance distance={distance} />}
-        {quantity && unit && <QuantityUnit quantity={quantity} unit={unit} />}
+        {quantity && unit && <QuantityUnit quantity={parseFloat(quantity)} unit={unit} />}
         {area && <Area area={area} />}
       </div>
       {isPriceShown && (
