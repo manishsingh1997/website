@@ -12,6 +12,17 @@ npm v6.14.14
 
 ### Installation
 
+install `libjpeg` package for `make install` to work properly
+
+OSX
+
+`brew install libjpeg`
+
+Linux
+
+`sudo apt-get install libjpeg-dev`
+
+
 ```bash
 make install
 ```
