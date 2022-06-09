@@ -16,6 +16,7 @@ async function downloadAssets() {
   const cities = require(`${DATA_PATH}/cities-full-data.json`);
 
   // Workaround for module import
+  // NOTE!: install imagemin-jpegoptim globally for this to work
   const {default: jpegOptimize} = await import('imagemin-jpegoptim');
 
   // Use Google Drive API to access files
