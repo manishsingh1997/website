@@ -34,7 +34,6 @@ export default function QuoteLine(props) {
     area,
     catalogType,
     config,
-    distance,
     description,
     label,
     percentage,
@@ -90,7 +89,6 @@ export default function QuoteLine(props) {
                 {...{
                   area,
                   catalogType,
-                  distance,
                   index,
                   isInstallerPreview,
                   isMultiPartyQuote,
@@ -137,7 +135,6 @@ export default function QuoteLine(props) {
             {...{
               area,
               catalogType,
-              distance,
               index,
               isInstallerPreview,
               isMultiPartyQuote,
@@ -180,7 +177,6 @@ export default function QuoteLine(props) {
           {...{
             area,
             catalogType,
-            distance,
             index,
             isInstallerPreview,
             isMultiPartyQuote,
@@ -204,7 +200,6 @@ QuoteLine.propTypes = {
   catalogType: PropTypes.object,
   config: PropTypes.object,
   description: PropTypes.string,
-  distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   images: PropTypes.array,
   index: PropTypes.number,

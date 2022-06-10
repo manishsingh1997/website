@@ -9,8 +9,8 @@ import {useIsMobileWidth} from './customHooks';
 /**
  * Process props data and sends to AppConfigPreview as props to render it
  * @param {{
+ *  quantity: string,
  *  quote: object,
- *  distance: number,
  *  quoteLine, object,
  *  type: string,
  *  useNoPreviewIcon: boolean,
@@ -18,12 +18,12 @@ import {useIsMobileWidth} from './customHooks';
  * }} props
  */
 export default function QuoteLinePreview(props) {
-  const {quote, distance, quoteLine, type, useNoPreviewIcon = false, usePlaceHolder = false, images} = props;
+  const {quantity, quote, quoteLine, type, useNoPreviewIcon = false, usePlaceHolder = false, images} = props;
   // check if address exists, in rare cases in can be null
   const zipCode = quote.order.house.address
     ? quote.order.house.address['zip_code']
     : quote.order.house.customer['main_address']['zip_code'];
-  const fenceSideLength = distance;
+  const fenceSideLength = Number(quantity);
   const schemaCodeUrl = quoteLine && quoteLine.config && quoteLine.config['schema_code_url'];
   const isQuotePreviewPossible = quoteLine && quoteLine['is_quote_preview_possible'];
   const propertyData = quoteLine && quoteLine['property_config'] && quoteLine['property_config']['schema_code_url'];
@@ -50,8 +50,8 @@ export default function QuoteLinePreview(props) {
 }
 
 QuoteLinePreview.propTypes = {
-  distance: PropTypes.number,
   images: PropTypes.array,
+  quantity: PropTypes.string,
   quote: PropTypes.object,
   quoteLine: PropTypes.object,
   type: PropTypes.oneOf([CALC_SIDE_TYPE, CALC_GATE_TYPE, CALC_AREA_TYPE]),

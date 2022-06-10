@@ -2,21 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {formatDate} from 'utils/date';
 
-import {DRIVEWAY_QUANTITY_UNIT, FENCE_QUANTITY_UNIT} from 'website/constants';
-
-/**
- * Renders length wrap in <span>
- * @param {{distance: number|string}} props
- */
-export const Distance = ({distance}) => (
-  <span>
-    Length: {distance} {FENCE_QUANTITY_UNIT}
-  </span>
-);
-
-Distance.propTypes = {
-  distance: PropTypes.number,
-};
+import {DRIVEWAY_QUANTITY_UNIT} from 'website/constants';
 
 /**
  * Renders length by unit wrapped in <span>

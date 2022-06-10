@@ -4,13 +4,12 @@ import PropTypes from 'prop-types';
 import {formatPrice} from 'utils/app-order';
 
 import {isAllowedUnitDisplay} from './utils';
-import {Area, Distance, QuantityUnit} from './QuoteLineComponents';
+import {Area, QuantityUnit} from './QuoteLineComponents';
 
 export default function QuoteLinePrice(props) {
   const {
     area,
     catalogType,
-    distance,
     index,
     isInstallerPreview,
     isMultiPartyQuote,
@@ -33,7 +32,6 @@ export default function QuoteLinePrice(props) {
   return (
     <>
       <div className="spacing before__is-12 after__is-12">
-        {distance && <Distance distance={distance} />}
         {quantity && unit && <QuantityUnit quantity={parseFloat(quantity)} unit={unit} />}
         {area && <Area area={area} />}
       </div>
@@ -57,7 +55,6 @@ export default function QuoteLinePrice(props) {
 QuoteLinePrice.propTypes = {
   area: PropTypes.number,
   catalogType: PropTypes.object,
-  distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   index: PropTypes.number,
   isInstallerPreview: PropTypes.bool,
   isMultiPartyQuote: PropTypes.bool,
