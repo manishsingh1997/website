@@ -35,7 +35,7 @@ export default function QuoteLinePreview(props) {
 
   return (
     <AppConfigPreview
-      className="quote-line-preview"
+      additionalClassNames="quote-line-preview"
       configType={type}
       fenceSideLength={fenceSideLength}
       images={images}

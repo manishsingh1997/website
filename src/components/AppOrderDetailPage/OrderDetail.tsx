@@ -29,7 +29,7 @@ const OrderDetail = (props: OrderDetailsProps) => {
   const { order, selectedOption, customerGID } = props;
 
   const renderListElementContent = useCallback((quote: Quote) => {
-    const schemaCodeUrl = quote.preview_quote_line?.config.schema_code_url;
+    const schemaCodeUrl = quote.preview_quote_line?.config.schema_code_url as string;
 
     const showTotalLength = Boolean(quote.total_length) && quote.total_length !== '0';
     const showTotalArea = Boolean(quote.total_area) && quote.total_area !== '0';
@@ -52,7 +52,7 @@ const OrderDetail = (props: OrderDetailsProps) => {
             {expiresAt && <DataRow title={expiresAtTitle} value={formatDateAndTime(expiresAt)} />}
           </div>
           <div>
-            <AppConfigPreview className="quote-preview" schemaCodeUrl={schemaCodeUrl} withLink />
+            <AppConfigPreview additionalClassNames="quote-preview" schemaCodeUrl={schemaCodeUrl} withLink />
           </div>
         </div>
         <div>
