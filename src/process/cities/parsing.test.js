@@ -1,3 +1,5 @@
+import values from 'lodash/values';
+
 const mapping = require('./mapping');
 import {parseSheet} from './parsing';
 
@@ -328,5 +330,21 @@ describe('Cities', () => {
 
     expect(parseSheet(sheet, mapping.city)).toMatchSnapshot();
     expect(parseSheet(sheet, mapping.product)).toMatchSnapshot();
+  });
+
+  it('should have cities for redirects', () => {
+    const cities = require('../../data/cities-min-data.json');
+    const redirects = require('../../data/cities-neighboring-redirects-data.json');
+
+    const existingCitiesSlugs = cities.map(({slug}) => slug);
+
+    for (const slug of values(redirects)) {
+      const predicate = existingCitiesSlugs.includes(slug);
+      if (!predicate) {
+        // Show what city is missing
+        console.log(slug);
+      }
+      expect(predicate).toBe(true);
+    }
   });
 });

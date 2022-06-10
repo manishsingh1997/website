@@ -131,6 +131,7 @@ const mapping = {
     county: ['county'],
     state: ['state'],
     neighboring_city: ['to_city'],
+    neighboring_county: ['to_county'],
   },
 };
 

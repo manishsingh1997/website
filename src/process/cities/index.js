@@ -13,7 +13,7 @@ const {getCitySlug, parseSheet} = require('./parsing');
 const SHEET_ID = '14w3hviutTV0xMgiamxqIPTsSMUWR01jCUdpJJsA3j3Q';
 const SHEET_CITIES_DATA = 'City Multiproduct Page (template)!A1:AM103';
 const SHEET_FENCES_DATA = 'City Fence Page (template)!A1:CY103';
-const SHEET_NEIGHBORING_CITIES_DATA = 'Neighboring cities query!A1:D842';
+const SHEET_NEIGHBORING_CITIES_DATA = 'Neighboring cities query!A1:E876';
 
 const DATA_PATH = '../../data';
 
@@ -64,20 +64,21 @@ async function start() {
   let neighboringResults = await processSheet(SHEET_NEIGHBORING_CITIES_DATA, mapping.neighboring);
   neighboringResults = neighboringResults.map(city => ({
     ...city,
-    to_slug: getCitySlug({county: city.county, state: city.state, city: city.to_city}),
+    to_slug: getCitySlug({county: city.to_county, state: city.state, city: city.to_city}),
   }));
   filePath = path.resolve(__dirname, `${DATA_PATH}/cities-neighboring-data.json`);
   createDirIfNotExists(filePath);
   fs.writeFileSync(filePath, JSON.stringify(neighboringResults));
 
   // Neighboring cities minified
-  const neighboringResultsMin = zipObject(
-    neighboringResults.map(({slug}) => slug),
-    neighboringResults.map(({to_slug}) => to_slug),
+  const redirects = neighboringResults.filter(({slug, to_slug}) => slug !== to_slug);
+  const redirectsUnique = zipObject(
+    redirects.map(({slug}) => slug),
+    redirects.map(({to_slug}) => to_slug),
   );
   filePath = path.resolve(__dirname, `${DATA_PATH}/cities-neighboring-redirects-data.json`);
   createDirIfNotExists(filePath);
-  fs.writeFileSync(filePath, JSON.stringify(neighboringResultsMin));
+  fs.writeFileSync(filePath, JSON.stringify(redirectsUnique));
   console.log(`${neighboringResults.length} neighboring cities data saved`);
 
   console.log('downloading assets…');

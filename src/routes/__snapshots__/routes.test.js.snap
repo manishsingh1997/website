@@ -1,0 +1,2560 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Routes Cities endpoints 1`] = `
+<div>
+  Route to /fences/cities/alameda-county-alameda-ca
+   
+  Route to /fences/cities/sacramento-county-antelope-ca
+   
+  Route to /fences/cities/contra-costa-county-antioch-ca
+   
+  Route to /fences/cities/santa-cruz-county-aptos-ca
+   
+  Route to /fences/cities/fulton-county-atlanta-ga
+   
+  Route to /fences/cities/solano-county-benicia-ca
+   
+  Route to /fences/cities/alameda-county-berkeley-ca
+   
+  Route to /fences/cities/contra-costa-county-brentwood-ca
+   
+  Route to /fences/cities/santa-clara-county-campbell-ca
+   
+  Route to /fences/cities/sacramento-county-carmichael-ca
+   
+  Route to /fences/cities/alameda-county-castro-valley-ca
+   
+  Route to /fences/cities/sacramento-county-citrus-heights-ca
+   
+  Route to /fences/cities/fresno-county-clovis-ca
+   
+  Route to /fences/cities/contra-costa-county-concord-ca
+   
+  Route to /fences/cities/riverside-county-corona-ca
+   
+  Route to /fences/cities/santa-clara-county-cupertino-ca
+   
+  Route to /fences/cities/dallas-county-dallas-tx
+   
+  Route to /fences/cities/san-mateo-county-daly-city-ca
+   
+  Route to /fences/cities/contra-costa-county-danville-ca
+   
+  Route to /fences/cities/yolo-county-davis-ca
+   
+  Route to /fences/cities/alameda-county-dublin-ca
+   
+  Route to /fences/cities/contra-costa-county-el-cerrito-ca
+   
+  Route to /fences/cities/el-dorado-county-el-dorado-hills-ca
+   
+  Route to /fences/cities/contra-costa-county-el-sobrante-ca
+   
+  Route to /fences/cities/sacramento-county-elk-grove-ca
+   
+  Route to /fences/cities/sacramento-county-fair-oaks-ca
+   
+  Route to /fences/cities/solano-county-fairfield-ca
+   
+  Route to /fences/cities/sacramento-county-folsom-ca
+   
+  Route to /fences/cities/tarrant-county-fort-worth-tx
+   
+  Route to /fences/cities/alameda-county-fremont-ca
+   
+  Route to /fences/cities/fresno-county-fresno-ca
+   
+  Route to /fences/cities/sacramento-county-galt-ca
+   
+  Route to /fences/cities/santa-clara-county-gilroy-ca
+   
+  Route to /fences/cities/alameda-county-hayward-ca
+   
+  Route to /fences/cities/harris-county-houston-tx
+   
+  Route to /fences/cities/orange-county-lake-forest-ca
+   
+  Route to /fences/cities/placer-county-lincoln-ca
+   
+  Route to /fences/cities/alameda-county-livermore-ca
+   
+  Route to /fences/cities/san-joaquin-county-lodi-ca
+   
+  Route to /fences/cities/santa-clara-county-los-altos-ca
+   
+  Route to /fences/cities/los-angeles-county-los-angeles-ca
+   
+  Route to /fences/cities/santa-clara-county-los-gatos-ca
+   
+  Route to /fences/cities/san-joaquin-county-manteca-ca
+   
+  Route to /fences/cities/contra-costa-county-martinez-ca
+   
+  Route to /fences/cities/san-mateo-county-menlo-park-ca
+   
+  Route to /fences/cities/merced-county-merced-ca
+   
+  Route to /fences/cities/santa-clara-county-milpitas-ca
+   
+  Route to /fences/cities/stanislaus-county-modesto-ca
+   
+  Route to /fences/cities/riverside-county-moreno-valley-ca
+   
+  Route to /fences/cities/santa-clara-county-morgan-hill-ca
+   
+  Route to /fences/cities/santa-clara-county-mountain-view-ca
+   
+  Route to /fences/cities/napa-county-napa-ca
+   
+  Route to /fences/cities/alameda-county-newark-ca
+   
+  Route to /fences/cities/sacramento-county-north-highlands-ca
+   
+  Route to /fences/cities/marin-county-novato-ca
+   
+  Route to /fences/cities/alameda-county-oakland-ca
+   
+  Route to /fences/cities/contra-costa-county-oakley-ca
+   
+  Route to /fences/cities/sacramento-county-orangevale-ca
+   
+  Route to /fences/cities/santa-clara-county-palo-alto-ca
+   
+  Route to /fences/cities/sonoma-county-petaluma-ca
+   
+  Route to /fences/cities/alameda-county-piedmont-ca
+   
+  Route to /fences/cities/contra-costa-county-pittsburg-ca
+   
+  Route to /fences/cities/contra-costa-county-pleasant-hill-ca
+   
+  Route to /fences/cities/alameda-county-pleasanton-ca
+   
+  Route to /fences/cities/sacramento-county-rancho-cordova-ca
+   
+  Route to /fences/cities/san-mateo-county-redwood-city-ca
+   
+  Route to /fences/cities/contra-costa-county-richmond-ca
+   
+  Route to /fences/cities/riverside-county-riverside-ca
+   
+  Route to /fences/cities/placer-county-rocklin-ca
+   
+  Route to /fences/cities/placer-county-roseville-ca
+   
+  Route to /fences/cities/sacramento-county-sacramento-ca
+   
+  Route to /fences/cities/monterey-county-salinas-ca
+   
+  Route to /fences/cities/san-mateo-county-san-bruno-ca
+   
+  Route to /fences/cities/san-mateo-county-san-carlos-ca
+   
+  Route to /fences/cities/san-diego-county-san-diego-ca
+   
+  Route to /fences/cities/san-francisco-county-san-francisco-ca
+   
+  Route to /fences/cities/santa-clara-county-san-jose-ca
+   
+  Route to /fences/cities/alameda-county-san-leandro-ca
+   
+  Route to /fences/cities/san-mateo-county-san-mateo-ca
+   
+  Route to /fences/cities/contra-costa-county-san-pablo-ca
+   
+  Route to /fences/cities/marin-county-san-rafael-ca
+   
+  Route to /fences/cities/contra-costa-county-san-ramon-ca
+   
+  Route to /fences/cities/santa-clara-county-santa-clara-ca
+   
+  Route to /fences/cities/santa-cruz-county-santa-cruz-ca
+   
+  Route to /fences/cities/sonoma-county-santa-rosa-ca
+   
+  Route to /fences/cities/santa-clara-county-saratoga-ca
+   
+  Route to /fences/cities/san-mateo-county-south-san-francisco-ca
+   
+  Route to /fences/cities/san-joaquin-county-stockton-ca
+   
+  Route to /fences/cities/solano-county-suisun-city-ca
+   
+  Route to /fences/cities/dallas-county-sunnyvale-tx
+   
+  Route to /fences/cities/ventura-county-thousand-oaks-ca
+   
+  Route to /fences/cities/san-joaquin-county-tracy-ca
+   
+  Route to /fences/cities/stanislaus-county-turlock-ca
+   
+  Route to /fences/cities/fulton-county-union-city-ga
+   
+  Route to /fences/cities/solano-county-vacaville-ca
+   
+  Route to /fences/cities/solano-county-vallejo-ca
+   
+  Route to /fences/cities/tulare-county-visalia-ca
+   
+  Route to /fences/cities/contra-costa-county-walnut-creek-ca
+   
+  Route to /fences/cities/santa-cruz-county-watsonville-ca
+   
+  Route to /fences/cities/yolo-county-west-sacramento-ca
+   
+  Route to /fences/cities/yolo-county-woodland-ca
+   
+  Route to /fences/cities/sutter-county-yuba-city-ca
+   
+  Route to /fences/cities/alameda-county-albany-ca
+   
+  Redirect to /fences/cities/alameda-county-berkeley-ca for
+  Route to /fences/cities/alameda-county-emeryville-ca
+   
+  Redirect to /fences/cities/alameda-county-berkeley-ca for
+  Route to /fences/cities/alameda-county-san-lorenzo-ca
+   
+  Redirect to /fences/cities/alameda-county-hayward-ca for
+  Route to /fences/cities/alameda-county-sunol-ca
+   
+  Redirect to /fences/cities/alameda-county-pleasanton-ca for
+  Route to /fences/cities/alameda-county-union-city-ca
+   
+  Redirect to /fences/cities/alameda-county-fremont-ca for
+  Route to /fences/cities/amador-county-amador-city-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/amador-county-drytown-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/amador-county-ione-ca
+   
+  Redirect to /fences/cities/sacramento-county-galt-ca for
+  Route to /fences/cities/amador-county-jackson-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/amador-county-martell-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/amador-county-plymouth-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/amador-county-sutter-creek-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/atascosa-county-leming-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/atascosa-county-lytle-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/atascosa-county-poteet-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/barrow-county-auburn-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/bartow-county-emerson-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/bastrop-county-bastrop-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bastrop-county-cedar-creek-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bastrop-county-elgin-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bastrop-county-red-rock-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bexar-county-adkins-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bexar-county-atascosa-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bexar-county-converse-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bexar-county-elmendorf-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bexar-county-helotes-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bexar-county-saint-hedwig-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bexar-county-san-antonio-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bexar-county-somerset-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bexar-county-universal-city-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bexar-county-von-ormy-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/brazoria-county-alvin-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/brazoria-county-manvel-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/brazoria-county-pearland-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/brazoria-county-rosharon-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/butts-county-jenkinsburg-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/calaveras-county-burson-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-lodi-ca for
+  Route to /fences/cities/calaveras-county-campo-seco-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-lodi-ca for
+  Route to /fences/cities/calaveras-county-mokelumne-hill-ca
+   
+  Redirect to /fences/cities/sacramento-county-galt-ca for
+  Route to /fences/cities/calaveras-county-san-andreas-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-lodi-ca for
+  Route to /fences/cities/calaveras-county-valley-springs-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-lodi-ca for
+  Route to /fences/cities/calaveras-county-wallace-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-lodi-ca for
+  Route to /fences/cities/caldwell-county-dale-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/caldwell-county-fentress-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/caldwell-county-lockhart-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/caldwell-county-martindale-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/caldwell-county-maxwell-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/caldwell-county-prairie-lea-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/carroll-county-villa-rica-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/cherokee-county-acworth-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/cherokee-county-canton-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/cherokee-county-woodstock-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/clayton-county-conley-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/clayton-county-forest-park-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/clayton-county-jonesboro-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/clayton-county-lovejoy-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/clayton-county-morrow-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/clayton-county-rex-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/clayton-county-riverdale-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/cobb-county-acworth-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/cobb-county-atlanta-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/cobb-county-austell-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/cobb-county-kennesaw-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/cobb-county-mableton-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/cobb-county-marietta-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/cobb-county-powder-springs-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/cobb-county-smyrna-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/collin-county-allen-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/collin-county-anna-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/collin-county-blue-ridge-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/collin-county-celina-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/collin-county-copeville-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/collin-county-dallas-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/collin-county-farmersville-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/collin-county-frisco-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/collin-county-josephine-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/collin-county-lavon-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/collin-county-mckinney-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/collin-county-melissa-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/collin-county-nevada-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/collin-county-plano-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/collin-county-princeton-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/collin-county-prosper-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/collin-county-westminster-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/collin-county-weston-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/collin-county-wylie-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/colusa-county-arbuckle-ca
+   
+  Redirect to /fences/cities/sutter-county-yuba-city-ca for
+  Route to /fences/cities/colusa-county-grimes-ca
+   
+  Redirect to /fences/cities/sutter-county-yuba-city-ca for
+  Route to /fences/cities/comal-county-bulverde-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/comal-county-canyon-lake-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/comal-county-new-braunfels-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/comal-county-san-antonio-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/comal-county-spring-branch-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/contra-costa-county-alamo-ca
+   
+  Redirect to /fences/cities/contra-costa-county-danville-ca for
+  Route to /fences/cities/contra-costa-county-bethel-island-ca
+   
+  Redirect to /fences/cities/contra-costa-county-oakley-ca for
+  Route to /fences/cities/contra-costa-county-byron-ca
+   
+  Redirect to /fences/cities/contra-costa-county-brentwood-ca for
+  Route to /fences/cities/contra-costa-county-canyon-ca
+   
+  Redirect to /fences/cities/alameda-county-piedmont-ca for
+  Route to /fences/cities/contra-costa-county-clayton-ca
+   
+  Redirect to /fences/cities/contra-costa-county-concord-ca for
+  Route to /fences/cities/contra-costa-county-crockett-ca
+   
+  Redirect to /fences/cities/solano-county-benicia-ca for
+  Route to /fences/cities/contra-costa-county-diablo-ca
+   
+  Redirect to /fences/cities/contra-costa-county-danville-ca for
+  Route to /fences/cities/contra-costa-county-discovery-bay-ca
+   
+  Redirect to /fences/cities/contra-costa-county-brentwood-ca for
+  Route to /fences/cities/contra-costa-county-hercules-ca
+   
+  Redirect to /fences/cities/contra-costa-county-el-sobrante-ca for
+  Route to /fences/cities/contra-costa-county-knightsen-ca
+   
+  Redirect to /fences/cities/contra-costa-county-brentwood-ca for
+  Route to /fences/cities/contra-costa-county-lafayette-ca
+   
+  Redirect to /fences/cities/contra-costa-county-walnut-creek-ca for
+  Route to /fences/cities/contra-costa-county-moraga-ca
+   
+  Redirect to /fences/cities/alameda-county-piedmont-ca for
+  Route to /fences/cities/contra-costa-county-orinda-ca
+   
+  Redirect to /fences/cities/alameda-county-piedmont-ca for
+  Route to /fences/cities/contra-costa-county-pinole-ca
+   
+  Redirect to /fences/cities/contra-costa-county-el-sobrante-ca for
+  Route to /fences/cities/contra-costa-county-port-costa-ca
+   
+  Redirect to /fences/cities/solano-county-benicia-ca for
+  Route to /fences/cities/contra-costa-county-rodeo-ca
+   
+  Redirect to /fences/cities/contra-costa-county-el-sobrante-ca for
+  Route to /fences/cities/coweta-county-newnan-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/coweta-county-sargent-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/coweta-county-senoia-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/coweta-county-sharpsburg-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/coweta-county-turin-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/dallas-county-addison-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/dallas-county-balch-springs-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/dallas-county-carrollton-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/dallas-county-cedar-hill-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/dallas-county-coppell-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/dallas-county-desoto-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/dallas-county-duncanville-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/dallas-county-garland-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/dallas-county-grand-prairie-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/dallas-county-hutchins-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/dallas-county-irving-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/dallas-county-lancaster-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/dallas-county-mesquite-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/dallas-county-richardson-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/dallas-county-rowlett-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/dallas-county-sachse-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/dallas-county-seagoville-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/dallas-county-wilmer-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/dekalb-county-atlanta-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/dekalb-county-avondale-estates-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/dekalb-county-clarkston-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/dekalb-county-decatur-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/dekalb-county-ellenwood-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/dekalb-county-lithonia-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/dekalb-county-pine-lake-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/dekalb-county-scottdale-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/dekalb-county-stone-mountain-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/dekalb-county-tucker-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/denton-county-argyle-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/denton-county-aubrey-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/denton-county-carrollton-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/denton-county-denton-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/denton-county-flower-mound-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/denton-county-frisco-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/denton-county-justin-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/denton-county-krum-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/denton-county-lake-dallas-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/denton-county-lewisville-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/denton-county-little-elm-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/denton-county-pilot-point-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/denton-county-ponder-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/denton-county-roanoke-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/denton-county-sanger-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/denton-county-the-colony-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/douglas-county-douglasville-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/douglas-county-lithia-springs-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/douglas-county-winston-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/el-dorado-county-coloma-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/el-dorado-county-cool-ca
+   
+  Redirect to /fences/cities/placer-county-rocklin-ca for
+  Route to /fences/cities/el-dorado-county-diamond-springs-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/el-dorado-county-el-dorado-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/el-dorado-county-garden-valley-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/el-dorado-county-georgetown-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/el-dorado-county-greenwood-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/el-dorado-county-lotus-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/el-dorado-county-pilot-hill-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/el-dorado-county-placerville-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/el-dorado-county-rescue-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/el-dorado-county-shingle-springs-ca
+   
+  Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/fayette-county-brooks-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/fayette-county-fayetteville-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/fayette-county-peachtree-city-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/fayette-county-tyrone-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/fort-bend-county-fresno-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/fort-bend-county-fulshear-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/fort-bend-county-houston-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/fort-bend-county-katy-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/fort-bend-county-missouri-city-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/fort-bend-county-orchard-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/fort-bend-county-richmond-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/fort-bend-county-rosenberg-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/fort-bend-county-stafford-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/fort-bend-county-sugar-land-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/fort-bend-county-thompsons-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/fresno-county-biola-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-burrel-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-caruthers-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-five-points-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-fowler-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-helm-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-huron-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-kerman-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-kingsburg-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/fresno-county-laton-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-mendota-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-orange-cove-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/fresno-county-parlier-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-piedra-ca
+   
+  Redirect to /fences/cities/fresno-county-clovis-ca for
+  Route to /fences/cities/fresno-county-raisin-city-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-reedley-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/fresno-county-riverdale-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-san-joaquin-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-sanger-ca
+   
+  Redirect to /fences/cities/fresno-county-clovis-ca for
+  Route to /fences/cities/fresno-county-selma-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fresno-county-tranquillity-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/fulton-county-alpharetta-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/fulton-county-duluth-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/fulton-county-fairburn-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/fulton-county-palmetto-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/fulton-county-roswell-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/galveston-county-bacliff-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/galveston-county-dickinson-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/galveston-county-friendswood-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/galveston-county-kemah-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/galveston-county-league-city-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/galveston-county-santa-fe-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/galveston-county-texas-city-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/guadalupe-county-cibolo-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/guadalupe-county-marion-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/guadalupe-county-mc-queeney-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/guadalupe-county-schertz-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/guadalupe-county-seguin-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/gwinnett-county-buford-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/gwinnett-county-dacula-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/gwinnett-county-duluth-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/gwinnett-county-grayson-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/gwinnett-county-lawrenceville-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/gwinnett-county-lilburn-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/gwinnett-county-norcross-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/gwinnett-county-snellville-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/gwinnett-county-suwanee-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/harris-county-baytown-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-bellaire-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-channelview-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-crosby-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-cypress-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-deer-park-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-galena-park-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-highlands-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-hockley-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-huffman-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-humble-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-katy-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-kingwood-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-la-porte-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-pasadena-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-seabrook-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-south-houston-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-spring-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-tomball-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/harris-county-webster-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/hays-county-austin-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/hays-county-buda-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/hays-county-driftwood-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/hays-county-dripping-springs-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/hays-county-kyle-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/hays-county-san-marcos-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/henry-county-hampton-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/henry-county-locust-grove-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/henry-county-mcdonough-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/henry-county-stockbridge-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/kendall-county-bergheim-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/kendall-county-boerne-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/kings-county-armona-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/kings-county-hanford-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/kings-county-lemoore-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/kings-county-stratford-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/los-angeles-county-agoura-hills-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-alhambra-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-altadena-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-arcadia-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-artesia-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-baldwin-park-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-bell-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-bell-gardens-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-bellflower-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-beverly-hills-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-burbank-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-calabasas-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-canoga-park-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-canyon-country-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-carson-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-castaic-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-cerritos-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-chatsworth-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-city-of-industry-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-claremont-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/los-angeles-county-compton-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-covina-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-culver-city-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-diamond-bar-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/los-angeles-county-dodgertown-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-downey-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-duarte-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-el-monte-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-el-segundo-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-encino-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-gardena-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-glendale-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-glendora-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-granada-hills-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-hacienda-heights-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-harbor-city-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-hawaiian-gardens-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-hawthorne-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-hermosa-beach-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-huntington-park-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-inglewood-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-la-canada-flintridge-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-la-crescenta-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-la-mirada-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-la-puente-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-la-verne-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/los-angeles-county-lakewood-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-lawndale-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-lomita-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-long-beach-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-lynwood-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-malibu-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-manhattan-beach-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-marina-del-rey-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-maywood-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-mission-hills-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-monrovia-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-montebello-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-monterey-park-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-montrose-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-mount-wilson-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-newhall-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-north-hills-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-north-hollywood-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-northridge-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-norwalk-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-pacific-palisades-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-pacoima-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-palos-verdes-peninsula-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-panorama-city-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-paramount-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-pasadena-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-pico-rivera-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-playa-del-rey-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-playa-vista-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-pomona-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/los-angeles-county-porter-ranch-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-rancho-palos-verdes-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-redondo-beach-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-reseda-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-rosemead-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-rowland-heights-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-san-dimas-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/los-angeles-county-san-fernando-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-san-gabriel-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-san-marino-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-san-pedro-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-santa-clarita-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-santa-fe-springs-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-santa-monica-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-sherman-oaks-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-sierra-madre-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-signal-hill-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-south-el-monte-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-south-gate-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-south-pasadena-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-stevenson-ranch-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-studio-city-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-sun-valley-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-sunland-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-sylmar-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-tarzana-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-temple-city-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-toluca-lake-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-topanga-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-torrance-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-tujunga-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-universal-city-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-valencia-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-valley-village-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-van-nuys-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-venice-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-verdugo-city-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-walnut-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/los-angeles-county-west-covina-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-west-hills-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-west-hollywood-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-whittier-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-wilmington-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/los-angeles-county-winnetka-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/los-angeles-county-woodland-hills-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/madera-county-chowchilla-ca
+   
+  Redirect to /fences/cities/merced-county-merced-ca for
+  Route to /fences/cities/madera-county-coarsegold-ca
+   
+  Redirect to /fences/cities/fresno-county-clovis-ca for
+  Route to /fences/cities/madera-county-madera-ca
+   
+  Redirect to /fences/cities/fresno-county-fresno-ca for
+  Route to /fences/cities/marin-county-belvedere-ca
+   
+  Redirect to /fences/cities/san-francisco-county-san-francisco-ca for
+  Route to /fences/cities/marin-county-bolinas-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-corte-madera-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-dillon-beach-ca
+   
+  Redirect to /fences/cities/sonoma-county-petaluma-ca for
+  Route to /fences/cities/marin-county-fairfax-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-forest-knolls-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-greenbrae-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-inverness-ca
+   
+  Redirect to /fences/cities/sonoma-county-petaluma-ca for
+  Route to /fences/cities/marin-county-kentfield-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-lagunitas-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-larkspur-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-marshall-ca
+   
+  Redirect to /fences/cities/sonoma-county-petaluma-ca for
+  Route to /fences/cities/marin-county-mill-valley-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-nicasio-ca
+   
+  Redirect to /fences/cities/marin-county-novato-ca for
+  Route to /fences/cities/marin-county-olema-ca
+   
+  Redirect to /fences/cities/marin-county-novato-ca for
+  Route to /fences/cities/marin-county-point-reyes-station-ca
+   
+  Redirect to /fences/cities/marin-county-novato-ca for
+  Route to /fences/cities/marin-county-ross-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-san-anselmo-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-san-geronimo-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-san-quentin-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-sausalito-ca
+   
+  Redirect to /fences/cities/san-francisco-county-san-francisco-ca for
+  Route to /fences/cities/marin-county-stinson-beach-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/marin-county-tomales-ca
+   
+  Redirect to /fences/cities/sonoma-county-petaluma-ca for
+  Route to /fences/cities/marin-county-woodacre-ca
+   
+  Redirect to /fences/cities/marin-county-san-rafael-ca for
+  Route to /fences/cities/medina-county-castroville-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/merced-county-atwater-ca
+   
+  Redirect to /fences/cities/merced-county-merced-ca for
+  Route to /fences/cities/merced-county-ballico-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/merced-county-cressey-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/merced-county-delhi-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/merced-county-dos-palos-ca
+   
+  Redirect to /fences/cities/merced-county-merced-ca for
+  Route to /fences/cities/merced-county-el-nido-ca
+   
+  Redirect to /fences/cities/merced-county-merced-ca for
+  Route to /fences/cities/merced-county-gustine-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/merced-county-hilmar-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/merced-county-le-grand-ca
+   
+  Redirect to /fences/cities/merced-county-merced-ca for
+  Route to /fences/cities/merced-county-livingston-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/merced-county-los-banos-ca
+   
+  Redirect to /fences/cities/merced-county-merced-ca for
+  Route to /fences/cities/merced-county-planada-ca
+   
+  Redirect to /fences/cities/merced-county-merced-ca for
+  Route to /fences/cities/merced-county-santa-rita-park-ca
+   
+  Redirect to /fences/cities/merced-county-merced-ca for
+  Route to /fences/cities/merced-county-snelling-ca
+   
+  Redirect to /fences/cities/merced-county-merced-ca for
+  Route to /fences/cities/merced-county-south-dos-palos-ca
+   
+  Redirect to /fences/cities/merced-county-merced-ca for
+  Route to /fences/cities/merced-county-stevinson-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/merced-county-winton-ca
+   
+  Redirect to /fences/cities/merced-county-merced-ca for
+  Route to /fences/cities/monterey-county-aromas-ca
+   
+  Redirect to /fences/cities/santa-cruz-county-watsonville-ca for
+  Route to /fences/cities/monterey-county-carmel-ca
+   
+  Redirect to /fences/cities/monterey-county-salinas-ca for
+  Route to /fences/cities/monterey-county-carmel-valley-ca
+   
+  Redirect to /fences/cities/monterey-county-salinas-ca for
+  Route to /fences/cities/monterey-county-carmel-by-the-sea-ca
+   
+  Redirect to /fences/cities/monterey-county-salinas-ca for
+  Route to /fences/cities/monterey-county-castroville-ca
+   
+  Redirect to /fences/cities/monterey-county-salinas-ca for
+  Route to /fences/cities/monterey-county-marina-ca
+   
+  Redirect to /fences/cities/monterey-county-salinas-ca for
+  Route to /fences/cities/monterey-county-monterey-ca
+   
+  Redirect to /fences/cities/monterey-county-salinas-ca for
+  Route to /fences/cities/monterey-county-moss-landing-ca
+   
+  Redirect to /fences/cities/santa-cruz-county-watsonville-ca for
+  Route to /fences/cities/monterey-county-pacific-grove-ca
+   
+  Redirect to /fences/cities/monterey-county-salinas-ca for
+  Route to /fences/cities/monterey-county-pebble-beach-ca
+   
+  Redirect to /fences/cities/monterey-county-salinas-ca for
+  Route to /fences/cities/monterey-county-seaside-ca
+   
+  Redirect to /fences/cities/monterey-county-salinas-ca for
+  Route to /fences/cities/montgomery-county-conroe-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/montgomery-county-magnolia-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/montgomery-county-new-caney-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/montgomery-county-pinehurst-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/montgomery-county-porter-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/montgomery-county-splendora-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/montgomery-county-spring-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/napa-county-american-canyon-ca
+   
+  Redirect to /fences/cities/solano-county-vallejo-ca for
+  Route to /fences/cities/napa-county-angwin-ca
+   
+  Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
+  Route to /fences/cities/napa-county-calistoga-ca
+   
+  Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
+  Route to /fences/cities/napa-county-deer-park-ca
+   
+  Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
+  Route to /fences/cities/napa-county-oakville-ca
+   
+  Redirect to /fences/cities/napa-county-napa-ca for
+  Route to /fences/cities/napa-county-rutherford-ca
+   
+  Redirect to /fences/cities/napa-county-napa-ca for
+  Route to /fences/cities/napa-county-saint-helena-ca
+   
+  Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
+  Route to /fences/cities/napa-county-yountville-ca
+   
+  Redirect to /fences/cities/napa-county-napa-ca for
+  Route to /fences/cities/nevada-county-cedar-ridge-ca
+   
+  Redirect to /fences/cities/placer-county-lincoln-ca for
+  Route to /fences/cities/nevada-county-chicago-park-ca
+   
+  Redirect to /fences/cities/placer-county-lincoln-ca for
+  Route to /fences/cities/nevada-county-grass-valley-ca
+   
+  Redirect to /fences/cities/placer-county-lincoln-ca for
+  Route to /fences/cities/nevada-county-penn-valley-ca
+   
+  Redirect to /fences/cities/placer-county-lincoln-ca for
+  Route to /fences/cities/nevada-county-rough-and-ready-ca
+   
+  Redirect to /fences/cities/placer-county-lincoln-ca for
+  Route to /fences/cities/nevada-county-smartsville-ca
+   
+  Redirect to /fences/cities/sutter-county-yuba-city-ca for
+  Route to /fences/cities/newton-county-covington-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/newton-county-oxford-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/newton-county-porterdale-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/orange-county-aliso-viejo-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-anaheim-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-brea-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/orange-county-buena-park-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/orange-county-capistrano-beach-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-corona-del-mar-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-costa-mesa-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-cypress-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/orange-county-dana-point-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-foothill-ranch-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-fountain-valley-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-fullerton-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/orange-county-garden-grove-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-huntington-beach-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-irvine-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-la-habra-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/orange-county-la-palma-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/orange-county-ladera-ranch-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-laguna-beach-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-laguna-hills-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-laguna-niguel-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-laguna-woods-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-los-alamitos-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/orange-county-midway-city-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-mission-viejo-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-newport-beach-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-newport-coast-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-orange-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-placentia-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/orange-county-rancho-santa-margarita-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-san-clemente-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-san-juan-capistrano-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-santa-ana-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-seal-beach-ca
+   
+  Redirect to /fences/cities/los-angeles-county-los-angeles-ca for
+  Route to /fences/cities/orange-county-stanton-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-sunset-beach-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-surfside-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-trabuco-canyon-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-tustin-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-villa-park-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-westminster-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/orange-county-yorba-linda-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/paulding-county-dallas-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/paulding-county-hiram-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/placer-county-applegate-ca
+   
+  Redirect to /fences/cities/placer-county-lincoln-ca for
+  Route to /fences/cities/placer-county-auburn-ca
+   
+  Redirect to /fences/cities/placer-county-rocklin-ca for
+  Route to /fences/cities/placer-county-colfax-ca
+   
+  Redirect to /fences/cities/placer-county-lincoln-ca for
+  Route to /fences/cities/placer-county-foresthill-ca
+   
+  Redirect to /fences/cities/placer-county-lincoln-ca for
+  Route to /fences/cities/placer-county-granite-bay-ca
+   
+  Redirect to /fences/cities/placer-county-rocklin-ca for
+  Route to /fences/cities/placer-county-loomis-ca
+   
+  Redirect to /fences/cities/placer-county-rocklin-ca for
+  Route to /fences/cities/placer-county-meadow-vista-ca
+   
+  Redirect to /fences/cities/placer-county-lincoln-ca for
+  Route to /fences/cities/placer-county-newcastle-ca
+   
+  Redirect to /fences/cities/placer-county-rocklin-ca for
+  Route to /fences/cities/placer-county-penryn-ca
+   
+  Redirect to /fences/cities/placer-county-rocklin-ca for
+  Route to /fences/cities/placer-county-sheridan-ca
+   
+  Redirect to /fences/cities/placer-county-lincoln-ca for
+  Route to /fences/cities/placer-county-weimar-ca
+   
+  Redirect to /fences/cities/placer-county-lincoln-ca for
+  Route to /fences/cities/riverside-county-hemet-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/riverside-county-homeland-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/riverside-county-lake-elsinore-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/riverside-county-march-air-reserve-base-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/riverside-county-menifee-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/riverside-county-mira-loma-ca
+   
+  Redirect to /fences/cities/riverside-county-riverside-ca for
+  Route to /fences/cities/riverside-county-murrieta-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/riverside-county-norco-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/riverside-county-nuevo-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/riverside-county-perris-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/riverside-county-quail-valley-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/riverside-county-san-jacinto-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/riverside-county-sun-city-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/riverside-county-temecula-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/riverside-county-wildomar-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/riverside-county-winchester-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/rockdale-county-conyers-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/rockwall-county-rockwall-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/rockwall-county-royse-city-tx
+   
+  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Route to /fences/cities/sacramento-county-courtland-ca
+   
+  Redirect to /fences/cities/sacramento-county-elk-grove-ca for
+  Route to /fences/cities/sacramento-county-elverta-ca
+   
+  Redirect to /fences/cities/sacramento-county-north-highlands-ca for
+  Route to /fences/cities/sacramento-county-herald-ca
+   
+  Redirect to /fences/cities/sacramento-county-galt-ca for
+  Route to /fences/cities/sacramento-county-hood-ca
+   
+  Redirect to /fences/cities/sacramento-county-elk-grove-ca for
+  Route to /fences/cities/sacramento-county-isleton-ca
+   
+  Redirect to /fences/cities/contra-costa-county-oakley-ca for
+  Route to /fences/cities/sacramento-county-mather-ca
+   
+  Redirect to /fences/cities/sacramento-county-rancho-cordova-ca for
+  Route to /fences/cities/sacramento-county-mcclellan-ca
+   
+  Redirect to /fences/cities/sacramento-county-north-highlands-ca for
+  Route to /fences/cities/sacramento-county-represa-ca
+   
+  Redirect to /fences/cities/sacramento-county-folsom-ca for
+  Route to /fences/cities/sacramento-county-rio-linda-ca
+   
+  Redirect to /fences/cities/sacramento-county-north-highlands-ca for
+  Route to /fences/cities/sacramento-county-ryde-ca
+   
+  Redirect to /fences/cities/sacramento-county-galt-ca for
+  Route to /fences/cities/sacramento-county-sloughhouse-ca
+   
+  Redirect to /fences/cities/sacramento-county-rancho-cordova-ca for
+  Route to /fences/cities/sacramento-county-walnut-grove-ca
+   
+  Redirect to /fences/cities/sacramento-county-galt-ca for
+  Route to /fences/cities/sacramento-county-wilton-ca
+   
+  Redirect to /fences/cities/sacramento-county-elk-grove-ca for
+  Route to /fences/cities/san-benito-county-hollister-ca
+   
+  Redirect to /fences/cities/santa-clara-county-gilroy-ca for
+  Route to /fences/cities/san-benito-county-san-juan-bautista-ca
+   
+  Redirect to /fences/cities/santa-clara-county-gilroy-ca for
+  Route to /fences/cities/san-bernardino-county-bloomington-ca
+   
+  Redirect to /fences/cities/riverside-county-riverside-ca for
+  Route to /fences/cities/san-bernardino-county-chino-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/san-bernardino-county-chino-hills-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/san-bernardino-county-colton-ca
+   
+  Redirect to /fences/cities/riverside-county-riverside-ca for
+  Route to /fences/cities/san-bernardino-county-fontana-ca
+   
+  Redirect to /fences/cities/riverside-county-riverside-ca for
+  Route to /fences/cities/san-bernardino-county-grand-terrace-ca
+   
+  Redirect to /fences/cities/riverside-county-riverside-ca for
+  Route to /fences/cities/san-bernardino-county-highland-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/san-bernardino-county-loma-linda-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/san-bernardino-county-montclair-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/san-bernardino-county-ontario-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/san-bernardino-county-rancho-cucamonga-ca
+   
+  Redirect to /fences/cities/riverside-county-riverside-ca for
+  Route to /fences/cities/san-bernardino-county-redlands-ca
+   
+  Redirect to /fences/cities/riverside-county-moreno-valley-ca for
+  Route to /fences/cities/san-bernardino-county-rialto-ca
+   
+  Redirect to /fences/cities/riverside-county-riverside-ca for
+  Route to /fences/cities/san-bernardino-county-san-bernardino-ca
+   
+  Redirect to /fences/cities/riverside-county-riverside-ca for
+  Route to /fences/cities/san-bernardino-county-upland-ca
+   
+  Redirect to /fences/cities/riverside-county-corona-ca for
+  Route to /fences/cities/san-diego-county-alpine-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-bonita-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-bonsall-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/san-diego-county-camp-pendleton-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/san-diego-county-cardiff-by-the-sea-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-carlsbad-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-chula-vista-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-coronado-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-del-mar-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-el-cajon-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-encinitas-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-escondido-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-fallbrook-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/san-diego-county-imperial-beach-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-jamul-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-la-jolla-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-la-mesa-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-lakeside-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-lemon-grove-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-national-city-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-oceanside-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-pala-ca
+   
+  Redirect to /fences/cities/orange-county-lake-forest-ca for
+  Route to /fences/cities/san-diego-county-poway-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-ramona-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-rancho-santa-fe-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-san-luis-rey-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-san-marcos-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-san-ysidro-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-santee-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-solana-beach-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-spring-valley-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-tecate-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-diego-county-vista-ca
+   
+  Redirect to /fences/cities/san-diego-county-san-diego-ca for
+  Route to /fences/cities/san-joaquin-county-acampo-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-lodi-ca for
+  Route to /fences/cities/san-joaquin-county-clements-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-lodi-ca for
+  Route to /fences/cities/san-joaquin-county-escalon-ca
+   
+  Redirect to /fences/cities/stanislaus-county-modesto-ca for
+  Route to /fences/cities/san-joaquin-county-farmington-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-manteca-ca for
+  Route to /fences/cities/san-joaquin-county-french-camp-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-stockton-ca for
+  Route to /fences/cities/san-joaquin-county-holt-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-stockton-ca for
+  Route to /fences/cities/san-joaquin-county-lathrop-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-manteca-ca for
+  Route to /fences/cities/san-joaquin-county-linden-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-stockton-ca for
+  Route to /fences/cities/san-joaquin-county-lockeford-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-lodi-ca for
+  Route to /fences/cities/san-joaquin-county-ripon-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-manteca-ca for
+  Route to /fences/cities/san-joaquin-county-thornton-ca
+   
+  Redirect to /fences/cities/sacramento-county-galt-ca for
+  Route to /fences/cities/san-joaquin-county-vernalis-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-tracy-ca for
+  Route to /fences/cities/san-joaquin-county-victor-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-lodi-ca for
+  Route to /fences/cities/san-joaquin-county-woodbridge-ca
+   
+  Redirect to /fences/cities/san-joaquin-county-lodi-ca for
+  Route to /fences/cities/san-mateo-county-atherton-ca
+   
+  Redirect to /fences/cities/san-mateo-county-menlo-park-ca for
+  Route to /fences/cities/san-mateo-county-belmont-ca
+   
+  Redirect to /fences/cities/san-mateo-county-san-carlos-ca for
+  Route to /fences/cities/san-mateo-county-brisbane-ca
+   
+  Redirect to /fences/cities/san-mateo-county-south-san-francisco-ca for
+  Route to /fences/cities/san-mateo-county-burlingame-ca
+   
+  Redirect to /fences/cities/san-mateo-county-san-mateo-ca for
+  Route to /fences/cities/san-mateo-county-el-granada-ca
+   
+  Redirect to /fences/cities/san-mateo-county-san-mateo-ca for
+  Route to /fences/cities/san-mateo-county-half-moon-bay-ca
+   
+  Redirect to /fences/cities/san-mateo-county-san-mateo-ca for
+  Route to /fences/cities/san-mateo-county-hillsborough-ca
+   
+  Redirect to /fences/cities/san-mateo-county-san-mateo-ca for
+  Route to /fences/cities/san-mateo-county-la-honda-ca
+   
+  Redirect to /fences/cities/santa-clara-county-los-altos-ca for
+  Route to /fences/cities/san-mateo-county-loma-mar-ca
+   
+  Redirect to /fences/cities/santa-clara-county-los-altos-ca for
+  Route to /fences/cities/san-mateo-county-millbrae-ca
+   
+  Redirect to /fences/cities/san-mateo-county-san-bruno-ca for
+  Route to /fences/cities/san-mateo-county-montara-ca
+   
+  Redirect to /fences/cities/san-mateo-county-san-bruno-ca for
+  Route to /fences/cities/san-mateo-county-moss-beach-ca
+   
+  Redirect to /fences/cities/san-mateo-county-san-bruno-ca for
+  Route to /fences/cities/san-mateo-county-pacifica-ca
+   
+  Redirect to /fences/cities/san-mateo-county-san-bruno-ca for
+  Route to /fences/cities/san-mateo-county-pescadero-ca
+   
+  Redirect to /fences/cities/santa-clara-county-los-altos-ca for
+  Route to /fences/cities/san-mateo-county-portola-valley-ca
+   
+  Redirect to /fences/cities/san-mateo-county-menlo-park-ca for
+  Route to /fences/cities/san-mateo-county-san-francisco-ca
+   
+  Redirect to /fences/cities/san-mateo-county-san-mateo-ca for
+  Route to /fences/cities/san-mateo-county-san-gregorio-ca
+   
+  Redirect to /fences/cities/san-mateo-county-redwood-city-ca for
+  Route to /fences/cities/santa-clara-county-alviso-ca
+   
+  Redirect to /fences/cities/santa-clara-county-santa-clara-ca for
+  Route to /fences/cities/santa-clara-county-coyote-ca
+   
+  Redirect to /fences/cities/santa-clara-county-morgan-hill-ca for
+  Route to /fences/cities/santa-clara-county-holy-city-ca
+   
+  Redirect to /fences/cities/santa-clara-county-los-gatos-ca for
+  Route to /fences/cities/santa-clara-county-mount-hamilton-ca
+   
+  Redirect to /fences/cities/santa-clara-county-san-jose-ca for
+  Route to /fences/cities/santa-clara-county-new-almaden-ca
+   
+  Redirect to /fences/cities/santa-clara-county-los-gatos-ca for
+  Route to /fences/cities/santa-clara-county-redwood-estates-ca
+   
+  Redirect to /fences/cities/santa-clara-county-los-gatos-ca for
+  Route to /fences/cities/santa-clara-county-san-martin-ca
+   
+  Redirect to /fences/cities/santa-clara-county-morgan-hill-ca for
+  Route to /fences/cities/santa-clara-county-stanford-ca
+   
+  Redirect to /fences/cities/santa-clara-county-santa-clara-ca for
+  Route to /fences/cities/santa-clara-county-sunnyvale-ca
+   
+  Redirect to /fences/cities/santa-clara-county-mountain-view-ca for
+  Route to /fences/cities/santa-cruz-county-ben-lomond-ca
+   
+  Redirect to /fences/cities/santa-cruz-county-santa-cruz-ca for
+  Route to /fences/cities/santa-cruz-county-boulder-creek-ca
+   
+  Redirect to /fences/cities/santa-clara-county-saratoga-ca for
+  Route to /fences/cities/santa-cruz-county-brookdale-ca
+   
+  Redirect to /fences/cities/santa-cruz-county-santa-cruz-ca for
+  Route to /fences/cities/santa-cruz-county-capitola-ca
+   
+  Redirect to /fences/cities/santa-cruz-county-aptos-ca for
+  Route to /fences/cities/santa-cruz-county-davenport-ca
+   
+  Redirect to /fences/cities/santa-cruz-county-santa-cruz-ca for
+  Route to /fences/cities/santa-cruz-county-felton-ca
+   
+  Redirect to /fences/cities/santa-cruz-county-santa-cruz-ca for
+  Route to /fences/cities/santa-cruz-county-freedom-ca
+   
+  Redirect to /fences/cities/santa-cruz-county-watsonville-ca for
+  Route to /fences/cities/santa-cruz-county-los-gatos-ca
+   
+  Redirect to /fences/cities/santa-cruz-county-santa-cruz-ca for
+  Route to /fences/cities/santa-cruz-county-mount-hermon-ca
+   
+  Redirect to /fences/cities/santa-cruz-county-santa-cruz-ca for
+  Route to /fences/cities/santa-cruz-county-scotts-valley-ca
+   
+  Redirect to /fences/cities/santa-cruz-county-santa-cruz-ca for
+  Route to /fences/cities/santa-cruz-county-soquel-ca
+   
+  Redirect to /fences/cities/santa-cruz-county-aptos-ca for
+  Route to /fences/cities/solano-county-birds-landing-ca
+   
+  Redirect to /fences/cities/contra-costa-county-pittsburg-ca for
+  Route to /fences/cities/solano-county-dixon-ca
+   
+  Redirect to /fences/cities/yolo-county-davis-ca for
+  Route to /fences/cities/solano-county-elmira-ca
+   
+  Redirect to /fences/cities/solano-county-vacaville-ca for
+  Route to /fences/cities/solano-county-rio-vista-ca
+   
+  Redirect to /fences/cities/contra-costa-county-oakley-ca for
+  Route to /fences/cities/solano-county-travis-afb-ca
+   
+  Redirect to /fences/cities/solano-county-fairfield-ca for
+  Route to /fences/cities/sonoma-county-cotati-ca
+   
+  Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
+  Route to /fences/cities/sonoma-county-fulton-ca
+   
+  Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
+  Route to /fences/cities/sonoma-county-glen-ellen-ca
+   
+  Redirect to /fences/cities/sonoma-county-petaluma-ca for
+  Route to /fences/cities/sonoma-county-graton-ca
+   
+  Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
+  Route to /fences/cities/sonoma-county-healdsburg-ca
+   
+  Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
+  Route to /fences/cities/sonoma-county-kenwood-ca
+   
+  Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
+  Route to /fences/cities/sonoma-county-monte-rio-ca
+   
+  Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
+  Route to /fences/cities/sonoma-county-penngrove-ca
+   
+  Redirect to /fences/cities/sonoma-county-petaluma-ca for
+  Route to /fences/cities/sonoma-county-rohnert-park-ca
+   
+  Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
+  Route to /fences/cities/sonoma-county-sebastopol-ca
+   
+  Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
+  Route to /fences/cities/sonoma-county-sonoma-ca
+   
+  Redirect to /fences/cities/napa-county-napa-ca for
+  Route to /fences/cities/sonoma-county-windsor-ca
+   
+  Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
+  Route to /fences/cities/spalding-county-griffin-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/spalding-county-sunny-side-ga
+   
+  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Route to /fences/cities/stanislaus-county-ceres-ca
+   
+  Redirect to /fences/cities/stanislaus-county-modesto-ca for
+  Route to /fences/cities/stanislaus-county-crows-landing-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/stanislaus-county-denair-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/stanislaus-county-empire-ca
+   
+  Redirect to /fences/cities/stanislaus-county-modesto-ca for
+  Route to /fences/cities/stanislaus-county-hickman-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/stanislaus-county-hughson-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/stanislaus-county-keyes-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/stanislaus-county-la-grange-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/stanislaus-county-newman-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/stanislaus-county-oakdale-ca
+   
+  Redirect to /fences/cities/stanislaus-county-modesto-ca for
+  Route to /fences/cities/stanislaus-county-patterson-ca
+   
+  Redirect to /fences/cities/stanislaus-county-modesto-ca for
+  Route to /fences/cities/stanislaus-county-riverbank-ca
+   
+  Redirect to /fences/cities/stanislaus-county-modesto-ca for
+  Route to /fences/cities/stanislaus-county-salida-ca
+   
+  Redirect to /fences/cities/stanislaus-county-modesto-ca for
+  Route to /fences/cities/stanislaus-county-waterford-ca
+   
+  Redirect to /fences/cities/stanislaus-county-turlock-ca for
+  Route to /fences/cities/stanislaus-county-westley-ca
+   
+  Redirect to /fences/cities/stanislaus-county-modesto-ca for
+  Route to /fences/cities/sutter-county-live-oak-ca
+   
+  Redirect to /fences/cities/sutter-county-yuba-city-ca for
+  Route to /fences/cities/sutter-county-meridian-ca
+   
+  Redirect to /fences/cities/sutter-county-yuba-city-ca for
+  Route to /fences/cities/sutter-county-nicolaus-ca
+   
+  Redirect to /fences/cities/placer-county-lincoln-ca for
+  Route to /fences/cities/sutter-county-pleasant-grove-ca
+   
+  Redirect to /fences/cities/sacramento-county-antelope-ca for
+  Route to /fences/cities/sutter-county-rio-oso-ca
+   
+  Redirect to /fences/cities/sutter-county-yuba-city-ca for
+  Route to /fences/cities/sutter-county-robbins-ca
+   
+  Redirect to /fences/cities/yolo-county-woodland-ca for
+  Route to /fences/cities/sutter-county-sutter-ca
+   
+  Redirect to /fences/cities/sutter-county-yuba-city-ca for
+  Route to /fences/cities/tarrant-county-arlington-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-azle-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-bedford-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-colleyville-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-crowley-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-euless-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-grapevine-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-haltom-city-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-haslet-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-hurst-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-keller-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-kennedale-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-mansfield-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-north-richland-hills-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tarrant-county-southlake-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/travis-county-austin-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/travis-county-del-valle-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/travis-county-leander-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/travis-county-manchaca-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/travis-county-manor-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/travis-county-pflugerville-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/travis-county-spicewood-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/tulare-county-cutler-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/tulare-county-dinuba-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/tulare-county-exeter-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/tulare-county-farmersville-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/tulare-county-ivanhoe-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/tulare-county-lindsay-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/tulare-county-orosi-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/tulare-county-tulare-ca
+   
+  Redirect to /fences/cities/tulare-county-visalia-ca for
+  Route to /fences/cities/ventura-county-brandeis-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-camarillo-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-fillmore-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-moorpark-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-newbury-park-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-oak-park-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-ojai-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-oxnard-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-point-mugu-nawc-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-port-hueneme-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-port-hueneme-cbc-base-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-santa-paula-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-simi-valley-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-somis-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-ventura-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-westlake-village-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/walton-county-loganville-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/williamson-county-austin-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/williamson-county-cedar-park-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/williamson-county-coupland-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/williamson-county-georgetown-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/williamson-county-hutto-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/williamson-county-jarrell-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/williamson-county-leander-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/williamson-county-liberty-hill-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/williamson-county-round-rock-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/williamson-county-schwertner-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/williamson-county-taylor-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/wilson-county-floresville-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/wilson-county-la-vernia-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/wilson-county-poth-tx
+   
+  Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/yolo-county-clarksburg-ca
+   
+  Redirect to /fences/cities/sacramento-county-elk-grove-ca for
+  Route to /fences/cities/yolo-county-dunnigan-ca
+   
+  Redirect to /fences/cities/yolo-county-woodland-ca for
+  Route to /fences/cities/yolo-county-esparto-ca
+   
+  Redirect to /fences/cities/yolo-county-woodland-ca for
+  Route to /fences/cities/yolo-county-knights-landing-ca
+   
+  Redirect to /fences/cities/yolo-county-woodland-ca for
+  Route to /fences/cities/yolo-county-winters-ca
+   
+  Redirect to /fences/cities/solano-county-vacaville-ca for
+  Route to /fences/cities/yolo-county-yolo-ca
+   
+  Redirect to /fences/cities/yolo-county-woodland-ca for
+  Route to /fences/cities/yolo-county-zamora-ca
+   
+  Redirect to /fences/cities/yolo-county-woodland-ca for
+  Route to /fences/cities/yuba-county-beale-afb-ca
+   
+  Redirect to /fences/cities/sutter-county-yuba-city-ca for
+  Route to /fences/cities/yuba-county-marysville-ca
+   
+  Redirect to /fences/cities/sutter-county-yuba-city-ca for
+  Route to /fences/cities/yuba-county-olivehurst-ca
+   
+  Redirect to /fences/cities/sutter-county-yuba-city-ca for
+  Route to /fences/cities/yuba-county-wheatland-ca
+   
+  Redirect to /fences/cities/placer-county-lincoln-ca for
+  Route to *
+   
+</div>
+`;
+
+exports[`Routes Customer app endpoints 1`] = `
+<div>
+  Route to /app/:customerGid/appointments
+   
+  Route to /app/:customerGid/contacts
+   
+  Route to /app/:customerGid/houses
+   
+  Route to /app/:customerGid/orders/:orderId
+   
+  Route to /app/:customerGid/orders
+   
+  Route to /app/:customerGid/quotes/:secret
+   
+  Route to /app/:customerGid/quotes/:type/:secret
+   
+  Route to /app/:customerGid/quote-approvals/:secret/installer
+   
+  Route to /app/:customerGid/quote-approvals/:secret/direct
+   
+  Route to /app/:customerGid/quote-approvals/:secret
+   
+  Route to /app/:customerGid/notifications
+   
+  Route to *
+   
+</div>
+`;
