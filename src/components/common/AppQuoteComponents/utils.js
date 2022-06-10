@@ -60,6 +60,7 @@ export const prepareQuoteLines = (quoteLines, quote) => {
 
     return {
       ...quoteLine,
+      catalogType: quoteLine['catalog_type'],
       totalPrice: quoteLine['display_price'],
       status,
     };

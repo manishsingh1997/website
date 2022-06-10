@@ -32,7 +32,7 @@ export default function QuoteLine(props) {
     index,
     approvedAt,
     area,
-    catalog,
+    catalogType,
     config,
     distance,
     description,
@@ -89,7 +89,7 @@ export default function QuoteLine(props) {
               <QuoteLinePrice
                 {...{
                   area,
-                  catalog,
+                  catalogType,
                   distance,
                   index,
                   isInstallerPreview,
@@ -136,7 +136,7 @@ export default function QuoteLine(props) {
           <QuoteLinePrice
             {...{
               area,
-              catalog,
+              catalogType,
               distance,
               index,
               isInstallerPreview,
@@ -179,7 +179,7 @@ export default function QuoteLine(props) {
         <QuoteLinePrice
           {...{
             area,
-            catalog,
+            catalogType,
             distance,
             index,
             isInstallerPreview,
@@ -201,7 +201,7 @@ export default function QuoteLine(props) {
 QuoteLine.propTypes = {
   approvedAt: PropTypes.string,
   area: PropTypes.number,
-  catalog: PropTypes.object,
+  catalogType: PropTypes.object,
   config: PropTypes.object,
   description: PropTypes.string,
   distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

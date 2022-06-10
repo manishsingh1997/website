@@ -9,7 +9,7 @@ import {Area, Distance, QuantityUnit} from './QuoteLineComponents';
 export default function QuoteLinePrice(props) {
   const {
     area,
-    catalog,
+    catalogType,
     distance,
     index,
     isInstallerPreview,
@@ -26,7 +26,7 @@ export default function QuoteLinePrice(props) {
   // Price should not be visible for installer
   const isPriceShown = !isInstallerPreview;
 
-  if (!isAllowedUnitDisplay(isInstallerPreview, catalog)) {
+  if (!isAllowedUnitDisplay(isInstallerPreview, catalogType)) {
     return null;
   }
 
@@ -56,7 +56,7 @@ export default function QuoteLinePrice(props) {
 
 QuoteLinePrice.propTypes = {
   area: PropTypes.number,
-  catalog: PropTypes.object,
+  catalogType: PropTypes.object,
   distance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   index: PropTypes.number,
   isInstallerPreview: PropTypes.bool,

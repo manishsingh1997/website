@@ -71,7 +71,7 @@ export type QuoteLine = {
   unit: string,
   cost: string,
   is_quote_preview_possible: boolean,
-  catalog: QuoteLineCatalog,
+  catalog_type: OrderType,
   display_to_customer: boolean,
   display_to_installer: boolean,
   approved_at: Date,
@@ -94,11 +94,6 @@ export type QuoteLineConfig = {
   code: string,
   tags: string[],
   schema_code_url: string,
-}
-
-export type QuoteLineCatalog = {
-  name: string,
-  type: OrderType,
 }
 
 export type OrderType = {

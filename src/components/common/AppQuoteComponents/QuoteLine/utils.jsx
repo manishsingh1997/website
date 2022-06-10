@@ -23,13 +23,13 @@ export const indexLabel = (index, label) => {
 };
 
 /**
- * Checks for isInstallerPreview and catalog
+ * Checks for isInstallerPreview and catalog type
  * @param {boolean} isInstallerPreview
- * @param {object} catalog
+ * @param {object} catalogType
  */
-export const isAllowedUnitDisplay = (isInstallerPreview, catalog) => {
-  if (!isInstallerPreview || !catalog) {
+export const isAllowedUnitDisplay = (isInstallerPreview, catalogType) => {
+  if (!isInstallerPreview || !catalogType) {
     return true;
   }
-  return catalog.type.allows_unit_display;
+  return catalogType.allows_unit_display;
 };

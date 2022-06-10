@@ -3,8 +3,7 @@ import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
 
 export const isQuoteLineOfMapKinds = (quoteLine, types) => {
-  const catalog = quoteLine['catalog'];
-  const quoteType = catalog && catalog['type'] && catalog['type']['map_kind'];
+  const quoteType = quoteLine['catalogType'] && quoteLine['catalogType']['map_kind'];
   return types.some((type) => type === quoteType);
 };
 
