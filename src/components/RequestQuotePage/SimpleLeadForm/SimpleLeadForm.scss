@@ -1,0 +1,104 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
+$select-arrow-margin-top: -2px;
+
+.Form {
+  margin-block-end: unset;
+  button {
+    width: unset;
+  }
+  .product-radio-list {
+    display: flex;
+    border-bottom: 1px solid $gray-4;
+    padding-bottom: $v-12;
+    flex-wrap: wrap;
+    @include tablet() {
+      padding-bottom: $v-12;
+    }
+    .radio-button {
+      font-size: $font-mobile-size;
+      line-height: $line-height-mobile;
+      &:first-child {
+        margin-right: $h-20;
+        @include phone() {
+          margin-right: $h-10;
+        }
+      }
+    }
+  }
+
+  .Form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: $v-24;
+    position: relative;
+    .newsletter-checkbox {
+      filter: grayscale(1);
+      label {
+        padding-top: 4px;
+      }
+    }
+
+    .Form-error {
+      margin-top: 6px;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+  .Form-error {
+    margin-top: 4px;
+    font-size: $font-label-size;
+    color: $red;
+    font-family: $font-content;
+    letter-spacing: 0;
+    line-height: $line-height-label;
+    text-align: left;
+  }
+  .Form-footer {
+    text-align: center;
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 30px;
+  }
+}
+
+.NoScroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+@keyframes fs-zoom {
+  from {
+    opacity: 0;
+    transform: translateY(20%) scale(0);
+  }
+}
+@keyframes fs-fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.LeadForm {
+  h1 + p {
+    margin-top: -1 * $h-20;
+    margin-bottom: $h-20 + $h-10;
+    text-align: center;
+  }
+
+  .erg-form-field {
+    margin-bottom: $v-12;
+  }
+
+  &-Message {
+    #message {
+      height: $h-120;
+    }
+  }
+}

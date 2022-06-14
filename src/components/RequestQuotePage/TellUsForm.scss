@@ -1,0 +1,30 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
+.TellUsForm {
+  display: flex;
+  background-color: $green-3;
+  flex-flow: column;
+  align-items: center;
+  margin: 0;
+  padding: $h-60 0;
+
+  &-Wrapper {
+    width: 30%;
+
+    @include phone() {
+      width: 90%;
+    }
+  }
+
+  h3 {
+    font-weight: 600;
+    margin-bottom: $v-12;
+    text-align: center;
+  }
+
+  &-Text {
+    text-align: center;
+    margin-bottom: $v-20;
+    padding: 0 $h-20;
+  }
+}

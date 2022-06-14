@@ -56,7 +56,7 @@ export const showUpcomingFeatures = (issueNumber: string) => {
   return isUpcomingFeaturesEnabled(issueNumber);
 };
 
-export const getAdvancedEditorUrl = (order: OrderType, zipcode: string) => {
+export const getAdvancedEditorUrl = (order: OrderType, zipcode?: string) => {
   const sep = ',';
   let query = '';
   if (order['catalog_type'] == CatalogType.FENCE) {

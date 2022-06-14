@@ -5,9 +5,9 @@ const join = (rules) => {
     return errors[0];
   };
 };
-const emailRe =
+export const emailRe =
   /^[\w!#$%&'*+\/=?`{|}~^-]+(?:\.[\w!#$%&'*+\/=?`{|}~^-]+)*@(?:[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]\.)+[a-zA-Z]{2,}$/i; // eslint-disable-line max-len
-const phoneRe = /^\(\d{0,3}\) \d{0,3}\-\d{0,4}$/;
+export const phoneRe = /^\(\d{0,3}\) \d{0,3}\-\d{0,4}$/;
 
 export const email = (value) => {
   if (!isEmpty(value) && !emailRe.test(value)) {
