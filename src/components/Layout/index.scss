@@ -205,3 +205,11 @@
     }
   }
 }
+
+.LocationsFooter {
+  margin-left: -1 * $h-10 / 2 - 1px;
+
+  @include phone {
+    margin-left: 0;
+  }
+}

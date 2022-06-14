@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react';
-import { showUpcomingFeatures } from '../../utils/utils';
 import Success from '../common/Success';
 import AppLoader from '../common/AppLoader';
 import SimpleLeadForm from './SimpleLeadForm';
@@ -62,7 +61,7 @@ const TellUsForm = (props: TellUsFormProps) => {
     return (
       <div className="request-quote-page">
         <Success header="Thanks!" text="We will call you within 24 hours" />
-        {showUpcomingFeatures('ENG-1XX') && !user && (
+        {!user && (
           <span>
             <p className="confirmation-email spacing before__is-24">
               We have sent a confirmation message to your email. Please follow the instructions there.

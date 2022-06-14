@@ -3,18 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {NavLink, Link} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
-import times from 'lodash/times';
-import flatten from 'lodash/flatten';
 
 import logOutIcon from '@ergeon/core-components/src/assets/icon-logout.brand.svg';
 import userIcon from '@ergeon/core-components/src/assets/icon-user.brand.svg';
 import {
   DropdownMenu,
-  Footer,
   NavLinkContext,
   Notification,
   Spinner,
-  TopPanel,
   SimpleTopPanel,
   SimpleFooter,
   LocationsFooter,
@@ -26,6 +22,8 @@ import {isChristmasTime, isPDFMode, showUpcomingFeatures} from 'utils/utils';
 import {getMenuItems} from 'data/customer-app.ts';
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
+
+import cities from '../../data/cities-min-data.json';
 
 import './index.scss';
 
@@ -95,21 +93,10 @@ export default class Layout extends React.Component {
   }
 
   getLocationsList() {
-    // TODO: this is for demo purposes, Follow up on https://ergeon.atlassian.net/browse/ENG-13162
-    const citiesExample = [
-      {text: 'Dallas', url: '#'},
-      {text: 'Fort Worth', url: '#'},
-      {text: 'Fresno', url: '#'},
-      {text: 'Los Angeles', url: '#'},
-      {text: 'San Diego', url: '#'},
-      {text: 'San Francisco', url: '#'},
-      {text: 'Thousand Oaks', url: '#'},
-      {text: 'Sacramento', url: '#'},
-      {text: 'Santa Rosa', url: '#'},
-      {text: 'Walnut Creek', url: '#'},
-    ];
-
-    return flatten(times(7, () => citiesExample));
+    return cities.map(city => ({
+      text: city.city,
+      url: `/fences/cities/${city.slug}`,
+    }));
   }
 
   renderDropdownMenu() {
@@ -205,16 +192,7 @@ export default class Layout extends React.Component {
             widthClass={widthClass}
           ></SimpleTopPanel>
           <div>{this.props.children}</div>
-          {!asPDF && showFooter && !showUpcomingFeatures('ENG-13570') && (
-            <Footer
-              ergeonUrl="/"
-              fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
-              productCatalogUrl={`${process.env.PRODUCT_CATALOG_URL}/`}
-              projectsGalleryUrl={`${process.env.PROJECTS_GALLERY_HOST}/`}
-              widthClass={widthClass}
-            />
-          )}
-          {!asPDF && showFooter && showUpcomingFeatures('ENG-13570') && (
+          {!asPDF && showFooter && (
             <>
               <SimpleFooter
                 ergeonUrl="/"
