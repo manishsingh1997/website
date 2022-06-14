@@ -1,10 +1,15 @@
 import React, {useMemo} from 'react';
 import PropTypes from 'prop-types';
-import {getLabelFromIndex} from '@ergeon/draw-map';
-import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 
 import QuoteLine from '../QuoteLine';
-import {isQuoteLineOfMapKinds, getImagesForQuoteLine, getBuildSpecsForQuoteLine} from './utils';
+
+/**
+ * Check if quote-line's catalog_type.map_kind is of given types
+ */
+const isQuoteLineOfMapKinds = (quoteLine, types) => {
+  const quoteType = quoteLine.catalogType.map_kind;
+  return types.some((type) => type === quoteType);
+};
 
 /**
  * Get sides from the quote lines.
@@ -57,44 +62,6 @@ export default function QuoteLines({
     let gates = getGates(quoteLines, filterByField);
     let areas = getAreas(quoteLines, filterByField);
 
-    const getQuoteLinePropsFromSide = (side, i) => ({
-      ...side,
-      approvedAt: side['approved_at'],
-      quoteId: side['quote_id'],
-      type: CALC_SIDE_TYPE,
-      quote,
-      index: i,
-      isDropped: side['is_dropped'],
-      tags: side.config.tags,
-      images: getImagesForQuoteLine(getLabelFromIndex(i), quote),
-      ...getBuildSpecsForQuoteLine(getLabelFromIndex(i), quote),
-    });
-
-    const getQuoteLinePropsFromGate = (gate, i) => ({
-      ...gate,
-      approvedAt: gate['approved_at'],
-      quoteId: gate['quote_id'],
-      type: CALC_GATE_TYPE,
-      quote,
-      index: i,
-      isDropped: gate['is_dropped'],
-      tags: gate.config.tags,
-      images: getImagesForQuoteLine(String(i + 1), quote),
-      ...getBuildSpecsForQuoteLine(String(i + 1), quote),
-    });
-
-    const getQuoteLinePropsFromArea = (area, i) => ({
-      ...area,
-      approvedAt: area['approved_at'],
-      quoteId: area['quote_id'],
-      type: CALC_AREA_TYPE,
-      quote,
-      isDropped: area['is_dropped'],
-      index: i,
-      images: getImagesForQuoteLine(String(i + 1), quote),
-      ...getBuildSpecsForQuoteLine(String(i + 1), quote),
-    });
-
     // sorts lines using labels by letter first and digit last
     const sortLines = (lines) => {
       return (
@@ -115,13 +82,7 @@ export default function QuoteLines({
       );
     };
 
-    const preparedQuoteLines = [
-      ...sides.map(getQuoteLinePropsFromSide),
-      ...gates.map(getQuoteLinePropsFromGate),
-      ...areas.map(getQuoteLinePropsFromArea),
-    ];
-
-    return sortLines(preparedQuoteLines);
+    return sortLines([...sides, ...gates, ...areas]);
   }, [quote, quoteLines, filterByField]);
 
   return (
