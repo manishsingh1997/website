@@ -1,0 +1,260 @@
+@import '~@ergeon/core-components/src/components/variables';
+
+@import './MainBanner.scss';
+
+.equal-height-JlocK {
+  display: flex !important;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.AppCityPage .CityReviews {
+  $offset: $h-40;
+
+  &-container {
+    margin: $v-64 (-1 * $offset) 0;
+
+    @include phone() {
+      margin: $v-24 (-1 * $offset);
+    }
+  }
+
+  &-review {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin: 0 $offset $v-64;
+  }
+
+  &-imgContainer {
+    $image-container-max-width: 154px;
+    $image-container-h-offset: $h-5;
+
+    @include border-soft;
+
+    width: $image-container-max-width;
+    margin-right: $h-20;
+    padding: $v-6 $image-container-h-offset;
+    background: $white;
+
+    img {
+      width: $image-container-max-width - $image-container-h-offset * 2;
+    }
+
+    @include phone {
+      position: absolute;
+      bottom: -1 * $v-30;
+      right: 0;
+      margin-right: 0;
+    }
+  }
+
+  &-description {
+    margin: $v-12 0;
+    color: $black-3;
+    font-style: italic;
+  }
+
+  .small-text + .small-text {
+    margin-top: $v-6 / 2;
+  }
+}
+
+.AppCityPage .RecentProjects {
+  $offset: $h-40;
+
+  margin: $v-64 auto;
+
+  &-container {
+    margin: $v-30 (-1 * $offset) $v-16;
+
+    @include phone() {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      overflow-x: scroll;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      width: auto;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &-project {
+    margin: 0 $offset;
+
+    @include phone() {
+      margin: 0 $h-10;
+    }
+  }
+
+  &-project:first-child {
+    margin-left: $offset;
+  }
+
+  &-project:last-child {
+    margin-right: $offset;
+  }
+
+  &-projectCaption {
+    margin-top: $v-16;
+
+    @include phone() {
+      margin-top: $v-6;
+    }
+  }
+
+  img {
+    width: 100%;
+    max-height: 360px;
+    border-radius: $corner-soft;
+
+    @include phone() {
+      width: $h-120 * 2 + $h-60;
+      max-height: 200px;
+    }
+  }
+
+  a {
+    color: inherit;
+    font-weight: inherit;
+
+    &:hover {
+      color: darken($brand-color, 15%);
+    }
+  }
+}
+
+.AppCityPage .Packages {
+  margin: $v-64 auto;
+
+  &-container {
+    grid-template-columns: calc(25% - 15px) calc(25% - 15px) calc(25% - 15px) calc(25% - 15px);
+    margin-bottom: $v-48;
+
+    @include phone {
+      grid-template-columns: calc(50% - 15px) calc(50% - 15px);
+    }
+  }
+
+  &-item {
+    padding: $v-20 $h-20;
+
+    img {
+      width: 100%;
+      margin-bottom: $v-12;
+    }
+  }
+
+  &-title {
+    margin-bottom: $v-6;
+  }
+
+  &-description {
+    color: $black-3;
+  }
+}
+
+.AppCityPage .CityBlog {
+  $offset: $h-10;
+  $column-width: 100% / 3;
+
+  margin: $v-64 auto;
+
+  &-container {
+    grid-template-columns: calc(#{$column-width} - 15px) calc(#{$column-width} - 15px) calc(#{$column-width} - 15px);
+    margin-top: $v-30;
+
+    @include phone {
+      display: block;
+    }
+  }
+
+  &-article {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: $v-20 $h-20;
+
+    p {
+      flex: 1;
+      font-weight: normal;
+      color: $black-2;
+    }
+
+    @include phone {
+      display: flex;
+      flex-direction: row;
+      border-radius: 0;
+      border-left: 0;
+      border-right: 0;
+    }
+  }
+
+  &-img {
+    $img-abs-width: 340;
+    $img-abs-height: 239;
+
+    width: 100%;
+    margin-bottom: $v-20;
+    padding-bottom: $img-abs-height / $img-abs-width * 100%;
+    background-size: cover;
+
+    @include phone {
+      $pic-size: $v-64;
+
+      width: $pic-size;
+      height: $pic-size;
+      margin-right: $h-10;
+      padding-bottom: 0;
+      border-radius: $corner-default;
+    }
+  }
+
+  &-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &-link {
+    display: inline-block;
+    padding-top: $v-6;
+
+    @include phone {
+      display: none;
+    }
+  }
+
+  .equal-height-JlocK {
+    @include phone {
+      height: auto !important;
+      margin: 0 (-1 * $h-20);
+
+      &:not(:first-child) .CityBlog-article {
+        border-top: 0;
+      }
+    }
+  }
+}
+
+.mobile-length {
+  display: none;
+
+  @include phone() {
+    display: block;
+  }
+}
+
+.desktop-length {
+  display: block;
+
+  @include phone() {
+    display: none;
+  }
+}

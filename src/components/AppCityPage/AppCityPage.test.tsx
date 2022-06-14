@@ -5,6 +5,7 @@ import cities from '../../data/cities-full-data.json';
 import AppCityPage from './AppCityPage';
 import {City} from './types';
 
+jest.mock('../HomePage/QASection', () => () => <>FAQ</>);
 jest.mock('../NotFoundPage', () => () => <>Not found</>);
 
 describe('AppCityPage', () => {

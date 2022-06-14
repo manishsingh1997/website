@@ -194,30 +194,16 @@ export default class Layout extends React.Component {
           </div>
         )}
         <NavLinkContext.Provider value={NavLink}>
-          {!showUpcomingFeatures('ENG-13570') && (
-            <TopPanel
-              customerMenu={this.renderDropdownMenu()}
-              ergeonUrl="/"
-              fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
-              pdfDetails={this.renderPdfDetails()}
-              pdfMode={asPDF}
-              projectsGalleryUrl={`${process.env.PROJECTS_GALLERY_HOST}/`}
-              showChristmasHat={this.isChristmasTime}
-              widthClass={widthClass}
-            ></TopPanel>
-          )}
-          {showUpcomingFeatures('ENG-13570') && (
-            <SimpleTopPanel
-              customerMenu={this.renderDropdownMenu()}
-              ergeonUrl="/"
-              fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
-              onGetQuoteClick={() => undefined} // TODO: Include scroll to new quote section
-              pdfDetails={this.renderPdfDetails()}
-              pdfMode={asPDF}
-              showChristmasHat={this.isChristmasTime}
-              widthClass={widthClass}
-            ></SimpleTopPanel>
-          )}
+          <SimpleTopPanel
+            customerMenu={this.renderDropdownMenu()}
+            ergeonUrl="/"
+            fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
+            onGetQuoteClick={() => undefined} // TODO: Include scroll to new quote section
+            pdfDetails={this.renderPdfDetails()}
+            pdfMode={asPDF}
+            showChristmasHat={this.isChristmasTime}
+            widthClass={widthClass}
+          ></SimpleTopPanel>
           <div>{this.props.children}</div>
           {!asPDF && showFooter && !showUpcomingFeatures('ENG-13570') && (
             <Footer

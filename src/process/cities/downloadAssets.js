@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const {get, last, values, uniq} = require('lodash');
+const {get, last, some, values, uniq} = require('lodash');
 const pngToJpeg = require('png-to-jpeg');
 
 const {createDirIfNotExists} = require('../utils');
@@ -44,6 +44,14 @@ async function downloadAssets() {
 
   // Download, compress, and save files
   for (const file of files) {
+    if (some([
+      fs.existsSync(path.resolve(__dirname, `${BASE_PATH}/${file}.jpeg`)),
+      fs.existsSync(path.resolve(__dirname, `${BASE_PATH}/${file}.pdf`)),
+    ])) {
+      console.log(`SKIPPING ${file}.jpeg`);
+      continue;
+    }
+
     try {
       const {data, headers: {'content-type': contentType}} = await drive.files.get(
         {fileId: file, alt: 'media'},

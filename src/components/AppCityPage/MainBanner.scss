@@ -1,0 +1,129 @@
+@import '~@ergeon/core-components/src/components/variables';
+
+.AppCityPage .MainBanner {
+  $font-color: $white;
+
+  $icon-size: $v-24;
+  $icon-offset: $h-10;
+  $title-mobile-line-height: 1.36;
+  $items-mobile-line-height: 1.43;
+
+  @mixin base-font {
+    font-size: $h4-size;
+    line-height: $h4-line-height;
+    color: $font-color;
+  }
+
+  @mixin color-icon($color: $font-color) {
+    svg path {
+      fill: $color;
+    }
+  }
+
+  @mixin icon() {
+    @include color-icon();
+
+    width: $icon-size;
+    height: $icon-size;
+    margin-right: $icon-offset;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  @mixin underlay-block($size, $color) {
+    position: absolute;
+    display: block;
+    top: 50%;
+    right: 50%;
+    margin: (-1 * $size / 2) (-1 * $size / 2) 0 0;
+    z-index: -1;
+    width: $size;
+    height: $size;
+    background: $color;
+  }
+
+  padding: $v-64 0;
+  background-image: url('../../assets/fence-background.jpeg');
+  background-size: cover;
+  background-position: top;
+
+  &.is-StateTX {
+    background-image: url('../../assets/texas-fence-background.jpeg');
+  }
+
+  @include phone() {
+    padding: $v-48 0;
+  }
+
+  &-content {
+    max-width: $screen-sm;
+  }
+
+  &-title {
+    color: $font-color;
+
+    @include phone() {
+      font-size: $h4-size;
+      line-height: $title-mobile-line-height;
+    }
+  }
+
+  &-list {
+    padding: $v-24 0;
+  }
+
+  &-listItem {
+    @include base-font();
+
+    padding-left: $icon-size + $icon-offset;
+
+    &::before {
+      display: none;
+    }
+
+    .icon {
+      @include icon();
+
+      margin-left: -1 * ($icon-size + $icon-offset);
+      padding: $corner-default;
+    }
+
+    @include phone() {
+      font-size: $font-regular-size - 2;
+      line-height: $items-mobile-line-height;
+    }
+  }
+
+  &-callLink {
+    @include base-font();
+
+    display: flex;
+    align-items: center;
+
+    @include phone() {
+      font-size: $font-regular-size;
+      line-height: $items-mobile-line-height;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    .icon {
+      @include icon();
+      @include color-icon($green-1);
+
+      position: relative;
+      z-index: 1;
+
+      &::before {
+        @include underlay-block($icon-size / 2, $font-color);
+
+        content: '';
+      }
+    }
+  }
+}

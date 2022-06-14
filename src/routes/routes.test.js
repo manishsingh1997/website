@@ -11,6 +11,7 @@ jest.mock('react-router-dom', () => ({
 }));
 
 jest.mock('../containers/AppLayout', () => ({children}) => children);
+jest.mock('../containers/AppCityPage', () => ({children}) => children);
 jest.mock('../containers/AppAppointmentsListPage', () => ({children}) => children);
 jest.mock('../containers/AppContactsPage', () => ({children}) => children);
 jest.mock('../containers/AppHouseListPage', () => ({children}) => children);

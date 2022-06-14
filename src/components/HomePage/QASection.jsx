@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {Spinner} from '@ergeon/core-components';
 import {getNodes} from 'api/node';
 import {parseAPIError} from 'utils/api.ts';
-import PaneSwitcher from './components/PaneSwitcher';
+
 import './QASection.scss';
 
 const FENCE_NODES = ['201900373', '202000553', '201900363', '201900318'];
@@ -14,6 +14,7 @@ class QASection extends React.Component {
     this.state = {
       isLoading: true,
       questions: [],
+      questionsExpanded: [],
     };
   }
   async componentDidMount() {
@@ -36,6 +37,12 @@ class QASection extends React.Component {
       });
     }
   }
+  toggleQuestion(id) {
+    const {questionsExpanded} = this.state;
+    this.setState({
+      questionsExpanded: [...questionsExpanded, id],
+    });
+  }
   renderSpinner() {
     const {isLoading} = this.state;
     return (
@@ -55,12 +62,27 @@ class QASection extends React.Component {
       return null;
     });
   }
-  renderQuestion({content, title}, id) {
+  renderQuestion({ content, title }, id) {
+    const {questionsExpanded} = this.state;
+    const isExpanded = questionsExpanded.includes(id);
+    const excerpt = content
+      .split(/<p>(.*?)<\/p>/) // split on paragraphs
+      .filter((p) => p !== '') // remove empty arrays
+      .join(' ') // join arrays into a string
+      .split(/\s/) // split on spaces
+      .slice(0, 20) // take first 20 words
+      .join(' ') // join words into a string with spaces
+      .concat('...'); // add ellipsis
     return (
       <div className="qa-section__question" key={id}>
         <h6>{title}</h6>
-        {/* eslint-disable-next-line */}
-        <p dangerouslySetInnerHTML={{__html: content}} />
+        {isExpanded
+          ? <p dangerouslySetInnerHTML={{ __html: content }} />
+          : <p>
+            {excerpt}&nbsp;
+            <span className="link" onClick={() => this.toggleQuestion(id)}>read more</span>
+          </p>
+        }
       </div>
     );
   }
@@ -68,15 +90,16 @@ class QASection extends React.Component {
     const {isLoading} = this.state;
     return (
       <div className="qa-section">
-        <h3 className="">Questions & Answers</h3>
-        <PaneSwitcher defaultPane={0}>
-          <div data-name="Fence 101">
-            <div className="qa-section__questions-wrapper">
-              {isLoading ? this.renderSpinner() : this.renderQuestions()}
-            </div>
-            <Link to="/help/201900004">Read more →</Link>
+        <h2 className="h3">Questions & Answers</h2>
+        <div data-name="Fence 101">
+          <div className="qa-section__questions-wrapper">
+            {isLoading ? this.renderSpinner() : this.renderQuestions()}
           </div>
-        </PaneSwitcher>
+          <p>
+            Read our FAQs&nbsp;
+            <Link to="/help/201900004">here</Link>
+          </p>
+        </div>
       </div>
     );
   }

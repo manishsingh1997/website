@@ -82,7 +82,7 @@ class RemoteFeatures extends React.Component<Record<string, never>, RemoteFeatur
       <div className="remote-feature">
         <VideoPopup linkToVideo={currentVideo} onHide={this.toHideVideo.bind(this)} visible={videoPopupVisible} />
         <div className="wrapper-1180">
-          <h3 className="remote-feature__title">How We Make Home Improvement Easy</h3>
+          <h2 className="h3 remote-feature__title">3 Ways We Make Your Installation Easy</h2>
           <div className="remote-feature__cards">
             {this.renderCard({
               title: 'Video Call for your Onsite Visit',

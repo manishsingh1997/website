@@ -2,15 +2,15 @@ import React from 'react';
 
 import {BadgesSection} from '@ergeon/core-components';
 
+import TellUsForm from '../../containers/TellUsForm';
 import {showUpcomingFeatures} from '../../utils/utils';
 
-import TellUsForm from '../../containers/TellUsForm';
+import FeaturesBlock from './components/FeaturesBlock';
 import FenceCalculatorPromo from './components/FenceCalculatorPromo';
 import SliderHero from './SliderHero';
 import ReviewHero from './ReviewHero';
 import ProjectsSection from './components/ProjectsSection';
 import GetStartedSection from './components/GetStartedSection';
-import QASection from './QASection';
 import RemoteFeatures from './components/RemoteFeatures';
 import TestimonialBanner from './components/TestimonialBanner';
 import UpcomingRemoteFeatures from './components/UpcomingRemoteFeatures';
@@ -29,8 +29,8 @@ const HomePage = () => {
         <ProjectsSection />
         {showUpcomingFeatures('ENG-13167') && <UpcomingRemoteFeatures />}
         <GetStartedSection />
+        {!showUpcomingFeatures('ENG-13570') && <FeaturesBlock/>}
         <FenceCalculatorPromo />
-        <QASection />
         <BrowseProjectsPromo />
         <BadgesSection />
       </div>

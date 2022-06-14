@@ -1,6 +1,4 @@
 import React from 'react';
-import {showUpcomingFeatures} from '../../../../utils/utils';
-import FeaturesBlock from '../FeaturesBlock';
 import imgGetStarted from '../../../../assets/easy-to-use.jpg';
 
 import './GetStartedSection.scss';
@@ -11,7 +9,7 @@ const GetStartedSection = () => {
       <div className="GetStarted-Wrapper">
         <div className="GetStarted-Content is-Before--16 is-RightMargin--20">
           <div>
-            <h3 className="GetStarted-Title">Get Started In 4 Simple Steps</h3>
+            <h2 className="h3 GetStarted-Title">Get Started In 4 Simple Steps</h2>
             <ol className="ordered-list neat is-Before--36">
               <li className="is-After--24">Enter your address and we’ll call you within 24 hours</li>
               <li className="is-After--24">Receive a custom quote after onsite consultation</li>
@@ -24,7 +22,6 @@ const GetStartedSection = () => {
           <img className="GetStarted-Image" src={imgGetStarted} />
         </div>
       </div>
-      {!showUpcomingFeatures('ENG-13570') && <FeaturesBlock/>}
     </div>
   );
 };

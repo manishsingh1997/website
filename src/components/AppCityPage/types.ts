@@ -49,6 +49,7 @@ export type City = {
     description?: string,
     address?: string,
     img?: string,
+    url?: string,
   }>,
   regulations: {
     title: string,
