@@ -46,6 +46,7 @@
     "@babel/template": "^7.16.7",
     "@ergeon/eslint-config-ergeon": "^2.1.0",
     "@faker-js/faker": "^6.2.0",
+    "@googlemaps/jest-mocks": "^2.7.4",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.2",
