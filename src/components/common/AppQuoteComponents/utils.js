@@ -1,4 +1,3 @@
-import {getLabelFromIndex} from '@ergeon/draw-map';
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 
 const getQuoteLineType = (quoteLine) => {
@@ -17,44 +16,6 @@ export const QUOTE_LINE_STATUSES = {
   APPROVED: 'APPROVED',
   NEEDS_APPROVAL: 'NEEDS_APPROVAL',
   TO_BE_DROPPED: 'TO_BE_DROPPED',
-};
-
-export const hideDroppedLabels = (projectCalcInput, quoteLines) => {
-  const linesByLabel = {};
-  for (const quoteLine of quoteLines) {
-    linesByLabel[quoteLine.label] = quoteLine['is_dropped'];
-  }
-
-  const newCalcInput = {
-    ...projectCalcInput,
-    sides: [],
-    polygons: [],
-    gates: [],
-  };
-  const processFields = ['sides', 'polygons', 'gates'];
-  const calcInputKeys = Object.keys(newCalcInput);
-  calcInputKeys.forEach((fieldName) => {
-    if (!projectCalcInput[fieldName] || !processFields.includes(fieldName)) {
-      return;
-    }
-    projectCalcInput[fieldName].forEach((item, index) => {
-      let label;
-      if (fieldName === 'sides' || fieldName === 'polygons') {
-        label = getLabelFromIndex(index);
-      } else {
-        // labels are starting from 1, but index from 0
-        label = (index + 1).toString();
-      }
-
-      const isLabelDropped = linesByLabel[label] === true;
-      newCalcInput[fieldName].push({
-        ...item,
-        is_dropped: isLabelDropped,
-      });
-    });
-  });
-
-  return newCalcInput;
 };
 
 export const prepareQuoteLines = (quoteLines, quote) => {

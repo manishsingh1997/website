@@ -13,7 +13,6 @@ import {isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
 import {CARD_TRANSACTION_FEE} from 'website/constants';
 import QuoteLines from './QuoteLines';
 import QuoteDescription from './QuoteDescription';
-import {hideDroppedLabels} from './utils';
 
 export default class QuoteDetails extends React.Component {
   static propTypes = {
@@ -99,11 +98,11 @@ export default class QuoteDetails extends React.Component {
   }
 
   renderQuoteLinesOnMap() {
-    const {quote, asPDF, quoteLines} = this.props;
+    const {quote, asPDF} = this.props;
     const {isLoadingMap} = this.state;
     let calcInput = quote['calc_input'];
     if (quote['project_calc_input']) {
-      calcInput = hideDroppedLabels(quote['project_calc_input'], quoteLines);
+      calcInput = quote['project_calc_input'];
     }
     let address = quote.order.house.address;
     if (!address) {
