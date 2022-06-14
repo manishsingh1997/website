@@ -19,7 +19,7 @@ const CitySearch = () => {
   }, [citiesData]);
 
   const goToCityPage = useCallback((citySlug: string) => {
-    history.push(`/fences/${citySlug}`);
+    history.push(`/fences/cities/${citySlug}`);
   }, []);
 
   const handleSubmit = useCallback(async (placeData: PlacesAutocompleteTypes.AutoCompletePlaceData) => {
