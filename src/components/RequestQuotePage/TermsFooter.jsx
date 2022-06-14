@@ -15,7 +15,7 @@ export default class TermsFooter extends React.Component {
       [className]: className,
     });
     return (
-      <div className="terms-footer__wrapper">
+      <div className="terms-footer__wrapper" data-testid="footer-component">
         <div className={footerClassNames}>
           <div className="copyright">&copy; {new Date().getFullYear()} Ergeon Inc</div>
           By creating an account, you agree to the <br />

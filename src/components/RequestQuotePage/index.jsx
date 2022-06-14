@@ -8,9 +8,9 @@ import MapComponent from '@ergeon/map-component';
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import AppLoader from 'components/common/AppLoader';
 import Marker from 'assets/marker.svg';
-import {getParameterByName, showUpcomingFeatures} from 'utils/utils';
 import Success from 'components/common/Success';
 import ConfigCart from 'containers/ConfigCart';
+import {getParameterByName, showUpcomingFeatures} from '../../utils/utils';
 import LeadForm from './LeadForm';
 import TermsFooter from './TermsFooter';
 
@@ -165,7 +165,7 @@ export default class RequestQuotePage extends React.Component {
   renderHeaderMessage() {
     if (!this.props.lead) {
       return (
-        <div className="request-quote-page__header-message">
+        <div className="request-quote-page__header-message" data-testid="no-lead-notification">
           <h1 className="h3 title">You haven&apos;t entered your address</h1>
           <p className="Subtitle">
             <a onClick={this.openAddressUpdatePopup.bind(this)}>Add your address </a>
@@ -177,7 +177,7 @@ export default class RequestQuotePage extends React.Component {
 
     if (!this.isItSupportedArea()) {
       return (
-        <div className="request-quote-page__header-message">
+        <div className="request-quote-page__header-message" data-testid="not-supported-zipcode-notification">
           <h1 className="h3 title">We&apos;re not in your area yet</h1>
           <p className="subtitle">
             Your house is not in a neighborhood we support right now. We&apos;re showing prices for San Francisco Bay
@@ -193,7 +193,7 @@ export default class RequestQuotePage extends React.Component {
     }
 
     return (
-      <div className="request-quote-page__header-message">
+      <div className="request-quote-page__header-message" data-testid="supported-zipcode-notification">
         <h1 className="h3 title">Get your free custom quote</h1>
         <p className="subtitle">
           Enter your contact information below and our experts will be in touch within 24 hours to discuss your project
@@ -212,14 +212,19 @@ export default class RequestQuotePage extends React.Component {
     }
 
     return (
-      <div className="request-quote-page__signup-map">
+      <div className="request-quote-page__signup-map" data-testid="signup-map">
         <div className="AddressContainer">
           <div className="Address">
-            <div className="AddressStreet">{this.getStreetAddress()}</div>
-            <div className="AddressCity">{this.getCityAddress()}</div>
+            <div className="AddressStreet" data-testid="signup-map-street-address">
+              {this.getStreetAddress()}
+            </div>
+            <div className="AddressCity" data-testid="signup-map-city-address">
+              {this.getCityAddress()}
+            </div>
           </div>
           <Button
             className="EditButton"
+            data-testid="address-edit-button"
             flavor="regular"
             onClick={this.openAddressUpdatePopup.bind(this)}
             size="small"
@@ -229,7 +234,7 @@ export default class RequestQuotePage extends React.Component {
           </Button>
         </div>
         <hr />
-        <div className="request-quote-page__signup-map-wrapper">
+        <div className="request-quote-page__signup-map-wrapper" data-testid="map-component">
           <MapComponent
             aspectRatio="4:3"
             controls={this.getMapControls()}
@@ -248,7 +253,7 @@ export default class RequestQuotePage extends React.Component {
 
   renderMobileAddress() {
     return (
-      <div className="lead-area__mobile-address">
+      <div className="lead-area__mobile-address" data-testid="mobile-address-field">
         <div className="lead-area__mobile-address__field" onClick={this.openAddressUpdatePopup.bind(this)}>
           <div className="left-part">
             <div className="label">Street address:</div>
@@ -282,11 +287,11 @@ export default class RequestQuotePage extends React.Component {
 
     if (this.state.showThankYou) {
       return (
-        <div className="request-quote-page">
+        <div className="request-quote-page" data-testid="thank-you-notification">
           <Success header="Thanks!" text="We will call you within 24 hours" />
           {showUpcomingFeatures('ENG-1XX') && !user && (
             <span>
-              <p className="confirmation-email spacing before__is-24">
+              <p className="confirmation-email spacing before__is-24" data-testid="thank-you-notification-text">
                 We have sent a confirmation message to your email. Please follow the instructions there.
               </p>
             </span>

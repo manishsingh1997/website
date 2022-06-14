@@ -11,10 +11,10 @@ import {getBaseEventData} from '@ergeon/erg-utms';
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import {createValidator, phone, email, required} from 'utils/validation';
 import {submitLeadArrived} from 'api/lead';
-import {parseError, showUpcomingFeatures, getAdvancedEditorUrl} from 'utils/utils';
 import {identify, track, trackError, trackTawkLeadEvent} from 'utils/analytics';
 import {CUSTOMER_LEAD_CREATED} from 'utils/events';
 import {DEFAULT_SOURCE_VALUE} from 'website/constants';
+import {parseError, showUpcomingFeatures, getAdvancedEditorUrl} from '../../utils/utils';
 
 import './LeadForm.scss';
 import AddNote from './AddNote';
@@ -195,7 +195,7 @@ export default class LeadForm extends React.Component {
 
   getOrder() {
     const {lead} = this.props;
-    const {CATALOG_ID_FENCE, CATALOG_ID_GATE} = constants;  
+    const {CATALOG_ID_FENCE, CATALOG_ID_GATE} = constants;
     // TODO Rename item.code attribute to the correct schemaCode
     return this.props.configs.map((item) => {
       let schema = (calcUtils.getParams(`?${item.code}`).schema || '').split(',');
@@ -234,7 +234,7 @@ export default class LeadForm extends React.Component {
       'add-config__disable': !address || product !== FENCE_SLUG,
     });
     return (
-      <form className="Form LeadForm" onSubmit={this.handleSubmit.bind(this)}>
+      <form className="Form LeadForm" data-testid="lead-form" onSubmit={this.handleSubmit.bind(this)}>
         <label className="label">Ergeon service:</label>
         <FormField>
           <RadioGroup
@@ -295,7 +295,7 @@ export default class LeadForm extends React.Component {
             showNoteField={showNoteField}
           />
           <div className={addConfigLinkClasses}>
-            <a className="action-link" onClick={this.handleAddConfig}>
+            <a className="action-link" data-testid="design-fence-gate-btn" onClick={this.handleAddConfig}>
               Design your Fence or Gate
             </a>
             <label className="label">And get an estimate instantly</label>

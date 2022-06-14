@@ -153,7 +153,7 @@ class ConfigCart extends React.Component {
     const priceText = isFenceConfig ? `~${Math.round(config.price)}/ft` : `~${Math.round(config.price)}`;
 
     return (
-      <div key={config.id}>
+      <div data-testid={`config-${config.id}`} key={config.id}>
         <div className="config-item">
           <div className="config-item__content">
             <div className="config-item__preview">
@@ -167,13 +167,19 @@ class ConfigCart extends React.Component {
             </div>
             <div className="config-item__info">
               <div className="config-item__title">
-                <span>{isFenceConfig ? 'Fence' : 'Gate'}</span>
+                <span data-testid={`config-title-${config.id}`}>{isFenceConfig ? 'Fence' : 'Gate'}</span>
                 <span className="config-item__length">
-                  {config.price && <div className="config-item__price">{priceText}</div>}
+                  {config.price && (
+                    <div className="config-item__price" data-testid={`config-price-${config.id}`}>
+                      {priceText}
+                    </div>
+                  )}
                 </span>
               </div>
               <div className="config-item__internal-wrapper">
-                <div className="config-item__description">{this.renderDescription(config)}</div>
+                <div className="config-item__description" data-testid={`config-description-${config.id}`}>
+                  {this.renderDescription(config)}
+                </div>
                 <div className="config-item__preview__in-description">
                   {config.preview ? (
                     <img src={config.preview} />
@@ -184,11 +190,18 @@ class ConfigCart extends React.Component {
               </div>
               <div className="config-item__actions">
                 <div className="config-item__buttons">
-                  <Button flavor="regular" onClick={() => this.editConfig(index)} size="small" taste="line">
+                  <Button
+                    data-testid={`config-edit-${config.id}`}
+                    flavor="regular"
+                    onClick={() => this.editConfig(index)}
+                    size="small"
+                    taste="line"
+                  >
                     Edit
                   </Button>
                   <Button
                     className="delete-config-button"
+                    data-testid={`config-delete-${config.id}`}
                     flavor="attention"
                     onClick={() => this.removeConfig(index)}
                     size="small"
@@ -269,9 +282,10 @@ class ConfigCart extends React.Component {
       loaded: styleBrowserLoaded,
       show: showStyleBrowser,
     });
+
     return (
       <React.Fragment>
-        <div>
+        <div data-testid="config-cart">
           <div className={styleBrowserPreloaderClasses}>
             {isLoadingModalErrored ? (
               <LoadingErrorModal onClose={this.closeLoadingError} />
@@ -284,7 +298,7 @@ class ConfigCart extends React.Component {
         <div className="config-cart__wrapper">
           <div className="config-cart" ref={(node) => (this.configCardRef = node)}>
             <div className="config-cart__title">
-              <h4>Selected configurations</h4>
+              <h4 data-testid="configs-header">Selected configurations</h4>
             </div>
             <div className="config-cart__list">
               {configs.map((config, index) => this.renderConfig(config, index))}

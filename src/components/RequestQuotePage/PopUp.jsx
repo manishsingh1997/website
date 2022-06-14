@@ -45,7 +45,7 @@ export default class PopUp extends React.Component {
       <React.Fragment>
         {visible && (
           <React.Fragment>
-            <div className={popupClasses}>
+            <div className={popupClasses} data-testid="popup-modal">
               <div className="popup__wrapper">
                 <div className="popup__cross-icon" onClick={() => onHide && onHide()}>
                   <ReactSVG src={crossIcon} />

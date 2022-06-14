@@ -66,7 +66,7 @@ export default class StyleBrowserWrapper extends React.Component {
       <div className="style-browser-wrapper">
         <PopUp onHide={this.closePopup.bind(this)} visible={showPopup}>
           <div>
-            <div className="style-browser-wrapper__title">
+            <div className="style-browser-wrapper__title" data-testid="style-browser">
               <span className="label uppercase">Design your Fence or Gate</span>
             </div>
             <StyleBrowser
