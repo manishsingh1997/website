@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {Spinner} from '@ergeon/core-components';
 import {getNodes} from 'api/node';
 import {parseAPIError} from 'utils/api.ts';
-import PaneSwitcher from './PaneSwitcher';
+import PaneSwitcher from './components/PaneSwitcher';
 import './QASection.scss';
 
 const FENCE_NODES = ['201900373', '202000553', '201900363', '201900318'];

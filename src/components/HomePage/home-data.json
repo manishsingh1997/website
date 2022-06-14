@@ -1,0 +1,34 @@
+{
+  "cards": [
+    {
+      "title": "Wooden Fences",
+      "content": "Wooden fences are easy to install, versatile and visually appealing. Choose from a variety of lumber materials, fence styles and fence toppers.",
+      "link": "/gallery/fence/picture-frame/without-lattice"
+    },
+    {
+      "title": "Chain Link Fences",
+      "content": "Chain Link fences are made of robust galvanized mesh and metal posts. It is a durable and cost effective option that can be built at different heights.",
+      "link": "/gallery/fence/chain-link"
+    },
+    {
+      "title": "Vinyl Fences",
+      "content": "Vinyl fences are made from PVC, which is a strong and durable material. Vinyl is easy to clean and maintain and resists warping, splintering and rotting.",
+      "link": "/gallery/fence/vinyl"
+    },
+    {
+      "title": "Boxed Wire Fences",
+      "content": "Boxed Wire fences consists of wood box frames with metal mesh and wood posts. This option is both effective and aesthetically pleasing.",
+      "link": "/gallery/fence/boxed-frame"
+    },
+    {
+      "title": "Gates",
+      "content": "Add a wooden, chainlink or vinyl gate. Choose from single gates, double swing gates or sliding gates and customize your gate with toppers in a variety of styles.",
+      "link": "/gallery/gate/sliding"
+    },
+    {
+      "title": "Staining",
+      "content": "Customize the color of your wooden fence to match your home. Staining also helps prolong the lifespan of your wooden fence  Choose from a variety of colors and opacity.",
+      "link": "/gallery/fence/staining/transparent"
+    }
+  ]
+}

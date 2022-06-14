@@ -3,19 +3,20 @@
   margin-top: 60px;
   &__project-cards {
     display: flex;
+    flex-flow: row wrap;
+    margin: -10px -10px 0;
     @include phone() {
       flex-direction: column;
     }
   }
   .card {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 30%;
     max-width: 380px;
-    width: 33.33%;
-    margin: 0 10px;
-    &:last-child {
-      margin-right: 0;
-    }
-    &:first-child {
-      margin-left: 0;
+    margin: $h-10;
+    @include tablet() {
+      flex-basis: 50%;
     }
     @include phone() {
       max-width: 100%;

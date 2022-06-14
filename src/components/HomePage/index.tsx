@@ -7,7 +7,7 @@ import {showUpcomingFeatures} from '../../utils/utils';
 import FenceCalculatorPromo from './components/FenceCalculatorPromo';
 import SliderHero from './SliderHero';
 import ReviewHero from './ReviewHero';
-import ProjectsSection from './ProjectsSection';
+import ProjectsSection from './components/ProjectsSection';
 import GetStartedSection from './components/GetStartedSection';
 import QASection from './QASection';
 import RemoteFeatures from './components/RemoteFeatures';
