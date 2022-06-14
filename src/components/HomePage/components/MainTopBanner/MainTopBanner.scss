@@ -1,0 +1,60 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+$banner-desktop-height: $h-60 * 10;
+$banner-mobile-height: $banner-desktop-height / 2;
+$banner-top-desktop-padding: $v-88 + $v-12;
+
+@mixin use-title-font {
+  font-family: $font-title;
+  font-size: $h-20 + 2;
+}
+
+.MainTopBanner {
+  background-image: url('../../../../assets/fence-background.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  height: $banner-desktop-height;
+  padding-top: $banner-top-desktop-padding;
+  width: 100%;
+
+  @include phone() {
+    background-position: unset;
+    height: $banner-mobile-height;
+    padding-top: $v-48;
+  }
+
+  &-Content {
+    color: $white;
+    padding-left: $h-80 + $h-20;
+
+    @include phone() {
+      padding: 0 $h-20;
+      text-align: center;
+    }
+
+    .CitySearchInput {
+      @include phone() {
+        margin: 0 auto;
+      }
+    }
+
+    &--Heading {
+      font-weight: 600;
+      color: $white;
+      margin-bottom: $v-24;
+
+      @include phone() {
+        font-size: $h4-size;
+        line-height: $h4-line-height;
+        margin: $v-16 auto;
+        width: 70%;
+      }
+    }
+
+    &--Subheading {
+      margin-bottom: $v-12;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainTopBanner should match snapshot 1`] = `
+<div>
+  <section
+    class="MainTopBanner"
+  >
+    <div
+      class="MainTopBanner-Content"
+    >
+      <h2
+        class="MainTopBanner-Content--Heading"
+      >
+        Improving your outdoor
+        <br />
+         space can be easy & friendly
+      </h2>
+      <p
+        class="MainTopBanner-Content--SubHeading"
+      >
+        Find Ergeon fence expertise in your area
+      </p>
+      City search input
+    </div>
+  </section>
+</div>
+`;
