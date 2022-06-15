@@ -253,7 +253,7 @@ class ConfigCart extends React.Component {
     const {styleBrowserIndex} = this.state;
     const {configs} = this.props;
     const config = styleBrowserIndex !== -1 ? configs[styleBrowserIndex] : undefined;
-    const schemaCode = config ? `?${config?.code}` : undefined;
+    const schemaCode = config?.code ? `?${config?.code}` : undefined;
     const doneButtonText = styleBrowserIndex === -1 ? 'Add to order' : 'Save changes';
     const DEFAULT_FENCE_SIDE_LENGTH = 6;
     return (
