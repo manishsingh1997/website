@@ -7,11 +7,19 @@
   $icon-offset: $h-10;
   $title-mobile-line-height: 1.36;
   $items-mobile-line-height: 1.43;
+  $form-desktop-max-width: $h-60 * 6;
 
   @mixin base-font {
     font-size: $h4-size;
+    font-family: $font-title;
     line-height: $h4-line-height;
     color: $font-color;
+  }
+
+  @mixin form-background {
+    background-color: $white;
+    border-radius: $corner-soft;
+    padding: 0;
   }
 
   @mixin color-icon($color: $font-color) {
@@ -59,7 +67,13 @@
   }
 
   &-content {
+    flex: 2;
     max-width: $screen-sm;
+    margin-right: $h-20;
+  }
+
+  &-form {
+    max-width: $form-desktop-max-width;
   }
 
   &-title {
@@ -125,5 +139,33 @@
         content: '';
       }
     }
+  }
+
+  .TellUsForm {
+    @include form-background();
+
+    &-Wrapper {
+      padding: $v-24;
+      width: 100%;
+    }
+
+    h3 {
+      font-size: $h4-size;
+      line-height: $h4-line-height;
+      text-align: left;
+    }
+
+    &-Text {
+      font-size: $font-mobile-size;
+      line-height: $line-height-mobile;
+      text-align: left;
+      padding: 0;
+    }
+  }
+
+  // this is for the Thanks confirmation area
+  .request-quote-page {
+    @include form-background();
+    padding: $v-24;
   }
 }

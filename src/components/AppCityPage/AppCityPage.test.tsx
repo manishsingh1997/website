@@ -7,6 +7,7 @@ import {City} from './types';
 
 jest.mock('../HomePage/QASection', () => () => <>FAQ</>);
 jest.mock('../NotFoundPage', () => () => <>Not found</>);
+jest.mock('../../containers/TellUsForm', () => () => <>Tell Us Form</>);
 
 describe('AppCityPage', () => {
   it('should render', () => {

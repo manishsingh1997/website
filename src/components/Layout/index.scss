@@ -72,7 +72,7 @@
       margin-right: $h-10;
 
       .menu-item {
-        padding:$h-5 $h-10 + 2;
+        padding: $h-5 $h-10 + 2;
         line-height: $h4-line-height;
         border-radius: unset;
         font-weight: normal;
@@ -204,6 +204,10 @@
       display: none;
     }
   }
+}
+
+.SimpleFooter {
+  margin-top: 0;
 }
 
 .LocationsFooter {

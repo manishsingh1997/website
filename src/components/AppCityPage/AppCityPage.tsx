@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { EqualHeight, EqualHeightElement } from 'react-equal-height';
 import isEmpty from 'lodash/isEmpty';
 
+import TellUsForm from '../../containers/TellUsForm';
 import GetStartedSection from '../HomePage/components/GetStartedSection';
 import RemoteFeatures from '../HomePage/components/RemoteFeatures';
 import TestimonialBanner from '../HomePage/components/TestimonialBanner';
@@ -56,6 +57,10 @@ const AppCityPage = (props: AppCityPageProps) => {
         </div>
       </section>
 
+      <section className="mobile-length">
+        <TellUsForm />
+      </section>
+
       <section className="wrapper-1180 Packages">
         <h2 className="h3 spacing after__is-6">{city.packages.title}</h2>
         <p className="spacing after__is-30">{city.packages.description}</p>
@@ -107,7 +112,7 @@ const AppCityPage = (props: AppCityPageProps) => {
             {city.blog.articles.map(article => (
               <EqualHeightElement key={article.url} name="Blog">
                 <a className="card padding-60 soft-border shadow__z0 CityBlog-article" href={article.url}>
-                  <div className="CityBlog-img" style={{backgroundImage: `url(${getAsset(article.img, 'jpeg')})`}} />
+                  <div className="CityBlog-img" style={{ backgroundImage: `url(${getAsset(article.img, 'jpeg')})` }} />
                   <div className="CityBlog-content">
                     <p>{article.description}</p>
                     <span className="CityBlog-link">View more</span>
@@ -117,6 +122,10 @@ const AppCityPage = (props: AppCityPageProps) => {
             ))}
           </EqualHeight>
         </div>
+      </section>
+
+      <section className="mobile-length">
+        <TellUsForm />
       </section>
     </main>
   );

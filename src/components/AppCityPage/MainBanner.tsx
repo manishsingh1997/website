@@ -4,6 +4,7 @@ import { ReactSVG } from 'react-svg';
 import IconCheckMark from '@ergeon/core-components/src/assets/icon-check-mark.svg';
 import IconPhoneGreen from '@ergeon/core-components/src/assets/icon-phone-green.svg';
 
+import TellUsForm from '../../containers/TellUsForm';
 import { City } from './types';
 
 import './MainBanner.scss';
@@ -34,6 +35,9 @@ const MainBanner = (props: MainBannerProps) => {
             <ReactSVG className="icon" src={IconPhoneGreen} />
             <span>Call us now {phone}</span>
           </a>
+        </section>
+        <section className="flex-spacer MainBanner-form desktop-length">
+          <TellUsForm />
         </section>
       </div>
     </section>
