@@ -34,6 +34,13 @@ const TellUsForm = (props: TellUsFormProps) => {
   } = props;
 
   const [showThankYou, setShowThankYou] = useState(false);
+  const [hasEmail, setHasEmail] = useState(false);
+
+  const handleSubmit = useCallback((data) => {
+    const { email } = data;
+    setHasEmail(Boolean(email));
+    setShowThankYou(true);
+  }, []);
 
   const ContactForm = useCallback(() => {
     return (
@@ -48,7 +55,7 @@ const TellUsForm = (props: TellUsFormProps) => {
               configs={configs}
               lead={lead || {}}
               onProductChange={(product) => updateProduct(product)}
-              onSubmit={() => setShowThankYou(true)}
+              onSubmit={handleSubmit}
               product={product}
               user={user} />
           </div>
@@ -59,18 +66,18 @@ const TellUsForm = (props: TellUsFormProps) => {
 
   const ThankYouMessage = useCallback(() => {
     return (
-      <div className="request-quote-page">
-        <Success header="Thanks!" text="We will call you within 24 hours" />
-        {!user && (
+      <div className="TellUsForm-Success">
+        <Success header="Thanks!" scrollOnMount={false} text="We will call you within 24 hours" />
+        {!user && hasEmail && (
           <span>
-            <p className="confirmation-email spacing before__is-24">
+            <p className="TellUsForm-Success--isEmailSent spacing before__is-24">
               We have sent a confirmation message to your email. Please follow the instructions there.
             </p>
           </span>
         )}
       </div>
     );
-  }, [user]);
+  }, [user, hasEmail]);
 
   if (isAuthLoading || isUserLoading) {
     return <AppLoader />;

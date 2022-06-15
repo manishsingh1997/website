@@ -161,11 +161,12 @@
       text-align: left;
       padding: 0;
     }
-  }
 
-  // this is for the Thanks confirmation area
-  .request-quote-page {
-    @include form-background();
-    padding: $v-24;
+    &-Success {
+      @include form-background();
+      padding: $v-24;
+      margin: 0;
+      width: 100%;
+    }
   }
 }

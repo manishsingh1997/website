@@ -104,7 +104,7 @@ exports[`AppCityPage should render 1`] = `
           </a>
         </section>
         <section
-          class="flex-spacer MainBanner-form desktop-length"
+          class="desktop-length flex-spacer MainBanner-form"
         >
           Tell Us Form
         </section>

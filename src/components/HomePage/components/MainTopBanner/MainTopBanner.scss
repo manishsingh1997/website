@@ -27,7 +27,6 @@ $banner-top-desktop-padding: $v-88 + $v-12;
 
   &-Content {
     color: $white;
-    padding-left: $h-80 + $h-20;
 
     @include phone() {
       padding: 0 $h-20;

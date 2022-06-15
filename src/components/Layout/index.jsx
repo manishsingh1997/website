@@ -58,6 +58,7 @@ export default class Layout extends React.Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     children: PropTypes.node,
+    history: PropTypes.object,
     getCurrentUser: PropTypes.func.isRequired,
     location: PropTypes.object,
     phoneNumber: PropTypes.string.isRequired,
@@ -185,7 +186,7 @@ export default class Layout extends React.Component {
             customerMenu={this.renderDropdownMenu()}
             ergeonUrl="/"
             fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
-            onGetQuoteClick={() => undefined} // TODO: Include scroll to new quote section
+            onGetQuoteClick={() => this.props.history.push('/request-quote')}
             pdfDetails={this.renderPdfDetails()}
             pdfMode={asPDF}
             showChristmasHat={this.isChristmasTime}

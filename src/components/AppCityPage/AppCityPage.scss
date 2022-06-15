@@ -1,6 +1,10 @@
 @import '~@ergeon/core-components/src/components/variables';
 
-@import './MainBanner.scss';
+@mixin card-hover {
+  &:hover {
+    background-color: $gray-5;
+  }
+}
 
 .equal-height-JlocK {
   display: flex !important;
@@ -142,6 +146,7 @@
   }
 
   &-item {
+    @include card-hover();
     padding: $v-20 $h-20;
 
     img {
@@ -250,12 +255,20 @@
   @include phone() {
     display: block;
   }
+
+  @include tablet() {
+    display: block;
+  }
 }
 
 .desktop-length {
   display: block;
 
   @include phone() {
+    display: none;
+  }
+
+  @include tablet() {
     display: none;
   }
 }

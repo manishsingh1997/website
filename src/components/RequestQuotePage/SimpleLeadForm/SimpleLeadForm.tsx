@@ -14,7 +14,7 @@ import { showUpcomingFeatures } from '../../../utils/utils';
 import { identify, track, trackError, trackTawkLeadEvent } from '../../../utils/analytics';
 import { CUSTOMER_LEAD_CREATED } from '../../../utils/events';
 import { DEFAULT_SOURCE_VALUE } from '../../../website/constants';
-import { Address, formatPhoneNumber, stringifyAddress } from '../utils';
+import { Address, formatPhoneNumber } from '../utils';
 import { getOrder, isFullAddress } from './utils';
 import { Config, User } from './types';
 
@@ -59,7 +59,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
       phoneEmail: '',
       comment: '',
       product: selectedProduct,
-      'string_address': address && stringifyAddress(address) || '',
+      'string_address': '',
       'is_subscribed_to_news': true,
     }
   });
@@ -102,15 +102,15 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
       trackError(new Error('Lead submit error'), { error });
     }
     setLoading(false);
-    onSubmit && onSubmit();
+    onSubmit && onSubmit(newData);
   }, [product, onSubmit, user, address, lead, configs]);
 
   const handlePhoneEmailField = useCallback((e: ChangeEvent<HTMLInputElement>, onChange) => {
     const value = e.target.value;
-    if (value.includes('@')) {
+    if (EMAIL_REGEX.test(value)) {
       setValue('email', value);
     }
-    if (/^\d+$/.test(value)) {
+    if (PHONE_REGEX.test(value)) {
       setValue('phone', value);
     }
     onChange(value);
@@ -190,6 +190,10 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
             },
             pattern: {
               value: new RegExp(`${PHONE_REGEX.source}|${EMAIL_REGEX.source}`),
+              message: 'Please enter a valid phone or email',
+            },
+            maxLength: {
+              value: 30,
               message: 'Please enter a valid phone or email',
             }
           }}

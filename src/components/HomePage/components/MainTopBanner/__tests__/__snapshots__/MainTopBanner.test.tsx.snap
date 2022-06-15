@@ -8,19 +8,23 @@ exports[`MainTopBanner should match snapshot 1`] = `
     <div
       class="MainTopBanner-Content"
     >
-      <h2
-        class="MainTopBanner-Content--Heading"
+      <div
+        class="wrapper-1180"
       >
-        Improving your outdoor
-        <br />
-         space can be easy & friendly
-      </h2>
-      <p
-        class="MainTopBanner-Content--SubHeading"
-      >
-        Find Ergeon fence expertise in your area
-      </p>
-      City search input
+        <h2
+          class="MainTopBanner-Content--Heading"
+        >
+          Improving your outdoor
+          <br />
+           space can be easy & friendly
+        </h2>
+        <p
+          class="MainTopBanner-Content--SubHeading"
+        >
+          Find Ergeon fence expertise in your area
+        </p>
+        City search input
+      </div>
     </div>
   </section>
 </div>

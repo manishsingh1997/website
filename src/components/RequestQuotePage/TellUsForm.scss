@@ -2,7 +2,7 @@
 
 .TellUsForm {
   display: flex;
-  background-color: $brand-color-3;
+  background-color: $gray-5;
   flex-flow: column;
   align-items: center;
   margin: 0;
@@ -11,7 +11,7 @@
   &-Wrapper {
     width: 30%;
 
-    @include phone() {
+    @include tablet() {
       width: 90%;
     }
   }
@@ -26,5 +26,17 @@
     text-align: center;
     margin-bottom: $v-20;
     padding: 0 $h-20;
+  }
+
+  &-Success {
+    margin: $h-40;
+
+    &--isEmailSent {
+      display: flex;
+      justify-content: center;
+      font-size: $font-regular-size;
+      font-weight: bold;
+      text-align: center;
+    }
   }
 }

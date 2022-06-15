@@ -36,7 +36,7 @@ const MainBanner = (props: MainBannerProps) => {
             <span>Call us now {phone}</span>
           </a>
         </section>
-        <section className="flex-spacer MainBanner-form desktop-length">
+        <section className="desktop-length flex-spacer MainBanner-form">
           <TellUsForm />
         </section>
       </div>

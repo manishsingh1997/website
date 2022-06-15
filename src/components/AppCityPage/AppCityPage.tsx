@@ -42,8 +42,8 @@ const AppCityPage = (props: AppCityPageProps) => {
       <section className="wrapper-1180 RecentProjects">
         <h2 className="h3">Projects Recently Completed in {city.city}</h2>
         <div className="flex-wrapper RecentProjects-container">
-          {city.projects.map(project => (
-            <div className="flex-spacer RecentProjects-project" key={project.url}>
+          {city.projects.map((project, idx) => (
+            <div className="flex-spacer RecentProjects-project" key={`project-${idx}`}>
               <a href={project.url}>
                 <img alt={project.label} src={getAsset(project.img, 'jpeg')} />
               </a>
