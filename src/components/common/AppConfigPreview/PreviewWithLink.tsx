@@ -24,7 +24,7 @@ const PreviewWithLink = ({
   const isPlaceholder = useMemo(() => isPlaceholderImage(previewImage), [previewImage]);
 
   if (isPlaceholder) {
-    return <PreviewImage handleLoad={handleLoad} isLoading={false} isPlaceholder={false} previewImage={previewImage} />;
+    return <PreviewImage handleLoad={handleLoad} isLoading={false} isPlaceholder={true} previewImage={previewImage} />;
   }
 
   return (
