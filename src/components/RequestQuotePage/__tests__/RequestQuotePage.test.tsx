@@ -1,4 +1,6 @@
 import React from 'react';
+import {Router} from 'react-router-dom';
+import {createMemoryHistory} from 'history';
 import '@testing-library/jest-dom';
 import {Provider} from 'react-redux';
 import {fireEvent, render, screen} from '@testing-library/react';
@@ -47,7 +49,9 @@ describe('RequestQuotePage', () => {
   it('Should render RequestQuotePage', () => {
     render(
       <Provider store={newStore}>
-        <RequestQuotePage {...props} />
+        <Router history={createMemoryHistory()}>
+          <RequestQuotePage {...props} />
+        </Router>
       </Provider>
     );
 
@@ -88,7 +92,9 @@ describe('RequestQuotePage', () => {
 
     render(
       <Provider store={newStore}>
-        <RequestQuotePage {...newProps} />
+        <Router history={createMemoryHistory()}>
+          <RequestQuotePage {...newProps} />
+        </Router>
       </Provider>
     );
 
@@ -100,7 +106,9 @@ describe('RequestQuotePage', () => {
     const newProps = {...props, configs: []};
     render(
       <Provider store={newStore}>
-        <RequestQuotePage {...newProps} />
+        <Router history={createMemoryHistory()}>
+          <RequestQuotePage {...newProps} />
+        </Router>
       </Provider>
     );
     const configCart = screen.queryByTestId('config-cart');
@@ -111,8 +119,10 @@ describe('RequestQuotePage', () => {
     const newProps = {...props, configs: [], lead: null};
     render(
       <Provider store={newStore}>
+      <Router history={createMemoryHistory()}>
         <RequestQuotePage {...newProps} />
-      </Provider>
+      </Router>
+    </Provider>
     );
     const noLeadNotification = screen.queryByTestId('no-lead-notification');
     expect(noLeadNotification).toBeInTheDocument();
@@ -126,7 +136,9 @@ describe('RequestQuotePage', () => {
     };
     render(
       <Provider store={newStore}>
-        <RequestQuotePage {...newProps} />
+        <Router history={createMemoryHistory()}>
+          <RequestQuotePage {...newProps} />
+        </Router>
       </Provider>
     );
     const notSupportedZipcodeNotification = screen.queryByTestId('not-supported-zipcode-notification');
@@ -144,7 +156,9 @@ describe('RequestQuotePage', () => {
     };
     const {rerender} = render(
       <Provider store={newStore}>
-        <RequestQuotePage {...newProps} />
+        <Router history={createMemoryHistory()}>
+          <RequestQuotePage {...newProps} />
+        </Router>
       </Provider>
     );
     expect(updateLeadFromAddress).not.toBeCalled();
@@ -164,7 +178,9 @@ describe('RequestQuotePage', () => {
 
     rerender(
       <Provider store={newStore}>
-        <RequestQuotePage {...updatedProps} />
+        <Router history={createMemoryHistory()}>
+          <RequestQuotePage {...updatedProps} />
+        </Router>
       </Provider>
     );
 
@@ -174,7 +190,9 @@ describe('RequestQuotePage', () => {
   it('Should open popup on click', async () => {
     render(
       <Provider store={newStore}>
-        <RequestQuotePage {...props} />
+        <Router history={createMemoryHistory()}>
+          <RequestQuotePage {...props} />
+        </Router>
       </Provider>
     );
     expect(screen.queryByTestId('popup-modal')).toBeNull();

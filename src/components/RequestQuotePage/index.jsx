@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import {withRouter} from 'react-router-dom'
 import {Button, Spinner, googleIntegration} from '@ergeon/core-components';
 import {calcUtils} from '@ergeon/3d-lib';
 import MapComponent from '@ergeon/map-component';
@@ -16,12 +17,15 @@ import TermsFooter from './TermsFooter';
 
 import './index.scss';
 
-export default class RequestQuotePage extends React.Component {
+const REDIRECT_TIMEOUT = 5000;
+
+class RequestQuotePage extends React.Component {
   static propTypes = {
     addConfig: PropTypes.func.isRequired,
     address: PropTypes.string,
     auth: PropTypes.object,
     changeProduct: PropTypes.func,
+    history: PropTypes.object,
     configs: PropTypes.array,
     lead: PropTypes.object,
     openAddressUpdatePopup: PropTypes.func.isRequired,
@@ -39,7 +43,7 @@ export default class RequestQuotePage extends React.Component {
   };
 
   componentDidMount() {
-    const {zipcode, configs} = this.props;
+    const { zipcode, configs } = this.props;
     const address = getParameterByName('address') || this.props.address;
     const product = getParameterByName('product') || this.props.product;
     const schema = getParameterByName('schema');
@@ -63,7 +67,12 @@ export default class RequestQuotePage extends React.Component {
     if (prevProps.address !== this.props.address) {
       window.onInitMap && window.onInitMap();
     }
-
+    // automatically redirect the user to our home page
+    if (this.state.showThankYou) {
+      setTimeout(() => {
+        this.props.history.push('/')
+      }, REDIRECT_TIMEOUT);
+    }
     this.updateAddress();
   }
 
@@ -205,7 +214,7 @@ export default class RequestQuotePage extends React.Component {
 
   renderSignupMap() {
     const {lead} = this.props;
-    const styles = [{stylers: [{saturation: -100}]}];
+    const styles = [{ stylers: [{ saturation: -100 }] }];
 
     if (!lead || !lead.address) {
       return null;
@@ -288,14 +297,14 @@ export default class RequestQuotePage extends React.Component {
     if (this.state.showThankYou) {
       return (
         <div className="request-quote-page" data-testid="thank-you-notification">
-          <Success header="Thanks!" text="We will call you within 24 hours" />
-          {showUpcomingFeatures('ENG-1XX') && !user && (
-            <span>
-              <p className="confirmation-email spacing before__is-24" data-testid="thank-you-notification-text">
-                We have sent a confirmation message to your email. Please follow the instructions there.
-              </p>
-            </span>
-          )}
+           <Success header="Thanks!" text="We will call you within 24 hours" />
+            {showUpcomingFeatures('ENG-1XX') && !user && (
+              <span>
+                <p className="confirmation-email spacing before__is-24" data-testid="thank-you-notification-text">
+                  We have sent a confirmation message to your email. Please follow the instructions there.
+                </p>
+              </span>
+            )}
         </div>
       );
     }
@@ -336,3 +345,5 @@ export default class RequestQuotePage extends React.Component {
     );
   }
 }
+
+export default withRouter(RequestQuotePage);

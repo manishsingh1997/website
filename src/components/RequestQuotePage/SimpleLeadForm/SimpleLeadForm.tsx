@@ -24,6 +24,8 @@ const PHONE_REGEX = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
 // eslint-disable-next-line max-len
 const EMAIL_REGEX = /^[\w!#$%&'*+\/=?`{|}~^-]+(?:\.[\w!#$%&'*+\/=?`{|}~^-]+)*@(?:[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]\.)+[a-zA-Z]{2,}$/
 
+const MAX_CHARACTERS_PHONE_EMAIL = 256; // max allowed for email, regex checks will complain for phone
+
 type SimpleLeadFormProps = {
   configs: Config[],
   lead: {
@@ -140,7 +142,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
   }, [placeData, setError, setValue]);
 
   return (
-    <form className="Form LeadForm" onSubmit={handleSubmit(submit)}>
+    <form className="SimpleForm LeadForm" onSubmit={handleSubmit(submit)}>
       <FormField>
         <Controller
           control={control}
@@ -193,7 +195,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
               message: 'Please enter a valid phone or email',
             },
             maxLength: {
-              value: 30,
+              value: MAX_CHARACTERS_PHONE_EMAIL,
               message: 'Please enter a valid phone or email',
             }
           }}
@@ -250,7 +252,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
           }}
         />
       </FormField>
-      <div className="Form-actions">
+      <div className="SimpleForm-actions">
         <Button
           className={classNames('AddressButton', 'spacing after__is-24', { 'is-loading': loading })}
           disabled={loading}

@@ -2,7 +2,7 @@
 
 $select-arrow-margin-top: -2px;
 
-.Form {
+.SimpleForm {
   margin-block-end: unset;
   button {
     width: unset;
@@ -27,7 +27,7 @@ $select-arrow-margin-top: -2px;
     }
   }
 
-  .Form-actions {
+  .SimpleForm-actions {
     display: flex;
     justify-content: center;
     margin-top: $v-24;
