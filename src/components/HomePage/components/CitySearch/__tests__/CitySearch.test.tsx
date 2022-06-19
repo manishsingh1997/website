@@ -45,4 +45,4 @@ describe('CitySearch component tests', () => {
     fireEvent.change(input, { target: { value: 'Sacramento' } });
     expect(input).toHaveValue('Sacramento');
   });
-})
+});
