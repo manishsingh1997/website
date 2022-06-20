@@ -51,13 +51,11 @@ class AboutPage extends React.Component {
             family and friends.
             <br />
             <br />
-            Starting with outdoor construction, we install the highest quality fence and hardscape projects and we are
-            on track toward scaling to larger complex building projects. Over 6,000 happy customers are now enjoying the
-            fences and driveways we’ve built for them. We were named Best of HomeAdvisor 2020, with over 1,500 public
-            reviews at an average rating of 4.6. We work with homeowners in California and Texas. We work with
-            residential and commercial property owners in the Bay Area, Sacramento, Fresno, Riverside, San Bernardino,
-            Orange County, Ventura, Los Angeles and Dallas. Our company was founded and is run today by two CS Ph.D.
-            serial entrepreneurs.
+            Starting with outdoor construction, we install the highest quality fence projects and we are on track toward
+            scaling to larger complex building projects. Over 8,000 happy customers are now enjoying the fences we’ve
+            built for them. We were named Best of HomeAdvisor 2020, with over 2,000 public reviews at an average rating
+            of 4.6. We have expanded across multiple states in the past four years to cover over 12% of U.S. households
+            in our service areas! Our company was founded and is run today by two CS Ph.D. serial entrepreneurs.
             <br />
             <br />
           </p>
