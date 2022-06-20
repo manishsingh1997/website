@@ -1,3 +1,4 @@
+import IconCovid from 'assets/icon-covid-19.svg';
 import IconErgeon from 'assets/icon-ergeon.svg';
 import IconFence from 'assets/icon-fence-101.svg';
 import IconService from 'assets/icon-service.svg';
@@ -26,7 +27,7 @@ const helpDefaultCategories = [
   },
   {
     title: 'COVID-19 (Coronavirus)',
-    icon: IconService,
+    icon: IconCovid,
     nodeKey: '202000375',
   },
 ];

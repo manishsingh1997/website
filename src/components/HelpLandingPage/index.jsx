@@ -16,7 +16,13 @@ const HelpLandingPage = (props) => {
   ];
 
   return (
-    <HelpLanding categories={helpDefaultCategories} subtitle={subtitle} title="Help & Customer Service" {...props} />
+    <HelpLanding
+      categories={helpDefaultCategories}
+      isLargeIcons
+      subtitle={subtitle}
+      title="Help & Customer Service"
+      {...props}
+    />
   );
 };
 
