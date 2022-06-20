@@ -137,6 +137,6 @@ const mapping = {
 
 // Images and PDFs
 const assets = values({...mapping.city, ...mapping.product})
-  .filter(p => p.includes('img') || p.includes('pdf'));
+  .filter(p => p.includes('img') || p.includes('pdf') || p.includes('url'));
 
 module.exports = { ...mapping, assets };

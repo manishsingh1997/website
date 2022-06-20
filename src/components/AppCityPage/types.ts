@@ -39,8 +39,7 @@ export type City = {
     label: string,
   }>,
   product: {
-    // NOTE: Concrete was deprecated
-    type: 'Fence & Concrete' | 'Fence',
+    type: 'Fence',
   },
   rating: Record<'Angi' | 'BBB' | 'Google' | 'Thumbtack' | 'Yelp', string>,
   review: Record<'Yelp' | 'Google', {

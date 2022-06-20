@@ -17,7 +17,7 @@ exports[`AppCityPage should render 1`] = `
           <h1
             class="h2 MainBanner-title"
           >
-            The best Fence & Concrete installation company in Alameda
+            The best Fence installation company in Alameda
           </h1>
           <ul
             class="unordered MainBanner-list"
@@ -35,7 +35,7 @@ exports[`AppCityPage should render 1`] = `
                   />
                 </div>
               </div>
-              Design, review and edit your FREE Fence & Concrete quote online using our custom tool.
+              Design, review and edit your FREE Fence quote online using our custom tool.
             </li>
             <li
               class="MainBanner-listItem"
@@ -65,7 +65,7 @@ exports[`AppCityPage should render 1`] = `
                   />
                 </div>
               </div>
-              Understand your Fence & Concrete quote with our transparent pricing.
+              Understand your Fence quote with our transparent pricing.
             </li>
             <li
               class="MainBanner-listItem"
@@ -80,7 +80,7 @@ exports[`AppCityPage should render 1`] = `
                   />
                 </div>
               </div>
-              Enjoy your beautiful new Fence & Concrete built by our team of skilled local craftsmen.
+              Enjoy your beautiful new Fence built by our team of skilled local craftsmen.
             </li>
           </ul>
           <a
@@ -1167,7 +1167,9 @@ exports[`AppCityPage should render 1`] = `
             <div
               class="CityBlog-content"
             >
-              <p />
+              <p>
+                There’s a lot to consider when weighing the pros and cons of a wood fence versus a chain link fence. We’ve tried to make the process easier for you by diving deeper into some of the areas of consideration.
+              </p>
               <span
                 class="CityBlog-link"
               >

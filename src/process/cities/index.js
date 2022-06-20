@@ -11,8 +11,8 @@ const mapping = require('./mapping');
 const {getCitySlug, parseSheet} = require('./parsing');
 
 const SHEET_ID = '14w3hviutTV0xMgiamxqIPTsSMUWR01jCUdpJJsA3j3Q';
-const SHEET_CITIES_DATA = 'City Multiproduct Page (template)!A1:AM103';
-const SHEET_FENCES_DATA = 'City Fence Page (template)!A1:CY103';
+const SHEET_CITIES_DATA = 'City Multiproduct Page (template)!A1:AN103';
+const SHEET_FENCES_DATA = 'City Fence Page (template)!A1:CZ103';
 const SHEET_NEIGHBORING_CITIES_DATA = 'Neighboring cities query!A1:E876';
 
 const DATA_PATH = '../../data';
