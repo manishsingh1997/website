@@ -1,10 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {Button, Input, PhoneInput, Spinner} from '@ergeon/core-components';
-import DataRow from 'components/common/DataRow';
-import AdditionalContactInfo from './AdditionalContactInfo';
+import React, {ChangeEvent, FormEvent} from 'react';
 
-const ContactEditForm = (props) => {
+import {Button, Input, PhoneInput, Spinner} from '@ergeon/core-components';
+
+import DataRow from '../common/DataRow';
+import AdditionalContactInfo from './AdditionalContactInfo';
+import {Contact, InitialContact} from './types';
+
+type ContactEditFormProps = {
+  primaryContact: InitialContact;
+  isSubmitting: boolean;
+  additionalContacts: Contact['additional_phones'];
+  onPrimaryChange(event: Event, name: string, value: string): void;
+  onAddNewContactInfo(type: string): void;
+  onContactInfoChange(e: ChangeEvent<HTMLInputElement>, name: string, value: string): void;
+  onRemoveContactInfo(id: number): void;
+  onCancel(): void;
+  onSave(event: FormEvent): Promise<void>;
+  errors: {
+    fullName?: string;
+    phoneNumber?: string;
+  };
+};
+
+const ContactEditForm = (props: ContactEditFormProps) => {
   const {
     primaryContact,
     isSubmitting,
@@ -38,7 +56,6 @@ const ContactEditForm = (props) => {
       />
       <DataRow
         title="Email"
-        type="email"
         value={
           <Input
             className="full-width-block"
@@ -93,19 +110,6 @@ const ContactEditForm = (props) => {
       </div>
     </form>
   );
-};
-
-ContactEditForm.propTypes = {
-  additionalContacts: PropTypes.array,
-  errors: PropTypes.object,
-  isSubmitting: PropTypes.bool,
-  onAddNewContactInfo: PropTypes.func,
-  onCancel: PropTypes.func,
-  onContactInfoChange: PropTypes.func,
-  onPrimaryChange: PropTypes.func,
-  onRemoveContactInfo: PropTypes.func,
-  onSave: PropTypes.func,
-  primaryContact: PropTypes.object,
 };
 
 export default ContactEditForm;
