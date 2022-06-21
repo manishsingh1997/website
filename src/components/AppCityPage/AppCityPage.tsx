@@ -91,7 +91,12 @@ const AppCityPage = (props: AppCityPageProps) => {
           ))}
       </section>
 
-      <Regulations city={city.city} faq={city.regulations.faq} img={city.regulations.img} pdf={city.regulations.pdf} />
+      <Regulations
+        city={city.city}
+        faq={city.regulations.faq}
+        img={city.regulations.img}
+        pdf={city.regulations.pdf}
+        url={city.regulations.url} />
 
       <section>
         <RemoteFeatures />

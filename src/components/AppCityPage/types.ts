@@ -54,6 +54,7 @@ export type City = {
     title: string,
     description: string,
     pdf?: string,
+    url?: string,
     img?: string,
     faq: Record<'front-yard' | 'side-yard' | 'rear-max-height' | 'setback' | 'corner-lot-rules', string>,
   },

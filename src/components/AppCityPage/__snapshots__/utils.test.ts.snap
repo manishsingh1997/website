@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppCityPage utils getAsset 1`] = `"https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1A_x5vu8J7uWmRycAfOqq5H7MzGRM3t4J.pdf"`;
+
+exports[`AppCityPage utils getAsset 2`] = `"https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1L-EulsROIe29OpNv-R5pzeQz3sq6IheS.jpeg"`;
+
+exports[`AppCityPage utils getAsset 3`] = `"https://www.codepublishing.com/CA/Berkeley/html/Berkeley23D/Berkeley23D08/Berkeley23D08060.html"`;

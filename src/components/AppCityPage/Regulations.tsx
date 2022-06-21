@@ -13,10 +13,11 @@ type RegulationsProps = {
   faq: City['regulations']['faq'],
   img: City['regulations']['img'],
   pdf: City['regulations']['pdf'],
+  url: City['regulations']['url'],
 }
 
 const Regulations = (props: RegulationsProps) => {
-  const { city, faq, img, pdf } = props;
+  const { city, faq, img, pdf, url } = props;
 
   // used to toggle regulation items on mobile view only
   const [isItemOpen, setIsItemOpen] = useState<boolean[]>([]);
@@ -82,8 +83,8 @@ const Regulations = (props: RegulationsProps) => {
         <div className="flex-spacer Regulations-row">
           {desktopView}
           {mobileView}
-          {pdf &&
-            <p>Learn more about <a href={getAsset(pdf, 'pdf')} target="__blank">
+          {url &&
+            <p>Learn more about <a href={getAsset(url, 'pdf')} target="__blank">
               {city} – City Regulations</a>.
             </p>
           }
