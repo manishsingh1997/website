@@ -1,15 +1,12 @@
 import {CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 import QuoteLinePreview from './QuoteLinePreview';
-import {getQuoteLineForCalcInputItem} from './utils';
 
 /**
  * Returns "side" type quoteline
  * @param {{quote: object, label:string}} props
  */
 const sideType = (props) => {
-  const {quote, label} = props;
-  const quoteLine = getQuoteLineForCalcInputItem(quote['quote_lines'], label);
-  return QuoteLinePreview({...props, quoteLine});
+  return QuoteLinePreview(props);
 };
 
 /**
@@ -17,10 +14,9 @@ const sideType = (props) => {
  * @param {{quote: object, label: string, name: string}} props
  */
 const gateType = (props) => {
-  const {quote, label, name} = props;
-  const quoteLine = getQuoteLineForCalcInputItem(quote['quote_lines'], label);
+  const {name} = props;
   const useNoPreviewIcon = name === '!' || name === 'Complications';
-  return QuoteLinePreview({...props, quoteLine, useNoPreviewIcon});
+  return QuoteLinePreview({...props, useNoPreviewIcon});
 };
 
 /**

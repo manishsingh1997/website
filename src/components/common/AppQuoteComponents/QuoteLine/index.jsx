@@ -51,12 +51,18 @@ export default function QuoteLine(props) {
     isDropped = false,
   } = quoteLineProps;
 
+  const previewProps = {
+    quantity,
+    quote,
+    type,
+    quoteLine: quoteLineProps,
+  }
   const isMobileWidth = useIsMobileWidth();
 
   const imagePreview = useMemo(
     () => (
       <div>
-        <PreviewForQuoteLine {...props} images={images} />
+        <PreviewForQuoteLine {...previewProps} images={images} />
       </div>
     ),
     [images, props]
