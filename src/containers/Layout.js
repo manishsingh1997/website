@@ -4,8 +4,9 @@ import {withRouter} from 'react-router';
 import {getCurrentUser} from 'flux/actions/auth';
 import Layout from 'components/Layout';
 
-const mapStateToProps = ({auth, layout}) => ({
+const mapStateToProps = ({auth, layout, city}) => ({
   auth,
+  city,
   phoneNumber: layout.phoneNumber,
 });
 

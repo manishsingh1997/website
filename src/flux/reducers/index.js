@@ -9,6 +9,7 @@ import ordersReducer from './app-orders';
 import appointmentsReducer from './app-appointments';
 import housesReducer from './app-houses';
 import layoutReducer from './layout';
+import cityReducer from './city';
 
 const combinedReducers = combineReducers({
   auth: authReducer,
@@ -20,6 +21,7 @@ const combinedReducers = combineReducers({
   appointments: appointmentsReducer,
   houses: housesReducer,
   layout: layoutReducer,
+  city: cityReducer,
 });
 
 export default combinedReducers;

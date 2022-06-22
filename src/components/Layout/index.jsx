@@ -6,15 +6,7 @@ import {ReactSVG} from 'react-svg';
 
 import logOutIcon from '@ergeon/core-components/src/assets/icon-logout.brand.svg';
 import userIcon from '@ergeon/core-components/src/assets/icon-user.brand.svg';
-import {
-  DropdownMenu,
-  NavLinkContext,
-  Notification,
-  Spinner,
-  SimpleTopPanel,
-  SimpleFooter,
-  LocationsFooter,
-} from '@ergeon/core-components';
+import {DropdownMenu, NavLinkContext, Notification, Spinner, SimpleTopPanel} from '@ergeon/core-components';
 import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 
 import phoneIcon from 'assets/icon-phone.svg';
@@ -24,8 +16,8 @@ import {getMenuItems} from 'data/customer-app.ts';
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
 
 import cities from '../../data/cities-min-data.json';
-
 import './index.scss';
+import AppFooter from '../common/AppFooter';
 
 const SIGN_IN_LINK_ID = 'app-sign-in-link';
 
@@ -94,7 +86,7 @@ export default class Layout extends React.Component {
   }
 
   getLocationsList() {
-    return cities.map(city => ({
+    return cities.map((city) => ({
       text: city.city,
       url: `/fences/cities/${city.slug}`,
     }));
@@ -194,15 +186,15 @@ export default class Layout extends React.Component {
           ></SimpleTopPanel>
           <div>{this.props.children}</div>
           {!asPDF && showFooter && (
-            <>
-              <SimpleFooter
-                ergeonUrl="/"
-                fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
-                productCatalogUrl={`${process.env.PRODUCT_CATALOG_URL}/`}
-                widthClass={widthClass}
-              />
-              <LocationsFooter listArray={this.getLocationsList()} listTitle="Locations" />
-            </>
+            <AppFooter
+              city={this.props.city.data}
+              ergeonUrl="/"
+              fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
+              locationsList={this.getLocationsList()}
+              productCatalogUrl={`${process.env.PRODUCT_CATALOG_URL}/`}
+              projectsGalleryUrl={`${process.env.PROJECTS_GALLERY_HOST}/`}
+              widthClass={widthClass}
+            />
           )}
           <AddressUpdatePopup />
         </NavLinkContext.Provider>

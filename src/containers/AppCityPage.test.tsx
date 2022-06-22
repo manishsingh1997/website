@@ -4,10 +4,11 @@ import '@testing-library/jest-dom';
 import {ErrorBoundary} from 'react-error-boundary';
 import {MemoryRouter} from 'react-router-dom';
 import faker from '@faker-js/faker';
-
+import { Provider } from 'react-redux';
 import cities from '../data/cities-full-data.json';
 
 import {AppCityPageProps} from '../components/AppCityPage/AppCityPage';
+import store from '../flux/store';
 import AppCityPage from './AppCityPage';
 
 jest.mock('../components/AppCityPage', () => ({city}: AppCityPageProps) => <>{city.slug}</>);
@@ -18,9 +19,11 @@ describe('AppCityPage container', () => {
 
     await act(async () => {
       render(
-        <MemoryRouter initialEntries={[`/fences/cities/${citySlug}`]}>
-          <AppCityPage />
-        </MemoryRouter>
+        <Provider store={store} >
+          <MemoryRouter initialEntries={[`/fences/cities/${citySlug}`]}>
+            <AppCityPage />
+          </MemoryRouter>
+        </Provider>
       );
       expect(
         screen.getByTestId('loader-image')
@@ -38,11 +41,13 @@ describe('AppCityPage container', () => {
 
     await act(async () => {
       render(
-        <ErrorBoundary FallbackComponent={({error}) => <>{error.message}</>}>
-          <MemoryRouter initialEntries={[`/fences/cities/${citySlug}`]}>
-            <AppCityPage />
-          </MemoryRouter>
-        </ErrorBoundary>
+        <Provider store={store} >
+          <ErrorBoundary FallbackComponent={({error}) => <>{error.message}</>}>
+            <MemoryRouter initialEntries={[`/fences/cities/${citySlug}`]}>
+              <AppCityPage />
+            </MemoryRouter>
+          </ErrorBoundary>
+        </Provider>
       );
       expect(
         await screen.findByText(`Failed to import non-existing "data/city/${citySlug}.json"`)
