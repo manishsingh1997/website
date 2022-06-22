@@ -1,0 +1,265 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
+.icon-display {
+  height: $v-20;
+  width: $h-20;
+}
+
+.Project-signOff {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin-top: $v-30;
+  padding: $v-30;
+  border: 1px solid $gray-4;
+  border-radius: $corner-soft;
+
+  @include phone {
+    display: none;
+  }
+
+  &:hover {
+    background-color: $gray-6;
+  }
+
+  &-pdf {
+    align-self: flex-start;
+  }
+
+  &-button {
+    white-space: nowrap;
+    padding: $v-12 $h-40 + $h-5;
+    height: $v-48;
+  }
+
+  &-title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &-content {
+    margin-top: $v-6;
+    font-size: $font-mobile-size;
+  }
+
+  &-date {
+    display: block;
+    margin-top: $v-20;
+  }
+
+  .icon {
+    @extend .icon-display;
+    margin-right: $v-20;
+
+    &-save {
+      margin-left: $h-5;
+    }
+  }
+
+  .button-pdf {
+    $button-top-padding: $v-6 + 2;
+
+    padding: $button-top-padding $h-60 - $h-5 $button-top-padding $h-60 - 8;
+    height: $v-36;
+  }
+}
+
+.Project-signOff-mobileComplete {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: $v-20;
+  display: none;
+  background-color: $white;
+  @include phone {
+    display: block;
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    background-color: $green-3;
+    border: 1px solid $gray-4;
+    border-radius: $corner-default;
+    padding: $v-6 $h-10;
+  }
+
+  .icon {
+    margin-right: $h-10;
+    width: $h-20 - 4;
+  }
+
+  .desc {
+    flex: 1;
+  }
+}
+
+.Project-signOff-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  padding: $v-48 + 2 $h-20;
+  z-index: $z-index-super-top;
+  background-color: $black-opacity;
+
+  @include phone {
+    padding: 0;
+    background-color: $white;
+  }
+
+  &-hideMobile {
+    @include phone {
+      display: none;
+    }
+  }
+
+  &-pdf {
+    position: unset;
+    padding: 0;
+    background-color: $white;
+  }
+
+  &-wrapper {
+    $wrapper-max-width: 800px;
+
+    max-width: $wrapper-max-width;
+    margin: auto;
+    background-color: $white;
+    border-radius: $corner-soft;
+    padding: $v-20;
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $v-24;
+
+    .icon {
+      @extend .icon-display;
+      margin-right: $h-10;
+    }
+
+    button {
+      padding: $v-6;
+      margin: 0;
+    }
+  }
+
+  &-details {
+    border: 1px solid $gray-4;
+    border-radius: $corner-soft;
+    padding: $v-20;
+  }
+
+  &-items {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .Project-signOff-popup-item {
+      @include phone {
+        $popup-item-width: 168px;
+
+        width: $popup-item-width;
+      }
+    }
+  }
+
+  &-item {
+    margin: 0 $h-60 $v-24 0;
+    align-self: flex-start;
+
+    @include phone {
+      margin-bottom: $v-16;
+    }
+
+    .title {
+      font-size: $font-label-size;
+      color: $gray-2;
+      white-space: nowrap;
+    }
+
+    &.address {
+      margin-right: 0;
+    }
+  }
+
+  &-desc {
+    margin-bottom: $v-24;
+  }
+
+  &-content {
+    h5,
+    span {
+      margin-bottom: $v-12;
+    }
+  }
+
+  &-signature {
+    $signature-pad-max-width: 464px;
+    $signature-pad-max-height: 480px;
+    $signoff-pad-max-height: 216;
+
+    max-width: $signature-pad-max-width;
+    width: 100%;
+    max-height: $signature-pad-max-height;
+
+    .SignOff {
+      margin: $v-12 0;
+      max-height: $signoff-pad-max-height;
+    }
+
+    .erg-form-field {
+      margin-bottom: 0;
+    }
+  }
+
+  .submit {
+    margin-top: $v-24;
+    width: 100%;
+  }
+}
+.is-popup {
+  &-form-error {
+    margin: $v-6 - 2 0;
+    font-size: $font-label-size;
+    color: $red-0;
+    font-family: $font-content;
+    letter-spacing: 0;
+    line-height: $line-height-label;
+    position: relative;
+    text-align: left;
+  }
+
+  &-desktop {
+    @include desktop {
+      display: block;
+    }
+    @include phone {
+      display: none;
+    }
+  }
+
+  &-mobile {
+    @include desktop {
+      display: none;
+    }
+
+    @include desktop-wide {
+      display: none;
+    }
+
+    @include phone {
+      display: block;
+    }
+  }
+}

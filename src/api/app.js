@@ -84,3 +84,27 @@ export const approveQuoteApproval = (customerGID, quoteApprovalSecret, stripeTok
 export const getConfig = (configID) => {
   return request()(`/config/${configID}/`);
 };
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const getCustomerSignOffData = (configID) => {
+  return {
+    data: {
+      signoff_at: null,
+      signoff_by: null,
+      signoff_pdf: null,
+      signoff_img: null,
+    },
+  };
+};
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const updateCustomerSignOffRequirement = (customerGID, data) => {
+  return {
+    data: {
+      signoff_at: new Date().toDateString(),
+      signoff_by: '1',
+      signoff_pdf: '',
+      signoff_img: data.value,
+    },
+  };
+};

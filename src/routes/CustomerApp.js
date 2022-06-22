@@ -38,6 +38,11 @@ const CustomerApp = ({match, location}) => (
       />
       <Route
         component={AppCustomerQuotePage}
+        name="customerQuotePreview"
+        path={`${match.url}/quote-approvals/:secret/${DIRECT_PREVIEW_SLUG}/sign-off`}
+      />
+      <Route
+        component={AppCustomerQuotePage}
         name="customerQuoteDetail"
         path={`${match.url}/quote-approvals/:secret`}
       />

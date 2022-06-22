@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import {isPDFMode} from 'utils/utils';
+import {isPDFMode} from '../../../../utils/utils';
 
 import {QUOTE_LINE_STATUSES} from '../utils';
 

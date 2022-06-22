@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import { isEmpty, some } from 'lodash';
 
-import { isPDFMode } from 'utils/utils';
-import { parseAPIError } from 'utils/api.ts';
-import { formatPrice, isQuoteReplaced, isQuoteCancelled, isQuoteExpired } from 'utils/app-order';
-
 import {
   getQuoteApprovalDetails,
   reviewQuoteApproval as reviewQuoteApprovalAPI,
   approveQuoteApproval as approveQuoteApprovalAPI,
+  getCustomerSignOffData,
+  updateCustomerSignOffRequirement
 } from 'api/app';
 
 import AppLoader from 'components/common/AppLoader';
@@ -18,6 +16,9 @@ import BuildSpecs from 'components/common/AppQuoteComponents/BuildSpecs';
 import { DIRECT_PREVIEW_SLUG } from 'website/constants';
 
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
+import { isPDFMode, showUpcomingFeatures } from '../../utils/utils';
+import { parseAPIError } from '../../utils/api.ts';
+import { formatPrice, isQuoteReplaced, isQuoteCancelled, isQuoteExpired } from '../../utils/app-order';
 import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
 import QuoteError from '../common/AppQuoteComponents/QuoteError';
 import { prepareQuoteApprovalLines } from '../common/AppQuoteComponents/utils';
@@ -26,9 +27,11 @@ import BillingForm from './BillingForm';
 import ExplanationSection from './ExplanationSection';
 import ProjectNotes from './ProjectNotes';
 import AdditionalApprovalsList from './AdditionalApprovalsList';
+import ProjectSignOff from './ProjectSignOff/ProjectSignOff';
+import ProjectSignOffPopUp from './ProjectSignOff/ProjectSignOffPopUp';
+import ProjectSignOffTopNav from './ProjectSignOff/ProjectSignOffTopNav';
 
 import '@ergeon/draw-map/styles.css';
-
 import '../common/AppQuoteComponents/index.scss';
 
 export default class AppCustomerQuotePage extends React.Component {
@@ -55,17 +58,26 @@ export default class AppCustomerQuotePage extends React.Component {
     quoteApprovalError: null,
     paymentMethod: null,
     paymentMethodError: null,
+    isSignLoading: false,
+    isCustomerSigned: false,
+    signatureData: null,
+    customerSignOffData: null,
   };
 
   async componentDidMount() {
     await this.getQuoteApprovalDetailsFromAPI();
     await this.reviewQuoteApproval();
+    showUpcomingFeatures('ENG-13851') && await this.getSignOffData();
   }
 
   static contextType = CustomerGIDContext;
 
   get customerGID() {
     return this.context;
+  }
+
+  isSignOffPDFView(){
+    return location.pathname.includes('/sign-off');
   }
 
   isDirectPreview() {
@@ -99,10 +111,19 @@ export default class AppCustomerQuotePage extends React.Component {
   async getQuoteApprovalDetailsFromAPI() {
     try {
       const data = await getQuoteApprovalDetails(this.customerGID, this.props.match.params.secret);
+      const customer = data?.data?.customer;
+      const quote = data?.data?.quote;
+      const orderData = {
+        orderId: quote?.id,
+        customerName: customer?.full_name,
+        customerAddress: customer?.main_address?.formatted_address,
+        quoteDate: quote?.sent_to_customer_at,
+      };
       this.setState({
         quoteApproval: data.data,
         quoteApprovalError: null,
         paymentMethodError: null,
+        customerSignOffData: orderData,
       });
       const { setPDFHeaderPhoneAction } = this.props;
       const { market_phone_number: phoneNumber } = data.data.quote;
@@ -184,13 +205,80 @@ export default class AppCustomerQuotePage extends React.Component {
     history.push(`${location.pathname.replace(/\/$/, '')}/config/${configID}`, { label });
   }
 
+  async getSignOffData() {
+    let signatureData = null;
+    const { data } = getCustomerSignOffData(this.customerGID);
+    const { signoff_img, signoff_at, signoff_pdf } = data || {};
+    if (signoff_img) {
+      signatureData = {
+        value: signoff_img,
+        type: 'draw',
+        signedDate: signoff_at,
+        signedPDF: signoff_pdf,
+      };
+    }
+    this.setState({
+      signatureData,
+      isCustomerSigned: !!signoff_pdf || !!signoff_at,
+    });
+  }
+
+  async onSubmitSignature(value, type) {
+    let signatureData = null;
+    this.setState((prev) => ({...prev, isSignLoading: true}));
+
+    if (!value || !type) return;
+    try {
+      const { data } = updateCustomerSignOffRequirement(this.customerGID, { value, type });
+      const { signoff_img, signoff_at, signoff_pdf } = data || {};
+      if (signoff_img) {
+        signatureData = {
+          value: signoff_img,
+          type, // due to mocking, to be changed to draw
+          signedDate: signoff_at,
+          signedPDF: signoff_pdf,
+        };
+      }
+      this.setState((prev) => ({ ...prev, signatureData, isCustomerSigned: true, isSignLoading: false}));
+    } catch (err) {
+      this.setState({ isSignLoading: false,});
+      console.warn(err);
+    }
+  }
+
+  renderSignOffPdfView() {
+    const { isCustomerSigned, isSignLoading, signatureData, customerSignOffData} = this.state;
+    const asPDF = isPDFMode();
+
+    return showUpcomingFeatures('ENG-13851') && (
+        <ProjectSignOffPopUp
+          asPDF={asPDF}
+          isSigned={isCustomerSigned}
+          loading={isSignLoading}
+          onSubmit={this.onSubmitSignature.bind(this)}
+          orderData={customerSignOffData}
+          signatureData={signatureData}
+        />
+    );
+  }
+
   renderQuoteApprovalError() {
     return <QuoteError quoteError={this.state.quoteApprovalError} />;
   }
 
   render() {
     const { match } = this.props;
-    const { isLoading, quoteApproval, quoteApprovalError, paymentMethod, paymentMethodError } = this.state;
+    const { 
+      isLoading,
+      quoteApproval,
+      quoteApprovalError,
+      paymentMethod,
+      paymentMethodError,
+      isCustomerSigned,
+      isSignLoading,
+      signatureData,
+      customerSignOffData,
+    } = this.state;
 
     if (isLoading) {
       return <AppLoader />;
@@ -221,8 +309,14 @@ export default class AppCustomerQuotePage extends React.Component {
     const newQuoteApprovalLink = this.getNewQuoteLink();
     const { auth } = this.props;
     const asPDF = isPDFMode();
+
+    if (this.isSignOffPDFView() && asPDF && isCustomerSigned ) {
+      return this.renderSignOffPdfView()
+    }
+
     return (
       <>
+        {showUpcomingFeatures('ENG-13851') && !asPDF && <ProjectSignOffTopNav isSigned={this.state.isCustomerSigned} />}
         <Route exact path={`${match.path}/config/:configID`}>
           <BuildSpecs />
         </Route>
@@ -261,6 +355,22 @@ export default class AppCustomerQuotePage extends React.Component {
           )}
           {isMultiPartyQuote && <AdditionalApprovalsList additionalQuoteApprovals={otherQuoteApprovals} />}
           <ExplanationSection asPDF={asPDF} contractUrl={contractUrl} quoteType={quoteType} />
+          {showUpcomingFeatures('ENG-13851') && !asPDF && (
+            <ProjectSignOff
+              isSigned={isCustomerSigned}
+              pdfURL={signatureData?.signedPDF}
+              signedDate={signatureData?.signedDate}
+            />
+          )}
+          {showUpcomingFeatures('ENG-13851') && !asPDF && (
+            <ProjectSignOffPopUp
+              isSigned={isCustomerSigned}
+              loading={isSignLoading}
+              onSubmit={this.onSubmitSignature.bind(this)}
+              orderData={customerSignOffData}
+              signatureData={signatureData}
+            />
+          )}
         </div>
       </>
     );

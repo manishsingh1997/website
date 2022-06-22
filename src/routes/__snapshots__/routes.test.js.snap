@@ -2550,6 +2550,8 @@ exports[`Routes Customer app endpoints 1`] = `
    
   Route to /app/:customerGid/quote-approvals/:secret/direct
    
+  Route to /app/:customerGid/quote-approvals/:secret/direct/sign-off
+   
   Route to /app/:customerGid/quote-approvals/:secret
    
   Route to /app/:customerGid/notifications

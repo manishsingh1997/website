@@ -1,11 +1,11 @@
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 
 const getQuoteLineType = (quoteLine) => {
-  if (quoteLine.catalog_type.map_kind == 'line') {
+  if (quoteLine.catalog_type?.map_kind == 'line') {
     return CALC_SIDE_TYPE;
   }
 
-  if (quoteLine.catalog_type.map_kind == 'area') {
+  if (quoteLine.catalog_type?.map_kind == 'area') {
     return CALC_AREA_TYPE;
   }
 

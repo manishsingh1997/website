@@ -7,7 +7,7 @@ import QuoteLine from '../QuoteLine';
  * Check if quote-line's catalog_type.map_kind is of given types
  */
 const isQuoteLineOfMapKinds = (quoteLine, types) => {
-  const quoteType = quoteLine.catalogType.map_kind;
+  const quoteType = quoteLine.catalogType?.map_kind;
   return types.some((type) => type === quoteType);
 };
 

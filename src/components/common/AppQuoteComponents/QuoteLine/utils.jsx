@@ -1,4 +1,3 @@
-import isEqual from 'lodash/isEqual';
 import {getLabelFromIndex} from '@ergeon/draw-map';
 
 /**

@@ -21,10 +21,10 @@ import iconSave from '@ergeon/core-components/src/assets/icon-save.svg';
 import iconInfo from '@ergeon/core-components/src/assets/icon-info.svg';
 import iconEmail from '@ergeon/core-components/src/assets/icon-email.svg';
 import ImgBack from 'assets/icon-arrow-left.svg';
-import {isPDFMode,getExpiresAtTitle} from 'utils/utils';
+import {isPDFMode,getExpiresAtTitle} from '../../../utils/utils';
 
-import {formatDateAndTime} from 'utils/date';
-import {getOrderDetailURL} from 'utils/urls';
+import {formatDateAndTime} from '../../../utils/date';
+import {getOrderDetailURL} from '../../../utils/urls';
 
 export default class QuoteDescription extends React.Component {
   static propTypes = {

@@ -7,7 +7,7 @@ import {Button, ImageGallery} from '@ergeon/core-components';
 import IconArrowRight from '@ergeon/core-components/src/assets/icon-arrow-right.svg';
 
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE, CALC_TYPE_TO_MAP_TYPE} from 'website/constants';
-import {isPDFMode} from 'utils/utils';
+import {isPDFMode} from '../../../../utils/utils';
 
 import {QUOTE_LINE_STATUSES} from '../utils';
 import {useIsMobileWidth} from './customHooks';

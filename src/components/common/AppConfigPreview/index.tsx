@@ -26,6 +26,7 @@ const AppConfigPreview = ({
 }: AppConfigPreviewProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [previewImage, setPreviewImage] = useState(previewPlaceholderIcon);
+  let isMounted = true;
   const currentFenceSideLength = useMemo(() => fenceSideLength || DEFAULT_FENCE_SIDE_LENGTH, [fenceSideLength]);
 
   const configPreviewClassNames = useMemo(
@@ -49,12 +50,17 @@ const AppConfigPreview = ({
     setIsLoading(isEmpty(images));
 
     const previewImg = await getPreviewImage(schemaCodeUrl);
-    setPreviewImage(previewImg);
-    setIsLoading(false);
+    if (isMounted) {
+      setPreviewImage(previewImg);
+      setIsLoading(false);
+    }
   }, [images, schemaCodeUrl, useNoPreviewIcon]);
 
   useEffect(function onInit() {
     fetchQuotePreview();
+    return () => {
+      isMounted = false
+    }
   }, []);
 
   if (isPDFMode() && !isNil(images)) {

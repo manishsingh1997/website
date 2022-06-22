@@ -1,0 +1,34 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
+.ProjectSignOff-topNav {
+  background-color: $gray-5;
+  padding: $v-16 $h-20;
+  height: $v-48;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid $gray-4;
+  border-radius: unset;
+  display: none;
+
+  @include phone {
+    display: flex;
+  }
+
+  &-desc {
+    width: max-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .icon {
+        margin-right: $h-10;
+        align-items: center;
+    }
+  }
+
+  .icon-arrow {
+    transform: rotate(270deg);
+  }
+}
