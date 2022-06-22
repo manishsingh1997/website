@@ -122,7 +122,7 @@
     "xlsx": "^0.18.5"
   },
   "dependencies": {
-    "@ergeon/3d-lib": "8.43.5",
+    "@ergeon/3d-lib": "8.44.0",
     "@ergeon/core-components": "^4.4.1",
     "@ergeon/draw-map": "4.5.4",
     "@ergeon/erg-customer-auth": "0.4.0",
