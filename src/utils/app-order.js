@@ -66,3 +66,15 @@ export const isQuoteApproved = (quote) => {
 export const isQuoteExpired = (quote) => {
   return quote && isPastDate(quote['expires_at']);
 };
+
+export const isQuoteAddressValid = (quote) => {
+  const hasValidAddress = Boolean(quote?.order.house.address || quote?.order.house.customer.main_address);
+
+  if (!hasValidAddress) {
+    console.warn(
+      `Quote Inconsistency Error - quote #${quote?.id} has empty address for house #${quote?.order.house.id}.`
+    );
+  }
+
+  return hasValidAddress;
+};

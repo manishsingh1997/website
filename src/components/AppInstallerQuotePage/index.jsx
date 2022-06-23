@@ -4,7 +4,7 @@ import {Route} from 'react-router-dom';
 
 import {isPDFMode} from 'utils/utils';
 import {parseAPIError} from 'utils/api.ts';
-import {formatPrice} from 'utils/app-order';
+import {formatPrice, isQuoteAddressValid} from 'utils/app-order';
 import CustomerGIDContext from 'context-providers/CustomerGIDContext';
 
 import {getQuoteDetails} from 'api/app';
@@ -114,12 +114,19 @@ export default class AppInstallerQuotePage extends React.Component {
     if (!quote) {
       return null;
     }
+    if (!isQuoteAddressValid(quote)) {
+      return (
+        <QuoteError
+          description={
+            'The quote is missing an address and cannot be displayed. Please message your Ergeon representative.'
+          }
+          title="Quote Inconsistency"
+        />
+      );
+    }
 
     const {customer} = quote.order.house;
-    const quoteLines = prepareQuoteLines(
-      quote['quote_lines'],
-      quote,
-    );
+    const quoteLines = prepareQuoteLines(quote['quote_lines'], quote);
     const newQuoteLink = this.getNewQuoteLink();
 
     return (

@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+// TODO ENG-14646 re-enable eslint-complexity checker after refactoring
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
@@ -18,7 +20,13 @@ import { DIRECT_PREVIEW_SLUG } from 'website/constants';
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
 import { isPDFMode, showUpcomingFeatures } from '../../utils/utils';
 import { parseAPIError } from '../../utils/api.ts';
-import { formatPrice, isQuoteReplaced, isQuoteCancelled, isQuoteExpired } from '../../utils/app-order';
+import {
+  formatPrice,
+  isQuoteAddressValid,
+  isQuoteReplaced,
+  isQuoteCancelled,
+  isQuoteExpired
+} from '../../utils/app-order';
 import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
 import QuoteError from '../common/AppQuoteComponents/QuoteError';
 import { prepareQuoteApprovalLines } from '../common/AppQuoteComponents/utils';
@@ -76,7 +84,7 @@ export default class AppCustomerQuotePage extends React.Component {
     return this.context;
   }
 
-  isSignOffPDFView(){
+  isSignOffPDFView() {
     return location.pathname.includes('/sign-off');
   }
 
@@ -225,7 +233,7 @@ export default class AppCustomerQuotePage extends React.Component {
 
   async onSubmitSignature(value, type) {
     let signatureData = null;
-    this.setState((prev) => ({...prev, isSignLoading: true}));
+    this.setState((prev) => ({ ...prev, isSignLoading: true }));
 
     if (!value || !type) return;
     try {
@@ -239,26 +247,26 @@ export default class AppCustomerQuotePage extends React.Component {
           signedPDF: signoff_pdf,
         };
       }
-      this.setState((prev) => ({ ...prev, signatureData, isCustomerSigned: true, isSignLoading: false}));
+      this.setState((prev) => ({ ...prev, signatureData, isCustomerSigned: true, isSignLoading: false }));
     } catch (err) {
-      this.setState({ isSignLoading: false,});
+      this.setState({ isSignLoading: false, });
       console.warn(err);
     }
   }
 
   renderSignOffPdfView() {
-    const { isCustomerSigned, isSignLoading, signatureData, customerSignOffData} = this.state;
+    const { isCustomerSigned, isSignLoading, signatureData, customerSignOffData } = this.state;
     const asPDF = isPDFMode();
 
     return showUpcomingFeatures('ENG-13851') && (
-        <ProjectSignOffPopUp
-          asPDF={asPDF}
-          isSigned={isCustomerSigned}
-          loading={isSignLoading}
-          onSubmit={this.onSubmitSignature.bind(this)}
-          orderData={customerSignOffData}
-          signatureData={signatureData}
-        />
+      <ProjectSignOffPopUp
+        asPDF={asPDF}
+        isSigned={isCustomerSigned}
+        loading={isSignLoading}
+        onSubmit={this.onSubmitSignature.bind(this)}
+        orderData={customerSignOffData}
+        signatureData={signatureData}
+      />
     );
   }
 
@@ -268,7 +276,7 @@ export default class AppCustomerQuotePage extends React.Component {
 
   render() {
     const { match } = this.props;
-    const { 
+    const {
       isLoading,
       quoteApproval,
       quoteApprovalError,
@@ -310,7 +318,18 @@ export default class AppCustomerQuotePage extends React.Component {
     const { auth } = this.props;
     const asPDF = isPDFMode();
 
-    if (this.isSignOffPDFView() && asPDF && isCustomerSigned ) {
+    if (!isQuoteAddressValid(quote)) {
+      return (
+        <QuoteError
+          description={
+            'The quote is missing an address and cannot be displayed. Please message your Ergeon representative.'
+          }
+          title="Quote Inconsistency"
+        />
+      );
+    }
+
+    if (this.isSignOffPDFView() && asPDF && isCustomerSigned) {
       return this.renderSignOffPdfView()
     }
 

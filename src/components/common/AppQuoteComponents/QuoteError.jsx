@@ -8,6 +8,8 @@ import NotFoundPage from '../../../components/NotFoundPage';
 
 export default class QuoteError extends React.Component {
   static propTypes = {
+    title: PropTypes.string,
+    description: PropTypes.string,
     quoteError: PropTypes.shape({
       statusCode: PropTypes.number,
       data: PropTypes.object,
@@ -15,22 +17,17 @@ export default class QuoteError extends React.Component {
   };
 
   render() {
-    const {statusCode, data} = this.props.quoteError;
+    const {title, description, quoteError} = this.props;
 
-    if (statusCode === HTTP_STATUS_NOT_FOUND) {
+    if (quoteError?.statusCode === HTTP_STATUS_NOT_FOUND) {
       return <NotFoundPage />;
-    }
-
-    let error = '';
-    if (data && data.detail) {
-      error = {detail: error};
     }
 
     return (
       <Notification mode="embed" type="Error">
-        There was an error trying to retrieve quote.
+        <h6>{title || 'There was an error trying to retrieve quote.'}</h6>
         <br />
-        {error}
+        {quoteError?.data?.detail || description}
       </Notification>
     );
   }
