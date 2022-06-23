@@ -10,7 +10,7 @@ enum SupportedStates {
 }
 
 // we also need to match the correct State otherwise we might get wrong results
-export const doesCityPageExists = (city: string | undefined, state: string, citiesData: CitiesJSONData | null) => {
+export const getExistingCitySlug = (city: string | undefined, state: string, citiesData: CitiesJSONData | null) => {
   const cityPage = citiesData?.cities.find(c => c.city === city && c.state === state);
   if (cityPage) {
     return cityPage.slug;
@@ -27,9 +27,11 @@ export const doesCityPageExists = (city: string | undefined, state: string, citi
       return citiesData?.cities.find(c => c.city === SupportedStates.TexasRedirect)?.slug;
     case SupportedStates.Georgia:
       return citiesData?.cities.find(c => c.city === SupportedStates.GeorgiaRedirect)?.slug;
-    default:
-      // eslint-disable-next-line no-case-declarations
+    default: {
       const exhaustiveCheck = state as never;
       throw new Error(`Cannot find city for state: "${exhaustiveCheck}"`);
+    }
   }
 };
+
+export const getCityPath = (citySlug: string) => `/fences/cities/${citySlug}`;

@@ -23,7 +23,8 @@ import CustomerApp from 'routes/CustomerApp';
 import Cities from 'routes/Cities';
 import publicRoutes from 'routes/public';
 
-import { citiesRedirectRoutes } from './routes/redirects';
+import {GeoTargetRoutingInterceptor} from './containers/RoutingInterceptor';
+import {citiesRedirectRoutes} from './routes/redirects';
 import store from './flux/store';
 import '@ergeon/core-components/dist/main.css';
 import './main.scss';
@@ -67,28 +68,30 @@ render(
             window.location = process.env.BLOG_HOST;
           }}
         />
-        <Layout>
-          <ErrorBoundary>
-            <Switch>
-              {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
-              {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
-              {publicRoutes.map((props) => (
-                <Route key={props.path} {...omit(props, 'sitemap')} />
-              ))}
-              {citiesRedirectRoutes.map((route) => (
-                <Route exact key={route.from} path={route.from}>
-                  <Redirect to={{pathname: route.to, state: {status: 301}}} />
-                </Route>
-              ))}
-              <Route component={CustomerApp} path="/app/:customerGid" />
-              <Route component={Cities} path="/fences/cities" />
-              <Route component={NotFoundPage} exact path="*" />
-              {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
-            </Switch>
-          </ErrorBoundary>
-        </Layout>
+        <GeoTargetRoutingInterceptor>
+          <Layout>
+            <ErrorBoundary>
+              <Switch>
+                {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
+                {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
+                {publicRoutes.map((props) => (
+                  <Route key={props.path} {...omit(props, 'sitemap')} />
+                ))}
+                {citiesRedirectRoutes.map((route) => (
+                  <Route exact key={route.from} path={route.from}>
+                    <Redirect to={{pathname: route.to, state: {status: 301}}} />
+                  </Route>
+                ))}
+                <Route component={CustomerApp} path="/app/:customerGid" />
+                <Route component={Cities} path="/fences/cities" />
+                <Route component={NotFoundPage} exact path="*" />
+                {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
+              </Switch>
+            </ErrorBoundary>
+          </Layout>
+        </GeoTargetRoutingInterceptor>
       </Switch>
-     
+
     </Router>
   </Provider>,
   document.getElementById('root'),
