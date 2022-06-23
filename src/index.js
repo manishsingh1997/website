@@ -23,8 +23,8 @@ import CustomerApp from 'routes/CustomerApp';
 import Cities from 'routes/Cities';
 import publicRoutes from 'routes/public';
 
+import { citiesRedirectRoutes } from './routes/redirects';
 import store from './flux/store';
-
 import '@ergeon/core-components/dist/main.css';
 import './main.scss';
 
@@ -75,6 +75,11 @@ render(
               {publicRoutes.map((props) => (
                 <Route key={props.path} {...omit(props, 'sitemap')} />
               ))}
+              {citiesRedirectRoutes.map((route) => (
+                <Route exact key={route.from} path={route.from}>
+                  <Redirect to={{pathname: route.to, state: {status: 301}}} />
+                </Route>
+              ))}
               <Route component={CustomerApp} path="/app/:customerGid" />
               <Route component={Cities} path="/fences/cities" />
               <Route component={NotFoundPage} exact path="*" />
@@ -83,6 +88,7 @@ render(
           </ErrorBoundary>
         </Layout>
       </Switch>
+     
     </Router>
   </Provider>,
   document.getElementById('root'),
