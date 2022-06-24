@@ -79,7 +79,7 @@ render(
                 ))}
                 {citiesRedirectRoutes.map((route) => (
                   <Route exact key={route.from} path={route.from}>
-                    <Redirect to={{pathname: route.to, state: {status: 301}}} />
+                    <Redirect to={{pathname: route.to, search: window.location.search, state: {status: 301}}} />
                   </Route>
                 ))}
                 <Route component={CustomerApp} path="/app/:customerGid" />
