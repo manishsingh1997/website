@@ -48,7 +48,7 @@ const TellUsForm = (props: TellUsFormProps) => {
         <div className='TellUsForm-Wrapper'>
           <h3 className="TellUsForm-Header">Tell us about your project</h3>
           <p className="TellUsForm-Text">
-            We're here to help! Tell us about your project needs and we'll get in touch within 24 hours.
+            We're here to help! Please describe your fencing needs and we'll get in touch within 24 hours.
           </p>
           <div>
             <SimpleLeadForm
