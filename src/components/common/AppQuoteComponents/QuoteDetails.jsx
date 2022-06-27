@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Notification, Spinner, ImageCard, Title, googleIntegration} from '@ergeon/core-components';
+import {Notification, Spinner, ImageCard, Title, googleIntegration, utils} from '@ergeon/core-components';
+import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 import DrawMap from '@ergeon/draw-map';
 import classNames from 'classnames';
-import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
-import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import {Link} from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 
@@ -91,8 +90,8 @@ export default class QuoteDetails extends React.Component {
   renderQuoteExpiredMessage() {
     return (
       <Notification mode="embed" type="Error">
-        This quote is expired. Call <a href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a> to request a
-        new quote revision.
+        This quote is expired. Call <a href={`tel:${PHONE_NUMBER}`}>{utils.formatPhoneNumber(PHONE_NUMBER)}</a> to
+        request a new quote revision.
       </Notification>
     );
   }
@@ -207,7 +206,7 @@ export default class QuoteDetails extends React.Component {
             factors throughout the year, therefore our quotes are only good for 15 days. Your quote may not change, but
             we would like to update it for you. You clicking approve has alerted us and we are already in the process of
             updating your quote and someone will be in touch you shortly. If you would rather not wait, simply contact
-            us at <a href={`tel:${PHONE_NUMBER}`}>{formatPhoneNumber(PHONE_NUMBER)}</a>.
+            us at <a href={`tel:${PHONE_NUMBER}`}>{utils.formatPhoneNumber(PHONE_NUMBER)}</a>.
           </Notification>
         )}
         {this.renderProjectImages()}

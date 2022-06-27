@@ -1,8 +1,8 @@
 import React from 'react';
 import ClassNames from 'classnames';
 
+import {utils} from '@ergeon/core-components';
 import {PHONE_NUMBER,FENCE_SLUG} from '@ergeon/core-components/src/constants';
-import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
 import AddressForm from 'containers/AddressForm';
 import {isChristmasTime} from 'utils/utils';
 import Slider from './Slider';
@@ -46,7 +46,7 @@ class SliderHero extends React.Component {
           <AddressForm onChange={this.handleAddressInput.bind(this)} product={product} value={this.state.lead} />
         </div>
         <a className="phone-link white" href={`tel:${PHONE_NUMBER}`}>
-          {formatPhoneNumber(PHONE_NUMBER)}
+          {utils.formatPhoneNumber(PHONE_NUMBER)}
         </a>
       </div>
     );

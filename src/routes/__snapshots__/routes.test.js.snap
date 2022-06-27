@@ -180,7 +180,7 @@ exports[`Routes Cities endpoints 1`] = `
    
   Route to /fences/cities/solano-county-suisun-city-ca
    
-  Route to /fences/cities/dallas-county-sunnyvale-tx
+  Route to /fences/cities/santa-clara-county-sunnyvale-ca
    
   Route to /fences/cities/ventura-county-thousand-oaks-ca
    
@@ -188,7 +188,7 @@ exports[`Routes Cities endpoints 1`] = `
    
   Route to /fences/cities/stanislaus-county-turlock-ca
    
-  Route to /fences/cities/fulton-county-union-city-ga
+  Route to /fences/cities/alameda-county-union-city-ca
    
   Route to /fences/cities/solano-county-vacaville-ca
    

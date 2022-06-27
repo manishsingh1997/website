@@ -6,6 +6,7 @@ import IconPhoneGreen from '@ergeon/core-components/src/assets/icon-phone-green.
 
 import TellUsForm from '../../containers/TellUsForm';
 import { City } from './types';
+import { makePhoneLink } from './utils';
 
 import './MainBanner.scss';
 
@@ -31,7 +32,7 @@ const MainBanner = (props: MainBannerProps) => {
               </li>
             ))}
           </ul>
-          <a className="MainBanner-callLink" href={`tel:${phone.replace(/[^\d]/m, '')}`}>
+          <a className="MainBanner-callLink" href={makePhoneLink(phone)}>
             <ReactSVG className="icon" src={IconPhoneGreen} />
             <span>Call us now {phone}</span>
           </a>

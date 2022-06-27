@@ -39,7 +39,7 @@ export type City = {
     label: string,
   }>,
   product: {
-    type: 'Fence',
+    type: 'fence',
   },
   rating: Record<'Angi' | 'BBB' | 'Google' | 'Thumbtack' | 'Yelp', string>,
   review: Record<'Yelp' | 'Google', {

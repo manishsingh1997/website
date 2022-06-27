@@ -6,8 +6,7 @@ import {ReactSVG} from 'react-svg';
 
 import logOutIcon from '@ergeon/core-components/src/assets/icon-logout.brand.svg';
 import userIcon from '@ergeon/core-components/src/assets/icon-user.brand.svg';
-import {DropdownMenu, NavLinkContext, Notification, Spinner, SimpleTopPanel} from '@ergeon/core-components';
-import {formatPhoneNumber} from '@ergeon/core-components/src/libs/utils/utils';
+import {DropdownMenu, NavLinkContext, Notification, Spinner, SimpleTopPanel, utils} from '@ergeon/core-components';
 
 import phoneIcon from 'assets/icon-phone.svg';
 import {isChristmasTime, isPDFMode, showUpcomingFeatures} from 'utils/utils';
@@ -153,7 +152,7 @@ export default class Layout extends React.Component {
       <div className="phone-number">
         <ReactSVG className="phone-number__icon" src={phoneIcon} />
         <a className="phone-number__link" href={`tel:${phoneNumber}`}>
-          {formatPhoneNumber(phoneNumber)}
+          {utils.formatPhoneNumber(phoneNumber)}
         </a>
       </div>
     );

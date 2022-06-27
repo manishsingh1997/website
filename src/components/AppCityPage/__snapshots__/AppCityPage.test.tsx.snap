@@ -17,7 +17,7 @@ exports[`AppCityPage should render 1`] = `
           <h1
             class="h2 MainBanner-title"
           >
-            The best Fence installation company in Alameda
+            The best fence installation company in Alameda
           </h1>
           <ul
             class="unordered MainBanner-list"
@@ -35,7 +35,7 @@ exports[`AppCityPage should render 1`] = `
                   />
                 </div>
               </div>
-              Design, review and edit your FREE Fence quote online using our custom tool.
+              Design, review and edit your FREE fence quote online using our custom tool.
             </li>
             <li
               class="MainBanner-listItem"
@@ -65,7 +65,7 @@ exports[`AppCityPage should render 1`] = `
                   />
                 </div>
               </div>
-              Understand your Fence quote with our transparent pricing.
+              Understand your fence quote with our transparent pricing.
             </li>
             <li
               class="MainBanner-listItem"
@@ -80,12 +80,12 @@ exports[`AppCityPage should render 1`] = `
                   />
                 </div>
               </div>
-              Enjoy your beautiful new Fence built by our team of skilled local craftsmen.
+              Enjoy your beautiful new fence built by our team of skilled local craftsmen.
             </li>
           </ul>
           <a
             class="MainBanner-callLink"
-            href="tel:510) 698-1800"
+            href="tel:+15106981800"
           >
             <div
               class="icon"
@@ -390,7 +390,7 @@ exports[`AppCityPage should render 1`] = `
       <h2
         class="h3 spacing after__is-6"
       >
-        Our Alameda Fence Packages
+        Our Alameda fence Packages
       </h2>
       <p
         class="spacing after__is-30"

@@ -1,22 +1,7 @@
 import '@testing-library/jest-dom';
-import { formatPhoneNumber } from '../../utils';
 import { isFullAddress } from '../utils';
 
 describe('SimpleLeadForm Utils tests', () => {
-  describe('formatPhoneNumber tests', () => {
-    it('should format string to a valid phone number', () => {
-      const phone = '1234567890';
-      const val = formatPhoneNumber(phone);
-      expect(val).toBe('(123) 456-7890');
-    });
-
-    it('should return null due invalid string', () => {
-      const phone = 'test';
-      const val = formatPhoneNumber(phone);
-      expect(val).toBeNull();
-    });
-  });
-
   describe('isFullAddress tests', () => {
     it('should return true if address is full', () => {
       const address = {

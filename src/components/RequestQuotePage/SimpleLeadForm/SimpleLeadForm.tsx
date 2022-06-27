@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState, useCallback, useMemo, useRef, useEffect }
 import classNames from 'classnames';
 import * as Sentry from '@sentry/browser';
 import { CatalogType } from '@ergeon/3d-lib';
-import { Button, FormField, Spinner, Input, useGooglePlacesAutocomplete } from '@ergeon/core-components';
+import { Button, FormField, Spinner, Input, useGooglePlacesAutocomplete, utils } from '@ergeon/core-components';
 import { useForm, Controller } from 'react-hook-form';
 import { UPCOMING_FEATURES_PARAM } from '@ergeon/erg-utils-js';
 // @ts-ignore
@@ -14,7 +14,7 @@ import { showUpcomingFeatures } from '../../../utils/utils';
 import { identify, track, trackError, trackTawkLeadEvent } from '../../../utils/analytics';
 import { CUSTOMER_LEAD_CREATED } from '../../../utils/events';
 import { DEFAULT_SOURCE_VALUE } from '../../../website/constants';
-import { Address, formatPhoneNumber } from '../utils';
+import { Address } from '../utils';
 import { getOrder, isFullAddress } from './utils';
 import { Config, User } from './types';
 
@@ -70,7 +70,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
     const newData = {
       ...fieldsData,
       product: fieldsData.product.value,
-      phone: formatPhoneNumber(fieldsData.phone) || '',
+      phone: utils.formatPhoneNumber(fieldsData.phone) || '',
     };
     delete newData.phoneEmail; // remove as we have phone/email fields
     const baseEventData = await getBaseEventData();
