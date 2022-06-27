@@ -71,42 +71,42 @@
   },
   {
     "from": "cities/atlanta",
-    "to": "fences/cities/fulton-county-atlanta-ga",
+    "to": "/fences/cities/fulton-county-atlanta-ga",
     "active": true
   },
   {
     "from": "cities/austin",
-    "to": "fences/cities/harris-county-houston-tx",
+    "to": "/fences/cities/harris-county-houston-tx",
     "active": true
   },
   {
     "from": "cities/dallas",
-    "to": "fences/cities/dallas-county-dallas-tx",
+    "to": "/fences/cities/dallas-county-dallas-tx",
     "active": true
   },
   {
     "from": "cities/fort-worth",
-    "to": "fences/cities/tarrant-county-fort-worth-tx",
+    "to": "/fences/cities/tarrant-county-fort-worth-tx",
     "active": true
   },
   {
     "from": "cities/fresno",
-    "to": "fences/cities/fresno-county-fresno-ca",
+    "to": "/fences/cities/fresno-county-fresno-ca",
     "active": true
   },
   {
     "from": "cities/houston",
-    "to": "fences/cities/harris-county-houston-tx",
+    "to": "/fences/cities/harris-county-houston-tx",
     "active": true
   },
   {
     "from": "cities/lake-forest",
-    "to": "fences/cities/orange-county-lake-forest-ca",
+    "to": "/fences/cities/orange-county-lake-forest-ca",
     "active": true
   },
   {
     "from": "cities/los-angeles",
-    "to": "fences/cities/los-angeles-county-los-angeles-ca",
+    "to": "/fences/cities/los-angeles-county-los-angeles-ca",
     "active": true
   },
   {
@@ -121,7 +121,7 @@
   },
   {
     "from": "cities/napa",
-    "to": "fences/cities/napa-county-napa-ca",
+    "to": "/fences/cities/napa-county-napa-ca",
     "active": true
   },
   {
@@ -131,12 +131,12 @@
   },
   {
     "from": "cities/oakland",
-    "to": "fences/cities/alameda-county-oakland-ca",
+    "to": "/fences/cities/alameda-county-oakland-ca",
     "active": true
   },
   {
     "from": "cities/palo-alto",
-    "to": "fences/cities/santa-clara-county-palo-alto-ca",
+    "to": "/fences/cities/santa-clara-county-palo-alto-ca",
     "active": true
   },
   {
@@ -146,7 +146,7 @@
   },
   {
     "from": "cities/riverside",
-    "to": "fences/cities/riverside-county-riverside-ca",
+    "to": "/fences/cities/riverside-county-riverside-ca",
     "active": true
   },
   {
@@ -156,22 +156,22 @@
   },
   {
     "from": "cities/sacramento",
-    "to": "fences/cities/sacramento-county-sacramento-ca",
+    "to": "/fences/cities/sacramento-county-sacramento-ca",
     "active": true
   },
   {
     "from": "cities/san-antonio",
-    "to": "fences/cities/harris-county-houston-tx",
+    "to": "/fences/cities/harris-county-houston-tx",
     "active": true
   },
   {
     "from": "cities/san-diego",
-    "to": "fences/cities/san-diego-county-san-diego-ca",
+    "to": "/fences/cities/san-diego-county-san-diego-ca",
     "active": true
   },
   {
     "from": "cities/san-francisco",
-    "to": "fences/cities/san-francisco-county-san-francisco-ca",
+    "to": "/fences/cities/san-francisco-county-san-francisco-ca",
     "active": true
   },
   {
@@ -181,37 +181,37 @@
   },
   {
     "from": "cities/san-jose",
-    "to": "fences/cities/santa-clara-county-san-jose-ca",
+    "to": "/fences/cities/santa-clara-county-san-jose-ca",
     "active": true
   },
   {
     "from": "cities/santa-rosa",
-    "to": "fences/cities/sonoma-county-santa-rosa-ca",
+    "to": "/fences/cities/sonoma-county-santa-rosa-ca",
     "active": true
   },
   {
     "from": "cities/stockton",
-    "to": "fences/cities/san-joaquin-county-stockton-ca",
+    "to": "/fences/cities/san-joaquin-county-stockton-ca",
     "active": true
   },
   {
     "from": "cities/thousand-oaks",
-    "to": "fences/cities/ventura-county-thousand-oaks-ca",
+    "to": "/fences/cities/ventura-county-thousand-oaks-ca",
     "active": true
   },
   {
     "from": "cities/walnut-creek",
-    "to": "fences/cities/contra-costa-county-walnut-creek-ca",
+    "to": "/fences/cities/contra-costa-county-walnut-creek-ca",
     "active": true
   },
   {
     "from": "cities/watsonville",
-    "to": "fences/cities/santa-cruz-county-watsonville-ca",
+    "to": "/fences/cities/santa-cruz-county-watsonville-ca",
     "active": true
   },
   {
     "from": "cities/yuba-city",
-    "to": "fences/cities/sutter-county-yuba-city-ca",
+    "to": "/fences/cities/sutter-county-yuba-city-ca",
     "active": true
   },
   {

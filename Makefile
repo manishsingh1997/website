@@ -81,7 +81,7 @@ deploy-production:
 	LEVEL=production make sentry-upload-sourcemaps
 
 ensure-redirects:
-	$(NODE) $(PROCESS_PATH)/redirects/ensureRedirects.js $(S3_BUCKET)
+	$(NODE) --unhandled-rejections=strict $(PROCESS_PATH)/redirects/ensureRedirects.js $(S3_BUCKET)
 
 s3upload: s3upload-main s3upload-sitemap
 	@if [ -z "$(S3_BUCKET)" ]; then >&2 echo S3_BUCKET must be supplied; exit 1; fi;
