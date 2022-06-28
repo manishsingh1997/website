@@ -2,6 +2,8 @@ import React, {memo, useMemo} from 'react';
 import {useLocation} from 'react-router';
 import {SimpleFooter, LocationsFooter} from '@ergeon/core-components';
 import {City} from '../AppCityPage/types';
+import {formatFooterLicenses} from '../AppCityPage/utils';
+import {CA_URL_LICENSE} from '../AppCityPage/constants';
 
 type LocationsList = {
   text: string;
@@ -40,13 +42,26 @@ const AppFooter = ({city, locationsList, ...footerProps}: AppFooterProps) => {
     case FooterView.Home:
       return (
         <>
-          <SimpleFooter {...footerProps} licenses={['C13 Fencing license']} />
+          <SimpleFooter
+            {...footerProps}
+            licenses={[
+              {
+                name: 'C13 Fencing license',
+                url: CA_URL_LICENSE,
+              },
+            ]}
+          />
           <LocationsFooter listArray={locationsList} listTitle="Locations" />
         </>
       );
     case FooterView.Cities:
       return (
-        <SimpleFooter {...footerProps} address={city?.address} licenses={city?.licenses} phoneNumber={city?.phone} />
+        <SimpleFooter
+          {...footerProps}
+          address={city?.address}
+          licenses={formatFooterLicenses(city?.licenses, city?.license?.url)}
+          phoneNumber={city?.phone}
+        />
       );
     default:
       return <SimpleFooter {...footerProps} />;
