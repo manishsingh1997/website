@@ -6,7 +6,6 @@ import FAQPage from 'components/FAQPage';
 import HelpLandingPage from 'components/HelpLandingPage';
 import HelpPage from 'components/HelpPage';
 import HomePage from 'components/HomePage';
-import LocationsPage from 'components/LocationsPage';
 import PhotoGallery from 'components/PhotoGallery';
 import RequestQuotePage from 'containers/RequestQuotePage';
 import WarrantiesPage from 'components/WarrantiesPage';
@@ -48,11 +47,6 @@ export const basicRoutes = [
     component: WarrantiesPage,
     exact: true,
     path: '/licenses-warranties',
-  },
-  {
-    component: LocationsPage,
-    exact: true,
-    path: '/locations',
   },
   {
     component: RequestQuotePage,

@@ -1,7 +1,7 @@
 const FROM_URL = '/cities';
 const TO_URL = '/fences/cities';
 
-export const citiesRedirectRoutes = [
+const citiesRedirectRoutes = [
   {
     from: `${FROM_URL}/atlanta`,
     to: `${TO_URL}/fulton-county-atlanta-ga`,
@@ -96,3 +96,15 @@ export const citiesRedirectRoutes = [
   },
 ];
 
+const pageRedirectRoutes = [
+  {
+    from: '/cities',
+    to: '/',
+  },
+  {
+    from: '/locations',
+    to: '/',
+  },
+];
+
+export const redirectRoutes = [...pageRedirectRoutes, ...citiesRedirectRoutes];

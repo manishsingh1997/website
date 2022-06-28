@@ -24,7 +24,7 @@ import Cities from 'routes/Cities';
 import publicRoutes from 'routes/public';
 
 import {GeoTargetRoutingInterceptor} from './containers/RoutingInterceptor';
-import {citiesRedirectRoutes} from './routes/redirects';
+import {redirectRoutes} from './routes/redirects';
 import store from './flux/store';
 import '@ergeon/core-components/dist/main.css';
 import './main.scss';
@@ -77,7 +77,7 @@ render(
                 {publicRoutes.map((props) => (
                   <Route key={props.path} {...omit(props, 'sitemap')} />
                 ))}
-                {citiesRedirectRoutes.map((route) => (
+                {redirectRoutes.map((route) => (
                   <Route exact key={route.from} path={route.from}>
                     <Redirect to={{pathname: route.to, search: window.location.search, state: {status: 301}}} />
                   </Route>
@@ -91,7 +91,6 @@ render(
           </Layout>
         </GeoTargetRoutingInterceptor>
       </Switch>
-
     </Router>
   </Provider>,
   document.getElementById('root'),
