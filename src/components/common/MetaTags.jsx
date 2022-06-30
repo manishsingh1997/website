@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import compact from 'lodash/compact';
 import get from 'lodash/get';
+import {useLocation} from 'react-router-dom';
 
 import {MetaTags} from '@ergeon/core-components';
 
@@ -14,6 +15,8 @@ import {logDev} from '../../utils/log';
  * in the <head> every time the location is changed.
  */
 const MetaTagsConnected = ({auth = {}}) => {
+  const location = useLocation();
+
   const {user} = auth;
 
   /**
@@ -55,7 +58,7 @@ const MetaTagsConnected = ({auth = {}}) => {
 
       return meta;
     },
-    [user]
+    [user, location.pathname]
   );
 
   return <MetaTags {...{getMeta}} />;

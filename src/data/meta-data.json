@@ -11,6 +11,10 @@
     "title": "Help & Customer Service | Ergeon.com",
     "description": "Our mission is to simplify home improvement by empowering skilled local contractors, contact us to learn how we can help you with your new fence project."
   },
+  "/help/search": {
+    "title": "Help & Customer Service | Ergeon.com",
+    "description": "Our mission is to simplify home improvement by empowering skilled local contractors, contact us to learn how we can help you with your new fence project."
+  },
   "/gallery": {
     "title": "Photo Gallery | Ergeon.com",
     "description": "Check out our satisfied customer's fence and gate installation photos."
@@ -23,6 +27,10 @@
     "title": "Picture Frame, With Lattice | Fence Photos | Photo Gallery | Ergeon.com",
     "description": "Check out our satisfied customer's picture frame with lattice fence installation photos."
   },
+  "/gallery/fence/picture-frame/short-fence": {
+    "title": "Picture Frame, Short Fence | Fence Photos | Photo Gallery | Ergeon.com",
+    "description": "Check out our satisfied customer's picture frame short fence fence installation photos."
+  },
   "/gallery/fence/nail-up/dog-ear": {
     "title": "Nail Up, Dog Ear | Fence Photos | Photo Gallery | Ergeon.com",
     "description": "Check out our satisfied customer's nail up with dog ear fence installation photos."
@@ -31,13 +39,113 @@
     "title": "Nail Up, Flat Top | Fence Photos | Photo Gallery | Ergeon.com",
     "description": "Check out our satisfied customer's nail up with flat top fence installation photos."
   },
+  "/gallery/fence/nail-up/short-fence": {
+    "title": "Nail Up, Short Fence | Fence Photos | Photo Gallery | Ergeon.com",
+    "description": "Check out our satisfied customer's nail up with short fence fence installation photos."
+  },
+  "/gallery/fence/nail-up/with-lattice": {
+    "title": "Nail Up, With Lattice | Fence Photos | Photo Gallery | Ergeon.com",
+    "description": "Check out our satisfied customer's nail up with with lattice fence installation photos."
+  },
   "/gallery/fence/horizontal": {
     "title": "Horizontal | Fence Photos | Photo Gallery | Ergeon.com",
     "description": "Check out our satisfied customer's horizontal fence installation photos."
   },
+  "/gallery/fence/horizontal/nail-up": {
+    "title": "Horizontal, Nail Up | Fence Photos | Photo Gallery | Ergeon.com",
+    "description": "Check out our satisfied customer's horizontal with nail up fence installation photos."
+  },
+  "/gallery/fence/horizontal/picture-frame": {
+    "title": "Horizontal, Picture Frame | Fence Photos | Photo Gallery | Ergeon.com",
+    "description": "Check out our satisfied customer's horizontal with picture frame fence installation photos."
+  },
+  "/gallery/fence/horizontal/with-lattice": {
+    "title": "Horizontal, With Lattice | Fence Photos | Photo Gallery | Ergeon.com",
+    "description": "Check out our satisfied customer's horizontal with with lattice fence installation photos."
+  },
+  "/gallery/fence/chain-link": {
+    "title": "Chain Link | Fence Photos | Photo Gallery | Ergeon.com",
+    "description": "Check out our satisfied customer's chain link fence installation photos."
+  },
+  "/gallery/fence/boxed-frame": {
+    "title": "Boxed Frame | Fence Photos | Photo Gallery | Ergeon.com",
+    "description": "Check out our satisfied customer's boxed frame fence installation photos."
+  },
+  "/gallery/fence/staining/transparent": {
+    "title": "Staining Transparent | Fence Photos | Photo Gallery | Ergeon.com",
+    "description": "Check out our satisfied customer's staining transparent fence installation photos."
+  },
+  "/gallery/fence/staining/semi-transparent": {
+    "title": "Staining Semi Transparent | Fence Photos | Photo Gallery | Ergeon.com",
+    "description": "Check out our satisfied customer's staining semi transparent fence installation photos."
+  },
+  "/gallery/fence/staining/solid": {
+    "title": "Solid | Fence Photos | Photo Gallery | Ergeon.com",
+    "description": "Check out our satisfied customer's staining solid fence installation photos."
+  },
+  "/gallery/fence/lumber": {
+    "title": "Lumber | Fence Photos | Photo Gallery | Ergeon.com",
+    "description": "Check out our satisfied customer's lumber fence installation photos."
+  },
   "/gallery/fence/before-after": {
     "title": "Before & After | Fence Photos | Photo Gallery | Ergeon.com",
     "description": "Visit our before and after photo gallery to see our satisfied customer's fence installation projects."
+  },
+  "/gallery/fence/vinyl": {
+    "title": "Vinyl | Fence Photos | Photo Gallery | Ergeon.com",
+    "description": "Check out our satisfied customer's vinyl fence installation photos."
+  },
+  "/gallery/gate/single/z-frame": {
+    "title": "Single Z-frame | Photo Gallery | Gate Photos | Ergeon.com",
+    "description": "Check out our satisfied customer's single z-frame gate installation photos."
+  },
+  "/gallery/gate/single/box-frame": {
+    "title": "Single Box Frame | Photo Gallery | Gate Photos | Ergeon.com",
+    "description": "Check out our satisfied customer's single box frame gate installation photos."
+  },
+  "/gallery/gate/single/picture-frame": {
+    "title": "Single Picture Frame | Photo Gallery | Gate Photos | Ergeon.com",
+    "description": "Check out our satisfied customer's single picture frame gate installation photos."
+  },
+  "/gallery/gate/single/horizontal": {
+    "title": "Single Horizontal | Photo Gallery | Gate Photos | Ergeon.com",
+    "description": "Check out our satisfied customer's single horizontal gate installation photos."
+  },
+  "/gallery/gate/single/chain-link": {
+    "title": "Single Chain Link | Photo Gallery | Gate Photos | Ergeon.com",
+    "description": "Check out our satisfied customer's single chain link gate installation photos."
+  },
+  "/gallery/gate/single/vinyl": {
+    "title": "Single Vinyl | Photo Gallery | Gate Photos | Ergeon.com",
+    "description": "Check out our satisfied customer's single vinyl gate installation photos."
+  },
+  "/gallery/gate/double/z-frame": {
+    "title": "Double Z-frame | Photo Gallery | Gate Photos | Ergeon.com",
+    "description": "Check out our satisfied customer's double z-frame gate installation photos."
+  },
+  "/gallery/gate/double/box-frame": {
+    "title": "Double Box Frame | Photo Gallery | Gate Photos | Ergeon.com",
+    "description": "Check out our satisfied customer's double box frame gate installation photos."
+  },
+  "/gallery/gate/double/picture-frame": {
+    "title": "Double Picture Frame | Photo Gallery | Gate Photos | Ergeon.com",
+    "description": "Check out our satisfied customer's double picture frame gate installation photos."
+  },
+  "/gallery/gate/double/horizontal": {
+    "title": "Double Horizontal | Photo Gallery | Gate Photos | Ergeon.com",
+    "description": "Check out our satisfied customer's double horizontal gate installation photos."
+  },
+  "/gallery/gate/double/chain-link": {
+    "title": "Double Chain Link | Photo Gallery | Gate Photos | Ergeon.com",
+    "description": "Check out our satisfied customer's double chain link gate installation photos."
+  },
+  "/gallery/gate/double/vinyl": {
+    "title": "Double Vinyl | Photo Gallery | Gate Photos | Ergeon.com",
+    "description": "Check out our satisfied customer's double vinyl gate installation photos."
+  },
+  "/gallery/gate/sliding": {
+    "title": "Sliding | Photo Gallery | Gate Photos | Ergeon.com",
+    "description": "Check out our satisfied customer's sliding gate installation photos."
   },
   "/gallery/gate/nail-up/single": {
     "title": "Nail Up, Single | Photo Gallery | Gate Photos | Ergeon.com",
