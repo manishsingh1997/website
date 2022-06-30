@@ -1,3 +1,4 @@
+import {compact} from 'lodash';
 import {City} from './types';
 
 export const getAsset = (src: string, ext: 'jpeg' | 'pdf') => {
@@ -16,7 +17,7 @@ export const makePhoneLink = (phone: string, options = {countryCode: '+1'}) => {
 
 export const formatFooterLicenses = (licenses?: City['licenses'], licenseUrl?: string) => {
   if (!licenses) return null;
-  return licenses.map((license) => {
+  return compact(licenses).map((license) => {
     return {
       name: `License #: ${license}`,
       url: licenseUrl,

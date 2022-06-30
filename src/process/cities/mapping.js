@@ -1,6 +1,7 @@
 const {values} = require('lodash');
 
 const mapping = {
+  // City Multiproduct Page (template)
   city: {
     // Primary
     city: ['city'],
@@ -51,6 +52,7 @@ const mapping = {
     product: ['product', 'type'], // Fence & Concrete | Fence
     'fence & gate photo': ['product', 'data', 'fence', 'img'],
   },
+  // City Fence Page (template)
   product: {
     // Primary
     city: ['city'],
@@ -126,6 +128,7 @@ const mapping = {
     'blog img 3': ['blog', 'articles', 2, 'img'],
     'blog description 3': ['blog', 'articles', 2, 'description'],
   },
+  // Neighboring cities query
   neighboring: {
     city: ['city'],
     county: ['county'],
