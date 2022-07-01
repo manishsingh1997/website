@@ -41,7 +41,7 @@ const AppFooter = ({city, locationsList, ...footerProps}: AppFooterProps) => {
   const phoneLink = useMemo(() => {
     if (!city?.phone) return '';
     return (
-      <a data-track-call="true" href={makePhoneLink(city.phone)}>
+      <a className="LicenseWithLink" data-track-call="true" href={makePhoneLink(city.phone)}>
         {city.phone}
       </a>
     )
