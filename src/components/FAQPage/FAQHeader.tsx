@@ -11,7 +11,7 @@ const FAQHeader = () => (
           <h1 className="white spacing after__is-12">Frequently Asked Questions</h1>
           <div className="subheader h2 white">
             Feel free to{' '}
-            <a className="faq-page__call-us" href={`tel:${PHONE_NUMBER}`}>
+            <a className="faq-page__call-us" data-track-call="true" href={`tel:${PHONE_NUMBER}`}>
               call us{' '}
             </a>
             if you dont find your answer here

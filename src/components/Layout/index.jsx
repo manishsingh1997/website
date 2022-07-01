@@ -151,7 +151,7 @@ export default class Layout extends React.Component {
     return (
       <div className="phone-number">
         <ReactSVG className="phone-number__icon" src={phoneIcon} />
-        <a className="phone-number__link" href={`tel:${phoneNumber}`}>
+        <a className="phone-number__link" data-track-call="true" href={`tel:${phoneNumber}`}>
           {utils.formatPhoneNumber(phoneNumber)}
         </a>
       </div>

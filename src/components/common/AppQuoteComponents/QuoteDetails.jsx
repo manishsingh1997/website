@@ -90,8 +90,9 @@ export default class QuoteDetails extends React.Component {
   renderQuoteExpiredMessage() {
     return (
       <Notification mode="embed" type="Error">
-        This quote is expired. Call <a href={`tel:${PHONE_NUMBER}`}>{utils.formatPhoneNumber(PHONE_NUMBER)}</a> to
-        request a new quote revision.
+        This quote is expired. Call <a data-track-call="true" href={`tel:${PHONE_NUMBER}`}>
+          {utils.formatPhoneNumber(PHONE_NUMBER)}
+        </a> to request a new quote revision.
       </Notification>
     );
   }
@@ -206,7 +207,7 @@ export default class QuoteDetails extends React.Component {
             factors throughout the year, therefore our quotes are only good for 15 days. Your quote may not change, but
             we would like to update it for you. You clicking approve has alerted us and we are already in the process of
             updating your quote and someone will be in touch you shortly. If you would rather not wait, simply contact
-            us at <a href={`tel:${PHONE_NUMBER}`}>{utils.formatPhoneNumber(PHONE_NUMBER)}</a>.
+            us at <a data-track-call="true" href={`tel:${PHONE_NUMBER}`}>{utils.formatPhoneNumber(PHONE_NUMBER)}</a>.
           </Notification>
         )}
         {this.renderProjectImages()}

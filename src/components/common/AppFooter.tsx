@@ -2,7 +2,7 @@ import React, {memo, useMemo} from 'react';
 import {useLocation} from 'react-router';
 import {SimpleFooter, LocationsFooter} from '@ergeon/core-components';
 import {City} from '../AppCityPage/types';
-import {formatFooterLicenses} from '../AppCityPage/utils';
+import {formatFooterLicenses, makePhoneLink} from '../AppCityPage/utils';
 import {CA_URL_LICENSE} from '../AppCityPage/constants';
 
 type LocationsList = {
@@ -38,6 +38,15 @@ const AppFooter = ({city, locationsList, ...footerProps}: AppFooterProps) => {
     return FooterView.Default;
   }, [location.pathname]);
 
+  const phoneLink = useMemo(() => {
+    if (!city?.phone) return '';
+    return (
+      <a data-track-call="true" href={makePhoneLink(city.phone)}>
+        {city.phone}
+      </a>
+    )
+  }, [city]);
+
   switch (urlMatch) {
     case FooterView.Home:
       return (
@@ -60,7 +69,7 @@ const AppFooter = ({city, locationsList, ...footerProps}: AppFooterProps) => {
           {...footerProps}
           address={city?.address}
           licenses={formatFooterLicenses(city?.licenses, city?.license?.url)}
-          phoneNumber={city?.phone}
+          phoneNumber={phoneLink}
         />
       );
     default:

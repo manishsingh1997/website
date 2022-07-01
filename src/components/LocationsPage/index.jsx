@@ -13,7 +13,7 @@ class LocationsPage extends React.Component {
   renderPhoneNumber(phone) {
     return (
       <p className="p_phone">
-        Phone: <a href={`tel:+1${phone}`}>{phone}</a>
+        Phone: <a data-track-call="true" href={`tel:+1${phone}`}>{phone}</a>
       </p>
     );
   }

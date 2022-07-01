@@ -32,7 +32,7 @@ const MainBanner = (props: MainBannerProps) => {
               </li>
             ))}
           </ul>
-          <a className="MainBanner-callLink" href={makePhoneLink(phone)}>
+          <a className="MainBanner-callLink" data-track-call="true" href={makePhoneLink(phone)}>
             <ReactSVG className="icon" src={IconPhoneGreen} />
             <span>Call us now {phone}</span>
           </a>

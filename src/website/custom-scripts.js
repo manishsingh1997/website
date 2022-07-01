@@ -31,6 +31,14 @@ export default function () {
         link: link.getAttribute('href'),
       });
     }
+    // we need to check sometimes for parent element as target can be a child of the link
+    if (link.hasAttribute('data-track-call') || link.parentElement.hasAttribute('data-track-call')) {
+      track('Click to Call', {
+        type: 'link',
+        body: link.innerText,
+        link: link.getAttribute('href') || link.parentElement.getAttribute('href'),
+      });
+    }
   });
 
   let counter = 0;

@@ -47,7 +47,9 @@ const ContactUsPage = () => {
         <div className="phone">
           <p>Phone:</p>
           <p>
-            <a href={`tel:${constants.PHONE_NUMBER}`}>{utils.formatPhoneNumber(constants.PHONE_NUMBER)}</a>
+            <a data-track-call="true" href={`tel:${constants.PHONE_NUMBER}`}>
+                {utils.formatPhoneNumber(constants.PHONE_NUMBER)}
+            </a>
           </p>
         </div>
       </div>

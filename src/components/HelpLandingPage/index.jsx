@@ -9,7 +9,7 @@ import helpDefaultCategories from 'data/help-categories';
 const HelpLandingPage = (props) => {
   const subtitle = [
     'Feel free to ',
-    <a href={`tel:${PHONE_NUMBER}`} key="call-us-number">
+    <a data-track-call="true" href={`tel:${PHONE_NUMBER}`} key="call-us-number">
       call us
     </a>,
     ' if you don’t find your answer here',
