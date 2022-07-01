@@ -1,7 +1,8 @@
-import React, {useMemo} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {isQuoteDetailURL, isUnsubscribeURL} from '../../utils/urls';
 import {AnonymousUser, SideBar, UserError, LayoutView} from './components';
 import {AppLayoutProps} from './types';
+import {initSmartLook} from './utils';
 import './AppLayout.scss';
 
 const AppLayout = (props: AppLayoutProps) => {
@@ -23,6 +24,10 @@ const AppLayout = (props: AppLayoutProps) => {
     }
     return true;
   }, [location, isQuotePage]);
+
+  useEffect(() => {
+    initSmartLook();
+  }, []);
 
   if (!isLoading && !user && requiresAuthentication) {
     if (userError) {

@@ -167,6 +167,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
     "regenerator-runtime": "^0.13.7",
+    "smartlook-client": "^7.0.1",
     "validator": "^13.6.0",
     "vanilla-text-mask": "^5.1.1"
   },
