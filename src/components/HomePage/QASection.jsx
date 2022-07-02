@@ -75,7 +75,7 @@ class QASection extends React.Component {
       .concat('...'); // add ellipsis
     return (
       <div className="qa-section__question" key={id}>
-        <h6>{title}</h6>
+        <h3 className="h6">{title}</h3>
         {isExpanded
           ? <p dangerouslySetInnerHTML={{ __html: content }} />
           : <p>

@@ -11,13 +11,13 @@ exports[`MainTopBanner should match snapshot 1`] = `
       <div
         class="wrapper-1180"
       >
-        <h2
-          class="MainTopBanner-Content--Heading"
+        <h1
+          class="h2 MainTopBanner-Content--Heading"
         >
           Improving your outdoor
           <br />
            space can be easy & friendly
-        </h2>
+        </h1>
         <p
           class="MainTopBanner-Content--SubHeading"
         >

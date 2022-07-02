@@ -28,7 +28,7 @@ const PromoBlock = (props: PromoBlockProps) => {
       </div>
       <div className="promo-block__content">
         <div className="promo-block__content__wrapper">
-          <h3 className="spacing after__is-6">{title}</h3>
+          <h2 className="h3 spacing after__is-6">{title}</h2>
           <p>{subtitle}</p>
           <Button asAnchor className="spacing before__is-24" href={btnLink} size="large">
             {btnName}

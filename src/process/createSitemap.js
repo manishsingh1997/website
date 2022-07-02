@@ -8,6 +8,8 @@ import {getHelpNodesURLs} from 'api/sitemap';
 import {FencePhotoData, GatePhotoData} from 'data/photo-gallery';
 import {authRoutes, basicRoutes, galleryRoutes, helpRoutes} from 'routes/public';
 
+import citiesMinData from '../data/cities-min-data.json';
+import {CITIES_PAGE_PATH} from '../website/constants';
 import {createDirIfNotExists} from './utils';
 
 // this script is running outside of webpack, need to initialize dotenv directly
@@ -58,6 +60,10 @@ const getSitemapUrls = (routes) => {
   return paths.map((path) => `${HOME_PAGE_URL}${path}`);
 };
 
+const getCitiesURLs = () => {
+  return citiesMinData.map(({slug}) => `${HOME_PAGE_URL}${CITIES_PAGE_PATH}/${slug}`);
+};
+
 /**
  * Get the main sitemap.
  */
@@ -65,6 +71,7 @@ export const generateErgeonSitemap = async () => {
   const urls = sortBy([
     ...getSitemapUrls(authRoutes),
     ...getSitemapUrls(basicRoutes),
+    ...getCitiesURLs(),
     process.env.BLOG_HOST,
     process.env.STORE_HOST,
   ]);

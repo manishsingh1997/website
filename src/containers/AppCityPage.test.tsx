@@ -9,6 +9,7 @@ import cities from '../data/cities-full-data.json';
 
 import {AppCityPageProps} from '../components/AppCityPage/AppCityPage';
 import store from '../flux/store';
+import { CITIES_PAGE_PATH } from '../website/constants';
 import AppCityPage from './AppCityPage';
 
 jest.mock('../components/AppCityPage', () => ({city}: AppCityPageProps) => <>{city.slug}</>);
@@ -20,7 +21,7 @@ describe('AppCityPage container', () => {
     await act(async () => {
       render(
         <Provider store={store} >
-          <MemoryRouter initialEntries={[`/fences/cities/${citySlug}`]}>
+          <MemoryRouter initialEntries={[`${CITIES_PAGE_PATH}/${citySlug}`]}>
             <AppCityPage />
           </MemoryRouter>
         </Provider>
@@ -43,7 +44,7 @@ describe('AppCityPage container', () => {
       render(
         <Provider store={store} >
           <ErrorBoundary FallbackComponent={({error}) => <>{error.message}</>}>
-            <MemoryRouter initialEntries={[`/fences/cities/${citySlug}`]}>
+            <MemoryRouter initialEntries={[`${CITIES_PAGE_PATH}/${citySlug}`]}>
               <AppCityPage />
             </MemoryRouter>
           </ErrorBoundary>

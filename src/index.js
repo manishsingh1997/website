@@ -25,6 +25,7 @@ import publicRoutes from 'routes/public';
 
 import {GeoTargetRoutingInterceptor} from './containers/RoutingInterceptor';
 import {temporalRedirectRoutes} from './routes/redirects';
+import {CITIES_PAGE_PATH} from './website/constants';
 import store from './flux/store';
 import '@ergeon/core-components/dist/main.css';
 import './main.scss';
@@ -83,7 +84,7 @@ render(
                   </Route>
                 ))}
                 <Route component={CustomerApp} path="/app/:customerGid" />
-                <Route component={Cities} path="/fences/cities" />
+                <Route component={Cities} path={CITIES_PAGE_PATH} />
                 <Route component={NotFoundPage} exact path="*" />
                 {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
               </Switch>

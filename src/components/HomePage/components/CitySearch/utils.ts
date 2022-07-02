@@ -1,3 +1,4 @@
+import { CITIES_PAGE_PATH } from '../../../../website/constants';
 import { CitiesJSONData } from './types';
 
 enum SupportedStates {
@@ -34,4 +35,4 @@ export const getExistingCitySlug = (city: string | undefined, state: string, cit
   }
 };
 
-export const getCityPath = (citySlug: string) => `/fences/cities/${citySlug}`;
+export const getCityPath = (citySlug: string) => `${CITIES_PAGE_PATH}/${citySlug}`;

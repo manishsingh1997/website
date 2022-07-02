@@ -46,7 +46,7 @@ const TellUsForm = (props: TellUsFormProps) => {
     return (
       <section className="TellUsForm">
         <div className='TellUsForm-Wrapper'>
-          <h3 className="TellUsForm-Header">Tell us about your project</h3>
+          <h2 className="h3 TellUsForm-Header">Tell us about your project</h2>
           <p className="TellUsForm-Text">
             We're here to help! Please describe your fencing needs and we'll get in touch within 24 hours.
           </p>

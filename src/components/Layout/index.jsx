@@ -14,9 +14,11 @@ import {getMenuItems} from 'data/customer-app.ts';
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
 
-import cities from '../../data/cities-min-data.json';
-import './index.scss';
 import AppFooter from '../common/AppFooter';
+import cities from '../../data/cities-min-data.json';
+import {CITIES_PAGE_PATH} from '../../website/constants';
+
+import './index.scss';
 
 const SIGN_IN_LINK_ID = 'app-sign-in-link';
 
@@ -87,7 +89,7 @@ export default class Layout extends React.Component {
   getLocationsList() {
     return cities.map((city) => ({
       text: city.city,
-      url: `/fences/cities/${city.slug}`,
+      url: `${CITIES_PAGE_PATH}/${city.slug}`,
     }));
   }
 
@@ -173,17 +175,19 @@ export default class Layout extends React.Component {
           </div>
         )}
         <NavLinkContext.Provider value={NavLink}>
-          <SimpleTopPanel
-            customerMenu={this.renderDropdownMenu()}
-            ergeonUrl="/"
-            fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
-            onGetQuoteClick={() => this.props.history.push('/request-quote')}
-            pdfDetails={this.renderPdfDetails()}
-            pdfMode={asPDF}
-            showChristmasHat={this.isChristmasTime}
-            widthClass={widthClass}
-          ></SimpleTopPanel>
-          <div>{this.props.children}</div>
+          <header>
+            <SimpleTopPanel
+              customerMenu={this.renderDropdownMenu()}
+              ergeonUrl="/"
+              fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
+              onGetQuoteClick={() => this.props.history.push('/request-quote')}
+              pdfDetails={this.renderPdfDetails()}
+              pdfMode={asPDF}
+              showChristmasHat={this.isChristmasTime}
+              widthClass={widthClass}
+            ></SimpleTopPanel>
+          </header>
+          <main>{this.props.children}</main>
           {!asPDF && showFooter && (
             <AppFooter
               city={this.props.city.data}

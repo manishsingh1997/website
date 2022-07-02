@@ -2,7 +2,7 @@
 
 exports[`AppCityPage should render 1`] = `
 <div>
-  <main
+  <div
     class="AppCityPage"
   >
     <section
@@ -882,58 +882,53 @@ exports[`AppCityPage should render 1`] = `
     </section>
     <section>
       <div
-        class="remote-feature"
+        class="remote-features"
       >
         <div
-          class="video-popup__wrapper"
+          class="remote-features-wrapper"
         >
           <div
-            class="fog-popup"
-          />
-        </div>
-        <div
-          class="wrapper-1180"
-        >
-          <h2
-            class="h3 remote-feature__title"
+            class="remote-features-title"
           >
-            3 Ways We Make Your Installation Easy
-          </h2>
+            <h2
+              class="h3"
+            >
+              3 Ways We Make Your Installation Easy
+            </h2>
+          </div>
           <div
-            class="remote-feature__cards"
+            class="remote-features-cards"
           >
             <div
-              class="remote-feature__card"
+              class="remote-features-card"
             >
               <div
-                class="remote-feature__card__image-and-text"
+                class="remote-features-card-img"
+              >
+                <img
+                  alt="Video Call for your Onsite Visit"
+                  src="icon-remote-onsite.svg"
+                />
+              </div>
+              <div
+                class="remote-features-card-details"
               >
                 <div
-                  class="remote-feature__card__img"
+                  class="remote-features-card-info"
                 >
-                  <img
-                    alt="Video Call for your Onsite Visit"
-                    src="icon-remote-onsite.svg"
-                  />
-                </div>
-                <div
-                  class="remote-feature__card__text-part"
-                >
-                  <h5
-                    class="remote-feature__card__title"
+                  <h3
+                    class="h5 remote-features-card-title"
                   >
                     Video Call for your Onsite Visit
-                  </h5>
+                  </h3>
                   <p
-                    class="remote-feature__card__desc"
+                    class="remote-features-card-desc"
                   >
-                    Our Team is well equipped to guarantee an accurate quote for your project using satellite imagery and a video call.
+                    Our Team is well equipped to guarantee an accurate quote for your project using satellite imagery and a video consultation.
                   </p>
                 </div>
-              </div>
-              <div>
                 <a
-                  class="button button--primary button--size__medium taste__line remote-feature__card__button"
+                  class="button button--primary button--size__medium taste__line remote-features-card-button"
                   href="https://dev.ergeon.com/blog/post/a-walk-through-of-our-remote-experience"
                 >
                   Learn more
@@ -941,44 +936,42 @@ exports[`AppCityPage should render 1`] = `
               </div>
             </div>
             <div
-              class="remote-feature__card__sep-wrapper"
+              class="remote-features-card-sep-wrapper"
             >
               <div
-                class="remote-feature__card__sep-wrapper__line"
+                class="remote-features-card-sep-wrapper-line"
               />
             </div>
             <div
-              class="remote-feature__card"
+              class="remote-features-card"
             >
               <div
-                class="remote-feature__card__image-and-text"
+                class="remote-features-card-img"
+              >
+                <img
+                  alt="Approve your Quote & Pay Online"
+                  src="icon-pay-online.svg"
+                />
+              </div>
+              <div
+                class="remote-features-card-details"
               >
                 <div
-                  class="remote-feature__card__img"
+                  class="remote-features-card-info"
                 >
-                  <img
-                    alt="Approve your Quote & Pay Online"
-                    src="icon-pay-online.svg"
-                  />
-                </div>
-                <div
-                  class="remote-feature__card__text-part"
-                >
-                  <h5
-                    class="remote-feature__card__title"
+                  <h3
+                    class="h5 remote-features-card-title"
                   >
                     Approve your Quote & Pay Online
-                  </h5>
+                  </h3>
                   <p
-                    class="remote-feature__card__desc"
+                    class="remote-features-card-desc"
                   >
                     You can review, approve, and pay for your quote all online!
                   </p>
                 </div>
-              </div>
-              <div>
                 <a
-                  class="button button--primary button--size__medium taste__line remote-feature__card__button"
+                  class="button button--primary button--size__medium taste__line remote-features-card-button"
                   href="https://dev.ergeon.com/blog/post/how-our-remote-quoting-works"
                 >
                   Learn more
@@ -986,44 +979,42 @@ exports[`AppCityPage should render 1`] = `
               </div>
             </div>
             <div
-              class="remote-feature__card__sep-wrapper"
+              class="remote-features-card-sep-wrapper"
             >
               <div
-                class="remote-feature__card__sep-wrapper__line"
+                class="remote-features-card-sep-wrapper-line"
               />
             </div>
             <div
-              class="remote-feature__card"
+              class="remote-features-card"
             >
               <div
-                class="remote-feature__card__image-and-text"
+                class="remote-features-card-img"
+              >
+                <img
+                  alt="Stay Inside While We Install Your Fence"
+                  src="icon-no-contact-install.svg"
+                />
+              </div>
+              <div
+                class="remote-features-card-details"
               >
                 <div
-                  class="remote-feature__card__img"
+                  class="remote-features-card-info"
                 >
-                  <img
-                    alt="Stay Inside While We Install Your Fence"
-                    src="icon-no-contact-install.svg"
-                  />
-                </div>
-                <div
-                  class="remote-feature__card__text-part"
-                >
-                  <h5
-                    class="remote-feature__card__title"
+                  <h3
+                    class="h5 remote-features-card-title"
                   >
                     Stay Inside While We Install Your Fence
-                  </h5>
+                  </h3>
                   <p
-                    class="remote-feature__card__desc"
+                    class="remote-features-card-desc"
                   >
-                    The Construction Team can install with zero physical contact with you and are equipped with full construction details.
+                    Our Delivery team is ready with all construction details to perform a contact-free installation.
                   </p>
                 </div>
-              </div>
-              <div>
                 <a
-                  class="button button--primary button--size__medium taste__line remote-feature__card__button"
+                  class="button button--primary button--size__medium taste__line remote-features-card-button"
                   href="https://dev.ergeon.com/blog/post/contactless-fence-installation"
                 >
                   Learn more
@@ -1031,6 +1022,13 @@ exports[`AppCityPage should render 1`] = `
               </div>
             </div>
           </div>
+        </div>
+        <div
+          class="video-popup__wrapper"
+        >
+          <div
+            class="fog-popup"
+          />
         </div>
       </div>
     </section>
@@ -1186,6 +1184,6 @@ exports[`AppCityPage should render 1`] = `
     >
       Tell Us Form
     </section>
-  </main>
+  </div>
 </div>
 `;

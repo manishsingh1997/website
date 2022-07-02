@@ -11,9 +11,9 @@ const MainTopBanner = () => {
     <section className="MainTopBanner">
       <div className="MainTopBanner-Content">
         <div className="wrapper-1180">
-          <h2 className="MainTopBanner-Content--Heading">
+          <h1 className="h2 MainTopBanner-Content--Heading">
             Improving your outdoor<br /> space can be easy & friendly
-          </h2>
+          </h1>
           <p className="MainTopBanner-Content--SubHeading">
             Find Ergeon fence expertise in your area
           </p>

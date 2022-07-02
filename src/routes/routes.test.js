@@ -1,6 +1,7 @@
 import React from 'react';
 import {render} from '@testing-library/react';
 
+import {CITIES_PAGE_PATH} from '../website/constants';
 import Cities from './Cities';
 import CustomerApp from './CustomerApp';
 
@@ -26,7 +27,7 @@ jest.mock('../components/NotFoundPage', () => ({children}) => children);
 describe('Routes', () => {
   test('Cities endpoints', () => {
     const {container} = render(
-      <Cities location={{search: ''}} match={{url: '/fences/cities'}} />
+      <Cities location={{search: ''}} match={{url: CITIES_PAGE_PATH}} />
     );
     expect(container).toMatchSnapshot();
   });

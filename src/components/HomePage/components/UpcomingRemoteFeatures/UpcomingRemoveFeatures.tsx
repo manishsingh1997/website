@@ -31,7 +31,7 @@ const RemoteFeatures = () => {
           </div>
           <div className="remote-features-card-details">
             <div className="remote-features-card-info">
-              <h5 className="remote-features-card-title">{title}</h5>
+              <h3 className="h5 remote-features-card-title">{title}</h3>
               <p className="remote-features-card-desc">{desc}</p>
             </div>
             {videoLink && (
@@ -66,7 +66,7 @@ const RemoteFeatures = () => {
     <div className="remote-features">
       <div className="remote-features-wrapper">
         <div className="remote-features-title">
-          <h3>3 Ways We Make Your Installation Easy</h3>
+          <h2 className="h3">3 Ways We Make Your Installation Easy</h2>
         </div>
         <div className="remote-features-cards">
           {renderCard({

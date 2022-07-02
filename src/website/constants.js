@@ -43,3 +43,5 @@ export const TIMEZONE = 'America/Los_Angeles';
 
 export const STAFF_MAP_GID = '8sKm037W1MZ8Xw_S';
 export const LOCATIONS_MAP_GID = '9G6yK68VZCj9Ij4s';
+
+export const CITIES_PAGE_PATH = '/fences/cities';
