@@ -3,7 +3,7 @@ import {useLocation} from 'react-router';
 import {SimpleFooter, LocationsFooter} from '@ergeon/core-components';
 import {City} from '../AppCityPage/types';
 import {formatFooterLicenses, makePhoneLink} from '../AppCityPage/utils';
-import {CA_URL_LICENSE} from '../AppCityPage/constants';
+import {CA_LICENSE_URL, GA_LICENSE_URL} from '../AppCityPage/constants';
 
 type LocationsList = {
   text: string;
@@ -56,7 +56,11 @@ const AppFooter = ({city, locationsList, ...footerProps}: AppFooterProps) => {
             licenses={[
               {
                 name: 'License #: C13 Fencing license',
-                url: CA_URL_LICENSE,
+                url: CA_LICENSE_URL,
+              },
+              {
+                name: 'License #: RBQA007338',
+                url: GA_LICENSE_URL,
               },
             ]}
           />
