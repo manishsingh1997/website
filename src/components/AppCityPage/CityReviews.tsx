@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { City } from './types';
 import { getAsset } from './utils';
@@ -6,19 +6,26 @@ import { getAsset } from './utils';
 import './MainBanner.scss';
 
 type MainBannerProps = {
-  yelp: City['review']['Yelp'],
-  google: City['review']['Google'],
+  yelp?: City['review']['Yelp'],
+  google?: City['review']['Google'],
+}
+
+type Reviews = City['review']['Yelp' | 'Google'] & {
+  type: string,
 }
 
 const CityReviews = (props: MainBannerProps) => {
   const { yelp, google } = props;
+
+  const reviews = useMemo(() => [
+    yelp && { ...yelp, type: 'Yelp' },
+    google && { ...google, type: 'Google' },
+  ].filter(Boolean) as Reviews[], [yelp, google]);
+
   return (
     <section className="wrapper-1180 CityReviews">
       <div className="flex-wrapper CityReviews-container">
-        {[
-          { ...yelp, type: 'Yelp' },
-          { ...google, type: 'Google' },
-        ].map(review => (
+        {reviews.map(review => (
           <div className="CityReviews-review" key={review.type}>
             <div className="CityReviews-imgContainer">
               {review.img &&
