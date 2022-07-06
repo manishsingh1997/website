@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import { DataRow, Collapsible } from '@ergeon/core-components';
+import React, {useMemo, useState} from 'react';
+import {DataRow, Collapsible} from '@ergeon/core-components';
 
 import './CustomerDetails.scss';
 
@@ -10,7 +10,7 @@ type CustomerData = {
   email: string;
   main_address: {
     formatted_address: string;
-  }
+  };
 };
 
 type QuoteData = {
@@ -28,13 +28,13 @@ type QuoteData = {
   };
 };
 
-type CustomerDetailsProps = {
+export type CustomerDetailsProps = {
   customer: CustomerData;
   quote: QuoteData;
 };
 
 const CustomerDetails = (props: CustomerDetailsProps) => {
-  const { customer, quote } = props;
+  const {customer, quote} = props;
   const [isOpen, setIsOpen] = useState(false);
 
   const customerDetails = useMemo(() => {
@@ -51,10 +51,10 @@ const CustomerDetails = (props: CustomerDetailsProps) => {
 
   return (
     <div className="CustomerDetails">
-      <div className="desktop-length">{customerDetails}</div>
+      <div className="desktop-length">{!isOpen && customerDetails}</div>
       <div className="mobile-length">
         <Collapsible isOpen={isOpen} onChangeOpen={() => setIsOpen(!isOpen)} title="Customer details">
-          {customerDetails}
+          {isOpen && customerDetails}
         </Collapsible>
       </div>
     </div>
