@@ -70,6 +70,7 @@ export default class AppCustomerQuotePage extends React.Component {
     isCustomerSigned: false,
     signatureData: null,
     customerSignOffData: null,
+    quoteStatus: null,
   };
 
   async componentDidMount() {
@@ -132,6 +133,7 @@ export default class AppCustomerQuotePage extends React.Component {
         quoteApprovalError: null,
         paymentMethodError: null,
         customerSignOffData: orderData,
+        quoteStatus: quote?.status?.label.toLocaleLowerCase(),
       });
       const { setPDFHeaderPhoneAction } = this.props;
       const { market_phone_number: phoneNumber } = data.data.quote;
@@ -254,9 +256,18 @@ export default class AppCustomerQuotePage extends React.Component {
     }
   }
 
+  showSignoffComponents() {
+    const {quoteStatus} = this.state;
+    return  ['approved', 'completed'].includes(quoteStatus.toLocaleLowerCase());
+  }
+
   renderSignOffPdfView() {
     const { isCustomerSigned, isSignLoading, signatureData, customerSignOffData } = this.state;
     const asPDF = isPDFMode();
+
+    if (!this.showSignoffComponents()){
+      return;
+    }
 
     return showUpcomingFeatures('ENG-13851') && (
       <ProjectSignOffPopUp
@@ -335,7 +346,9 @@ export default class AppCustomerQuotePage extends React.Component {
 
     return (
       <>
-        {showUpcomingFeatures('ENG-13851') && !asPDF && <ProjectSignOffTopNav isSigned={this.state.isCustomerSigned} />}
+        {showUpcomingFeatures('ENG-13851') && !asPDF && this.showSignoffComponents() && (
+          <ProjectSignOffTopNav isSigned={this.state.isCustomerSigned} />
+        )}
         <Route exact path={`${match.path}/config/:configID`}>
           <BuildSpecs />
         </Route>
@@ -374,14 +387,14 @@ export default class AppCustomerQuotePage extends React.Component {
           )}
           {isMultiPartyQuote && <AdditionalApprovalsList additionalQuoteApprovals={otherQuoteApprovals} />}
           <ExplanationSection asPDF={asPDF} contractUrl={contractUrl} quoteType={quoteType} />
-          {showUpcomingFeatures('ENG-13851') && !asPDF && (
+          {showUpcomingFeatures('ENG-13851') && !asPDF && this.showSignoffComponents() && (
             <ProjectSignOff
               isSigned={isCustomerSigned}
               pdfURL={signatureData?.signedPDF}
               signedDate={signatureData?.signedDate}
             />
           )}
-          {showUpcomingFeatures('ENG-13851') && !asPDF && (
+          {showUpcomingFeatures('ENG-13851') && !asPDF && this.showSignoffComponents() &&(
             <ProjectSignOffPopUp
               isSigned={isCustomerSigned}
               loading={isSignLoading}

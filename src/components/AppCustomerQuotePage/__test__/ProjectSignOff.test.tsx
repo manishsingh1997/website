@@ -19,7 +19,7 @@ jest.mock('react-signature-canvas', () => (_props: unknown) => {
 });
 
 beforeEach(() => {
-  jest.spyOn(API, 'getQuoteApprovalDetails').mockImplementation(mockAPI.getQuoteApprovalDetails);
+  jest.spyOn(API, 'getQuoteApprovalDetails').mockImplementation(mockAPI.ApprovedQuoteDetails);
   jest.spyOn(API, 'reviewQuoteApproval').mockImplementation(mockAPI.reviewQuoteApproval);
   jest.spyOn(API, 'getCustomerSignOffData').mockImplementation(mockAPI.getCustomerSignOffData);
   jest.spyOn(API, 'updateCustomerSignOffRequirement').mockImplementation(mockAPI.updateCustomerSignOffRequirement);
@@ -301,3 +301,23 @@ describe('Project signoff', () => {
     });
   });
 });
+
+describe('Project signoff - approved quote', () => {
+  test('Do not shot Project signoff for quotes not approved', async () => {
+  jest.spyOn(API, 'getQuoteApprovalDetails').mockImplementation(mockAPI.CancelledQuoteDetails);
+
+    const history = createBrowserHistory({
+      basename: '/app/BkU5j7FtBtxjkEAU/quote-approvals/W8C5V0zBVqQQt3hk/direct',
+    });
+    render(
+      <Router history={history}>
+        <AppCustomerQuotePage {...props} />
+      </Router>
+    );
+
+    const loader = screen.getAllByTestId(matcher('loader-image', 'i'));
+    await waitForElementToBeRemoved(loader);
+    expect(screen.queryByText(matcher('Begin Project Sign-off', 'i'))).toBeNull();
+
+  })
+})

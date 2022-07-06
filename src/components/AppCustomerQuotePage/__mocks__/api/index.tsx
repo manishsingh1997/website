@@ -1,10 +1,22 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import quoteApproval from '../data/quoteApproval';
+import CancelledQuote from '../data/CancelledQuote';
+import ApprovedQuote from '../data/ApprovedQuote';
 
 // @ts-ignore
-export const getQuoteApprovalDetails = (customerGID: string, quoteApprovalSecret: string) => {
+export const ApprovedQuoteDetails = (customerGID: string, quoteApprovalSecret: string) => {
   return Promise.resolve({
-    data: quoteApproval,
+    data: ApprovedQuote,
+    status: 200,
+    statusText: 'OK',
+    headers: '',
+    config: {},
+  });
+};
+
+// @ts-ignore
+export const CancelledQuoteDetails = (customerGID: string, quoteApprovalSecret: string) => {
+  return Promise.resolve({
+    data: CancelledQuote,
     status: 200,
     statusText: 'OK',
     headers: '',
