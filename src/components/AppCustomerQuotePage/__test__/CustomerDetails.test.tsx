@@ -2,7 +2,7 @@ import React from 'react';
 import {render, screen, fireEvent} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import CustomerDetails, {CustomerDetailsProps} from '../CustomerDetails';
-import quoteApproval from '../__mocks__/data/quoteApproval';
+import quoteApproval from '../__mocks__/data/ApprovedQuote';
 
 const mockCustomerDetailsProps: CustomerDetailsProps = {
   customer: quoteApproval.customer,
