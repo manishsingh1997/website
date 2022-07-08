@@ -1,4 +1,7 @@
 /* eslint-disable max-len */
+import moment from 'moment';
+
+const tomorrow = moment().add('day', 1).toDate();
 
 export default {
   id: 330370,
@@ -72,6 +75,7 @@ export default {
     secret: 'Oz2Nb2NAm4xTEMDw',
     total_length: '0',
     total_area: '0',
+    expires_at: tomorrow,
     status: {
       id: 45,
       type: 'quote_status',

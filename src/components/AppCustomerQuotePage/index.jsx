@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import { isEmpty, some } from 'lodash';
+import moment from 'moment';
 
 import {
   getQuoteApprovalDetails,
@@ -256,12 +257,11 @@ export default class AppCustomerQuotePage extends React.Component {
   }
 
   showSignoffComponents() {
-    const {quoteApproval} = this.state;
-    const quoteStatus = quoteApproval?.quote?.status?.label.toLocaleLowerCase();
-    const approved_at = !!quoteApproval?.approved_at;
-    const expires_at = !!quoteApproval?.quote?.expires_at;
+    const { quoteApproval: { quote, approved_at: approvedAt } } = this.state;
+    const quoteStatus = quote?.status?.label.toLocaleLowerCase();
+    const isExpired = quote?.expires_at ? moment(quote?.expires_at).isAfter(new Date()) : false;
     const allowedStatus = ['approved', 'completed'];
-    return  approved_at && !expires_at && allowedStatus.includes(quoteStatus.toLocaleLowerCase());
+    return  !!approvedAt && isExpired && allowedStatus.includes(quoteStatus.toLocaleLowerCase());
   }
 
   renderSignOffPdfView() {
