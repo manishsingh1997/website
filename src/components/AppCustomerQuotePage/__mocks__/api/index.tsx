@@ -2,6 +2,8 @@
 import CancelledQuote from '../data/CancelledQuote';
 import ApprovedQuote from '../data/ApprovedQuote';
 
+type SignOffRequestData = { signoff_img?: string, signoff_text?: string };
+
 // @ts-ignore
 export const ApprovedQuoteDetails = (customerGID: string, quoteApprovalSecret: string) => {
   return Promise.resolve({
@@ -36,25 +38,17 @@ export const reviewQuoteApproval = (customerGID: string, quoteApprovalSecret: st
 };
 
 // @ts-ignore
-export const getCustomerSignOffData = (configID: string) => {
-  return {
+export const updateCustomerSignOffRequirement = (customerGID, quoteApprovalSecret,  data: SignOffRequestData) => {
+  return Promise.resolve({
     data: {
-      signoff_at: null,
-      signoff_by: null,
-      signoff_pdf: null,
-      signoff_img: null,
-    },
-  };
-};
-
-// @ts-ignore
-export const updateCustomerSignOffRequirement = (customerGID: string, data: Record<string, string>) => {
-  return {
-    data: {
-      signoff_img: data.value,
+      signoff_img: data?.signoff_img ||  data?.signoff_text,
       signoff_by: '1',
       signoff_at: new Date().toDateString(),
       signoff_pdf: '',
     },
-  };
+    status: 200,
+    statusText: 'OK',
+    headers: '',
+    config: {},
+  });
 };

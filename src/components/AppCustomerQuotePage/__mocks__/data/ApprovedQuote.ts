@@ -70,7 +70,6 @@ export default {
     ],
     preview_quote_line: null,
     secret: 'Oz2Nb2NAm4xTEMDw',
-    expires_at: '2022-07-12T23:59:59-07:00',
     total_length: '0',
     total_area: '0',
     status: {
@@ -255,7 +254,7 @@ export default {
   merged_customer_pdf: 'https://apidev-ergeon-in.s3.amazonaws.com/sample/example.pdf',
   previously_approved_price: '0.00',
   project_total_price: '-200.00',
-  signoff_at: '2022-06-27T18:07:44.109726-07:00',
+  signoff_at: null,
   signoff_by: null,
-  signoff_pdf: 'https://apidev-ergeon-in.s3.amazonaws.com/sample/example.pdf',
+  signoff_pdf: null,
 };

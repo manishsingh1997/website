@@ -9,7 +9,6 @@ import {
   getQuoteApprovalDetails,
   reviewQuoteApproval as reviewQuoteApprovalAPI,
   approveQuoteApproval as approveQuoteApprovalAPI,
-  getCustomerSignOffData,
   updateCustomerSignOffRequirement
 } from 'api/app';
 
@@ -70,13 +69,11 @@ export default class AppCustomerQuotePage extends React.Component {
     isCustomerSigned: false,
     signatureData: null,
     customerSignOffData: null,
-    quoteStatus: null,
   };
 
   async componentDidMount() {
     await this.getQuoteApprovalDetailsFromAPI();
     await this.reviewQuoteApproval();
-    showUpcomingFeatures('ENG-13851') && await this.getSignOffData();
   }
 
   static contextType = CustomerGIDContext;
@@ -128,12 +125,12 @@ export default class AppCustomerQuotePage extends React.Component {
         customerAddress: customer?.main_address?.formatted_address,
         quoteDate: quote?.sent_to_customer_at,
       };
+      showUpcomingFeatures('ENG-13851') && this.getSignOffData(data?.data);
       this.setState({
         quoteApproval: data.data,
         quoteApprovalError: null,
         paymentMethodError: null,
         customerSignOffData: orderData,
-        quoteStatus: quote?.status?.label.toLocaleLowerCase(),
       });
       const { setPDFHeaderPhoneAction } = this.props;
       const { market_phone_number: phoneNumber } = data.data.quote;
@@ -215,11 +212,10 @@ export default class AppCustomerQuotePage extends React.Component {
     history.push(`${location.pathname.replace(/\/$/, '')}/config/${configID}`, { label });
   }
 
-  async getSignOffData() {
+  getSignOffData(data) {
     let signatureData = null;
-    const { data } = getCustomerSignOffData(this.customerGID);
     const { signoff_img, signoff_at, signoff_pdf } = data || {};
-    if (signoff_img) {
+    if (signoff_at) {
       signatureData = {
         value: signoff_img,
         type: 'draw',
@@ -236,15 +232,18 @@ export default class AppCustomerQuotePage extends React.Component {
   async onSubmitSignature(value, type) {
     let signatureData = null;
     this.setState((prev) => ({ ...prev, isSignLoading: true }));
-
     if (!value || !type) return;
+    const signOffPhrase = type === 'draw' ? 'signoff_img' : 'signoff_text';
     try {
-      const { data } = updateCustomerSignOffRequirement(this.customerGID, { value, type });
+      const {data} = await updateCustomerSignOffRequirement(this.customerGID, this.props.match.params.secret, {
+        [signOffPhrase]: value,
+        signoff_type: type,
+      });
       const { signoff_img, signoff_at, signoff_pdf } = data || {};
       if (signoff_img) {
         signatureData = {
           value: signoff_img,
-          type, // due to mocking, to be changed to draw
+          type: 'draw', // so it can be displayed as image
           signedDate: signoff_at,
           signedPDF: signoff_pdf,
         };
@@ -257,8 +256,12 @@ export default class AppCustomerQuotePage extends React.Component {
   }
 
   showSignoffComponents() {
-    const {quoteStatus} = this.state;
-    return  ['approved', 'completed'].includes(quoteStatus.toLocaleLowerCase());
+    const {quoteApproval} = this.state;
+    const quoteStatus = quoteApproval?.quote?.status?.label.toLocaleLowerCase();
+    const approved_at = !!quoteApproval?.approved_at;
+    const expires_at = !!quoteApproval?.quote?.expires_at;
+    const allowedStatus = ['approved', 'completed'];
+    return  approved_at && !expires_at && allowedStatus.includes(quoteStatus.toLocaleLowerCase());
   }
 
   renderSignOffPdfView() {

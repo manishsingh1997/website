@@ -17,15 +17,15 @@ type ProjectSignOffCustomerInfoProps =  {
         <div className="Project-signOff-popup-items" data-testid="signoff-item-title">
           <div className="Project-signOff-popup-item">
             <span className="title">ORDER ID</span>
-            <p>{orderData?.orderId}</p>
+            <p>{orderData.orderId}</p>
           </div>
           <div className="Project-signOff-popup-item">
             <span className="title">DATE</span>
-            <p>{moment(orderData?.quoteDate).format('MMM DD, YYYY')}</p>
+            <p>{moment(orderData.quoteDate || Date.now()).format('MMM DD, YYYY')}</p>
           </div>
           <div className="Project-signOff-popup-item is-popup-desktop">
             <span className="title">CUSTOMER</span>
-            <p>{orderData?.customerName}</p>
+            <p>{orderData.customerName}</p>
           </div>
         </div>
 

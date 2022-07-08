@@ -12,6 +12,7 @@ import * as API from '../../../api/app';
 
 import * as mockAPI from '../__mocks__/api';
 import {initGoogleLoader, getGoogleLoader} from '../__mocks__/googleMapIntegration';
+import quoteApproval from '../__mocks__/data/ApprovedQuote';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 jest.mock('react-signature-canvas', () => (_props: unknown) => {
@@ -21,7 +22,6 @@ jest.mock('react-signature-canvas', () => (_props: unknown) => {
 beforeEach(() => {
   jest.spyOn(API, 'getQuoteApprovalDetails').mockImplementation(mockAPI.ApprovedQuoteDetails);
   jest.spyOn(API, 'reviewQuoteApproval').mockImplementation(mockAPI.reviewQuoteApproval);
-  jest.spyOn(API, 'getCustomerSignOffData').mockImplementation(mockAPI.getCustomerSignOffData);
   jest.spyOn(API, 'updateCustomerSignOffRequirement').mockImplementation(mockAPI.updateCustomerSignOffRequirement);
 
   jest.spyOn(googleIntegration, 'initGoogleLoader').mockImplementation(initGoogleLoader);
@@ -152,11 +152,12 @@ describe('Project signoff', () => {
       const input = document.querySelector('.erg-input--text') as HTMLInputElement;
       const submitButton = screen.getByText(matcher('Submit', 'i'));
 
-      fireEvent.change(input, {target: {value: 'john doe'}});
+      fireEvent.change(input, {target: {value: 'sampleDataUrl'}});
       fireEvent.click(submitButton);
+      const buttonLoader = screen.getByTestId(matcher('button-spinner', 'i'));
 
-      const signature = screen.getByText(matcher('john doe', 'i'));
-
+      await waitForElementToBeRemoved(buttonLoader);
+      const signature = screen.getByAltText(matcher('Signature', 'i'));
       expect(submitButton).not.toBeInTheDocument();
       expect(input).not.toBeInTheDocument();
       expect(signature).toBeInTheDocument();
@@ -191,14 +192,19 @@ describe('Project signoff', () => {
 
     test('it displays pdf view', async () => {
       // eslint-disable-next-line
-      jest.spyOn(API, 'getCustomerSignOffData').mockImplementation((_customerGID): any => {
+      jest.spyOn(API, 'getQuoteApprovalDetails').mockImplementation((_customerGID): any => {
         return {
           data: {
+            ...quoteApproval,
             signoff_at: new Date().toString(),
             signoff_by: '1',
             signoff_pdf: 'http://local',
             signoff_img: IconCross,
           },
+          status: 200,
+          statusText: 'OK',
+          headers: '',
+          config: {},
         };
       });
       render(

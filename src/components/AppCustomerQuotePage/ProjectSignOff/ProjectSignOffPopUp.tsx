@@ -38,7 +38,10 @@ const ProjectSignOffPopUp = (props: ProjectSignOffPopUpProps) => {
   const history = useHistory();
   const location = useLocation();
 
-  const showSignOffPopUp = new RegExp(PATH_NAME).test(location.pathname.trim());
+  const showSignOffPopUp = useMemo(() => {
+    return RegExp(PATH_NAME).test(location.pathname.trim());
+  }, [location]);
+
   const canvasRef = useRef<ReactSignatureCanvas>();
   const ref = useRef<HTMLDivElement>(null);
 
@@ -155,7 +158,7 @@ const ProjectSignOffPopUp = (props: ProjectSignOffPopUpProps) => {
 
   return (
     showSignOffPopUp && (
-      <Portal node={document?.querySelector('body')}>
+      <Portal node={document.querySelector('body')}>
         <div className={PopupClassName} ref={ref}>
           <div className="Project-signOff-popup-wrapper">
             <div className="Project-signOff-popup-header">
