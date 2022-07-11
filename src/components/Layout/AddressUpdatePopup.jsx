@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Portal} from 'react-portal';
-import {get} from 'lodash';
 
 import {AddressInput, Button} from '@ergeon/core-components';
-import {constants} from '@ergeon/3d-lib';
 import {getCheckedZIP} from 'api/lead';
 import {trackAddressEntered} from 'utils/analytics';
+import {updateLeadWithZipcode} from './utils';
 
 import './AddressUpdatePopup.scss';
 
@@ -27,20 +26,14 @@ class AddressUpdatePopup extends React.Component {
     loading: false,
   };
 
-  handleAddressSelected(lead) {
-    const zipcode = get(lead, `productAvailability.products[${lead.product_slug}]`)
-      ? lead.address.zipcode
-      : constants.DEFAULT_ZIP;
+  handleAddressSelected = (lead) => {
+    const updatedLead = updateLeadWithZipcode(lead);
+    this.props.updateModalLead(updatedLead);
+  };
 
-    this.props.updateModalLead({
-      ...lead,
-      zipcode,
-    });
-  }
-
-  handleAddressChange(value) {
+  handleAddressChange = (value) => {
     this.props.updateModalValue(value);
-  }
+  };
 
   handleAddressSubmit() {
     const {lead} = this.props;
@@ -70,13 +63,15 @@ class AddressUpdatePopup extends React.Component {
             <AddressInput
               getCheckedZIP={getCheckedZIP}
               loading={loading}
-              onChange={this.handleAddressChange.bind(this)}
-              onLoadEnds={() => this.setState({loading: false})}
+              onChange={this.handleAddressChange}
+              onLoadEnds={() => {
+                this.setState({loading: false});
+              }}
               onLoadStarts={(place) => {
                 this.setState({loading: true});
                 this.handleAddressChange(place['formated_address']);
               }}
-              onSubmit={this.handleAddressSelected.bind(this)}
+              onSubmit={this.handleAddressSelected}
               product={product}
               value={value}
             />
@@ -94,7 +89,7 @@ class AddressUpdatePopup extends React.Component {
                 Update Address
               </Button>
             </div>
-            <div className="Popup-close" onClick={this.handleClose.bind(this)}>
+            <div className="Popup-close" data-testid="close-icon-id" onClick={this.handleClose.bind(this)}>
               ×
             </div>
           </div>

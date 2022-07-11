@@ -9,14 +9,16 @@ import userIcon from '@ergeon/core-components/src/assets/icon-user.brand.svg';
 import {DropdownMenu, NavLinkContext, Notification, Spinner, SimpleTopPanel, utils} from '@ergeon/core-components';
 
 import phoneIcon from 'assets/icon-phone.svg';
-import {isChristmasTime, isPDFMode, showUpcomingFeatures} from 'utils/utils';
+
 import {getMenuItems} from 'data/customer-app.ts';
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from 'containers/AddressUpdatePopup';
 
+import {isChristmasTime, isPDFMode, showUpcomingFeatures} from '../../utils/utils';
 import AppFooter from '../common/AppFooter';
 import cities from '../../data/cities-min-data.json';
 import {CITIES_PAGE_PATH} from '../../website/constants';
+import {checkRouteList} from './utils';
 
 import './index.scss';
 
@@ -66,24 +68,16 @@ export default class Layout extends React.Component {
     this.props.getCurrentUser();
   }
 
-  checkRouteList(routes = []) {
-    const {location} = this.props;
-    const pathname = location ? location.pathname : '/';
-    let included = false;
-    routes.forEach((path) => {
-      if (pathname.includes(path)) included = true;
-    });
-    return included;
-  }
-
   checkTemplateWidth() {
+    const {location} = this.props;
     const narrowTemplates = ['/request-quote', '/app/'];
-    return this.checkRouteList(narrowTemplates);
+    return checkRouteList(narrowTemplates, location);
   }
 
   isNoFooterTemplate() {
+    const {location} = this.props;
     const noFooterTemplates = ['/request-quote'];
-    return this.checkRouteList(noFooterTemplates);
+    return checkRouteList(noFooterTemplates, location);
   }
 
   getLocationsList() {
@@ -100,7 +94,7 @@ export default class Layout extends React.Component {
     if (isUserLoading || isAuthLoading) {
       return (
         <Link className="sign-in-link" key="dropp-loading" to="/app/sign-in">
-          <li className="link-wrapper">
+          <li className="link-wrapper" data-testid="sign-in-item">
             <div className="icon-and-arrow">
               <span>
                 <img className="sign-in-icon" src={userIcon} />

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import AddressUpdatePopup from 'components/Layout/AddressUpdatePopup';
+import AddressUpdatePopup from '../components/Layout/AddressUpdatePopup';
 import {updateLead, updateModalLead, updateModalValue, closeAddressUpdatePopup} from '../flux/actions/address';
 
 const mapStateToProps = ({address}) => {
