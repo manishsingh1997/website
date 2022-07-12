@@ -18,7 +18,7 @@ import {checkRouteList} from './utils';
 import './index.scss';
 
 const Layout = (props) => {
-  const {auth, children, history, getCurrentUser, location, phoneNumber} = props;
+  const {auth, children, history, getCurrentUser, location, phoneNumber, city} = props;
 
   useEffect(
     function getTheCurrentUser() {
@@ -105,7 +105,7 @@ const Layout = (props) => {
         <main>{children}</main>
         {!asPDF && showFooter && (
           <AppFooter
-            city={this.props.city.data}
+            city={city.data}
             ergeonUrl="/"
             fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
             locationsList={locationsList}
