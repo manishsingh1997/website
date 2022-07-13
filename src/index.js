@@ -9,7 +9,7 @@ import {Router, Route, Switch, Redirect} from 'react-router-dom';
 import {initUTMs} from '@ergeon/erg-utms';
 import omit from 'lodash/omit';
 
-import {googleIntegration} from '@ergeon/core-components';
+import {googleIntegration, UpcomingFeaturesHandler} from '@ergeon/core-components';
 import {DRAW_MAP_GOOGLE_LIBRARIES} from '@ergeon/draw-map';
 import {ERG_MAP_COMPONENT_LIBRARIES} from '@ergeon/map-component';
 import {FencePhotoData, GatePhotoData} from 'data/photo-gallery';
@@ -60,38 +60,41 @@ const renderPhotoGalleryRedirect = (productSlug, category) => {
 render(
   <Provider store={store}>
     <Router history={history}>
-      <MetaTags />
-      <Switch>
-        <Route
-          exact
-          path="/pro-advice"
-          render={() => {
-            window.location = process.env.BLOG_HOST;
-          }}
-        />
-        <GeoTargetRoutingInterceptor>
-          <Layout>
-            <ErrorBoundary>
-              <Switch>
-                {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
-                {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
-                {publicRoutes.map((props) => (
-                  <Route key={props.path} {...omit(props, 'sitemap')} />
-                ))}
-                {temporalRedirectRoutes.map((route) => (
-                  <Route exact key={route.from} path={route.from}>
-                    <Redirect to={{pathname: route.to, search: window.location.search}} />
-                  </Route>
-                ))}
-                <Route component={CustomerApp} path="/app/:customerGid" />
-                <Route component={Cities} path={CITIES_PAGE_PATH} />
-                <Route component={NotFoundPage} exact path="*" />
-                {/* Redirects to another domains and with different UTMs are defined at S3 bucket level (terraform) */}
-              </Switch>
-            </ErrorBoundary>
-          </Layout>
-        </GeoTargetRoutingInterceptor>
-      </Switch>
+      <UpcomingFeaturesHandler>
+        <MetaTags />
+        <Switch>
+          <Route
+            exact
+            path="/pro-advice"
+            render={() => {
+              window.location = process.env.BLOG_HOST;
+            }}
+          />
+          <GeoTargetRoutingInterceptor>
+            <Layout>
+              <ErrorBoundary>
+                <Switch>
+                  {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
+                  {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
+                  {publicRoutes.map((props) => (
+                    <Route key={props.path} {...omit(props, 'sitemap')} />
+                  ))}
+                  {temporalRedirectRoutes.map((route) => (
+                    <Route exact key={route.from} path={route.from}>
+                      <Redirect to={{pathname: route.to, search: window.location.search}} />
+                    </Route>
+                  ))}
+                  <Route component={CustomerApp} path="/app/:customerGid" />
+                  <Route component={Cities} path={CITIES_PAGE_PATH} />
+                  <Route component={NotFoundPage} exact path="*" />
+                  {/* Redirects to another domains and with different UTMs are defined at
+                  S3 bucket level (terraform) */}
+                </Switch>
+              </ErrorBoundary>
+            </Layout>
+          </GeoTargetRoutingInterceptor>
+        </Switch>
+      </UpcomingFeaturesHandler>
     </Router>
   </Provider>,
   document.getElementById('root'),
