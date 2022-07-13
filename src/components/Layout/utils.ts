@@ -1,7 +1,9 @@
 import {get} from 'lodash';
 import {constants} from '@ergeon/3d-lib';
 
-export const checkRouteList = (routes = [], location) => {
+import {Lead} from '../types';
+
+export const checkRouteList = (routes: string[] = [], location: Location) => {
   const pathname = location ? location.pathname : '/';
   let included = false;
   routes.forEach((path) => {
@@ -10,9 +12,9 @@ export const checkRouteList = (routes = [], location) => {
   return included;
 };
 
-export const updateLeadWithZipcode = (lead) => {
+export const updateLeadWithZipcode = (lead: Lead): Lead => {
   const zipcode = get(lead, `productAvailability.products[${lead.product_slug}]`)
-    ? lead.address.zipcode
+    ? lead.address?.zipcode
     : constants.DEFAULT_ZIP;
 
   return {

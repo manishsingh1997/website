@@ -1,3 +1,6 @@
+import {AuthState} from '../../../flux/reducers/auth';
+import {Lead} from '../../types';
+
 export const addressData = {
   primary_number: '12',
   street_name: 'Palo Alto Avenue',
@@ -23,8 +26,21 @@ export const productAvailabilityData = {
   market: 'CN-SJ',
 };
 
-export const leadData = {
+export const leadData: Partial<Lead> = {
   address: addressData,
   product_slug: 'fence-replacement',
   zipcode: productAvailabilityData.zipcode,
+};
+
+export const mockLoggedInAuth: Partial<AuthState> = {
+  user: {gid: 'iemoopheebii0Eet'},
+  isAuthLoading: false,
+  isUserLoading: false,
+};
+
+export const mockNotLoggedInAuth: Partial<AuthState> = {
+  user: null,
+  isUserLoggedOut: false,
+  isAuthLoading: false,
+  isUserLoading: false,
 };

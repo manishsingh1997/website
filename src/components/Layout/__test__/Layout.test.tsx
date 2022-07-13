@@ -6,9 +6,9 @@ import {Provider} from 'react-redux';
 import {createBrowserHistory} from 'history';
 import {googleIntegration} from '@ergeon/core-components';
 import {initialize, mockInstances} from '@googlemaps/jest-mocks';
-import Layout from '../index';
+import Layout from '../Layout';
 import {store} from '../../__mocks__/mockStore';
-import {mockLoggedInAuth, mockNotLoggedInAuth} from '../../AuthLogoutPage/__mocks__/mockAuth';
+import {mockLoggedInAuth, mockNotLoggedInAuth} from '../__mocks__/mockData';
 
 const PHONE = '+1-202-555-0146';
 const LEAD_ID = 'AdBh0inoUKGlH';
@@ -16,11 +16,6 @@ const mockLocation = document.location;
 const layoutProps = {
   getCurrentUser: jest.fn(),
   phoneNumber: PHONE,
-  city: {
-    data: {
-      phone: PHONE,
-    },
-  },
   auth: {
     ...mockLoggedInAuth,
   },
@@ -42,10 +37,12 @@ const newStore = {
 
 const CHILD_VALUE = 'CHILD_VALUE';
 
+const CHILD = <div>{CHILD_VALUE}</div>;
+
 const renderMockLayout = (props: typeof layoutProps) => (
   <Provider store={newStore}>
     <MemoryRouter>
-      <Layout {...props}>{CHILD_VALUE}</Layout>
+      <Layout {...props}>{CHILD}</Layout>
     </MemoryRouter>
   </Provider>
 );
@@ -111,8 +108,6 @@ describe('Layout', () => {
   });
 
   test('Should render Child Component', () => {
-    const CHILD_VALUE = 'CHILD_VALUE';
-
     const {getByText} = render(renderMockLayout(layoutProps));
 
     expect(getByText(CHILD_VALUE)).toBeInTheDocument();
@@ -134,7 +129,7 @@ describe('Layout', () => {
     render(
       <Provider store={newStore}>
         <Router history={history}>
-          <Layout {...props} />
+          <Layout {...props}>{CHILD}</Layout>
         </Router>
       </Provider>
     );

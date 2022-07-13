@@ -66,8 +66,8 @@ export const mockPlace = {
 };
 
 class AutocompleteMock {
-  addListener = (eventType, callback) => {
-    callback();
+  addListener = (eventType: string, callback: () => void) => {
+    eventType && callback();
   };
 
   getPlace = () => {

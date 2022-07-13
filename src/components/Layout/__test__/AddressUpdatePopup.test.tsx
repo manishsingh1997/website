@@ -4,17 +4,19 @@ import '@testing-library/jest-dom';
 import {googleIntegration, Places} from '@ergeon/core-components';
 import {MemoryRouter} from 'react-router-dom';
 import {initialize, mockInstances} from '@googlemaps/jest-mocks';
+
 import * as api from '../../../api/lead';
-import AddressUpdatePopup from '../components/AddressUpdatePopup/AddressUpdatePopup';
+import AddressUpdatePopup, {AddressUpdatePopupProps} from '../components/AddressUpdatePopup/AddressUpdatePopup';
 import {leadData, productAvailabilityData} from '../__mocks__/mockData';
 import {mockGoogle, mockPlace} from '../__mocks__/googlePlacesMock';
 import * as leadUtil from '../utils';
+import {Lead} from '../../types';
 
 const {parsePlace} = Places;
 
 const mockProductAvailabilityData = productAvailabilityData;
 
-const mockUpdateLeadWithZipcode = (lead: unknown) => {
+const mockUpdateLeadWithZipcode = (lead: Lead) => {
   return lead;
 };
 
@@ -43,10 +45,10 @@ jest.mock('@googlemaps/js-api-loader', () => ({
   },
 }));
 
-const addressUpdatePopupProps = {
+const addressUpdatePopupProps: AddressUpdatePopupProps = {
   closeAddressUpdatePopup: jest.fn(),
   open: true,
-  product: '',
+  product: 'fence-replacement',
   updateLead: jest.fn(),
   updateModalLead: jest.fn(),
   updateModalValue: jest.fn(),

@@ -1,29 +1,29 @@
-import { ParsedAPIErrorType } from '../../utils/types';
+import {ParsedAPIErrorType} from '../../utils/types';
 import {actionTypes} from '../actions/auth';
 
-type AuthUser = {
-  gid: string
+export type AuthUser = {
+  gid: string;
 };
 
 type AuthError = {
-  statusCode: string | number,
+  statusCode: string | number;
   data: {
-    otp?: {errorCode: string},
-  },
+    otp?: {errorCode: string};
+  };
 };
 
 export type AuthState = {
-  authError: AuthError | null,
-  isAuthLoading: boolean,
-  isResendLinkLoading: boolean,
-  isResendLinkSuccess: boolean,
-  isUserLoading: boolean,
-  isUserLoggedOut: boolean,
-  logoutError: AuthError | null,
-  resendLinkError: object | null,
-  user: AuthUser | null,
-  userError: AuthError | null,
-  userSetByCode: boolean,
+  authError: AuthError | null;
+  isAuthLoading: boolean;
+  isResendLinkLoading: boolean;
+  isResendLinkSuccess: boolean;
+  isUserLoading: boolean;
+  isUserLoggedOut: boolean;
+  logoutError: AuthError | null;
+  resendLinkError: object | null;
+  user: AuthUser | null;
+  userError: AuthError | null;
+  userSetByCode: boolean;
 };
 
 export const initialAuthState: AuthState = {
@@ -41,10 +41,10 @@ export const initialAuthState: AuthState = {
 };
 
 type AuthAction = {
-  user: AuthUser,
-  error: ParsedAPIErrorType,
-  type: keyof typeof actionTypes,
-}
+  user: AuthUser;
+  error: ParsedAPIErrorType;
+  type: keyof typeof actionTypes;
+};
 
 const authReducer = (state = initialAuthState, action: AuthAction) => {
   switch (action.type) {

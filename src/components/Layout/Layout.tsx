@@ -1,24 +1,37 @@
 import React, {useCallback, useEffect, useMemo} from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useHistory} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
 
 import {NavLinkContext, Notification, SimpleTopPanel, utils} from '@ergeon/core-components';
 
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
-import AddressUpdatePopup from 'containers/AddressUpdatePopup';
-import phoneIcon from 'assets/icon-phone.svg';
+import AddressUpdatePopup from '../../containers/AddressUpdatePopup';
 import AppFooter from '../common/AppFooter';
 import cities from '../../data/cities-min-data.json';
 import {CITIES_PAGE_PATH} from '../../website/constants';
 import {isChristmasTime as getIsChristmasTime, isPDFMode, showUpcomingFeatures} from '../../utils/utils';
+import {AuthState} from '../../flux/reducers/auth';
+import {City} from '../AppCityPage/types';
+import phoneIcon from '../../assets/icon-phone.svg';
 import DropdownMenu from './components/DropdownMenu';
 import {checkRouteList} from './utils';
 
 import './index.scss';
 
-const Layout = (props) => {
-  const {auth, children, history, getCurrentUser, location, phoneNumber, city} = props;
+interface LayoutProps {
+  auth: Partial<AuthState>;
+  children: JSX.Element;
+  city?: {data: City};
+  getCurrentUser: () => void;
+  location: Location;
+  phoneNumber: string;
+}
+
+const Layout = (props: LayoutProps) => {
+  const {auth, children, getCurrentUser, city, phoneNumber, location} = props;
+
+  const history = useHistory();
 
   useEffect(
     function getTheCurrentUser() {
@@ -105,7 +118,7 @@ const Layout = (props) => {
         <main>{children}</main>
         {!asPDF && showFooter && (
           <AppFooter
-            city={city.data}
+            city={city?.data}
             ergeonUrl="/"
             fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
             locationsList={locationsList}

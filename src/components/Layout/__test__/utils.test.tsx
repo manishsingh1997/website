@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 
 import {checkRouteList, updateLeadWithZipcode} from '../utils';
 import {leadData, productAvailabilityData, addressData} from '../__mocks__/mockData';
+import {Lead} from '../../types';
 
 const LEAD_ID = 'AdBh0inoUKGlH';
 const mockLocation = document.location;
@@ -27,7 +28,7 @@ describe('checkRouteList', () => {
 
 describe('updateLeadWithZipcode', () => {
   test('When product is available, should call update lead function with address zipcode', () => {
-    const mockLeadData = {
+    const mockLeadData: Lead = {
       ...leadData,
       productAvailability: productAvailabilityData,
     };
@@ -37,7 +38,7 @@ describe('updateLeadWithZipcode', () => {
   });
 
   test('When product is not available, should call update lead function with default zipcode', () => {
-    const mockLeadData = {
+    const mockLeadData: Lead = {
       ...leadData,
       productAvailability: {
         ...productAvailabilityData,
