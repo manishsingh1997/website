@@ -63,7 +63,8 @@ export default class StyleBrowserWrapper extends React.Component {
   }
 
   render() {
-    const {model, productAvailability, showPopup} = this.state;
+    const {model, showPopup} = this.state;
+    const {zipcode} = this.props;
     return (
       <div className="style-browser-wrapper">
         <PopUp onHide={this.closePopup.bind(this)} visible={showPopup}>
@@ -75,8 +76,8 @@ export default class StyleBrowserWrapper extends React.Component {
               doneButtonText={this.props.doneButtonText}
               model={model}
               onComplete={(model) => this.handleSelectionCompleted(model)}
-              productAvailability={productAvailability}
               shouldUpdateUrl={false}
+              zipcode={zipcode}
             />
           </div>
         </PopUp>
