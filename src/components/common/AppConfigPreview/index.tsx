@@ -12,10 +12,12 @@ import {AppConfigPreviewProps} from './types';
 import './AppConfigPreview.scss';
 
 const DEFAULT_FENCE_SIDE_LENGTH = 6;
+const DEFAULT_GRADE = 0;
 
 const AppConfigPreview = ({
   additionalClassNames,
   fenceSideLength,
+  fenceSideSlopePercent,
   images,
   isMobileWidth,
   propertySchemaCodeUrl,
@@ -28,6 +30,7 @@ const AppConfigPreview = ({
   const [previewImage, setPreviewImage] = useState(previewPlaceholderIcon);
   let isMounted = true;
   const currentFenceSideLength = useMemo(() => fenceSideLength || DEFAULT_FENCE_SIDE_LENGTH, [fenceSideLength]);
+  const currentGrade = useMemo(() => fenceSideSlopePercent || DEFAULT_GRADE, [fenceSideSlopePercent]);
 
   const configPreviewClassNames = useMemo(
     () =>
@@ -72,6 +75,7 @@ const AppConfigPreview = ({
       {isLoading && <Spinner active borderWidth={0.15} color="blue" size={64} />}
       <PreviewContent
         fenceSideLength={currentFenceSideLength}
+        fenceSideSlopePercent={currentGrade}
         handleLoad={() => setIsLoading(false)}
         images={images}
         isMobileWidth={isMobileWidth}

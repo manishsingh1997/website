@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
     addConfig: (item) => {
       dispatch(addConfig(item));
     },
-    updateLeadAndConfig: ({address, product, zipcode, data, schemaCode, length, configs}) => {
+    updateLeadAndConfig: ({address, product, zipcode, data, schemaCode, length, grade, configs}) => {
       let updateLead = null;
       if (address) {
         updateLead = dispatch(
@@ -50,6 +50,7 @@ const mapDispatchToProps = (dispatch) => {
                 data,
                 schemaCode,
                 length,
+                grade,
                 configs,
               })
             )
@@ -61,6 +62,7 @@ const mapDispatchToProps = (dispatch) => {
               data,
               schemaCode,
               length,
+              grade,
               configs,
             })
           );

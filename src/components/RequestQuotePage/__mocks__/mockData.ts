@@ -10,6 +10,7 @@ export const selectedConfigs = [
       'Finish Height of 6\'; Nail Up, Board on Board, Flat Top 1"x8" Redwood Con Common Pickets, 4"x4" PT Brown Stained Posts , 3 Redwood Con Common 2”x4” Rails, Demo and Haul Away',
     price: '50.39',
     units: 1,
+    grade: 0,
     timestamp: 1647948387000,
   },
   {
@@ -22,6 +23,7 @@ export const selectedConfigs = [
       'Single Gate; 4\' Wide Picture Frame Board on Board with a Finish Height of 6\' built with Redwood Con Common Pickets and 4"x4" PT Brown Stained Posts and a Standard Latch',
     price: '498',
     units: 1,
+    grade: 0,
     timestamp: 1651582151000,
   },
 ];

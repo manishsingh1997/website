@@ -19,6 +19,7 @@ describe('SimpleLeadForm tests', () => {
         description: '',
         price: '',
         units: '',
+        grade: '',
       }
     ],
     user: {

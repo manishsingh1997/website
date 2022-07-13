@@ -8,6 +8,7 @@ const PreviewWithLink = ({
   schemaCodeUrl,
   propertySchemaCodeUrl,
   fenceSideLength,
+  fenceSideSlopePercent,
   zipCode,
   previewImage,
   handleLoad,
@@ -17,8 +18,15 @@ const PreviewWithLink = ({
   }, [schemaCodeUrl, propertySchemaCodeUrl]);
 
   const linkToFencequoting = useMemo(
-    () => getFencequotingURL(finalSchemaCodeUrl, Number(zipCode), fenceSideLength, false),
-    [finalSchemaCodeUrl, zipCode, fenceSideLength]
+    () =>
+      getFencequotingURL({
+        schemaCode: finalSchemaCodeUrl,
+        zipCode: Number(zipCode),
+        fenceSideLength,
+        fenceSideSlopePercent,
+        options: false,
+      }),
+    [finalSchemaCodeUrl, zipCode, fenceSideLength, fenceSideSlopePercent]
   );
 
   const isPlaceholder = useMemo(() => isPlaceholderImage(previewImage), [previewImage]);

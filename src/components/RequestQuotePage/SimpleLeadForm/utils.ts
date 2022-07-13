@@ -28,6 +28,7 @@ export const getOrder = (configs: Config[], lead: Lead) => {
       description: item.description,
       price: item.price,
       units: item.units,
+      grade: item.grade,
     };
   });
 }

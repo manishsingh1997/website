@@ -18,12 +18,13 @@ import {useIsMobileWidth} from './customHooks';
  * }} props
  */
 export default function QuoteLinePreview(props) {
-  const {quantity, quote, quoteLine, type, useNoPreviewIcon = false, usePlaceHolder = false, images} = props;
+  const {quantity, grade, quote, quoteLine, type, useNoPreviewIcon = false, usePlaceHolder = false, images} = props;
   // check if address exists, in rare cases in can be null
   const zipCode = quote.order.house.address
     ? quote.order.house.address['zip_code']
     : quote.order.house.customer['main_address']['zip_code'];
   const fenceSideLength = Number(quantity);
+  const currentGrade = Number(grade);
   const schemaCodeUrl = quoteLine && quoteLine.config && quoteLine.config['schema_code_url'];
   const isQuotePreviewPossible = quoteLine && quoteLine['is_quote_preview_possible'];
   const propertyData = quoteLine && quoteLine['property_config'] && quoteLine['property_config']['schema_code_url'];
@@ -38,6 +39,7 @@ export default function QuoteLinePreview(props) {
       additionalClassNames="quote-line-preview"
       configType={type}
       fenceSideLength={fenceSideLength}
+      fenceSideSlopePercent={currentGrade}
       images={images}
       isMobileWidth={isMobileWidth}
       propertySchemaCodeUrl={propertySchemaCodeUrl}

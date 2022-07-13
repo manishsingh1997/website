@@ -213,6 +213,7 @@ export default class LeadForm extends React.Component {
         description: item.description,
         price: item.price,
         units: item.units,
+        grade: item.grade,
       };
     });
   }

@@ -2,6 +2,7 @@ import queryString from 'query-string';
 import {some} from 'lodash';
 import {calcUtils} from '@ergeon/3d-lib';
 import {getUnsubscribeCodeFromQuery} from './app-notifications';
+import {getFencequotingURLProps} from './types';
 
 export const getOrderDetailURL = (customerGID: string, orderId: number) => {
   return `/app/${customerGID}/orders/${orderId}`;
@@ -17,7 +18,14 @@ export const getQuoteDetailURL = (customerGID: string, secret: string) => {
  * @param {number} zipCode
  * @param {number} fenceSideLength
  */
-export const getFencequotingURL = (schemaCode: string, zipCode: number, fenceSideLength: number, options = true) => {
+export const getFencequotingURL = ({
+  schemaCode,
+  zipCode,
+  fenceSideLength,
+  options = true,
+  fenceSideSlopePercent, 
+}: getFencequotingURLProps
+) => {
   if (!schemaCode) return
   const {getValueFromUrl, getCatalogType} = calcUtils;
   const isItGate = getCatalogType(getValueFromUrl(schemaCode)) === 'fence-gate';
@@ -28,6 +36,7 @@ export const getFencequotingURL = (schemaCode: string, zipCode: number, fenceSid
     options: options ? 'true' : undefined,
     zipcode: zipCode,
     length: isItGate ? '' : fenceSideLength,
+    grade: isItGate ? '' : fenceSideSlopePercent,
   };
   return `${process.env.FENCEQUOTING_HOST}/${baseUrlPath}?${queryString.stringify(queryObject)}`;
 };

@@ -49,6 +49,7 @@ class RequestQuotePage extends React.Component {
     const schema = getParameterByName('schema');
     const code = getParameterByName('code');
     const length = getParameterByName('length');
+    const grade = getParameterByName('grade');
     const data = schema && code ? calcUtils.getValueFromUrl(window.location.search) : null;
     const schemaCode = schema && code ? calcUtils.getSchemaCodeFromState(data) : null;
 
@@ -59,6 +60,7 @@ class RequestQuotePage extends React.Component {
       data,
       schemaCode,
       length,
+      grade,
       configs,
     });
   }

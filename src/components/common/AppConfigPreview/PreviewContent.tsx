@@ -12,6 +12,7 @@ const PreviewContent = ({
   images,
   isMobileWidth,
   fenceSideLength,
+  fenceSideSlopePercent,
   propertySchemaCodeUrl,
   zipCode,
 }: PreviewContentProps) => {
@@ -31,6 +32,7 @@ const PreviewContent = ({
       <div className="quote-line-images-wrapper">
         <PreviewWithLink
           fenceSideLength={fenceSideLength}
+          fenceSideSlopePercent={fenceSideSlopePercent}
           handleLoad={handleLoad}
           previewImage={previewImage}
           propertySchemaCodeUrl={propertySchemaCodeUrl}
@@ -50,6 +52,7 @@ const PreviewContent = ({
     return (
       <PreviewWithLink
         fenceSideLength={fenceSideLength}
+        fenceSideSlopePercent={fenceSideSlopePercent}
         handleLoad={handleLoad}
         previewImage={previewImage}
         propertySchemaCodeUrl={propertySchemaCodeUrl}

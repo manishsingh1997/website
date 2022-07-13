@@ -7,7 +7,7 @@ import {calcUtils, CatalogType} from '@ergeon/3d-lib';
 import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
 import iconPlus from '../../assets/icon-plus.svg';
-import {getFencequotingURL} from '../../utils/urls.ts';
+import {getFencequotingURL} from '../../utils/urls';
 import LoadingErrorModal from '../common/ErroredLoadingModal';
 import StyleBrowserWrapper from './StyleBrowserWrapper';
 
@@ -22,6 +22,7 @@ class ConfigCart extends React.Component {
         price: PropTypes.string,
         description: PropTypes.string,
         units: PropTypes.number,
+        grade: PropTypes.number,
         code: PropTypes.string,
       })
     ),
@@ -109,6 +110,7 @@ class ConfigCart extends React.Component {
     this.props.addConfigFromSchema(
       {
         length: index !== -1 ? config.units : 1,
+        grade: index !== -1 ? config.grade : 0,
         data: modelState,
         schemaCode,
         configs,
@@ -158,7 +160,14 @@ class ConfigCart extends React.Component {
           <div className="config-item__content">
             <div className="config-item__preview">
               {config.preview ? (
-                <a href={getFencequotingURL(config.code, zipcode, config.units)}>
+                <a
+                  href={getFencequotingURL({
+                    schemaCode: config.code,
+                    zipcode,
+                    fenceSideLength: config.units,
+                    fenceSideSlopePercent: config.grade,
+                  })}
+                >
                   <img src={config.preview} />
                 </a>
               ) : (
@@ -256,10 +265,12 @@ class ConfigCart extends React.Component {
     const schemaCode = config?.code ? `?${config?.code}` : undefined;
     const doneButtonText = styleBrowserIndex === -1 ? 'Add to order' : 'Save changes';
     const DEFAULT_FENCE_SIDE_LENGTH = 6;
+    const DEFAULT_GRADE = 0;
     return (
       <StyleBrowserWrapper
         doneButtonText={doneButtonText}
         fenceSideLength={Number(config?.units || DEFAULT_FENCE_SIDE_LENGTH)}
+        fenceSideSlopePercent={Number(config?.grade || DEFAULT_GRADE)}
         initialSchemaCode={schemaCode}
         onClose={() => this.onCloseEditorClick()}
         onDone={(editorModel) => this.onDoneEditorClick(editorModel, styleBrowserIndex)}

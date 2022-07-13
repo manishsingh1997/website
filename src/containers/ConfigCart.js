@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
     removeConfig: (index) => {
       dispatch(removeConfig(index));
     },
-    addConfigFromSchema: ({zipcode, data, configs, schemaCode, length}, index) => {
+    addConfigFromSchema: ({zipcode, data, configs, schemaCode, length, grade}, index) => {
       dispatch(
         addConfigFromSchema(
           {
@@ -29,6 +29,7 @@ const mapDispatchToProps = (dispatch) => {
             data,
             schemaCode,
             length,
+            grade,
             configs,
           },
           index

@@ -32,7 +32,7 @@ export const clearConfigs = (lead) => ({
 });
 
 // eslint-disable-next-line object-shorthand
-export const addConfigFromSchema = function ({zipcode, data, schemaCode, length, configs}, index = -1) {
+export const addConfigFromSchema = function ({zipcode, data, schemaCode, length, grade, configs}, index = -1) {
   return (dispatch) => {
     const {FRAME_STYLE} = attrs;
 
@@ -48,6 +48,7 @@ export const addConfigFromSchema = function ({zipcode, data, schemaCode, length,
       description: '',
       price: '',
       units: length || 1,
+      grade: grade || 0,
       timestamp: moment().unix() * 1000,
     };
 

@@ -19,6 +19,7 @@ const props = {
   additionalClassNames: 'quote-line-preview',
   configType: 'Side',
   fenceSideLength: 6,
+  grade: 0,
   isMobileWidth: false,
   propertySchemaCodeUrl: 'property_schema=1,2&property_code=DY,DRY',
   schemaCodeUrl: `schema=3,4,5,6,7,8,9,10,11,12,13,14,15

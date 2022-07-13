@@ -14,3 +14,11 @@ export type ErrorResponse = {
     'non_field_errors': string[]
   }
 }
+
+export type getFencequotingURLProps = {
+  schemaCode: string,
+  zipCode: number,
+  fenceSideLength: number,
+  fenceSideSlopePercent: number,
+  options?: boolean,
+}

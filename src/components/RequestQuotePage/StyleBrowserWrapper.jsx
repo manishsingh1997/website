@@ -10,6 +10,7 @@ export default class StyleBrowserWrapper extends React.Component {
   static propTypes = {
     doneButtonText: PropTypes.string,
     fenceSideLength: PropTypes.number,
+    fenceSideSlopePercent: PropTypes.number,
     initialSchemaCode: PropTypes.string,
     onClose: PropTypes.func.isRequired,
     onDone: PropTypes.func.isRequired,
@@ -20,6 +21,7 @@ export default class StyleBrowserWrapper extends React.Component {
 
   static defaultProps = {
     fenceSideLength: 6,
+    fenceSideSlopePercent: 0,
     initialSchemaCode: constants.defaultFenceCode,
   };
 

@@ -12,4 +12,5 @@ export type Config = {
   description: string,
   price: string,
   units: string,
+  grade: string,
 }
