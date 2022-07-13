@@ -16,6 +16,8 @@ type InputFields = Array<keyof typeof inputFields>;
 
 const matcher = (string: string, options: string) => new RegExp(string, options);
 
+jest.mock('../CitySearchInputField.tsx');
+
 describe('ContactUs page', () => {
   beforeAll(() => {
     jest.spyOn(API, 'submitContactUs').mockImplementation(submitContactUs);
@@ -41,10 +43,12 @@ describe('ContactUs page', () => {
     const emailInput = screen.getByPlaceholderText(inputFields.email.placeHolder);
     const nameInput = screen.getByPlaceholderText(inputFields.name.placeHolder);
     const messageInput = screen.getByPlaceholderText(inputFields.message.placeHolder);
+    const cityInput = screen.getByPlaceholderText(/enter city/i);
 
     fireEvent.change(emailInput, {target: {value: 'testemail@ergeon.com'}});
     fireEvent.change(nameInput, {target: {value: 'test joe'}});
     fireEvent.change(messageInput, {target: {value: 'Thank you'}});
+    fireEvent.change(cityInput, {target: {value: 'california'}});
 
     const SubmitButton = screen.getByText(matcher('submit', 'i'));
 

@@ -3,8 +3,8 @@
 .ContactUsForm {
   margin: 0;
   h1 + p {
-    margin-top: -20px;
-    margin-bottom: 30px;
+    margin-top: -1 * $v-20;
+    margin-bottom: $v-30;
     text-align: center;
   }
 
@@ -19,16 +19,16 @@
 
   .Form-actions {
     border-top: 1px solid $gray-4;
-    padding-top: 25px;
+    padding-top: 1 + $v-24;
     position: relative;
 
     .Form-error {
-      margin-top: 6px;
+      margin-top: $v-6;
     }
   }
 
   .Form-error {
-    margin: 4px 0 $v-12 0;
+    margin: $v-6 - 2 0 $v-12 0;
     font-size: $font-label-size;
     color: $red;
     font-family: $font-content;
@@ -40,9 +40,8 @@
 
   .Form-footer {
     text-align: center;
-    font-size: 12px;
-    line-height: 18px;
-    margin-top: 30px;
+    font-size: $font-label-size;
+    margin-top: $v-30;
   }
 
   @include phone() {
@@ -50,10 +49,45 @@
       font-size: 6vw;
     }
     input {
-      height: 48px;
+      height: $v-48;
     }
     .Form-field {
-      height: 56px;
+      height: $v-48 + 8;
+    }
+  }
+
+  .CitySearchInput {
+    max-width: 100%;
+
+    &-Wrapper {
+      input{
+      height: $v-48;
+      padding: $v-24 $v-12 $v-12;
+      font-size: $font-mobile-size;
+    }
+
+    & input:focus{
+      & ~ .label {
+        font-size: $font-label-size;
+      }
+    }
+
+    & input:not(:placeholder-shown){
+      & ~ .label {
+        font-size: $font-label-size;
+      }
+    }
+  }
+
+    &-Button {
+      display: none;
+    }
+
+    .label {
+      top: $v-12 + 1;
+      font-size: $font-mobile-size;
+      left: 0;
+      margin-left: $h-10 + 2;
     }
   }
 }

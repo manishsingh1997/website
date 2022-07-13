@@ -1,15 +1,15 @@
-import React, {useState, useCallback, useEffect, FocusEvent, ChangeEvent} from 'react';
+import React, { useState, useCallback, useEffect, FocusEvent, ChangeEvent, useMemo} from 'react';
 import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
 
-import {Button, Spinner, FormField, Input} from '@ergeon/core-components';
 // @ts-ignore
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
+import { Button, Spinner, FormField, Input, PlacesAutocompleteTypes } from '@ergeon/core-components';
 
-import useFormValidation, {getNotEmptyValidator, getCharactersValidator, getEmailValidator} from './useValidation';
-
+import useFormValidation, { getNotEmptyValidator, getCharactersValidator, getEmailValidator } from './useValidation';
 import ErrorField from './ErrorField';
 import useSubmitForm from './useSubmitForm';
+import CitySearchInputField from './CitySearchInputField';
 
 import './ContactUsForm.scss';
 
@@ -22,12 +22,15 @@ type formKey = 'name' | 'email' | 'message';
 export default function ContactUsForm({onSubmit}: ContactUsFormProps) {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
+    address: '',
     email: '',
     name: '',
     message: '',
     product: FENCE_SLUG,
   });
+
   const [blur, setBlur] = useState<Record<string, boolean>>({
+    address: false,
     name: false,
     email: false,
     message: false,
@@ -59,14 +62,10 @@ export default function ContactUsForm({onSubmit}: ContactUsFormProps) {
     setBlur({...blur, [e.target.name]: true});
   }, [setBlur, blur]);
 
-  useEffect(() => {
-    validateForm();
-  }, [validateForm]);
-
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setForm({...form, [event.target.name]: event.target.value});
     setBlur({...blur, [event.target.name]: false});
-  };
+  }, [form, blur]);
 
   const isValid = (name: formKey) => {
     const isHasValue = !form?.[name].trim().length;
@@ -78,9 +77,9 @@ export default function ContactUsForm({onSubmit}: ContactUsFormProps) {
     return;
   };
 
-  const enableSubmit = () => {
+  const enableSubmit = useMemo(() => {
     const errorValues = Object.values(error || {});
-    const fieldValues = Object.values(form || {});
+    const fieldValues = Object.values({...form, address: 'skip'} || {});
     const noErrors = errorValues.every((value) => value === undefined);
     const allFieldFilled = fieldValues.every((value) => !!value?.length);
     // no errors and all field filled
@@ -88,7 +87,25 @@ export default function ContactUsForm({onSubmit}: ContactUsFormProps) {
       return false;
     }
     return true;
-  };
+  }, [error, form]);
+
+  const handleCityInput = useCallback(async (placeData: PlacesAutocompleteTypes.AutoCompletePlaceData) => {
+    setErrors({ ...error, address: '' });
+    try {
+      if (!placeData) throw new Error('Address not found');
+      setForm({...form, address: placeData || {}});
+    } catch (err) {
+      if (err instanceof Error) {
+        setErrors({ ...error, address: (err as Error).message} );
+        return;
+      }
+      setErrors({ ...error, address: String(err)} );
+    }
+  }, [error, form]);
+
+  useEffect(() => {
+    validateForm();
+  }, [validateForm]);
 
   return (
     <form className="ContactUsForm" onSubmit={handleSubmit}>
@@ -127,6 +144,12 @@ export default function ContactUsForm({onSubmit}: ContactUsFormProps) {
       </FormField>
       <FormField>
         <>
+          <CitySearchInputField onChange={handleCityInput} />
+          {blur['address'] && <ErrorField error={error?.address || ''} />}
+        </>
+      </FormField>
+      <FormField>
+        <>
           <Input
             isDisabled={loading}
             isMultiline={true}
@@ -143,10 +166,10 @@ export default function ContactUsForm({onSubmit}: ContactUsFormProps) {
         </>
       </FormField>
       <div className="Form-actions">
-        {!enableSubmit() && <div className="Form-error">{error?.global}</div>}
+        {!enableSubmit && <div className="Form-error">{error?.global}</div>}
         <Button
           className={classNames({'is-loading': loading})}
-          disabled={enableSubmit() || loading}
+          disabled={enableSubmit || loading}
           size="large"
           type="submit"
         >

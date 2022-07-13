@@ -14,6 +14,7 @@ import {DEFAULT_SOURCE_VALUE} from '../../website/constants';
 import {CONTACT_US_MESSAGE_ENTERED} from '../../utils/events';
 
 export interface FormFieldState {
+  address: string;
   name: string;
   email: string;
   message: string;
@@ -22,7 +23,7 @@ export interface FormFieldState {
 
 interface SubmitFormProps {
   form: FormFieldState;
-  error: Record<string, string | undefined>;
+  error: Partial<FormFieldState>;
   onSubmit(): void;
   setLoading(arg: boolean): void;
   setErrors(arg: Record<string, string | undefined>): void;
@@ -32,7 +33,7 @@ interface SubmitFormProps {
 const useSubmitForm = ({form, error, onSubmit, setLoading, setErrors, setForm}: SubmitFormProps) => {
   return async (e: MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const isHasError = error?.['email'] || error?.['message'] || error?.['name'];
+    const isHasError = error?.['email'] || error?.['message'] || error?.['name']
     if (isHasError) {
       return;
     }
@@ -54,6 +55,7 @@ const useSubmitForm = ({form, error, onSubmit, setLoading, setErrors, setForm}: 
         source: DEFAULT_SOURCE_VALUE,
       });
       setForm({
+        address: '',
         email: '',
         name: '',
         message: '',
