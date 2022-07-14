@@ -25,7 +25,6 @@
   .dropdown-menu {
     display: block;
     min-width: unset;
-    max-width: $h-60 * 5;
     position: relative;
 
     .special {
@@ -56,7 +55,10 @@
       width: fit-content;
       padding: 0 $h-10;
       @include phone() {
+        height: $v-48;
         padding: 0 $h-5;
+        display: flex;
+        align-items: center;
       }
       img {
         height: $h-20;
@@ -71,8 +73,10 @@
   }
 
   .menu {
-    width: unset !important;
-    right: 0;
+    @include phone() {
+      width: 100%;
+    }
+    width: unset;
     .menu-item {
       width: inherit;
       margin-right: 0;
@@ -92,7 +96,7 @@
       min-width: $h-20 * 10;
       left: 0;
       margin-top: $v-6;
-      margin-right: $h-10;
+      margin-right: 0;
 
       .menu-item {
         padding: $h-5 $h-10 + 2;
