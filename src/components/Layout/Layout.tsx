@@ -103,17 +103,19 @@ const Layout = (props: LayoutProps) => {
         </div>
       )}
       <NavLinkContext.Provider value={NavLink}>
-        <header>
-          <SimpleTopPanel
-            customerMenu={dropdownMenu}
-            ergeonUrl="/"
-            fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
-            onGetQuoteClick={onGetQuoteClick}
-            pdfDetails={pdfDetails}
-            pdfMode={asPDF}
-            showChristmasHat={isChristmasTime}
-            widthClass={widthClass}
-          ></SimpleTopPanel>
+        <header className="app-header">
+          <div className="app-header-wrapper">
+            <SimpleTopPanel
+              customerMenu={dropdownMenu}
+              ergeonUrl="/"
+              fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
+              onGetQuoteClick={onGetQuoteClick}
+              pdfDetails={pdfDetails}
+              pdfMode={asPDF}
+              showChristmasHat={isChristmasTime}
+              widthClass={widthClass}
+            ></SimpleTopPanel>
+          </div>
         </header>
         <main>{children}</main>
         {!asPDF && showFooter && (
