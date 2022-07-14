@@ -7,6 +7,8 @@
   }
 }
 .photo-gallery {
+  padding-bottom: $v-64;
+
   &__categories {
     @include phone() {
       padding-bottom: $v-12;
