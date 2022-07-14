@@ -414,6 +414,7 @@ exports[`AppCityPage should render 1`] = `
               class="card padding-60 soft-border shadow__z0 Packages-item"
             >
               <img
+                data-testid="test-image"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/14pVDkLbAWrOc5Ns2l7YcZe3MDz23L-Iw.jpeg"
               />
               <p
@@ -435,6 +436,7 @@ exports[`AppCityPage should render 1`] = `
               class="card padding-60 soft-border shadow__z0 Packages-item"
             >
               <img
+                data-testid="test-image"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1jZf_yW4Khn05bhT8hDX-nwZTMMB7fN_f.jpeg"
               />
               <p
@@ -456,6 +458,7 @@ exports[`AppCityPage should render 1`] = `
               class="card padding-60 soft-border shadow__z0 Packages-item"
             >
               <img
+                data-testid="test-image"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1FkRFjkguBHCfcLd5THc9ZxlkANuWoCxd.jpeg"
               />
               <p
@@ -488,6 +491,7 @@ exports[`AppCityPage should render 1`] = `
               class="card padding-60 soft-border shadow__z0 Packages-item"
             >
               <img
+                data-testid="test-image"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1Z872D3vqeZSRbrwewkId11qBD2ZaNAqo.jpeg"
               />
               <p
@@ -509,6 +513,7 @@ exports[`AppCityPage should render 1`] = `
               class="card padding-60 soft-border shadow__z0 Packages-item"
             >
               <img
+                data-testid="test-image"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1nzyncXknEpX_w7AVe3a7q-O8O9zHd7qr.jpeg"
               />
               <p
@@ -530,6 +535,7 @@ exports[`AppCityPage should render 1`] = `
               class="card padding-60 soft-border shadow__z0 Packages-item"
             >
               <img
+                data-testid="test-image"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/16hDSZgW4VRMX88J1G7J12Zwv1mUIIhG4.jpeg"
               />
               <p
@@ -562,6 +568,7 @@ exports[`AppCityPage should render 1`] = `
               class="card padding-60 soft-border shadow__z0 Packages-item"
             >
               <img
+                data-testid="test-image"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1A1T9JeaU8p6YYrqqWIUF_aSMKrXXys15.jpeg"
               />
               <p
@@ -583,6 +590,7 @@ exports[`AppCityPage should render 1`] = `
               class="card padding-60 soft-border shadow__z0 Packages-item"
             >
               <img
+                data-testid="test-image"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1flny4XLVyCYo27jGoO-QagcgFPrZRJ_n.jpeg"
               />
               <p
@@ -604,6 +612,7 @@ exports[`AppCityPage should render 1`] = `
               class="card padding-60 soft-border shadow__z0 Packages-item"
             >
               <img
+                data-testid="test-image"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1wvCXuXpKJyLBOky7iNZqunQNWcIMgW0P.jpeg"
               />
               <p
@@ -625,6 +634,7 @@ exports[`AppCityPage should render 1`] = `
               class="card padding-60 soft-border shadow__z0 Packages-item"
             >
               <img
+                data-testid="test-image"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1LbgYXMkI2VjL3ncJCPQ3u9ZkVEbGwboe.jpeg"
               />
               <p

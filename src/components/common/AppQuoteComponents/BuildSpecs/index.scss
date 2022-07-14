@@ -1,6 +1,26 @@
 @import '~@ergeon/core-components/src/components/variables.scss';
 @import '~@ergeon/core-components/src/components/mixins/reset.scss';
 
+
+$img-wrapper-min-width: 512px;
+
+.popup--container {
+  
+  .popup__cross-icon {
+    right: unset;
+    top: unset;
+
+    &:hover {
+      background-color: unset;
+    }
+  }
+
+  .popup__img-wrapper img {
+    min-width: $img-wrapper-min-width;
+  }
+
+}
+
 .BuildSpecs-popup {
   $icon-container-size: $v-48;
 

@@ -10,6 +10,7 @@ import {
   mockUpcomingAppointmentId,
   mockPastAppointmentId
 } from '../__mocks__/mockAppointments';
+import AppointmentsFilterSelector from '../AppointmentsFilterSelector';
 
 const areAppointmentsOnScreen = (ids: number[]) => {
   ids.forEach(id => {
@@ -88,4 +89,16 @@ describe('Rendering of App Appointments List Page', () => {
     fireEvent.click(allSelect);
     areAppointmentsOnScreen([mockUpcomingAppointmentId, mockPastAppointmentId]);
   });
+
+  it('should break selected filter', () => {
+    
+    expect(() => render(
+      <AppointmentsFilterSelector
+      // @ts-ignore
+        selectedFilter={undefined}
+        setSelectedFilter={jest.fn}/>
+    )).toThrow('Selected filter not recognized.');
+
+  });
+
 });

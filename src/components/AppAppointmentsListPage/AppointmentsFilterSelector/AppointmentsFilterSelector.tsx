@@ -33,7 +33,7 @@ const AppointmentsFilterSelector = ({
   };
 
   return (
-    <div className="appointment-filters">
+    <div className="appointment-filters" data-testid="appointment-filters" >
       <SelectFilter
         className="react-select-filter-container"
         classNamePrefix="react-select-filter"

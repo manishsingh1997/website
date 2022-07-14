@@ -1,5 +1,5 @@
 import React from  'react';
-import {fireEvent, render, screen} from '@testing-library/react';
+import {render} from '@testing-library/react';
 import {ParsedAPIErrorType} from '../../../utils/types';
 import {Action, ActionType} from '../appNotificationPageReducer';
 import Content from '../Content';
@@ -29,8 +29,5 @@ describe('Content component', () => {
         notificationPreference={np.data[0] as NotificationPreference}
         unsubscribeAutomatically={false} />
     );
-  
-    const checkBox = screen.getByTestId('isSubscribedToNews');
-    fireEvent.click(checkBox);
   });
 })

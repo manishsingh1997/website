@@ -85,7 +85,10 @@ const AppCityPage = (props: AppCityPageProps) => {
                     {data?.map(pckg => (
                       <EqualHeightElement key={pckg.title} name={title}>
                         <div className="card padding-60 soft-border shadow__z0 Packages-item">
-                          <img onLoad={() => setLoadPckgImage(pckg.img)} src={getAsset(pckg.img, 'jpeg')} />
+                          <img
+                            data-testid='test-image'
+                            onLoad={() => setLoadPckgImage(pckg.img)} 
+                            src={getAsset(pckg.img, 'jpeg')} />
                           <p className="h5 Packages-title">{pckg.title}</p>
                           <p className="Packages-description">{pckg.description}</p>
                         </div>
