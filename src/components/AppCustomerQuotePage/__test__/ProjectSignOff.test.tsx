@@ -12,7 +12,9 @@ import * as API from '../../../api/app';
 
 import * as mockAPI from '../__mocks__/api';
 import {initGoogleLoader, getGoogleLoader} from '../__mocks__/googleMapIntegration';
-import quoteApproval from '../__mocks__/data/ApprovedQuote';
+import quoteApproval from '../__mocks__/data/SignOffApprovedQuote';
+import {AuthState} from '../../../flux/reducers/auth';
+import {AppCustomerQuotePageProps} from './../types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 jest.mock('react-signature-canvas', () => (_props: unknown) => {
@@ -26,7 +28,7 @@ beforeEach(() => {
 
   jest.spyOn(googleIntegration, 'initGoogleLoader').mockImplementation(initGoogleLoader);
   jest.spyOn(googleIntegration, 'getGoogleLoader').mockImplementation(getGoogleLoader);
-  jest.spyOn(console, 'warn').mockImplementation(() => null );
+  jest.spyOn(console, 'warn').mockImplementation(() => null);
 
   googleIntegration.initGoogleLoader('key', 'lib');
 });
@@ -36,14 +38,20 @@ afterEach(() => {
 });
 
 const matcher = (string: string, options?: string) => new RegExp(string, options || '');
-const props = {
-  auth: {user: {gid: 'BkU5j7FtBtxjkEAU'}},
-  match: {
-    params: {
-      secret: 'W8C5V0zBVqQQt3hk',
-      path: '/app/BkU5j7FtBtxjkEAU/quote-approvals/W8C5V0zBVqQQt3hk/direct',
-    },
+const match = {
+  path: '/app/BkU5j7FtBtxjkEAU/quote-approvals/W8C5V0zBVqQQt3hk/direct',
+  params: {
+    secret: 'W8C5V0zBVqQQt3hk',
   },
+} as AppCustomerQuotePageProps['match'];
+
+const auth = {
+  user: {gid: 'BkU5j7FtBtxjkEAU'},
+} as AuthState;
+
+const props = {
+  auth,
+  match,
   setPDFHeaderPhoneAction: jest.fn,
   layout: {phoneNumber: '+1538748444'},
 };
@@ -310,7 +318,7 @@ describe('Project signoff', () => {
 
 describe('Project signoff - approved quote', () => {
   test('Do not shot Project signoff for quotes not approved', async () => {
-  jest.spyOn(API, 'getQuoteApprovalDetails').mockImplementation(mockAPI.CancelledQuoteDetails);
+    jest.spyOn(API, 'getQuoteApprovalDetails').mockImplementation(mockAPI.CancelledQuoteDetails);
 
     const history = createBrowserHistory({
       basename: '/app/BkU5j7FtBtxjkEAU/quote-approvals/W8C5V0zBVqQQt3hk/direct',
@@ -324,6 +332,5 @@ describe('Project signoff - approved quote', () => {
     const loader = screen.getAllByTestId(matcher('loader-image', 'i'));
     await waitForElementToBeRemoved(loader);
     expect(screen.queryByText(matcher('Begin Project Sign-off', 'i'))).toBeNull();
-
-  })
-})
+  });
+});

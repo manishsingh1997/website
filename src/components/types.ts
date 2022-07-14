@@ -1,6 +1,6 @@
 export type HouseType = {
   id: number;
-  address?: HouseAddress;
+  address: HouseAddress;
 };
 
 export type HouseAddress = {
@@ -34,6 +34,7 @@ export type Quote = {
   cancelled_at: string | null;
   reviewed_at: string | null;
   description_html: string;
+  order: Order;
   order_id: number;
   quote_lines: QuoteLine[];
   preview_quote_line: PreviewQuoteLine | null;
@@ -42,6 +43,7 @@ export type Quote = {
   total_length: string | null;
   total_area: string | null;
   status: QuoteStatus;
+  is_scope_change?: boolean;
 };
 
 export type OrderProduct = {

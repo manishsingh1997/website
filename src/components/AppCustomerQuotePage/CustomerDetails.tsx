@@ -2,6 +2,7 @@ import React, {useMemo, useState} from 'react';
 import {DataRow, Collapsible} from '@ergeon/core-components';
 
 import './CustomerDetails.scss';
+import {Quote} from '../types';
 
 type CustomerData = {
   id: number;
@@ -13,24 +14,9 @@ type CustomerData = {
   };
 };
 
-type QuoteData = {
-  order: {
-    house: {
-      address: {
-        formatted_address: string;
-      };
-      customer: {
-        main_address: {
-          formatted_address: string;
-        };
-      };
-    };
-  };
-};
-
 export type CustomerDetailsProps = {
   customer: CustomerData;
-  quote: QuoteData;
+  quote: Quote;
 };
 
 const CustomerDetails = (props: CustomerDetailsProps) => {

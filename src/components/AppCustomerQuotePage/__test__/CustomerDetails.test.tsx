@@ -2,13 +2,14 @@ import React from 'react';
 import {render, screen, fireEvent} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import CustomerDetails, {CustomerDetailsProps} from '../CustomerDetails';
-import quoteApproval from '../__mocks__/data/ApprovedQuote';
+import approvedQuoteMock from '../__mocks__/data/SignOffApprovedQuote';
+import {QuoteApproval} from '../types';
+
+const quoteApproval = approvedQuoteMock as unknown as QuoteApproval;
 
 const mockCustomerDetailsProps: CustomerDetailsProps = {
   customer: quoteApproval.customer,
-  quote: {
-    order: quoteApproval.quote.order,
-  },
+  quote: quoteApproval.quote,
 };
 
 describe('Customer details', () => {

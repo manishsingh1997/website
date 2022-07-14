@@ -1,9 +1,10 @@
-import { Order } from '../../types';
-import { mockHouseA } from '../../__mocks__/mockHouses';
+import {Order} from '../../types';
+import {mockHouseA} from '../../__mocks__/mockHouses';
 
 export const mockFirstOrderId = 61255;
 
 export const mockOrders = {
+  // @ts-ignore
   [mockFirstOrderId]: {
     id: mockFirstOrderId,
     ordered_at: '2021-11-19T08:46:07.046699-08:00',
@@ -34,8 +35,9 @@ export const mockOrders = {
         approved_at: null,
         cancelled_at: null,
         reviewed_at: null,
-        // eslint-disable-next-line max-len
-        description_html: '<p>We are fully licensed, insured, and bonded.  </p>\n<p>We guarantee the quality of our work and back that with a 1 year Conditional Warranty</p>\n<p>Your new fence will be a <strong>“insert finished height and style here”</strong> ex.-  6 foot Picture Frame Board on Board with Lattice built with Con Common Redwood.</p>\n<p>We will arrive on-site, on-time, and on-schedule to complete the job safely, to spec, and according to code.</p>\n<p>Included in your price:</p>\n<ul>\n<li>Will call 811 “Call Bef...',
+        description_html:
+          // eslint-disable-next-line max-len
+          '<p>We are fully licensed, insured, and bonded.  </p>\n<p>We guarantee the quality of our work and back that with a 1 year Conditional Warranty</p>\n<p>Your new fence will be a <strong>“insert finished height and style here”</strong> ex.-  6 foot Picture Frame Board on Board with Lattice built with Con Common Redwood.</p>\n<p>We will arrive on-site, on-time, and on-schedule to complete the job safely, to spec, and according to code.</p>\n<p>Included in your price:</p>\n<ul>\n<li>Will call 811 “Call Bef...',
         order_id: 61255,
         quote_lines: [],
         preview_quote_line: null,
@@ -49,9 +51,9 @@ export const mockOrders = {
           type_display: 'Quote Status',
           code: 'new',
           label: 'Draft',
-          sequence: 1
-        }
-      }
+          sequence: 1,
+        },
+      },
     ],
     project_manager: null,
     visits: [],

@@ -157,7 +157,7 @@ const ProjectSignOffPopUp = (props: ProjectSignOffPopUpProps) => {
     }, [clearSignatureInput, clearTextInput, signatureType]);
 
   return (
-    showSignOffPopUp && (
+    showSignOffPopUp ? (
       <Portal node={document.querySelector('body')}>
         <div className={PopupClassName} ref={ref}>
           <div className="Project-signOff-popup-wrapper">
@@ -225,7 +225,7 @@ const ProjectSignOffPopUp = (props: ProjectSignOffPopUpProps) => {
         </div>
         {isSigned && PopupMobileRender}
       </Portal>
-    )
+    ) : null
   );
 };
 

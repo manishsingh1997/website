@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import CancelledQuote from '../data/CancelledQuote';
-import ApprovedQuote from '../data/ApprovedQuote';
+import ApprovedQuote from '../data/SignOffApprovedQuote';
 
-type SignOffRequestData = { signoff_img?: string, signoff_text?: string };
+type SignOffRequestData = {signoff_img?: string; signoff_text?: string};
 
 // @ts-ignore
 export const ApprovedQuoteDetails = (customerGID: string, quoteApprovalSecret: string) => {
@@ -38,10 +38,10 @@ export const reviewQuoteApproval = (customerGID: string, quoteApprovalSecret: st
 };
 
 // @ts-ignore
-export const updateCustomerSignOffRequirement = (customerGID, quoteApprovalSecret,  data: SignOffRequestData) => {
+export const updateCustomerSignOffRequirement = (customerGID, quoteApprovalSecret, data: SignOffRequestData) => {
   return Promise.resolve({
     data: {
-      signoff_img: data?.signoff_img ||  data?.signoff_text,
+      signoff_img: data?.signoff_img || data?.signoff_text,
       signoff_by: '1',
       signoff_at: new Date().toDateString(),
       signoff_pdf: '',
