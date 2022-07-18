@@ -22,7 +22,7 @@ $banner-top-desktop-padding: $v-88 + $v-12;
   @include phone() {
     background-position: unset;
     height: $banner-mobile-height;
-    padding-top: $v-48;
+    padding-top: $v-24;
   }
 
   &-Content {

@@ -15,13 +15,20 @@ const HomePage = () => {
       <MainTopBanner />
       <div className="wrapper-1180">
         <TestimonialBanner />
+      </div>
+      <div className="mobile-length">
+        <TellUsForm />
+      </div>
+      <div className="wrapper-1180">
         <CustomerReview />
         <ProjectsSection />
         <UpcomingRemoteFeatures />
         <GetStartedSection />
         <FenceCalculatorPromo />
       </div>
-      <TellUsForm />
+      <div className="desktop-length">
+        <TellUsForm />
+      </div>
     </>
   );
 }
