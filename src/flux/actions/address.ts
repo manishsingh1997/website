@@ -1,6 +1,7 @@
+import { Action, Dispatch } from 'redux';
 import {constants} from '@ergeon/3d-lib';
-
-import {getPlaceData, getCheckedZIP, getPriceAndDescription} from 'api/lead';
+import {getPlaceData, getCheckedZIP, getPriceAndDescription} from '../../api/lead';
+import {Config, Lead, LeadAddress} from '../../components/RequestQuotePage/types';
 import {updateConfig} from './cart';
 
 export const actionTypes = {
@@ -12,30 +13,32 @@ export const actionTypes = {
   MODAL_VALUE_UPDATED: 'MODAL_VALUE_UPDATED',
 };
 
-export const updateProduct = (product) => ({
+export const updateProduct = (product: string) => ({
   type: actionTypes.PRODUCT_UPDATED,
   payload: product,
 });
 
-export const updateLead = function (lead) {
-  return (dispatch, getState) => {
+export const updateLead = function (lead: Lead) {
+  return (dispatch: Dispatch<Action>, getState: () => { cart: { configs: Config[]; }; }) => {
     const {
       cart: {configs},
     } = getState();
 
     const configUpdates = Promise.all(
       configs.map((config, index) =>
-        getPriceAndDescription(config.product, lead.zipcode).then((priceAndDescription) => {
-          if (priceAndDescription) {
-            return dispatch(
-              updateConfig(index, {
-                ...config,
-                description: priceAndDescription['description'],
-                price: priceAndDescription['unit_price'],
-              })
-            );
+        getPriceAndDescription(config.product, lead.zipcode).then(
+          (priceAndDescription: {description: string; unit_price: string}) => {
+            if (priceAndDescription) {
+              return dispatch(
+                updateConfig(index, {
+                  ...config,
+                  description: priceAndDescription['description'],
+                  price: priceAndDescription['unit_price'],
+                })
+              );
+            }
           }
-        })
+        )
       )
     );
 
@@ -49,10 +52,10 @@ export const updateLead = function (lead) {
 };
 
 // eslint-disable-next-line object-shorthand
-export const updateLeadFromAddress = function ({address, product, zipcode}) {
+export const updateLeadFromAddress = function ({address, product, zipcode}: LeadAddress) {
   const {DEFAULT_ZIP} = constants;
 
-  return (dispatch) => {
+  return (dispatch: Dispatch<Action>) => {
     return getPlaceData(address)
       .then((placeData) =>
         getCheckedZIP(placeData.zipcode).then((checkedZipResponse) => {
@@ -69,7 +72,7 @@ export const updateLeadFromAddress = function ({address, product, zipcode}) {
           return zipcode;
         })
       )
-      .catch((error) => {
+      .catch((error: unknown) => {
         console.error('error trying to update lead', error);
         return DEFAULT_ZIP;
       });
@@ -89,12 +92,12 @@ export const closeAddressUpdatePopup = () => ({
   payload: null,
 });
 
-export const updateModalLead = (lead) => ({
+export const updateModalLead = (lead: Lead) => ({
   type: actionTypes.MODAL_LEAD_UPDATED,
   payload: lead,
 });
 
-export const updateModalValue = (value) => ({
+export const updateModalValue = (value: string) => ({
   type: actionTypes.MODAL_VALUE_UPDATED,
   payload: value,
 });

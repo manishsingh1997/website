@@ -17,7 +17,7 @@ export type ErrorResponse = {
 
 export type getFencequotingURLProps = {
   schemaCode: string,
-  zipCode: number,
+  zipCode: string,
   fenceSideLength: number,
   fenceSideSlopePercent: number,
   options?: boolean,

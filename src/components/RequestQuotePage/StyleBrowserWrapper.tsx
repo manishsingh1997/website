@@ -1,24 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {constants, StyleBrowser} from '@ergeon/3d-lib';
+// @ts-ignore
 import {tawk} from '@ergeon/erg-utms';
-import {getCheckedZIP} from 'api/lead';
+import {getCheckedZIP} from '../../api/lead';
 import PopUp from './PopUp';
 import './StyleBrowserWrapper.scss';
 
-export default class StyleBrowserWrapper extends React.Component {
-  static propTypes = {
-    doneButtonText: PropTypes.string,
-    fenceSideLength: PropTypes.number,
-    fenceSideSlopePercent: PropTypes.number,
-    initialSchemaCode: PropTypes.string,
-    onClose: PropTypes.func.isRequired,
-    onDone: PropTypes.func.isRequired,
-    onLoaded: PropTypes.func.isRequired,
-    showLoadingError: PropTypes.func.isRequired,
-    zipcode: PropTypes.string,
-  };
+type StyleBrowserWrapperProps = {
+  doneButtonText: string;
+  fenceSideLength: number;
+  initialSchemaCode: string;
+  fenceSideSlopePercent: number,
+  onClose: () => void;
+  onDone: (model: string) => void;
+  onLoaded: () => void;
+  showLoadingError: () => void;
+  zipcode: string;
+};
 
+export default class StyleBrowserWrapper extends React.Component<StyleBrowserWrapperProps> {
   static defaultProps = {
     fenceSideLength: 6,
     fenceSideSlopePercent: 0,
@@ -26,17 +26,20 @@ export default class StyleBrowserWrapper extends React.Component {
   };
 
   state = {
-    model: this.props.initialSchemaCode,
+    model: this.props.initialSchemaCode || constants.defaultFenceCode,
     showPopup: false,
+    productAvailability: null,
   };
 
   componentDidMount() {
+    // @ts-ignore
     tawk.tawkAPILoader.then((TawkAPI) => TawkAPI.hideWidget());
     this.openPopup();
     this.checkZipcode();
   }
 
   componentWillUnmount() {
+    // @ts-ignore
     tawk.tawkAPILoader.then((TawkAPI) => TawkAPI.showWidget());
   }
 
@@ -48,7 +51,7 @@ export default class StyleBrowserWrapper extends React.Component {
     });
   }
 
-  handleSelectionCompleted(model) {
+  handleSelectionCompleted(model: string) {
     const {onDone} = this.props;
     onDone && onDone(model);
   }

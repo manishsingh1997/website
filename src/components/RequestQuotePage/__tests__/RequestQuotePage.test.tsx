@@ -5,14 +5,14 @@ import '@testing-library/jest-dom';
 import {Provider} from 'react-redux';
 import {fireEvent, render, screen} from '@testing-library/react';
 import RequestQuotePage from '../index';
-import {addressData, leadData, selectedConfigs} from '../__mocks__/mockData';
+import {addressData, leadData, selectedConfigs, userData} from '../__mocks__/mockData';
 import {mockLoggedInAuth} from '../../AuthLogoutPage/__mocks__/mockAuth';
 import {store} from '../../__mocks__/mockStore';
 
 const props = {
   addConfig: jest.fn,
   address: addressData.formatted_address,
-  auth: mockLoggedInAuth,
+  auth: {...mockLoggedInAuth, user: userData},
   changeProduct: jest.fn,
   configs: selectedConfigs,
   lead: leadData,
@@ -87,6 +87,7 @@ describe('RequestQuotePage', () => {
         ...mockLoggedInAuth,
         isAuthLoading: true,
         isUserLoading: true,
+        user: userData,
       },
     };
 
@@ -119,10 +120,10 @@ describe('RequestQuotePage', () => {
     const newProps = {...props, configs: [], lead: null};
     render(
       <Provider store={newStore}>
-      <Router history={createMemoryHistory()}>
-        <RequestQuotePage {...newProps} />
-      </Router>
-    </Provider>
+        <Router history={createMemoryHistory()}>
+          <RequestQuotePage {...newProps} />
+        </Router>
+      </Provider>
     );
     const noLeadNotification = screen.queryByTestId('no-lead-notification');
     expect(noLeadNotification).toBeInTheDocument();
@@ -168,7 +169,7 @@ describe('RequestQuotePage', () => {
       auth: {
         ...mockLoggedInAuth,
         user: {
-          ...mockLoggedInAuth.user,
+          ...userData,
           main_address: {
             formatted_address: addressData.formatted_address,
           },

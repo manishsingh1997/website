@@ -21,7 +21,7 @@ const PreviewWithLink = ({
     () =>
       getFencequotingURL({
         schemaCode: finalSchemaCodeUrl,
-        zipCode: Number(zipCode),
+        zipCode: zipCode ?? '',
         fenceSideLength,
         fenceSideSlopePercent,
         options: false,

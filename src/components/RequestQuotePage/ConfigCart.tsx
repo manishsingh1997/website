@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {reduce} from 'lodash';
-
 import {Button, Input, Spinner} from '@ergeon/core-components';
 import {calcUtils, CatalogType} from '@ergeon/3d-lib';
 import {ReactSVG} from 'react-svg';
@@ -10,40 +8,36 @@ import iconPlus from '../../assets/icon-plus.svg';
 import {getFencequotingURL} from '../../utils/urls';
 import LoadingErrorModal from '../common/ErroredLoadingModal';
 import StyleBrowserWrapper from './StyleBrowserWrapper';
-
 import './ConfigCart.scss';
+import {Config, LeadConfigType} from './types';
 
-class ConfigCart extends React.Component {
-  static propTypes = {
-    addConfigFromSchema: PropTypes.func,
-    configs: PropTypes.arrayOf(
-      PropTypes.shape({
-        preview: PropTypes.string,
-        price: PropTypes.string,
-        description: PropTypes.string,
-        units: PropTypes.number,
-        grade: PropTypes.number,
-        code: PropTypes.string,
-      })
-    ),
-    onShowStyleBrowserChange: PropTypes.func.isRequired,
-    removeConfig: PropTypes.func.isRequired,
-    showStyleBrowser: PropTypes.bool,
-    updateConfig: PropTypes.func.isRequired,
-    zipcode: PropTypes.string,
-  };
+type ConfigCartProps = {
+  addConfigFromSchema: (config: LeadConfigType, index: number) => void;
+  configs: Config[];
+  onShowStyleBrowserChange: (show: boolean) => void;
+  removeConfig: (index: number) => void;
+  showStyleBrowser: boolean;
+  updateConfig: (index: number, config: Config) => void;
+  zipcode: string;
+};
 
-  static defaultProps = {
-    configs: [],
-    showStyleBrowser: false,
-  };
+type ConfigCartState = {
+  showStyleBrowser: boolean;
+  styleBrowserIndex: number;
+  isLoadingModalErrored: boolean;
+  styleBrowserLoaded: boolean;
+};
 
-  constructor(props) {
+class ConfigCart extends React.Component<ConfigCartProps, ConfigCartState> {
+  configCardRef!: HTMLDivElement | null;
+
+  constructor(props: ConfigCartProps) {
     super(props);
     this.state = {
       showStyleBrowser: props.showStyleBrowser,
       styleBrowserIndex: -1,
       isLoadingModalErrored: false,
+      styleBrowserLoaded: false,
     };
 
     this.showLoadingError = this.showLoadingError.bind(this);
@@ -57,19 +51,19 @@ class ConfigCart extends React.Component {
     }
   }
 
-  scrollToNode(node) {
-    node.scrollIntoView({behavior: 'smooth'});
+  scrollToNode(node: HTMLDivElement | null) {
+    node && node.scrollIntoView({behavior: 'smooth'});
   }
 
   getTotal() {
-    return reduce(this.props.configs, (total, {price, units}) => total + price * units, 0);
+    return reduce(this.props.configs, (total, {price, units}) => total + parseInt(price, 10) * units, 0);
   }
 
-  isItFence(config) {
+  isItFence(config: Config) {
     return config.catalog_type === CatalogType.FENCE;
   }
 
-  editConfig(index) {
+  editConfig(index: number) {
     this.setState({
       showStyleBrowser: true,
       styleBrowserIndex: index,
@@ -77,11 +71,11 @@ class ConfigCart extends React.Component {
     this.props.onShowStyleBrowserChange(true);
   }
 
-  removeConfig(index) {
+  removeConfig(index: number) {
     this.props.removeConfig(index);
   }
 
-  onUnitsChange(value, index) {
+  onUnitsChange(value: string, index: number) {
     const {configs} = this.props;
     const config = configs[index];
     this.props.updateConfig(index, {...config, units: Number(value)});
@@ -95,9 +89,9 @@ class ConfigCart extends React.Component {
     this.props.onShowStyleBrowserChange(false);
   }
 
-  onDoneEditorClick(schemaCode, index = -1) {
+  onDoneEditorClick(schemaCode: string, index = -1) {
     const {configs, zipcode} = this.props;
-    const modelState = calcUtils.getValueFromUrl(schemaCode)
+    const modelState = calcUtils.getValueFromUrl(schemaCode);
 
     this.setState({
       showStyleBrowser: false,
@@ -139,20 +133,22 @@ class ConfigCart extends React.Component {
   closeLoadingError() {
     const {onShowStyleBrowserChange} = this.props;
     this.setState(() => ({isLoadingModalErrored: false}));
-    onShowStyleBrowserChange();
+    onShowStyleBrowserChange(false);
   }
 
-  renderDescription(config) {
+  renderDescription(config: Config) {
     const description = config.description || 'Cannot get data';
     return description;
   }
 
-  renderConfig(config, index) {
+  renderConfig(config: Config, index: number) {
     const {zipcode} = this.props;
     const DEFAULT_FENCE_SIDE_LENGTH = 6;
     const isFenceConfig = this.isItFence(config);
     const length = (config?.units || DEFAULT_FENCE_SIDE_LENGTH).toString();
-    const priceText = isFenceConfig ? `~${Math.round(config.price)}/ft` : `~${Math.round(config.price)}`;
+    const priceText = isFenceConfig
+      ? `~${Math.round(parseInt(config.price, 10))}/ft`
+      : `~${Math.round(parseInt(config.price, 10))}`;
 
     return (
       <div data-testid={`config-${config.id}`} key={config.id}>
@@ -163,7 +159,7 @@ class ConfigCart extends React.Component {
                 <a
                   href={getFencequotingURL({
                     schemaCode: config.code,
-                    zipcode,
+                    zipCode: zipcode,
                     fenceSideLength: config.units,
                     fenceSideSlopePercent: config.grade,
                   })}
@@ -225,7 +221,9 @@ class ConfigCart extends React.Component {
                     <Input
                       max={100}
                       min={1}
-                      onChange={(event, name, value) => this.onUnitsChange(value, index)}
+                      onChange={(_event: React.FormEvent<HTMLInputElement>, _name: string, value: string) =>
+                        this.onUnitsChange(value, index)
+                      }
                       size="small"
                       step="1"
                       type="number"
@@ -241,7 +239,9 @@ class ConfigCart extends React.Component {
                       className="unit-input"
                       max={100}
                       min={1}
-                      onChange={(event, name, value) => this.onUnitsChange(value, index)}
+                      onChange={(_event: React.FormEvent<HTMLInputElement>, _name: string, value: string) =>
+                        this.onUnitsChange(value, index)
+                      }
                       size="small"
                       step="1"
                       type="number"

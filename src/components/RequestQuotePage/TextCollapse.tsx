@@ -1,26 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import {Button} from '@ergeon/core-components';
-
 import './TextCollapse.scss';
-export default class TextCollapse extends React.Component {
-  static propTypes = {
-    children: PropTypes.string,
-    length: PropTypes.number,
-  };
 
-  static defaultProps = {
-    length: 42,
-    children: '',
-  };
+type TextCollapseProps = {
+  children: string;
+  length: number;
+};
 
+export default class TextCollapse extends React.Component<TextCollapseProps> {
   state = {
     expanded: false,
   };
 
   renderCollapsed() {
-    const {children, length} = this.props;
+    const {children = '', length = 42} = this.props;
     const collapsedText = children.slice(0, length);
     return (
       <React.Fragment>
@@ -55,7 +48,7 @@ export default class TextCollapse extends React.Component {
   }
 
   render() {
-    const {children, length} = this.props;
+    const {children = '', length = 42} = this.props;
     const {expanded} = this.state;
 
     return (

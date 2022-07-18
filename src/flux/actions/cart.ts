@@ -1,8 +1,10 @@
+import {Action, Dispatch} from 'redux';
 import some from 'lodash/some';
 import random from 'lodash/random';
 import {CatalogType, calcUtils, attrs} from '@ergeon/3d-lib';
 import moment from 'moment';
-import {getPriceAndDescription} from 'api/lead';
+import {getPriceAndDescription} from '../../api/lead';
+import {Config, Lead, LeadConfigType} from '../../components/RequestQuotePage/types';
 
 export const actionTypes = {
   ADD_CONFIG: 'ADD_CONFIG',
@@ -11,37 +13,40 @@ export const actionTypes = {
   CLEAR_CONFIGS: 'CLEAR_CONFIGS',
 };
 
-export const addConfig = (config) => ({
+export const addConfig = (config: Config) => ({
   type: actionTypes.ADD_CONFIG,
   payload: config,
 });
 
-export const removeConfig = (index) => ({
+export const removeConfig = (index: number) => ({
   type: actionTypes.REMOVE_CONFIG,
   payload: index,
 });
 
-export const updateConfig = (index, config) => ({
+export const updateConfig = (index: number, config: Config) => ({
   type: actionTypes.UPDATE_CONFIG,
   payload: {index, config},
 });
 
-export const clearConfigs = (lead) => ({
+export const clearConfigs = (lead: Lead) => ({
   type: actionTypes.CLEAR_CONFIGS,
   payload: lead,
 });
 
 // eslint-disable-next-line object-shorthand
-export const addConfigFromSchema = function ({zipcode, data, schemaCode, length, grade, configs}, index = -1) {
-  return (dispatch) => {
+export const addConfigFromSchema = function (
+  {zipcode, data, schemaCode, length, grade, configs}: LeadConfigType,
+  index = -1
+) {
+  return (dispatch: Dispatch<Action>) => {
     const {FRAME_STYLE} = attrs;
 
     if (some(configs, (config) => config.code === schemaCode)) return;
     const itemId = random(0, 1, true).toString(36).slice(2);
 
-    const item = {
+    const item: Config = {
       id: itemId,
-      catalog_type: data[FRAME_STYLE.id] ? CatalogType.FENCE : CatalogType.GATE,
+      catalog_type: data && data[FRAME_STYLE.id] ? CatalogType.FENCE : CatalogType.GATE,
       code: schemaCode,
       product: data,
       preview: '',
@@ -55,10 +60,9 @@ export const addConfigFromSchema = function ({zipcode, data, schemaCode, length,
     return getPriceAndDescription(data, zipcode)
       .then((priceAndDescription) => {
         if (priceAndDescription) {
-
-          item.description = priceAndDescription['description']
-          item.price = priceAndDescription['unit_price']
-          item.timestamp = moment().unix() * 1000
+          item.description = priceAndDescription['description'];
+          item.price = priceAndDescription['unit_price'];
+          item.timestamp = moment().unix() * 1000;
 
           if (index !== -1) {
             return dispatch(updateConfig(index, item));

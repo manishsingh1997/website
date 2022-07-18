@@ -16,6 +16,7 @@ const getAuthService = () => {
 declare global {
   interface Window {
     authService?: ErgCustomerAuthService;
+    onInitMap?: () => void;
   }
 }
 export const authService = window.authService ?? getAuthService();

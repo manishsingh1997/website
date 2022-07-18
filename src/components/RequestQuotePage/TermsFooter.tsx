@@ -1,13 +1,12 @@
 import React from 'react';
-
 import './TermsFooter.scss';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-export default class TermsFooter extends React.Component {
-  static propTypes = {
-    className: PropTypes.string,
-  };
+type TermsFooterProps = {
+  className: string;
+};
+
+export default class TermsFooter extends React.Component<TermsFooterProps> {
   render() {
     const {className} = this.props;
     const footerClassNames = classNames({

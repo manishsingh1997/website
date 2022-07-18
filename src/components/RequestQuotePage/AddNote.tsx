@@ -1,27 +1,31 @@
 import classNames from 'classnames';
 import React from 'react';
-import propTypes from 'prop-types';
 import {ReactSVG} from 'react-svg';
 import crossIcon from '@ergeon/core-components/src/assets/icon-cross-gray.svg';
 import {Input} from '@ergeon/core-components';
-
 import './AddNote.scss';
 
-export default class AddNote extends React.Component {
-  static propTypes = {
-    comment: propTypes.string,
-    errors: propTypes.object,
-    handleAddNote: propTypes.func.isRequired,
-    handleFieldChange: propTypes.func.isRequired,
-    handleRemoveNote: propTypes.func.isRequired,
-    loading: propTypes.bool,
-    showNoteField: propTypes.bool,
-  };
-  static defaultProps = {
-    showNoteField: false,
-  };
+type AddNoteProps = {
+  comment: string;
+  errors: Record<string, string> | null;
+  handleAddNote: () => void;
+  handleFieldChange: (event: React.FormEvent<HTMLInputElement>, name: string, value: string) => void;
+  handleRemoveNote: () => void;
+  loading: boolean;
+  showNoteField: boolean;
+};
+
+export default class AddNote extends React.Component<AddNoteProps> {
   render() {
-    const {showNoteField, loading, comment, handleFieldChange, errors, handleAddNote, handleRemoveNote} = this.props;
+    const {
+      showNoteField = false,
+      loading,
+      comment,
+      handleFieldChange,
+      errors,
+      handleAddNote,
+      handleRemoveNote,
+    } = this.props;
     return (
       <React.Fragment>
         {showNoteField === false ? (

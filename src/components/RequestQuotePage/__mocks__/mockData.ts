@@ -59,3 +59,12 @@ export const leadData = {
   productAvailability: productAvailabilityData,
   zipcode: productAvailabilityData.zipcode,
 };
+
+export const userData = {
+  email: '',
+  full_name: '',
+  phone_number: '',
+  main_address: {
+    formatted_address: '12 Palo Alto Ave, Palo Alto, CA 94301, USA',
+  },
+};

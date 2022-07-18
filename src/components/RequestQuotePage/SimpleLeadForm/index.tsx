@@ -1,1 +1,1 @@
-export { default } from './SimpleLeadForm';
+export {default} from './SimpleLeadForm';

@@ -1,25 +1,55 @@
 import classNames from 'classnames';
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {ReactNode} from 'react';
 import * as Sentry from '@sentry/browser';
 import {constants, calcUtils, CatalogType} from '@ergeon/3d-lib';
+// @ts-ignore
 import {RadioGroup} from 'react-radio-group';
 import {Button, Checkbox, FormField, PhoneInput, Spinner, Input, RadioButton} from '@ergeon/core-components';
 import {UPCOMING_FEATURES_PARAM} from '@ergeon/erg-utils-js';
+// @ts-ignore
 import {getBaseEventData} from '@ergeon/erg-utms';
-
+// @ts-ignore
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
-import {createValidator, phone, email, required} from 'utils/validation';
-import {submitLeadArrived} from 'api/lead';
-import {identify, track, trackError, trackTawkLeadEvent} from 'utils/analytics';
-import {CUSTOMER_LEAD_CREATED} from 'utils/events';
-import {DEFAULT_SOURCE_VALUE} from 'website/constants';
+import {createValidator, phone, email, required} from '../../utils/validation';
+import {submitLeadArrived} from '../../api/lead';
+import {identify, track, trackError, trackTawkLeadEvent} from '../../utils/analytics';
+import {CUSTOMER_LEAD_CREATED} from '../../utils/events';
+import {DEFAULT_SOURCE_VALUE} from '../../website/constants';
 import {parseError, showUpcomingFeatures, getAdvancedEditorUrl} from '../../utils/utils';
-
-import './LeadForm.scss';
 import AddNote from './AddNote';
+import {Address, Config, Lead, User} from './types';
+import './LeadForm.scss';
 
-const stringifyAddress = (address) => {
+type LeadFormProps = {
+  configs: Config[];
+  lead: Lead | null;
+  mobileAddressField: ReactNode;
+  onAddConfigClick: () => void;
+  onProductChange: (value: string) => void;
+  onSubmit: () => void;
+  product: string;
+  user: User | null;
+};
+
+type LeadFormState = {
+  validateOnChange: boolean;
+  showNoteField: boolean;
+  data: {
+    email: string;
+    name: string;
+    phone: string;
+    comment: string;
+    product: string;
+    string_address: string;
+    is_subscribed_to_news: boolean;
+    address?: Address;
+  };
+  validFields: Record<string, boolean> | null;
+  errors: Record<string, string> | null;
+  loading: boolean;
+};
+
+const stringifyAddress = (address?: Address | null) => {
   if (address !== null && address !== undefined) {
     const addressParts = [
       address.primary_number,
@@ -33,7 +63,7 @@ const stringifyAddress = (address) => {
   return '';
 };
 
-const getInitialState = (showNoteField = false, props = {}) => {
+const getInitialState = (showNoteField = false, props: LeadFormProps) => {
   return {
     validateOnChange: false,
     showNoteField,
@@ -52,19 +82,10 @@ const getInitialState = (showNoteField = false, props = {}) => {
   };
 };
 
-export default class LeadForm extends React.Component {
-  static propTypes = {
-    configs: PropTypes.array,
-    lead: PropTypes.object,
-    mobileAddressField: PropTypes.node,
-    onAddConfigClick: PropTypes.func.isRequired,
-    onProductChange: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-    product: PropTypes.string,
-    user: PropTypes.object,
-  };
+export default class LeadForm extends React.Component<LeadFormProps, LeadFormState> {
+  validator: (values: unknown) => Record<string, string> | null;
 
-  constructor(props) {
+  constructor(props: LeadFormProps) {
     super(props);
     const validateField = {
       email: [required, email],
@@ -72,10 +93,11 @@ export default class LeadForm extends React.Component {
       product: [required],
       name: [required],
     };
+    // @ts-ignore
     this.validator = createValidator(validateField);
     this.state = getInitialState(false, props);
   }
-  async handleSubmit(e) {
+  async handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const {lead, user, onSubmit, product} = this.props;
@@ -84,7 +106,7 @@ export default class LeadForm extends React.Component {
       product,
     };
     const errors = this.validator(data);
-    const validFields = {};
+    const validFields: Record<string, boolean> = {};
     Object.keys(data).forEach((key) => {
       validFields[key] = !(errors && key in errors);
     });
@@ -104,7 +126,7 @@ export default class LeadForm extends React.Component {
       const eventData = {
         ...baseEventData,
         ...data,
-        address: data.address || lead.address,
+        address: data.address || lead?.address,
       };
       const order = this.getOrder();
       if (product === FENCE_SLUG) {
@@ -157,11 +179,14 @@ export default class LeadForm extends React.Component {
     const {onAddConfigClick} = this.props;
     onAddConfigClick();
   };
-  handleFieldChange(event, name, value) {
+
+  handleFieldChange(_event: React.FormEvent<HTMLInputElement>, name: string, value: string) {
     const {data, validateOnChange} = this.state;
     const newState = {
+      ...this.state,
       data: {
         ...data,
+        // @ts-ignore
         string_address: stringifyAddress(name === 'address' ? value : this.props.lead.address),
         [name]: value,
       },
@@ -169,7 +194,7 @@ export default class LeadForm extends React.Component {
 
     if (validateOnChange) {
       newState.errors = this.validator(newState.data);
-      const validFields = {};
+      const validFields: Record<string, boolean> = {};
       Object.keys(newState.data).forEach((key) => {
         let valid = true;
         if (newState.errors && key in newState.errors) valid = false;
@@ -184,10 +209,10 @@ export default class LeadForm extends React.Component {
       this.props.onProductChange(value);
     }
   }
-  handleProductChange(value) {
-    this.handleFieldChange({}, 'product', value);
+  handleProductChange(value: string) {
+    this.handleFieldChange({} as React.FormEvent<HTMLInputElement>, 'product', value);
   }
-  handleCheckChange(value) {
+  handleCheckChange(value: boolean) {
     this.setState({
       data: {...this.state.data, is_subscribed_to_news: value},
     });
@@ -198,13 +223,15 @@ export default class LeadForm extends React.Component {
     const {CATALOG_ID_FENCE, CATALOG_ID_GATE} = constants;
     // TODO Rename item.code attribute to the correct schemaCode
     return this.props.configs.map((item) => {
-      let schema = (calcUtils.getParams(`?${item.code}`).schema || '').split(',');
-      schema = schema.map((number) => parseInt(number, 10));
-      const code = (calcUtils.getParams(`?${item.code}`).code || '').split(',');
+      const schemaString = (calcUtils.getParams(`?${item.code}`).schema || '') as string;
+      const schemaValues = schemaString.split(',');
+      const schema = schemaValues.map((int) => parseInt(int, 10));
+      const codeString = (calcUtils.getParams(`?${item.code}`).code || '') as string;
+      const code = codeString.split(',');
       return {
         advancedEditorUrl: getAdvancedEditorUrl(
-          {schema, code, catalog_type: item.catalog_type},
-          lead.address && lead.address.zipcode
+          {schema: schemaValues, code, catalog_type: item.catalog_type},
+          lead?.address && lead.address.zipcode
         ),
         catalog_type: item.catalog_type,
         catalog_id: item.catalog_type === CatalogType.FENCE ? CATALOG_ID_FENCE : CATALOG_ID_GATE,
@@ -219,11 +246,7 @@ export default class LeadForm extends React.Component {
   }
 
   render() {
-    const {
-      lead: {address},
-      mobileAddressField,
-      product,
-    } = this.props;
+    const {lead, mobileAddressField, product} = this.props;
     const {
       data: {email, name, phone, comment, is_subscribed_to_news: isSubscribedToNews},
       errors,
@@ -232,7 +255,7 @@ export default class LeadForm extends React.Component {
       validFields,
     } = this.state;
     const addConfigLinkClasses = classNames({
-      'add-config__disable': !address || product !== FENCE_SLUG,
+      'add-config__disable': !lead?.address || product !== FENCE_SLUG,
     });
     return (
       <form className="Form LeadForm" data-testid="lead-form" onSubmit={this.handleSubmit.bind(this)}>

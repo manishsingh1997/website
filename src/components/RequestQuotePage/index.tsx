@@ -1,41 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom';
 import {Button, Spinner, googleIntegration} from '@ergeon/core-components';
 import {calcUtils} from '@ergeon/3d-lib';
+// @ts-ignore
 import MapComponent from '@ergeon/map-component';
-
+// @ts-ignore
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
-import AppLoader from 'components/common/AppLoader';
-import Marker from 'assets/marker.svg';
-import Success from 'components/common/Success';
-import ConfigCart from 'containers/ConfigCart';
+import AppLoader from '../common/AppLoader';
+import Marker from '../../assets/marker.svg';
+import Success from '../common/Success';
+import ConfigCart from '../../containers/ConfigCart';
 import {getParameterByName, showUpcomingFeatures} from '../../utils/utils';
 import LeadForm from './LeadForm';
 import TermsFooter from './TermsFooter';
-
+import {RequestQuotePageProps, RequestQuotePageState} from './types';
 import './index.scss';
 
 const REDIRECT_TIMEOUT = 5000;
 
-class RequestQuotePage extends React.Component {
-  static propTypes = {
-    addConfig: PropTypes.func.isRequired,
-    address: PropTypes.string,
-    auth: PropTypes.object,
-    changeProduct: PropTypes.func,
-    history: PropTypes.object,
-    configs: PropTypes.array,
-    lead: PropTypes.object,
-    openAddressUpdatePopup: PropTypes.func.isRequired,
-    product: PropTypes.string,
-    updateLeadAndConfig: PropTypes.func.isRequired,
-    updateLeadFromAddress: PropTypes.func.isRequired,
-    updateProduct: PropTypes.func,
-    zipcode: PropTypes.string,
-  };
-
+class RequestQuotePage extends React.Component<RequestQuotePageProps, RequestQuotePageState> {
   state = {
     showThankYou: false,
     showConfigCart: false,
@@ -43,21 +27,21 @@ class RequestQuotePage extends React.Component {
   };
 
   componentDidMount() {
-    const { zipcode, configs } = this.props;
+    const {zipcode, configs} = this.props;
     const address = getParameterByName('address') || this.props.address;
     const product = getParameterByName('product') || this.props.product;
     const schema = getParameterByName('schema');
     const code = getParameterByName('code');
-    const length = getParameterByName('length');
-    const grade = getParameterByName('grade');
-    const data = schema && code ? calcUtils.getValueFromUrl(window.location.search) : null;
-    const schemaCode = schema && code ? calcUtils.getSchemaCodeFromState(data) : null;
+    const grade = getParameterByName('grade') as number | undefined;
+    const length = getParameterByName('length') as number | undefined;
+    const productConfig = schema && code ? calcUtils.getValueFromUrl(window.location.search) : null;
+    const schemaCode = productConfig ? calcUtils.getSchemaCodeFromState(productConfig) : '';
 
     this.props.updateLeadAndConfig({
       address,
       product,
       zipcode,
-      data,
+      data: productConfig,
       schemaCode,
       length,
       grade,
@@ -65,14 +49,14 @@ class RequestQuotePage extends React.Component {
     });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: RequestQuotePageProps) {
     if (prevProps.address !== this.props.address) {
       window.onInitMap && window.onInitMap();
     }
     // automatically redirect the user to our home page
     if (this.state.showThankYou) {
       setTimeout(() => {
-        this.props.history.push('/')
+        this.props.history.push('/');
       }, REDIRECT_TIMEOUT);
     }
     this.updateAddress();
@@ -132,20 +116,20 @@ class RequestQuotePage extends React.Component {
   }
 
   getLocationMarker() {
-    const {
-      lead: {address},
-    } = this.props;
+    const {lead} = this.props;
+
+    const address = lead?.address;
     let location;
 
-    if (typeof address.location.lat === 'function') {
+    if (typeof address?.location.lat === 'function' && typeof address?.location.lng === 'function') {
       location = {
         lat: address.location.lat(),
         lng: address.location.lng(),
       };
     } else {
       location = {
-        lat: address.location ? address.location.lat : null,
-        lng: address.location ? address.location.lng : null,
+        lat: address?.location ? address.location.lat : null,
+        lng: address?.location ? address.location.lng : null,
       };
     }
 
@@ -216,7 +200,7 @@ class RequestQuotePage extends React.Component {
 
   renderSignupMap() {
     const {lead} = this.props;
-    const styles = [{ stylers: [{ saturation: -100 }] }];
+    const styles = [{stylers: [{saturation: -100}]}];
 
     if (!lead || !lead.address) {
       return null;
@@ -286,7 +270,6 @@ class RequestQuotePage extends React.Component {
       updateProduct,
       product,
       lead,
-      zipcode,
       configs,
     } = this.props;
 
@@ -299,14 +282,14 @@ class RequestQuotePage extends React.Component {
     if (this.state.showThankYou) {
       return (
         <div className="request-quote-page" data-testid="thank-you-notification">
-           <Success header="Thanks!" text="We will call you within 24 hours" />
-            {showUpcomingFeatures('ENG-1XX') && !user && (
-              <span>
-                <p className="confirmation-email spacing before__is-24" data-testid="thank-you-notification-text">
-                  We have sent a confirmation message to your email. Please follow the instructions there.
-                </p>
-              </span>
-            )}
+          <Success header="Thanks!" text="We will call you within 24 hours" />
+          {showUpcomingFeatures('ENG-1XX') && !user && (
+            <span>
+              <p className="confirmation-email spacing before__is-24" data-testid="thank-you-notification-text">
+                We have sent a confirmation message to your email. Please follow the instructions there.
+              </p>
+            </span>
+          )}
         </div>
       );
     }
@@ -322,10 +305,10 @@ class RequestQuotePage extends React.Component {
               {
                 <LeadForm
                   configs={configs}
-                  lead={lead || {}}
+                  lead={lead}
                   mobileAddressField={this.getStreetAddress() && this.renderMobileAddress()}
                   onAddConfigClick={() => this.setState({showStyleBrowser: true, showConfigCart: true})}
-                  onProductChange={(product) => updateProduct(product)}
+                  onProductChange={(product: string) => updateProduct(product)}
                   onSubmit={() => this.setState({showThankYou: true})}
                   product={product}
                   user={user}
@@ -337,9 +320,8 @@ class RequestQuotePage extends React.Component {
         </div>
         {this.isConfigCartDisplayed && (
           <ConfigCart
-            onShowStyleBrowserChange={(value) => this.setState({showStyleBrowser: value})}
+            onShowStyleBrowserChange={(value: boolean) => this.setState({showStyleBrowser: value})}
             showStyleBrowser={showStyleBrowser}
-            zipcode={zipcode}
           />
         )}
         <TermsFooter className={footerClassNames} />

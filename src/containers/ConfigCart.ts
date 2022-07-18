@@ -1,27 +1,28 @@
+import { Action, Dispatch } from 'redux';
 import {connect} from 'react-redux';
-
-import ConfigCart from 'components/RequestQuotePage/ConfigCart';
 import {addConfig, updateConfig, removeConfig, addConfigFromSchema} from '../flux/actions/cart';
+import { Address, Config, LeadConfigType } from '../components/RequestQuotePage/types';
+import ConfigCart from '../components/RequestQuotePage/ConfigCart';
 
-const mapStateToProps = ({address, cart}) => {
+const mapStateToProps = ({address, cart}: {address: Address, cart: {configs: Config[]}}) => {
   return {
     zipcode: address.zipcode,
-    configs: cart.configs,
+    configs: cart.configs || [],
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
   return {
-    addConfig: (item) => {
+    addConfig: (item: Config) => {
       dispatch(addConfig(item));
     },
-    updateConfig: (index, config) => {
+    updateConfig: (index: number, config: Config) => {
       dispatch(updateConfig(index, config));
     },
-    removeConfig: (index) => {
+    removeConfig: (index: number) => {
       dispatch(removeConfig(index));
     },
-    addConfigFromSchema: ({zipcode, data, configs, schemaCode, length, grade}, index) => {
+    addConfigFromSchema: ({zipcode, data, configs, schemaCode, length, grade}: LeadConfigType, index: number) => {
       dispatch(
         addConfigFromSchema(
           {

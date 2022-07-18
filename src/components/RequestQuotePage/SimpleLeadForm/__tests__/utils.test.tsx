@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { isFullAddress } from '../utils';
+import {isFullAddress} from '../utils';
 
 describe('SimpleLeadForm Utils tests', () => {
   describe('isFullAddress tests', () => {
