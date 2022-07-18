@@ -49,7 +49,7 @@ const AppHouseListPage = (props: AppHouseListPageProps) => {
       fetchData={fetchData}
       isLoading={isListLoading}
       renderContent={renderContent}
-      renderHeader={() => 'Houses'}
+      renderHeader={() => 'Address'}
     />
   )
 }

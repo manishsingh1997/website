@@ -26,8 +26,8 @@ describe('Should test the App House List Page', () => {
       </Provider>
     );
     const houseAddress = screen.getByText('300 Wood Falls Ct, Roseville, CA 95678, USA');
-    const label = screen.getByText('Address');
-    const header = screen.getByText('Houses');
+    const label = screen.getAllByText('Address')[1];
+    const header = screen.getByRole('heading', { name: 'Address', level: 4});
     const houseNumber = screen.getByText('House #1');
 
     expect(houseAddress).toBeInTheDocument();

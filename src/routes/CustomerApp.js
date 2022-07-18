@@ -21,7 +21,7 @@ const CustomerApp = ({match, location}) => (
     <Switch>
       <Route component={AppAppointmentsListPage} path={`${match.url}/appointments`} />
       <Route component={AppContactsPage} path={`${match.url}/contacts`} />
-      <Route component={AppHouseListPage} path={`${match.url}/houses`} />
+      <Route component={AppHouseListPage} path={`${match.url}/address`} />
       <Route component={AppOrderDetailPage} path={`${match.url}/orders/:orderId`} />
       <Route component={AppOrderListPage} path={`${match.url}/orders`} />
       <Route component={AppQuoteDetailPage} exact name="quoteDetail" path={`${match.url}/quotes/:secret`} />

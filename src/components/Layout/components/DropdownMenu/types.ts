@@ -6,6 +6,7 @@ export interface MenuItem {
   iconSVG: string;
   onClick?: () => void;
   special?: boolean;
+  className?: string;
 }
 
 export interface user extends AuthUser {

@@ -204,16 +204,16 @@
     "description": "Ergeon Logout"
   },
   "/app": {
+    "address": {
+      "title": "Address",
+      "description": ""
+    },
     "appointments": {
       "title": "Appointments",
       "description": ""
     },
     "contacts": {
       "title": "Contacts",
-      "description": ""
-    },
-    "houses": {
-      "title": "Houses",
       "description": ""
     },
     "notifications": {

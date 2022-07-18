@@ -86,6 +86,13 @@
     .menu-title {
       display: flex;
       align-items: center;
+
+      .address-item{
+        svg{
+          width: $v-16;
+          height: auto;
+        }
+      }
     }
 
     @include phone() {

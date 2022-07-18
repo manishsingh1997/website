@@ -22,6 +22,7 @@ const MainDropdownMenu = (props: MainDropdownMenuProps) => {
         content: item.title,
         href: item.path,
         iconSVG: item.iconSVG,
+        className: item.className
       })
     );
 

@@ -12,7 +12,7 @@ import '../../index.scss';
 
 // TODO: Update DropdownMenu in core-components so it can render <Link to=""> instead of <a href="">
 class WebsiteDropdownMenu extends DropdownMenu {
-  renderMenuItem({content, href, iconSVG, special, onClick}: MenuItem, index: number) {
+  renderMenuItem({content, href, iconSVG, className = '', special, onClick}: MenuItem, index: number) {
     return (
       <NavLink
         activeClassName="active-link"
@@ -27,7 +27,7 @@ class WebsiteDropdownMenu extends DropdownMenu {
         to={href}
       >
         <div className="menu-title">
-          <span className={'icon'}>
+          <span className={classNames('icon', {[className]: className})}>
             <ReactSVG src={iconSVG} />
           </span>
           <span>{content}</span>

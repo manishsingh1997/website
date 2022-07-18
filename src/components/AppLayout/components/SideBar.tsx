@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, {useMemo} from 'react';
 import {ReactSVG} from 'react-svg';
 import {getMenuItems} from '../../../data/customer-app';
@@ -20,7 +21,11 @@ const SideBar = (props: SideBarProps) => {
       <ul className="siblings-list">
         {menuItems.map((menuItem) => (
           <PathNavLink activeClassName="active-link" key={`app-menu-${menuItem.title}`} to={menuItem.path}>
-            <li className="siblings-list-item">
+            <li
+              className={classNames('siblings-list-item', {
+                [menuItem.className]: menuItem.className,
+              })}
+            >
               <div className="menu-icon-wrapper">
                 <ReactSVG src={menuItem.iconSVG} />
               </div>

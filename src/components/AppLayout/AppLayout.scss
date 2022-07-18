@@ -83,6 +83,13 @@
           }
         }
       }
+
+      .address-item{
+        svg{
+          width: $v-16;
+          height: auto;
+        }
+      }
     }
 
     .sidebar-title {
