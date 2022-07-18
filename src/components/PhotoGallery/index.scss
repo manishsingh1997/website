@@ -193,6 +193,10 @@
         // Makes it visually nicer when cards start to move aka re-layout.
         background-color: $white;
       }
+
+      .image-loader__image {
+        min-height: $h-120 * 2;
+      }
     }
   }
 }
