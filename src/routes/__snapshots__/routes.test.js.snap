@@ -2536,7 +2536,7 @@ exports[`Routes Customer app endpoints 1`] = `
    
   Route to /app/:customerGid/contacts
    
-  Route to /app/:customerGid/address
+  Route to /app/:customerGid/addresses
    
   Route to /app/:customerGid/orders/:orderId
    

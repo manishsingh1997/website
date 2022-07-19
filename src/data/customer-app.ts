@@ -16,10 +16,10 @@ export const getMenuItems = (basePath: string, unsubscribeCode: string | null) =
       className: 'contacts-item'
     },
     {
-      path: `${basePath}/address`,
-      title: 'Address',
+      path: `${basePath}/addresses`,
+      title: 'Addresses',
       iconSVG: locationIcon,
-      className: 'address-item'
+      className: 'addresses-item'
     },
     {
       path: `${basePath}/orders`,

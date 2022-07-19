@@ -204,8 +204,8 @@
     "description": "Ergeon Logout"
   },
   "/app": {
-    "address": {
-      "title": "Address",
+    "addresses": {
+      "title": "Addresses",
       "description": ""
     },
     "appointments": {
