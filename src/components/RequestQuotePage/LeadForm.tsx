@@ -73,7 +73,7 @@ const getInitialState = (showNoteField = false, props: LeadFormProps) => {
       phone: (props.user && props.user.phone_number) || '',
       comment: '',
       product: FENCE_SLUG,
-      string_address: stringifyAddress(props.lead && props.lead.address),
+      string_address: stringifyAddress(props.lead && props.lead?.address),
       is_subscribed_to_news: true,
     },
     validFields: null,
@@ -180,14 +180,13 @@ export default class LeadForm extends React.Component<LeadFormProps, LeadFormSta
     onAddConfigClick();
   };
 
-  handleFieldChange(_event: React.FormEvent<HTMLInputElement>, name: string, value: string) {
+  handleFieldChange(_event: React.FormEvent<HTMLInputElement>, name: string, value: string | Address) {
     const {data, validateOnChange} = this.state;
     const newState = {
       ...this.state,
       data: {
         ...data,
-        // @ts-ignore
-        string_address: stringifyAddress(name === 'address' ? value : this.props.lead.address),
+        string_address: stringifyAddress(name === 'address' ? (value as Address) : this.props.lead?.address),
         [name]: value,
       },
     };
@@ -206,7 +205,7 @@ export default class LeadForm extends React.Component<LeadFormProps, LeadFormSta
     this.setState(newState);
 
     if (name === 'product' && value !== this.props.product) {
-      this.props.onProductChange(value);
+      this.props.onProductChange(value as string);
     }
   }
   handleProductChange(value: string) {
