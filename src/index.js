@@ -24,7 +24,7 @@ import Cities from 'routes/Cities';
 import publicRoutes from 'routes/public';
 
 import {GeoTargetRoutingInterceptor} from './containers/RoutingInterceptor';
-import {temporalRedirectRoutes} from './routes/redirects';
+import {internalRedirectRoutes, temporalRedirectRoutes} from './routes/redirects';
 import {CITIES_PAGE_PATH} from './website/constants';
 import store from './flux/store';
 import '@ergeon/core-components/dist/main.css';
@@ -83,6 +83,9 @@ render(
                     <Route exact key={route.from} path={route.from}>
                       <Redirect to={{pathname: route.to, search: window.location.search}} />
                     </Route>
+                  ))}
+                  {internalRedirectRoutes.map((route) => (
+                    <Redirect from={route.from} key={route.from} to={route.to} />
                   ))}
                   <Route component={CustomerApp} path="/app/:customerGid" />
                   <Route component={Cities} path={CITIES_PAGE_PATH} />
