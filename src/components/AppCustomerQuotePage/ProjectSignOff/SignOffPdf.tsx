@@ -3,21 +3,19 @@ import ProjectSignOffPopUp from './../ProjectSignOff/ProjectSignOffPopUp';
 import {SignOffPdfProps} from './../types';
 import {getIsQuoteStatusApprovedOrCompleted} from './../utils';
 
-const SignOffPdf = ({
-  asPDF,
-  customerSignOffData,
-  isCustomerSigned,
-  isSignLoading,
-  onSubmitSignature,
-  quoteApproval,
-  signatureData,
-}: SignOffPdfProps) => {
-  const isQuoteStatusApprovedOrCompleted = useMemo(
-    () => {
+const SignOffPdf = (props: SignOffPdfProps) => {
+  const {
+    asPDF,
+    customerSignOffData,
+    isCustomerSigned,
+    isSignLoading,
+    onSubmitSignature,
+    quoteApproval,
+    signatureData,
+  } = props;
+  const isQuoteStatusApprovedOrCompleted = useMemo(() => {
       return getIsQuoteStatusApprovedOrCompleted(quoteApproval)
-    },
-    [quoteApproval]
-  );
+    }, [quoteApproval]);
 
   if (isQuoteStatusApprovedOrCompleted) {
     return null;

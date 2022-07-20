@@ -9,13 +9,9 @@ import IconWarning from '@ergeon/core-components/src/assets/icon-warning.svg';
 import IconMark from '@ergeon/core-components/src/assets/icon-success.svg';
 import iconSave from '@ergeon/core-components/src/assets/icon-save.svg';
 
-import './ProjectSignOff.scss';
+import { ProjectSignOffProps } from './types';
 
-interface ProjectSignOffProps {
-  isSigned: boolean;
-  signedDate?: string;
-  pdfURL?: string;
-}
+import './ProjectSignOff.scss';
 
 const ProjectSignOff = (props: ProjectSignOffProps) => {
   const { isSigned, pdfURL, signedDate } = props;

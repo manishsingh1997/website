@@ -91,6 +91,7 @@ export type QuoteBodyProps = {
   paymentMethod: PaymentMethod | null;
   paymentMethodError: string | null;
   quoteApproval: QuoteApproval;
+  shouldShowSignoffComponents?: boolean;
 } & BasePageProps;
 
 type SignOffCommonProps = {

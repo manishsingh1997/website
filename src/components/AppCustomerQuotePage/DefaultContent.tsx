@@ -3,7 +3,6 @@ import {Route} from 'react-router-dom';
 
 import {isPDFMode, showUpcomingFeatures} from '../../utils/utils';
 import BuildSpecs from '../common/AppQuoteComponents/BuildSpecs';
-import ProjectSignOff from './ProjectSignOff/ProjectSignOff';
 import ProjectSignOffPopUp from './ProjectSignOff/ProjectSignOffPopUp';
 import ProjectSignOffTopNav from './ProjectSignOff/ProjectSignOffTopNav';
 import QuoteBody from './QuoteBody';
@@ -56,18 +55,15 @@ const DefaultContent = (props: DefaultContentProps) => {
           approveQuoteApproval={approveQuoteApproval}
           auth={auth}
           customerGID={customerGID}
+          isSigned={isCustomerSigned}
           match={match}
           paymentMethod={paymentMethod}
           paymentMethodError={paymentMethodError}
+          pdfURL={signatureData?.signedPDF}
           quoteApproval={quoteApproval}
+          shouldShowSignoffComponents={shouldShowSignoffComponents}
+          signedDate={signatureData?.signedDate}
         />
-        {shouldShowSignoffComponents && (
-          <ProjectSignOff
-            isSigned={isCustomerSigned}
-            pdfURL={signatureData?.signedPDF}
-            signedDate={signatureData?.signedDate}
-          />
-        )}
         {shouldShowSignoffComponents && (
           <ProjectSignOffPopUp
             isSigned={isCustomerSigned}

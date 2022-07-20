@@ -20,16 +20,23 @@ import {
 } from './utils';
 
 import {QuoteBodyProps} from './types';
+import ProjectSignOff from './ProjectSignOff/ProjectSignOff';
+import { ProjectSignOffProps } from './ProjectSignOff/types';
 
-const QuoteBody = ({
-  approveQuoteApproval,
-  auth,
-  customerGID,
-  match,
-  paymentMethod,
-  paymentMethodError,
-  quoteApproval,
-}: QuoteBodyProps) => {
+const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
+  const {
+    approveQuoteApproval,
+    auth,
+    customerGID,
+    match,
+    paymentMethod,
+    paymentMethodError,
+    quoteApproval,
+    isSigned,
+    pdfURL,
+    shouldShowSignoffComponents,
+    signedDate,
+  } = props;
   const history = useHistory();
 
   const contractUrl = useMemo(() => quoteApproval.contract_pdf, [quoteApproval]);
@@ -41,10 +48,10 @@ const QuoteBody = ({
   const houseId = useMemo(() => quoteApproval.quote.order.house.id, [quoteApproval]);
   const quoteType = useMemo(() => quoteApproval.quote.order.product.name, [quoteApproval]);
   const isMultiPartyQuote = useMemo(() => !isEmpty(otherQuoteApprovals), [otherQuoteApprovals, isEmpty]);
-  const quoteLines = useMemo(
-    () => prepareQuoteApprovalLines(quoteApprovalLines, quoteApproval.quote),
-    [quoteApproval, quoteApprovalLines, prepareQuoteApprovalLines]
-  );
+
+  const quoteLines = useMemo(() => {
+    return prepareQuoteApprovalLines(quoteApprovalLines, quoteApproval.quote)
+  }, [quoteApproval, quoteApprovalLines, prepareQuoteApprovalLines]);
 
   const newQuoteApprovalLink = useMemo(() => {
     const newQuoteApproval = quoteApproval?.new_quote_approval;
@@ -56,12 +63,9 @@ const QuoteBody = ({
 
   const asPDF = useMemo(() => isPDFMode(), []);
 
-  const onBuildDetailsClick = useCallback(
-    (configID: string, label: string) => {
+  const onBuildDetailsClick = useCallback((configID: string, label: string) => {
       history.push(`${location.pathname.replace(/\/$/, '')}/config/${configID}`, {label});
-    },
-    [location]
-  );
+    }, [location]);
 
   const shouldShowBillingForm = useCallback(() => {
     return (
@@ -114,6 +118,13 @@ const QuoteBody = ({
         />
       )}
       {isMultiPartyQuote && <AdditionalApprovalsList additionalQuoteApprovals={otherQuoteApprovals} />}
+      {shouldShowSignoffComponents && (
+          <ProjectSignOff
+            isSigned={isSigned}
+            pdfURL={pdfURL}
+            signedDate={signedDate}
+          />
+        )}
       <ExplanationSection asPDF={asPDF} contractUrl={contractUrl} quoteType={quoteType} />
     </>
   );

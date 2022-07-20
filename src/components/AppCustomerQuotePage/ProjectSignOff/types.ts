@@ -27,3 +27,9 @@ export type SignoffStampType = {
   signoff_pdf: null | string,
   signoff_img: string,
 }
+
+export type ProjectSignOffProps = {
+  isSigned: boolean;
+  signedDate?: string;
+  pdfURL?: string;
+}
