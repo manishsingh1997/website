@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom';
+import moment from 'moment';
 
 import approvedQuoteMock from '../__mocks__/data/ApprovedQuote';
 
-import {QuoteApproval} from '../types';
+import { QuoteApproval } from '../types';
 
 import {
   isSignOffPDFView,
@@ -46,6 +47,8 @@ describe('utils', () => {
     expect(getTotalPreviouslyApprovedPrice(approvedQuote)).toBe(34637);
   });
   it('should getIsQuoteStatusApprovedOrCompleted true if quote status is approved', () => {
+    // we have a static date, in order to make this test pass we need to adjust it, otherwise it will return false
+    approvedQuote.quote.expires_at = moment(approvedQuote.quote.expires_at).add(10, 'day').toISOString();
     expect(getIsQuoteStatusApprovedOrCompleted(approvedQuote)).toBeTruthy();
   });
 });

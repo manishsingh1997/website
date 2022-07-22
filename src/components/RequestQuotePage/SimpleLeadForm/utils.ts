@@ -32,14 +32,11 @@ export const getOrder = (configs: Config[], lead: Lead) => {
   });
 };
 
-export const isFullAddress = (value: Record<string, unknown>) => {
+export const isMinimumValidAddress = (value: Address | undefined) => {
   return Boolean(
     value &&
-      typeof value === 'object' &&
-      value['street_name'] &&
-      value['city_name'] &&
-      value['primary_number'] &&
-      value['state_abbreviation'] &&
-      value['zipcode']
+    typeof value === 'object' &&
+    value['city_name'] &&
+    value['state_abbreviation']
   );
 };

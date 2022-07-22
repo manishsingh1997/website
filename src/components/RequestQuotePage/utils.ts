@@ -1,13 +1,15 @@
 export type Address = {
-  primary_number: string;
-  street_name: string;
-  city_name: string;
-  state_abbreviation: string;
-  zipcode: string;
+  primary_number?: string;
+  street_name?: string;
+  city_name?: string;
+  state_abbreviation?: string;
+  zipcode?: string;
+  formated_address?: string;
+  raw_address?: string;
 };
 
-export const stringifyAddress = (address: Address) => {
-  if (address !== null && address !== undefined) {
+export const stringifyAddress = (address: Address | undefined) => {
+  if (address) {
     const addressParts = [
       address.primary_number,
       address.street_name,

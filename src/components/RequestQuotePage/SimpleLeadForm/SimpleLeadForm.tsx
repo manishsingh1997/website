@@ -1,22 +1,22 @@
-import React, {ChangeEvent, useState, useCallback, useMemo, useRef, useEffect} from 'react';
+import React, { ChangeEvent, useState, useCallback, useMemo, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import * as Sentry from '@sentry/browser';
-import {CatalogType} from '@ergeon/3d-lib';
-import {Button, FormField, Spinner, Input, useGooglePlacesAutocomplete, utils} from '@ergeon/core-components';
-import {useForm, Controller} from 'react-hook-form';
-import {UPCOMING_FEATURES_PARAM} from '@ergeon/erg-utils-js';
+import { CatalogType } from '@ergeon/3d-lib';
+import { Button, FormField, Spinner, Input, useGooglePlacesAutocomplete, utils } from '@ergeon/core-components';
+import { useForm, Controller } from 'react-hook-form';
+import { UPCOMING_FEATURES_PARAM } from '@ergeon/erg-utils-js';
 // @ts-ignore
-import {getBaseEventData} from '@ergeon/erg-utms';
+import { getBaseEventData } from '@ergeon/erg-utms';
 // @ts-ignore
-import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
-import {submitLeadArrived} from '../../../api/lead';
-import {showUpcomingFeatures} from '../../../utils/utils';
-import {identify, track, trackError, trackTawkLeadEvent} from '../../../utils/analytics';
-import {CUSTOMER_LEAD_CREATED} from '../../../utils/events';
-import {DEFAULT_SOURCE_VALUE} from '../../../website/constants';
-import {Address} from '../utils';
-import {getOrder, isFullAddress} from './utils';
-import {Config, User} from './types';
+import { FENCE_SLUG } from '@ergeon/core-components/src/constants';
+import { submitLeadArrived } from '../../../api/lead';
+import { showUpcomingFeatures } from '../../../utils/utils';
+import { identify, track, trackError, trackTawkLeadEvent } from '../../../utils/analytics';
+import { CUSTOMER_LEAD_CREATED } from '../../../utils/events';
+import { DEFAULT_SOURCE_VALUE } from '../../../website/constants';
+import { Address, stringifyAddress } from '../utils';
+import { getOrder, isMinimumValidAddress } from './utils';
+import { Config, User } from './types';
 
 import './SimpleLeadForm.scss';
 
@@ -38,13 +38,25 @@ type SimpleLeadFormProps = {
   user: User;
 };
 
+/** 
+ * SimpleLeadForm is a form that is used to submit leads
+ * 
+ * Notes:
+ * lead.address is defined and saved if previously used, otherwise it is undefined
+ * 
+ * Please be really careful on what we send to BE. 
+ * Inconsistent data can significantly decrease leads conversion and drop sales.
+ * We strictly need to send the following fields to avoid incomplete leads addresses:
+ * address {Address}
+ * raw_address {string}
+ */
 const SimpleLeadForm = (props: SimpleLeadFormProps) => {
-  const {lead, user, onSubmit, product, configs} = props;
-  const {address} = lead;
+  const { lead, user, onSubmit, product, configs } = props;
+  const { address } = lead;
 
   const [loading, setLoading] = useState(false);
   const googlePlacesInputRef = useRef<HTMLInputElement>(null);
-  const {placeData} = useGooglePlacesAutocomplete(googlePlacesInputRef);
+  const { placeData } = useGooglePlacesAutocomplete(googlePlacesInputRef);
 
   const selectedProduct = useMemo(() => {
     return {
@@ -53,22 +65,36 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
     };
   }, []);
 
-  const {control, handleSubmit, setValue, setError, clearErrors} = useForm({
+  const { control, handleSubmit, setValue, setError, clearErrors } = useForm({
     defaultValues: {
-      address: '',
+      address: address || {}, // check if we have lead.address already
       name: user?.full_name || '',
       phone: user?.phone_number || '',
       email: user?.email || '',
       phoneEmail: '',
       comment: '',
       product: selectedProduct,
-      string_address: '',
+      raw_address: stringifyAddress(address) || '',
       is_subscribed_to_news: true,
     },
   });
 
+  const triggerAddressError = useCallback(() => {
+    setError('raw_address', {
+      type: 'value',
+      message: 'Please enter at least your city and then select from the list',
+    });
+  }, [setError]);
+
   const submit = useCallback(
     async (fieldsData) => {
+      // let's make sure we have a valid address otherwise lets not submit and show an error
+      // also let's check user has same raw_address as he might change it, so it has to match
+      if (!isMinimumValidAddress(fieldsData.address) || fieldsData.raw_address !== fieldsData.address.raw_address) {
+        triggerAddressError();
+        return;
+      }
+      setLoading(true);
       const newData = {
         ...fieldsData,
         product: fieldsData.product.value,
@@ -83,7 +109,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
       };
       const order = getOrder(configs, lead);
       if (product === FENCE_SLUG) {
-        eventData['object'] = {...eventData.object, order};
+        eventData['object'] = { ...eventData.object, order };
       }
       if (showUpcomingFeatures('ENG-1XX')) {
         eventData[UPCOMING_FEATURES_PARAM] = true;
@@ -96,19 +122,19 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
         category: 'action',
         data: eventData,
       });
-
       try {
         await submitLeadArrived(eventData);
         trackTawkLeadEvent(eventData);
         identify(newData);
-        track(CUSTOMER_LEAD_CREATED, {...eventData, source: DEFAULT_SOURCE_VALUE});
+        track(CUSTOMER_LEAD_CREATED, { ...eventData, source: DEFAULT_SOURCE_VALUE });
       } catch (error) {
-        trackError(new Error('Lead submit error'), {error});
+        trackError(new Error('Lead submit error'), { error });
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
       onSubmit && onSubmit(newData);
     },
-    [product, onSubmit, user, address, lead, configs]
+    [product, onSubmit, user, address, lead, configs, triggerAddressError],
   );
 
   const handlePhoneEmailField = useCallback(
@@ -135,22 +161,20 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
     return null;
   }, []);
 
+  // let's track placeData (from google places dropdown) to verify we have a valid address
   useEffect(
-    function setStringAddress() {
+    function setAddressData() {
       if (placeData) {
-        if (isFullAddress(placeData)) {
-          clearErrors('address');
-          setValue('address', placeData);
-          setValue('string_address', placeData.formatted_address);
+        if (isMinimumValidAddress(placeData)) {
+          clearErrors('raw_address');
+          setValue('address', placeData); // assign to our address object
+          setValue('raw_address', placeData.formatted_address);
           return;
         }
-        setError('address', {
-          type: 'value',
-          message: 'Enter your home address including house number and select from the list',
-        });
+        triggerAddressError();
       }
     },
-    [placeData, setError, setValue]
+    [placeData, setError, setValue, triggerAddressError, clearErrors]
   );
 
   return (
@@ -160,7 +184,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
           control={control}
           defaultValue={user?.full_name ?? ''}
           name="name"
-          render={({field, fieldState}) => (
+          render={({ field, fieldState }) => (
             <Input
               isDisabled={loading}
               isValid={isFieldValid(fieldState)}
@@ -186,7 +210,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
           control={control}
           defaultValue={user?.full_name ?? ''}
           name="phoneEmail"
-          render={({field, fieldState}) => (
+          render={({ field, fieldState }) => (
             <Input
               isDisabled={loading}
               isValid={isFieldValid(fieldState)}
@@ -218,13 +242,13 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
       <FormField>
         <Controller
           control={control}
-          name="string_address"
-          render={({field, fieldState}) => (
+          name="raw_address"
+          render={({ field, fieldState }) => (
             <Input
               isDisabled={loading}
               isValid={isFieldValid(fieldState)}
               label="Address"
-              name="string_address"
+              name="raw_address"
               onChange={field.onChange}
               ref={googlePlacesInputRef}
               type="textarea"
@@ -244,7 +268,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
         <Controller
           control={control}
           name="comment"
-          render={({field, fieldState}) => (
+          render={({ field, fieldState }) => (
             <Input
               className="LeadForm-Message spacing after__is-24"
               isDisabled={loading}
@@ -268,7 +292,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
       </FormField>
       <div className="SimpleForm-actions">
         <Button
-          className={classNames('AddressButton', 'spacing after__is-24', {'is-loading': loading})}
+          className={classNames('AddressButton', 'spacing after__is-24', { 'is-loading': loading })}
           disabled={loading}
           flavor="primary"
           size="large"
