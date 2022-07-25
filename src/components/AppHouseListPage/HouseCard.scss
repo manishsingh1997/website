@@ -1,0 +1,58 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+.house-address-wrapper {
+  height: $v-64 + $v-36 + 3;
+
+  @include tablet() {
+    height: 100%;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: $v-48;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -$v-24;
+      width: 100%;
+      height: 1px;
+      background: $gray-5;
+    }
+  }
+
+  .house-address-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include tablet() {
+      align-items: center;
+    }
+
+    h5 {
+      color: $black-2;
+      font-size: $font-regular-size;
+      font-weight: 700;
+      line-height: $line-height-mobile;
+    }
+    h6 {
+      color: $gray-1;
+      font-size: $font-mobile-size;
+      font-weight: 400;
+      line-height: $line-height-mobile;
+    }
+  }
+
+  .active-content {
+    color: $gray-1;
+    font-size: $font-mobile-size;
+    font-weight: 400;
+    margin-top: $v-6;
+  }
+  .inactive-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: $h-10;
+    margin-top: $v-12;
+    width: fit-content;
+  }
+}

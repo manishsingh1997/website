@@ -22,9 +22,10 @@ const HouseMap = ({address}: {address: HouseAddress}) => {
       lng: address.longitude,
     },
     icon: iconMarker,
+    iconScaledSize: 21,
   };
 
-  const spinner = <Spinner active={true} color="blue" size={32} />;
+  const spinner = <Spinner active={true} color="blue" size={24} />;
 
   return (
     <div className="map-wrapper">
@@ -40,7 +41,7 @@ const HouseMap = ({address}: {address: HouseAddress}) => {
         zoom={14}
       />
     </div>
-  )
-}
+  );
+};
 
 export default HouseMap;

@@ -9,7 +9,7 @@
 
     margin-bottom: $v-64;
     @include phone {
-      margin-bottom: $v-48
+      margin-bottom: $v-48;
     }
 
     &-wrapper {
@@ -87,10 +87,12 @@
       display: flex;
       align-items: center;
 
-      .addresses-item{
-        svg{
-          width: $v-16;
+      .addresses-item {
+        svg {
+          width: $v-16 + 2;
           height: auto;
+          min-width: unset;
+          margin-left: 3px;
         }
       }
     }

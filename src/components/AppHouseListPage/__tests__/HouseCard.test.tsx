@@ -1,7 +1,7 @@
-import {render, screen} from '@testing-library/react';
+import {render, fireEvent, screen} from '@testing-library/react';
 import React from 'react';
 import '@testing-library/jest-dom';
-import {mockHouseA} from '../../__mocks__/mockHouses';
+import {mockHouseA, mockHouseB} from '../../__mocks__/mockHouses';
 import HouseCard from '../HouseCard';
 
 jest.mock('@ergeon/core-components', () => ({
@@ -10,15 +10,59 @@ jest.mock('@ergeon/core-components', () => ({
 }));
 
 describe('Should test the House Card component', () => {
-
   test('Should check the house number and map wrapper', () => {
-    const {container} = render(
-      <HouseCard house={mockHouseA} houseNumber={1}/>
-    );
-    const houseNumber = screen.getByText('House #1');
-    expect(houseNumber).toBeInTheDocument();
+    const {container} = render(<HouseCard house={mockHouseA} onEdit={jest.fn()} onRemove={jest.fn()} />);
     const mapWrapper = container.getElementsByClassName('map-wrapper');
     expect(mapWrapper).toBeDefined();
   });
 
+  test('Should not render edit and remove button when house has active order', () => {
+    render(<HouseCard house={mockHouseA} onEdit={jest.fn()} onRemove={jest.fn()} />);
+
+    const editBtn = screen.queryByRole('button', {name: /Edit/});
+    const removeBtn = screen.queryByRole('button', {name: /Remove/});
+
+    expect(editBtn).not.toBeInTheDocument();
+    expect(removeBtn).not.toBeInTheDocument();
+  });
+
+  test('Should render active message when house has active order', () => {
+    render(<HouseCard house={mockHouseA} onEdit={jest.fn()} onRemove={jest.fn()} />);
+    const message = screen.queryByText(/Address currently has active project/gi);
+    expect(message).toBeInTheDocument();
+  });
+
+  test('Should not render active message when house has not active order', () => {
+    render(<HouseCard house={mockHouseB} onEdit={jest.fn()} onRemove={jest.fn()} />);
+    const message = screen.queryByText(/Address currently has active project/gi);
+    expect(message).not.toBeInTheDocument();
+  });
+
+  test('Should call onEdit when edit button is clicked', () => {
+    const onEditFn = jest.fn();
+
+    render(<HouseCard house={mockHouseB} onEdit={onEditFn} onRemove={jest.fn()} />);
+
+    expect(onEditFn).toHaveBeenCalledTimes(0);
+
+    const editBtn = screen.getByRole('button', {name: /Edit/});
+
+    fireEvent.click(editBtn);
+
+    expect(onEditFn).toHaveBeenCalledTimes(1);
+  });
+
+  test('Should call onRemove when remove button is clicked', () => {
+    const onRemoveFn = jest.fn();
+
+    render(<HouseCard house={mockHouseB} onEdit={jest.fn()} onRemove={onRemoveFn} />);
+
+    expect(onRemoveFn).toHaveBeenCalledTimes(0);
+
+    const removeBtn = screen.getByRole('button', {name: /Remove/});
+
+    fireEvent.click(removeBtn);
+
+    expect(onRemoveFn).toHaveBeenCalledTimes(1);
+  });
 });

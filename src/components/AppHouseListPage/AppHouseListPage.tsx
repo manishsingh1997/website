@@ -1,18 +1,14 @@
-import {Notification} from '@ergeon/core-components';
-import React, {Fragment, useCallback, useContext} from 'react';
+import React, {useCallback, useContext} from 'react';
+import {Notification, Button} from '@ergeon/core-components';
+
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
 import AppPage from '../../components/common/AppPage';
-import {HouseType} from '../types';
+import {showUpcomingFeatures} from '../../utils/utils';
 import HouseCard from './HouseCard';
 
+import {AppHouseListPageProps} from './types';
+import {handleAddHouseAddress, handleEditHouseAddress, handleRemoveHouseAddress} from './utils';
 import './index.scss';
-
-export type AppHouseListPageProps = {
-  getHouses: (customerGID: number) => void,
-  houses: HouseType[],
-  isListLoading: boolean,
-  listError: [] | null
-}
 
 const AppHouseListPage = (props: AppHouseListPageProps) => {
   const {getHouses, houses, listError, isListLoading} = props;
@@ -23,24 +19,43 @@ const AppHouseListPage = (props: AppHouseListPageProps) => {
     getHouses(customerGID);
   }, [customerGID]);
 
+  const onAddHouseAddress = useCallback(() => handleAddHouseAddress(), [handleAddHouseAddress]);
+
   const renderContent = useCallback(() => {
     const isEmptyHouseList = !houses || houses.length === 0;
     if (isEmptyHouseList) {
       return (
-        <Notification
-          mode="embed"
-          type="Information">
+        <Notification mode="embed" type="Information">
           There are no houses associated with your account yet.
         </Notification>
-      )
+      );
     }
     return (
-      <Fragment>
-        {houses.map((house, index) =>
-          <HouseCard house={house} houseNumber={index + 1} key={`house-${house.id}`}/>)}
-      </Fragment>
+      <div className="house-list-page-wrapper">
+        {houses.map((house) => (
+          <HouseCard
+            house={house}
+            key={`house-${house.id}`}
+            onEdit={handleEditHouseAddress}
+            onRemove={handleRemoveHouseAddress}
+          />
+        ))}
+      </div>
     );
   }, [houses]);
+
+  const renderHeader = useCallback(() => {
+    return (
+      <>
+        <span>Addresses</span>
+        {showUpcomingFeatures('ENG-16567') && (
+          <Button onClick={onAddHouseAddress} size="small">
+            Add address
+          </Button>
+        )}
+      </>
+    );
+  }, [showUpcomingFeatures]);
 
   return (
     <AppPage
@@ -49,9 +64,9 @@ const AppHouseListPage = (props: AppHouseListPageProps) => {
       fetchData={fetchData}
       isLoading={isListLoading}
       renderContent={renderContent}
-      renderHeader={() => 'Addresses'}
+      renderHeader={renderHeader}
     />
-  )
-}
+  );
+};
 
 export default AppHouseListPage;

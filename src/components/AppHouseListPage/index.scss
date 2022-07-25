@@ -1,5 +1,17 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
 .house-list-page {
-  .map-wrapper {
-    min-width: 200px;
+  padding: $h-10;
+  .house-list-page-wrapper {
+    margin-top: $v-24;
+    .map-wrapper {
+      width: $v-124 + $h-40 + $v-6;
+
+      @include tablet() {
+        width: $v-124 + $v-24;
+        margin: auto;
+        margin-top: $v-12;
+      }
+    }
   }
 }

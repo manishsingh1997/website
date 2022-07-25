@@ -1,6 +1,7 @@
 export type HouseType = {
   id: number;
   address: HouseAddress;
+  has_active_order: boolean
 };
 
 export type HouseAddress = {

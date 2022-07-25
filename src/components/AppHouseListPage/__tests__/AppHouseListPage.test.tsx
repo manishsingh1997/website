@@ -12,7 +12,6 @@ jest.mock('@ergeon/core-components', () => ({
 }));
 
 describe('Should test the App House List Page', () => {
-
   test('Should find the house number, address, label and header on the page', () => {
     const mockProps = {
       houses: [mockHouseA],
@@ -22,18 +21,16 @@ describe('Should test the App House List Page', () => {
     };
     render(
       <Provider store={store}>
-        <AppHouseListPage {...mockProps}/>
+        <AppHouseListPage {...mockProps} />
       </Provider>
     );
-    const houseAddress = screen.getByText('300 Wood Falls Ct, Roseville, CA 95678, USA');
-    const label = screen.getByText('Address');
-    const header = screen.getByRole('heading', { name: 'Addresses', level: 4});
-    const houseNumber = screen.getByText('House #1');
+    const houseAddressStreet = screen.getByRole('heading', {name: '300 Wood Falls Ct', level: 5});
+    const houseAddressFinal = screen.getByRole('heading', {name: 'Roseville, CA 95678, USA', level: 6});
+    const header = screen.getByText('Addresses');
 
-    expect(houseAddress).toBeInTheDocument();
-    expect(label).toBeInTheDocument();
     expect(header).toBeInTheDocument();
-    expect(houseNumber).toBeInTheDocument();
+    expect(houseAddressStreet).toBeInTheDocument();
+    expect(houseAddressFinal).toBeInTheDocument();
   });
 
   test('Should check properly listed multiple houses', () => {
@@ -45,17 +42,16 @@ describe('Should test the App House List Page', () => {
     };
     render(
       <Provider store={store}>
-        <AppHouseListPage {...mockProps}/>
+        <AppHouseListPage {...mockProps} />
       </Provider>
     );
-    const houseNumber1 = screen.getByText('House #1');
-    const houseNumber2 = screen.getByText('House #2');
-    const houseAddress1 = screen.getByText('300 Wood Falls Ct, Roseville, CA 95678, USA');
-    const houseAddress2 = screen.getByText('200 Wood Falls Ct, Roseville, CA 95678, USA');
-    expect(houseNumber1).toBeInTheDocument();
-    expect(houseNumber2).toBeInTheDocument();
-    expect(houseAddress1).toBeInTheDocument();
-    expect(houseAddress2).toBeInTheDocument();
+    const houseAddress1Street = screen.getByRole('heading', {name: '300 Wood Falls Ct', level: 5});
+    const houseAddress2Street = screen.getByRole('heading', {name: '200 Wood Falls Ct', level: 5});
+    const houseAddressFinal = screen.getAllByRole('heading', {name: 'Roseville, CA 95678, USA', level: 6});
+
+    expect(houseAddress1Street).toBeInTheDocument();
+    expect(houseAddress2Street).toBeInTheDocument();
+    expect(houseAddressFinal).toHaveLength(2);
   });
 
   test('Should render error message if there is no house data', () => {
@@ -67,11 +63,10 @@ describe('Should test the App House List Page', () => {
     };
     render(
       <Provider store={store}>
-        <AppHouseListPage {...mockProps}/>
+        <AppHouseListPage {...mockProps} />
       </Provider>
     );
     const notification = screen.getByText('There are no houses associated with your account yet.');
     expect(notification).toBeInTheDocument();
   });
-
 });
