@@ -21,7 +21,7 @@ describe('SimpleLeadForm tests', () => {
     const nameInput = screen.queryByText('Name');
     const phoneEmailInput = screen.queryByText('Phone or email');
     const addressCity = screen.queryByText('Address');
-    const message = screen.queryByText('Message');
+    const message = screen.queryByText('Message (Optional)');
 
     expect(nameInput).not.toBeNull();
     expect(phoneEmailInput).not.toBeNull();
@@ -33,7 +33,7 @@ describe('SimpleLeadForm tests', () => {
     expect(screen.getByRole('textbox', { name: 'Name' })).toHaveValue('');
     expect(screen.getByRole('textbox', { name: 'Phone or email' })).toHaveValue('');
     expect(screen.getByRole('textbox', { name: 'Address' })).toHaveValue('');
-    expect(screen.getByRole('textbox', { name: 'Message' })).toHaveValue('');
+    expect(screen.getByRole('textbox', { name: 'Message (Optional)' })).toHaveValue('');
   });
 
   it('should display errors when fields are empty', async () => {
@@ -42,7 +42,6 @@ describe('SimpleLeadForm tests', () => {
       expect(screen.getByText('Please enter your name')).not.toBeNull();
       expect(screen.getByText('Please enter your phone or email')).not.toBeNull();
       expect(screen.getByText('Please enter your address')).not.toBeNull();
-      expect(screen.getByText('Please enter a message')).not.toBeNull();
     });
   });
 
@@ -79,7 +78,7 @@ describe('SimpleLeadForm tests', () => {
         value: '123 Palo Alto Ave, Palo Alto, CA 94301, USA',
       },
     });
-    fireEvent.input(screen.getByRole('textbox', { name: 'Message' }), {
+    fireEvent.input(screen.getByRole('textbox', { name: 'Message (Optional)' }), {
       target: {
         value: 'This is a message test',
       },
@@ -89,7 +88,6 @@ describe('SimpleLeadForm tests', () => {
       expect(screen.queryByText('Please enter your name')).not.toBeInTheDocument();
       expect(screen.queryByText('Please enter a valid phone or email')).not.toBeInTheDocument();
       expect(screen.queryByText('Please enter your address')).not.toBeInTheDocument();
-      expect(screen.queryByText('Please enter a message')).not.toBeInTheDocument();
     });
   });
 
@@ -113,7 +111,7 @@ describe('SimpleLeadForm tests', () => {
         value: '123 Palo Alto Ave, Palo Alto, CA 94301, USA',
       },
     });
-    fireEvent.input(screen.getByRole('textbox', { name: 'Message' }), {
+    fireEvent.input(screen.getByRole('textbox', { name: 'Message (Optional)' }), {
       target: {
         value: 'This is a message test',
       },
@@ -123,7 +121,6 @@ describe('SimpleLeadForm tests', () => {
       expect(screen.queryByText('Please enter your name')).not.toBeInTheDocument();
       expect(screen.queryByText('Please enter a valid phone or email')).not.toBeInTheDocument();
       expect(screen.queryByText('Please enter your address')).not.toBeInTheDocument();
-      expect(screen.queryByText('Please enter a message')).not.toBeInTheDocument();
     });
   });
 });
@@ -163,11 +160,38 @@ describe('SimpleLeadForm - submit test', () => {
         value: '123 Palo Alto Avenue, Palo Alto, CA 94301',
       },
     });
-    fireEvent.input(screen.getByRole('textbox', { name: 'Message' }), {
+    fireEvent.input(screen.getByRole('textbox', { name: 'Message (Optional)' }), {
       target: {
         value: 'This is a message test',
       },
     });
+    fireEvent.submit(screen.getByRole('button'));
+    await waitFor(() => {
+      expect(onSubmitSpy).toHaveBeenCalled();
+    });
+  });
+
+  it('should successfully submit form (without message)', async () => {
+    jest
+      .spyOn(calcUtils, 'getParams')
+      .mockImplementation(() => ({ schema: 'test,test1,test2', code: 'test,test1,test2' }));
+    fireEvent.input(screen.getByRole('textbox', { name: 'Name' }), {
+      target: {
+        value: 'test',
+      },
+    });
+
+    fireEvent.input(screen.getByRole('textbox', { name: 'Phone or email' }), {
+      target: {
+        value: '1234567890',
+      },
+    });
+    fireEvent.input(screen.getByRole('textbox', { name: 'Address' }), {
+      target: {
+        value: '123 Palo Alto Avenue, Palo Alto, CA 94301',
+      },
+    });
+
     fireEvent.submit(screen.getByRole('button'));
     await waitFor(() => {
       expect(onSubmitSpy).toHaveBeenCalled();

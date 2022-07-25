@@ -274,7 +274,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
               isDisabled={loading}
               isMultiline
               isValid={isFieldValid(fieldState)}
-              label="Message"
+              label="Message (Optional)"
               name="comment"
               onChange={field.onChange}
               type="textarea"
@@ -282,12 +282,6 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
               value={field.value}
             />
           )}
-          rules={{
-            required: {
-              value: true,
-              message: 'Please enter a message',
-            },
-          }}
         />
       </FormField>
       <div className="SimpleForm-actions">
