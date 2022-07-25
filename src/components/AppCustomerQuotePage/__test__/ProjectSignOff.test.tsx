@@ -147,7 +147,7 @@ describe('Project signoff', () => {
       expect(input.value?.trim()).toBe('john doe');
     });
 
-    test('When user submits, signature is displayed for desktop', async () => {
+    test('When user submits, sign-off popup is removed', async () => {
       render(
         <MemoryRouter initialEntries={['/app/BkU5j7FtBtxjkEAU/quote-approvals/W8C5V0zBVqQQt3hk/direct/sign-off']}>
           <AppCustomerQuotePage {...props} />
@@ -165,10 +165,10 @@ describe('Project signoff', () => {
       const buttonLoader = screen.getByTestId(matcher('button-spinner', 'i'));
 
       await waitForElementToBeRemoved(buttonLoader);
-      const signature = screen.getByAltText(matcher('Signature', 'i'));
+      const signature = screen.queryByTestId(matcher('signoff-popup', 'i'));
       expect(submitButton).not.toBeInTheDocument();
       expect(input).not.toBeInTheDocument();
-      expect(signature).toBeInTheDocument();
+      expect(signature).not.toBeInTheDocument();
     });
 
     test('it maintains input for failed submit', async () => {
@@ -282,7 +282,7 @@ describe('Project signoff', () => {
       expect(pathnameHasSignOff).toBeTruthy();
     });
 
-    test('When user submits sign stamp is displayed for mobile', async () => {
+    test('When user submits onClicking complete sign stamp is displayed for mobile', async () => {
       render(
         <MemoryRouter initialEntries={['/app/BkU5j7FtBtxjkEAU/quote-approvals/W8C5V0zBVqQQt3hk/direct/sign-off']}>
           <AppCustomerQuotePage {...props} />
@@ -301,17 +301,22 @@ describe('Project signoff', () => {
       fireEvent.change(input, {target: {value: 'john doe'}});
       fireEvent.click(submitButton);
 
-      await waitFor(() => {
-        const signedName = screen.getByTestId(matcher('name-stamp', 'i'));
-        const signedDate = screen.getByTestId(matcher('date-stamp', 'i'));
-        const signedAddress = screen.getByTestId(matcher('address-stamp', 'i'));
+      await waitForElementToBeRemoved(screen.getByTestId(matcher('button-spinner','i')))
 
-        expect(submitButton).not.toBeInTheDocument();
-        expect(input).not.toBeInTheDocument();
-        expect(signedName).toBeInTheDocument();
-        expect(signedAddress).toBeInTheDocument();
-        expect(signedDate).toBeInTheDocument();
-      });
+      const signoffTopNav = document.querySelector('.ProjectSignOff-topNav');
+      fireEvent.click(signoffTopNav as Element);
+
+      const signoffPopup = document.querySelector('.Project-signOff-mobileComplete-wrapper');
+      const signedName = screen.getByTestId(matcher('name-stamp', 'i'));
+      const signedDate = screen.getByTestId(matcher('date-stamp', 'i'));
+      const signedAddress = screen.getByTestId(matcher('address-stamp', 'i'));
+
+      expect(signoffPopup).toBeInTheDocument();
+      expect(submitButton).not.toBeInTheDocument();
+      expect(input).not.toBeInTheDocument();
+      expect(signedName).toBeInTheDocument();
+      expect(signedAddress).toBeInTheDocument();
+      expect(signedDate).toBeInTheDocument();
     });
   });
 });

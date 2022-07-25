@@ -23,12 +23,14 @@ const ProjectSignOffTopNav = (props: ProjectSignOffTopNavProp) => {
   }, [history, location]);
 
   return (
-    <Button className="ProjectSignOff-topNav" flavour="solid" onClick={onClick} taste="regular">
+    <Button
+      className="ProjectSignOff-topNav"
+      data-testid="signoff-top-nav"
+      flavour="solid"
+      onClick={onClick}
+      taste="regular">
       <div className="ProjectSignOff-topNav-desc" data-testid="signoff-topNav">
-        {isSigned 
-        ? <img className="icon" src={IconMark} /> 
-        : <img className="icon" src={IconWarning} />
-        }
+        {isSigned ? <img className="icon" src={IconMark} /> : <img className="icon" src={IconWarning} />}
         <h5>Project Sign-Off {isSigned && 'Complete'}</h5>
       </div>
       {!isSigned && <img alt="Project signoff" className="icon icon-arrow" src={IconArrow} />}

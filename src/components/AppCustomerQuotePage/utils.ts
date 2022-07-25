@@ -72,9 +72,10 @@ export const getSignatureData = async (
 export const getIsQuoteStatusApprovedOrCompleted = (quoteApproval: QuoteApproval) => {
   const approvedAt = quoteApproval.quote.approved_at;
   const quoteStatus = quoteApproval.quote?.status?.label.toLocaleLowerCase();
-  const isExpired = quoteApproval.quote?.expires_at
-    ? moment(quoteApproval.quote?.expires_at).isAfter(new Date())
+  const quoteExpiredDate = quoteApproval.quote?.expires_at ||  moment().add('day', 2).toISOString();
+  const isNotExpired = quoteExpiredDate
+    ? moment(quoteExpiredDate).isAfter(new Date())
     : false;
   const allowedStatus = ['approved', 'completed'];
-  return !!approvedAt && isExpired && allowedStatus.includes(quoteStatus.toLocaleLowerCase());
+  return !!approvedAt && isNotExpired && allowedStatus.includes(quoteStatus);
 };

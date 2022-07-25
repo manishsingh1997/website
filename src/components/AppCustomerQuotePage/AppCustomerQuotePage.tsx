@@ -1,6 +1,6 @@
 import React, {useCallback, useContext, useEffect, useMemo, useState} from 'react';
 import {some} from 'lodash';
-import {useLocation} from 'react-router-dom';
+import {useLocation, useHistory} from 'react-router-dom';
 
 import AppLoader from '../common/AppLoader';
 
@@ -30,6 +30,7 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
   const {match, auth, layout, setPDFHeaderPhoneAction} = props
   
   const location = useLocation();
+  const history = useHistory();
 
   const [isLoading, setIsLoading] = useState(true);
   const [quoteApproval, setQuodeApproval] = useState<QuoteApproval | null>(null);
@@ -128,13 +129,15 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
         const newSignatureData = await getSignatureData(customerGID, match.params.secret, value, type);
         setSignatureData(newSignatureData);
         setIsCustomerSigned(true);
+        const url = location.pathname.replace(/\/sign-off.*/i,'');
+        history.push(url);
       } catch (err) {
         console.error(err);
       } finally {
         setIsSignLoading(false);
       }
     },
-    [customerGID, match, getSignatureData]
+    [customerGID, match, getSignatureData, history, location]
   );
 
   useEffect(() => {

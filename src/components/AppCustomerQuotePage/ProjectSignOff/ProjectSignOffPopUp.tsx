@@ -159,7 +159,7 @@ const ProjectSignOffPopUp = (props: ProjectSignOffPopUpProps) => {
   return (
     showSignOffPopUp ? (
       <Portal node={document.querySelector('body')}>
-        <div className={PopupClassName} ref={ref}>
+        <div className={PopupClassName} data-testid="signoff-popup" ref={ref}>
           <div className="Project-signOff-popup-wrapper">
             <div className="Project-signOff-popup-header">
               <div className="Project-signOff-title">

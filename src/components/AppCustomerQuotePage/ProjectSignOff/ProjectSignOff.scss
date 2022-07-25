@@ -76,6 +76,7 @@
   padding: $v-20;
   display: none;
   background-color: $white;
+  z-index: $z-index-super-top;
   @include phone {
     display: block;
   }

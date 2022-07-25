@@ -30,19 +30,13 @@ const DefaultContent = (props: DefaultContentProps) => {
 
   const shouldShowUpcoming = useMemo(() => showUpcomingFeatures('ENG-13851'), []);
 
-  const isQuoteStatusApprovedOrCompleted = useMemo(
-    () => {
+  const isQuoteStatusApprovedOrCompleted = useMemo(() => {
       return getIsQuoteStatusApprovedOrCompleted(quoteApproval)
-    },
-    [quoteApproval]
-  );
+    }, [quoteApproval]);
 
-  const shouldShowSignoffComponents = useMemo(
-    () => {
+  const shouldShowSignoffComponents = useMemo(() => {
       return shouldShowUpcoming && !asPDF && isQuoteStatusApprovedOrCompleted
-    },
-    [shouldShowUpcoming, asPDF, isQuoteStatusApprovedOrCompleted]
-  );
+    }, [shouldShowUpcoming, asPDF, isQuoteStatusApprovedOrCompleted]);
 
   return (
     <>
