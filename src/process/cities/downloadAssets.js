@@ -52,13 +52,13 @@ async function downloadAssets() {
       continue;
     }
 
-    try {
-      const {data, headers: {'content-type': contentType}} = await drive.files.get(
-        {fileId: file, alt: 'media'},
-        {responseType: 'arraybuffer'},
-      );
-      let ext = contentType.toLowerCase().split('/')[1];
+    const {data, headers: {'content-type': contentType}} = await drive.files.get(
+      {fileId: file, alt: 'media'},
+      {responseType: 'arraybuffer'},
+    );
+    let ext = contentType.toLowerCase().split('/')[1];
 
+    try {
       let buffer = Buffer.from(data);
       if (ext === 'png') {
         buffer = await pngToJpeg({quality: 100})(buffer);
@@ -80,6 +80,7 @@ async function downloadAssets() {
 
       console.log(`${file}.${ext} saved`);
     } catch(error) {
+      console.log(`ERROR ${file}.${ext}`);
       console.warn(error);
     }
   }

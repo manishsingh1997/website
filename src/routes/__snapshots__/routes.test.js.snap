@@ -206,6 +206,14 @@ exports[`Routes Cities endpoints 1`] = `
    
   Route to /fences/cities/sutter-county-yuba-city-ca
    
+  Route to /fences/cities/bexar-county-san-antonio-tx
+   
+  Route to /fences/cities/travis-county-austin-tx
+   
+  Route to /fences/cities/baltimore-city-baltimore-md
+   
+  Route to /fences/cities/district-of-columbia-washington-dc
+   
   Route to /fences/cities/alameda-county-albany-ca
    
   Redirect to /fences/cities/alameda-county-berkeley-ca for
@@ -218,9 +226,6 @@ exports[`Routes Cities endpoints 1`] = `
   Route to /fences/cities/alameda-county-sunol-ca
    
   Redirect to /fences/cities/alameda-county-pleasanton-ca for
-  Route to /fences/cities/alameda-county-union-city-ca
-   
-  Redirect to /fences/cities/alameda-county-fremont-ca for
   Route to /fences/cities/amador-county-amador-city-ca
    
   Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
@@ -242,63 +247,225 @@ exports[`Routes Cities endpoints 1`] = `
   Route to /fences/cities/amador-county-sutter-creek-ca
    
   Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/anne-arundel-county-annapolis-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-arnold-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-baltimore-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-crownsville-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-curtis-bay-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-fort-george-g-meade-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-gambrills-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-gibson-island-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-glen-burnie-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-hanover-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-harmans-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-linthicum-heights-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-millersville-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-pasadena-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-severn-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/anne-arundel-county-severna-park-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
   Route to /fences/cities/atascosa-county-leming-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/atascosa-county-lytle-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/atascosa-county-poteet-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
+  Route to /fences/cities/baltimore-city-brooklyn-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-baldwin-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-baltimore-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-catonsville-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-cockeysville-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-dundalk-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-essex-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-fork-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-fort-howard-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-glen-arm-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-glyndon-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-gwynn-oak-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-halethorpe-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-hunt-valley-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-hydes-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-kingsville-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-lutherville-timonium-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-middle-river-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-nottingham-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-owings-mills-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-parkville-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-perry-hall-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-phoenix-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-pikesville-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-randallstown-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-reisterstown-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-rosedale-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-sparks-glencoe-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-stevenson-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-towson-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-upper-falls-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-white-marsh-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/baltimore-county-windsor-mill-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
   Route to /fences/cities/barrow-county-auburn-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/barrow-county-bethlehem-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/barrow-county-statham-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/barrow-county-winder-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/bartow-county-cartersville-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/bartow-county-emerson-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/bartow-county-taylorsville-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/bartow-county-white-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/bastrop-county-bastrop-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/bastrop-county-cedar-creek-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/bastrop-county-elgin-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/bastrop-county-red-rock-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/bexar-county-adkins-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/bexar-county-atascosa-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/bexar-county-converse-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/bexar-county-elmendorf-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/bexar-county-helotes-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/bexar-county-saint-hedwig-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
-  Route to /fences/cities/bexar-county-san-antonio-tx
-   
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/bexar-county-somerset-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/bexar-county-universal-city-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/bexar-county-von-ormy-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/brazoria-county-alvin-tx
    
   Redirect to /fences/cities/harris-county-houston-tx for
@@ -313,7 +480,7 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/harris-county-houston-tx for
   Route to /fences/cities/butts-county-jenkinsburg-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/calaveras-county-burson-ca
    
   Redirect to /fences/cities/san-joaquin-county-lodi-ca for
@@ -334,29 +501,50 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/san-joaquin-county-lodi-ca for
   Route to /fences/cities/caldwell-county-dale-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/caldwell-county-fentress-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/caldwell-county-lockhart-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/caldwell-county-martindale-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/caldwell-county-maxwell-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/caldwell-county-prairie-lea-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
+  Route to /fences/cities/carroll-county-finksburg-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/carroll-county-marriottsville-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/carroll-county-sykesville-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/carroll-county-temple-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/carroll-county-villa-rica-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/carroll-county-whitesburg-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/cherokee-county-acworth-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/cherokee-county-ball-ground-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/cherokee-county-canton-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/cherokee-county-waleska-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/cherokee-county-woodstock-ga
@@ -370,19 +558,19 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/clayton-county-jonesboro-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/clayton-county-lovejoy-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/clayton-county-morrow-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/clayton-county-rex-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/clayton-county-riverdale-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/cobb-county-acworth-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
@@ -412,58 +600,58 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-anna-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-blue-ridge-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-celina-tx
    
   Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-copeville-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-dallas-tx
    
   Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-farmersville-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-frisco-tx
    
   Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-josephine-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-lavon-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-mckinney-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-melissa-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-nevada-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-plano-tx
    
   Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-princeton-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-prosper-tx
    
   Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-westminster-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-weston-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/collin-county-wylie-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/colusa-county-arbuckle-ca
    
   Redirect to /fences/cities/sutter-county-yuba-city-ca for
@@ -472,19 +660,19 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/sutter-county-yuba-city-ca for
   Route to /fences/cities/comal-county-bulverde-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/comal-county-canyon-lake-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/comal-county-new-braunfels-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/comal-county-san-antonio-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/comal-county-spring-branch-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/contra-costa-county-alamo-ca
    
   Redirect to /fences/cities/contra-costa-county-danville-ca for
@@ -535,25 +723,25 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/contra-costa-county-el-sobrante-ca for
   Route to /fences/cities/coweta-county-newnan-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/coweta-county-sargent-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/coweta-county-senoia-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/coweta-county-sharpsburg-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/coweta-county-turin-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/dallas-county-addison-tx
    
   Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/dallas-county-balch-springs-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/dallas-county-carrollton-tx
    
   Redirect to /fences/cities/dallas-county-dallas-tx for
@@ -571,7 +759,7 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/dallas-county-garland-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/dallas-county-grand-prairie-tx
    
   Redirect to /fences/cities/dallas-county-dallas-tx for
@@ -586,19 +774,22 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/dallas-county-mesquite-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/dallas-county-richardson-tx
    
   Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/dallas-county-rowlett-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/dallas-county-sachse-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/dallas-county-seagoville-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/dallas-county-sunnyvale-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/dallas-county-wilmer-tx
    
   Redirect to /fences/cities/dallas-county-dallas-tx for
@@ -682,13 +873,13 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/douglas-county-douglasville-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/douglas-county-lithia-springs-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/douglas-county-winston-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/el-dorado-county-coloma-ca
    
   Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
@@ -727,16 +918,19 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
   Route to /fences/cities/fayette-county-brooks-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/fayette-county-fayetteville-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/fayette-county-peachtree-city-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/fayette-county-tyrone-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/forsyth-county-cumming-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/fort-bend-county-fresno-tx
    
   Redirect to /fences/cities/harris-county-houston-tx for
@@ -770,6 +964,18 @@ exports[`Routes Cities endpoints 1`] = `
   Route to /fences/cities/fort-bend-county-thompsons-tx
    
   Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/frederick-county-libertytown-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/frederick-county-mount-airy-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/frederick-county-walkersville-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/frederick-county-woodsboro-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
   Route to /fences/cities/fresno-county-biola-ca
    
   Redirect to /fences/cities/fresno-county-fresno-ca for
@@ -841,11 +1047,14 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/fulton-county-fairburn-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/fulton-county-palmetto-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/fulton-county-roswell-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/fulton-county-union-city-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/galveston-county-bacliff-tx
@@ -871,19 +1080,19 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/harris-county-houston-tx for
   Route to /fences/cities/guadalupe-county-cibolo-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/guadalupe-county-marion-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/guadalupe-county-mc-queeney-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/guadalupe-county-schertz-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/guadalupe-county-seguin-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/gwinnett-county-buford-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
@@ -911,6 +1120,39 @@ exports[`Routes Cities endpoints 1`] = `
   Route to /fences/cities/gwinnett-county-suwanee-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/harford-county-aberdeen-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/harford-county-abingdon-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/harford-county-bel-air-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/harford-county-belcamp-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/harford-county-churchville-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/harford-county-edgewood-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/harford-county-fallston-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/harford-county-forest-hill-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/harford-county-havre-de-grace-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/harford-county-joppa-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/harford-county-perryman-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
   Route to /fences/cities/harris-county-baytown-tx
    
   Redirect to /fences/cities/harris-county-houston-tx for
@@ -973,40 +1215,70 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/harris-county-houston-tx for
   Route to /fences/cities/hays-county-austin-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/hays-county-buda-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/hays-county-driftwood-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/hays-county-dripping-springs-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/hays-county-kyle-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/hays-county-san-marcos-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/henry-county-hampton-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/henry-county-locust-grove-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/henry-county-mcdonough-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/henry-county-stockbridge-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/howard-county-annapolis-junction-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/howard-county-columbia-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/howard-county-cooksville-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/howard-county-elkridge-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/howard-county-ellicott-city-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/howard-county-glenwood-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/howard-county-jessup-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/howard-county-savage-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/howard-county-west-friendship-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/howard-county-woodstock-md
+   
+  Redirect to /fences/cities/baltimore-city-baltimore-md for
   Route to /fences/cities/kendall-county-bergheim-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/kendall-county-boerne-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/kings-county-armona-ca
    
   Redirect to /fences/cities/tulare-county-visalia-ca for
@@ -1465,7 +1737,7 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/marin-county-san-rafael-ca for
   Route to /fences/cities/medina-county-castroville-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/merced-county-atwater-ca
    
   Redirect to /fences/cities/merced-county-merced-ca for
@@ -1840,10 +2112,10 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/rockwall-county-rockwall-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/rockwall-county-royse-city-tx
    
-  Redirect to /fences/cities/dallas-county-sunnyvale-tx for
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/sacramento-county-courtland-ca
    
   Redirect to /fences/cities/sacramento-county-elk-grove-ca for
@@ -2150,9 +2422,6 @@ exports[`Routes Cities endpoints 1`] = `
   Route to /fences/cities/santa-clara-county-stanford-ca
    
   Redirect to /fences/cities/santa-clara-county-santa-clara-ca for
-  Route to /fences/cities/santa-clara-county-sunnyvale-ca
-   
-  Redirect to /fences/cities/santa-clara-county-mountain-view-ca for
   Route to /fences/cities/santa-cruz-county-ben-lomond-ca
    
   Redirect to /fences/cities/santa-cruz-county-santa-cruz-ca for
@@ -2239,10 +2508,10 @@ exports[`Routes Cities endpoints 1`] = `
   Redirect to /fences/cities/sonoma-county-santa-rosa-ca for
   Route to /fences/cities/spalding-county-griffin-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/spalding-county-sunny-side-ga
    
-  Redirect to /fences/cities/fulton-county-union-city-ga for
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/stanislaus-county-ceres-ca
    
   Redirect to /fences/cities/stanislaus-county-modesto-ca for
@@ -2354,27 +2623,24 @@ exports[`Routes Cities endpoints 1`] = `
   Route to /fences/cities/tarrant-county-southlake-tx
    
   Redirect to /fences/cities/tarrant-county-fort-worth-tx for
-  Route to /fences/cities/travis-county-austin-tx
-   
-  Redirect to /fences/cities/harris-county-houston-tx for
   Route to /fences/cities/travis-county-del-valle-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/travis-county-leander-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/travis-county-manchaca-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/travis-county-manor-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/travis-county-pflugerville-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/travis-county-spicewood-tx
    
-  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/tulare-county-cutler-ca
    
   Redirect to /fences/cities/tulare-county-visalia-ca for
@@ -2450,48 +2716,54 @@ exports[`Routes Cities endpoints 1`] = `
   Route to /fences/cities/walton-county-loganville-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/walton-county-monroe-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/walton-county-social-circle-ga
+   
+  Redirect to /fences/cities/fulton-county-atlanta-ga for
   Route to /fences/cities/williamson-county-austin-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/williamson-county-cedar-park-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/williamson-county-coupland-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/williamson-county-georgetown-tx
    
-  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/williamson-county-hutto-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/williamson-county-jarrell-tx
    
-  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/williamson-county-leander-tx
    
-  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/williamson-county-liberty-hill-tx
    
-  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/williamson-county-round-rock-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/williamson-county-schwertner-tx
    
-  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/williamson-county-taylor-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/travis-county-austin-tx for
   Route to /fences/cities/wilson-county-floresville-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/wilson-county-la-vernia-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/wilson-county-poth-tx
    
-  Redirect to /fences/cities/harris-county-houston-tx for
+  Redirect to /fences/cities/bexar-county-san-antonio-tx for
   Route to /fences/cities/yolo-county-clarksburg-ca
    
   Redirect to /fences/cities/sacramento-county-elk-grove-ca for

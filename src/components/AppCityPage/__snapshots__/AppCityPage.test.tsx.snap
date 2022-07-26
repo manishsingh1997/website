@@ -579,7 +579,7 @@ exports[`AppCityPage should render 1`] = `
               <p
                 class="Packages-description"
               >
-                Box Wire PT Frame, Welded Wire 14 ga. Galvanized Steel Fabric, 4" x 4" PT Post 
+                Box Wire PT Frame, Welded Wire 14 ga. Galvanized Steel Fabric, 4" x 4" PT Post
               </p>
             </div>
           </div>
@@ -601,7 +601,7 @@ exports[`AppCityPage should render 1`] = `
               <p
                 class="Packages-description"
               >
-                Box Wire Redwood Con Common Frame, Welded Wire 6 ga. Powder Coated Steel Fabric, 2” × 8” PT Kickboard, 4" x 4" PT Post 
+                Box Wire Redwood Con Common Frame, Welded Wire 6 ga. Powder Coated Steel Fabric, 2” × 8” PT Kickboard, 4" x 4" PT Post
               </p>
             </div>
           </div>
@@ -623,7 +623,7 @@ exports[`AppCityPage should render 1`] = `
               <p
                 class="Packages-description"
               >
-                Box Wire Redwood Con Common Frame, Welded Wire 14 ga. Galvanized Steel Fabric, 2” × 12” PT Kickboard, 4" x 4" PT Post 
+                Box Wire Redwood Con Common Frame, Welded Wire 14 ga. Galvanized Steel Fabric, 2” × 12” PT Kickboard, 4" x 4" PT Post
               </p>
             </div>
           </div>
@@ -645,7 +645,7 @@ exports[`AppCityPage should render 1`] = `
               <p
                 class="Packages-description"
               >
-                Welded Wire 14 ga. Galvanized Steel Fabric, Steel T-post 
+                Welded Wire 14 ga. Galvanized Steel Fabric, Steel T-post
               </p>
             </div>
           </div>
@@ -1116,8 +1116,7 @@ exports[`AppCityPage should render 1`] = `
         >
           <a
             class="card padding-60 soft-border shadow__z0 CityBlog-article"
-            href="https://www.ergeon.com/blog/post/what-you-need-to-know-about-california-fence-laws
-"
+            href="https://www.ergeon.com/blog/post/what-you-need-to-know-about-california-fence-laws"
           >
             <div
               class="CityBlog-img"

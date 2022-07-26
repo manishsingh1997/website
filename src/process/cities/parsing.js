@@ -18,10 +18,15 @@ function getParsedKey(path) {
 function getParsedValue(source, value) {
   if (!isString(value)) return value;
 
-  const matches = value.matchAll(REPLACE_MATCHER_REGEX_GLOBAL);
+  let valuePrepared = value.trim().replace(/\n$/, '');
+
+  // This black magic just replaces all {…} with actual values, e.g.
+  // ”The best {product} installation company in {city}” becomes
+  // ”The best fence installation company in Los Altos”
+  const matches = valuePrepared.matchAll(REPLACE_MATCHER_REGEX_GLOBAL);
   return [...matches].map(m => m[1]).reduce((result, match) => {
     return result.replace(`{${match}}`, source[match]);
-  }, value);
+  }, valuePrepared);
 }
 
 function getMappedObj(source, key, path) {
