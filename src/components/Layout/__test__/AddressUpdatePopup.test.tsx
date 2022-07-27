@@ -66,9 +66,34 @@ describe('AddressUpdatePopup component', () => {
     jest.restoreAllMocks();
   });
 
+  test('should call updateModalLead with lead data when address is selected from google places', async () => {
+    const lead = {
+      address: parsePlace(mockPlace),
+      product_slug: addressUpdatePopupProps.product,
+      productAvailability: productAvailabilityData,
+    };
+
+    await waitFor(() => {
+      render(
+        <MemoryRouter>
+          <AddressUpdatePopup {...addressUpdatePopupProps} />
+        </MemoryRouter>
+      );
+    })
+
+    await waitFor(() => {
+      const input = screen.getByRole('textbox');
+
+      input.focus();
+    })
+
+    expect(addressUpdatePopupProps.updateModalLead).toBeCalledWith(lead);
+   
+  });
+
   test('should call updateModalValue on input value change', async () => {
     const value = 'john doe';
-    waitFor(() => {
+
       render(
         <MemoryRouter>
           <AddressUpdatePopup {...addressUpdatePopupProps} />
@@ -78,19 +103,16 @@ describe('AddressUpdatePopup component', () => {
       const input = screen.getByRole('textbox');
 
       fireEvent.change(input, {target: {value}});
-    });
 
     expect(addressUpdatePopupProps.updateModalValue).toBeCalledWith(value);
   });
 
   test('should call closeAddressUpdatePopup on Cancel button clicked', () => {
-    waitFor(() => {
       render(
         <MemoryRouter>
           <AddressUpdatePopup {...addressUpdatePopupProps} />
         </MemoryRouter>
       );
-    });
 
     const cancelButton = screen.getByText(/Cancel/i);
 
@@ -100,13 +122,11 @@ describe('AddressUpdatePopup component', () => {
   });
 
   test('should not call updateLead when we do not have lead and Update Address button is clicked', () => {
-    waitFor(() => {
       render(
         <MemoryRouter>
           <AddressUpdatePopup {...addressUpdatePopupProps} />
         </MemoryRouter>
       );
-    });
 
     const updateAddressButton = screen.getByText(/Update Address/i);
 
@@ -116,13 +136,11 @@ describe('AddressUpdatePopup component', () => {
   });
 
   test('should call updateLead when we have lead and Update Address button is clicked', () => {
-    waitFor(() => {
       render(
         <MemoryRouter>
           <AddressUpdatePopup {...addressUpdatePopupProps} lead={leadData} />
         </MemoryRouter>
       );
-    });
 
     const updateAddressButton = screen.getByText(/Update Address/i);
 
@@ -131,32 +149,12 @@ describe('AddressUpdatePopup component', () => {
     expect(addressUpdatePopupProps.updateLead).toBeCalledWith(leadData);
   });
 
-  test('should call updateModalLead with lead data when address is selected from google places', async () => {
-    const lead = {
-      address: parsePlace(mockPlace),
-      product_slug: addressUpdatePopupProps.product,
-      productAvailability: productAvailabilityData,
-    };
-
-    waitFor(() => {
-      render(
-        <MemoryRouter>
-          <AddressUpdatePopup {...addressUpdatePopupProps} />
-        </MemoryRouter>
-      );
-    });
-
-    expect(addressUpdatePopupProps.updateModalLead).toBeCalledWith(lead);
-  });
-
   test('should call closeAddressUpdatePopup when we click on the cancel icon', () => {
-    waitFor(() => {
-      render(
-        <MemoryRouter>
-          <AddressUpdatePopup {...addressUpdatePopupProps} />
-        </MemoryRouter>
-      );
-    });
+    render(
+      <MemoryRouter>
+        <AddressUpdatePopup {...addressUpdatePopupProps} />
+      </MemoryRouter>
+    );
 
     const closeIcon = screen.getByTestId(/close-icon-id/i);
 
