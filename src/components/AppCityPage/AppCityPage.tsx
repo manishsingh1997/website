@@ -44,13 +44,13 @@ const AppCityPage = (props: AppCityPageProps) => {
           <TestimonialBanner />
         </section>
 
-        <CityReviews google={city.review?.Google} yelp={city.review?.Yelp} />
-
-        <ProjectsCompleted city={city.city} projects={city.projects} />
-
         <section className="mobile-length">
           <TellUsForm />
         </section>
+
+        <CityReviews google={city.review?.Google} yelp={city.review?.Yelp} />
+
+        <ProjectsCompleted city={city.city} projects={city.projects} />
 
         <section className="wrapper-1180 Packages">
           <h2 className="h3 spacing after__is-6">{city.packages.title}</h2>

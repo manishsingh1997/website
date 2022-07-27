@@ -219,6 +219,11 @@ exports[`AppCityPage should render 1`] = `
       </div>
     </section>
     <section
+      class="mobile-length"
+    >
+      Tell Us Form
+    </section>
+    <section
       class="wrapper-1180 CityReviews"
     >
       <div
@@ -379,11 +384,6 @@ exports[`AppCityPage should render 1`] = `
           </div>
         </div>
       </div>
-    </section>
-    <section
-      class="mobile-length"
-    >
-      Tell Us Form
     </section>
     <section
       class="wrapper-1180 Packages"
