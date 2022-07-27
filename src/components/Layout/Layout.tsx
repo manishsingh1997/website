@@ -28,6 +28,8 @@ interface LayoutProps {
   phoneNumber: string;
 }
 
+const NO_BUTTON_PAGES = ['/fences', '/request-quote'];
+
 const Layout = (props: LayoutProps) => {
   const {auth, children, getCurrentUser, city, phoneNumber, location} = props;
 
@@ -56,6 +58,10 @@ const Layout = (props: LayoutProps) => {
   const isNoFooterTemplate = useMemo(() => {
     const noFooterTemplates = ['/request-quote'];
     return checkRouteList(noFooterTemplates, location);
+  }, [location]);
+
+  const isShowGetAQuoteButton = useMemo(() => {
+    return !checkRouteList(NO_BUTTON_PAGES, location);
   }, [location]);
 
   const locationsList = useMemo(() => {
@@ -109,7 +115,7 @@ const Layout = (props: LayoutProps) => {
               customerMenu={dropdownMenu}
               ergeonUrl="/"
               fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
-              onGetQuoteClick={onGetQuoteClick}
+              onGetQuoteClick={isShowGetAQuoteButton && onGetQuoteClick}
               pdfDetails={pdfDetails}
               pdfMode={asPDF}
               showChristmasHat={isChristmasTime}
