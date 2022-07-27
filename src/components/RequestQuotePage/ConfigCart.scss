@@ -287,6 +287,7 @@
   overflow: hidden;
   .popup__wrapper {
     bottom: -100%;
+    z-index: $z-index-super-top + 2;
   }
   &.loaded {
     opacity: 1;
@@ -333,4 +334,5 @@
   &.loaded {
     display: none !important;
   }
+  z-index: $z-index-super-top + 1;
 }
