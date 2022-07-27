@@ -11,6 +11,7 @@ import QASection from '../HomePage/QASection';
 import MainBanner from './MainBanner';
 import CityReviews from './CityReviews';
 import Regulations from './Regulations';
+import ProjectsCompleted from './ProjectsCompleted';
 import { City } from './types';
 import { getAsset } from './utils';
 
@@ -43,25 +44,9 @@ const AppCityPage = (props: AppCityPageProps) => {
           <TestimonialBanner />
         </section>
 
-        <CityReviews google={city.review.Google} yelp={city.review.Yelp} />
+        <CityReviews google={city.review?.Google} yelp={city.review?.Yelp} />
 
-        <section className="wrapper-1180 RecentProjects">
-          <h2 className="h3">Projects Recently Completed in {city.city}</h2>
-          <div className="flex-wrapper RecentProjects-container">
-            {city.projects.map((project, idx) => (
-              <div className="flex-spacer RecentProjects-project" key={`project-${idx}`}>
-                <a href={project.url}>
-                  <img alt={project.label} src={getAsset(project.img, 'jpeg')} />
-                </a>
-                <div className="RecentProjects-projectCaption">
-                  <a href={project.url}>
-                    <span>{project.label}</span>
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <ProjectsCompleted city={city.city} projects={city.projects} />
 
         <section className="mobile-length">
           <TellUsForm />
@@ -87,7 +72,7 @@ const AppCityPage = (props: AppCityPageProps) => {
                         <div className="card padding-60 soft-border shadow__z0 Packages-item">
                           <img
                             data-testid='test-image'
-                            onLoad={() => setLoadPckgImage(pckg.img)} 
+                            onLoad={() => setLoadPckgImage(pckg.img)}
                             src={getAsset(pckg.img, 'jpeg')} />
                           <p className="h5 Packages-title">{pckg.title}</p>
                           <p className="Packages-description">{pckg.description}</p>

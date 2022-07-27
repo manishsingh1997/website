@@ -22,6 +22,10 @@ const CityReviews = (props: MainBannerProps) => {
     google && { ...google, type: 'Google' },
   ].filter(Boolean) as Reviews[], [yelp, google]);
 
+  if (!yelp && !google) {
+    return null;
+  }
+
   return (
     <section className="wrapper-1180 CityReviews">
       <div className="flex-wrapper CityReviews-container">
