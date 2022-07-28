@@ -41,6 +41,10 @@ export const getCustomerHouses = (customerGID) => {
   return request(customerGID)('/houses');
 };
 
+export const addCustomerHouse = (customerGID, data) => {
+  return request(customerGID)('/houses', data);
+};
+
 export const getQuoteDetails = (customerGID, quoteSecret) => {
   return request(customerGID)(`/quotes/${quoteSecret}/`);
 };
@@ -86,5 +90,5 @@ export const getConfig = (configID) => {
 };
 
 export const updateCustomerSignOffRequirement = (customerGID, quoteApprovalSecret, data) => {
-  return request(customerGID)(`/quote-approvals/${quoteApprovalSecret}/signoff/`, data)
+  return request(customerGID)(`/quote-approvals/${quoteApprovalSecret}/signoff/`, data);
 };

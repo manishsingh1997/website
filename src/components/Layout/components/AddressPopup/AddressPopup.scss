@@ -1,45 +1,57 @@
 @import '@ergeon/core-components/src/components/variables.scss';
 
-.address-update-popup {
+.address-popup {
   &.Popup .Popup-content {
-    padding: 20px;
+    padding: $v-20;
   }
 
-  h4 {
-    font-size: 18px;
-    margin-bottom: 10px;
+  .Popup-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: $h-10;
+    h4 {
+      font-size: $h5-size;
+    }
+    svg {
+      width: $v-16;
+      height: auto;
+      margin-right: $h-10;
+      path {
+        fill: $blue-1;
+      }
+    }
   }
 
   .AddressInput {
     input {
-      height: 48px;
-      padding-left: 10px;
-      font-size: 13px;
+      height: $v-48;
+      padding-left: $h-10;
+      font-size: $font-label-size + 1;
 
       &:focus {
         & + label {
           transform: translate(0, -9px);
-          font-size: 11px;
+          font-size: $h-10 + 1;
         }
       }
     }
 
     label {
-      top: 10px;
-      font-size: 14px;
-      left: 10px;
+      top: $h-10;
+      font-size: $font-mobile-size;
+      left: $h-10;
     }
 
     &.is-hasValue {
       label {
         transform: translate(0, -9px);
-        font-size: 11px;
+        font-size: $h-10 + 1;
       }
     }
   }
 
   .Separator {
-    margin: 20px 0;
+    margin: $h-20 0;
     border: none;
     border-top: 1px solid #d8d8d8;
   }
@@ -49,12 +61,12 @@
     justify-content: flex-end;
 
     .button {
-      margin-left: 10px;
+      margin-left: $h-10;
     }
   }
 
   .submit-button {
-    min-width: 140px;
+    min-width: $h-120 + $h-20;
 
     &[disabled] {
       cursor: default;

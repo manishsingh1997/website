@@ -3,6 +3,7 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import {mockHouseA, mockHouseB} from '../../__mocks__/mockHouses';
 import HouseCard from '../HouseCard';
+import * as appHouseUtils from '../../../utils/app-house';
 
 jest.mock('@ergeon/core-components', () => ({
   ...jest.requireActual('@ergeon/core-components'),
@@ -64,5 +65,17 @@ describe('Should test the House Card component', () => {
     fireEvent.click(removeBtn);
 
     expect(onRemoveFn).toHaveBeenCalledTimes(1);
+  });
+
+  test('Should render header address when address value is valid', () => {
+    render(<HouseCard house={mockHouseA} onEdit={jest.fn()} onRemove={jest.fn()} />);
+    const address = screen.getByRole('heading', {name: /300 Wood Falls Ct/i, level: 5});
+    expect(address).toBeInTheDocument();
+  });
+
+  test('Should not render header address when address value is null', () => {
+    jest.spyOn(appHouseUtils, 'getFormattedAddress').mockImplementation(() => undefined);
+    render(<HouseCard house={mockHouseA} onEdit={jest.fn()} onRemove={jest.fn()} />);
+    expect(screen.queryByText('300 Wood Falls')).not.toBeInTheDocument();
   });
 });

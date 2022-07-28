@@ -12,13 +12,15 @@ export interface GetAppointmentRequest {
 
 export type GetAppointmentDispatcher = (dispatch: (props: GetAppointmentRequest) => Action) => void;
 
-export interface GetHouseRequest {
+export interface HouseRequest {
   type?: string;
   data?: HouseType[];
   error?: ParsedAPIErrorType;
 }
 
-export type GetHouseDispatcher = (dispatch: (props: GetHouseRequest) => Action) => void;
+export type GetHouseDispatcher = (dispatch: (props: HouseRequest) => Action) => void;
+
+export type SetHouseDispatcher = (dispatch: (props: HouseRequest) => Action) => void;
 
 type CityRequest = {
   type?: string;

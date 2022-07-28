@@ -1,14 +1,10 @@
-import React, {FC, useState, useCallback} from 'react';
-import {Portal} from 'react-portal';
+import React, {FC, useCallback} from 'react';
 
-import {AddressInput, Button} from '@ergeon/core-components';
-
-import {getCheckedZIP} from '../../../../api/lead';
 import {trackAddressEntered} from '../../../../utils/analytics';
 import {updateLeadWithZipcode} from '../../utils';
 import {Lead, Product} from '../../../types';
 
-import './AddressUpdatePopup.scss';
+import AddressPopup from '../AddressPopup';
 
 export interface AddressUpdatePopupProps {
   open: boolean;
@@ -23,8 +19,6 @@ export interface AddressUpdatePopupProps {
 
 const AddressUpdatePopup: FC<AddressUpdatePopupProps> = (props) => {
   const {closeAddressUpdatePopup, lead, open, product, updateLead, updateModalLead, updateModalValue, value} = props;
-
-  const [loading, setLoading] = useState(false);
 
   const handleAddressSelected = useCallback(
     (newLead) => {
@@ -51,58 +45,22 @@ const AddressUpdatePopup: FC<AddressUpdatePopupProps> = (props) => {
     closeAddressUpdatePopup();
   }, [closeAddressUpdatePopup]);
 
-  const onLoadStarts = useCallback(
-    (place) => {
-      setLoading(true);
-      handleAddressChange(place['formated_address']);
-    },
-    [handleAddressChange]
-  );
-
-  const onLoadEnds = useCallback(() => {
-    setLoading(false);
-  }, []);
-
   if (!open) {
     return null;
   }
 
   return (
-    <Portal>
-      <div className="Popup address-update-popup">
-        <div className="Popup-overlay" onClick={handleClose} />
-        <div className="Popup-content">
-          <h4>Update your address</h4>
-          <AddressInput
-            getCheckedZIP={getCheckedZIP}
-            loading={loading}
-            onChange={handleAddressChange}
-            onLoadEnds={onLoadEnds}
-            onLoadStarts={onLoadStarts}
-            onSubmit={handleAddressSelected}
-            product={product}
-            value={value}
-          />
-          <hr className="Separator" />
-          <div className="Buttons">
-            <Button flavor="regular" onClick={handleClose}>
-              Cancel
-            </Button>
-            <Button
-              className="submit-button"
-              disabled={!lead || loading}
-              flavor={!lead || loading ? 'regular' : 'primary'}
-              onClick={handleAddressSubmit}
-            >
-              Update Address
-            </Button>
-          </div>
-          <div className="Popup-close" data-testid="close-icon-id" onClick={handleClose}>
-            ×
-          </div>
-        </div>
-      </div>
-    </Portal>
+    <AddressPopup
+      disabled={!lead}
+      handleAddressChange={handleAddressChange}
+      handleAddressSelected={handleAddressSelected}
+      handleAddressSubmit={handleAddressSubmit}
+      handleClose={handleClose}
+      product={product}
+      submitText={'Update Address'}
+      title={'Update your address'}
+      value={value}
+    />
   );
 };
 

@@ -4,7 +4,7 @@
   top: 0;
   right: 0;
   overflow-x: hidden;
-  padding: 10px;
+  padding: $h-10;
   overflow-y: auto;
   bottom: 0;
   left: 0;
@@ -16,14 +16,14 @@
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 60px;
+    margin-top: $h-120 + $h-40;
     background: $white;
-    padding: 60px;
-    max-width: 480px;
+    padding: $h-60;
+    max-width: $h-120 * 4;
     box-shadow: 0 5px 50px $gray-1;
     overflow: auto;
     animation: fs-zoom 0.4s forwards ease 1;
-    border-radius: 4px;
+    border-radius: $corner-default;
   }
 
   .Popup-overlay {
@@ -37,13 +37,13 @@
   }
   .Popup-close {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 24px;
-    height: 24px;
+    top: $v-16;
+    right: $v-16;
+    width: $v-24;
+    height: $v-24;
     text-align: center;
-    font-size: 24px;
-    line-height: 20px;
+    font-size: $h4-size + 2;
+    line-height: $h6-line-height;
     cursor: pointer;
     color: $gray-2;
     transition: all 0.2s ease-out;
@@ -54,19 +54,19 @@
 
   @include phone {
     .Popup-content {
-      margin-top: 0;
-      padding: 30px;
+      margin-top: $h-120;
+      padding: $h-20 + $h-10;
     }
     .Popup-close {
-      font-size: 22px;
-      top: 8px;
-      right: 8px;
+      font-size: $h4-size;
+      top: $v-6 + 2;
+      right: $v-6 + 2;
     }
   }
   @include phone-small {
     .Popup-content {
-      margin-top: 0;
-      padding: 30px 20px;
+      margin-top: $h-80 + $h-20;
+      padding: 30px $h-20;
     }
   }
 }
@@ -101,10 +101,10 @@
       font-size: $font-mobile-size;
       line-height: $line-height-mobile;
       background: url(../../assets/icon-plus.svg) no-repeat left center;
-      padding-left: 18px;
+      padding-left: $v-16 + 2;
     }
     .label {
-      padding-left: 18px;
+      padding-left: $v-16 + 2;
     }
     .add-config__disable {
       display: none;
@@ -117,16 +117,16 @@
     .newsletter-checkbox {
       filter: grayscale(1);
       label {
-        padding-top: 4px;
+        padding-top: $corner-default;
       }
     }
 
     .Form-error {
-      margin-top: 6px;
+      margin-top: $v-6;
     }
   }
   .Form-error {
-    margin-top: 4px;
+    margin-top: $v-6;
     font-size: $font-label-size;
     color: $red;
     font-family: $font-content;
@@ -136,9 +136,9 @@
   }
   .Form-footer {
     text-align: center;
-    font-size: 12px;
-    line-height: 18px;
-    margin-top: 30px;
+    font-size: $font-label-size;
+    line-height: $line-height-label + 2;
+    margin-top: $h-20 + $h-10;
   }
 }
 
@@ -169,8 +169,8 @@
 
 .LeadForm {
   h1 + p {
-    margin-top: -20px;
-    margin-bottom: 30px;
+    margin-top: -$h-20;
+    margin-bottom: $h-20 + $h-10;
     text-align: center;
   }
 }

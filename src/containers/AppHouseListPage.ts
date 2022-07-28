@@ -3,20 +3,23 @@ import {connect} from 'react-redux';
 
 import AppHouseListPage from '../components/AppHouseListPage';
 import {HouseType} from '../components/types';
-import {getHouses} from '../flux/actions/app-houses';
+import {getHouses, addHouse} from '../flux/actions/app-houses';
 import {GetHouseDispatcher} from '../flux/actions/types';
 import {Action} from '../flux/store';
+import {AddAddressProps} from '../components/AppHouseListPage/types';
 
 type HousesProps = {
-  data: HouseType[],
-  isListLoading: boolean,
-  listError: null | []
-}
+  data: HouseType[];
+  isListLoading: boolean;
+  isPopupOpen: boolean;
+  listError: null | [];
+};
 
 const mapStateToProps = ({houses}: {houses: HousesProps}) => {
   return {
     houses: houses.data,
     isListLoading: houses.isListLoading,
+    isPopupOpen: houses.isPopupOpen,
     listError: houses.listError,
   };
 };
@@ -25,6 +28,9 @@ const mapDispatchToProps = (dispatch: (action: ThunkActionDispatch<Action<GetHou
   return {
     getHouses: (customerGID: number) => {
       dispatch(getHouses(customerGID));
+    },
+    addHouse: (customerGID: number, address: AddAddressProps) => {
+      dispatch(addHouse(customerGID, address));
     },
   };
 };

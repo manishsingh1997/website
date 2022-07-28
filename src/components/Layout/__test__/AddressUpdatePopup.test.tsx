@@ -79,40 +79,39 @@ describe('AddressUpdatePopup component', () => {
           <AddressUpdatePopup {...addressUpdatePopupProps} />
         </MemoryRouter>
       );
-    })
+    });
 
     await waitFor(() => {
       const input = screen.getByRole('textbox');
 
       input.focus();
-    })
+    });
 
     expect(addressUpdatePopupProps.updateModalLead).toBeCalledWith(lead);
-   
   });
 
   test('should call updateModalValue on input value change', async () => {
     const value = 'john doe';
 
-      render(
-        <MemoryRouter>
-          <AddressUpdatePopup {...addressUpdatePopupProps} />
-        </MemoryRouter>
-      );
+    render(
+      <MemoryRouter>
+        <AddressUpdatePopup {...addressUpdatePopupProps} />
+      </MemoryRouter>
+    );
 
-      const input = screen.getByRole('textbox');
+    const input = screen.getByRole('textbox');
 
-      fireEvent.change(input, {target: {value}});
+    fireEvent.change(input, {target: {value}});
 
     expect(addressUpdatePopupProps.updateModalValue).toBeCalledWith(value);
   });
 
   test('should call closeAddressUpdatePopup on Cancel button clicked', () => {
-      render(
-        <MemoryRouter>
-          <AddressUpdatePopup {...addressUpdatePopupProps} />
-        </MemoryRouter>
-      );
+    render(
+      <MemoryRouter>
+        <AddressUpdatePopup {...addressUpdatePopupProps} />
+      </MemoryRouter>
+    );
 
     const cancelButton = screen.getByText(/Cancel/i);
 
@@ -122,11 +121,11 @@ describe('AddressUpdatePopup component', () => {
   });
 
   test('should not call updateLead when we do not have lead and Update Address button is clicked', () => {
-      render(
-        <MemoryRouter>
-          <AddressUpdatePopup {...addressUpdatePopupProps} />
-        </MemoryRouter>
-      );
+    render(
+      <MemoryRouter>
+        <AddressUpdatePopup {...addressUpdatePopupProps} />
+      </MemoryRouter>
+    );
 
     const updateAddressButton = screen.getByText(/Update Address/i);
 
@@ -136,11 +135,11 @@ describe('AddressUpdatePopup component', () => {
   });
 
   test('should call updateLead when we have lead and Update Address button is clicked', () => {
-      render(
-        <MemoryRouter>
-          <AddressUpdatePopup {...addressUpdatePopupProps} lead={leadData} />
-        </MemoryRouter>
-      );
+    render(
+      <MemoryRouter>
+        <AddressUpdatePopup {...addressUpdatePopupProps} lead={leadData} />
+      </MemoryRouter>
+    );
 
     const updateAddressButton = screen.getByText(/Update Address/i);
 
@@ -161,5 +160,16 @@ describe('AddressUpdatePopup component', () => {
     fireEvent.click(closeIcon);
 
     expect(addressUpdatePopupProps.closeAddressUpdatePopup).toBeCalled();
+  });
+
+  test('should not render when open prop is false', async () => {
+    const {container} = render(
+      <MemoryRouter>
+        <AddressUpdatePopup {...addressUpdatePopupProps} open={false} />
+      </MemoryRouter>
+    );
+    waitFor(() => {
+      expect(container).toBeNull();
+    });
   });
 });
