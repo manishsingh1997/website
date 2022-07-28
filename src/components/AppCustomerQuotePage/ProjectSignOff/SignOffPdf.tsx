@@ -17,7 +17,7 @@ const SignOffPdf = (props: SignOffPdfProps) => {
       return getIsQuoteStatusApprovedOrCompleted(quoteApproval)
     }, [quoteApproval]);
 
-  if (isQuoteStatusApprovedOrCompleted) {
+  if (!isQuoteStatusApprovedOrCompleted) {
     return null;
   }
 
