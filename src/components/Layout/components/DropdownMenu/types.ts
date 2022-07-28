@@ -1,4 +1,4 @@
-import {AuthUser} from '../../../../flux/reducers/auth';
+import { AuthUser } from '../../../../flux/reducers/auth';
 
 export interface MenuItem {
   content: string;
@@ -7,6 +7,7 @@ export interface MenuItem {
   onClick?: () => void;
   special?: boolean;
   className?: string;
+  isTitle?: boolean;
 }
 
 export interface user extends AuthUser {

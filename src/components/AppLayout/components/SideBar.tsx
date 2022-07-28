@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, {useMemo} from 'react';
 import {ReactSVG} from 'react-svg';
-import {getMenuItems} from '../../../data/customer-app';
+import {getSideMenuItems} from '../../../data/customer-app';
 import {getUnsubscribeCodeFromQuery} from '../../../utils/app-notifications';
 import PathNavLink from '../../common/PathNavLink';
 import {MatchProps} from '../types';
@@ -14,7 +14,7 @@ interface SideBarProps {
 const SideBar = (props: SideBarProps) => {
   const {location, match} = props;
   const unsubscribedCode = getUnsubscribeCodeFromQuery(location.search) as string | null;
-  const menuItems = useMemo(() => getMenuItems(match.url, unsubscribedCode), [match, unsubscribedCode]);
+  const menuItems = useMemo(() => getSideMenuItems(match.url, unsubscribedCode), [match, unsubscribedCode]);
 
   return (
     <div>

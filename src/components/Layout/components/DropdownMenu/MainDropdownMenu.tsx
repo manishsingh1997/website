@@ -1,26 +1,28 @@
-import React, {useMemo} from 'react';
+import React, { useMemo } from 'react';
 
-import logOutIcon from '@ergeon/core-components/src/assets/icon-logout.brand.svg';
+import logOutIcon from '@ergeon/core-components/src/assets/icon-logout-solid.svg';
 import userIcon from '@ergeon/core-components/src/assets/icon-user.brand.svg';
+import helpIcon from '@ergeon/core-components/src/assets/icon-question-mark-line.svg';
 
-import {getMenuItems} from '../../../../data/customer-app';
+import { getMenuItems } from '../../../../data/customer-app';
 import WebsiteDropdownMenu from './WebsiteDropdownMenu';
+import { MenuItem, user } from './types';
 
 import '../../index.scss';
-import {MenuItem, user} from './types';
 
 interface MainDropdownMenuProps {
   user: user;
 }
 
 const MainDropdownMenu = (props: MainDropdownMenuProps) => {
-  const {user} = props;
+  const { user } = props;
 
   const menuItems = useMemo(() => {
     const itemList = getMenuItems(`/app/${user.gid}`, null).map(
       (item): MenuItem => ({
+        isTitle: item.isTitle,
         content: item.title,
-        href: item.path,
+        href: item.path || '#',
         iconSVG: item.iconSVG,
         className: item.className
       })
@@ -28,11 +30,18 @@ const MainDropdownMenu = (props: MainDropdownMenuProps) => {
 
     itemList[itemList.length - 1].special = true; // bottom line will be shown for special
 
-    itemList.push({
-      content: 'Log out',
-      href: '/app/logout',
-      iconSVG: logOutIcon,
-    });
+    itemList.push(
+      {
+        content: 'Help',
+        href: '/help',
+        iconSVG: helpIcon,
+      },
+      {
+        content: 'Log out',
+        href: '/app/logout',
+        iconSVG: logOutIcon,
+      }
+    );
     return itemList;
   }, [user.gid]);
 
