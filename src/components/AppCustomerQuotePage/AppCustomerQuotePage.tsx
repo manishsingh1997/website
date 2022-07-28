@@ -28,12 +28,12 @@ import SignOffPdf from './ProjectSignOff/SignOffPdf';
 const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
 
   const {match, auth, layout, setPDFHeaderPhoneAction} = props
-  
+
   const location = useLocation();
   const history = useHistory();
 
   const [isLoading, setIsLoading] = useState(true);
-  const [quoteApproval, setQuodeApproval] = useState<QuoteApproval | null>(null);
+  const [quoteApproval, setQuoteApproval] = useState<QuoteApproval | null>(null);
   const [quoteApprovalError, setQuoteApprovalError] = useState<string | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod | null>(null);
   const [paymentMethodError, setPaymentMethodError] = useState<string | null>(null);
@@ -62,7 +62,7 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
 
       showUpcomingFeatures('ENG-13851') && getSignOffData(data?.data);
 
-      setQuodeApproval(data.data);
+      setQuoteApproval(data.data);
       setCustomerSignOffData(orderData);
       setQuoteApprovalError(null);
       setPaymentMethodError(null);
@@ -75,7 +75,7 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
     } catch (err) {
       const errorResponse = err as {response: ErrorResponse};
       const error = parseAPIError(errorResponse).nonFieldErrors.join('\n');
-      setQuodeApproval(null);
+      setQuoteApproval(null);
       setQuoteApprovalError(error);
     } finally {
       setIsLoading(false);
@@ -96,7 +96,7 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
     try {
       const data = await approveQuoteApprovalAPI(customerGID, match.params.secret, stripeToken);
       const updatedQuoteApproval = data.data;
-      setQuodeApproval(updatedQuoteApproval);
+      setQuoteApproval(updatedQuoteApproval);
       setPaymentMethod(updatedQuoteApproval['payment_method']);
       setPaymentMethodError(null);
     } catch (err) {
@@ -140,13 +140,21 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
     [customerGID, match, getSignatureData, history, location]
   );
 
+  // Run effect on first render
   useEffect(() => {
     const onInit = async () => {
       await getQuoteApprovalDetailsFromAPI();
-      await reviewQuoteApproval();
     };
     onInit();
   }, []);
+
+  // Run effect on quoteApproval value change
+  useEffect(() => {
+    const onQuoteApproval = async () => {
+      await reviewQuoteApproval();
+    };
+    onQuoteApproval();
+  }, [quoteApproval]);
 
   if (isLoading) {
     return <AppLoader />;
