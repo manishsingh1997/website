@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {Portal} from 'react-portal';
 import {AddressInput, Button} from '@ergeon/core-components';
 import {ReactSVG} from 'react-svg';
@@ -8,8 +8,16 @@ import {AddressPopupProps} from './types';
 
 import './AddressPopup.scss';
 
+export enum PopUpAction {
+  Add,
+  Edit,
+  Remove,
+  LeadUpdate,
+}
+
 const AddressPopup = (props: AddressPopupProps) => {
   const {
+    actionType,
     addressInputLabel,
     disabled,
     handleAddressChange,
@@ -17,13 +25,46 @@ const AddressPopup = (props: AddressPopupProps) => {
     handleAddressSubmit,
     handleClose,
     product,
-    submitText,
     icon,
-    title,
     value,
   } = props;
 
   const [loading, setLoading] = useState(false);
+
+  const submitText = useMemo(() => {
+    switch (actionType) {
+      case PopUpAction.Add:
+        return 'Add';
+      case PopUpAction.Edit:
+        return 'Save';
+      case PopUpAction.Remove:
+        return 'Remove';
+      default:
+        return 'Update address';
+    }
+  }, [actionType]);
+
+  const title = useMemo(() => {
+    switch (actionType) {
+      case PopUpAction.Add:
+        return 'Add address';
+      case PopUpAction.Edit:
+        return 'Edit address';
+      case PopUpAction.Remove:
+        return 'Are you sure you want to remove this address?';
+      default:
+        return 'Update your address';
+    }
+  }, [actionType]);
+
+  const submitFlavor = useMemo(() => {
+    switch (actionType) {
+      case PopUpAction.Remove:
+        return 'attention';
+      default:
+        return 'primary';
+    }
+  }, [actionType]);
 
   const onLoadStarts = useCallback(
     (place) => {
@@ -46,17 +87,21 @@ const AddressPopup = (props: AddressPopupProps) => {
             {!!icon && <ReactSVG data-testid="popup-icon" src={icon} />}
             <h4>{title}</h4>
           </div>
-          <AddressInput
-            getCheckedZIP={getCheckedZIP}
-            inputLabel={addressInputLabel}
-            loading={loading}
-            onChange={handleAddressChange}
-            onLoadEnds={onLoadEnds}
-            onLoadStarts={onLoadStarts}
-            onSubmit={handleAddressSelected}
-            product={product}
-            value={value}
-          />
+          {actionType === PopUpAction.Remove ? (
+            <span>This address will be removed from your Ergeon account and on-going campaigns.</span>
+          ) : (
+            <AddressInput
+              getCheckedZIP={getCheckedZIP}
+              inputLabel={addressInputLabel}
+              loading={loading}
+              onChange={handleAddressChange}
+              onLoadEnds={onLoadEnds}
+              onLoadStarts={onLoadStarts}
+              onSubmit={handleAddressSelected}
+              product={product}
+              value={value}
+            />
+          )}
           <hr className="Separator" />
           <div className="Buttons">
             <Button flavor="regular" onClick={handleClose}>
@@ -65,7 +110,7 @@ const AddressPopup = (props: AddressPopupProps) => {
             <Button
               className="submit-button"
               disabled={disabled || loading}
-              flavor={disabled || loading ? 'regular' : 'primary'}
+              flavor={disabled || loading ? 'regular' : submitFlavor}
               onClick={handleAddressSubmit}
             >
               {submitText}

@@ -6,6 +6,7 @@ import {initialize, mockInstances} from '@googlemaps/jest-mocks';
 import locationIcon from '@ergeon/core-components/src/assets/location-icon.svg';
 
 import AddressPopup from '../components/AddressPopup';
+import {PopUpAction} from '../components/AddressPopup/AddressPopup';
 
 const props = {
   disabled: false,
@@ -13,8 +14,7 @@ const props = {
   handleAddressSelected: jest.fn(),
   handleAddressSubmit: jest.fn(),
   handleClose: jest.fn(),
-  title: 'Edit Address',
-  submitText: 'Save',
+  actionType: PopUpAction.LeadUpdate,
 };
 
 jest.mock('@ergeon/core-components', () => ({
@@ -32,17 +32,17 @@ describe('Should render AddressPopup', () => {
     mockInstances.clearAll();
   });
 
-  it('should render with correct title', () => {
-    render(<AddressPopup {...props} title="My title" />);
-    expect(screen.getByText('My title')).toBeInTheDocument();
+  it('should render with correct default title', () => {
+    render(<AddressPopup {...props} />);
+    expect(screen.getByText('Update your address')).toBeInTheDocument();
   });
-  it('should render with correct submit text', () => {
-    render(<AddressPopup {...props} submitText={'My submit text'} />);
-    expect(screen.getByText('My submit text')).toBeInTheDocument();
+  it('should render with correct default submit text', () => {
+    render(<AddressPopup {...props} />);
+    expect(screen.getByText('Update address')).toBeInTheDocument();
   });
   it('should render with button disabled when disabled is true', () => {
     render(<AddressPopup {...props} disabled />);
-    const button = screen.getByRole('button', {name: 'Save'});
+    const button = screen.getByRole('button', {name: 'Update address'});
     expect(button).toHaveAttribute('disabled');
   });
   it('should call handleClose when cancel button is clicked ', () => {

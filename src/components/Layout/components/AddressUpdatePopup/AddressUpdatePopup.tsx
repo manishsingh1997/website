@@ -5,6 +5,7 @@ import {updateLeadWithZipcode} from '../../utils';
 import {Lead, Product} from '../../../types';
 
 import AddressPopup from '../AddressPopup';
+import {PopUpAction} from '../AddressPopup/AddressPopup';
 
 export interface AddressUpdatePopupProps {
   open: boolean;
@@ -51,14 +52,13 @@ const AddressUpdatePopup: FC<AddressUpdatePopupProps> = (props) => {
 
   return (
     <AddressPopup
+      actionType={PopUpAction.LeadUpdate}
       disabled={!lead}
       handleAddressChange={handleAddressChange}
       handleAddressSelected={handleAddressSelected}
       handleAddressSubmit={handleAddressSubmit}
       handleClose={handleClose}
       product={product}
-      submitText={'Update Address'}
-      title={'Update your address'}
       value={value}
     />
   );

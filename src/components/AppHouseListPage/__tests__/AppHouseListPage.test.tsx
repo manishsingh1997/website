@@ -155,7 +155,9 @@ describe('Should test the App House List Page', () => {
     const removeButton = screen.getByRole('button', {name: 'Remove'});
     fireEvent.click(removeButton);
 
-    expect(alertMock).toHaveBeenCalledWith('Next feature');
+    waitFor(() => {
+      expect(alertMock).toHaveBeenCalledWith('Next feature');
+    });
   });
 
   test('Should call Next feature alert when edit confirmation button is clicked', () => {
@@ -185,7 +187,9 @@ describe('Should test the App House List Page', () => {
     const submitButton = screen.getByRole('button', {name: 'Save'});
     fireEvent.click(submitButton);
 
-    expect(alertMock).toHaveBeenCalledWith('Next feature');
+    waitFor(() => {
+      expect(alertMock).toHaveBeenCalledWith('Next feature');
+    });
   });
 
   test('Should call addHouse when submit the popup with valid address ', async () => {
