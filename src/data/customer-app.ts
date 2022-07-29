@@ -30,7 +30,7 @@ export const getMenuItems = (basePath: string, unsubscribeCode: string | null) =
       title: 'My Account',
     },
     {
-      path: `${basePath}/contacts`,
+      path: `${basePath}/profile`,
       title: 'Profile',
       iconSVG: contactIcon,
       className: 'contacts-item'
@@ -42,7 +42,7 @@ export const getMenuItems = (basePath: string, unsubscribeCode: string | null) =
       className: 'addresses-item'
     },
     {
-      path: `${basePath}/notifications${notificationsSearchQuery}`,
+      path: `${basePath}/settings${notificationsSearchQuery}`,
       title: 'Settings',
       iconSVG: preferencesIcon,
       className: 'notifications-item'
@@ -56,7 +56,7 @@ export const getSideMenuItems = (basePath: string, unsubscribeCode: string | nul
 
   const menuItems = [
     {
-      path: `${basePath}/contacts`,
+      path: `${basePath}/profile`,
       title: 'Profile',
       iconSVG: contactIcon,
       className: 'contacts-item'
@@ -80,7 +80,7 @@ export const getSideMenuItems = (basePath: string, unsubscribeCode: string | nul
       className: 'appointments-item'
     },
     {
-      path: `${basePath}/notifications${notificationsSearchQuery}`,
+      path: `${basePath}/settings${notificationsSearchQuery}`,
       title: 'Settings',
       iconSVG: preferencesIcon,
       className: 'notifications-item'

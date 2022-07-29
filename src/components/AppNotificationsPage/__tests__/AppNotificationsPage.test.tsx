@@ -12,8 +12,8 @@ describe('App notifications page', () => {
   let mockLocation = document.location;
   const TEST_ACCOUNT = 'testemail@ergeon.com';
   const BUTTON_TEXT = 'Update preferences';
-  const SUCCESS_MESSAGE = 'Notifications preferences updated successfully';
-  
+  const SUCCESS_MESSAGE = 'Settings updated successfully';
+
   it('Should return correct email, update preferences', async () => {
     render(<AppNotificationsPage location={mockLocation} />);
     await waitFor(() => {

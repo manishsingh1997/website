@@ -1,8 +1,8 @@
 import React, {
-    useContext,
-    useEffect,
-    useMemo,
-    useReducer
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer
 } from 'react';
 import queryString from 'query-string';
 import {Redirect} from 'react-router-dom';
@@ -54,7 +54,7 @@ const AppNotificationsPage = (props: AppNotificationsProps) => {
       dispatch({type: ActionType.UPDATE_UNSUBSCRIBE_AUTOMATICALLY, unsubscribeAutomatically: true});
     }
   }, [parsedQuery, unsubscribeAutomatically]);
-  
+
   if (shouldUnsubscribe(auto as string | null, unsubscribeCode)) {
     const pathName = location.pathname;
     const search = queryString.stringify(queryWithoutAuto);
@@ -77,7 +77,7 @@ const AppNotificationsPage = (props: AppNotificationsProps) => {
           notificationPreference={notificationPreference}
           unsubscribeAutomatically={unsubscribeAutomatically} />
       }
-      renderHeader={() => 'Notifications preferences'}
+      renderHeader={() => 'Settings'}
     />
   )
 };

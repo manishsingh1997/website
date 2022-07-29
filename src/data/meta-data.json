@@ -212,12 +212,12 @@
       "title": "Appointments",
       "description": ""
     },
-    "contacts": {
-      "title": "Contacts",
+    "profile": {
+      "title": "Profile",
       "description": ""
     },
-    "notifications": {
-      "title": "Notifications preferences",
+    "settings": {
+      "title": "Settings",
       "description": ""
     },
     "orders": {

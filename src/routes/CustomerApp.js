@@ -20,7 +20,7 @@ const CustomerApp = ({match, location}) => (
   <AppLayout location={location} match={match}>
     <Switch>
       <Route component={AppAppointmentsListPage} path={`${match.url}/appointments`} />
-      <Route component={AppContactsPage} path={`${match.url}/contacts`} />
+      <Route component={AppContactsPage} path={`${match.url}/profile`} />
       <Route component={AppHouseListPage} path={`${match.url}/addresses`} />
       <Route component={AppOrderDetailPage} path={`${match.url}/orders/:orderId`} />
       <Route component={AppOrderListPage} path={`${match.url}/orders`} />
@@ -46,7 +46,7 @@ const CustomerApp = ({match, location}) => (
         name="customerQuoteDetail"
         path={`${match.url}/quote-approvals/:secret`}
       />
-      <Route component={AppNotificationsPage} path={`${match.url}/notifications`} />
+      <Route component={AppNotificationsPage} path={`${match.url}/settings`} />
       <Route component={NotFoundPage} exact path="*" />
     </Switch>
   </AppLayout>

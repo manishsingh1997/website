@@ -23,7 +23,7 @@ export const getFencequotingURL = ({
   zipCode,
   fenceSideLength,
   options = true,
-  fenceSideSlopePercent, 
+  fenceSideSlopePercent,
 }: getFencequotingURLProps
 ) => {
   if (!schemaCode) return
@@ -50,5 +50,5 @@ export const isQuoteDetailURL = (url: string) => {
 
 export const isUnsubscribeURL = (urlPathname: string, urlSearch: string): boolean => {
   const unsubscribeCode = getUnsubscribeCodeFromQuery(urlSearch);
-  return Boolean(urlPathname.match(/^\/app\/[^\/]+\/notifications\/?/g) !== null && unsubscribeCode);
+  return Boolean(urlPathname.match(/^\/app\/[^\/]+\/settings\/?/g) !== null && unsubscribeCode);
 };

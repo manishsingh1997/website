@@ -77,11 +77,11 @@ const AppContactsPage = (props: AppContactsPageProps) => {
   }, [editing, resetUser]);
 
   const onPrimaryChange = useCallback((_event: Event, name: string, value: string) => {
-      setInitialContact({
-        ...initialContact,
-        [name]: value,
-      });
-    }, [initialContact]);
+    setInitialContact({
+      ...initialContact,
+      [name]: value,
+    });
+  }, [initialContact]);
 
   const onContactInfoChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -102,10 +102,10 @@ const AppContactsPage = (props: AppContactsPageProps) => {
   }, [additionalContacts]);
 
   const onSave = useCallback(async (event: FormEvent) => {
-      event.preventDefault();
-      setErrors({});
-      submit();
-    }, [submit]);
+    event.preventDefault();
+    setErrors({});
+    submit();
+  }, [submit]);
 
   const onAddNewContactInfo = useCallback((type: string) => {
     const addedIds = additionalContacts.filter(({action}) => action === 'add').map(({id}) => id);
@@ -155,7 +155,7 @@ const AppContactsPage = (props: AppContactsPageProps) => {
     if (editing) {
       return (
         <>
-          Contacts{' '}
+          Profile{' '}
           <Button flavor="regular" onClick={onEditingClick} size="small">
             Cancel
           </Button>
@@ -164,7 +164,7 @@ const AppContactsPage = (props: AppContactsPageProps) => {
     }
     return (
       <>
-        Contacts{' '}
+        Profile{' '}
         <Button onClick={onEditingClick} size="small">
           Edit
         </Button>

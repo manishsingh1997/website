@@ -2806,7 +2806,7 @@ exports[`Routes Customer app endpoints 1`] = `
 <div>
   Route to /app/:customerGid/appointments
    
-  Route to /app/:customerGid/contacts
+  Route to /app/:customerGid/profile
    
   Route to /app/:customerGid/addresses
    
@@ -2826,7 +2826,7 @@ exports[`Routes Customer app endpoints 1`] = `
    
   Route to /app/:customerGid/quote-approvals/:secret
    
-  Route to /app/:customerGid/notifications
+  Route to /app/:customerGid/settings
    
   Route to *
    

@@ -16,7 +16,7 @@ const NotificationMessage = (props: NotificationMessageProps) => {
         <Notification mode="embed" type="Success">
           {unsubscribeAutomatically
             ? 'You were unsubscribed successfully'
-            : 'Notifications preferences updated successfully'}
+            : 'Settings updated successfully'}
         </Notification>
       )}
       {error && (

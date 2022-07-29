@@ -89,7 +89,7 @@ describe('App Layout page', () => {
   test('Should render Notifications component', () => {
     const props = {
       ...appLayoutProps,
-      location: {...mockLocation, search: '', pathname: `/app/${LEAD_ID}/notifications/`},
+      location: {...mockLocation, search: '', pathname: `/app/${LEAD_ID}/settings/`},
     };
 
     const {getByText} = render(
