@@ -3,20 +3,17 @@ import {some} from 'lodash';
 import {useLocation, useHistory} from 'react-router-dom';
 
 import AppLoader from '../common/AppLoader';
-
 import {
   getQuoteApprovalDetails,
   reviewQuoteApproval as reviewQuoteApprovalAPI,
   approveQuoteApproval as approveQuoteApprovalAPI,
 } from '../../api/app';
 
-import {isPDFMode, showUpcomingFeatures} from '../../utils/utils';
+import {getParameterByName, isPDFMode, showUpcomingFeatures} from '../../utils/utils';
 import {parseAPIError} from '../../utils/api';
 import {isQuoteAddressValid} from '../../utils/app-order';
 import {ErrorResponse} from '../../utils/types';
 
-import '@ergeon/draw-map/styles.css';
-import '../common/AppQuoteComponents/index.scss';
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
 import {getSignatureData, isDirectPreview, isQuoteApprovalReviewed, isSignOffPDFView} from './utils';
 
@@ -24,6 +21,9 @@ import {OrderData, AppCustomerQuotePageProps, PaymentMethod, QuoteApproval, Sign
 import DefaultContent from './DefaultContent';
 import QuoteApprovalError from './QuoteApprovalError';
 import SignOffPdf from './ProjectSignOff/SignOffPdf';
+
+import '@ergeon/draw-map/styles.css';
+import '../common/AppQuoteComponents/index.scss';
 
 const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
 
@@ -169,6 +169,12 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
   }
 
   if (isSignOffPDF && asPDF && isCustomerSigned) {
+    const signatureDataPDF = {
+      ...signatureData,
+      type: 'draw',
+      value: getParameterByName('signoff_img', ''),
+    } as SignatureData;
+
     return (
       <SignOffPdf
         asPDF={asPDF}
@@ -177,7 +183,7 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
         isSignLoading={isSignLoading}
         onSubmitSignature={onSubmitSignature}
         quoteApproval={quoteApproval}
-        signatureData={signatureData as SignatureData}
+        signatureData={signatureDataPDF}
       />
     );
   }

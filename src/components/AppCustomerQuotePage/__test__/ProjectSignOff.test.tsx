@@ -217,7 +217,8 @@ describe('Project signoff', () => {
       });
       render(
         <MemoryRouter
-          initialEntries={['/app/BkU5j7FtBtxjkEAU/quote-approvals/W8C5V0zBVqQQt3hk/direct/sign-off?asPDF=true']}
+        // eslint-disable-next-line
+          initialEntries={[`/app/BkU5j7FtBtxjkEAU/quote-approvals/W8C5V0zBVqQQt3hk/direct/sign-off?asPDF=true&signoff_img${IconCross}`]}
         >
           <AppCustomerQuotePage {...props} />
         </MemoryRouter>
