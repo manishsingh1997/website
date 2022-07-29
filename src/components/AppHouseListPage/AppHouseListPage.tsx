@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useMemo, useState} from 'react';
 import locationIcon from '@ergeon/core-components/src/assets/location-icon.svg';
 
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
@@ -6,12 +6,12 @@ import AppPage from '../../components/common/AppPage';
 import {showUpcomingFeatures} from '../../utils/utils';
 import AddressPopup from '../Layout/components/AddressPopup';
 
-import {Address} from '../types';
+import {Address, HouseType} from '../types';
 import {PopUpAction} from '../Layout/components/AddressPopup/AddressPopup';
 import {AppHouseListPageProps, AddAddressProps} from './types';
 import PageContent from './PageContent';
 import PageHeader from './PageHeader';
-import {parseAddressData} from './utils';
+import {getInitalAddress, parseAddressData} from './utils';
 
 import './index.scss';
 
@@ -24,28 +24,48 @@ const AppHouseListPage = (props: AppHouseListPageProps) => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [addressPopupSubmitAction, setAddressPopupSubmitAction] = useState<PopUpAction>(PopUpAction.Add);
   const [addressData, setAddressData] = useState<AddAddressProps | null>();
+  const [selectedHouse, setSelectedHouse] = useState<HouseType | null>(null);
 
-  useEffect(() => setIsOpen(isPopupOpen), [isPopupOpen]);
+  useEffect(
+    function checkPopup() {
+      setIsOpen(isPopupOpen);
+    },
+    [isPopupOpen]
+  );
+
+  const confirmationMessage = useMemo(() => {
+    if (selectedHouse) {
+      const address = getInitalAddress(selectedHouse);
+      return (
+        <span>
+          The address <b>{address}</b> has been removed.
+        </span>
+      );
+    }
+  }, [selectedHouse]);
 
   const fetchData = useCallback(() => {
     getHouses(customerGID);
   }, [customerGID]);
 
   const onOpenAddHouseAddressPopup = () => {
+    setSelectedHouse(null);
     setAddressData(null);
     setAddressPopupSubmitAction(PopUpAction.Add);
     setIsOpen(true);
     setIsDisabled(true);
   };
 
-  const onOpenEditHouseAddressPopup = () => {
+  const onOpenEditHouseAddressPopup = (house: HouseType) => {
+    setSelectedHouse(house);
     setAddressData(null);
     setAddressPopupSubmitAction(PopUpAction.Edit);
     setIsOpen(true);
     setIsDisabled(true);
   };
 
-  const onOpenRemoveHouseAddressPopup = () => {
+  const onOpenRemoveHouseAddressPopup = (house: HouseType) => {
+    setSelectedHouse(house);
     setAddressData(null);
     setAddressPopupSubmitAction(PopUpAction.Remove);
     setIsOpen(true);
@@ -59,12 +79,18 @@ const AppHouseListPage = (props: AppHouseListPageProps) => {
         alert('Next feature');
         break;
       case PopUpAction.Remove:
+        setIsDisabled(true);
         // Upcoming feature: ENG-16282
-        alert('Next feature');
+        // only simulation the request time
+        setTimeout(() => {
+          setAddressPopupSubmitAction(PopUpAction.Confirmation);
+        }, 1000);
         break;
       case PopUpAction.Add:
-      default:
         addHouse(customerGID, addressData as AddAddressProps);
+        break;
+      default:
+        throw new Error(`Invalid PopUpAction: "${PopUpAction[addressPopupSubmitAction]}"`);
     }
   }, [addressPopupSubmitAction, addressData, customerGID]);
 
@@ -74,6 +100,15 @@ const AppHouseListPage = (props: AppHouseListPageProps) => {
       setIsDisabled(false);
     }
     setAddressData(newData);
+  };
+
+  const handleDisable = () => {
+    setIsDisabled(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setSelectedHouse(null);
   };
 
   const renderContent = useCallback(() => {
@@ -100,11 +135,12 @@ const AppHouseListPage = (props: AppHouseListPageProps) => {
         <AddressPopup
           actionType={addressPopupSubmitAction}
           addressInputLabel={'Street address'}
+          confirmationMessage={confirmationMessage}
           disabled={isDisabled}
-          handleAddressChange={() => setIsDisabled(true)}
-          handleAddressSelected={(data: {address: Address}) => handleAddressSelect(data)}
-          handleAddressSubmit={() => handleSubmitAddress()}
-          handleClose={() => setIsOpen(false)}
+          handleAddressChange={handleDisable}
+          handleAddressSelected={handleAddressSelect}
+          handleAddressSubmit={handleSubmitAddress}
+          handleClose={handleClose}
           icon={addressPopupSubmitAction !== PopUpAction.Remove && locationIcon}
         />
       )}

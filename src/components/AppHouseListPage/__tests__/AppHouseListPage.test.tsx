@@ -135,8 +135,6 @@ describe('Should test the App House List Page', () => {
   });
 
   test('Should call Next feature alert when remove button is clicked', () => {
-    const alertMock = jest.spyOn(window, 'alert').mockImplementation();
-
     const mockProps = {
       houses: [mockHouseB],
       isListLoading: false,
@@ -156,7 +154,7 @@ describe('Should test the App House List Page', () => {
     fireEvent.click(removeButton);
 
     waitFor(() => {
-      expect(alertMock).toHaveBeenCalledWith('Next feature');
+      expect(screen.getByText(/The address 200 Wood Falls Ct has been removed/gi)).toBeInTheDocument();
     });
   });
 

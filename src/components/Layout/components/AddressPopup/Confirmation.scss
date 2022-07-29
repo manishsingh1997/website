@@ -1,0 +1,20 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.confirmation-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: $v-20 0;
+
+  .confirmation-head {
+    margin-bottom: $v-30;
+  }
+  .confirmation-body {
+    color: $black-3;
+    font-size: $h4-size;
+    text-align: center;
+    line-height: $h4-line-height;
+    max-width: $h-60 * 5;
+  }
+}
