@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import moment from 'moment';
+// import moment from 'moment';
 
 import approvedQuoteMock from '../__mocks__/data/ApprovedQuote';
 
@@ -13,7 +13,7 @@ import {
   getTotalPrice,
   getProjectTotalPrice,
   getTotalPreviouslyApprovedPrice,
-  getIsQuoteStatusApprovedOrCompleted,
+  // getIsQuoteStatusApprovedOrCompleted,
 } from '../utils';
 
 const approvedQuote = approvedQuoteMock as unknown as QuoteApproval;
