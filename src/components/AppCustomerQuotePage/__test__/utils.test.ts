@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
-// import moment from 'moment';
 
 import approvedQuoteMock from '../__mocks__/data/ApprovedQuote';
+import SignoffApproved from '../__mocks__/data/SignOffApprovedQuote';
 
 import { QuoteApproval } from '../types';
 
@@ -13,10 +13,11 @@ import {
   getTotalPrice,
   getProjectTotalPrice,
   getTotalPreviouslyApprovedPrice,
-  // getIsQuoteStatusApprovedOrCompleted,
+  getIsQuoteStatusApprovedOrCompleted,
 } from '../utils';
 
 const approvedQuote = approvedQuoteMock as unknown as QuoteApproval;
+const signoffApprovedQuote = SignoffApproved as unknown as QuoteApproval;
 
 describe('utils', () => {
   it('should isSignOffPDFView return true when pathname includes /sign-off', () => {
@@ -46,9 +47,10 @@ describe('utils', () => {
   it('should getTotalPreviouslyApprovedPrice return 34637', () => {
     expect(getTotalPreviouslyApprovedPrice(approvedQuote)).toBe(34637);
   });
-  // it('should getIsQuoteStatusApprovedOrCompleted true if quote status is approved', () => {
-  //   // we have a static date, in order to make this test pass we need to adjust it, otherwise it will return false
-  //   approvedQuote.quote.expires_at = moment(approvedQuote.quote.expires_at).add(10, 'day').toISOString();
-  //   expect(getIsQuoteStatusApprovedOrCompleted(approvedQuote)).toBeTruthy();
-  // });
+  it('should getIsQuoteStatusApprovedOrCompleted false if quote has expired', () => {
+    expect(getIsQuoteStatusApprovedOrCompleted(approvedQuote)).toBeFalsy();
+  });
+  it('should getIsQuoteStatusApprovedOrCompleted true if quote has is not expired', () => {
+    expect(getIsQuoteStatusApprovedOrCompleted(signoffApprovedQuote)).toBeTruthy();
+  });
 });
