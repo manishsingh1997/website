@@ -2,9 +2,7 @@ import classNames from 'classnames';
 import React, {ReactNode} from 'react';
 import * as Sentry from '@sentry/browser';
 import {constants, calcUtils, CatalogType} from '@ergeon/3d-lib';
-// @ts-ignore
-import {RadioGroup} from 'react-radio-group';
-import {Button, Checkbox, FormField, PhoneInput, Spinner, Input, RadioButton} from '@ergeon/core-components';
+import {Button, Checkbox, FormField, PhoneInput, Spinner, Input} from '@ergeon/core-components';
 import {UPCOMING_FEATURES_PARAM} from '@ergeon/erg-utils-js';
 // @ts-ignore
 import {getBaseEventData} from '@ergeon/erg-utms';
@@ -208,9 +206,6 @@ export default class LeadForm extends React.Component<LeadFormProps, LeadFormSta
       this.props.onProductChange(value as string);
     }
   }
-  handleProductChange(value: string) {
-    this.handleFieldChange({} as React.FormEvent<HTMLInputElement>, 'product', value);
-  }
   handleCheckChange(value: boolean) {
     this.setState({
       data: {...this.state.data, is_subscribed_to_news: value},
@@ -258,18 +253,6 @@ export default class LeadForm extends React.Component<LeadFormProps, LeadFormSta
     });
     return (
       <form className="Form LeadForm" data-testid="lead-form" onSubmit={this.handleSubmit.bind(this)}>
-        <label className="label">Ergeon service:</label>
-        <FormField>
-          <RadioGroup
-            name="ergeon-service"
-            onChange={this.handleProductChange.bind(this)}
-            selectedValue={this.props.product}
-          >
-            <ul className="product-radio-list no-padding">
-              <RadioButton value={FENCE_SLUG}>Fences & Gates</RadioButton>
-            </ul>
-          </RadioGroup>
-        </FormField>
         {mobileAddressField && mobileAddressField}
         <FormField>
           <Input
