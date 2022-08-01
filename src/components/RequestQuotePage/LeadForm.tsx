@@ -14,7 +14,7 @@ import {identify, track, trackError, trackTawkLeadEvent} from '../../utils/analy
 import {CUSTOMER_LEAD_CREATED} from '../../utils/events';
 import {DEFAULT_SOURCE_VALUE} from '../../website/constants';
 import {parseError, showUpcomingFeatures, getAdvancedEditorUrl} from '../../utils/utils';
-import AddNote from './AddNote';
+import AddNote from './Components/AddNote';
 import {Address, Config, Lead, User} from './types';
 import './LeadForm.scss';
 

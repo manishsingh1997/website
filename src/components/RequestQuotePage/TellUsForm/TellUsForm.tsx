@@ -1,9 +1,8 @@
 import React, {useState, useCallback} from 'react';
-import Success from '../common/Success';
-import AppLoader from '../common/AppLoader';
-import SimpleLeadForm from './SimpleLeadForm';
-import {Address} from './utils';
-
+import Success from '../../common/Success';
+import AppLoader from '../../common/AppLoader';
+import SimpleLeadForm from '../SimpleLeadForm';
+import {Address} from '../utils';
 import './TellUsForm.scss';
 
 type TellUsFormProps = {

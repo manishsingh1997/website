@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo, useState} from 'react';
 import {Button} from '@ergeon/core-components';
 import './TextCollapse.scss';
 
@@ -7,13 +7,11 @@ type TextCollapseProps = {
   length: number;
 };
 
-export default class TextCollapse extends React.Component<TextCollapseProps> {
-  state = {
-    expanded: false,
-  };
+const TextCollapse = (props: TextCollapseProps) => {
+  const {children = '', length = 42} = props;
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  renderCollapsed() {
-    const {children = '', length = 42} = this.props;
+  const renderCollapsed = useMemo(() => {
     const collapsedText = children.slice(0, length);
     return (
       <React.Fragment>
@@ -21,40 +19,34 @@ export default class TextCollapse extends React.Component<TextCollapseProps> {
         <Button
           className="text-collapse__button"
           flavor="primary"
-          onClick={() => this.setState({expanded: true})}
+          onClick={() => setIsExpanded(true)}
           taste="boundless"
         >
           Show more
         </Button>
       </React.Fragment>
     );
-  }
+  }, [children, length]);
 
-  renderExpanded() {
-    const {children} = this.props;
+  const renderExpanded = useMemo(() => {
     return (
       <React.Fragment>
         {children}
         <Button
           className="text-collapse__button"
           flavor="primary"
-          onClick={() => this.setState({expanded: false})}
+          onClick={() => setIsExpanded(false)}
           taste="boundless"
         >
           Show less
         </Button>
       </React.Fragment>
     );
-  }
+  }, [children]);
 
-  render() {
-    const {children = '', length = 42} = this.props;
-    const {expanded} = this.state;
+  return (
+    <div className="text-collapse">{isExpanded || children.length <= length ? renderExpanded : renderCollapsed}</div>
+  );
+};
 
-    return (
-      <div className="text-collapse">
-        {expanded || children.length <= length ? this.renderExpanded() : this.renderCollapsed()}
-      </div>
-    );
-  }
-}
+export default TextCollapse;

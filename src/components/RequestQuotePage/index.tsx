@@ -13,7 +13,7 @@ import Success from '../common/Success';
 import ConfigCart from '../../containers/ConfigCart';
 import {getParameterByName, showUpcomingFeatures} from '../../utils/utils';
 import LeadForm from './LeadForm';
-import TermsFooter from './TermsFooter';
+import TermsFooter from './Components/TermsFooter';
 import {RequestQuotePageProps, RequestQuotePageState} from './types';
 import './index.scss';
 

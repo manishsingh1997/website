@@ -7,10 +7,10 @@ export type User = {
 };
 
 export type Config = {
-  catalog_type: CatalogType,
-  code: string,
-  description: string,
-  price: string,
-  units: string,
-  grade: string,
-}
+  catalog_type: CatalogType;
+  code: string;
+  description: string;
+  price: string;
+  units: string;
+  grade: string;
+};

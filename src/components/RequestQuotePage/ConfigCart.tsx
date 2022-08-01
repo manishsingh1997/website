@@ -7,9 +7,9 @@ import classNames from 'classnames';
 import iconPlus from '../../assets/icon-plus.svg';
 import {getFencequotingURL} from '../../utils/urls';
 import LoadingErrorModal from '../common/ErroredLoadingModal';
-import StyleBrowserWrapper from './StyleBrowserWrapper';
-import './ConfigCart.scss';
+import StyleBrowserWrapper from './Components/StyleBrowserWrapper';
 import {Config, LeadConfigType} from './types';
+import './ConfigCart.scss';
 
 type ConfigCartProps = {
   addConfigFromSchema: (config: LeadConfigType, index: number) => void;
@@ -264,13 +264,9 @@ class ConfigCart extends React.Component<ConfigCartProps, ConfigCartState> {
     const config = styleBrowserIndex !== -1 ? configs[styleBrowserIndex] : undefined;
     const schemaCode = config?.code ? `?${config?.code}` : undefined;
     const doneButtonText = styleBrowserIndex === -1 ? 'Add to order' : 'Save changes';
-    const DEFAULT_FENCE_SIDE_LENGTH = 6;
-    const DEFAULT_GRADE = 0;
     return (
       <StyleBrowserWrapper
         doneButtonText={doneButtonText}
-        fenceSideLength={Number(config?.units || DEFAULT_FENCE_SIDE_LENGTH)}
-        fenceSideSlopePercent={Number(config?.grade || DEFAULT_GRADE)}
         initialSchemaCode={schemaCode}
         onClose={() => this.onCloseEditorClick()}
         onDone={(editorModel) => this.onDoneEditorClick(editorModel, styleBrowserIndex)}
