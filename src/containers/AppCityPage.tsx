@@ -25,8 +25,8 @@ type CityPageStateProps = {
 
 const AppCityPageContainer = (props: AppCityPageContainerProps) => {
   const location = useLocation();
-  const citySlug = useMemo(() => location.pathname.match(/[^\/]+\/?$/i)?.[0], [location.pathname]);
-  
+  const citySlug = useMemo(() => location.pathname.match(/([^\/]+)\/?$/i)?.[1], [location.pathname]);
+
   const {city, error, isLoading, getCity, resetCity} = props;
 
   useEffect(function loadCity() {

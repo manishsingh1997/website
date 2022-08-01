@@ -7,7 +7,7 @@ const path = require('path');
  */
 const createDirIfNotExists = (filePath) => {
   try {
-    fs.mkdirSync(path.dirname(filePath));
+    fs.mkdirSync(path.dirname(filePath), {recursive: true});
   } catch (err) {
     // Directory exists
   }

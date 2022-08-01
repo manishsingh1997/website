@@ -4,13 +4,17 @@
 
 version: 2.1
 orbs:
+  browser-tools: circleci/browser-tools@1.4.0
   coveralls: ergeon/coveralls-orb@1.0.9
 jobs:
   build:
     docker:
-      - image: cimg/python:3.8.12-node
+      - image: cimg/python:3.8.12-browsers
 
     steps:
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+
       - checkout
 
       - restore_cache:
@@ -23,7 +27,7 @@ jobs:
             pip install awscli
             sudo npm install -g @sentry/cli --unsafe-perm
             echo "//npm.ergeon.in/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-            make install
+            PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true make install
 
       - save_cache:
           paths:
@@ -59,6 +63,25 @@ jobs:
                   make coverage
 
             - coveralls/upload
+
+            - run:
+                name: Build
+                command: |
+                  if [ "$CIRCLE_BRANCH" = "develop" ]; then make build-staging; fi
+                  if [ "$CIRCLE_BRANCH" = "master" ]; then make build-production; fi
+
+            - run:
+                name: Serve
+                command: |
+                  make setup-local-domain
+                  if [ "$CIRCLE_BRANCH" = "develop" ] || [ "$CIRCLE_BRANCH" = "master" ]; then make serve-build; fi
+                background: true
+
+            - run:
+                name: Generate static pages content
+                command: |
+                  if [ "$CIRCLE_BRANCH" = "develop" ]; then make gen-static-staging; fi
+                  if [ "$CIRCLE_BRANCH" = "master" ]; then make gen-static-production; fi
 
             - deploy:
                 name: Deploy

@@ -20,14 +20,24 @@ endif
 
 all: install run
 
-build: clean create-sitemap
-	SENTRY_RELEASE_NAME=$(SENTRY_RELEASE_NAME) npm run build-$(LEVEL)
-
 clean:
 	rm -rf $(DIST_PATH)
 
+build: clean create-sitemap
+	SENTRY_RELEASE_NAME=$(SENTRY_RELEASE_NAME) npm run build-$(LEVEL)
+
+build-staging:
+	LEVEL=staging make build
+
+build-production:
+	LEVEL=production make build
+
 setup-local-domain:
 	grep -n $(LOCAL_DOMAIN) /etc/hosts >> /dev/null && echo "Domain is already set up. Terminating.." || echo "127.0.0.1	$(LOCAL_DOMAIN)" | sudo tee -a /etc/hosts > /dev/null | echo "Successfull. Happy ezcoding."
+
+serve-build:
+	cp ./dist/index.html ./dist/404.html
+	npm run serve
 
 install: .install
 .install: package.json
@@ -40,6 +50,12 @@ lint:
 create-sitemap:
 	@if [ -z "$(LEVEL)" ]; then >&2 echo LEVEL must be supplied; exit 1; fi;
 	npm run create-sitemap-$(LEVEL)
+
+gen-static-staging:
+	LEVEL=staging node ./src/process/gen-static.js
+
+gen-static-production:
+	LEVEL=production node ./src/process/gen-static.js
 
 parse-cities-data:
 	npm run parse:cities
@@ -66,14 +82,12 @@ sentry-upload-sourcemaps:
 	 $(SENTRY_CLI) releases files $(SENTRY_RELEASE_NAME) upload-sourcemaps $(DIST_PATH) --rewrite -i node_modules/ -i webpack.*
 
 deploy-staging:
-	LEVEL=staging make build
 	LEVEL=staging S3_BUCKET=dev.ergeon.com make s3upload
 	S3_BUCKET=dev.ergeon.com make ensure-redirects
 	LEVEL=staging DOMAIN=dev.ergeon.com make invalidate-cloudfront
 	LEVEL=staging make sentry-set-commits
 
 deploy-production:
-	LEVEL=production make build
 	LEVEL=production S3_BUCKET=www.ergeon.com make s3upload
 	S3_BUCKET=www.ergeon.com make ensure-redirects
 	LEVEL=production DOMAIN=www.ergeon.com make invalidate-cloudfront

@@ -2,7 +2,7 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import React from 'react';
-import {render} from 'react-dom';
+import {hydrate, render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {createBrowserHistory} from 'history';
 import {Router, Route, Switch, Redirect} from 'react-router-dom';
@@ -57,7 +57,7 @@ const renderPhotoGalleryRedirect = (productSlug, category) => {
   );
 };
 
-render(
+const App = () => (
   <Provider store={store}>
     <Router history={history}>
       <UpcomingFeaturesHandler>
@@ -99,7 +99,19 @@ render(
         </Switch>
       </UpcomingFeaturesHandler>
     </Router>
-  </Provider>,
-  document.getElementById('root'),
-  customScripts()
+  </Provider>
 );
+
+if (document.querySelector('#root > *')) {
+  hydrate(
+    <App />,
+    document.getElementById('root'),
+    customScripts()
+  );
+} else {
+  render(
+    <App />,
+    document.getElementById('root'),
+    customScripts()
+  );
+}
