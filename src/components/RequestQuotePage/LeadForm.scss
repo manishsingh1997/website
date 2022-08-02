@@ -1,4 +1,11 @@
 @import '~@ergeon/core-components/src/components/variables.scss';
+
+// The .pac-container pac-item class set here to override google autocomplete widget style
+.pac-container,
+.pac-item {
+  z-index: $z-index-super-top + 2 !important;
+}
+
 .Popup {
   position: fixed !important;
   top: 0;
