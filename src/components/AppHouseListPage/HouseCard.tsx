@@ -1,7 +1,6 @@
 import React, {useCallback} from 'react';
 import {Button} from '@ergeon/core-components';
 import {getFormattedAddress} from '../../utils/app-house';
-import {showUpcomingFeatures} from '../../utils/utils';
 import HouseMap from './HouseMap';
 import {HouseCardProps} from './types';
 
@@ -51,7 +50,7 @@ const HouseCard = (props: HouseCardProps) => {
     <div className="flex-wrapper house-address-wrapper">
       <div className="house-address-container">
         {renderHeader()}
-        {showUpcomingFeatures('ENG-16567') && renderContent()}
+        {renderContent()}
       </div>
       {house.address && <HouseMap address={house.address} />}
     </div>
