@@ -1,12 +1,16 @@
 import {trackError} from 'utils/analytics';
 
-const initStripe = (function () {
+export const initStripe = (function () {
   let keyInitialized = false;
 
   return function () {
-    if (!keyInitialized) {
-      window.Stripe && window.Stripe.setPublishableKey(process.env.STRIPE_PUBLIC_KEY);
-      keyInitialized = true;
+    try {
+      if (!keyInitialized) {
+        window.Stripe.setPublishableKey(process.env.STRIPE_PUBLIC_KEY);
+        keyInitialized = true;
+      }
+    } catch (error) {
+      keyInitialized = false;
     }
   };
 })();

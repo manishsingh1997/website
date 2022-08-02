@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import {some} from 'lodash';
@@ -289,6 +290,10 @@ export default class BillingForm extends React.Component {
     const totalPayText = isScopeChange ? 'New total pay' : 'Total pay';
 
     return (
+      <>
+      <Helmet>
+        <script defer src="https://js.stripe.com/v2/" type="text/javascript"></script>
+      </Helmet>
       <div className={classNames(classes)}>
         <form className="billing-form__content" onSubmit={this.handleSubmit.bind(this)}>
           <div className="billing-form__information">
@@ -356,6 +361,7 @@ export default class BillingForm extends React.Component {
         </form>
         {this.renderError()}
       </div>
+      </>
     );
   }
 }
