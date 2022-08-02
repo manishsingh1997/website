@@ -8,9 +8,8 @@
   overflow-y: auto;
   bottom: 0;
   left: 0;
-  // Place the popup below .pac-container which uses $z-index-top
-  z-index: $z-index-top - 1;
   font-family: $font-content;
+  z-index: $z-index-super-top + 1;
 
   .Popup-content {
     position: relative;
