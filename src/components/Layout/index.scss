@@ -17,8 +17,11 @@
       position: fixed;
       top: 0;
       left: 0;
-      box-shadow: $header-shadow;
       z-index: $z-index-super-top;
+    }
+
+    &-shadow {
+      box-shadow: $header-shadow;
     }
   }
 

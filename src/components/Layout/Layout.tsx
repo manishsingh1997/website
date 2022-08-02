@@ -16,6 +16,7 @@ import {City} from '../AppCityPage/types';
 import phoneIcon from '../../assets/icon-phone.svg';
 import DropdownMenu from './components/DropdownMenu';
 import {checkRouteList} from './utils';
+import useScrollPosition from './useScrollPosition';
 
 import './index.scss';
 
@@ -34,6 +35,8 @@ const Layout = (props: LayoutProps) => {
   const {auth, children, getCurrentUser, city, phoneNumber, location} = props;
 
   const history = useHistory();
+
+  const scrollPosition = useScrollPosition();
 
   useEffect(
     function getTheCurrentUser() {
@@ -86,6 +89,10 @@ const Layout = (props: LayoutProps) => {
     return <DropdownMenu auth={auth} />;
   }, [auth]);
 
+  const headerWrapperClass = useMemo(() => {
+    return classNames('app-header-wrapper', {'app-header-shadow': scrollPosition !== 0});
+  }, [scrollPosition]);
+
   const widthClass = useMemo(() => {
     return classNames({'wrapper-980': isNarrowTemplate, 'wrapper-1180': !isNarrowTemplate});
   }, [isNarrowTemplate]);
@@ -110,7 +117,7 @@ const Layout = (props: LayoutProps) => {
       )}
       <NavLinkContext.Provider value={NavLink}>
         <header className="app-header">
-          <div className="app-header-wrapper">
+          <div className={headerWrapperClass}>
             <SimpleTopPanel
               customerMenu={dropdownMenu}
               ergeonUrl="/"
