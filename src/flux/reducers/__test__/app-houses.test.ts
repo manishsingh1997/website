@@ -195,7 +195,7 @@ describe('app houses reducer', () => {
       ],
       isListLoading: false,
       isPopupOpen: false,
-      isSuccessfullyRemoved: true,
+      isSuccessfullyRemoved: false,
       listError: null,
     });
   });

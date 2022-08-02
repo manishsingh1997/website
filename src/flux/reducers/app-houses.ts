@@ -75,7 +75,7 @@ const housesReducer = (state = initialState, action: HouseReducerAction) => {
     case HouseActionTypes.EDIT_HOUSE_ERROR:
       return {...state, isListLoading: false, isPopupOpen: false};
     case HouseActionTypes.REMOVE_HOUSE_START:
-      return {...state, isListLoading: false, isPopupOpen: false};
+      return {...state, isListLoading: false, isPopupOpen: false, isSuccessfullyRemoved: false};
     case HouseActionTypes.REMOVE_HOUSE_DONE:
       return {
         ...state,
