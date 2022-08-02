@@ -1,25 +1,4 @@
-import axios from 'axios';
-import isEmpty from 'lodash/isEmpty';
-
-import {ensureUpcomingFeaturesParamInUrl} from '@ergeon/erg-utils-js';
-import {authService} from 'utils/auth.ts';
-
-const request = (customerGID) => (path, data) => {
-  let baseURL = `${process.env.API_HOST}/c/api/v1/customer`;
-  if (customerGID) {
-    baseURL += `/${customerGID}`;
-  }
-  return axios({
-    method: data ? 'post' : 'get',
-    headers: {
-      'Content-Type': 'application/json',
-      ...authService.getAuthRequestHeaders(),
-    },
-    url: ensureUpcomingFeaturesParamInUrl(`${baseURL}${path}`),
-    responseType: 'json',
-    data: !isEmpty(data) ? JSON.stringify(data) : undefined,
-  });
-};
+import {request} from './utils';
 
 export const getCustomerContacts = (customerGID) => {
   return request(customerGID)('/contacts');
@@ -43,6 +22,14 @@ export const getCustomerHouses = (customerGID) => {
 
 export const addCustomerHouse = (customerGID, data) => {
   return request(customerGID)('/houses', data);
+};
+
+export const editCustomerHouse = (customerGID, houseId, data) => {
+  return request(customerGID)(`/houses/${houseId}`, data, 'patch');
+};
+
+export const removeCustomerHouse = (customerGID, houseId) => {
+  return request(customerGID)(`/houses/${houseId}/hide`, null, 'post');
 };
 
 export const getQuoteDetails = (customerGID, quoteSecret) => {

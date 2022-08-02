@@ -30,6 +30,8 @@ describe('Should test the App House List Page', () => {
       listError: null,
       getHouses: () => [mockHouseA],
       addHouse: jest.fn(),
+      editHouse: jest.fn(),
+      removeHouse: jest.fn(),
     };
     render(
       <Provider store={store}>
@@ -52,6 +54,8 @@ describe('Should test the App House List Page', () => {
       listError: null,
       getHouses: () => [mockHouseA, mockHouseB],
       addHouse: jest.fn(),
+      editHouse: jest.fn(),
+      removeHouse: jest.fn(),
     };
     render(
       <Provider store={store}>
@@ -74,6 +78,8 @@ describe('Should test the App House List Page', () => {
       listError: null,
       getHouses: () => [],
       addHouse: jest.fn(),
+      editHouse: jest.fn(),
+      removeHouse: jest.fn(),
     };
     render(
       <Provider store={store}>
@@ -92,6 +98,8 @@ describe('Should test the App House List Page', () => {
       listError: null,
       getHouses: () => [],
       addHouse: jest.fn(),
+      editHouse: jest.fn(),
+      removeHouse: jest.fn(),
     };
 
     render(
@@ -117,6 +125,8 @@ describe('Should test the App House List Page', () => {
       listError: null,
       getHouses: () => [],
       addHouse: jest.fn(),
+      editHouse: jest.fn(),
+      removeHouse: jest.fn(),
     };
 
     render(
@@ -134,14 +144,17 @@ describe('Should test the App House List Page', () => {
     expect(submitButton).toBeInTheDocument();
   });
 
-  test('Should call Next feature alert when remove button is clicked', () => {
+  test('Should call render the remove confirmation when remove submit button is clicked', () => {
     const mockProps = {
       houses: [mockHouseB],
       isListLoading: false,
       isPopupOpen: false,
+      isSuccessfullyRemoved: false,
       listError: null,
       getHouses: () => [],
       addHouse: jest.fn(),
+      editHouse: jest.fn(),
+      removeHouse: jest.fn(),
     };
 
     render(
@@ -154,13 +167,37 @@ describe('Should test the App House List Page', () => {
     fireEvent.click(removeButton);
 
     waitFor(() => {
+      expect(mockProps.removeHouse).toHaveBeenCalledTimes(1);
       expect(screen.getByText(/The address 200 Wood Falls Ct has been removed/gi)).toBeInTheDocument();
+
+      expect(mockProps.editHouse).not.toHaveBeenCalled();
+      expect(mockProps.removeHouse).not.toHaveBeenCalled();
     });
   });
 
-  test('Should call Next feature alert when edit confirmation button is clicked', () => {
-    const alertMock = jest.spyOn(window, 'alert').mockImplementation();
+  test('Should render confirmation when isSuccessfullyRemoved prop is true', () => {
+    const mockProps = {
+      houses: [],
+      isListLoading: false,
+      isPopupOpen: true,
+      isSuccessfullyRemoved: true,
+      listError: null,
+      getHouses: () => [],
+      addHouse: jest.fn(),
+      editHouse: jest.fn(),
+      removeHouse: jest.fn(),
+    };
 
+    render(
+      <Provider store={store}>
+        <AppHouseListPage {...mockProps} />
+      </Provider>
+    );
+
+    expect(screen.getByTestId('confirmation-wrapper')).toBeInTheDocument();
+  });
+
+  test('Should call editHouse method when edit save button is clicked', () => {
     const mockProps = {
       houses: [mockHouseB],
       isListLoading: false,
@@ -168,6 +205,8 @@ describe('Should test the App House List Page', () => {
       listError: null,
       getHouses: () => [],
       addHouse: jest.fn(),
+      editHouse: jest.fn(),
+      removeHouse: jest.fn(),
     };
 
     render(
@@ -186,7 +225,10 @@ describe('Should test the App House List Page', () => {
     fireEvent.click(submitButton);
 
     waitFor(() => {
-      expect(alertMock).toHaveBeenCalledWith('Next feature');
+      expect(mockProps.editHouse).toBeCalledTimes(1);
+
+      expect(mockProps.addHouse).not.toHaveBeenCalled();
+      expect(mockProps.removeHouse).not.toHaveBeenCalled();
     });
   });
 
@@ -198,6 +240,8 @@ describe('Should test the App House List Page', () => {
       listError: null,
       getHouses: () => [],
       addHouse: jest.fn(),
+      editHouse: jest.fn(),
+      removeHouse: jest.fn(),
     };
 
     render(
@@ -220,6 +264,9 @@ describe('Should test the App House List Page', () => {
     fireEvent.click(submitButton);
     waitFor(() => {
       expect(mockProps.addHouse).toBeCalledTimes(1);
+
+      expect(mockProps.editHouse).not.toHaveBeenCalled();
+      expect(mockProps.removeHouse).not.toHaveBeenCalled();
     });
   });
 
@@ -231,6 +278,8 @@ describe('Should test the App House List Page', () => {
       listError: null,
       getHouses: () => [],
       addHouse: jest.fn(),
+      editHouse: jest.fn(),
+      removeHouse: jest.fn(),
     };
 
     render(

@@ -1,7 +1,6 @@
-import {addCustomerHouse, getCustomerHouses} from '../../api/app';
+import {addCustomerHouse, editCustomerHouse, removeCustomerHouse, getCustomerHouses} from '../../api/app';
 import {AddAddressProps} from '../../components/AppHouseListPage/types';
 import {parseAPIError} from '../../utils/api';
-import {ErrorResponse} from '../../utils/types';
 import {GetHouseDispatcher, SetHouseDispatcher} from './types';
 
 export enum HouseActionTypes {
@@ -11,6 +10,12 @@ export enum HouseActionTypes {
   ADD_HOUSE_START = 'ADD_HOUSE_START',
   ADD_HOUSE_DONE = 'ADD_HOUSE_DONE',
   ADD_HOUSE_ERROR = 'ADD_HOUSE_ERROR',
+  EDIT_HOUSE_START = 'EDIT_HOUSE_START',
+  EDIT_HOUSE_DONE = 'EDIT_HOUSE_DONE',
+  EDIT_HOUSE_ERROR = 'EDIT_HOUSE_ERROR',
+  REMOVE_HOUSE_START = 'REMOVE_HOUSE_START',
+  REMOVE_HOUSE_DONE = 'REMOVE_HOUSE_DONE',
+  REMOVE_HOUSE_ERROR = 'REMOVE_HOUSE_ERROR',
 }
 
 export const getHouses = (customerGID: number) => {
@@ -18,22 +23,22 @@ export const getHouses = (customerGID: number) => {
     dispatch({
       type: HouseActionTypes.GET_HOUSES_START,
     });
-
-    try {
-      const response = getCustomerHouses(customerGID);
-      response.then((axiosResponse) => {
+    const response = getCustomerHouses(customerGID);
+    response
+      .then((axiosResponse) => {
         dispatch({
           type: HouseActionTypes.GET_HOUSES_DONE,
           data: axiosResponse.data,
         });
+      })
+      .catch((errorResponse) => {
+        const error = parseAPIError(errorResponse);
+        console.error(error.data);
+        dispatch({
+          type: HouseActionTypes.EDIT_HOUSE_ERROR,
+          error: parseAPIError(errorResponse),
+        });
       });
-    } catch (error) {
-      const errorResponse = error as {response: ErrorResponse};
-      dispatch({
-        type: HouseActionTypes.GET_HOUSES_ERROR,
-        error: parseAPIError(errorResponse),
-      });
-    }
   };
   return dispatcher;
 };
@@ -43,22 +48,72 @@ export const addHouse = (customerGID: number, data: AddAddressProps) => {
     dispatch({
       type: HouseActionTypes.ADD_HOUSE_START,
     });
-
-    try {
-      const response = addCustomerHouse(customerGID, data);
-      response.then((axiosResponse) => {
+    const response = addCustomerHouse(customerGID, data);
+    response
+      .then((axiosResponse) => {
         dispatch({
           type: HouseActionTypes.ADD_HOUSE_DONE,
           data: axiosResponse.data,
         });
+      })
+      .catch((errorResponse) => {
+        const error = parseAPIError(errorResponse);
+        console.error(error.data);
+        dispatch({
+          type: HouseActionTypes.EDIT_HOUSE_ERROR,
+          error,
+        });
       });
-    } catch (error) {
-      const errorResponse = error as {response: ErrorResponse};
-      dispatch({
-        type: HouseActionTypes.ADD_HOUSE_ERROR,
-        error: parseAPIError(errorResponse),
+  };
+  return dispatcher;
+};
+
+export const editHouse = (customerGID: number, houseId: string | number, data: AddAddressProps) => {
+  const dispatcher: SetHouseDispatcher = (dispatch) => {
+    dispatch({
+      type: HouseActionTypes.EDIT_HOUSE_START,
+    });
+    const response = editCustomerHouse(customerGID, houseId, data);
+    response
+      .then((axiosResponse) => {
+        dispatch({
+          type: HouseActionTypes.EDIT_HOUSE_DONE,
+          data: axiosResponse.data,
+        });
+      })
+      .catch((errorResponse) => {
+        const error = parseAPIError(errorResponse);
+        console.error(error.data);
+        dispatch({
+          type: HouseActionTypes.EDIT_HOUSE_ERROR,
+          error,
+        });
       });
-    }
+  };
+  return dispatcher;
+};
+
+export const removeHouse = (customerGID: number, houseId: string | number) => {
+  const dispatcher: SetHouseDispatcher = (dispatch) => {
+    dispatch({
+      type: HouseActionTypes.REMOVE_HOUSE_START,
+    });
+    const response = removeCustomerHouse(customerGID, houseId);
+    response
+      .then((axiosResponse) => {
+        dispatch({
+          type: HouseActionTypes.REMOVE_HOUSE_DONE,
+          data: axiosResponse.data,
+        });
+      })
+      .catch((errorResponse) => {
+        const error = parseAPIError(errorResponse);
+        console.error(error.data);
+        dispatch({
+          type: HouseActionTypes.EDIT_HOUSE_ERROR,
+          error,
+        });
+      });
   };
   return dispatcher;
 };

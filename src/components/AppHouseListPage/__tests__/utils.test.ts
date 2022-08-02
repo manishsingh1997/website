@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
-import {parseAddressData} from '../utils';
+import {getInitalAddress, parseAddressData} from '../utils';
 
-const mockData = {
+const mockAddress = {
   address: {
     primary_number: '123',
     street_name: 'South Figueroa Street',
@@ -27,9 +27,21 @@ const mockData = {
   },
 };
 
+const mockHouse = {
+  id: 192114,
+  address: {
+    formatted_address: '321 E Erie St, Chicago, IL 60611, USA',
+    zip_code: '60611',
+    latitude: 41.8938226,
+    longitude: -87.61955,
+  },
+  is_hidden: false,
+  has_active_order: false,
+};
+
 describe('utils', () => {
   it('should return the parsed address correctly', () => {
-    const newData = parseAddressData(mockData);
+    const newData = parseAddressData(mockAddress);
 
     expect(newData).toStrictEqual({
       location: {lat: 34.0572772, lng: -118.2526665},
@@ -40,9 +52,21 @@ describe('utils', () => {
   });
   it('should return null if the address is missing', () => {
     // @ts-ignore
-    delete mockData.address;
-    const newData = parseAddressData(mockData);
+    delete mockAddress.address;
+    const newData = parseAddressData(mockAddress);
 
     expect(newData).toStrictEqual(null);
+  });
+
+  it('should return the initial address', () => {
+    const address = getInitalAddress(mockHouse);
+    expect(address).toStrictEqual('321 E Erie St');
+  });
+
+  it('should return null on error', () => {
+    // @ts-ignore
+    delete mockHouse.address;
+    const address = getInitalAddress(mockHouse);
+    expect(address).toStrictEqual(null);
   });
 });

@@ -3,9 +3,12 @@ import {HouseType} from '../types';
 export type AppHouseListPageProps = {
   getHouses: (customerGID: number) => void;
   addHouse: (customerGID: number, address: AddAddressProps) => void;
+  editHouse: (customerGID: number, houseId: string | number, address: AddAddressProps) => void;
+  removeHouse: (customerGID: number, houseId: string | number) => void;
   houses: HouseType[];
   isListLoading: boolean;
   isPopupOpen?: boolean;
+  isSuccessfullyRemoved?: boolean;
   listError: [] | null;
 };
 

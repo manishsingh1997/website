@@ -16,7 +16,17 @@ import {getInitalAddress, parseAddressData} from './utils';
 import './index.scss';
 
 const AppHouseListPage = (props: AppHouseListPageProps) => {
-  const {getHouses, addHouse, houses, listError, isListLoading, isPopupOpen} = props;
+  const {
+    getHouses,
+    addHouse,
+    editHouse,
+    removeHouse,
+    houses,
+    listError,
+    isListLoading,
+    isPopupOpen,
+    isSuccessfullyRemoved,
+  } = props;
 
   const customerGID = useContext(CustomerGIDContext);
 
@@ -31,6 +41,15 @@ const AppHouseListPage = (props: AppHouseListPageProps) => {
       setIsOpen(isPopupOpen);
     },
     [isPopupOpen]
+  );
+
+  useEffect(
+    function checkSuccessfullyRemoved() {
+      if (isSuccessfullyRemoved) {
+        setAddressPopupSubmitAction(PopUpAction.Confirmation);
+      }
+    },
+    [isSuccessfullyRemoved]
   );
 
   const confirmationMessage = useMemo(() => {
@@ -75,24 +94,15 @@ const AppHouseListPage = (props: AppHouseListPageProps) => {
   const handleSubmitAddress = useCallback(() => {
     switch (addressPopupSubmitAction) {
       case PopUpAction.Edit:
-        // Upcoming feature: ENG-16282
-        alert('Next feature');
-        break;
+        return editHouse(customerGID, selectedHouse?.id as unknown as string, addressData as AddAddressProps);
       case PopUpAction.Remove:
-        setIsDisabled(true);
-        // Upcoming feature: ENG-16282
-        // only simulation the request time
-        setTimeout(() => {
-          setAddressPopupSubmitAction(PopUpAction.Confirmation);
-        }, 1000);
-        break;
+        return removeHouse(customerGID, selectedHouse?.id as unknown as string);
       case PopUpAction.Add:
-        addHouse(customerGID, addressData as AddAddressProps);
-        break;
+        return addHouse(customerGID, addressData as AddAddressProps);
       default:
         throw new Error(`Invalid PopUpAction: "${PopUpAction[addressPopupSubmitAction]}"`);
     }
-  }, [addressPopupSubmitAction, addressData, customerGID]);
+  }, [addressPopupSubmitAction, addressData, selectedHouse, customerGID]);
 
   const handleAddressSelect = (data: {address: Address}) => {
     const newData = parseAddressData(data);
