@@ -31,7 +31,7 @@
     }
   }
   &__question {
-    max-width: calc(50% - $v-30);
+    max-width: calc(50% - #{$v-30});
     width: 30%;
     @include phone() {
       max-width: 100%;
