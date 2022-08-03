@@ -70,6 +70,11 @@
     flex: 2;
     max-width: $screen-sm;
     margin-right: $h-20;
+
+    @include tablet {
+      margin: 0 auto;
+    }
+
   }
 
   &-form {
@@ -78,6 +83,11 @@
 
   &-title {
     color: $font-color;
+
+    @include tablet() {
+      font-size: $h4-size;
+      line-height: $title-mobile-line-height;
+    }
 
     @include phone() {
       font-size: $h4-size;
@@ -105,7 +115,7 @@
       padding: $corner-default;
     }
 
-    @include phone() {
+    @include tablet() {
       font-size: $font-regular-size - 2;
       line-height: $items-mobile-line-height;
     }
@@ -116,6 +126,11 @@
 
     display: flex;
     align-items: center;
+
+    @include tablet() {
+      font-size: $font-regular-size - 2;
+      line-height: $items-mobile-line-height;
+    }
 
     @include phone() {
       font-size: $font-regular-size;

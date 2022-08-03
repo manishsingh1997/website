@@ -17,7 +17,17 @@
 
   &-container {
     margin: $v-64 (-1 * $offset) 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
+    @include phone() {
+      flex-direction: column;
+    }
+
+    @include tablet() {
+      margin: $v-42 (-1 * $offset);
+    }
     @include phone() {
       margin: $v-24 (-1 * $offset);
     }
@@ -46,7 +56,7 @@
       width: $image-container-max-width - $image-container-h-offset * 2;
     }
 
-    @include phone {
+    @include tablet {
       position: absolute;
       bottom: -1 * $v-30;
       right: 0;
@@ -67,13 +77,23 @@
 
 .AppCityPage .RecentProjects {
   $offset: $h-40;
+  $tablet-max-height: 224px;
+  $phone-max-height: 200px;
 
   margin: $v-64 auto;
+
+  h2 {
+    @include tablet {
+      font-size: $h4-size;
+      line-height: $h4-line-height;
+      font-weight: 600;
+    }
+  }
 
   &-container {
     margin: $v-30 (-1 * $offset) $v-16;
 
-    @include phone() {
+    @include tablet() {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -91,7 +111,7 @@
   &-project {
     margin: 0 $offset;
 
-    @include phone() {
+    @include tablet() {
       margin: 0 $h-10;
     }
   }
@@ -107,8 +127,16 @@
   &-projectCaption {
     margin-top: $v-16;
 
-    @include phone() {
-      margin-top: $v-6;
+    span {
+      @include tablet() {
+        font-size: $font-label-size;
+        line-height: $line-height-label;
+        font-weight: 400;
+      }
+    }
+
+    @include tablet() {
+      margin-top: $v-6 + 1;
     }
   }
 
@@ -117,9 +145,13 @@
     max-height: 360px;
     border-radius: $corner-soft;
 
+    @include tablet {
+      max-height: $tablet-max-height;
+    }
+
     @include phone() {
       width: $h-120 * 2 + $h-60;
-      max-height: 200px;
+      max-height: $phone-max-height;
     }
   }
 
@@ -136,22 +168,67 @@
 .AppCityPage .Packages {
   margin: $v-64 auto;
 
+  .h3,
+  .h4 {
+    @include tablet {
+      font-size: $h5-size;
+      line-height: $h5-line-height;
+      font-weight: 600;
+    }
+  }
+
+  p {
+    @include tablet {
+      font-size: $font-mobile-size;
+      line-height: $line-height-mobile;
+      color: $black-3;
+    }
+  }
+
   &-container {
     grid-template-columns: calc(25% - 15px) calc(25% - 15px) calc(25% - 15px) calc(25% - 15px);
     margin-bottom: $v-48;
 
+    @include tablet {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
     @include phone {
+      display: grid;
       grid-template-columns: calc(50% - 15px) calc(50% - 15px);
     }
   }
 
   &-item {
+    $tablet-max-width: 160px;
+    $tablet-max-height: 210px;
+
     @include card-hover();
     padding: $v-20 $h-20;
+
+    @include tablet {
+      width: $tablet-max-width;
+      min-height: $tablet-max-height;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @include phone {
+      width: unset;
+      height: unset;
+    }
 
     img {
       width: 100%;
       margin-bottom: $v-12;
+    }
+
+    &-padding {
+      @include tablet {
+        padding: $h-5 - 1;
+        padding-bottom: $v-12;
+      }
     }
   }
 
@@ -159,8 +236,31 @@
     margin-bottom: $v-6;
   }
 
+  .h5 {
+    @include tablet {
+      font-size: $font-mobile-size;
+      line-height: $line-height-mobile;
+      font-weight: 600;
+      padding: 0 $h-10 + 2;
+    }
+  }
+
   &-description {
     color: $black-3;
+  }
+
+  p:last-child {
+    @include tablet {
+      font-size: $font-label-size;
+      line-height: $line-height-label;
+      font-weight: 400;
+      padding: 0 $h-10 + 2;
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      white-space: normal;
+      overflow: hidden;
+    }
   }
 }
 
@@ -169,6 +269,14 @@
   $column-width: 100% / 3;
 
   margin: $v-64 auto;
+
+  h2 {
+    @include tablet {
+      font-size: $h4-size;
+      line-height: $h4-line-height;
+      font-weight: 600;
+    }
+  }
 
   &-container {
     grid-template-columns: calc(#{$column-width} - 15px) calc(#{$column-width} - 15px) calc(#{$column-width} - 15px);
@@ -185,6 +293,10 @@
     width: 100%;
     margin: 0;
     padding: $v-20 $h-20;
+
+    @include tablet {
+      padding: $v-12;
+    }
 
     p {
       flex: 1;
@@ -226,6 +338,29 @@
     flex: 1;
     flex-direction: column;
     justify-content: space-between;
+
+    @include tablet {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    p {
+      @include tablet {
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+        overflow: hidden;
+      }
+    }
+
+    p,
+    span {
+      @include tablet {
+        font-size: $font-mobile-size;
+        line-height: $line-height-mobile;
+      }
+    }
   }
 
   &-link {
@@ -252,11 +387,11 @@
 .mobile-length {
   display: none;
 
-  @include phone() {
-    display: block;
+  @include tablet() {
+    display: none;
   }
 
-  @include tablet() {
+  @include phone() {
     display: block;
   }
 }
@@ -264,11 +399,23 @@
 .desktop-length {
   display: block;
 
-  @include phone() {
+  @include tablet() {
     display: none;
   }
 
+  @include phone() {
+    display: none;
+  }
+}
+
+.tablet-length {
+  display: none;
+
   @include tablet() {
+    display: block;
+  }
+
+  @include phone() {
     display: none;
   }
 }

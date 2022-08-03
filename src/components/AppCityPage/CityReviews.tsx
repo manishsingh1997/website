@@ -28,7 +28,7 @@ const CityReviews = (props: MainBannerProps) => {
 
   return (
     <section className="wrapper-1180 CityReviews">
-      <div className="flex-wrapper CityReviews-container">
+      <div className="CityReviews-container">
         {reviews.map(review => (
           <div className="CityReviews-review" key={review.type}>
             <div className="CityReviews-imgContainer">

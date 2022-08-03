@@ -227,7 +227,7 @@ exports[`AppCityPage should render 1`] = `
       class="wrapper-1180 CityReviews"
     >
       <div
-        class="flex-wrapper CityReviews-container"
+        class="CityReviews-container"
       >
         <div
           class="CityReviews-review"
@@ -386,6 +386,11 @@ exports[`AppCityPage should render 1`] = `
       </div>
     </section>
     <section
+      class="tablet-length"
+    >
+      Tell Us Form
+    </section>
+    <section
       class="wrapper-1180 Packages"
     >
       <h2
@@ -411,7 +416,7 @@ exports[`AppCityPage should render 1`] = `
             class="equal-height-JlocK"
           >
             <div
-              class="card padding-60 soft-border shadow__z0 Packages-item"
+              class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
                 data-testid="test-image"
@@ -433,7 +438,7 @@ exports[`AppCityPage should render 1`] = `
             class="equal-height-JlocK"
           >
             <div
-              class="card padding-60 soft-border shadow__z0 Packages-item"
+              class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
                 data-testid="test-image"
@@ -455,7 +460,7 @@ exports[`AppCityPage should render 1`] = `
             class="equal-height-JlocK"
           >
             <div
-              class="card padding-60 soft-border shadow__z0 Packages-item"
+              class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
                 data-testid="test-image"
@@ -488,7 +493,7 @@ exports[`AppCityPage should render 1`] = `
             class="equal-height-JlocK"
           >
             <div
-              class="card padding-60 soft-border shadow__z0 Packages-item"
+              class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
                 data-testid="test-image"
@@ -510,7 +515,7 @@ exports[`AppCityPage should render 1`] = `
             class="equal-height-JlocK"
           >
             <div
-              class="card padding-60 soft-border shadow__z0 Packages-item"
+              class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
                 data-testid="test-image"
@@ -532,7 +537,7 @@ exports[`AppCityPage should render 1`] = `
             class="equal-height-JlocK"
           >
             <div
-              class="card padding-60 soft-border shadow__z0 Packages-item"
+              class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
                 data-testid="test-image"
@@ -565,7 +570,7 @@ exports[`AppCityPage should render 1`] = `
             class="equal-height-JlocK"
           >
             <div
-              class="card padding-60 soft-border shadow__z0 Packages-item"
+              class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
                 data-testid="test-image"
@@ -587,7 +592,7 @@ exports[`AppCityPage should render 1`] = `
             class="equal-height-JlocK"
           >
             <div
-              class="card padding-60 soft-border shadow__z0 Packages-item"
+              class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
                 data-testid="test-image"
@@ -609,7 +614,7 @@ exports[`AppCityPage should render 1`] = `
             class="equal-height-JlocK"
           >
             <div
-              class="card padding-60 soft-border shadow__z0 Packages-item"
+              class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
                 data-testid="test-image"
@@ -631,7 +636,7 @@ exports[`AppCityPage should render 1`] = `
             class="equal-height-JlocK"
           >
             <div
-              class="card padding-60 soft-border shadow__z0 Packages-item"
+              class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
                 data-testid="test-image"
@@ -669,6 +674,64 @@ exports[`AppCityPage should render 1`] = `
         >
           <div
             class="desktop-length"
+          >
+            <ul
+              class="unordered spacing after__is-24"
+            >
+              <li
+                class="spacing after__is-12"
+              >
+                <b>
+                  What height of the fence can I put up in my front yard?
+                </b>
+                 
+                <br />
+                3 feet, 4 feet (3 feet +2 feet 50% open top), 5 feet with a Planning Permit
+              </li>
+              <li
+                class="spacing after__is-12"
+              >
+                <b>
+                  How high can a side fence be?
+                </b>
+                 
+                <br />
+                6 feet solid fence, 8 feet (6 feet + 2 feet 50% open lattice)
+              </li>
+              <li
+                class="spacing after__is-12"
+              >
+                <b>
+                  What is the maximum height of a backyard fence?
+                </b>
+                 
+                <br />
+                6 feet solid fence,  8 feet (6 feet + 2 feet 50% open lattice)
+              </li>
+              <li
+                class="spacing after__is-12"
+              >
+                <b>
+                  How close to the property line can I build a fence?
+                </b>
+                 
+                <br />
+                no setbacks specific to fence
+              </li>
+              <li
+                class="spacing after__is-12"
+              >
+                <b>
+                  What is the maximum height of a fence if my property is located on a corner lot?
+                </b>
+                 
+                <br />
+                3 feet Max 20 feet Visibility Triangle Area.
+              </li>
+            </ul>
+          </div>
+          <div
+            class="tablet-length"
           >
             <ul
               class="unordered spacing after__is-24"
@@ -1115,7 +1178,7 @@ exports[`AppCityPage should render 1`] = `
           class="equal-height-JlocK"
         >
           <a
-            class="card padding-60 soft-border shadow__z0 CityBlog-article"
+            class="card soft-border shadow__z0 CityBlog-article"
             href="https://www.ergeon.com/blog/post/what-you-need-to-know-about-california-fence-laws"
           >
             <div
@@ -1128,19 +1191,19 @@ exports[`AppCityPage should render 1`] = `
               <p>
                 If you’re looking to get a new fence in California, it’s important to know about the laws surrounding fences and home improvement projects. Our post will go over some important things to keep in mind.
               </p>
-              <span
-                class="CityBlog-link"
-              >
-                View more
-              </span>
             </div>
+            <span
+              class="CityBlog-link"
+            >
+              View more
+            </span>
           </a>
         </div>
         <div
           class="equal-height-JlocK"
         >
           <a
-            class="card padding-60 soft-border shadow__z0 CityBlog-article"
+            class="card soft-border shadow__z0 CityBlog-article"
             href="https://www.ergeon.com/blog/post/why-you-should-always-use-a-licensed-fence-contractor"
           >
             <div
@@ -1153,19 +1216,19 @@ exports[`AppCityPage should render 1`] = `
               <p>
                 When it’s time to get a new fence it’s important to always use a reputable, licensed, and insured contractor. Some people try to cut costs by using unlicensed contractors, but this can end up being a major issue if any problems happen during the installation or down the line. In this post, we’ll go over the main reasons why you should always use a licensed and insured fence contractor.
               </p>
-              <span
-                class="CityBlog-link"
-              >
-                View more
-              </span>
             </div>
+            <span
+              class="CityBlog-link"
+            >
+              View more
+            </span>
           </a>
         </div>
         <div
           class="equal-height-JlocK"
         >
           <a
-            class="card padding-60 soft-border shadow__z0 CityBlog-article"
+            class="card soft-border shadow__z0 CityBlog-article"
             href="https://www.ergeon.com/blog/post/chain-link-vs-wood-fence-style-pros-and-cons"
           >
             <div
@@ -1178,12 +1241,12 @@ exports[`AppCityPage should render 1`] = `
               <p>
                 There’s a lot to consider when weighing the pros and cons of a wood fence versus a chain link fence. We’ve tried to make the process easier for you by diving deeper into some of the areas of consideration.
               </p>
-              <span
-                class="CityBlog-link"
-              >
-                View more
-              </span>
             </div>
+            <span
+              class="CityBlog-link"
+            >
+              View more
+            </span>
           </a>
         </div>
       </div>

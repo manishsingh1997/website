@@ -4,6 +4,18 @@
   $offset: $h-40;
   margin: $v-64 auto;
 
+  @include tablet {
+    .h3 {
+      font-size: $h4-size;
+      line-height: $h4-line-height;
+      font-weight: 600;
+    }
+    p {
+      font-size: $font-mobile-size;
+      line-height: $line-height-mobile;
+    }
+  }
+
   @include phone() {
     $background-color: $gray-6;
     background-image: linear-gradient(to top, $white 0%, $background-color 100%);
@@ -26,6 +38,14 @@
 
   &-row {
     margin: 0 $offset;
+    position: relative;
+
+    @include tablet {
+      li {
+        font-size: $font-mobile-size;
+        line-height: $line-height-mobile;
+      }
+    }
   }
 
   img:not(.Regulation-item) {

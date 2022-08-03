@@ -26,7 +26,7 @@ const HomePage = () => {
         <GetStartedSection />
         <FenceCalculatorPromo />
       </div>
-      <div className="desktop-length">
+      <div className="desktop-length tablet-length">
         <TellUsForm />
       </div>
     </>

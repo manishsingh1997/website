@@ -36,20 +36,34 @@ const Regulations = (props: RegulationsProps) => {
     }));
   }, [faq]);
 
+  const unorderedList = useMemo(() => {
+    return (
+      <ul className="unordered spacing after__is-24">
+        {faqItems.map(({ title, content }, idx) => (
+          <li className="spacing after__is-12" key={`faq-${idx}`}>
+            <b>{title}</b> <br />
+            {content}
+          </li>
+        ))}
+      </ul>
+    )
+  }, [faqItems])
+
   const desktopView = useMemo(() => {
     return (
       <div className="desktop-length">
-        <ul className="unordered spacing after__is-24">
-          {faqItems.map(({ title, content }, idx) => (
-            <li className="spacing after__is-12" key={`faq-${idx}`}>
-              <b>{title}</b> <br />
-              {content}
-            </li>
-          ))}
-        </ul>
+        {unorderedList}
       </div>
     )
-  }, [])
+  }, [unorderedList])
+
+  const tabletView = useMemo(() => {
+    return (
+      <div className="tablet-length">
+        {unorderedList}
+      </div>
+    )
+  }, [unorderedList])
 
   const mobileView = useMemo(() => {
     return (
@@ -82,6 +96,7 @@ const Regulations = (props: RegulationsProps) => {
       <div className="flex-wrapper Regulations-container">
         <div className="flex-spacer Regulations-row">
           {desktopView}
+          {tabletView}
           {mobileView}
           {url &&
             <p>Learn more about <a href={getAsset(url, 'pdf')} target="__blank">

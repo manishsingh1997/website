@@ -1,8 +1,15 @@
 @import '@ergeon/core-components/src/components/variables.scss';
 .qa-section {
-  margin-top: 60px;
+  margin-top: $v-64 - 4;
+  h2 {
+    @include tablet {
+      font-size: $h4-size;
+      line-height: $h4-line-height;
+      font-weight: 600;
+    }
+  }
   @include phone() {
-    margin-top: 30px;
+    margin-top: $v-30;
   }
   .h3 {
     margin-bottom: $v-36;
@@ -24,15 +31,28 @@
     }
   }
   &__question {
-    max-width: calc(50% - 30px);
+    max-width: calc(50% - $v-30);
     width: 30%;
     @include phone() {
       max-width: 100%;
       width: 100%;
       margin-bottom: $v-12;
     }
+    h3 {
+      @include tablet {
+        font-size: $font-mobile-size;
+        line-height: $line-height-mobile;
+        padding-bottom: $v-6;
+      }
+    }
+    p {
+      @include tablet {
+        font-size: $font-mobile-size;
+        line-height: $line-height-mobile;
+      }
+    }
     h6 {
-      margin-bottom: 12px;
+      margin-bottom: $v-12;
 
       @include phone() {
         margin-bottom: $v-6;
@@ -43,14 +63,14 @@
       padding: 0;
       margin: 0;
       li {
-        margin-bottom: 12px;
+        margin-bottom: $v-12;
         position: relative;
         &:before {
           color: $gray-2;
           content: '\2022';
           display: inline-block;
-          font-size: 20px;
-          left: -15px;
+          font-size: $h4-size - 2;
+          left: -($h-20 - $h-5);
           position: absolute;
           top: 0;
         }

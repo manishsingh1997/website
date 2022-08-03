@@ -11,7 +11,25 @@
   &-Wrapper {
     width: 30%;
 
+    h2 {
+      @include tablet() {
+        font-size: $h4-size;
+        line-height: $h4-line-height;
+      }
+    }
+
+    p {
+      @include tablet() {
+        font-size: $font-mobile-size;
+        line-height: $line-height-mobile;
+      }
+    }
+
     @include tablet() {
+      width: 45%;
+    }
+
+    @include phone() {
       width: 90%;
     }
   }

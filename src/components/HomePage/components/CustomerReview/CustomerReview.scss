@@ -43,6 +43,14 @@
       margin: $v-24 -1 * $h-20 $v-24 -1 * $h-20;
       padding: $h-20;
     }
+
+    p {
+      @include tablet {
+        font-size: $font-mobile-size;
+        line-height: $line-height-mobile;
+        font-weight: 400;
+      }
+    }
   }
 
   &-reviewTitle,
@@ -61,6 +69,14 @@
     justify-content: flex-start;
     flex-wrap: nowrap;
     position: relative;
+
+    span {
+      @include tablet {
+        font-size: $h5-size;
+        line-height: $h5-line-height;
+        font-weight: 600;
+      }
+    }
 
     .quote-icon {
       position: absolute;
