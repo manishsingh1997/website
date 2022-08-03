@@ -3,7 +3,7 @@
 exports[`About page It matches snapshot on render 1`] = `
 <div>
   <div
-    class="wrapper-1180"
+    class="wrapper-1180 spacing before__is-88"
   >
     <div
       class="spacing before__is-48 after__is-48"

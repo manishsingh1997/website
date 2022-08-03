@@ -2,7 +2,7 @@
 
 .request-quote-page {
   max-width: 100%;
-  margin: 40px auto 0;
+  margin: $v-88 auto 0;
   @include phone() {
     margin: $v-12 auto 0;
   }

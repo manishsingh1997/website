@@ -11,7 +11,7 @@ import './index.scss';
 class AboutPage extends React.Component {
   render() {
     return (
-      <div className="wrapper-1180">
+      <div className="wrapper-1180 spacing before__is-88">
         <div className="spacing before__is-48 after__is-48">
           <h1 className="center spacing after__is-12">Our mission</h1>
           <p className="subheader h2 center">Empower the world to build.</p>
