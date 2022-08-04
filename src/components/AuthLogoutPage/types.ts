@@ -1,5 +1,10 @@
+export type AuthUser = {
+  gid: string,
+  full_name?: string
+}
+
 export type AuthType = {
-  user: {gid: string} | null,
+  user: AuthUser | null,
   isUserLoggedOut: boolean,
   isAuthLoading: boolean,
   logoutError: string | null,

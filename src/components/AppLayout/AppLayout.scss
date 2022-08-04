@@ -47,6 +47,29 @@ $content-max-width: 700px;
     margin-bottom: $v-12;
   }
 
+  .SideBar {
+    &-Title {
+      align-items: center;
+      display: flex;
+      margin-bottom: $v-12;
+
+      svg {
+        margin-right: $h-5;
+      }
+
+      p {
+        color: $gray-1;
+        font-size: $font-label-size;
+        text-transform: uppercase;
+      }
+    }
+
+    &-User {
+      padding: $v-12 $h-20;
+      margin: 0;
+    }
+  }
+
   .customer-app-sidebar {
     max-width: $sidebar-max-width;
     overflow: hidden;
@@ -103,10 +126,6 @@ $content-max-width: 700px;
       }
     }
 
-    .sidebar-title {
-      display: none;
-    }
-
     @include phone() {
       display: none;
     }
@@ -144,5 +163,26 @@ $content-max-width: 700px;
   .quote-layout {
     margin: 10px;
     padding: 10px;
+  }
+
+  .Icon-Profile {
+    svg {
+      height: $h-20;
+      width: $h-20;
+    }
+    svg > g {
+      fill: $gray-2;
+    }
+  }
+
+  .Icon-Home {
+    padding-right: $h-5;
+    svg {
+      height: $v-16;
+      width: $v-16;
+    }
+    svg > g > g {
+      fill: $gray-2;
+    }
   }
 }

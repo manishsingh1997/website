@@ -1,15 +1,15 @@
-import React, {useEffect, useMemo} from 'react';
-import {isQuoteDetailURL, isUnsubscribeURL} from '../../utils/urls';
-import {AnonymousUser, SideBar, UserError, LayoutView} from './components';
-import {AppLayoutProps} from './types';
-import {initSmartLook} from './utils';
+import React, { useEffect, useMemo } from 'react';
+import { isQuoteDetailURL, isUnsubscribeURL } from '../../utils/urls';
+import { AnonymousUser, SideBar, UserError, LayoutView } from './components';
+import { AppLayoutProps } from './types';
+import { initSmartLook } from './utils';
 import BreadCrumbs from './components/BreadCrumbs';
 
 import './AppLayout.scss';
 
 const AppLayout = (props: AppLayoutProps) => {
   const {
-    auth: {isAuthLoading, isUserLoading, user, userError},
+    auth: { isAuthLoading, isUserLoading, user, userError },
     location,
     match,
     children,
@@ -48,10 +48,7 @@ const AppLayout = (props: AppLayoutProps) => {
       ) : (
         <div className="cards-wrapper">
           <div className="customer-app-sidebar">
-            <div className="customer-app-breadcrumbs">
-              {/* TODO ENG-16375 add side panels */}&nbsp;
-            </div>
-            <SideBar location={location} match={match} />
+            <SideBar location={location} match={match} userFullName={user?.full_name} />
           </div>
           <div className="customer-app-wrapper">
             <div className="customer-app-breadcrumbs">

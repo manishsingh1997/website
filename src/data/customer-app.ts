@@ -51,7 +51,25 @@ export const getMenuItems = (basePath: string, unsubscribeCode: string | null) =
   return menuItems;
 };
 
-export const getSideMenuItems = (basePath: string, unsubscribeCode: string | null) => {
+export const getMyProjectsMenuItems = (basePath: string) => {
+  const menuItems = [
+    {
+      path: `${basePath}/orders`,
+      title: 'Orders',
+      iconSVG: orderIcon,
+      className: 'orders-item'
+    },
+    {
+      path: `${basePath}/appointments`,
+      title: 'Appointments',
+      iconSVG: appointmentsIcon,
+      className: 'appointments-item'
+    },
+  ];
+  return menuItems;
+};
+
+export const getMyAccountMenuItems = (basePath: string, unsubscribeCode: string | null) => {
   const notificationsSearchQuery = unsubscribeCode ? `?${UNSUBSCRIBE_CODE_QUERY_NAME}=${unsubscribeCode}` : '';
 
   const menuItems = [
@@ -66,18 +84,6 @@ export const getSideMenuItems = (basePath: string, unsubscribeCode: string | nul
       title: 'Addresses',
       iconSVG: locationIcon,
       className: 'addresses-item'
-    },
-    {
-      path: `${basePath}/orders`,
-      title: 'Orders',
-      iconSVG: orderIcon,
-      className: 'orders-item'
-    },
-    {
-      path: `${basePath}/appointments`,
-      title: 'Appointments',
-      iconSVG: appointmentsIcon,
-      className: 'appointments-item'
     },
     {
       path: `${basePath}/settings${notificationsSearchQuery}`,

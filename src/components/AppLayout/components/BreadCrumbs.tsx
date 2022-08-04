@@ -7,11 +7,9 @@ import profileIcon from '@ergeon/core-components/src/assets/icon-profile.svg';
 import homeIcon from '@ergeon/core-components/src/assets/icon-home-black.svg';
 
 import { getSingularLevelFromPath } from './utils';
+import { MY_ACCOUNT_PATHS, MY_PROJECTS_PATHS } from './constants';
 
 import './BreadCrumbs.scss';
-
-const MY_ACCOUNT_PATHS = /profile|addresses|settings/;
-const MY_PROJECTS_PATHS = /orders|appointments|quotes/;
 
 const BreadCrumbs = () => {
   const location = useLocation();
@@ -27,7 +25,7 @@ const BreadCrumbs = () => {
     ) : (
       <ReactSVG className="Icon-Home" src={homeIcon} />
     );
-  }, [isMyAccount, isMyProjects]);
+  }, [isMyAccount]);
 
   const firstLevel = useMemo(() => {
     return isMyAccount ? isMyAccount : isMyProjects;
