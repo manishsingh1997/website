@@ -18,7 +18,9 @@ const AppointmentsList = ({appointments}: {appointments: Appointment[]}) => {
     const url = `/app/${customerGID}/orders/${order.id}`;
     const label = `${order.product.name} #${order.id}`;
     return (
-      <Link to={url}> {label} </Link>
+      <Link to={url}>
+        {label}
+      </Link>
     );
   }, [customerGID]);
 

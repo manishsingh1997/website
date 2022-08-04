@@ -1,0 +1,37 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
+.CustomerApp-BreadCrumbs {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+
+  .Icon-Profile {
+    svg {
+      height: $h-20;
+      width: $h-20;
+    }
+    svg > g {
+      fill: $gray-3;
+    }
+  }
+
+  .Icon-Home {
+    padding-right: $h-5;
+    svg {
+      height: $v-16;
+      width: $v-16;
+    }
+    svg > g > g {
+      fill: $gray-3;
+    }
+  }
+
+  .is-Separator {
+    margin: 0 $h-5;
+  }
+
+  .is-Active {
+    font-weight: 600;
+  }
+}

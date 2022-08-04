@@ -17,7 +17,7 @@ const SideBar = (props: SideBarProps) => {
   const menuItems = useMemo(() => getSideMenuItems(match.url, unsubscribedCode), [match, unsubscribedCode]);
 
   return (
-    <div>
+    <div className="card shadow soft-border">
       <ul className="siblings-list">
         {menuItems.map((menuItem) => (
           <PathNavLink activeClassName="active-link" key={`app-menu-${menuItem.title}`} to={menuItem.path}>

@@ -3,6 +3,8 @@ import {isQuoteDetailURL, isUnsubscribeURL} from '../../utils/urls';
 import {AnonymousUser, SideBar, UserError, LayoutView} from './components';
 import {AppLayoutProps} from './types';
 import {initSmartLook} from './utils';
+import BreadCrumbs from './components/BreadCrumbs';
+
 import './AppLayout.scss';
 
 const AppLayout = (props: AppLayoutProps) => {
@@ -45,13 +47,21 @@ const AppLayout = (props: AppLayoutProps) => {
         </LayoutView>
       ) : (
         <div className="cards-wrapper">
-          <div className="customer-app-sidebar card shadow soft-border">
+          <div className="customer-app-sidebar">
+            <div className="customer-app-breadcrumbs">
+              {/* TODO ENG-16375 add side panels */}&nbsp;
+            </div>
             <SideBar location={location} match={match} />
           </div>
-          <div className="customer-app-content card shadow soft-border">
-            <LayoutView isLoading={isLoading} match={match}>
-              {children}
-            </LayoutView>
+          <div className="customer-app-wrapper">
+            <div className="customer-app-breadcrumbs">
+              <BreadCrumbs />
+            </div>
+            <div className="customer-app-content card shadow soft-border">
+              <LayoutView isLoading={isLoading} match={match}>
+                {children}
+              </LayoutView>
+            </div>
           </div>
         </div>
       )}

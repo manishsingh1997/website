@@ -1,7 +1,11 @@
 @import '~@ergeon/core-components/src/components/variables.scss';
 
+$layout-max-width: 1060px;
+$sidebar-max-width: 260px;
+$content-max-width: 700px;
+
 .customer-app-layout {
-  max-width: 1060px;
+  max-width: $layout-max-width;
   padding-left: $h-20;
   padding-right: $h-20;
   margin: $v-30 auto;
@@ -36,10 +40,17 @@
     }
   }
 
+  .customer-app-breadcrumbs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $v-12;
+  }
+
   .customer-app-sidebar {
-    max-width: 260px;
+    max-width: $sidebar-max-width;
     overflow: hidden;
-    margin: 10px;
+    padding-top: $v-30;
     width: 100%;
 
     .siblings-list {
@@ -107,10 +118,19 @@
     }
   }
 
-  .customer-app-content {
-    max-width: 700px;
+  .customer-app-wrapper {
     padding: 30px;
-    margin: 10px;
+    width: 100%;
+
+    @include phone() {
+      max-width: 100%;
+      padding: 0 20px;
+    }
+  }
+
+  .customer-app-content {
+    max-width: $content-max-width;
+    padding: 30px;
     width: 100%;
     min-height: 200px;
 

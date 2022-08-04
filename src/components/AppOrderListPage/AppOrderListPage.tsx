@@ -83,15 +83,15 @@ const AppOrdersListPage = (props: AppOrdersListPageProps) => {
     );
   }, [orders, renderListElementContent, renderListElementHeader])
 
-    return (
-      <AppPage
-        error={listError}
-        fetchData={fetchData}
-        isLoading={isListLoading}
-        renderContent={renderContent}
-        renderHeader={renderHeader}
-      />
-    );
+  return (
+    <AppPage
+      error={listError}
+      fetchData={fetchData}
+      isLoading={isListLoading}
+      renderContent={renderContent}
+      renderHeader={renderHeader}
+    />
+  );
 }
 
 export default AppOrdersListPage;

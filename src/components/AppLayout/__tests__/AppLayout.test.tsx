@@ -19,6 +19,10 @@ const appLayoutProps = {
 jest.mock('react-router-dom', () => ({
   Link: jest.fn(({to}) => `Link to ${to}`),
   NavLink: jest.fn(({to}) => `NavLink to ${to}`),
+  useLocation: jest.fn().mockReturnValue({
+    pathname: '/request-quote',
+  }),
+  useHistory: jest.fn().mockReturnValue({}),
 }));
 
 describe('App Layout page', () => {

@@ -79,11 +79,20 @@
     @include phone() {
       width: 100%;
     }
-    width: unset;
+    padding: 0;
+    min-width: $h-120 + $h-60;
     .menu-item {
       width: inherit;
       margin-right: 0;
       padding-right: $h-20;
+
+      &--title {
+        color: $gray-1;
+        font-size: $font-label-size;
+        text-transform: uppercase;
+        margin: $v-6 0;
+        padding-left: $h-10;
+      }
     }
 
     .menu-title {
