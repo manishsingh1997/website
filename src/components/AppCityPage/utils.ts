@@ -24,3 +24,24 @@ export const formatFooterLicenses = (licenses?: City['licenses'], licenseUrl?: s
     };
   });
 };
+
+export const getHostnameAndPath = (url: string) => {
+  const urlParts = /^(?:\w+\:\/\/)?([^\/]+)(.*)$/.exec(url);
+  const hostname = urlParts?.[1]; // www.example.com
+  const path = urlParts?.[2]; // /path/to/somwhere
+
+  return {
+    hostname,
+    path,
+  };
+};
+
+export const getProjectGalleryUrl = (url: string) => {
+  if (url) {
+    const {path} = getHostnameAndPath(url);
+
+    const newPath = path?.replace('/projects-gallery', '');
+
+    return `${process.env.PROJECTS_GALLERY_HOST}${newPath}`;
+  }
+};

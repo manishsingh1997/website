@@ -341,7 +341,7 @@ exports[`AppCityPage should render 1`] = `
           class="flex-spacer RecentProjects-project"
         >
           <a
-            href="https://www.ergeon.com/projects-gallery/projects/fence-and-gate-installation-in-alameda-ca-northern-california-east-bay-alameda-77222"
+            href="http://ergeon.local:6500/projects-gallery/projects/fence-and-gate-installation-in-alameda-ca-northern-california-east-bay-alameda-77222"
           >
             <img
               alt="Picture Frame Board on Board With Diagonal Lattice Fence"
@@ -352,7 +352,7 @@ exports[`AppCityPage should render 1`] = `
             class="RecentProjects-projectCaption"
           >
             <a
-              href="https://www.ergeon.com/projects-gallery/projects/fence-and-gate-installation-in-alameda-ca-northern-california-east-bay-alameda-77222"
+              href="http://ergeon.local:6500/projects-gallery/projects/fence-and-gate-installation-in-alameda-ca-northern-california-east-bay-alameda-77222"
             >
               <span>
                 Picture Frame Board on Board With Diagonal Lattice Fence
@@ -364,7 +364,7 @@ exports[`AppCityPage should render 1`] = `
           class="flex-spacer RecentProjects-project"
         >
           <a
-            href="https://www.ergeon.com/projects-gallery/projects/fence-installation-in-alameda-ca-northern-california-east-bay-alameda-98069"
+            href="http://ergeon.local:6500/projects-gallery/projects/fence-installation-in-alameda-ca-northern-california-east-bay-alameda-98069"
           >
             <img
               alt="Nail Up Flat Top With Kickboard Fence"
@@ -375,7 +375,7 @@ exports[`AppCityPage should render 1`] = `
             class="RecentProjects-projectCaption"
           >
             <a
-              href="https://www.ergeon.com/projects-gallery/projects/fence-installation-in-alameda-ca-northern-california-east-bay-alameda-98069"
+              href="http://ergeon.local:6500/projects-gallery/projects/fence-installation-in-alameda-ca-northern-california-east-bay-alameda-98069"
             >
               <span>
                 Nail Up Flat Top With Kickboard Fence
