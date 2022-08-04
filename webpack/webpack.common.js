@@ -153,9 +153,6 @@ module.exports = {
       {from: './src/manifest.webmanifest', to: `${BUILD_DIR}/`},
       {from: './src/assets/ergeon-logo.png', to: `${BUILD_DIR}/`},
     ]),
-    new CopyPlugin([
-      {from: './src/ms77468308.txt', to: `${BUILD_DIR}/`},
-    ]),
     new MiniCssExtractPlugin({
       filename: IS_DEVELOPMENT ? '[name].css' : '[name]-[contenthash].css',
       chunkFilename: IS_DEVELOPMENT ? '[id].css' : '[id]-[contenthash].css',

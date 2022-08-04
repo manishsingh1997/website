@@ -1,5 +1,0 @@
-{
-  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
-  "Domain": "ergeon.com",
-  "Id": "26520fea-728a-4008-995a-2bb2a9793a60"
-}
