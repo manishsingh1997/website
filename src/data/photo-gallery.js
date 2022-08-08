@@ -639,23 +639,18 @@ export const FencePhotoData = [
           },
           {
             caption: 'Semi Transparent Wood Fence Stain',
-            url: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Danville+California+-+Picture+Frame+2.jpeg',
+            url: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Castro+Valley%2C+California+-+Stain+and+Seal+4.jpeg',
             slug: slugify('Semi Transparent Wood Fence Stain 3'),
           },
           {
             caption: 'Semi Transparent Wood Fence Stain',
-            url: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Castro+Valley%2C+California+-+Stain+and+Seal+4.jpeg',
+            url: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Semi-trans+stain.jpg',
             slug: slugify('Semi Transparent Wood Fence Stain 4'),
           },
           {
             caption: 'Semi Transparent Wood Fence Stain',
-            url: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Semi-trans+stain.jpg',
-            slug: slugify('Semi Transparent Wood Fence Stain 5'),
-          },
-          {
-            caption: 'Semi Transparent Wood Fence Stain',
             url: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Semi-trans+stain+1.jpg',
-            slug: slugify('Semi Transparent Wood Fence Stain 6'),
+            slug: slugify('Semi Transparent Wood Fence Stain 5'),
           },
         ],
       },
@@ -677,6 +672,11 @@ export const FencePhotoData = [
             caption: 'Solid Wood Stain',
             url: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/stain+solid.jpg',
             slug: slugify('Solid Wood Stain 3'),
+          },
+          {
+            caption: 'Solid Wood Stain',
+            url: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Danville+California+-+Picture+Frame+2.jpeg',
+            slug: slugify('Solid Wood Stain 4'),
           },
         ],
       },
