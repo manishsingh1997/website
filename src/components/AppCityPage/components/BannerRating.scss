@@ -1,0 +1,39 @@
+@import '~@ergeon/core-components/src/components/variables';
+
+.BannerRating {
+  // we need to properly override the svg size from the core-components package
+  $icon-size: $v-30 !important;
+  $arrow-offset: $h-20 + $h-10;
+
+  font-size: $h4-size;
+  font-style: italic;
+  line-height: $h4-line-height;
+  color: $white;
+
+  &-stars {
+    .star,
+    svg {
+      height: $icon-size;
+      width: $icon-size;
+    }
+    polygon {
+      fill: $orange-action;
+    }
+  }
+
+  &-stars,
+  &-ratingText {
+    display: flex;
+    align-items: center;
+
+    .is-ArrowImg {
+      position: relative;
+      top: $v-36;
+      left: $arrow-offset;
+
+      @include tablet() {
+        display: none;
+      }
+    }
+  }
+}

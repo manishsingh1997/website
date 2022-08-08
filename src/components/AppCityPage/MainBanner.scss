@@ -74,7 +74,6 @@
     @include tablet {
       margin: 0 auto;
     }
-
   }
 
   &-form {
@@ -153,6 +152,36 @@
 
         content: '';
       }
+    }
+  }
+
+  &-rating {
+    font-size: $h4-size;
+    font-style: italic;
+    line-height: $h4-line-height;
+    color: $font-color;
+  }
+
+  &-stars,
+  &-ratingText {
+    display: flex;
+    align-items: center;
+
+    .is-ArrowImg {
+      position: relative;
+      top: $v-36;
+      left: $h-20 + $h-10;
+    }
+  }
+
+  &-stars {
+    .star,
+    .star svg {
+      height: $v-30;
+      width: $v-30;
+    }
+    polygon {
+      fill: $orange-action;
     }
   }
 

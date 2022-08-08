@@ -5,8 +5,10 @@ import IconCheckMark from '@ergeon/core-components/src/assets/icon-check-mark.sv
 import IconPhoneGreen from '@ergeon/core-components/src/assets/icon-phone-green.svg';
 
 import TellUsForm from '../../containers/TellUsForm';
+import { showUpcomingFeatures } from '../../utils/utils';
 import { City } from './types';
 import { makePhoneLink } from './utils';
+import BannerRating from './components/BannerRating';
 
 import './MainBanner.scss';
 
@@ -36,6 +38,9 @@ const MainBanner = (props: MainBannerProps) => {
             <ReactSVG className="icon" src={IconPhoneGreen} />
             <span>Call us now {phone}</span>
           </a>
+          {showUpcomingFeatures('ENG-16970') &&
+            <BannerRating />
+          }
         </section>
         <section className="desktop-length flex-spacer MainBanner-form">
           <TellUsForm />

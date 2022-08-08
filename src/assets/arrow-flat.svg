@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="117px" height="64px" viewBox="0 0 117 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>arrow-flat</title>
+    <defs>
+        <path d="M107.583212,2.11314025 C107.861209,2.75676382 107.939214,3.46834202 107.810822,4.14035894 L107.760371,4.36275186 L103.686964,20.381055 C103.346683,21.7191784 101.986067,22.5280897 100.647944,22.1878089 C99.368,21.8623229 98.5722499,20.6032982 98.803272,19.3233689 L98.8411902,19.1487892 L101.028578,10.5484714 C91.9988822,21.543454 74.8260616,29.2012803 54.3428721,32.3818483 C33.908635,35.554815 13.2601363,33.6840646 1.31468756,27.248069 C0.0991734109,26.5931716 -0.355296231,25.0769034 0.299601199,23.8613892 C0.954498629,22.6458751 2.4707668,22.1914055 3.68628094,22.8463029 C14.5249917,28.6860077 34.123109,30.4615938 53.575681,27.4410571 C72.422207,24.5146253 88.1531955,17.6415118 96.4623307,8.20058453 C94.8109088,8.79880438 93.0227246,9.42859569 91.0973202,10.0896486 L89.004718,10.8021712 C87.6966222,11.244043 86.2779932,10.5418298 85.8361214,9.23373399 C85.3942495,7.92563821 86.0964628,6.50700917 87.4045586,6.06513734 L89.3982178,5.38650376 C95.2342749,3.38402558 99.7656952,1.68254785 102.982936,0.287403853 C104.757367,-0.478376138 106.816831,0.33879678 107.583212,2.11314025 Z" id="path-1"></path>
+        <filter x="-1.4%" y="-4.4%" width="102.8%" height="108.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0992679196 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="ENH-top-fold/city-page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="desktop/city" transform="translate(-409.000000, -538.000000)">
+            <g id="message" transform="translate(130.000000, 215.000000)">
+                <g id="Combined-Shape" transform="translate(337.672290, 354.988373) rotate(-345.000000) translate(-337.672290, -354.988373) translate(283.736831, 338.041298)">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#F09F3A" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
