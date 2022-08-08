@@ -1,22 +1,22 @@
-import React, { ChangeEvent, useState, useCallback, useMemo, useRef, useEffect } from 'react';
+import React, {ChangeEvent, useState, useCallback, useMemo, useRef, useEffect} from 'react';
 import classNames from 'classnames';
 import * as Sentry from '@sentry/browser';
-import { CatalogType } from '@ergeon/3d-lib';
-import { Button, FormField, Spinner, Input, useGooglePlacesAutocomplete, utils } from '@ergeon/core-components';
-import { useForm, Controller } from 'react-hook-form';
-import { UPCOMING_FEATURES_PARAM } from '@ergeon/erg-utils-js';
+import {CatalogType} from '@ergeon/3d-lib';
+import {Button, FormField, Spinner, Input, useGooglePlacesAutocomplete, utils, Select} from '@ergeon/core-components';
+import {useForm, Controller} from 'react-hook-form';
+import {UPCOMING_FEATURES_PARAM} from '@ergeon/erg-utils-js';
 // @ts-ignore
-import { getBaseEventData } from '@ergeon/erg-utms';
+import {getBaseEventData} from '@ergeon/erg-utms';
 // @ts-ignore
-import { FENCE_SLUG } from '@ergeon/core-components/src/constants';
-import { submitLeadArrived } from '../../../api/lead';
-import { showUpcomingFeatures } from '../../../utils/utils';
-import { identify, track, trackError, trackTawkLeadEvent } from '../../../utils/analytics';
-import { CUSTOMER_LEAD_CREATED } from '../../../utils/events';
-import { DEFAULT_SOURCE_VALUE } from '../../../website/constants';
-import { Address, stringifyAddress } from '../utils';
-import { getOrder, isMinimumValidAddress } from './utils';
-import { Config, User } from './types';
+import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
+import {submitLeadArrived} from '../../../api/lead';
+import {showUpcomingFeatures} from '../../../utils/utils';
+import {identify, track, trackError, trackTawkLeadEvent} from '../../../utils/analytics';
+import {CUSTOMER_LEAD_CREATED} from '../../../utils/events';
+import {DEFAULT_SOURCE_VALUE} from '../../../website/constants';
+import {Address, stringifyAddress} from '../utils';
+import {getOrder, isMinimumValidAddress} from './utils';
+import {Config, User} from './types';
 
 import './SimpleLeadForm.scss';
 
@@ -38,25 +38,25 @@ type SimpleLeadFormProps = {
   user: User;
 };
 
-/** 
+/**
  * SimpleLeadForm is a form that is used to submit leads
- * 
+ *
  * Notes:
  * lead.address is defined and saved if previously used, otherwise it is undefined
- * 
- * Please be really careful on what we send to BE. 
+ *
+ * Please be really careful on what we send to BE.
  * Inconsistent data can significantly decrease leads conversion and drop sales.
  * We strictly need to send the following fields to avoid incomplete leads addresses:
  * address {Address}
  * raw_address {string}
  */
 const SimpleLeadForm = (props: SimpleLeadFormProps) => {
-  const { lead, user, onSubmit, product, configs } = props;
-  const { address } = lead;
+  const {lead, user, onSubmit, product, configs} = props;
+  const {address} = lead;
 
   const [loading, setLoading] = useState(false);
   const googlePlacesInputRef = useRef<HTMLInputElement>(null);
-  const { placeData } = useGooglePlacesAutocomplete(googlePlacesInputRef);
+  const {placeData} = useGooglePlacesAutocomplete(googlePlacesInputRef);
 
   const selectedProduct = useMemo(() => {
     return {
@@ -65,7 +65,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
     };
   }, []);
 
-  const { control, handleSubmit, setValue, setError, clearErrors } = useForm({
+  const {control, handleSubmit, setValue, setError, clearErrors} = useForm({
     defaultValues: {
       address: address || {}, // check if we have lead.address already
       name: user?.full_name || '',
@@ -73,6 +73,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
       email: user?.email || '',
       phoneEmail: '',
       comment: '',
+      type_of_fence: '',
       product: selectedProduct,
       raw_address: stringifyAddress(address) || '',
       is_subscribed_to_news: true,
@@ -97,6 +98,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
       setLoading(true);
       const newData = {
         ...fieldsData,
+        type_of_fence: fieldsData.type_of_fence.value,
         product: fieldsData.product.value,
         phone: utils.formatPhoneNumber(fieldsData.phone) || '',
       };
@@ -109,7 +111,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
       };
       const order = getOrder(configs, lead);
       if (product === FENCE_SLUG) {
-        eventData['object'] = { ...eventData.object, order };
+        eventData['object'] = {...eventData.object, order};
       }
       if (showUpcomingFeatures('ENG-1XX')) {
         eventData[UPCOMING_FEATURES_PARAM] = true;
@@ -126,15 +128,15 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
         await submitLeadArrived(eventData);
         trackTawkLeadEvent(eventData);
         identify(newData);
-        track(CUSTOMER_LEAD_CREATED, { ...eventData, source: DEFAULT_SOURCE_VALUE });
+        track(CUSTOMER_LEAD_CREATED, {...eventData, source: DEFAULT_SOURCE_VALUE});
       } catch (error) {
-        trackError(new Error('Lead submit error'), { error });
+        trackError(new Error('Lead submit error'), {error});
       } finally {
         setLoading(false);
       }
       onSubmit && onSubmit(newData);
     },
-    [product, onSubmit, user, address, lead, configs, triggerAddressError],
+    [product, onSubmit, user, address, lead, configs, triggerAddressError]
   );
 
   const handlePhoneEmailField = useCallback(
@@ -184,14 +186,14 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
           control={control}
           defaultValue={user?.full_name ?? ''}
           name="name"
-          render={({ field, fieldState }) => (
+          render={({field, fieldState}) => (
             <Input
               isDisabled={loading}
               isValid={isFieldValid(fieldState)}
               label="Name"
               name="name"
               onChange={field.onChange}
-              placeholder="e.g. John Smith"
+              placeholder="Your name"
               type="text"
               validationMessage={fieldState.error?.message}
               value={field.value}
@@ -210,14 +212,14 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
           control={control}
           defaultValue={user?.full_name ?? ''}
           name="phoneEmail"
-          render={({ field, fieldState }) => (
+          render={({field, fieldState}) => (
             <Input
               isDisabled={loading}
               isValid={isFieldValid(fieldState)}
               label="Phone or email"
               name="phoneEmail"
               onChange={(e: ChangeEvent<HTMLInputElement>) => handlePhoneEmailField(e, field.onChange)}
-              placeholder=""
+              placeholder="Your phone or email"
               type="text"
               validationMessage={fieldState.error?.message}
               value={field.value}
@@ -243,13 +245,14 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
         <Controller
           control={control}
           name="raw_address"
-          render={({ field, fieldState }) => (
+          render={({field, fieldState}) => (
             <Input
               isDisabled={loading}
               isValid={isFieldValid(fieldState)}
               label="Address"
               name="raw_address"
               onChange={field.onChange}
+              placeholder="Your address or zipcode"
               ref={googlePlacesInputRef}
               type="textarea"
               validationMessage={fieldState.error?.message}
@@ -264,34 +267,63 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
           }}
         />
       </FormField>
-      <FormField>
-        <Controller
-          control={control}
-          name="comment"
-          render={({ field, fieldState }) => (
-            <Input
-              className="LeadForm-Message spacing after__is-24"
-              isDisabled={loading}
-              isMultiline
-              isValid={isFieldValid(fieldState)}
-              label="Message (Optional)"
-              name="comment"
-              onChange={field.onChange}
-              type="textarea"
-              validationMessage={fieldState.error?.message}
-              value={field.value}
-            />
-          )}
-        />
-      </FormField>
+      {/* We donth have the backend yeat */}
+      {showUpcomingFeatures('ENG-16970') && (
+        <FormField>
+          <Controller
+            control={control}
+            name="type_of_fence"
+            render={({field}) => (
+              <Select
+                isDisabled={loading}
+                name="type_of_fence"
+                onChange={field.onChange}
+                options={[
+                  {value: 'wood-fence', label: 'Wood Fence'},
+                  {value: 'chain-link-fence', label: 'Chain Link Fence'},
+                  {value: 'vinyl-fence', label: 'Vinyl Fence'},
+                  {value: 'box-wire-fence', label: 'Box Wire Fence'},
+                ]}
+                placeholder="Type of fence"
+              />
+            )}
+          />
+        </FormField>
+      )}
+      {/* 
+        This is a old field, should render between the backend isn't ready
+        Should delete all this block when the BE task is finished
+      */}
+      {!showUpcomingFeatures('ENG-16970') && (
+        <FormField>
+          <Controller
+            control={control}
+            name="comment"
+            render={({field, fieldState}) => (
+              <Input
+                className="LeadForm-Message spacing after__is-24"
+                isDisabled={loading}
+                isMultiline
+                isValid={isFieldValid(fieldState)}
+                label="Message (Optional)"
+                name="comment"
+                onChange={field.onChange}
+                type="textarea"
+                validationMessage={fieldState.error?.message}
+                value={field.value}
+              />
+            )}
+          />
+        </FormField>
+      )}
       <div className="SimpleForm-actions">
         <Button
-          className={classNames('AddressButton', 'spacing after__is-24', { 'is-loading': loading })}
+          className={classNames('AddressButton', 'spacing after__is-24', {'is-loading': loading})}
           disabled={loading}
-          flavor="primary"
+          flavor="action"
           size="large"
         >
-          {loading ? <Spinner active={true} borderWidth={0.1} size={25} /> : 'Submit'}
+          {loading ? <Spinner active={true} borderWidth={0.1} size={25} /> : 'Get your FREE quote'}
         </Button>
       </div>
     </form>

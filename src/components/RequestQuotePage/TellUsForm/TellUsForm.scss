@@ -37,13 +37,36 @@
   .TellUsForm-Header {
     font-weight: 600;
     margin-bottom: $v-12;
-    text-align: center;
+    text-align: start;
+    @include tablet() {
+      text-align: center;
+    }
   }
 
-  &-Text {
-    text-align: center;
-    margin-bottom: $v-20;
-    padding: 0 $h-20;
+  .TellUsForm-Footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: $corner-default;
+
+    @include tablet() {
+      place-items: center;
+    }
+
+    .highlight {
+      display: flex;
+      align-items: center;
+      font-size: $font-mobile-size;
+      line-height: $line-height-mobile;
+      color: $black-2;
+
+      svg {
+        width: $v-12;
+        margin-right: $corner-default;
+        path {
+          fill: $green-1;
+        }
+      }
+    }
   }
 
   &-Success {

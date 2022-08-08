@@ -1,4 +1,8 @@
 import React, {useState, useCallback} from 'react';
+import {ReactSVG} from 'react-svg';
+
+import IconCheckMark from '@ergeon/core-components/src/assets/icon-check-mark.svg';
+
 import Success from '../../common/Success';
 import AppLoader from '../../common/AppLoader';
 import SimpleLeadForm from '../SimpleLeadForm';
@@ -45,10 +49,7 @@ const TellUsForm = (props: TellUsFormProps) => {
     return (
       <section className="TellUsForm">
         <div className="TellUsForm-Wrapper">
-          <h2 className="h3 TellUsForm-Header">Tell us about your project</h2>
-          <p className="TellUsForm-Text">
-            We're here to help! Please describe your fencing needs and we'll get in touch within 24 hours.
-          </p>
+          <h2 className="h3 TellUsForm-Header">Let’s talk about your fence project</h2>
           <div>
             <SimpleLeadForm
               configs={configs}
@@ -58,6 +59,20 @@ const TellUsForm = (props: TellUsFormProps) => {
               product={product}
               user={user}
             />
+          </div>
+          <div className="TellUsForm-Footer">
+            <div className="highlight">
+              <ReactSVG className="highlight-icon" src={IconCheckMark} />
+              <span>No commitment</span>
+            </div>
+            <div className="highlight">
+              <ReactSVG className="highlight-icon" src={IconCheckMark} />
+              <span>Transparent pricing</span>
+            </div>
+            <div className="highlight">
+              <ReactSVG className="highlight-icon" src={IconCheckMark} />
+              <span>Fast response time</span>
+            </div>
           </div>
         </div>
       </section>
