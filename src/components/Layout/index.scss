@@ -18,6 +18,14 @@
       top: 0;
       left: 0;
       z-index: $z-index-super-top;
+
+      @media print {
+        position: relative;
+      }
+    }
+
+    &.asPDF .app-header-wrapper {
+      position: relative;
     }
 
     &-shadow {

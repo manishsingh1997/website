@@ -116,7 +116,7 @@ const Layout = (props: LayoutProps) => {
         </div>
       )}
       <NavLinkContext.Provider value={NavLink}>
-        <header className="app-header">
+        <header className={classNames('app-header', {asPDF})}>
           <div className={headerWrapperClass}>
             <SimpleTopPanel
               customerMenu={dropdownMenu}
