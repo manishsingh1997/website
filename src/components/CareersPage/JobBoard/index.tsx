@@ -8,7 +8,7 @@ import Careers from './Careers';
 
 import './JobBoard.scss';
 
-interface JobList {
+export interface JobList {
   absolute_url: string;
   department: string;
   title: string;
