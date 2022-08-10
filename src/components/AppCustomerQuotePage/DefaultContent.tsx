@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react';
 import {Route} from 'react-router-dom';
 
-import {isPDFMode, showUpcomingFeatures} from '../../utils/utils';
+import {isPDFMode} from '../../utils/utils';
 import BuildSpecs from '../common/AppQuoteComponents/BuildSpecs';
 import ProjectSignOffPopUp from './ProjectSignOff/ProjectSignOffPopUp';
 import ProjectSignOffTopNav from './ProjectSignOff/ProjectSignOffTopNav';
@@ -28,15 +28,13 @@ const DefaultContent = (props: DefaultContentProps) => {
 
   const asPDF = useMemo(() => isPDFMode(), []);
 
-  const shouldShowUpcoming = useMemo(() => showUpcomingFeatures('ENG-13851'), []);
-
   const isQuoteStatusApprovedOrCompleted = useMemo(() => {
       return getIsQuoteStatusApprovedOrCompleted(quoteApproval)
     }, [quoteApproval]);
 
   const shouldShowSignoffComponents = useMemo(() => {
-      return shouldShowUpcoming && !asPDF && isQuoteStatusApprovedOrCompleted
-    }, [shouldShowUpcoming, asPDF, isQuoteStatusApprovedOrCompleted]);
+      return !asPDF && isQuoteStatusApprovedOrCompleted
+    }, [asPDF, isQuoteStatusApprovedOrCompleted]);
 
   return (
     <>

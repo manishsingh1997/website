@@ -9,7 +9,7 @@ import {
   approveQuoteApproval as approveQuoteApprovalAPI,
 } from '../../api/app';
 
-import {getParameterByName, isPDFMode, showUpcomingFeatures} from '../../utils/utils';
+import {getParameterByName, isPDFMode} from '../../utils/utils';
 import {parseAPIError} from '../../utils/api';
 import {isQuoteAddressValid} from '../../utils/app-order';
 import {ErrorResponse} from '../../utils/types';
@@ -60,8 +60,7 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
         quoteDate: quote?.sent_to_customer_at,
       };
 
-      showUpcomingFeatures('ENG-13851') && getSignOffData(data?.data);
-
+      getSignOffData(data?.data);
       setQuoteApproval(data.data);
       setCustomerSignOffData(orderData);
       setQuoteApprovalError(null);
