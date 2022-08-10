@@ -22,7 +22,7 @@ type MainBannerProps = {
 const MainBanner = (props: MainBannerProps) => {
   const { title, bullets, phone, state } = props;
   return (
-    <section className={`MainBanner is-State${state}`}>
+    <section className={`MainBanner is-State${state}`} data-testid='main-banner'>
       <div className="wrapper-1180 flex-wrapper">
         <section className="flex-spacer MainBanner-content">
           <h1 className="h2 MainBanner-title">{title}</h1>

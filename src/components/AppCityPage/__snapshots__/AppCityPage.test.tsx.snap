@@ -1,217 +1,546 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AppCityPage Should render Main city banner 1`] = `
+<section
+  class="MainBanner is-StateCA"
+  data-testid="main-banner"
+>
+  <div
+    class="wrapper-1180 flex-wrapper"
+  >
+    <section
+      class="flex-spacer MainBanner-content"
+    >
+      <h1
+        class="h2 MainBanner-title"
+      >
+        California
+      </h1>
+      <ul
+        class="unordered MainBanner-list"
+      >
+        <li
+          class="MainBanner-listItem"
+        >
+          <div
+            class="icon"
+          >
+            <div>
+              <div
+                data-src="icon-check-mark.svg"
+                src=""
+              />
+            </div>
+          </div>
+          one
+        </li>
+        <li
+          class="MainBanner-listItem"
+        >
+          <div
+            class="icon"
+          >
+            <div>
+              <div
+                data-src="icon-check-mark.svg"
+                src=""
+              />
+            </div>
+          </div>
+          two
+        </li>
+      </ul>
+      <a
+        class="MainBanner-callLink"
+        data-track-call="true"
+        href="tel:+1234"
+      >
+        <div
+          class="icon"
+        >
+          <div>
+            <div
+              data-src="icon-phone-green.svg"
+              src=""
+            />
+          </div>
+        </div>
+        <span>
+          Call us now 
+          +1234
+        </span>
+      </a>
+      <div
+        class="BannerRating"
+      >
+        <div
+          class="BannerRating-stars"
+        >
+          <ul
+            class="stars-group"
+          >
+            <li
+              class="rating-icon star"
+            >
+              <div>
+                <div>
+                  <div
+                    data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                    src=""
+                  />
+                </div>
+              </div>
+            </li>
+            <li
+              class="rating-icon star"
+            >
+              <div>
+                <div>
+                  <div
+                    data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                    src=""
+                  />
+                </div>
+              </div>
+            </li>
+            <li
+              class="rating-icon star"
+            >
+              <div>
+                <div>
+                  <div
+                    data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                    src=""
+                  />
+                </div>
+              </div>
+            </li>
+            <li
+              class="rating-icon star"
+            >
+              <div>
+                <div>
+                  <div
+                    data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                    src=""
+                  />
+                </div>
+              </div>
+            </li>
+            <li
+              class="rating-icon star half"
+            >
+              <div>
+                <div>
+                  <div
+                    data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                    src=""
+                  />
+                </div>
+              </div>
+            </li>
+          </ul>
+          <p>
+            4.7
+            /5
+          </p>
+        </div>
+        <div
+          class="BannerRating-ratingText"
+        >
+          <div>
+            <p>
+              Based on 
+              2,404
+               reviews
+            </p>
+            <p>
+              & 
+              10,100
+               fences installed!
+            </p>
+          </div>
+          <div
+            class="is-ArrowImg"
+          >
+            <div>
+              <div
+                data-src="arrow-flat.svg"
+                src=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="desktop-length flex-spacer MainBanner-form"
+    >
+      Tell Us Form
+    </section>
+  </div>
+</section>
+`;
+
+exports[`AppCityPage Should render city banner 1`] = `
+<section
+  class="CityBanner"
+  data-testid="city-banner"
+>
+  <section
+    class="CityBanner-wrapper wrapper-1180"
+  >
+    <section
+      class="CityBanner-content"
+    >
+      <aside
+        class="CityBanner-desc"
+      >
+        <aside
+          class="CityBanner-info"
+        >
+          <h1
+            class="h4 is-grey"
+          >
+            #1 Fence Company in 
+            Coruscant
+          </h1>
+          <h2
+            class="h2"
+          >
+            Finally a fence company 
+            <br />
+            you can trust
+          </h2>
+          <h3
+            class="h4"
+          >
+            Get your fence installed 
+            <br />
+            by a world-class expert.
+          </h3>
+          <h3
+            class="h4"
+          >
+            Zero hassle. Fair prices. No hidden fees.
+          </h3>
+        </aside>
+        <a
+          class="CityBanner-call"
+          href="tel:+16503004854"
+        >
+          <button
+            class="button button--action button--size__medium taste__solid is-action"
+          >
+            <div>
+              <div>
+                <div
+                  data-src="icon-call.svg"
+                  src=""
+                />
+              </div>
+            </div>
+             Call us now
+          </button>
+        </a>
+        <div
+          class="BannerRating"
+        >
+          <div
+            class="BannerRating-stars"
+          >
+            <ul
+              class="stars-group"
+            >
+              <li
+                class="rating-icon star"
+              >
+                <div>
+                  <div>
+                    <div
+                      data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                      src=""
+                    />
+                  </div>
+                </div>
+              </li>
+              <li
+                class="rating-icon star"
+              >
+                <div>
+                  <div>
+                    <div
+                      data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                      src=""
+                    />
+                  </div>
+                </div>
+              </li>
+              <li
+                class="rating-icon star"
+              >
+                <div>
+                  <div>
+                    <div
+                      data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                      src=""
+                    />
+                  </div>
+                </div>
+              </li>
+              <li
+                class="rating-icon star"
+              >
+                <div>
+                  <div>
+                    <div
+                      data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                      src=""
+                    />
+                  </div>
+                </div>
+              </li>
+              <li
+                class="rating-icon star half"
+              >
+                <div>
+                  <div>
+                    <div
+                      data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                      src=""
+                    />
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <p>
+              4.7
+              /5
+            </p>
+          </div>
+          <div
+            class="BannerRating-ratingText"
+          >
+            <div>
+              <p>
+                Based on 
+                2,404
+                 reviews
+              </p>
+              <p>
+                & 
+                10,100
+                 fences installed!
+              </p>
+            </div>
+            <div
+              class="is-ArrowImg"
+            >
+              <div>
+                <div
+                  data-src="arrow-flat.svg"
+                  src=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+    <p
+      class="is-tablet"
+    >
+      or
+    </p>
+    <section
+      class="CityBanner-form"
+    >
+      Tell Us Form
+    </section>
+  </section>
+</section>
+`;
+
 exports[`AppCityPage should render 1`] = `
 <div>
   <div
     class="AppCityPage"
   >
     <section
-      class="MainBanner is-StateCA"
+      class="CityBanner"
+      data-testid="city-banner"
     >
-      <div
-        class="wrapper-1180 flex-wrapper"
+      <section
+        class="CityBanner-wrapper wrapper-1180"
       >
         <section
-          class="flex-spacer MainBanner-content"
+          class="CityBanner-content"
         >
-          <h1
-            class="h2 MainBanner-title"
+          <aside
+            class="CityBanner-desc"
           >
-            The best fence installation company in Alameda
-          </h1>
-          <ul
-            class="unordered MainBanner-list"
-          >
-            <li
-              class="MainBanner-listItem"
+            <aside
+              class="CityBanner-info"
             >
-              <div
-                class="icon"
+              <h1
+                class="h4 is-grey"
+              >
+                #1 Fence Company in 
+                Alameda
+              </h1>
+              <h2
+                class="h2"
+              >
+                Finally a fence company 
+                <br />
+                you can trust
+              </h2>
+              <h3
+                class="h4"
+              >
+                Get your fence installed 
+                <br />
+                by a world-class expert.
+              </h3>
+              <h3
+                class="h4"
+              >
+                Zero hassle. Fair prices. No hidden fees.
+              </h3>
+            </aside>
+            <a
+              class="CityBanner-call"
+              href="tel:+16503004854"
+            >
+              <button
+                class="button button--action button--size__medium taste__solid is-action"
               >
                 <div>
-                  <div
-                    data-src="icon-check-mark.svg"
-                    src=""
-                  />
+                  <div>
+                    <div
+                      data-src="icon-call.svg"
+                      src=""
+                    />
+                  </div>
                 </div>
-              </div>
-              Design, review and edit your FREE fence quote online using our custom tool.
-            </li>
-            <li
-              class="MainBanner-listItem"
-            >
-              <div
-                class="icon"
-              >
-                <div>
-                  <div
-                    data-src="icon-check-mark.svg"
-                    src=""
-                  />
-                </div>
-              </div>
-              Ask questions to our friendly, responsive team.
-            </li>
-            <li
-              class="MainBanner-listItem"
-            >
-              <div
-                class="icon"
-              >
-                <div>
-                  <div
-                    data-src="icon-check-mark.svg"
-                    src=""
-                  />
-                </div>
-              </div>
-              Understand your fence quote with our transparent pricing.
-            </li>
-            <li
-              class="MainBanner-listItem"
-            >
-              <div
-                class="icon"
-              >
-                <div>
-                  <div
-                    data-src="icon-check-mark.svg"
-                    src=""
-                  />
-                </div>
-              </div>
-              Enjoy your beautiful new fence built by our team of skilled local craftsmen.
-            </li>
-          </ul>
-          <a
-            class="MainBanner-callLink"
-            data-track-call="true"
-            href="tel:+15106981800"
-          >
+                 Call us now
+              </button>
+            </a>
             <div
-              class="icon"
+              class="BannerRating"
             >
-              <div>
+              <div
+                class="BannerRating-stars"
+              >
+                <ul
+                  class="stars-group"
+                >
+                  <li
+                    class="rating-icon star"
+                  >
+                    <div>
+                      <div>
+                        <div
+                          data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                          src=""
+                        />
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="rating-icon star"
+                  >
+                    <div>
+                      <div>
+                        <div
+                          data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                          src=""
+                        />
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="rating-icon star"
+                  >
+                    <div>
+                      <div>
+                        <div
+                          data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                          src=""
+                        />
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="rating-icon star"
+                  >
+                    <div>
+                      <div>
+                        <div
+                          data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                          src=""
+                        />
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="rating-icon star half"
+                  >
+                    <div>
+                      <div>
+                        <div
+                          data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
+                          src=""
+                        />
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <p>
+                  4.7
+                  /5
+                </p>
+              </div>
+              <div
+                class="BannerRating-ratingText"
+              >
+                <div>
+                  <p>
+                    Based on 
+                    2,404
+                     reviews
+                  </p>
+                  <p>
+                    & 
+                    10,100
+                     fences installed!
+                  </p>
+                </div>
                 <div
-                  data-src="icon-phone-green.svg"
-                  src=""
-                />
-              </div>
-            </div>
-            <span>
-              Call us now 
-              (510) 698-1800
-            </span>
-          </a>
-          <div
-            class="BannerRating"
-          >
-            <div
-              class="BannerRating-stars"
-            >
-              <ul
-                class="stars-group"
-              >
-                <li
-                  class="rating-icon star"
+                  class="is-ArrowImg"
                 >
                   <div>
-                    <div>
-                      <div
-                        data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
-                        src=""
-                      />
-                    </div>
+                    <div
+                      data-src="arrow-flat.svg"
+                      src=""
+                    />
                   </div>
-                </li>
-                <li
-                  class="rating-icon star"
-                >
-                  <div>
-                    <div>
-                      <div
-                        data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
-                        src=""
-                      />
-                    </div>
-                  </div>
-                </li>
-                <li
-                  class="rating-icon star"
-                >
-                  <div>
-                    <div>
-                      <div
-                        data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
-                        src=""
-                      />
-                    </div>
-                  </div>
-                </li>
-                <li
-                  class="rating-icon star"
-                >
-                  <div>
-                    <div>
-                      <div
-                        data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
-                        src=""
-                      />
-                    </div>
-                  </div>
-                </li>
-                <li
-                  class="rating-icon star half"
-                >
-                  <div>
-                    <div>
-                      <div
-                        data-src="/assets/ff55facd77386d26dd4b3766dc6e7c20.svg"
-                        src=""
-                      />
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <p>
-                4.7
-                /5
-              </p>
-            </div>
-            <div
-              class="BannerRating-ratingText"
-            >
-              <div>
-                <p>
-                  Based on 
-                  2,404
-                   reviews
-                </p>
-                <p>
-                  & 
-                  10,100
-                   fences installed!
-                </p>
-              </div>
-              <div
-                class="is-ArrowImg"
-              >
-                <div>
-                  <div
-                    data-src="arrow-flat.svg"
-                    src=""
-                  />
                 </div>
               </div>
             </div>
-          </div>
+          </aside>
         </section>
+        <p
+          class="is-tablet"
+        >
+          or
+        </p>
         <section
-          class="desktop-length flex-spacer MainBanner-form"
+          class="CityBanner-form"
         >
           Tell Us Form
         </section>
-      </div>
+      </section>
     </section>
     <section
       class="wrapper-1180"
@@ -319,11 +648,6 @@ exports[`AppCityPage should render 1`] = `
           </span>
         </div>
       </div>
-    </section>
-    <section
-      class="mobile-length"
-    >
-      Tell Us Form
     </section>
     <section
       class="wrapper-1180 CityReviews"

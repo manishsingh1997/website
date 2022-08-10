@@ -1,6 +1,15 @@
 @import '~@ergeon/core-components/src/components/variables.scss';
 
 .TellUsForm {
+  @mixin break-text-tablet {
+      br {
+        display: none;
+        @include tablet {
+          display: unset;
+        }
+      }
+    }
+
   display: flex;
   background-color: $gray-5;
   flex-flow: column;
@@ -10,12 +19,19 @@
 
   &-Wrapper {
     width: 30%;
+    @include phone{
+      width: 100%;
+    }
 
     h2 {
       @include tablet() {
         font-size: $h4-size;
         line-height: $h4-line-height;
       }
+    }
+
+    .TellUsForm-Header{
+      @include break-text-tablet();
     }
 
     p {

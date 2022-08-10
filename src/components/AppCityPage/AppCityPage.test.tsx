@@ -1,9 +1,13 @@
 import React from 'react';
-import {render} from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
+import '@testing-library/jest-dom';
+
 import cities from '../../data/cities-full-data.json';
 import AppCityPage from './AppCityPage';
 import {City} from './types';
 import {getAsset} from './utils';
+import CityBanner from './CityBanner';
+import MainBanner from './MainBanner';
 
 jest.mock('../HomePage/QASection', () => () => <>FAQ</>);
 jest.mock('../NotFoundPage', () => () => <>Not found</>);
@@ -21,4 +25,21 @@ describe('AppCityPage', () => {
     expect(images).toHaveLength(10);
     expect(image.src).toBe(getAsset(cities[0].packages.data.wood[0].img, 'jpeg'));
   });
+
+  it('Should render city banner', () => {
+    const city = 'Coruscant';
+    render(<CityBanner city={city}/>);
+
+    const cityName = screen.getByText(new RegExp(city, 'ig'));
+    const cityBanner = screen.getByTestId(/city-banner/);
+    expect(cityName).toBeInTheDocument();
+    expect(cityBanner).toMatchSnapshot();
+  })
+
+  it('Should render Main city banner', () => {
+    render(<MainBanner bullets={['one', 'two']} phone='+1234' state='CA' title='California' />);
+
+    const cityBanner = screen.getByTestId(/main-banner/);
+    expect(cityBanner).toMatchSnapshot();
+  })
 });

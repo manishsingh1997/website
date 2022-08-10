@@ -49,7 +49,7 @@ const TellUsForm = (props: TellUsFormProps) => {
     return (
       <section className="TellUsForm">
         <div className="TellUsForm-Wrapper">
-          <h2 className="h3 TellUsForm-Header">Let’s talk about your fence project</h2>
+          <h2 className="h3 TellUsForm-Header">Let’s talk about <br/>your fence project</h2>
           <div>
             <SimpleLeadForm
               configs={configs}
