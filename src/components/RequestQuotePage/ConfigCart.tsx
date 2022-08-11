@@ -9,6 +9,7 @@ import {getFencequotingURL} from '../../utils/urls';
 import LoadingErrorModal from '../common/ErroredLoadingModal';
 import StyleBrowserWrapper from './Components/StyleBrowserWrapper';
 import {Config, LeadConfigType} from './types';
+import {getConfigName} from './utils';
 import './ConfigCart.scss';
 
 type ConfigCartProps = {
@@ -59,8 +60,8 @@ class ConfigCart extends React.Component<ConfigCartProps, ConfigCartState> {
     return reduce(this.props.configs, (total, {price, units}) => total + parseInt(price, 10) * units, 0);
   }
 
-  isItFence(config: Config) {
-    return config.catalog_type === CatalogType.FENCE;
+  isItGate(config: Config) {
+    return config.catalog_type === CatalogType.GATE;
   }
 
   editConfig(index: number) {
@@ -144,11 +145,11 @@ class ConfigCart extends React.Component<ConfigCartProps, ConfigCartState> {
   renderConfig(config: Config, index: number) {
     const {zipcode} = this.props;
     const DEFAULT_FENCE_SIDE_LENGTH = 6;
-    const isFenceConfig = this.isItFence(config);
+    const isGateConfig = this.isItGate(config);
     const length = (config?.units || DEFAULT_FENCE_SIDE_LENGTH).toString();
-    const priceText = isFenceConfig
-      ? `~${Math.round(parseInt(config.price, 10))}/ft`
-      : `~${Math.round(parseInt(config.price, 10))}`;
+    const priceText = isGateConfig
+      ? `~${Math.round(parseInt(config.price, 10))}`
+      : `~${Math.round(parseInt(config.price, 10))}/ft`;
 
     return (
       <div data-testid={`config-${config.id}`} key={config.id}>
@@ -172,7 +173,7 @@ class ConfigCart extends React.Component<ConfigCartProps, ConfigCartState> {
             </div>
             <div className="config-item__info">
               <div className="config-item__title">
-                <span data-testid={`config-title-${config.id}`}>{isFenceConfig ? 'Fence' : 'Gate'}</span>
+                <span data-testid={`config-title-${config.id}`}>{getConfigName(config.catalog_type)}</span>
                 <span className="config-item__length">
                   {config.price && (
                     <div className="config-item__price" data-testid={`config-price-${config.id}`}>
@@ -215,7 +216,7 @@ class ConfigCart extends React.Component<ConfigCartProps, ConfigCartState> {
                     Delete
                   </Button>
                 </div>
-                {isFenceConfig && (
+                {!isGateConfig && (
                   <div className="config-item__length-field">
                     <span className="config-item__length-label">Length:</span>
                     <Input
@@ -232,7 +233,7 @@ class ConfigCart extends React.Component<ConfigCartProps, ConfigCartState> {
                     <span className="config-item__length-field-unit">ft</span>
                   </div>
                 )}
-                {!isFenceConfig && (
+                {isGateConfig && (
                   <div className="config-item__length-field">
                     <span className="config-item__length-label">Count:</span>
                     <Input

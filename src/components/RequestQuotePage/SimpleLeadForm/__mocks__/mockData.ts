@@ -1,4 +1,4 @@
-import { CatalogType } from '@ergeon/3d-lib';
+import {CatalogType} from '@ergeon/3d-lib';
 
 export const mockAddress = {
   primary_number: '123',
@@ -8,7 +8,7 @@ export const mockAddress = {
   zipcode: '94301',
   formated_address: '123 Palo Alto Avenue, Palo Alto, CA 94301',
   raw_address: '123 Palo Alto Avenue, Palo Alto, CA 94301',
-}
+};
 
 export const mockProps = {
   onSubmit: () => jest.fn(),
@@ -23,7 +23,7 @@ export const mockProps = {
       price: '',
       units: '',
       grade: '',
-    }
+    },
   ],
   user: {
     email: '',

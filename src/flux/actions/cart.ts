@@ -1,10 +1,12 @@
 import {Action, Dispatch} from 'redux';
 import some from 'lodash/some';
 import random from 'lodash/random';
-import {CatalogType, calcUtils, attrs} from '@ergeon/3d-lib';
+import {calcUtils, CatalogType} from '@ergeon/3d-lib';
 import moment from 'moment';
 import {getPriceAndDescription} from '../../api/lead';
 import {Config, Lead, LeadConfigType} from '../../components/RequestQuotePage/types';
+
+const {getCatalogType} = calcUtils;
 
 export const actionTypes = {
   ADD_CONFIG: 'ADD_CONFIG',
@@ -39,14 +41,12 @@ export const addConfigFromSchema = function (
   index = -1
 ) {
   return (dispatch: Dispatch<Action>) => {
-    const {FRAME_STYLE} = attrs;
-
     if (some(configs, (config) => config.code === schemaCode)) return;
     const itemId = random(0, 1, true).toString(36).slice(2);
 
     const item: Config = {
       id: itemId,
-      catalog_type: data && data[FRAME_STYLE.id] ? CatalogType.FENCE : CatalogType.GATE,
+      catalog_type:  data ? getCatalogType(data): CatalogType.FENCE,
       code: schemaCode,
       product: data,
       preview: '',

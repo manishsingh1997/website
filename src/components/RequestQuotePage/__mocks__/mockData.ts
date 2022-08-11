@@ -1,8 +1,10 @@
 /* eslint-disable max-len */
+import {CatalogType} from '@ergeon/3d-lib';
+
 export const selectedConfigs = [
   {
     id: 'test-config-id',
-    catalog_type: 'fence-side',
+    catalog_type: CatalogType.FENCE,
     code: 'schema=3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,32,47,48,49,130,144&code=F6,NU,SL8,BB,FT,PK8,RC,POS,PT4,PPT,PD2,PH8,PRNA,KZ,K0,R3,LZ,L0,RW0,CZS,RC,R24,RCZ,SLZ,RPT',
     product: null,
     preview: null,
@@ -15,7 +17,7 @@ export const selectedConfigs = [
   },
   {
     id: 'test-gate-config-id',
-    catalog_type: 'fence-gate',
+    catalog_type: CatalogType.GATE,
     code: 'schema=24,25,26,27,28,29,30,31,212,2132&code=SG,GDT,GF6,GW4,GRCC,GP4,GZSF,GLSLK,GODNS,LPNA',
     product: null,
     preview: null,

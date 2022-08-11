@@ -1,4 +1,4 @@
-import { ProductConfigType } from '@ergeon/3d-lib';
+import {CatalogType, ProductConfigType} from '@ergeon/3d-lib';
 // eslint-disable-next-line import/named
 import {RouteComponentProps} from 'react-router-dom';
 
@@ -19,12 +19,12 @@ export interface Address {
 
 export interface Config {
   id: string;
-  catalog_type: string;
+  catalog_type: CatalogType;
   code: string;
   product: ProductConfigType | null;
   preview: string | null;
   description: string;
-  grade: number,
+  grade: number;
   price: string;
   units: number;
   timestamp: number;
@@ -72,14 +72,14 @@ export interface LeadConfigType {
   address?: string;
   product?: string;
   zipcode: string;
-  grade?: number,
+  grade?: number;
   data: ProductConfigType | null;
   schemaCode: string;
   length?: number;
   configs: Config[];
 }
 
-export interface RequestQuotePageProps extends  RouteComponentProps {
+export interface RequestQuotePageProps extends RouteComponentProps {
   addConfig: () => void;
   address: string;
   auth: Auth;
@@ -92,7 +92,7 @@ export interface RequestQuotePageProps extends  RouteComponentProps {
   updateLeadFromAddress: (leadAddress: LeadAddress) => void;
   updateProduct: (product: string) => void;
   zipcode: string;
-};
+}
 
 export type RequestQuotePageState = {
   showThankYou: boolean;

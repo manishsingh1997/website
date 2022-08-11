@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { isMinimumValidAddress } from '../utils';
+import {isMinimumValidAddress} from '../utils';
 
 describe('SimpleLeadForm Utils tests', () => {
   describe('isMinimumValidAddress tests', () => {
@@ -33,7 +33,7 @@ describe('SimpleLeadForm Utils tests', () => {
     it('should return false if address is missing minimum valid fields', () => {
       const address = {
         formatted_address: 'United States',
-        raw_address: 'United States'
+        raw_address: 'United States',
       };
       const val = isMinimumValidAddress(address);
       expect(val).toBe(false);

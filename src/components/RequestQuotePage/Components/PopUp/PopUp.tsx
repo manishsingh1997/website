@@ -26,7 +26,7 @@ const PopUp = (props: PopUpProps) => {
 
       return () => {
         unblockBodyScroll();
-      }
+      };
     },
     [visible]
   );

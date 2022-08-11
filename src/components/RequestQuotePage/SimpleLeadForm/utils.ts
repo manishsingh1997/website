@@ -33,10 +33,5 @@ export const getOrder = (configs: Config[], lead: Lead) => {
 };
 
 export const isMinimumValidAddress = (value: Address | undefined) => {
-  return Boolean(
-    value &&
-    typeof value === 'object' &&
-    value['city_name'] &&
-    value['state_abbreviation']
-  );
+  return Boolean(value && typeof value === 'object' && value['city_name'] && value['state_abbreviation']);
 };

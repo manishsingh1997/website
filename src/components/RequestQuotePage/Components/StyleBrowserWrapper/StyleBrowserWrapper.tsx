@@ -28,7 +28,7 @@ const StyleBrowserWrapper = (props: StyleBrowserWrapperProps) => {
     return () => {
       // @ts-ignore
       tawk.tawkAPILoader.then((TawkAPI) => TawkAPI.showWidget());
-    }
+    };
   }, []);
 
   const handleSelectionCompleted = (model: string) => {

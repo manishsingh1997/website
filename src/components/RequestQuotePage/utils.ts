@@ -1,3 +1,6 @@
+import {CatalogType} from '@ergeon/3d-lib';
+import {ConfigItemsNames} from './constants';
+
 export type Address = {
   primary_number?: string;
   street_name?: string;
@@ -29,4 +32,8 @@ export const formatPhoneNumber = (phoneNumber: string) => {
     return `(${match[1]}) ${match[2]}-${match[3]}`;
   }
   return null;
+};
+
+export const getConfigName = (catalogType: CatalogType) => {
+  return ConfigItemsNames[catalogType] ?? ConfigItemsNames[CatalogType.FENCE];
 };
