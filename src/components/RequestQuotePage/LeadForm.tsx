@@ -12,7 +12,7 @@ import {createValidator, phone, email, required} from '../../utils/validation';
 import {submitLeadArrived} from '../../api/lead';
 import {identify, track, trackError, trackTawkLeadEvent} from '../../utils/analytics';
 import {CUSTOMER_LEAD_CREATED} from '../../utils/events';
-import {DEFAULT_SOURCE_VALUE} from '../../website/constants';
+import {DEFAULT_SOURCE_VALUE, LEAD_FULL_NAME_MAX_LENGTH} from '../../website/constants';
 import {parseError, showUpcomingFeatures, getAdvancedEditorUrl} from '../../utils/utils';
 import AddNote from './Components/AddNote';
 import {Address, Config, Lead, User} from './types';
@@ -259,6 +259,7 @@ export default class LeadForm extends React.Component<LeadFormProps, LeadFormSta
             isDisabled={loading}
             isValid={validFields?.name !== undefined ? validFields?.name : null}
             label="Your name"
+            maxLength={LEAD_FULL_NAME_MAX_LENGTH}
             name="name"
             onChange={this.handleFieldChange.bind(this)}
             placeholder="e.g. John Smith"
