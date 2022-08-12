@@ -17,7 +17,7 @@ const PreviewImage = ({previewImage, isPlaceholder, isLoading, handleLoad}: Prev
   return (
     <div className="preview-box">
       <img className={previewImageClassNames} onLoad={handleLoad} src={previewImage} />
-      <img className="preview-3d" src={preview3DIcon} />
+      {!isPlaceholder && <img className="preview-3d" src={preview3DIcon} />}
     </div>
   );
 };
