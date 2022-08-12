@@ -13,6 +13,8 @@ jest.mock('../HomePage/QASection', () => () => <>FAQ</>);
 jest.mock('../NotFoundPage', () => () => <>Not found</>);
 jest.mock('../../containers/TellUsForm', () => () => <>Tell Us Form</>);
 
+const CITY_BANNER_PHONE = '(543) 094 5738';
+
 describe('AppCityPage', () => {
   it('should render', () => {
     const {container, getAllByTestId} = render(
@@ -28,7 +30,7 @@ describe('AppCityPage', () => {
 
   it('Should render city banner', () => {
     const city = 'Coruscant';
-    render(<CityBanner city={city}/>);
+    render(<CityBanner city={city} phone={CITY_BANNER_PHONE}/>);
 
     const cityName = screen.getByText(new RegExp(city, 'ig'));
     const cityBanner = screen.getByTestId(/city-banner/);

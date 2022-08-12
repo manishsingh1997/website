@@ -36,7 +36,7 @@ const AppCityPage = (props: AppCityPageProps) => {
       </Helmet>
       <div className="AppCityPage">
         {showUpcomingFeatures('ENG-16970') 
-        ? <CityBanner city={city.city} />
+        ? <CityBanner city={city.city} phone={city.phone}/>
         : <MainBanner
               bullets={city.header.bullets}
               phone={city.phone}

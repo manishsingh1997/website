@@ -11,10 +11,11 @@ import './CityBanner.scss';
 
 type CityBannerProps = {
   city: string;
+  phone: string;
 };
 
 const CityBanner = (props: CityBannerProps) => {
-  const {city} = props;
+  const {city, phone} = props;
   return (
     <section className="CityBanner" data-testid="city-banner">
       <section className="CityBanner-wrapper wrapper-1180">
@@ -32,7 +33,7 @@ const CityBanner = (props: CityBannerProps) => {
               </h3>
               <h3 className="h4">Zero hassle. Fair prices. No hidden fees.</h3>
             </aside>
-            <a className="CityBanner-call" href="tel:+16503004854">
+            <a className="CityBanner-call" href={`tel:+1${phone}`}>
               <Button className="is-action" flavor="action" taste="solid">
                 <ReactSVG src={IconPhone} /> Call us now
               </Button>

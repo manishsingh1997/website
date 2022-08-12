@@ -227,7 +227,7 @@ exports[`AppCityPage Should render city banner 1`] = `
         </aside>
         <a
           class="CityBanner-call"
-          href="tel:+16503004854"
+          href="tel:+1(543) 094 5738"
         >
           <button
             class="button button--action button--size__medium taste__solid is-action"
@@ -410,7 +410,7 @@ exports[`AppCityPage should render 1`] = `
             </aside>
             <a
               class="CityBanner-call"
-              href="tel:+16503004854"
+              href="tel:+1(510) 698-1800"
             >
               <button
                 class="button button--action button--size__medium taste__solid is-action"
