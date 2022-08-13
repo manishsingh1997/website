@@ -14,14 +14,6 @@ Array [
       ],
       "title": "The best Fence installation company in Palo Alto",
     },
-    "license": Object {
-      "url": "https://www2.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1040925",
-    },
-    "licenses": Array [
-      "C13 - Fencing",
-      "C27 - Landscaping",
-      "C8 - Concrete",
-    ],
     "phone": "(408) 495-2671",
     "product": Object {
       "type": "Fence",
@@ -83,14 +75,6 @@ Array [
       ],
       "title": "The best Fence installation company in Los Angeles",
     },
-    "license": Object {
-      "url": "https://www2.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1040925",
-    },
-    "licenses": Array [
-      "C13 - Fencing",
-      "C27 - Landscaping",
-      "C8 - Concrete",
-    ],
     "phone": "(626) 873-8531",
     "product": Object {
       "type": "Fence",
@@ -164,6 +148,14 @@ Array [
     },
     "city": "Palo Alto",
     "county": "Santa Clara County",
+    "license": Object {
+      "url": "https://www2.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1040925",
+    },
+    "licenses": Array [
+      "C13 - Fencing",
+      "C27 - Landscaping",
+      "C8 - Concrete",
+    ],
     "packages": Object {
       "data": Object {
         "box-wire": Array [
@@ -265,6 +257,14 @@ Array [
     },
     "city": "Los Angeles",
     "county": "Los Angeles County",
+    "license": Object {
+      "url": "https://www2.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1040925",
+    },
+    "licenses": Array [
+      "C13 - Fencing",
+      "C27 - Landscaping",
+      "C8 - Concrete",
+    ],
     "packages": Object {
       "data": Object {
         "chain-link": Array [

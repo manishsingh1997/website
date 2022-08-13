@@ -16,11 +16,6 @@ const mapping = {
     'header bullet 2': ['header', 'bullets', 1],
     'header bullet 3': ['header', 'bullets', 2],
     'header bullet 4': ['header', 'bullets', 3],
-    // License
-    'license URL': ['license', 'url'],
-    'license 1': ['licenses', 0],
-    'license 2': ['licenses', 1],
-    'license 3': ['licenses', 2],
     // Ratings
     'angi score': ['rating', 'Angi'],
     'bbb score': ['rating', 'BBB'],
@@ -58,6 +53,11 @@ const mapping = {
     city: ['city'],
     county: ['county'],
     state: ['state'],
+    // License
+    'license URL': ['license', 'url'],
+    'license 1': ['licenses', 0],
+    'license 2': ['licenses', 1],
+    'license 3': ['licenses', 2],
     // Packages
     'packages title': ['packages', 'title'],
     'packages description': ['packages', 'description'],

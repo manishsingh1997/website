@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useMemo} from 'react';
 import {NavLink, useHistory} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
+import sortBy from 'lodash/sortBy';
 
 import {Button, NavLinkContext, Notification, SimpleTopPanel, utils} from '@ergeon/core-components';
 
@@ -68,12 +69,12 @@ const Layout = (props: LayoutProps) => {
     return !checkRouteList(NO_BUTTON_PAGES, location);
   }, [location]);
 
-  const locationsList = useMemo(() => {
-    return cities.map((city) => ({
+  const locationsList = useMemo(() => (
+    sortBy(cities, 'city').map((city) => ({
       text: city.city,
       url: `${CITIES_PAGE_PATH}/${city.slug}`,
-    }));
-  }, [cities]);
+    }))
+  ), [cities]);
 
   const pdfDetails = useMemo(() => {
     return (
@@ -144,7 +145,7 @@ const Layout = (props: LayoutProps) => {
           />
         )}
         <AddressUpdatePopup />
-        {isShowGetAQuoteButton && 
+        {isShowGetAQuoteButton &&
           <MobileBottomPanel >
             <Button
               flavor="primary"

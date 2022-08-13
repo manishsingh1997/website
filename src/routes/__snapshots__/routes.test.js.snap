@@ -214,6 +214,8 @@ exports[`Routes Cities endpoints 1`] = `
    
   Route to /fences/cities/district-of-columbia-washington-dc
    
+  Route to /fences/cities/philadelphia-county-philadelphia-pa
+   
   Route to /fences/cities/alameda-county-albany-ca
    
   Redirect to /fences/cities/alameda-county-berkeley-ca for
@@ -478,6 +480,123 @@ exports[`Routes Cities endpoints 1`] = `
   Route to /fences/cities/brazoria-county-rosharon-tx
    
   Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/bucks-county-bensalem-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-bristol-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-buckingham-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-carversville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-chalfont-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-croydon-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-doylestown-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-dublin-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-erwinna-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-fairless-hills-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-feasterville-trevose-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-fountainville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-furlong-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-jamison-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-kintnersville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-langhorne-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-levittown-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-line-lexington-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-milford-square-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-morrisville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-new-hope-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-newtown-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-ottsville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-perkasie-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-pipersville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-point-pleasant-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-quakertown-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-richboro-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-richlandtown-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-sellersville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-silverdale-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-southampton-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-springtown-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-trumbauersville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-upper-black-eddy-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-warminster-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-warrington-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-washington-crossing-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/bucks-county-wycombe-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
   Route to /fences/cities/butts-county-jenkinsburg-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
@@ -550,6 +669,102 @@ exports[`Routes Cities endpoints 1`] = `
   Route to /fences/cities/cherokee-county-woodstock-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/chester-county-atglen-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-avondale-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-berwyn-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-brandamore-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-chester-springs-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-coatesville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-cochranville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-devon-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-downingtown-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-elverson-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-exton-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-glenmoore-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-honey-brook-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-immaculata-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-kennett-square-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-kimberton-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-landenberg-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-lincoln-university-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-malvern-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-modena-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-paoli-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-parker-ford-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-parkesburg-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-phoenixville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-pomeroy-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-pottstown-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-spring-city-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-thorndale-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-toughkenamon-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-unionville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-west-chester-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/chester-county-west-grove-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
   Route to /fences/cities/clayton-county-conley-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
@@ -823,6 +1038,120 @@ exports[`Routes Cities endpoints 1`] = `
   Route to /fences/cities/dekalb-county-tucker-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
+  Route to /fences/cities/delaware-county-aston-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-brookhaven-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-broomall-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-bryn-mawr-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-chadds-ford-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-chester-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-chester-heights-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-cheyney-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-clifton-heights-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-crum-lynne-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-darby-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-drexel-hill-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-essington-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-folcroft-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-folsom-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-garnet-valley-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-glen-mills-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-glenolden-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-havertown-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-holmes-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-lansdowne-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-marcus-hook-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-media-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-morton-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-newtown-square-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-norwood-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-philadelphia-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-prospect-park-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-ridley-park-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-sharon-hill-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-springfield-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-swarthmore-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-thornton-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-upper-darby-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-villanova-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-wallingford-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-wayne-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/delaware-county-woodlyn-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
   Route to /fences/cities/denton-county-argyle-tx
    
   Redirect to /fences/cities/tarrant-county-fort-worth-tx for
@@ -916,6 +1245,24 @@ exports[`Routes Cities endpoints 1`] = `
   Route to /fences/cities/el-dorado-county-shingle-springs-ca
    
   Redirect to /fences/cities/el-dorado-county-el-dorado-hills-ca for
+  Route to /fences/cities/ellis-county-ennis-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/ellis-county-ferris-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/ellis-county-midlothian-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/ellis-county-palmer-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/ellis-county-red-oak-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
+  Route to /fences/cities/ellis-county-waxahachie-tx
+   
+  Redirect to /fences/cities/dallas-county-dallas-tx for
   Route to /fences/cities/fayette-county-brooks-ga
    
   Redirect to /fences/cities/fulton-county-atlanta-ga for
@@ -1273,6 +1620,30 @@ exports[`Routes Cities endpoints 1`] = `
   Route to /fences/cities/howard-county-woodstock-md
    
   Redirect to /fences/cities/baltimore-city-baltimore-md for
+  Route to /fences/cities/johnson-county-alvarado-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/johnson-county-burleson-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/johnson-county-cleburne-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/johnson-county-godley-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/johnson-county-joshua-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/johnson-county-keene-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/johnson-county-lillian-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
+  Route to /fences/cities/johnson-county-venus-tx
+   
+  Redirect to /fences/cities/tarrant-county-fort-worth-tx for
   Route to /fences/cities/kendall-county-bergheim-tx
    
   Redirect to /fences/cities/bexar-county-san-antonio-tx for
@@ -1822,27 +2193,192 @@ exports[`Routes Cities endpoints 1`] = `
   Route to /fences/cities/monterey-county-seaside-ca
    
   Redirect to /fences/cities/monterey-county-salinas-ca for
+  Route to /fences/cities/montgomery-county-abington-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-ambler-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-ardmore-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-bala-cynwyd-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-blue-bell-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-bridgeport-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-bryn-athyn-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-cheltenham-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-collegeville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-colmar-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
   Route to /fences/cities/montgomery-county-conroe-tx
    
   Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/montgomery-county-conshohocken-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-dresher-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-elkins-park-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-flourtown-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-fort-washington-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-frederick-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-gilbertsville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-gladwyne-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-glenside-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-green-lane-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-gwynedd-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-gwynedd-valley-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-harleysville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-hatboro-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-hatfield-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-horsham-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-huntingdon-valley-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-jenkintown-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-king-of-prussia-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-lafayette-hill-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-lansdale-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
   Route to /fences/cities/montgomery-county-magnolia-tx
    
   Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/montgomery-county-merion-station-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-mont-clare-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-montgomeryville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-narberth-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
   Route to /fences/cities/montgomery-county-new-caney-tx
    
   Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/montgomery-county-norristown-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-north-wales-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-oaks-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-oreland-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-pennsburg-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-perkiomenville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
   Route to /fences/cities/montgomery-county-pinehurst-tx
    
   Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/montgomery-county-plymouth-meeting-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
   Route to /fences/cities/montgomery-county-porter-tx
    
   Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/montgomery-county-pottstown-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-red-hill-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-royersford-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-sassamansville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-schwenksville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-skippack-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-souderton-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
   Route to /fences/cities/montgomery-county-splendora-tx
    
   Redirect to /fences/cities/harris-county-houston-tx for
   Route to /fences/cities/montgomery-county-spring-tx
    
   Redirect to /fences/cities/harris-county-houston-tx for
+  Route to /fences/cities/montgomery-county-spring-house-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-telford-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-willow-grove-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-wyncote-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-wynnewood-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
+  Route to /fences/cities/montgomery-county-zieglerville-pa
+   
+  Redirect to /fences/cities/philadelphia-county-philadelphia-pa for
   Route to /fences/cities/napa-county-american-canyon-ca
    
   Redirect to /fences/cities/solano-county-vallejo-ca for
@@ -2687,6 +3223,9 @@ exports[`Routes Cities endpoints 1`] = `
    
   Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
   Route to /fences/cities/ventura-county-oxnard-ca
+   
+  Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
+  Route to /fences/cities/ventura-county-piru-ca
    
   Redirect to /fences/cities/ventura-county-thousand-oaks-ca for
   Route to /fences/cities/ventura-county-point-mugu-nawc-ca

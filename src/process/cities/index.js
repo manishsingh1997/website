@@ -10,8 +10,8 @@ const {authorize} = require('./drive');
 const mapping = require('./mapping');
 const {getCitySlug, parseSheet} = require('./parsing');
 
-const CITIES_END_ROW_IDX = 107;
-const REDIRECTS_END_ROW_IDX = 1058;
+const CITIES_END_ROW_IDX = 108;
+const REDIRECTS_END_ROW_IDX = 1241;
 
 const SHEET_ID = '14w3hviutTV0xMgiamxqIPTsSMUWR01jCUdpJJsA3j3Q';
 const SHEET_CITIES_DATA = `City Multiproduct Page (template)!A1:AN${CITIES_END_ROW_IDX}`;
