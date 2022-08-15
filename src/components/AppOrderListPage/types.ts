@@ -1,8 +1,9 @@
-import { Order } from '../types';
+import {HouseType, Order} from '../types';
 
 export type AppOrdersListPageProps = {
-  getOrders: (customerGID: string) => void,
-  isListLoading: boolean,
-  listError: Error[] | null,
-  orders: Order[],
-}
+  getOrders: (customerGID: string) => void;
+  isListLoading: boolean;
+  listError: Error[] | null;
+  orders: Order[];
+  selectedHouse?: HouseType;
+};

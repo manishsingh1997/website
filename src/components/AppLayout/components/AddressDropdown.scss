@@ -1,0 +1,52 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
+.AddressDropdown {
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-weight: normal;
+
+  &-title {
+    display: flex;
+    width: 100%;
+
+    &:hover {
+      background-color: $gray-6;
+      cursor: pointer;
+    }
+
+    &.active {
+      background-color: $gray-6;
+      font-weight: 600;
+    }
+  }
+
+  .siblings-list-item {
+    .add-icon {
+      height: $v-12;
+      margin-right: $h-10 - 2;
+    }
+
+    svg path {
+      fill: $gray-3;
+    }
+  }
+
+  i {
+    margin-left: $h-5;
+    transition: transform 0.25s ease-in;
+  }
+
+  .opened-dropdown-menu--icon {
+    transform: rotate(180deg);
+  }
+
+  &-options {
+    position: absolute;
+    top: 80%;
+    left: 2%;
+    width: 96%;
+    background-color: $white;
+    z-index: $z-index-dropdown;
+  }
+}

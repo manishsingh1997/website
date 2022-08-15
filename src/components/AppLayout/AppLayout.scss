@@ -64,15 +64,16 @@ $content-max-width: 700px;
       }
     }
 
-    &-User {
+    &-Header {
       padding: $v-12 $h-20;
       margin: 0;
+      color: $black-3;
     }
   }
 
   .customer-app-sidebar {
     max-width: $sidebar-max-width;
-    overflow: hidden;
+    overflow: visible;
     padding-top: $v-30;
     width: 100%;
 

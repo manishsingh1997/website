@@ -8,7 +8,7 @@ import {GetHouseDispatcher} from '../flux/actions/types';
 import {Action} from '../flux/store';
 import {AddAddressProps} from '../components/AppHouseListPage/types';
 
-type HousesProps = {
+export type HousesProps = {
   data: HouseType[];
   isListLoading: boolean;
   isPopupOpen: boolean;

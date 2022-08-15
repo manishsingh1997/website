@@ -2,7 +2,7 @@ import {HouseType} from '../../components/types';
 import {ParsedAPIErrorType} from '../../utils/types';
 import {HouseActionTypes} from '../actions/app-houses';
 
-type HouseReducerState = {
+export type HouseReducerState = {
   data: HouseType[] | null;
   isListLoading: boolean;
   isPopupOpen?: boolean;
@@ -10,7 +10,7 @@ type HouseReducerState = {
   listError: ParsedAPIErrorType | null;
 };
 
-type HouseReducerAction = {
+export type HouseReducerAction = {
   data: HouseType[] | HouseType;
   error: ParsedAPIErrorType;
   type: keyof typeof HouseActionTypes;

@@ -3,16 +3,22 @@ import '@testing-library/jest-dom';
 import {render} from '@testing-library/react';
 import AppLayout from '../index';
 import {mockLoggedInAuth, mockNotLoggedInAuth} from '../../AuthLogoutPage/__mocks__/mockAuth';
+import {AppLayoutProps} from '../types';
 
 const LEAD_ID = 'AdBh0inoUKGlH';
 const LOADER_TEST_ID = 'loader-image';
 const mockLocation = document.location;
-const appLayoutProps = {
+const appLayoutProps: AppLayoutProps = {
   auth: {
     ...mockLoggedInAuth,
   },
   location: {...mockLocation, search: '', pathname: `/app/${LEAD_ID}`},
   match: {params: {customerGid: LEAD_ID}, url: ''},
+  addHouse: () => null,
+  getHouses: () => null,
+  houses: [],
+  selectedHouse: null,
+  setSelectedHouse: () => null,
 };
 
 // Run react-router-dom without wrapping into a <Router />

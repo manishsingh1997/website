@@ -1,27 +1,27 @@
-import React, { useContext, useState, useCallback, useMemo } from 'react';
-import { DEFAULT_QUOTE_FILTER } from '../../utils/app-order';
+import React, {useContext, useState, useCallback, useMemo} from 'react';
+import {DEFAULT_QUOTE_FILTER} from '../../utils/app-order';
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
 import AppPage from '../../components/common/AppPage';
-import { Order } from '../types';
+import {Order} from '../types';
 import OrderDetailHeader from './OrderDetailHeader';
 import OrderDetail from './OrderDetail';
-import { SelectedOption } from './types';
+import {SelectedOption} from './types';
 
 import './index.scss';
 
 type AppOrderDetailPageProps = {
-  error?: Error,
-  fetchOrder: (customerGID: string, orderId: number) => void,
-  isLoading: boolean,
+  error?: Error;
+  fetchOrder: (customerGID: string, orderId: number) => void;
+  isLoading: boolean;
   match: {
-    params: { orderId: number }
-  },
-  orders: Record<number, Order>,
+    params: {orderId: number};
+  };
+  orders: Record<number, Order>;
 };
 
 const AppOrderDetailPage = (props: AppOrderDetailPageProps) => {
-  const { error, fetchOrder, isLoading, match, orders } = props;
-  const { orderId } = match.params;
+  const {error, fetchOrder, isLoading, match, orders} = props;
+  const {orderId} = match.params;
   const customerGID = useContext(CustomerGIDContext);
   const [selectedOption, setSelectedOption] = useState<SelectedOption>(DEFAULT_QUOTE_FILTER);
 
@@ -39,17 +39,13 @@ const AppOrderDetailPage = (props: AppOrderDetailPageProps) => {
         customerGID={customerGID}
         order={order}
         selectedOption={selectedOption}
-        setSelectedOption={setSelectedOption} />
+        setSelectedOption={setSelectedOption}
+      />
     );
   }, [customerGID, order, selectedOption]);
 
   const renderContent = useCallback(() => {
-    return (
-      <OrderDetail
-        customerGID={customerGID}
-        order={order}
-        selectedOption={selectedOption} />
-    );
+    return <OrderDetail customerGID={customerGID} order={order} selectedOption={selectedOption} />;
   }, [order, selectedOption, customerGID]);
 
   return (
@@ -62,6 +58,6 @@ const AppOrderDetailPage = (props: AppOrderDetailPageProps) => {
       renderHeader={renderHeader}
     />
   );
-}
+};
 
 export default AppOrderDetailPage;

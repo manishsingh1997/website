@@ -8,17 +8,25 @@ import homeIcon from '@ergeon/core-components/src/assets/icon-home-black.svg';
 import {getMyAccountMenuItems, getMyProjectsMenuItems} from '../../../data/customer-app';
 import {getUnsubscribeCodeFromQuery} from '../../../utils/app-notifications';
 import PathNavLink from '../../common/PathNavLink';
-import {MatchProps } from '../types';
+import {AddAddressProps} from '../../AppHouseListPage/types';
+import {MatchProps} from '../types';
+import {HouseType} from '../../types';
 import {MY_ACCOUNT_PATHS} from './constants';
+import AddressDropdown from './AddressDropdown';
 
 interface SideBarProps {
   location: Location;
   match: MatchProps;
-  userFullName?: string,
+  houses: HouseType[] | null;
+  selectedHouse: HouseType | null;
+  userFullName?: string;
+  customerGID?: number;
+  addHouse: (customerGID: number, address: AddAddressProps) => void;
+  setSelectedHouse: (data: HouseType) => void;
 }
 
 const SideBar = (props: SideBarProps) => {
-  const {location, match, userFullName} = props;
+  const {location, match, userFullName, customerGID, houses, setSelectedHouse, selectedHouse, addHouse} = props;
   const unsubscribedCode = getUnsubscribeCodeFromQuery(location.search) as string | null;
 
   const isMyAccount = useMemo(() => location.pathname.match(MY_ACCOUNT_PATHS), [location.pathname]);
@@ -44,21 +52,31 @@ const SideBar = (props: SideBarProps) => {
         <ReactSVG className="Icon-Home" src={homeIcon} />
         <p>My Projects</p>
       </>
-    )
+    );
   }, [isMyAccount]);
+
+  const menuHeader = useMemo(() => {
+    if (isMyAccount) {
+      return <li className="SideBar-Header">{userFullName}</li>;
+    }
+
+    return (
+      <AddressDropdown
+        addHouse={addHouse}
+        customerGID={customerGID}
+        houses={houses}
+        selectedHouse={selectedHouse}
+        setSelectedHouse={setSelectedHouse}
+      />
+    );
+  }, [customerGID, isMyAccount, houses, selectedHouse, addHouse, setSelectedHouse, userFullName]);
 
   return (
     <div className="SideBar">
-      <div className="SideBar-Title">
-        {sideBarTitle}
-      </div>
+      <div className="SideBar-Title">{sideBarTitle}</div>
       <div className="card shadow soft-border">
         <ul className="siblings-list">
-          {isMyAccount &&
-            <li className="SideBar-User">
-              {userFullName}
-            </li>
-          }
+          {menuHeader}
           {menuItems.map((menuItem) => (
             <PathNavLink activeClassName="active-link" key={`app-menu-${menuItem.title}`} to={menuItem.path}>
               <li

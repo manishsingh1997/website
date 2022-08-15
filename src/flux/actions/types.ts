@@ -3,6 +3,7 @@ import {Appointment} from '../../components/AppAppointmentsListPage/types';
 import {City} from '../../components/AppCityPage/types';
 import {HouseType} from '../../components/types';
 import {ParsedAPIErrorType} from '../../utils/types';
+import {HouseActionTypes} from './app-houses';
 
 export interface GetAppointmentRequest {
   type?: string;
@@ -21,6 +22,8 @@ export interface HouseRequest {
 export type GetHouseDispatcher = (dispatch: (props: HouseRequest) => Action) => void;
 
 export type SetHouseDispatcher = (dispatch: (props: HouseRequest) => Action) => void;
+
+export type HouseAction = {type: HouseActionTypes; data: HouseType};
 
 type CityRequest = {
   type?: string;

@@ -16,17 +16,8 @@ import {getInitalAddress, parseAddressData} from './utils';
 import './index.scss';
 
 const AppHouseListPage = (props: AppHouseListPageProps) => {
-  const {
-    getHouses,
-    addHouse,
-    editHouse,
-    removeHouse,
-    houses,
-    listError,
-    isListLoading,
-    isPopupOpen,
-    isSuccessfullyRemoved,
-  } = props;
+  const {addHouse, editHouse, removeHouse, houses, listError, isListLoading, isPopupOpen, isSuccessfullyRemoved} =
+    props;
 
   const customerGID = useContext(CustomerGIDContext);
 
@@ -62,10 +53,6 @@ const AppHouseListPage = (props: AppHouseListPageProps) => {
       );
     }
   }, [selectedHouse]);
-
-  const fetchData = useCallback(() => {
-    getHouses(customerGID);
-  }, [customerGID]);
 
   const onOpenAddHouseAddressPopup = () => {
     setSelectedHouse(null);
@@ -136,7 +123,6 @@ const AppHouseListPage = (props: AppHouseListPageProps) => {
       <AppPage
         className="house-list-page"
         error={listError}
-        fetchData={fetchData}
         isLoading={isListLoading}
         renderContent={renderContent}
         renderHeader={renderHeader}

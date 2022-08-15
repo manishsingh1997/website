@@ -1,21 +1,27 @@
-import React, { useEffect, useMemo } from 'react';
-import { isQuoteDetailURL, isUnsubscribeURL } from '../../utils/urls';
-import { AnonymousUser, SideBar, UserError, LayoutView } from './components';
-import { AppLayoutProps } from './types';
-import { initSmartLook } from './utils';
+import React, {useEffect, useMemo} from 'react';
+import {isQuoteDetailURL, isUnsubscribeURL} from '../../utils/urls';
+import {AnonymousUser, SideBar, UserError, LayoutView} from './components';
+import {AppLayoutProps} from './types';
+import {initSmartLook} from './utils';
 import BreadCrumbs from './components/BreadCrumbs';
 
 import './AppLayout.scss';
 
 const AppLayout = (props: AppLayoutProps) => {
   const {
-    auth: { isAuthLoading, isUserLoading, user, userError },
+    auth: {isAuthLoading, isUserLoading, user, userError},
     location,
     match,
     children,
+    getHouses,
+    addHouse,
+    setSelectedHouse,
+    houses,
+    selectedHouse,
   } = props;
   const isLoading = isAuthLoading || isUserLoading;
-  const isQuotePage = isQuoteDetailURL(location.pathname);
+
+  const isQuotePage = useMemo(() => isQuoteDetailURL(location.pathname), [location.pathname]);
 
   const requiresAuthentication = useMemo(() => {
     // Unsubscribe page is special case - authentication not needed
@@ -26,6 +32,12 @@ const AppLayout = (props: AppLayoutProps) => {
     }
     return true;
   }, [location, isQuotePage]);
+
+  useEffect(() => {
+    if (user?.gid) {
+      getHouses(user?.gid as unknown as number);
+    }
+  }, [user?.gid]);
 
   useEffect(() => {
     initSmartLook();
@@ -48,7 +60,16 @@ const AppLayout = (props: AppLayoutProps) => {
       ) : (
         <div className="cards-wrapper">
           <div className="customer-app-sidebar">
-            <SideBar location={location} match={match} userFullName={user?.full_name} />
+            <SideBar
+              addHouse={addHouse}
+              customerGID={user?.gid as unknown as number}
+              houses={houses}
+              location={location}
+              match={match}
+              selectedHouse={selectedHouse}
+              setSelectedHouse={setSelectedHouse}
+              userFullName={user?.full_name}
+            />
           </div>
           <div className="customer-app-wrapper">
             <div className="customer-app-breadcrumbs">

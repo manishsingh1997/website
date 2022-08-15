@@ -8,16 +8,16 @@ import {
   mockUpcomingAppointment,
   mockPastAppointment,
   mockUpcomingAppointmentId,
-  mockPastAppointmentId
+  mockPastAppointmentId,
 } from '../__mocks__/mockAppointments';
 import AppointmentsFilterSelector from '../AppointmentsFilterSelector';
 
 const areAppointmentsOnScreen = (ids: number[]) => {
-  ids.forEach(id => {
+  ids.forEach((id) => {
     const order = screen.queryByText(`Fence Installation #${id}`);
     expect(order).not.toBeNull();
   });
-}
+};
 
 describe('Rendering of App Appointments List Page', () => {
   it('should render component loading', () => {
@@ -27,6 +27,7 @@ describe('Rendering of App Appointments List Page', () => {
         getAppointments={jest.fn}
         isListLoading={true}
         listError={null}
+        selectedHouse={null}
       />
     );
     const title = screen.queryByText('Appointments');
@@ -43,6 +44,7 @@ describe('Rendering of App Appointments List Page', () => {
         getAppointments={jest.fn}
         isListLoading={false}
         listError={null}
+        selectedHouse={null}
       />
     );
     const title = screen.queryByText('Appointments');
@@ -62,9 +64,11 @@ describe('Rendering of App Appointments List Page', () => {
           getAppointments={jest.fn}
           isListLoading={false}
           listError={null}
+          selectedHouse={mockUpcomingAppointment.order.house}
         />
       </Router>
     );
+
     const title = screen.queryByText('Appointments');
     const loader = screen.queryByTestId('loader-image');
     const text = screen.queryByText('There are no appointments yet.');
@@ -91,14 +95,14 @@ describe('Rendering of App Appointments List Page', () => {
   });
 
   it('should break selected filter', () => {
-    
-    expect(() => render(
-      <AppointmentsFilterSelector
-      // @ts-ignore
-        selectedFilter={undefined}
-        setSelectedFilter={jest.fn}/>
-    )).toThrow('Selected filter not recognized.');
-
+    expect(() =>
+      render(
+        <AppointmentsFilterSelector
+          // @ts-ignore
+          selectedFilter={undefined}
+          setSelectedFilter={jest.fn}
+        />
+      )
+    ).toThrow('Selected filter not recognized.');
   });
-
 });

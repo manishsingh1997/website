@@ -16,6 +16,7 @@ export enum HouseActionTypes {
   REMOVE_HOUSE_START = 'REMOVE_HOUSE_START',
   REMOVE_HOUSE_DONE = 'REMOVE_HOUSE_DONE',
   REMOVE_HOUSE_ERROR = 'REMOVE_HOUSE_ERROR',
+  SET_SELECTED_HOUSE = 'SET_SELECTED_HOUSE',
 }
 
 export const getHouses = (customerGID: number) => {
@@ -30,6 +31,12 @@ export const getHouses = (customerGID: number) => {
           type: HouseActionTypes.GET_HOUSES_DONE,
           data: axiosResponse.data,
         });
+        if (axiosResponse.data?.length) {
+          dispatch({
+            type: HouseActionTypes.SET_SELECTED_HOUSE,
+            data: axiosResponse.data[0],
+          });
+        }
       })
       .catch((errorResponse) => {
         const error = parseAPIError(errorResponse);

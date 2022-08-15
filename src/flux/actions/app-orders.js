@@ -18,6 +18,7 @@ export const getOrders = (customerGID) => {
 
     try {
       const response = await getCustomerOrders(customerGID);
+
       dispatch({
         type: actionTypes.GET_ORDERS_DONE,
         data: response.data,

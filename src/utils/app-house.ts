@@ -7,3 +7,15 @@ export const getFormattedAddress = (houseData: HouseType) => {
   }
   console.warn('Cannot get formatted_address from houseData.');
 };
+
+export const getStreetFromAddress = (houseData: HouseType) => {
+  const formattedAddress = getFormattedAddress(houseData);
+
+  if (formattedAddress) {
+    const [street, finalAddress] = formattedAddress?.split(/,(.*)/s);
+
+    return [street?.trim(), finalAddress?.trim()];
+  }
+
+  return [];
+};

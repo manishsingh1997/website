@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import {Button} from '@ergeon/core-components';
-import {getFormattedAddress} from '../../utils/app-house';
+import {getStreetFromAddress} from '../../utils/app-house';
 import HouseMap from './HouseMap';
 import {HouseCardProps} from './types';
 
@@ -30,13 +30,11 @@ const HouseCard = (props: HouseCardProps) => {
   }, [house, onEdit, onRemove]);
 
   const renderHeader = useCallback(() => {
-    const address = getFormattedAddress(house);
-
-    if (!address) {
+    if (!house) {
       return null;
     }
 
-    const [street, finalAddress] = address?.split(/,(.*)/s);
+    const [street, finalAddress] = getStreetFromAddress(house);
 
     return (
       <>
@@ -44,7 +42,7 @@ const HouseCard = (props: HouseCardProps) => {
         <h6>{finalAddress}</h6>
       </>
     );
-  }, [house, getFormattedAddress]);
+  }, [house]);
 
   return (
     <div className="flex-wrapper house-address-wrapper">

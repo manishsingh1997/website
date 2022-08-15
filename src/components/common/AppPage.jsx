@@ -10,7 +10,7 @@ export default class AppPage extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     error: PropTypes.object,
-    fetchData: PropTypes.func.isRequired,
+    fetchData: PropTypes.func,
     isLoading: PropTypes.bool.isRequired,
     renderContent: PropTypes.func.isRequired,
     renderHeader: PropTypes.func.isRequired,
@@ -21,7 +21,7 @@ export default class AppPage extends React.Component {
   };
 
   componentDidMount() {
-    this.props.fetchData();
+    this.props.fetchData?.();
     this.setFetchDataStarted();
   }
 

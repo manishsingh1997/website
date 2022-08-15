@@ -6,18 +6,26 @@ import AppAppointmentsListPage from '../components/AppAppointmentsListPage';
 import {Appointment} from '../components/AppAppointmentsListPage/types';
 import {Action} from '../flux/store';
 import {GetAppointmentDispatcher} from '../flux/actions/types';
+import {SelectedHouseReducerState} from '../flux/reducers/app-selected-house';
 
 type AppointmentsProps = {
-  data: Appointment[] | null,
-  isListLoading: boolean,
-  listError: [] | null,
-}
+  data: Appointment[] | null;
+  isListLoading: boolean;
+  listError: [] | null;
+};
 
-const mapStateToProps = ({appointments}: {appointments: AppointmentsProps}) => {
+const mapStateToProps = ({
+  appointments,
+  selectedHouse,
+}: {
+  appointments: AppointmentsProps;
+  selectedHouse: SelectedHouseReducerState;
+}) => {
   return {
     appointments: appointments.data ?? [],
     isListLoading: appointments.isListLoading,
     listError: appointments.listError,
+    selectedHouse: selectedHouse.data,
   };
 };
 
