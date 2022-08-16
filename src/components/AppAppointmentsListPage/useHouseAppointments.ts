@@ -8,7 +8,7 @@ const useHouseAppointments = (appointments: Appointment[], selectedHouse: HouseT
     if (selectedHouse?.id) {
       onSelectedHouseChange();
     }
-  }, [selectedHouse?.id]);
+  }, [selectedHouse?.id, appointments]);
 
   const onSelectedHouseChange = useCallback(() => {
     const filteredAppointments = appointments?.filter(

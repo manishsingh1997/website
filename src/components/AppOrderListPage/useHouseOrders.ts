@@ -7,7 +7,7 @@ const useHouseOrders = (orders: Order[], selectedHouse?: HouseType) => {
     if (selectedHouse?.id) {
       onSelectedHouseChange();
     }
-  }, [selectedHouse?.id]);
+  }, [selectedHouse?.id, orders]);
 
   const onSelectedHouseChange = useCallback(() => {
     const filteredOrders = orders?.filter((order) => order?.house?.id === selectedHouse?.id);
