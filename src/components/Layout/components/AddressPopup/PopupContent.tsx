@@ -78,17 +78,19 @@ const PopupContent = (props: PopupContentProps) => {
       {actionType === PopUpAction.Remove ? (
         <span>This address will be removed from your Ergeon account and on-going campaigns.</span>
       ) : (
-        <AddressInput
-          getCheckedZIP={getCheckedZIP}
-          inputLabel={addressInputLabel}
-          loading={loading}
-          onChange={handleAddressChange}
-          onLoadEnds={onLoadEnds}
-          onLoadStarts={onLoadStarts}
-          onSubmit={handleAddressSelected}
-          product={product}
-          value={value}
-        />
+        <div data-test-id="address-input">
+          <AddressInput
+            getCheckedZIP={getCheckedZIP}
+            inputLabel={addressInputLabel}
+            loading={loading}
+            onChange={handleAddressChange}
+            onLoadEnds={onLoadEnds}
+            onLoadStarts={onLoadStarts}
+            onSubmit={handleAddressSelected}
+            product={product}
+            value={value}
+          />
+        </div>
       )}
       <hr className="Separator" />
       <div className="Buttons">

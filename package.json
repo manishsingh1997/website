@@ -140,6 +140,7 @@
     "@sentry/browser": "5.30.0",
     "axios": "0.21.1",
     "babel-plugin-ignore-import": "^1.0.1",
+    "babel-plugin-jsx-remove-data-test-id": "^3.0.0",
     "classnames": "^2.2.6",
     "core-js": "^3.22.2",
     "history": "^4.9.0",
