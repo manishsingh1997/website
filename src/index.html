@@ -78,6 +78,9 @@
             /UET is not defined/,
             // Tawk error https://sentry.io/organizations/ergeon/issues/2440717064/?project=1794736&referrer=slack
             /t[0] is undefined/,
+            // Internal android browser issues
+            /feature toggles accessed before being set/,
+            /Can't find variable: _pcmBridgeCallbackHandler/,
           ],
           "denyUrls": [
             /* Our externals */
@@ -92,7 +95,7 @@
             /extensions\//i,
             /^chrome:\/\//i,
             /^chrome-extension:\/\//i,
-            /^safari-extension:\(?\/\//i,
+            /safari-extension:\(?\/\//i,
             /* Google tag */
             /gtag\/js/i,
             /* Other plugins */
