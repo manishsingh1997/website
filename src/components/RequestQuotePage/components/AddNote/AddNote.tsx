@@ -7,7 +7,7 @@ import './AddNote.scss';
 
 type AddNoteProps = {
   comment: string;
-  errors: Record<string, string> | null;
+  errors: Partial<Record<string, string>> | null;
   handleAddNote: () => void;
   handleFieldChange: (event: React.FormEvent<HTMLInputElement>, name: string, value: string) => void;
   handleRemoveNote: () => void;
@@ -30,9 +30,9 @@ const AddNote = (props: AddNoteProps) => {
         <Input
           className="spacing after__is-24"
           isDisabled={loading}
+          isMultiline
           isValid={(!!comment && !errors?.comment) || null}
           label="Note"
-          multiline
           name="comment"
           onChange={handleFieldChange}
           placeholder="Add your note here"

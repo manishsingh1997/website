@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import iconPlus from '../../assets/icon-plus.svg';
 import {getFencequotingURL} from '../../utils/urls';
 import LoadingErrorModal from '../common/ErroredLoadingModal';
-import StyleBrowserWrapper from './Components/StyleBrowserWrapper';
+import StyleBrowserWrapper from './components/StyleBrowserWrapper';
 import {Config, LeadConfigType} from './types';
 import {getConfigName} from './utils';
 import './ConfigCart.scss';

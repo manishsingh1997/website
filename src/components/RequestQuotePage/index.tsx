@@ -12,8 +12,8 @@ import Marker from '../../assets/marker.svg';
 import Success from '../common/Success';
 import ConfigCart from '../../containers/ConfigCart';
 import {getParameterByName, showUpcomingFeatures} from '../../utils/utils';
-import LeadForm from './LeadForm';
-import TermsFooter from './Components/TermsFooter';
+import LeadForm from './components/LeadForm';
+import TermsFooter from './components/TermsFooter';
 import {RequestQuotePageProps, RequestQuotePageState} from './types';
 import './index.scss';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import {fireEvent, render, screen} from '@testing-library/react';
-import LeadForm from '../LeadForm';
+import LeadForm from '../components/LeadForm';
 import {leadData, selectedConfigs, userData} from '../__mocks__/mockData';
 
 const leadFormProps = {
