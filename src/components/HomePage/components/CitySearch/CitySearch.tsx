@@ -14,7 +14,11 @@ const CitySearch = () => {
 
   const goToCityPage = useCallback((citySlug: string) => {
     history.push(getCityPath(citySlug));
-  }, []);
+  }, [history]);
+
+  const goToFencesPage = useCallback(() => {
+    history.push('/fences');
+  }, [history]);
 
   const handleSubmit = useCallback(async (placeData: PlacesAutocompleteTypes.AutoCompletePlaceData) => {
     const { city_name, state_abbreviation } = placeData;
@@ -32,6 +36,7 @@ const CitySearch = () => {
     } catch (e) {
       // seems we don't support that city :(
       setError('This city is not supported');
+      goToFencesPage();
     }
   }, [CitiesJSONData, goToCityPage]);
 
