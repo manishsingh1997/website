@@ -55,7 +55,7 @@ const AppFooter = ({city, locationsList, ...footerProps}: AppFooterProps) => {
             {...footerProps}
             licenses={[
               {
-                name: 'License #: C13 Fencing license',
+                name: 'License #: 1040925, C13-Fencing, C27-Landscaping, C8-Concrete',
                 url: CA_LICENSE_URL,
               },
               {
