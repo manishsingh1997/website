@@ -6,6 +6,11 @@ import certifiedIcon from 'assets/certified@2x.png';
 import licenseImage from 'assets/license.jpg';
 import './index.scss';
 
+const CA_LICENSES = [
+  'C13 - Fencing',
+  'C27 - Landscaping',
+  'C8 - Concrete',
+];
 const PRODUCT_DESCRIPTIONS = `${process.env.API_HOST}/api/store/product-descriptions/`;
 const CONTRACTS_DESCRIPTION =
   'Our standard contract together with all' +
@@ -51,7 +56,7 @@ class WarrantiesPage extends React.Component {
     });
     return (
       <React.Fragment key={slug}>
-        <h4>{name}</h4>
+        <h3 className="h4">{name}</h3>
         <ul>{items}</ul>
       </React.Fragment>
     );
@@ -62,7 +67,7 @@ class WarrantiesPage extends React.Component {
       const contractsSection = contracts.map((contact) => this.renderContractHeader(contact));
       return (
         <React.Fragment>
-          <h3 className="spacing after__is-12">Our Warranty</h3>
+          <h2 className="h3 spacing after__is-12">Our Warranty</h2>
           <p className="subheader h2 spacing after__is-30">{CONTRACTS_DESCRIPTION}</p>
           {contractsSection}
         </React.Fragment>
@@ -87,31 +92,21 @@ class WarrantiesPage extends React.Component {
           </div>
         </div>
         <div className="warranties-page__content wrapper-1180">
-          <h3>Our Licenses</h3>
+          <h2 className="h3">Our Licenses</h2>
           <div className="licenses spacing after__is-48">
             <div className="certifications spacing after__is-48">
+              {CA_LICENSES.map(licenseName => (
+                <div className="certification-item" key={licenseName}>
+                  <img className="certified-icon" src={certifiedIcon} />
+                  <h3 className="h4">{licenseName}</h3>
+                  <p>Ergeon Inc</p>
+                  <p>License {ERGEON_LICENSE_NUMBER}</p>
+                </div>
+              ))}
               <div className="certification-item">
                 <img className="certified-icon" src={certifiedIcon} />
-                <h4>C13 - Fencing</h4>
-                <p>Ergeon inc</p>
-                <p>License {ERGEON_LICENSE_NUMBER}</p>
-              </div>
-              <div className="certification-item">
-                <img className="certified-icon" src={certifiedIcon} />
-                <h4>C27 - Landscaping</h4>
-                <p>Ergeon inc</p>
-                <p>License {ERGEON_LICENSE_NUMBER}</p>
-              </div>
-              <div className="certification-item">
-                <img className="certified-icon" src={certifiedIcon} />
-                <h4>C8 - Concrete</h4>
-                <p>Ergeon inc</p>
-                <p>License {ERGEON_LICENSE_NUMBER}</p>
-              </div>
-              <div className="certification-item">
-                <img className="certified-icon" src={certifiedIcon} />
-                <h4>Residential/General contractor</h4>
-                <p>Ergeon inc</p>
+                <h3 className="h4">Residential/General contractor</h3>
+                <p>Ergeon Inc</p>
                 <p>License {ERGEON_GEORGIA_LICENSE_NUMBER}</p>
               </div>
             </div>
