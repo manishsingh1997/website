@@ -4,7 +4,7 @@ import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
 import sortBy from 'lodash/sortBy';
 
-import {Button, NavLinkContext, Notification, SimpleTopPanel, utils} from '@ergeon/core-components';
+import {NavLinkContext, Notification, SimpleTopPanel, utils} from '@ergeon/core-components';
 
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from '../../containers/AddressUpdatePopup';
@@ -16,7 +16,6 @@ import {AuthState} from '../../flux/reducers/auth';
 import {City} from '../AppCityPage/types';
 import phoneIcon from '../../assets/icon-phone.svg';
 import DropdownMenu from './components/DropdownMenu';
-import MobileBottomPanel from './components/MobileBottomPanel';
 import {checkRouteList} from './utils';
 import useScrollPosition from './useScrollPosition';
 
@@ -145,17 +144,6 @@ const Layout = (props: LayoutProps) => {
           />
         )}
         <AddressUpdatePopup />
-        {isShowGetAQuoteButton &&
-          <MobileBottomPanel >
-            <Button
-              flavor="primary"
-              onClick={onGetQuoteClick}
-              size="large"
-              taste="solid">
-              Get a quote
-            </Button>
-          </MobileBottomPanel>
-        }
       </NavLinkContext.Provider>
     </div>
   );
