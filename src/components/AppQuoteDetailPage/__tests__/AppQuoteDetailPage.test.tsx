@@ -1,23 +1,19 @@
 import React from 'react';
 import {render, screen, waitForElementToBeRemoved} from '@testing-library/react';
 import '@testing-library/jest-dom';
-import {Provider} from 'react-redux';
 import {MemoryRouter, Router} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
 import {cloneDeep} from 'lodash';
 
-import AppQuoteDetailPage from '../../../containers/AppQuoteDetailPage';
 import * as api from '../../../api/app';
 import {GetQuoteFailed, GetQuoteSuccess} from '../__mocks__/api';
-import {store} from '../../__mocks__/mockStore';
+import AppQuoteDetailPage, {AppQuoteDetailPageProps} from '../AppQuoteDetailPage';
 
 const installerPathname = 'installer';
 const directPathname = 'direct';
 const errorPathname = '404';
-const mockLocation = document.location;
 const secret = 'W8C5V0zBVqQQt3hk';
-const defaultProps = {
-  location: {...mockLocation, search: '', pathname: `/app/BkU5j7FtBtxjkEAU/quote-approvals/${secret}/`},
+const defaultProps: AppQuoteDetailPageProps = {
   match: {
     params: {
       type: '',
@@ -57,9 +53,7 @@ describe('AppQuoteDetailPage', () => {
 
     render(
       <MemoryRouter>
-        <Provider store={store}>
-          <AppQuoteDetailPage {...defaultProps} />
-        </Provider>
+        <AppQuoteDetailPage {...defaultProps} />
       </MemoryRouter>
     );
 
@@ -73,9 +67,7 @@ describe('AppQuoteDetailPage', () => {
 
     render(
       <Router history={history}>
-        <Provider store={store}>
-          <AppQuoteDetailPage {...defaultProps} />
-        </Provider>
+        <AppQuoteDetailPage {...defaultProps} />
       </Router>
     );
 
@@ -92,9 +84,7 @@ describe('AppQuoteDetailPage', () => {
 
     render(
       <Router history={history}>
-        <Provider store={store}>
-          <AppQuoteDetailPage {...props} />
-        </Provider>
+        <AppQuoteDetailPage {...props} />
       </Router>
     );
 
@@ -112,9 +102,7 @@ describe('AppQuoteDetailPage', () => {
 
     render(
       <Router history={history}>
-        <Provider store={store}>
-          <AppQuoteDetailPage {...props} />
-        </Provider>
+        <AppQuoteDetailPage {...props} />
       </Router>
     );
 
@@ -129,9 +117,7 @@ describe('AppQuoteDetailPage', () => {
 
     render(
       <Router history={history}>
-        <Provider store={store}>
-          <AppQuoteDetailPage {...defaultProps} />
-        </Provider>
+        <AppQuoteDetailPage {...defaultProps} />
       </Router>
     );
 

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import AppQuoteDetailPage from 'components/AppQuoteDetailPage';
+import AppQuoteDetailPage from '../components/AppQuoteDetailPage';
 
 const mapStateToProps = () => {
   return {};

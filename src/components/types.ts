@@ -1,3 +1,5 @@
+import {QuoteApproval} from './AppCustomerQuotePage/types';
+
 export type HouseType = {
   id: number;
   address: HouseAddress;
@@ -39,6 +41,7 @@ export type Quote = {
   order: Order;
   order_id: number;
   quote_lines: QuoteLine[];
+  quote_approvals: QuoteApproval[];
   preview_quote_line: PreviewQuoteLine | null;
   secret: string;
   expires_at: string | null;
