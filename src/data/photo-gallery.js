@@ -687,6 +687,56 @@ export const FencePhotoData = [
     categorySlug: slugify('Lumber'),
     categoryPhotos: [
       {
+        caption: 'Nail Up with Single Trim Board on Board with Western Red Cedar Picket',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/165889_02.jpeg',
+        slug: slugify('Nail Up with Single Trim Board on Board with Western Red Cedar Picket')
+      },
+      {
+        caption: 'Nail Up Dog Ear Side by Side with Cedar Pickets and Pressure Treated Pine Posts with Alternating Panels',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/186619_01.jpeg',
+        slug: slugify('Nail Up Dog Ear Side by Side with Cedar Pickets and Pressure Treated Pine Posts with Alternating Panels')
+      },
+      {
+        caption: 'Nail Up Dog Ear Side by Side with Western Red Cedar Pickets and Pressure Treated Pine Posts with Alternating Panels',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/190063_03.jpeg',
+        slug: slugify('Nail Up Dog Ear Side by Side with Western Red Cedar Pickets and Pressure Treated Pine Posts with Alternating Panels')
+      },
+      {
+        caption: 'Nail Up Dog Ear Board on Board with Cedar Pickets and Round Steel Posts',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/187041_NailUp02.jpeg',
+        slug: slugify('Nail Up Dog Ear Board on Board with Cedar Pickets and Round Steel Posts')
+      },
+      {
+        caption: 'Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/184026_02.jpg',
+        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts')
+      },
+      {
+        caption: 'Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/156713_03.jpg',
+        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts 2')
+      },
+      {
+        caption: 'Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Posts with Alternating Panels',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/192242_03.jpg',
+        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Posts with Alternating Panels')
+      },
+      {
+        caption: 'Cap and Rail Flat Top Side by Side with Pressure Treated Pine Pickets and Posts',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/197396_CapAndRail04.jpg',
+        slug: slugify('Cap and Rail Flat Top Side by Side with Pressure Treated Pine Pickets and Posts')
+      },      
+      {
+        caption: 'Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Posts',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/194844_NailUp03.jpg',
+        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Posts')
+      },  
+      {
+        caption: 'Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/189300_NailUp02.jpeg',
+        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts')
+      },
+      {
         caption: 'Redwood Con Heart Nail Up Flat Top Side by Side ',
         url: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/fence/Fence+Installation+-+Ergeon+-+Rocklin%2C+California+-+Nail+Up+Flat+Top.jpeg',
         slug: slugify('Redwood Con Heart Nail Up Flat Top Side by Side '),
