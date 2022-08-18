@@ -1,12 +1,13 @@
-import React, { useMemo } from 'react';
+import React, {useMemo} from 'react';
 
 import logOutIcon from '@ergeon/core-components/src/assets/icon-logout-solid.svg';
 import userIcon from '@ergeon/core-components/src/assets/icon-user.brand.svg';
 import helpIcon from '@ergeon/core-components/src/assets/icon-question-mark-line.svg';
 
-import { getMenuItems } from '../../../../data/customer-app';
+import {useIsMobileWidth} from '../../../common/AppQuoteComponents/QuoteLine/customHooks';
+import {getMenuItems} from '../../../../data/customer-app';
 import WebsiteDropdownMenu from './WebsiteDropdownMenu';
-import { MenuItem, user } from './types';
+import {MenuItem, user} from './types';
 
 import '../../index.scss';
 
@@ -15,7 +16,7 @@ interface MainDropdownMenuProps {
 }
 
 const MainDropdownMenu = (props: MainDropdownMenuProps) => {
-  const { user } = props;
+  const {user} = props;
 
   const menuItems = useMemo(() => {
     const itemList = getMenuItems(`/app/${user.gid}`, null).map(
@@ -24,7 +25,7 @@ const MainDropdownMenu = (props: MainDropdownMenuProps) => {
         content: item.title,
         href: item.path || '#',
         iconSVG: item.iconSVG,
-        className: item.className
+        className: item.className,
       })
     );
 
@@ -45,10 +46,13 @@ const MainDropdownMenu = (props: MainDropdownMenuProps) => {
     return itemList;
   }, [user.gid]);
 
+  const isMobileWidth = useIsMobileWidth();
+
   return (
     // [ENG-16361] Refactor DropdownMenu in core-components so it can render <Link to=""> instead of <a href="">
     // @ts-ignore
     <WebsiteDropdownMenu
+      alwaysOpen={isMobileWidth}
       items={menuItems}
       key="dropp-user"
       title={
