@@ -10,14 +10,14 @@ export const GetQuoteSuccess = () => {
   });
 };
 
-export const GetQuoteFailed = () => {
+export const GetQuoteFailed = (status = 404) => {
   return Promise.reject({
     response: {
       data: null,
       statusText: 'Not Found',
       headers: '',
       config: {},
-      status: 404,
+      status,
     },
   });
 };

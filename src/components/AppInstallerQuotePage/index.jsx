@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Route} from 'react-router-dom';
 
-import {isPDFMode} from 'utils/utils';
-import {parseAPIError} from 'utils/api.ts';
-import {formatPrice, isQuoteAddressValid} from 'utils/app-order';
-import CustomerGIDContext from 'context-providers/CustomerGIDContext';
+import {isPDFMode} from '../../utils/utils';
+import {parseAPIError} from '../../utils/api.ts';
+import {formatPrice, isQuoteAddressValid} from '../../utils/app-order';
+import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
 
-import {getQuoteDetails} from 'api/app';
+import {getQuoteDetails} from '../../api/app';
 
-import AppLoader from 'components/common/AppLoader';
-import BuildSpecs from 'components/common/AppQuoteComponents/BuildSpecs';
+import AppLoader from '../../components/common/AppLoader';
+import BuildSpecs from '../../components/common/AppQuoteComponents/BuildSpecs';
 import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
 import QuoteError from '../common/AppQuoteComponents/QuoteError';
 import {prepareQuoteLines} from '../common/AppQuoteComponents/utils';
