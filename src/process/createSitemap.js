@@ -33,6 +33,17 @@ const sitemapXMLTemplate = `<?xml version="1.0" encoding="UTF-8"?>
 `;
 
 /**
+ * Pre-process URLs.
+ * @param {string[]} urls
+ */
+const processURLs = (urls) => {
+  return sortBy(urls).map(url => {
+    if (/\/$/.test(url)) return url;
+    return `${url}/`;
+  });
+};
+
+/**
  * Get XML-tags from string URLs array.
  * @param {string[]} urls
  */
@@ -68,7 +79,7 @@ const getCitiesURLs = () => {
  * Get the main sitemap.
  */
 export const generateErgeonSitemap = async () => {
-  const urls = sortBy([
+  const urls = processURLs([
     ...getSitemapUrls(authRoutes),
     ...getSitemapUrls(basicRoutes),
     ...getCitiesURLs(),
@@ -103,7 +114,7 @@ const getGalleryURLs = (galleryData, type) => {
  * Get the sitemap for the /gallery section of the website.
  */
 export const generateGallerySitemap = async () => {
-  const urls = sortBy([
+  const urls = processURLs([
     ...getSitemapUrls(galleryRoutes),
     ...getGalleryURLs(FencePhotoData, 'fence'),
     ...getGalleryURLs(GatePhotoData, 'gate'),
@@ -115,7 +126,11 @@ export const generateGallerySitemap = async () => {
  * Get the sitemap for the /help section of the website.
  */
 export const generateHelpSitemap = async () => {
-  const urls = sortBy(getSitemapUrls(helpRoutes).concat(await getHelpNodesURLs()));
+  const helpNodeURLs = await getHelpNodesURLs();
+  const urls = processURLs([
+    ...getSitemapUrls(helpRoutes),
+    ...helpNodeURLs,
+  ]);
   return generateSitemap(urls);
 };
 
