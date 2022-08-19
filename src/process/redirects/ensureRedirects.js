@@ -22,7 +22,7 @@ const hasTrailingSlash = function (url) {
  * @param {string} url
  */
 const getAlternativeUrl = function (url) {
-  return hasTrailingSlash(from) ? from.slice(0, -1) : $`${from}${URL_SLASH}`;
+  return hasTrailingSlash(url) ? url.slice(0, -1) : $`${url}${URL_SLASH}`;
 };
 
 
