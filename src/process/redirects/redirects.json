@@ -2,616 +2,739 @@
   {
     "from": "all-categories/aliquid-possimus",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "all-categories/double",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "all-categories/quidem",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "all-categories/quod",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "all-categories/repellendus-similique-deleniti-rerum",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "all-categories/veniam-consequuntur-repellendus",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "all-tags/double",
     "to": "/projects-gallery/tags/con-common",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "all-tags/fence",
     "to": "/projects-gallery/tags/con-common",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "all-tags/gate",
     "to": "/projects-gallery/tags/single-gate",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "all-tags/nail-up",
     "to": "/projects-gallery/tags/nail-up",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "all-tags/picture-frame",
     "to": "/projects-gallery/tags/picture-frame",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "all-tags/single",
     "to": "/projects-gallery/tags/single-gate",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "areas/sacramento",
     "to": "/projects-gallery/regions/sacramento/sacramento",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "ask-question",
     "to": "/contacts",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "cities/atlanta",
     "to": "/fences/cities/fulton-county-atlanta-ga",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/austin",
     "to": "/fences/cities/harris-county-houston-tx",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/dallas",
     "to": "/fences/cities/dallas-county-dallas-tx",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/fort-worth",
     "to": "/fences/cities/tarrant-county-fort-worth-tx",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/fresno",
     "to": "/fences/cities/fresno-county-fresno-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/houston",
     "to": "/fences/cities/harris-county-houston-tx",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/lake-forest",
     "to": "/fences/cities/orange-county-lake-forest-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/los-angeles",
     "to": "/fences/cities/los-angeles-county-los-angeles-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/maiores-repellat-optio",
     "to": "/locations",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "cities/martinez",
     "to": "/locations",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "cities/napa",
     "to": "/fences/cities/napa-county-napa-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/oakland",
     "to": "/locations",
-    "active": false
+    "active": false,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "cities/oakland",
     "to": "/fences/cities/alameda-county-oakland-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/palo-alto",
     "to": "/fences/cities/santa-clara-county-palo-alto-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/pinole",
     "to": "/locations",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "cities/riverside",
     "to": "/fences/cities/riverside-county-riverside-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/sacramento",
     "to": "/locations",
-    "active": false
+    "active": false,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "cities/sacramento",
     "to": "/fences/cities/sacramento-county-sacramento-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/san-antonio",
     "to": "/fences/cities/harris-county-houston-tx",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/san-diego",
     "to": "/fences/cities/san-diego-county-san-diego-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/san-francisco",
     "to": "/fences/cities/san-francisco-county-san-francisco-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/san-jose",
     "to": "/locations",
-    "active": false
+    "active": false,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "cities/san-jose",
     "to": "/fences/cities/santa-clara-county-san-jose-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/santa-rosa",
     "to": "/fences/cities/sonoma-county-santa-rosa-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/stockton",
     "to": "/fences/cities/san-joaquin-county-stockton-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/thousand-oaks",
     "to": "/fences/cities/ventura-county-thousand-oaks-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/walnut-creek",
     "to": "/fences/cities/contra-costa-county-walnut-creek-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/watsonville",
     "to": "/fences/cities/santa-cruz-county-watsonville-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "cities/yuba-city",
     "to": "/fences/cities/sutter-county-yuba-city-ca",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": true
   },
   {
     "from": "compare",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "completed-projects",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "faq",
     "to": "/help",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence-diagrams/basic-dog-eared",
     "to": "/gallery/fence/nail-up/dog-ear",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence-diagrams/basic-dog-eared",
     "to": "/gallery/fence/nail-up/dog-ear",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence-diagrams/good-neighbor",
     "to": "/gallery/fence/nail-up/dog-ear",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence-diagrams/good-neighbor-with-lattice",
     "to": "/gallery/fence/picture-frame/with-lattice",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence-diagrams/nail-up",
     "to": "/gallery/fence/nail-up/dog-ear",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence-diagrams/picture-frame",
     "to": "/gallery/fence/picture-frame/without-lattice",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence-diagrams/picture-frame-with-lattice",
     "to": "/gallery/fence/picture-frame/with-lattice",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence-installation",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence-photo-gallery",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence-specifications",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence/company",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence/install",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence/installation",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence/privacy",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence/replacement",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence/service",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fence/wood",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fencequoting-iframe",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fencing/backyard",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fencing/company",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fencing/install",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "fencing/wood",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "help/201900003",
     "to": "/help",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "help/202000380",
     "to": "/help",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "help/7oiKY-I_pEYrl2WL",
     "to": "/help",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "hidden-pages/fence-photo-gallery",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "hidden-pages/fence-photos",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "hidden-pages/projects-gallery/areas",
     "to": "/locations",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "hidden-pages/projects-gallery/map",
     "to": "/locations",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "hidden-pages/projects-gallery/projects",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "hidden-pages/projects-gallery/tags",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "home",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "licenses",
     "to": "/licenses-warranties",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "our-story",
     "to": "/about-ergeon",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "post/what-are-pavers",
     "to": "https://blog.ergeon.com",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "post/what-driveway-material-is-best-for-you",
     "to": "https://blog.ergeon.com",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "pricing",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "project-financing",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-carmichael-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-dixon-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-dublin-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-hercules-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-lodi-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-milpitas-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-oakland-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-oakland-ca-2",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-oakland-ca-3",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-pinole-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-roseville-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-sacramento-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-san-jose-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-san-jose-ca-2",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-san-mateo-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-santa-clara-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-gate-installation-in-sunnyvale-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-installation-in-albany-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-installation-in-martinez-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-installation-in-sacramento-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-installation-in-sacramento-ca-2",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-installation-in-san-lorenzo-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-installation-in-stockton-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-installation-in-stockton-ca-3",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/fence-installation-in-vacaville-ca",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/pinole-fence-installation",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "projects/richmond-fence-installation",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "reviews",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "sign_up",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "tags/company-news",
     "to": "https://blog.ergeon.com",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "tags/curb-appeal",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "tags/curb-appeal",
     "to": "/projects-gallery/tags/con-common",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "tags/diy",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "tags/featured-project-of-the-week",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "tags/fences",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "tags/professional-advice",
     "to": "/projects-gallery",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "warranty",
     "to": "/licenses-warranties",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   },
   {
     "from": "wood_fence/quote",
     "to": "/",
-    "active": true
+    "active": true,
+    "ensureFromTrailingSlash": false
   }
 ]
