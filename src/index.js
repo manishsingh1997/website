@@ -85,7 +85,10 @@ const App = () => (
                     </Route>
                   ))}
                   {internalRedirectRoutes.map((route) => (
-                    <Redirect from={route.from} key={route.from} to={route.to} />
+                    <Redirect
+                      from={route.from}
+                      key={route.from}
+                      to={{pathname: route.to, search: window.location.search}} />
                   ))}
                   <Route component={CustomerApp} path="/app/:customerGid" />
                   <Route component={Cities} path={CITIES_PAGE_PATH} />
