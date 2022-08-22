@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PropTypes, {oneOfType} from 'prop-types';
 
 import {MAP_LABEL_TYPE, MAP_LABEL_YELLOW_TYPE, MAP_CIRCLE_TYPE} from 'website/constants';

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import LocationsMap from './LocationsMap';
 import './index.scss';
 

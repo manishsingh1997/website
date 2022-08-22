@@ -1,4 +1,5 @@
 import {Dispatch} from 'react';
+
 import {Action, ActionType} from '../appNotificationPageReducer';
 import {getNotificationPreferenceFromResponse} from '../utils';
 import {getNotificationPreferences} from '../../../api/app';

@@ -1,4 +1,5 @@
 import React, {useMemo, useState} from 'react';
+
 import {DataRow, Collapsible} from '@ergeon/core-components';
 
 import './CustomerDetails.scss';

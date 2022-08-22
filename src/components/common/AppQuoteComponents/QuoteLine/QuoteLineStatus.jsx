@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
 import {QUOTE_LINE_STATUSES} from '../utils';

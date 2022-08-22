@@ -1,6 +1,8 @@
+import React from 'react';
+
 import {Button, Spinner} from '@ergeon/core-components';
 import classNames from 'classnames';
-import React from 'react';
+
 import {AuthLogoutPageProps} from '../types';
 
 const LogoutConfirmation = ({auth, logout}: AuthLogoutPageProps) => {

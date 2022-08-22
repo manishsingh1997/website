@@ -1,4 +1,5 @@
 import {ParsedAPIErrorType} from '../../utils/types';
+
 import {NotificationPreference} from './types';
 
 export enum ActionType {

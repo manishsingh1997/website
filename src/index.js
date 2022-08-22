@@ -2,19 +2,19 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import React from 'react';
+
 import {hydrate, render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {createBrowserHistory} from 'history';
 import {Router, Route, Switch, Redirect} from 'react-router-dom';
 import {initUTMs} from '@ergeon/erg-utms';
 import omit from 'lodash/omit';
-
 import {googleIntegration, UpcomingFeaturesHandler} from '@ergeon/core-components';
 import {DRAW_MAP_GOOGLE_LIBRARIES} from '@ergeon/draw-map';
 import {ERG_MAP_COMPONENT_LIBRARIES} from '@ergeon/map-component';
+
 import {FencePhotoData, GatePhotoData} from 'data/photo-gallery';
 import customScripts from 'website/custom-scripts';
-
 import ErrorBoundary from 'components/ErrorBoundary';
 import Layout from 'containers/Layout';
 import MetaTags from 'components/common/MetaTags';

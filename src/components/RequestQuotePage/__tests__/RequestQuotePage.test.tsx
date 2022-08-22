@@ -1,9 +1,11 @@
 import React from 'react';
+
 import {Router} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
 import '@testing-library/jest-dom';
 import {Provider} from 'react-redux';
 import {fireEvent, render, screen} from '@testing-library/react';
+
 import RequestQuotePage from '../index';
 import {addressData, leadData, selectedConfigs, userData} from '../__mocks__/mockData';
 import {mockLoggedInAuth} from '../../AuthLogoutPage/__mocks__/mockAuth';

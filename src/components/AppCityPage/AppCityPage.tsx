@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+
 import {Helmet} from 'react-helmet';
 import {EqualHeight, EqualHeightElement} from 'react-equal-height';
 import isEmpty from 'lodash/isEmpty';
@@ -9,6 +10,7 @@ import GetStartedSection from '../HomePage/components/GetStartedSection';
 import UpcomingRemoteFeatures from '../HomePage/components/UpcomingRemoteFeatures';
 import TestimonialBanner from '../HomePage/components/TestimonialBanner';
 import QASection from '../HomePage/QASection';
+
 import MainBanner from './MainBanner';
 import CityReviews from './CityReviews';
 import Regulations from './Regulations';

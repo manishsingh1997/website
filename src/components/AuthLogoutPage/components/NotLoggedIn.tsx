@@ -1,5 +1,6 @@
-import {Button} from '@ergeon/core-components';
 import React from 'react';
+
+import {Button} from '@ergeon/core-components';
 import {Link} from 'react-router-dom';
 
 const NotLoggedIn = () => {

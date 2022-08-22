@@ -1,4 +1,5 @@
 import {ReactNode} from 'react';
+
 import {Address, Config, Lead, User} from '../../types';
 
 export type LeadFormProps = {

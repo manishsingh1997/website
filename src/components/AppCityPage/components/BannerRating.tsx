@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { ReactSVG } from 'react-svg';
 import { Rating } from '@ergeon/core-components';
 

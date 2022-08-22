@@ -1,12 +1,13 @@
 import React, {useCallback, useMemo, useState} from 'react';
+
 import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
-
 import AddIcon from '@ergeon/core-components/src/assets/icon-add.svg';
 
 import {AddAddressProps} from '../../AppHouseListPage/types';
 import {HouseType} from '../../types';
 import {getStreetFromAddress} from '../../../utils/app-house';
+
 import AddAddressPopup from './AddAddressPopup';
 
 import './AddressDropdown.scss';

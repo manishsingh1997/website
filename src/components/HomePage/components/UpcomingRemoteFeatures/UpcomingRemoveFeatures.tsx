@@ -5,7 +5,6 @@ import {Button} from '@ergeon/core-components';
 import imgRemoteOnsite from '../../../../assets/remote-features/icon-remote-onsite.svg';
 import imgRemoteQuote from '../../../../assets/remote-features/icon-pay-online.svg';
 import imgContactless from '../../../../assets/remote-features/icon-no-contact-install.svg';
-
 import VideoPopup from '../../VideoPopup';
 
 import './UpcomingRemoteFeatures.scss';

@@ -1,10 +1,10 @@
 import React, {useCallback} from 'react';
+
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import compact from 'lodash/compact';
 import get from 'lodash/get';
 import {useLocation} from 'react-router-dom';
-
 import {MetaTags} from '@ergeon/core-components';
 
 import metaDictionary from '../../data/meta-data.json';

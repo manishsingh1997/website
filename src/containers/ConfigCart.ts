@@ -1,5 +1,7 @@
 import { Action, Dispatch } from 'redux';
+
 import {connect} from 'react-redux';
+
 import {addConfig, updateConfig, removeConfig, addConfigFromSchema} from '../flux/actions/cart';
 import { Address, Config, LeadConfigType } from '../components/RequestQuotePage/types';
 import ConfigCart from '../components/RequestQuotePage/ConfigCart';

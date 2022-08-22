@@ -1,8 +1,8 @@
 import React from 'react';
+
 import {Portal} from 'react-portal';
 
 import {AddressPopupProps} from './types';
-
 import './AddressPopup.scss';
 import Confirmation from './Confirmation';
 import PopupContent from './PopupContent';

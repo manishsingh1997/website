@@ -1,6 +1,8 @@
 import {Dispatch, useCallback} from 'react';
+
 import {authService} from '../../utils/auth';
 import {ParsedAPIErrorType} from '../../utils/types';
+
 import {handleSignInError} from './utils';
 
 const useRequestSignIn = (setLoading: Dispatch<boolean>) => {

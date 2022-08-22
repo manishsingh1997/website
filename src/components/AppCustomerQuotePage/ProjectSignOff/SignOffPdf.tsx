@@ -1,4 +1,5 @@
 import React, {useMemo} from 'react';
+
 import ProjectSignOffPopUp from './../ProjectSignOff/ProjectSignOffPopUp';
 import {SignOffPdfProps} from './../types';
 import {getIsQuoteStatusApprovedOrCompleted} from './../utils';

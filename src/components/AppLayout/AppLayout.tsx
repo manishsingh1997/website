@@ -1,5 +1,7 @@
 import React, {useEffect, useMemo} from 'react';
+
 import {isQuoteDetailURL, isUnsubscribeURL} from '../../utils/urls';
+
 import {AnonymousUser, SideBar, UserError, LayoutView} from './components';
 import {AppLayoutProps} from './types';
 import {initSmartLook} from './utils';

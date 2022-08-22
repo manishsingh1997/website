@@ -1,4 +1,5 @@
 import {Address, HouseType} from '../types';
+
 import {AddAddressProps} from './types';
 
 export const parseAddressData = (data: {address: Address}): AddAddressProps | null => {

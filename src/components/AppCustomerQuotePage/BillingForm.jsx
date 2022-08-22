@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Helmet } from 'react-helmet';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -15,7 +16,6 @@ import {
   getStripeToken,
 } from 'utils/billing';
 import {CARD_TRANSACTION_FEE, CONTACT_EMAIL} from 'website/constants';
-
 import IconCards from 'assets/icon-cards.png';
 import IconSSL from 'assets/icon-ssl.svg';
 import IconCardSecure from 'assets/icon-card-secure.svg';

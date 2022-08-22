@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect, FocusEvent, ChangeEvent, useMemo} from 'react';
+
 import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
-
 // @ts-ignore
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import { Button, Spinner, FormField, Input, PlacesAutocompleteTypes } from '@ergeon/core-components';

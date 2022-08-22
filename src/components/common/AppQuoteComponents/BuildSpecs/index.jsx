@@ -1,4 +1,5 @@
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
+
 import {useHistory, useLocation, useParams} from 'react-router';
 import {connect} from 'react-redux';
 import {PopUp, SpecificationTable, TopPanelMobile} from '@ergeon/core-components';

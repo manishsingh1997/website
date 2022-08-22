@@ -1,13 +1,14 @@
 import React, {useCallback, useContext, useEffect, useMemo, useState} from 'react';
+
 import locationIcon from '@ergeon/core-components/src/assets/location-icon.svg';
 
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
 import AppPage from '../../components/common/AppPage';
 import {showUpcomingFeatures} from '../../utils/utils';
 import AddressPopup from '../Layout/components/AddressPopup';
-
 import {Address, HouseType} from '../types';
 import {PopUpAction} from '../Layout/components/AddressPopup/AddressPopup';
+
 import {AppHouseListPageProps, AddAddressProps} from './types';
 import PageContent from './PageContent';
 import PageHeader from './PageHeader';

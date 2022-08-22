@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect, useMemo, useState } from 'react';
+
 import { Redirect, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import isUndefined from 'lodash/isUndefined';
@@ -7,6 +8,7 @@ import AppLoader from '../components/common/AppLoader';
 import { City } from '../components/AppCityPage/types';
 import { CitiesJSONData } from '../components/HomePage/components/CitySearch/consts';
 import { getCityPath, getExistingCitySlug } from '../components/HomePage/components/CitySearch/utils';
+
 import { useLocationSearchOmit } from './utils';
 
 type RoutingInterceptorProps = {

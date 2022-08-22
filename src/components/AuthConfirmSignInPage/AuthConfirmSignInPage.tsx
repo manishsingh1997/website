@@ -1,4 +1,5 @@
 import React, {SyntheticEvent, useCallback, useEffect, useMemo, useState} from 'react';
+
 import {Link, Redirect} from 'react-router-dom';
 import {Button} from '@ergeon/core-components';
 import ErrorIcon from '@ergeon/core-components/src/assets/icon-error.svg';
@@ -9,6 +10,7 @@ import SingleCard from '../../components/common/SingleCard';
 import Success from '../../components/common/Success';
 import {AuthState} from '../../flux/reducers/auth';
 import {getAuthOTPCode} from '../../utils/auth';
+
 import AuthConfirmSignInError from './components/AuthConfirmSignInError';
 import AuthConfirmSignInLoader from './components/AuthConfirmSignInLoader';
 import {AuthConfirmationStep, useAuthConfirmationStep} from './utils';

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import faqData from '../../data/faq-data';
+
 import FAQQuestion from './FAQQuestion';
 
 const FAQContent = () => {

@@ -1,5 +1,6 @@
-import classNames from 'classnames';
 import React from 'react';
+
+import classNames from 'classnames';
 import {ReactSVG} from 'react-svg';
 import crossIcon from '@ergeon/core-components/src/assets/icon-cross-gray.svg';
 import {Input} from '@ergeon/core-components';

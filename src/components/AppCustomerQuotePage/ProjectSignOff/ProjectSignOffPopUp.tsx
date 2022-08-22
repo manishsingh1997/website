@@ -1,18 +1,16 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+
 import {useLocation, useHistory} from 'react-router-dom';
 import {Portal} from 'react-portal';
 import ReactSignatureCanvas from 'react-signature-canvas';
 import classNames from 'classnames';
 import moment from 'moment';
-
 import {Button, FormField, Input, SignOffPad, Spinner} from '@ergeon/core-components';
-
 import IconWarning from '@ergeon/core-components/src/assets/icon-warning.svg';
 import IconMark from '@ergeon/core-components/src/assets/icon-success.svg';
 import IconCross from '@ergeon/core-components/src/assets/icon-cross-gray.svg';
 
 import ProjectSignOffCustomerInfo from './ProjectSignOffCustomerInfo';
-
 import {Error, Order, SignData, SignType} from './types';
 
 const MAX_TEXT_LENGTH = 30;

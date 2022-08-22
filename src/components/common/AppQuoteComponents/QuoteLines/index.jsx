@@ -1,4 +1,5 @@
 import React, {useMemo} from 'react';
+
 import PropTypes from 'prop-types';
 
 import QuoteLine from '../QuoteLine';

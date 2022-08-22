@@ -1,5 +1,7 @@
 import React from 'react';
+
 import {render, screen, fireEvent} from '@testing-library/react';
+
 import '@testing-library/jest-dom';
 import CustomerDetails, {CustomerDetailsProps} from '../CustomerDetails';
 import approvedQuoteMock from '../__mocks__/data/SignOffApprovedQuote';

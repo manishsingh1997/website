@@ -1,6 +1,8 @@
 import React, {useCallback} from 'react';
+
 import isEmpty from 'lodash/isEmpty';
 import Carousel, {Modal, ModalGateway} from 'react-images';
+
 import {Photo} from './GalleryContent';
 
 type GalleryModalProps = {

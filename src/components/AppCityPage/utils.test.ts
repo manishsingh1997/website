@@ -1,4 +1,5 @@
 import cityData from '../../data/cities/alameda-county-berkeley-ca.json';
+
 import {getAsset, makePhoneLink, getHostnameAndPath, getProjectGalleryUrl} from './utils';
 
 describe('AppCityPage utils', () => {

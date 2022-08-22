@@ -1,6 +1,8 @@
 import React, {useMemo} from 'react';
+
 import isEmpty from 'lodash/isEmpty';
 import {ImageGallery, SwipeGallery} from '@ergeon/core-components';
+
 import {fillUrlInImages} from './utils';
 import {Image} from './types';
 

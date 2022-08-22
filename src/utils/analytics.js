@@ -1,8 +1,8 @@
 import * as Sentry from '@sentry/browser';
-
 import {getBaseEventData, getVisitorId, getCurrentData, tawk} from '@ergeon/erg-utms';
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import mixpanel from 'mixpanel-browser';
+
 import {DEFAULT_SOURCE_VALUE} from 'website/constants';
 import {submitAddressEntered} from 'api/lead';
 import {CUSTOMER_LEAD_CREATED, ADDRESS_ENTERED} from 'utils/events';

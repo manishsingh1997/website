@@ -1,9 +1,9 @@
 import React, {useCallback, useEffect, useMemo} from 'react';
+
 import {NavLink, useHistory} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
 import sortBy from 'lodash/sortBy';
-
 import {NavLinkContext, Notification, SimpleTopPanel, utils} from '@ergeon/core-components';
 
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
@@ -15,6 +15,7 @@ import {isChristmasTime as getIsChristmasTime, isPDFMode, showUpcomingFeatures} 
 import {AuthState} from '../../flux/reducers/auth';
 import {City} from '../AppCityPage/types';
 import phoneIcon from '../../assets/icon-phone.svg';
+
 import DropdownMenu from './components/DropdownMenu';
 import {checkRouteList} from './utils';
 import useScrollPosition from './useScrollPosition';

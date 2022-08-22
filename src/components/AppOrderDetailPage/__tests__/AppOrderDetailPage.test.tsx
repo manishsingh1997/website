@@ -1,4 +1,5 @@
 import React from 'react';
+
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { Router } from 'react-router-dom';
@@ -8,7 +9,6 @@ import {
   mockOrders,
   mockFirstOrderId,
 } from '../__mocks__/mockOrders';
-
 import AppOrderDetailPage from '../index';
 
 const CUSTOMER_GID = 'ABC1234567890';

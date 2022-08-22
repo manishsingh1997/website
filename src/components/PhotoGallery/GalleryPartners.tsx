@@ -1,4 +1,5 @@
 import React from 'react';
+
 import isNil from 'lodash/isNil';
 
 export type Partners = {

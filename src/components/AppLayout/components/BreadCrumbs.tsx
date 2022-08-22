@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
+
 import { useLocation } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import classNames from 'classnames';
-
 import profileIcon from '@ergeon/core-components/src/assets/icon-profile.svg';
 import homeIcon from '@ergeon/core-components/src/assets/icon-home-black.svg';
 

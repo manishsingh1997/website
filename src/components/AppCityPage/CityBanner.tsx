@@ -1,10 +1,11 @@
 import React from 'react';
-import {ReactSVG} from 'react-svg';
 
+import {ReactSVG} from 'react-svg';
 import {Button} from '@ergeon/core-components';
 import IconPhone from '@ergeon/core-components/src/assets/icon-call.svg';
 
 import TellUsForm from '../../containers/TellUsForm';
+
 import BannerRating from './components/BannerRating';
 
 import './CityBanner.scss';

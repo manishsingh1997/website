@@ -1,7 +1,7 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router';
-
 import {AddressInput} from '@ergeon/core-components';
 
 import {getCheckedZIP} from 'api/lead';

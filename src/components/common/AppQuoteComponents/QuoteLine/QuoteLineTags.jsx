@@ -1,6 +1,8 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {Button} from '@ergeon/core-components';
+
 import {isPDFMode} from '../../../../utils/utils';
 
 /**

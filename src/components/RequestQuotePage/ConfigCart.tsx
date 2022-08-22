@@ -1,12 +1,15 @@
 import React from 'react';
+
 import {reduce} from 'lodash';
 import {Button, Input, Spinner} from '@ergeon/core-components';
 import {calcUtils, CatalogType} from '@ergeon/3d-lib';
 import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
+
 import iconPlus from '../../assets/icon-plus.svg';
 import {getFencequotingURL} from '../../utils/urls';
 import LoadingErrorModal from '../common/ErroredLoadingModal';
+
 import StyleBrowserWrapper from './components/StyleBrowserWrapper';
 import {Config, LeadConfigType} from './types';
 import {getConfigName} from './utils';

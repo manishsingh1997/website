@@ -1,6 +1,7 @@
 import React from 'react';
 
 import whaleIcon from '@ergeon/core-components/src/assets/whale.svg';
+
 import ErrorPage from '../common/ErrorPage';
 
 const UnknownErrorPage = () => (

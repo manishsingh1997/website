@@ -1,19 +1,19 @@
 import React from 'react';
+
 import {render, screen, fireEvent, waitForElementToBeRemoved, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {MemoryRouter, Router} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
-
 import {googleIntegration} from '@ergeon/core-components';
 import IconCross from '@ergeon/core-components/src/assets/icon-cross-gray.svg';
 
 import AppCustomerQuotePage from '../index';
 import * as API from '../../../api/app';
-
 import * as mockAPI from '../__mocks__/api';
 import {initGoogleLoader, getGoogleLoader} from '../__mocks__/googleMapIntegration';
 import quoteApproval from '../__mocks__/data/SignOffApprovedQuote';
 import {AuthState} from '../../../flux/reducers/auth';
+
 import {AppCustomerQuotePageProps} from './../types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

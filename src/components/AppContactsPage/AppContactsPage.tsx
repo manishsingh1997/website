@@ -1,15 +1,15 @@
 import React, {ChangeEvent, FormEvent, useCallback, useContext, useEffect, useMemo, useState} from 'react';
-import classnames from 'classnames';
 
+import classnames from 'classnames';
 import {Button, Notification} from '@ergeon/core-components';
 
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
 import AppPage from '../common/AppPage';
-import ContactEditForm from './ContactEditForm';
-import ContactReadonlyForm from './ContactReadonlyForm';
 
 import './index.scss';
+import ContactEditForm from './ContactEditForm';
 import {AdditionalContact, Contact, InitialContact} from './types';
+import ContactReadonlyForm from './ContactReadonlyForm';
 import useParseErrors from './hooks/useParseErrors';
 import useSubmit from './hooks/useSubmit';
 

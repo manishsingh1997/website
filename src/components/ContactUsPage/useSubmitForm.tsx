@@ -1,7 +1,7 @@
 import {MouseEvent} from 'react';
+
 import * as Sentry from '@sentry/browser';
 import mapValues from 'lodash/mapValues';
-
 // @ts-ignore
 import {getBaseEventData} from '@ergeon/erg-utms';
 // @ts-ignore

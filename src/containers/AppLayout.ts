@@ -1,4 +1,5 @@
 import {ThunkActionDispatch} from 'redux-thunk';
+
 import {connect} from 'react-redux';
 
 import AppLayout from '../components/AppLayout';

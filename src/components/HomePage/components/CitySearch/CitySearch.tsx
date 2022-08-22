@@ -1,10 +1,12 @@
 import React, { useState, useCallback } from 'react';
+
 import { useHistory } from 'react-router-dom';
 import { CitySearchInput, PlacesAutocompleteTypes } from '@ergeon/core-components';
 // @ts-ignore
 import { FENCE_SLUG } from '@ergeon/core-components/src/constants';
 
 import { trackAddressEntered } from '../../../../utils/analytics';
+
 import { CitiesJSONData } from './consts';
 import { getCityPath, getExistingCitySlug } from './utils';
 

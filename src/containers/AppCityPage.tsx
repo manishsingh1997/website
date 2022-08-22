@@ -1,5 +1,7 @@
-import {ThunkActionDispatch} from 'redux-thunk';
 import React, {useEffect, useMemo} from 'react';
+
+import {ThunkActionDispatch} from 'redux-thunk';
+
 import {useLocation} from 'react-router';
 import {connect} from 'react-redux';
 

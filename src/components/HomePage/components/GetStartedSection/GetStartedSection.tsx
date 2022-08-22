@@ -1,4 +1,5 @@
 import React from 'react';
+
 import imgGetStarted from '../../../../assets/easy-to-use.jpg';
 
 import './GetStartedSection.scss';

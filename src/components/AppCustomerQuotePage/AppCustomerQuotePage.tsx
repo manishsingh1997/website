@@ -1,4 +1,5 @@
 import React, {useCallback, useContext, useEffect, useMemo, useState} from 'react';
+
 import {some} from 'lodash';
 import {useLocation, useHistory} from 'react-router-dom';
 
@@ -8,15 +9,13 @@ import {
   reviewQuoteApproval as reviewQuoteApprovalAPI,
   approveQuoteApproval as approveQuoteApprovalAPI,
 } from '../../api/app';
-
 import {getParameterByName, isPDFMode} from '../../utils/utils';
 import {parseAPIError} from '../../utils/api';
 import {isQuoteAddressValid} from '../../utils/app-order';
 import {ErrorResponse} from '../../utils/types';
-
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
-import {getSignatureData, isDirectPreview, isQuoteApprovalReviewed, isSignOffPDFView} from './utils';
 
+import {getSignatureData, isDirectPreview, isQuoteApprovalReviewed, isSignOffPDFView} from './utils';
 import {OrderData, AppCustomerQuotePageProps, PaymentMethod, QuoteApproval, SignatureData} from './types';
 import DefaultContent from './DefaultContent';
 import QuoteApprovalError from './QuoteApprovalError';

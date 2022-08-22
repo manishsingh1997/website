@@ -1,6 +1,9 @@
 import React, {useCallback} from 'react';
+
 import {Button} from '@ergeon/core-components';
+
 import {getStreetFromAddress} from '../../utils/app-house';
+
 import HouseMap from './HouseMap';
 import {HouseCardProps} from './types';
 

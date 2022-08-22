@@ -1,8 +1,9 @@
 import React, { Fragment, useCallback } from 'react';
+
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-
 import { Button } from '@ergeon/core-components';
+
 import { formatDate, formatDateAndTime } from '../../utils/date';
 import {
   filterQuotesByStatus,
@@ -10,13 +11,13 @@ import {
 } from '../../utils/app-order';
 import { DRIVEWAY_QUANTITY_UNIT, FENCE_QUANTITY_UNIT } from '../../website/constants';
 import DataRow from '../common/DataRow';
-
 import AppSubCard from '../common/AppSubCard';
 import AppConfigPreview from '../common/AppConfigPreview';
 import { Order, Quote, Visits } from '../types';
 import { getFormattedAddress } from '../../utils/app-house';
 import { getQuoteDetailURL } from '../../utils/urls';
 import { getExpiresAtTitle } from '../../utils/utils';
+
 import { SelectedOption } from './types';
 
 type OrderDetailsProps = {

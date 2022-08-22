@@ -1,5 +1,7 @@
 import React from  'react';
+
 import {render} from '@testing-library/react';
+
 import {ParsedAPIErrorType} from '../../../utils/types';
 import {Action, ActionType} from '../appNotificationPageReducer';
 import Content from '../Content';

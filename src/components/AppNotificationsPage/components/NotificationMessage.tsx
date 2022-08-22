@@ -1,5 +1,7 @@
 import React from 'react';
+
 import {Notification} from '@ergeon/core-components';
+
 import {ParsedAPIErrorType} from '../../../utils/types';
 
 interface NotificationMessageProps {

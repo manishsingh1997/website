@@ -1,7 +1,9 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
 import {QUOTE_LINE_STATUSES} from '../utils';
+
 import {Approved} from './QuoteLineComponents';
 import QuoteLineStatus from './QuoteLineStatus';
 import Tags from './QuoteLineTags';

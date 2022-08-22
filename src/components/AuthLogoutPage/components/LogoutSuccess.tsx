@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
+
 import {Redirect} from 'react-router-dom';
+
 import Success from '../../common/Success';
 import {AUTH_LOGOUT_SUCCESS_DELAY} from '../constants';
 

@@ -1,4 +1,5 @@
 import React, {useMemo} from 'react';
+
 import {Accordion} from '@ergeon/core-components';
 
 type Question = {

@@ -1,4 +1,5 @@
 import {Appointment, AppointmentsFilter, OptionType} from '../components/AppAppointmentsListPage/types';
+
 import {currentNow, getTimeInPST} from './date';
 
 export const APPOINTMENT_FILTER_OPTIONS: OptionType[] = [

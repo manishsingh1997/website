@@ -1,7 +1,10 @@
 import { Action, Dispatch } from 'redux';
+
 import {constants} from '@ergeon/3d-lib';
+
 import {getPlaceData, getCheckedZIP, getPriceAndDescription} from '../../api/lead';
 import {Config, Lead, LeadAddress} from '../../components/RequestQuotePage/types';
+
 import {updateConfig} from './cart';
 
 export const actionTypes = {

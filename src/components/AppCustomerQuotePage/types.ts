@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/named
 import {match} from 'react-router-dom';
+
 import {AuthState} from '../../flux/reducers/auth';
 import {Quote, QuoteLine} from '../types';
 

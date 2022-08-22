@@ -1,8 +1,10 @@
-import {AddressInput, Button} from '@ergeon/core-components';
 import React, {useCallback, useMemo, useState} from 'react';
+
+import {AddressInput, Button} from '@ergeon/core-components';
 import {ReactSVG} from 'react-svg';
 
 import {getCheckedZIP} from '../../../../api/lead';
+
 import {PopUpAction} from './AddressPopup';
 import {PopupContentProps} from './types';
 

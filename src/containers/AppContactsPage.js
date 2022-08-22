@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 
 import {getContacts, actionTypes as contactsActionTypes} from 'flux/actions/app-contacts';
 import AppContactsPage from 'components/AppContactsPage';
+
 import {getCurrentUser, actionTypes as authActionTypes} from '../flux/actions/auth';
 import {authService} from '../utils/auth';
 

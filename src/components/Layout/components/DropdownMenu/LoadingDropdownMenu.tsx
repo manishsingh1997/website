@@ -1,6 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
+import {Link} from 'react-router-dom';
 import {Spinner} from '@ergeon/core-components';
 import userIcon from '@ergeon/core-components/src/assets/icon-user.brand.svg';
 

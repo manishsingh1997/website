@@ -1,4 +1,5 @@
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
+
 import {actionTypes} from '../actions/layout';
 
 const initialState = {

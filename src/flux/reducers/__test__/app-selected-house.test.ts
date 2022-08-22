@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 import {HouseActionTypes} from '../../actions/app-houses';
-
 import selectedHouseReducer from '../app-selected-house';
 
 const mockAction = {

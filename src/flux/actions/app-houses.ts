@@ -1,6 +1,7 @@
 import {addCustomerHouse, editCustomerHouse, removeCustomerHouse, getCustomerHouses} from '../../api/app';
 import {AddAddressProps} from '../../components/AppHouseListPage/types';
 import {parseAPIError} from '../../utils/api';
+
 import {GetHouseDispatcher, SetHouseDispatcher} from './types';
 
 export enum HouseActionTypes {

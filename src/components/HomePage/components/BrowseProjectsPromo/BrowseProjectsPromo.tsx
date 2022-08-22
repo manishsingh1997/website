@@ -1,4 +1,5 @@
 import React from 'react';
+
 import imgMap from '../../../../assets/map_image.jpg';
 import PromoBlock from '../PromoBlock';
 

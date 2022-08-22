@@ -3,6 +3,7 @@
 // src/components/AppInstallerQuotePage - quote preview for installers
 
 import React, {useEffect, useState, useMemo, useContext, useCallback} from 'react';
+
 import {Redirect} from 'react-router-dom';
 
 import {getQuoteDetails} from '../../api/app';

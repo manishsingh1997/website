@@ -1,10 +1,10 @@
 import React from 'react';
+
 import {render, waitForElementToBeRemoved} from '@testing-library/react';
 import axios from 'axios';
 import '@testing-library/jest-dom';
 
 import JobBoard from '../JobBoard/index';
-
 import jobList from '../__mock__/jobList';
 
 jest.mock('axios');

@@ -6,6 +6,7 @@ import helpIcon from '@ergeon/core-components/src/assets/icon-question-mark-line
 
 import {useIsMobileWidth} from '../../../common/AppQuoteComponents/QuoteLine/customHooks';
 import {getMenuItems} from '../../../../data/customer-app';
+
 import WebsiteDropdownMenu from './WebsiteDropdownMenu';
 import {MenuItem, user} from './types';
 

@@ -1,7 +1,9 @@
-import { render, screen } from '@testing-library/react';
 import React from 'react';
+
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BrowserRouter } from 'react-router-dom';
+
 import { mockLoggedInAuth, mockNotLoggedInAuth, mockLoggedOutAuth } from './__mocks__/mockAuth';
 import AuthLogoutPage from './AuthLogoutPage';
 

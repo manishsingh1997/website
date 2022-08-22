@@ -1,16 +1,18 @@
 import React, {useCallback, useMemo} from 'react';
+
 import {isEmpty} from 'lodash';
 import {useHistory} from 'react-router-dom';
+
 import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
 import {prepareQuoteApprovalLines} from '../common/AppQuoteComponents/utils';
 import {formatPrice, isQuoteCancelled, isQuoteExpired, isQuoteReplaced} from '../../utils/app-order';
 import {isPDFMode} from '../../utils/utils';
+
 import AdditionalApprovalsList from './AdditionalApprovalsList';
 import BillingForm from './BillingForm';
 import CustomerDetails from './CustomerDetails';
 import ExplanationSection from './ExplanationSection';
 import ProjectNotes from './ProjectNotes';
-
 import {
   getProjectTotalPrice,
   getTotalPreviouslyApprovedPrice,
@@ -18,7 +20,6 @@ import {
   isQuoteApprovalApproved,
   isScopeChange,
 } from './utils';
-
 import {QuoteBodyProps} from './types';
 import ProjectSignOff from './ProjectSignOff/ProjectSignOff';
 import { ProjectSignOffProps } from './ProjectSignOff/types';

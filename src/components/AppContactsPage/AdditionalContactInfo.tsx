@@ -1,12 +1,13 @@
 import React, {ChangeEvent, MouseEvent, useCallback, useMemo} from 'react';
+
 import {ReactSVG} from 'react-svg';
 import classnames from 'classnames';
 import {Input, PhoneInput, Button} from '@ergeon/core-components';
-
 import MinusIcon from '@ergeon/core-components/src/assets/icon-minus.svg';
 import PlusIcon from '@ergeon/core-components/src/assets/icon-plus.svg';
 
 import DataRow from '../common/DataRow';
+
 import {PrimaryContact} from './types';
 
 type AdditionalContactInfoProps = {

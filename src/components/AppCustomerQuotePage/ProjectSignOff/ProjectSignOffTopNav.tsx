@@ -1,8 +1,7 @@
 import React, {useCallback} from 'react';
+
 import {useHistory, useLocation} from 'react-router-dom';
-
 import {Button} from '@ergeon/core-components';
-
 import IconWarning from '@ergeon/core-components/src/assets/icon-warning.svg';
 import IconMark from '@ergeon/core-components/src/assets/icon-success.svg';
 import IconArrow from '@ergeon/core-components/src/assets/icon-arrow-down.svg';

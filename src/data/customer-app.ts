@@ -3,6 +3,7 @@ import locationIcon from '@ergeon/core-components/src/assets/location-icon.svg';
 import orderIcon from '@ergeon/core-components/src/assets/icon-order.svg';
 import appointmentsIcon from '@ergeon/core-components/src/assets/icon-appointments.svg';
 import preferencesIcon from '@ergeon/core-components/src/assets/icon-preference.svg';
+
 import { UNSUBSCRIBE_CODE_QUERY_NAME } from '../utils/app-notifications';
 
 export const getMenuItems = (basePath: string, unsubscribeCode: string | null) => {

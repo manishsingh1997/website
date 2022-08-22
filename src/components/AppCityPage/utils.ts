@@ -1,4 +1,5 @@
 import {compact} from 'lodash';
+
 import {City} from './types';
 
 export const getAsset = (src: string, ext: 'jpeg' | 'pdf') => {

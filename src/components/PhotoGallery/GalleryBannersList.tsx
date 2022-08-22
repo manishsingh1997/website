@@ -1,5 +1,7 @@
 import React from 'react';
+
 import {GALLERY_BANNERS} from '../../data/gallery-banners-data';
+
 import GalleryBanner from './GalleryBanner';
 
 type GalleryBannersListProps = {

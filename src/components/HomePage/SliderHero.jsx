@@ -1,10 +1,12 @@
 import React from 'react';
-import ClassNames from 'classnames';
 
+import ClassNames from 'classnames';
 import {utils} from '@ergeon/core-components';
 import {PHONE_NUMBER,FENCE_SLUG} from '@ergeon/core-components/src/constants';
+
 import AddressForm from 'containers/AddressForm';
 import {isChristmasTime} from 'utils/utils';
+
 import Slider from './Slider';
 
 import './SliderHero.scss';

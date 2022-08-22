@@ -1,9 +1,9 @@
 import React from 'react';
+
 import '@testing-library/jest-dom';
 import {render, screen} from '@testing-library/react';
 
 import Careers from '../JobBoard/Careers';
-
 import jobList from '../__mock__/jobList';
 
 describe('Render Careers component', () => {

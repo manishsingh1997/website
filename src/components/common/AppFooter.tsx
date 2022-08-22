@@ -1,6 +1,8 @@
 import React, {memo, useMemo} from 'react';
+
 import {useLocation} from 'react-router';
 import {SimpleFooter, LocationsFooter} from '@ergeon/core-components';
+
 import {City} from '../AppCityPage/types';
 import {formatFooterLicenses, makePhoneLink} from '../AppCityPage/utils';
 import {CA_LICENSE_URL, GA_LICENSE_URL} from '../AppCityPage/constants';

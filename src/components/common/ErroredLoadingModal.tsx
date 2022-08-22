@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {ReactSVG} from 'react-svg';
 import ErrorIcon from '@ergeon/core-components/src/assets/icon-error.svg';
 import {Button} from '@ergeon/core-components';

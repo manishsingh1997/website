@@ -1,4 +1,5 @@
 import {CatalogType} from '@ergeon/3d-lib';
+
 import {ConfigItemsNames} from './constants';
 
 export type Address = {

@@ -4,12 +4,14 @@ import React, {
   useMemo,
   useReducer
 } from 'react';
+
 import queryString from 'query-string';
 import {Redirect} from 'react-router-dom';
 
 import AppPage from '../common/AppPage';
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
 import {getUnsubscribeCodeFromQuery} from '../../utils/app-notifications';
+
 import {AppNotificationsProps} from './types';
 import {COMPANY_NEWS_NOTIFICATION_TYPE} from './constant';
 import {fetchData, shouldUnsubscribe} from './utils';

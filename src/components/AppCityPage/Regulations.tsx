@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback } from 'react';
+
 import { Collapsible } from '@ergeon/core-components';
 
 import RegulationsImg from '../../assets/regulations.jpeg';

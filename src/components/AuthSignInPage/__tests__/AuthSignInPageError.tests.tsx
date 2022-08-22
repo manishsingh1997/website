@@ -1,6 +1,7 @@
+import React from 'react';
+
 import {BrowserRouter} from 'react-router-dom';
 import {fireEvent, render, screen, waitFor} from '@testing-library/react';
-import React from 'react';
 
 import AuthSignInPage from '../index';
 

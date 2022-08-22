@@ -1,7 +1,9 @@
 import moment from 'moment';
+
 import {Quote} from '../types';
 import {DIRECT_PREVIEW_SLUG} from '../../website/constants';
 import {updateCustomerSignOffRequirement} from '../../api/app';
+
 import {QuoteApproval, SignatureData} from './types';
 
 export const isSignOffPDFView = (pathname: string) => {

@@ -1,6 +1,7 @@
 import faker from '@faker-js/faker';
 
 import {initialAuthState} from '../../flux/reducers/auth';
+
 import {AuthConfirmationStep, getAuthConfirmationStep} from './utils';
 
 describe('AuthConfirmSignInPage utils', () => {

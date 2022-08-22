@@ -1,5 +1,7 @@
 import React, {useMemo} from 'react';
+
 import {getFencequotingURL} from '../../../utils/urls';
+
 import PreviewImage from './PreviewImage';
 import {PreviewWithLinkProps} from './types';
 import {isPlaceholderImage} from './utils';

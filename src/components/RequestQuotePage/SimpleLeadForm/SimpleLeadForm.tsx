@@ -1,4 +1,5 @@
 import React, {ChangeEvent, useState, useCallback, useMemo, useRef, useEffect} from 'react';
+
 import classNames from 'classnames';
 import * as Sentry from '@sentry/browser';
 import {CatalogType} from '@ergeon/3d-lib';
@@ -9,12 +10,14 @@ import {UPCOMING_FEATURES_PARAM} from '@ergeon/erg-utils-js';
 import {getBaseEventData} from '@ergeon/erg-utms';
 // @ts-ignore
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
+
 import {submitLeadArrived} from '../../../api/lead';
 import {showUpcomingFeatures} from '../../../utils/utils';
 import {identify, track, trackError, trackTawkLeadEvent} from '../../../utils/analytics';
 import {CUSTOMER_LEAD_CREATED} from '../../../utils/events';
 import {DEFAULT_SOURCE_VALUE} from '../../../website/constants';
 import {Address, stringifyAddress} from '../utils';
+
 import {getOrder, isMinimumValidAddress} from './utils';
 import {Config, User} from './types';
 

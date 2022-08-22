@@ -1,11 +1,12 @@
 import React from 'react';
-import { ReactSVG } from 'react-svg';
 
+import { ReactSVG } from 'react-svg';
 import IconCheckMark from '@ergeon/core-components/src/assets/icon-check-mark.svg';
 import IconPhoneGreen from '@ergeon/core-components/src/assets/icon-phone-green.svg';
 
 import TellUsForm from '../../containers/TellUsForm';
 import { showUpcomingFeatures } from '../../utils/utils';
+
 import { City } from './types';
 import { makePhoneLink } from './utils';
 import BannerRating from './components/BannerRating';

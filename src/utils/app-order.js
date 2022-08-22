@@ -1,5 +1,4 @@
 import {isPastDate} from 'utils/date';
-
 import {QUOTE_STATUS_CODE_APPROVED, QUOTE_STATUS_CODE_SENT, QUOTE_STATUS_CODE_CANCELLED} from 'website/constants';
 
 export const QUOTE_FILTERS = [

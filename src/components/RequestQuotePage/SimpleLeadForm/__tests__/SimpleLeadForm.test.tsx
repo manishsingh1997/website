@@ -1,10 +1,11 @@
 import React from 'react';
+
 import '@testing-library/jest-dom';
 import {render, screen, fireEvent, waitFor} from '@testing-library/react';
 import {calcUtils} from '@ergeon/3d-lib';
 import {googleIntegration} from '@ergeon/core-components';
-import {mockProps, mockAddress} from '../__mocks__/mockData';
 
+import {mockProps, mockAddress} from '../__mocks__/mockData';
 import SimpleLeadForm from '../SimpleLeadForm';
 
 describe('SimpleLeadForm tests', () => {

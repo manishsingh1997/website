@@ -1,5 +1,7 @@
 import React, {useMemo} from 'react';
+
 import isEmpty from 'lodash/isEmpty';
+
 import Gallery from './Gallery';
 import PreviewWithLink from './PreviewWithLink';
 import {PreviewContentProps} from './types';

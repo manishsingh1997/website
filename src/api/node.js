@@ -1,5 +1,6 @@
 import {ensureUpcomingFeaturesParamInUrl} from '@ergeon/erg-utils-js';
 import axios from 'axios';
+
 import {authService} from 'utils/auth';
 
 const getBaseAPIURL = () => {

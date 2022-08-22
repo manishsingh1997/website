@@ -1,4 +1,5 @@
 import React, {useCallback} from 'react';
+
 import {Experiment, Variant} from '@marvelapp/react-ab-test';
 import {RatingsData} from '@ergeon/core-components';
 import omit from 'lodash/omit';

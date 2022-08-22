@@ -1,4 +1,5 @@
 import React, {memo} from 'react';
+
 import QuoteError from '../common/AppQuoteComponents/QuoteError';
 
 const QuoteApprovalError = ({quoteApprovalError}: {quoteApprovalError: string | null}) => {

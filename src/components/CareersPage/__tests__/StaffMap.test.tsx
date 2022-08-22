@@ -1,10 +1,10 @@
 import React from 'react';
+
 import '@testing-library/jest-dom';
 import {googleIntegration} from '@ergeon/core-components';
 import {act, render, waitForElementToBeRemoved} from '@testing-library/react';
 
 import * as API from '../../../api/map';
-
 import StaffMap from '../StaffMap';
 import mapData from '../__mock__/mapData';
 

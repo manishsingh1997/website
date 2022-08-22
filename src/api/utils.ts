@@ -1,7 +1,7 @@
 import axios from 'axios';
 import isEmpty from 'lodash/isEmpty';
-
 import {ensureUpcomingFeaturesParamInUrl} from '@ergeon/erg-utils-js';
+
 import {authService} from '../utils/auth';
 
 type Method = 'get' | 'post' | 'patch';

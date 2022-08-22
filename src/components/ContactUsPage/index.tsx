@@ -1,10 +1,11 @@
 import React, {useCallback, useState} from 'react';
-import {Link} from 'react-router-dom';
 
+import {Link} from 'react-router-dom';
 import {constants, utils} from '@ergeon/core-components';
 
 import {CONTACT_EMAIL} from '../../website/constants';
 import Success from '../common/Success';
+
 import ContactUsForm from './ContactUsForm';
 
 import './index.scss';

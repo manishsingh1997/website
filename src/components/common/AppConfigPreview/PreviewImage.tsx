@@ -1,6 +1,8 @@
 import React, {useMemo} from 'react';
+
 import classNames from 'classnames';
 import preview3DIcon from '@ergeon/core-components/src/assets/icon-3d.svg';
+
 import {PreviewImageProps} from './types';
 
 const PreviewImage = ({previewImage, isPlaceholder, isLoading, handleLoad}: PreviewImageProps) => {

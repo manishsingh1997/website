@@ -1,4 +1,5 @@
 import { CITIES_PAGE_PATH } from '../../../../website/constants';
+
 import { CitiesJSONData } from './types';
 
 enum SupportedStates {

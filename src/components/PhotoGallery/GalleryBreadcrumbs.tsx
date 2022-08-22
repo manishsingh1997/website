@@ -1,7 +1,10 @@
 import React, {useMemo} from 'react';
+
 import {Breadcrumb} from '@ergeon/core-components';
-import {ProductCategory} from './GalleryContent';
+
 import {PhotoGalleryProps} from './';
+
+import {ProductCategory} from './GalleryContent';
 
 type GalleryBreadcrumbsProps = {
   category: ProductCategory;

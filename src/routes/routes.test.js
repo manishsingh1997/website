@@ -1,7 +1,9 @@
 import React from 'react';
+
 import {render} from '@testing-library/react';
 
 import {CITIES_PAGE_PATH} from '../website/constants';
+
 import Cities from './Cities';
 import CustomerApp from './CustomerApp';
 

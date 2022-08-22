@@ -9,6 +9,7 @@ import HomePage from 'components/HomePage';
 import PhotoGallery from 'components/PhotoGallery';
 import RequestQuotePage from 'containers/RequestQuotePage';
 import WarrantiesPage from 'components/WarrantiesPage';
+
 import FencesHomePage from '../components/HomePage/FencesHome';
 import CareersPage from '../components/CareersPage';
 import AboutPage from '../components/AboutPage';

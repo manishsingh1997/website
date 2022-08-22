@@ -1,6 +1,9 @@
 import {Dispatch} from 'react';
+
 import find from 'lodash/find';
+
 import {updateNotificationPreferences} from '../../api/app';
+
 import {Action, ActionType} from './appNotificationPageReducer';
 import {COMPANY_NEWS_NOTIFICATION_TYPE} from './constant';
 import {NotificationPreference} from './types';

@@ -1,19 +1,20 @@
 import React, {useMemo, useState} from 'react';
+
 import find from 'lodash/find';
 
-import NotFoundPage from '../NotFoundPage';
+import {PhotoGalleryProps} from '.';
 
+import NotFoundPage from '../NotFoundPage';
 import {FencePhotoData, GatePhotoData} from '../../data/photo-gallery';
+
 import GalleryPartners, {Partners} from './GalleryPartners';
 import GalleryPhotos from './GalleryPhotos';
-
 import GalleryBreadcrumbs from './GalleryBreadcrumbs';
 import GalleryHeader from './GalleryHeader';
 import GalleryBannersList from './GalleryBannersList';
 import GalleryTabs from './GalleryTabs';
 import {fillCaptionsInPhotos} from './utils';
 import GalleryModal from './GalleryModal';
-import {PhotoGalleryProps} from '.';
 
 const PRODUCTS = {
   FENCE: 'fence',

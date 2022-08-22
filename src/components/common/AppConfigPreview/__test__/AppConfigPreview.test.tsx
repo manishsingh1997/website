@@ -1,10 +1,10 @@
 import React from 'react';
+
 import {render} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {calcUtils} from '@ergeon/3d-lib';
 
 import AppConfigPreview from '../';
-
 import * as utils from '../../../../utils/utils';
 
 const mockedCalcUtils = jest.spyOn(calcUtils, 'getPreviewImage');

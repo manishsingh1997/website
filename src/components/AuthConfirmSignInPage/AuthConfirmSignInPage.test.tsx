@@ -1,9 +1,11 @@
 import React from 'react';
+
 import {act, fireEvent, render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import faker from '@faker-js/faker';
 
 import {AuthState, initialAuthState} from '../../flux/reducers/auth';
+
 import AuthConfirmSignInPage from './index';
 
 // Replaces the original implementation of `setTimeout()` and other timer functions

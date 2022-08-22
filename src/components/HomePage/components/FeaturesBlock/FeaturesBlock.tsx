@@ -1,4 +1,5 @@
 import React from 'react';
+
 import imgSmile from '../../../../assets/trusted/icon-communication.svg';
 import imgTrusted from '../../../../assets/trusted/icon-erg-hart.svg';
 import imgCard from '../../../../assets/trusted/icon-lightbulb.svg';

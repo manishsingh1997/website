@@ -1,9 +1,9 @@
 import React from 'react';
+
 import {Route, Switch} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {INSTALLER_PREVIEW_SLUG, DIRECT_PREVIEW_SLUG} from '../website/constants';
-
 import AppLayout from '../containers/AppLayout';
 import AppAppointmentsListPage from '../containers/AppAppointmentsListPage';
 import AppContactsPage from '../containers/AppContactsPage';

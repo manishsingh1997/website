@@ -2,9 +2,7 @@ import '@testing-library/jest-dom';
 
 import approvedQuoteMock from '../__mocks__/data/ApprovedQuote';
 import SignoffApproved from '../__mocks__/data/SignOffApprovedQuote';
-
 import { QuoteApproval } from '../types';
-
 import {
   isSignOffPDFView,
   isDirectPreview,

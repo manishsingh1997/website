@@ -1,5 +1,7 @@
 import React, {Dispatch, FormEvent} from 'react';
+
 import {ParsedAPIErrorType} from '../../utils/types';
+
 import {Action, ActionType} from './appNotificationPageReducer';
 import {COMPANY_NEWS_NOTIFICATION_TYPE} from './constant';
 import {NotificationPreference} from './types';

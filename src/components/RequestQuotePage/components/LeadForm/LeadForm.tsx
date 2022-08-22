@@ -1,4 +1,5 @@
 import React, {useCallback, useMemo, useState} from 'react';
+
 import classNames from 'classnames';
 import * as Sentry from '@sentry/browser';
 import {constants, calcUtils, CatalogType} from '@ergeon/3d-lib';
@@ -8,6 +9,7 @@ import {UPCOMING_FEATURES_PARAM} from '@ergeon/erg-utils-js';
 import {getBaseEventData} from '@ergeon/erg-utms';
 // @ts-ignore
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
+
 import {submitLeadArrived} from '../../../../api/lead';
 import {identify, track, trackError, trackTawkLeadEvent} from '../../../../utils/analytics';
 import {CUSTOMER_LEAD_CREATED} from '../../../../utils/events';
@@ -15,6 +17,7 @@ import {DEFAULT_SOURCE_VALUE, LEAD_FULL_NAME_MAX_LENGTH} from '../../../../websi
 import {parseError, showUpcomingFeatures, getAdvancedEditorUrl} from '../../../../utils/utils';
 import AddNote from '../AddNote';
 import {Address} from '../../types';
+
 import {LeadFormData, LeadFormProps} from './types';
 import {getInitialFormData, stringifyAddress, validator} from './utils';
 import './LeadForm.scss';

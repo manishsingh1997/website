@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
+
 import {constants, StyleBrowser} from '@ergeon/3d-lib';
 // @ts-ignore
 import {tawk} from '@ergeon/erg-utms';
+
 import PopUp from '../PopUp';
 import './StyleBrowserWrapper.scss';
 

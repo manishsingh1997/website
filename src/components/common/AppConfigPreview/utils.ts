@@ -2,6 +2,7 @@ import previewPlaceholderIcon from '@ergeon/core-components/src/assets/icon-phot
 import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {calcUtils} from '@ergeon/3d-lib';
 import isEqual from 'lodash/isEqual';
+
 import {Image} from './types';
 
 export const getPreviewImage = async (schemaCodeUrl: string) => {

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {CitySearchInput, PlacesAutocompleteTypes} from '@ergeon/core-components';
 
 type CitySearchInputFieldProps = {

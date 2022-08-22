@@ -1,6 +1,8 @@
 import React from 'react';
+
 import '@testing-library/jest-dom';
 import {render} from '@testing-library/react';
+
 import AppLayout from '../index';
 import {mockLoggedInAuth, mockNotLoggedInAuth} from '../../AuthLogoutPage/__mocks__/mockAuth';
 import {AppLayoutProps} from '../types';

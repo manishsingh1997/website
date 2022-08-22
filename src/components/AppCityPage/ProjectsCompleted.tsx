@@ -1,6 +1,6 @@
 import React, {useCallback, useMemo} from 'react';
-import {getAsset, getProjectGalleryUrl} from './utils';
 
+import {getAsset, getProjectGalleryUrl} from './utils';
 import {City} from './types';
 
 type ProjectsCompletedProps = {

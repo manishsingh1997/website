@@ -1,6 +1,8 @@
 import React from 'react';
+
 import {ReactSVG} from 'react-svg';
 import PropTypes from 'prop-types';
+
 import ImgCalendar from 'assets/icon-calendar.svg';
 import ImgInitial from 'assets/icon-initial-walkthrough.svg';
 import ImgFinal from 'assets/icon-final-walkthrough.svg';

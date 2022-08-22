@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {render, screen, fireEvent, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {MemoryRouter, Router} from 'react-router-dom';
@@ -8,7 +9,6 @@ import * as Sentry from '@sentry/browser';
 import ContactUs from '../../ContactUsPage/index';
 import * as Utils from '../../../utils/analytics';
 import * as API from '../../../api/contactUs';
-
 import {correctInputField, inputFields, pageText, wrongInputField} from '../__mocks__/data';
 import submitContactUs from '../__mocks__/SubmitContactUs';
 

@@ -1,6 +1,6 @@
 import React, {useState, useCallback} from 'react';
-import {ReactSVG} from 'react-svg';
 
+import {ReactSVG} from 'react-svg';
 import IconCheckMark from '@ergeon/core-components/src/assets/icon-check-mark.svg';
 
 import Success from '../../common/Success';

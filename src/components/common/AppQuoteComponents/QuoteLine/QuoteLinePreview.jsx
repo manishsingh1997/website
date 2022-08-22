@@ -1,9 +1,11 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
 import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
 
 import AppConfigPreview from '../../AppConfigPreview';
+
 import {useIsMobileWidth} from './customHooks';
 
 /**

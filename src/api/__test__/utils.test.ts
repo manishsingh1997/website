@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import axios from 'axios';
+
 import {getReqMethod, request} from '../utils';
 
 jest.mock('axios');

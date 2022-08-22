@@ -1,4 +1,5 @@
 import React from 'react';
+
 import classNames from 'classnames';
 import {withRouter} from 'react-router-dom';
 import {Button, Spinner, googleIntegration} from '@ergeon/core-components';
@@ -7,11 +8,13 @@ import {calcUtils} from '@ergeon/3d-lib';
 import MapComponent from '@ergeon/map-component';
 // @ts-ignore
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
+
 import AppLoader from '../common/AppLoader';
 import Marker from '../../assets/marker.svg';
 import Success from '../common/Success';
 import ConfigCart from '../../containers/ConfigCart';
 import {getParameterByName, showUpcomingFeatures} from '../../utils/utils';
+
 import LeadForm from './components/LeadForm';
 import TermsFooter from './components/TermsFooter';
 import {RequestQuotePageProps, RequestQuotePageState} from './types';

@@ -1,8 +1,10 @@
 import React, {useContext, useState, useCallback, useMemo} from 'react';
+
 import {DEFAULT_QUOTE_FILTER} from '../../utils/app-order';
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
 import AppPage from '../../components/common/AppPage';
 import {Order} from '../types';
+
 import OrderDetailHeader from './OrderDetailHeader';
 import OrderDetail from './OrderDetail';
 import {SelectedOption} from './types';

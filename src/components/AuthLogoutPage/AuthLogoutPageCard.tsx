@@ -1,5 +1,7 @@
 import React from 'react';
+
 import SingleCard from '../../components/common/SingleCard';
+
 import {AuthLogoutPageProps} from './types';
 import AuthLogoutPage from './AuthLogoutPage';
 

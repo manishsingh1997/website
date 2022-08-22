@@ -1,7 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {formatDate} from 'utils/date';
 
+import PropTypes from 'prop-types';
+
+import {formatDate} from 'utils/date';
 import {DRIVEWAY_QUANTITY_UNIT} from 'website/constants';
 
 /**

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {Notification} from '@ergeon/core-components';
 
 import HouseCard from './HouseCard';

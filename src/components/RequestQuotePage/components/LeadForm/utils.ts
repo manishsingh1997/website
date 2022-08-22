@@ -1,7 +1,9 @@
 // @ts-ignore
 import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
+
 import {createValidator, email, phone, required} from '../../../../utils/validation';
 import {Address} from '../../types';
+
 import {LeadFormData, LeadFormProps} from './types';
 
 export const stringifyAddress = (address?: Address | null) => {

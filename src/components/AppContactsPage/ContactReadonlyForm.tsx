@@ -1,6 +1,7 @@
 import React, {useCallback, useMemo} from 'react';
 
 import DataRow from '../common/DataRow';
+
 import {Contact} from './types';
 
 import './index.scss';

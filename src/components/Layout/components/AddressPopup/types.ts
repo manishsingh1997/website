@@ -1,4 +1,5 @@
 import {Address} from '../../../types';
+
 import {PopUpAction} from './AddressPopup';
 
 export type PopupContentProps = {

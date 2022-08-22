@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 
 import RequestQuotePage from 'components/RequestQuotePage';
+
 import {updateLead, updateProduct, updateLeadFromAddress, openAddressUpdatePopup} from '../flux/actions/address';
 import {addConfig, addConfigFromSchema} from '../flux/actions/cart';
 

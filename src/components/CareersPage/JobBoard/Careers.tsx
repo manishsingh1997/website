@@ -1,6 +1,8 @@
 import React, {useMemo} from 'react';
+
 import filter from 'lodash/filter';
 import classNames from 'classnames';
+
 import Positions from './Position';
 
 interface CareerProps {

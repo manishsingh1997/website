@@ -1,8 +1,11 @@
 import React from 'react';
+
 import MapComponent from '@ergeon/map-component';
 import {Spinner, googleIntegration} from '@ergeon/core-components';
+
 import {STAFF_MAP_GID} from 'website/constants';
 import {getMapData} from 'api/map';
+
 import './StaffMap.scss';
 import {retryRequest} from '../../utils/utils';
 

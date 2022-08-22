@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {Notification, Spinner, ImageCard, Title, googleIntegration, utils} from '@ergeon/core-components';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
@@ -6,10 +7,11 @@ import DrawMap from '@ergeon/draw-map';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
-
 import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
+
 import {isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
 import {CARD_TRANSACTION_FEE} from 'website/constants';
+
 import QuoteLines from './QuoteLines';
 import QuoteDescription from './QuoteDescription';
 

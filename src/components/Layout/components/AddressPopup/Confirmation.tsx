@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {ReactSVG} from 'react-svg';
 import locationIcon from '@ergeon/core-components/src/assets/icon-confirmation-check.svg';
 

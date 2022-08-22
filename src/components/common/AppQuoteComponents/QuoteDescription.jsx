@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import {ReactSVG} from 'react-svg';
 import {Link} from 'react-router-dom';
@@ -15,14 +16,14 @@ import {
   DropdownButton,
 } from '@ergeon/core-components';
 import isEmpty from 'lodash/isEmpty';
-
 import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 import iconSave from '@ergeon/core-components/src/assets/icon-save.svg';
 import iconInfo from '@ergeon/core-components/src/assets/icon-info.svg';
 import iconEmail from '@ergeon/core-components/src/assets/icon-email.svg';
-import ImgBack from 'assets/icon-arrow-left.svg';
-import {isPDFMode,getExpiresAtTitle} from '../../../utils/utils';
 
+import ImgBack from 'assets/icon-arrow-left.svg';
+
+import {isPDFMode,getExpiresAtTitle} from '../../../utils/utils';
 import {formatDateAndTime} from '../../../utils/date';
 import {getOrderDetailURL} from '../../../utils/urls';
 

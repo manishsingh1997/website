@@ -1,4 +1,5 @@
 import React from 'react';
+
 import '@testing-library/jest-dom';
 import {render, screen, fireEvent} from '@testing-library/react';
 import {Router, MemoryRouter} from 'react-router-dom';
@@ -6,6 +7,7 @@ import {Provider} from 'react-redux';
 import {createBrowserHistory} from 'history';
 import {googleIntegration} from '@ergeon/core-components';
 import {initialize, mockInstances} from '@googlemaps/jest-mocks';
+
 import Layout from '../Layout';
 import {store} from '../../__mocks__/mockStore';
 import {mockLoggedInAuth, mockNotLoggedInAuth} from '../__mocks__/mockData';

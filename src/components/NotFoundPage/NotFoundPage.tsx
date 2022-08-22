@@ -1,6 +1,9 @@
 import React from 'react';
+
 import {Helmet} from 'react-helmet';
+
 import ErrorPage from '../common/ErrorPage';
+
 import {getPageNotFoundImage} from './utils';
 
 const NotFoundPage = () => (

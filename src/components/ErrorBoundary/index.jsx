@@ -1,6 +1,8 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import * as Sentry from '@sentry/browser';
+
 import UnknownErrorPage from '../UnknownErrorPage';
 
 class ErrorBoundary extends React.Component {

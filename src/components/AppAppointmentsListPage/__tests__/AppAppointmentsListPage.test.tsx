@@ -1,5 +1,6 @@
-import {render, fireEvent, screen} from '@testing-library/react';
 import React from 'react';
+
+import {render, fireEvent, screen} from '@testing-library/react';
 import {Router} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
 

@@ -1,10 +1,13 @@
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
+
 import {isNil, isEmpty} from 'lodash';
 import classNames from 'classnames';
 import previewPlaceholderIcon from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {Spinner} from '@ergeon/core-components';
+
 import {isPDFMode} from '../../../utils/utils';
+
 import {getPreviewImage, isPlaceholderImage} from './utils';
 import PreviewPDF from './PreviewPDF';
 import PreviewContent from './PreviewContent';

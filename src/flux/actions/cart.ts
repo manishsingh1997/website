@@ -1,8 +1,10 @@
 import {Action, Dispatch} from 'redux';
+
 import some from 'lodash/some';
 import random from 'lodash/random';
 import {calcUtils, CatalogType} from '@ergeon/3d-lib';
 import moment from 'moment';
+
 import {getPriceAndDescription} from '../../api/lead';
 import {Config, Lead, LeadConfigType} from '../../components/RequestQuotePage/types';
 

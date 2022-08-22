@@ -1,7 +1,7 @@
 import React, {Fragment, useCallback, useContext, useMemo} from 'react';
+
 import {Link} from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
-
 import {DataRow} from '@ergeon/core-components';
 
 import CustomerGIDContext from '../../../context-providers/CustomerGIDContext';

@@ -2,7 +2,9 @@ import {localStorage as ls} from '@ergeon/erg-utils-js';
 import moment from 'moment';
 import * as _ from 'lodash';
 import {calcUtils} from '@ergeon/3d-lib';
+
 import {LS_ERGEON_CART_DATA} from 'website/constants';
+
 import {actionTypes} from '../actions/cart';
 
 const getSavedCartData = () => {

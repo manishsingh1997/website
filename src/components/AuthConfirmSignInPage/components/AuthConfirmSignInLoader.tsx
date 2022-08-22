@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+
 import {Spinner} from '@ergeon/core-components';
 
 const AuthConfirmSignInLoader: FC = ({children}) => {

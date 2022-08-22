@@ -1,5 +1,7 @@
 import {useCallback, useEffect, useState} from 'react';
+
 import {HouseType} from '../types';
+
 import {Appointment} from './types';
 
 const useHouseAppointments = (appointments: Appointment[], selectedHouse: HouseType | null) => {

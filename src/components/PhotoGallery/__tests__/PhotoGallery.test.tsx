@@ -1,11 +1,10 @@
 import React from 'react';
+
 import '@testing-library/jest-dom';
 import {createMemoryHistory, createLocation} from 'history';
-
 import {render, screen} from '@testing-library/react';
 
 import PhotoGallery from '../';
-
 import {GALLERY_BANNERS} from '../../../data/gallery-banners-data';
 
 const mockProps = {

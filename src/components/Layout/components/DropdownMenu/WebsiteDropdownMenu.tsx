@@ -1,9 +1,9 @@
 // We expect this file and component to be deleted, when the TODO requirement is done
 import React from 'react';
+
 import {NavLink} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
-
 import {DropdownMenu} from '@ergeon/core-components';
 
 import {MenuItem} from './types';

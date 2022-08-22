@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
+import PropTypes from 'prop-types';
 import {HelpLandingPage as HelpLanding} from '@ergeon/help-components';
 import {PHONE_NUMBER} from '@ergeon/core-components/src/constants';
 

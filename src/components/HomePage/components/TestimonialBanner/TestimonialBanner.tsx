@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {RatingsData} from '@ergeon/core-components';
 
 import yelpLogo from '../../../../assets/testimonial-icons/yelp.svg';

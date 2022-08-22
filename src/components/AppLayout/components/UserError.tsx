@@ -1,8 +1,10 @@
-import {Button} from '@ergeon/core-components';
 import React from 'react';
+
+import {Button} from '@ergeon/core-components';
 import {Link} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
 import somethingWrongIcon from '@ergeon/core-components/src/assets/icon-something-wrong@2x.svg';
+
 import SingleCard from '../../common/SingleCard';
 
 const UserError = () => {

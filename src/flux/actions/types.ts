@@ -1,8 +1,10 @@
 import {Action} from 'redux';
+
 import {Appointment} from '../../components/AppAppointmentsListPage/types';
 import {City} from '../../components/AppCityPage/types';
 import {HouseType} from '../../components/types';
 import {ParsedAPIErrorType} from '../../utils/types';
+
 import {HouseActionTypes} from './app-houses';
 
 export interface GetAppointmentRequest {

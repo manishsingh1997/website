@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {ERGEON_LICENSE_NUMBER, ERGEON_GEORGIA_LICENSE_NUMBER} from 'website/constants';
-
 import certifiedIcon from 'assets/certified@2x.png';
 import licenseImage from 'assets/license.jpg';
 import './index.scss';

@@ -1,5 +1,6 @@
-import {AxiosError} from 'axios';
 import {useCallback, useContext, useEffect, useState} from 'react';
+
+import {AxiosError} from 'axios';
 
 import {updateCustomerContacts} from '../../../api/app';
 import CustomerGIDContext from '../../../context-providers/CustomerGIDContext';

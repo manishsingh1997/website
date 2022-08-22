@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './TermsFooter.scss';
 import classNames from 'classnames';
 

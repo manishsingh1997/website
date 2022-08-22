@@ -1,5 +1,7 @@
 import React from 'react';
+
 import {ImageCard} from '@ergeon/core-components';
+
 import {Image} from './types';
 
 const PreviewPDF = ({images}: {images: Image[]}) => (

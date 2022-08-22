@@ -1,8 +1,8 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
 import {isChristmasTime, scrollTop} from '../../utils/utils';
-
 import christmasSparkles from '../../assets/christmas-pics/sparkles.png';
 import './Success.scss';
 

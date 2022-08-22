@@ -1,10 +1,9 @@
 import React, {useCallback, useMemo} from 'react';
+
 import { useHistory, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import moment from 'moment';
-
 import {Button} from '@ergeon/core-components';
-
 import IconWarning from '@ergeon/core-components/src/assets/icon-warning.svg';
 import IconMark from '@ergeon/core-components/src/assets/icon-success.svg';
 import iconSave from '@ergeon/core-components/src/assets/icon-save.svg';

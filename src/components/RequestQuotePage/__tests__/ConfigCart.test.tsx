@@ -1,6 +1,8 @@
 import React from 'react';
+
 import '@testing-library/jest-dom';
 import {render, screen} from '@testing-library/react';
+
 import ConfigCart from '../ConfigCart';
 import {selectedConfigs} from '../__mocks__/mockData';
 

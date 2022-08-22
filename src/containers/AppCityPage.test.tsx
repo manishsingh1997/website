@@ -1,15 +1,17 @@
 import React from 'react';
+
 import {act, render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {ErrorBoundary} from 'react-error-boundary';
 import {MemoryRouter} from 'react-router-dom';
 import faker from '@faker-js/faker';
 import { Provider } from 'react-redux';
-import cities from '../data/cities-full-data.json';
 
+import cities from '../data/cities-full-data.json';
 import {AppCityPageProps} from '../components/AppCityPage/AppCityPage';
 import store from '../flux/store';
 import { CITIES_PAGE_PATH } from '../website/constants';
+
 import AppCityPage from './AppCityPage';
 
 jest.mock('../components/AppCityPage', () => ({city}: AppCityPageProps) => <>{city.slug}</>);

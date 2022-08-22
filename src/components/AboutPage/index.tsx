@@ -2,6 +2,7 @@ import React from 'react';
 
 import {Button} from '@ergeon/core-components';
 import imgHeart from '@ergeon/core-components/src/assets/icon-heart-favicon-blue.svg';
+
 import imgJenny from '../../assets/about-page/jenny@2x.jpg';
 import imgOdysseas from '../../assets/about-page/odysseas@2x.jpg';
 import imgLogoMark from '../../assets/about-page/logo_mark.png';

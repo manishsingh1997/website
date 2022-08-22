@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {AuthState} from '../../../../flux/reducers/auth';
+
 import LoadingDropdownMenu from './LoadingDropdownMenu';
 import MainDropdownMenu from './MainDropdownMenu';
 import AuthDropdownMenu from './AuthDropdownMenu';

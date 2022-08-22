@@ -1,4 +1,5 @@
 import {CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
+
 import QuoteLinePreview from './QuoteLinePreview';
 
 /**

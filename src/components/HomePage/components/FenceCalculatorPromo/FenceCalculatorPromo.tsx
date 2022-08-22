@@ -1,4 +1,5 @@
 import React from 'react';
+
 import imgCalc from '../../../../assets/fence-calculator-promo-1.png';
 import PromoBlock from '../PromoBlock';
 

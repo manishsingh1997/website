@@ -1,7 +1,7 @@
-import classNames from 'classnames';
 import React, {useMemo} from 'react';
-import {ReactSVG} from 'react-svg';
 
+import classNames from 'classnames';
+import {ReactSVG} from 'react-svg';
 import profileIcon from '@ergeon/core-components/src/assets/icon-profile.svg';
 import homeIcon from '@ergeon/core-components/src/assets/icon-home-black.svg';
 
@@ -11,6 +11,7 @@ import PathNavLink from '../../common/PathNavLink';
 import {AddAddressProps} from '../../AppHouseListPage/types';
 import {MatchProps} from '../types';
 import {HouseType} from '../../types';
+
 import {MY_ACCOUNT_PATHS} from './constants';
 import AddressDropdown from './AddressDropdown';
 

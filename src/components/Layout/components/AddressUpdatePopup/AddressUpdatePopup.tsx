@@ -3,7 +3,6 @@ import React, {FC, useCallback} from 'react';
 import {trackAddressEntered} from '../../../../utils/analytics';
 import {updateLeadWithZipcode} from '../../utils';
 import {Lead, Product} from '../../../types';
-
 import AddressPopup from '../AddressPopup';
 import {PopUpAction} from '../AddressPopup/AddressPopup';
 

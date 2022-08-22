@@ -1,5 +1,7 @@
 import React, {useMemo} from 'react';
+
 import {Tabs} from '@ergeon/core-components';
+
 import {ProductCategory} from './GalleryContent';
 
 type GalleryTabsProps = {

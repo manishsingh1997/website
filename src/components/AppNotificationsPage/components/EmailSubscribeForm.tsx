@@ -1,4 +1,5 @@
 import React, {FormEvent} from 'react';
+
 import classNames from 'classnames';
 import {Button, Checkbox, Spinner} from '@ergeon/core-components';
 import './EmailSubscribeForm.scss';

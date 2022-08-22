@@ -1,5 +1,6 @@
 import {getCustomerAppointments} from '../../api/app';
 import {parseAPIError} from '../../utils/api';
+
 import {GetAppointmentDispatcher} from './types';
 
 export enum AppointmentsActionTypes {

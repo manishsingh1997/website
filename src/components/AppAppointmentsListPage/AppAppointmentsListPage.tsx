@@ -1,11 +1,12 @@
 import React, {Fragment, useCallback, useContext, useMemo, useState} from 'react';
+
 import isEmpty from 'lodash/isEmpty';
 
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
-
 import AppPage from '../../components/common/AppPage';
 import {filterAppointmentsByDate} from '../../utils/app-appointments';
 import {HouseType} from '../types';
+
 import {Appointment, AppointmentsFilter} from './types';
 import AppointmentsList from './AppointmentsList';
 import AppointmentsFilterSelector from './AppointmentsFilterSelector';

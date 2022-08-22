@@ -1,4 +1,5 @@
 import React, {ReactNode, useEffect} from 'react';
+
 import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
 import {blockBodyScroll, unblockBodyScroll, scrollTop} from '@ergeon/core-components';

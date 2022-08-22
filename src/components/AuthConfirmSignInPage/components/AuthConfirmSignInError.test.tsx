@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {render, screen} from '@testing-library/react';
 import {Button} from '@ergeon/core-components';
 import '@testing-library/jest-dom';

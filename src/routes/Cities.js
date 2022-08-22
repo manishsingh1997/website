@@ -1,11 +1,11 @@
 import React from 'react';
+
 import {Route, Switch, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import keys from 'lodash/keys';
 
 import NotFoundPage from '../components/NotFoundPage';
 import AppCityPage from '../containers/AppCityPage';
-
 import citiesMinData from '../data/cities-min-data.json';
 import citiesRedirectsData from '../data/cities-neighboring-redirects-data.json';
 

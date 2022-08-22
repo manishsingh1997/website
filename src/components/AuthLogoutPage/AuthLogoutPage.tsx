@@ -1,4 +1,5 @@
 import React, {useMemo} from 'react';
+
 import {AUTH_STATE} from './constants';
 import LogoutConfirmation from './components/LogoutConfirmation';
 import LogoutSuccess from './components/LogoutSuccess';

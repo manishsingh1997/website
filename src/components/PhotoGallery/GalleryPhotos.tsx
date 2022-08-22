@@ -1,7 +1,9 @@
 import React, {useCallback, useRef} from 'react';
+
 import Masonry from 'react-masonry-component';
 import isEmpty from 'lodash/isEmpty';
 import {ImageCard} from '@ergeon/core-components';
+
 import {Photo} from './GalleryContent';
 
 type GalleryPhotosProps = {
