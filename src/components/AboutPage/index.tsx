@@ -53,9 +53,9 @@ class AboutPage extends React.Component {
             <br />
             <br />
             Starting with outdoor construction, we install the highest quality fence projects and we are on track toward
-            scaling to larger complex building projects. Over 8,000 happy customers are now enjoying the fences we’ve
+            scaling to larger complex building projects. Over 10,000 happy customers are now enjoying the fences we’ve
             built for them. We were named Best of HomeAdvisor 2020, with over 2,000 public reviews at an average rating
-            of 4.6. We have expanded across multiple states in the past four years to cover over 12% of U.S. households
+            of 4.6. We have expanded across multiple states in the past four years to cover over 14% of U.S. households
             in our service areas! Our company was founded and is run today by two CS Ph.D. serial entrepreneurs.
             <br />
             <br />
