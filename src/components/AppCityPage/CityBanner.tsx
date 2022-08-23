@@ -4,6 +4,7 @@ import {ReactSVG} from 'react-svg';
 import {Button} from '@ergeon/core-components';
 import IconPhone from '@ergeon/core-components/src/assets/icon-call.svg';
 
+import {showUpcomingFeatures} from '../../utils/utils';
 import TellUsForm from '../../containers/TellUsForm';
 
 import BannerRating from './components/BannerRating';
@@ -13,10 +14,11 @@ import './CityBanner.scss';
 type CityBannerProps = {
   city: string;
   phone: string;
+  onScrollToLicense?: () => void;
 };
 
 const CityBanner = (props: CityBannerProps) => {
-  const {city, phone} = props;
+  const {city, phone, onScrollToLicense} = props;
   return (
     <section className="CityBanner" data-testid="city-banner">
       <section className="CityBanner-wrapper wrapper-1180">
@@ -40,6 +42,12 @@ const CityBanner = (props: CityBannerProps) => {
               </Button>
             </a>
             <BannerRating />
+
+            {showUpcomingFeatures('ENG-17224') && (
+              <h3 className="h6 CityBanner-desc-license" onClick={onScrollToLicense}>
+                See License & warranty information
+              </h3>
+            )}
           </aside>
         </section>
         <p className="is-tablet">or</p>

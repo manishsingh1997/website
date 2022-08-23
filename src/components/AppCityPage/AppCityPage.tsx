@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 
 import {Helmet} from 'react-helmet';
 import {EqualHeight, EqualHeightElement} from 'react-equal-height';
 import isEmpty from 'lodash/isEmpty';
 
 import TellUsForm from '../../containers/TellUsForm';
-import { showUpcomingFeatures } from '../../utils/utils';
+import {showUpcomingFeatures} from '../../utils/utils';
 import GetStartedSection from '../HomePage/components/GetStartedSection';
 import UpcomingRemoteFeatures from '../HomePage/components/UpcomingRemoteFeatures';
 import TestimonialBanner from '../HomePage/components/TestimonialBanner';
@@ -18,6 +18,7 @@ import ProjectsCompleted from './ProjectsCompleted';
 import {City} from './types';
 import {getAsset} from './utils';
 import CityBanner from './CityBanner';
+import useScrollToElement from './useScrollToElement';
 
 import './AppCityPage.scss';
 
@@ -30,6 +31,10 @@ const AppCityPage = (props: AppCityPageProps) => {
 
   const [loadPckgImage, setLoadPckgImage] = useState<string>();
 
+  const licenseSectionRef = useRef<HTMLDivElement>(null);
+
+  const {scrollToElement} = useScrollToElement(licenseSectionRef.current?.offsetTop);
+
   return (
     <>
       <Helmet>
@@ -37,25 +42,21 @@ const AppCityPage = (props: AppCityPageProps) => {
         <meta content={city.header.bullets.join(' ')} name="description" />
       </Helmet>
       <div className="AppCityPage">
-        {showUpcomingFeatures('ENG-16970') 
-        ? <CityBanner city={city.city} phone={city.phone}/>
-        : <MainBanner
-              bullets={city.header.bullets}
-              phone={city.phone}
-              state={city.state}
-              title={city.header.title}
-            />
-        }
+        {showUpcomingFeatures('ENG-16970') ? (
+          <CityBanner city={city.city} onScrollToLicense={scrollToElement} phone={city.phone} />
+        ) : (
+          <MainBanner bullets={city.header.bullets} phone={city.phone} state={city.state} title={city.header.title} />
+        )}
 
         <section className="wrapper-1180">
           <TestimonialBanner />
         </section>
 
-        {!showUpcomingFeatures('ENG-16970') &&
-        <section className="mobile-length">
-          <TellUsForm />
-        </section>
-        }
+        {!showUpcomingFeatures('ENG-16970') && (
+          <section className="mobile-length">
+            <TellUsForm />
+          </section>
+        )}
 
         <CityReviews google={city.review?.Google} yelp={city.review?.Yelp} />
 
@@ -111,7 +112,7 @@ const AppCityPage = (props: AppCityPageProps) => {
           <UpcomingRemoteFeatures />
         </section>
 
-        <section className="wrapper-1180">
+        <section className="wrapper-1180" ref={licenseSectionRef}>
           <GetStartedSection />
         </section>
 

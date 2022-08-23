@@ -47,3 +47,5 @@ export const LOCATIONS_MAP_GID = '9G6yK68VZCj9Ij4s';
 export const CITIES_PAGE_PATH = '/fences/cities';
 
 export const LEAD_FULL_NAME_MAX_LENGTH = 120;
+
+export const TOP_PANEL_HEIGHT = 64;

@@ -138,6 +138,7 @@
     "@ergeon/map-component": "1.16.3",
     "@marvelapp/react-ab-test": "^3.1.0",
     "@sentry/browser": "5.30.0",
+    "animated-scroll-to": "^2.3.0",
     "axios": "0.21.1",
     "babel-plugin-ignore-import": "^1.0.1",
     "babel-plugin-jsx-remove-data-test-id": "^3.0.0",

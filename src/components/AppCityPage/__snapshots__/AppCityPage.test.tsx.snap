@@ -345,6 +345,11 @@ exports[`AppCityPage Should render city banner 1`] = `
             </div>
           </div>
         </div>
+        <h3
+          class="h6 CityBanner-desc-license"
+        >
+          See License & warranty information
+        </h3>
       </aside>
     </section>
     <p
@@ -528,6 +533,11 @@ exports[`AppCityPage should render 1`] = `
                 </div>
               </div>
             </div>
+            <h3
+              class="h6 CityBanner-desc-license"
+            >
+              See License & warranty information
+            </h3>
           </aside>
         </section>
         <p

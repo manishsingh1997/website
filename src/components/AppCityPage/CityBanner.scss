@@ -85,6 +85,13 @@
             text-align: center;
             margin-top: 0;
         }
+
+        &-license {
+            color: $white;
+            font-weight: 500;
+            margin-top: $v-42;
+            cursor: pointer;
+        }
     }
 
     &-info {
