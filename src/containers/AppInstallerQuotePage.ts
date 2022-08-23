@@ -1,8 +1,9 @@
 import {connect} from 'react-redux';
 
-import AppInstallerQuotePage from 'components/AppInstallerQuotePage';
+import AppInstallerQuotePage from '../components/AppInstallerQuotePage';
+import {AuthState} from '../flux/reducers/auth';
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({auth}: {auth: AuthState}) => {
   return {
     auth,
   };

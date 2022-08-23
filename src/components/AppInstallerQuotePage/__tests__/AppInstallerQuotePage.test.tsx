@@ -20,6 +20,7 @@ const gid = 'BkU5j7FtBtxjkEAU';
 const props = {
   location: {...mockLocation, search: '', pathname: `/app/${gid}/quote-approvals/${secret}/`},
   match: {
+    path: '',
     params: {
       secret,
     },

@@ -2,22 +2,20 @@
 // src/components/AppCustomerQuotePage - quote preview for customers
 // src/components/AppInstallerQuotePage - quote preview for installers
 
-import React, {useEffect, useState, useMemo, useContext, useCallback} from 'react';
+import React, {useMemo, useContext} from 'react';
 
 import {Redirect} from 'react-router-dom';
 
-import {getQuoteDetails} from '../../api/app';
 import AppLoader from '../common/AppLoader';
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
-import {parseAPIError} from '../../utils/api';
 import {
   DIRECT_PREVIEW_SLUG,
   HTTP_STATUS_NOT_FOUND,
   INSTALLER_PREVIEW_SLUG,
   NOT_FOUND_PAGE_PATH,
 } from '../../website/constants';
-import {ErrorResponse, ParsedAPIErrorType} from '../../utils/types';
-import {Quote} from '../types';
+
+import useQuoteDetails from './useQuoteDetails';
 
 export type AppQuoteDetailPageProps = {
   match: {
@@ -31,35 +29,9 @@ export type AppQuoteDetailPageProps = {
 const AppQuoteDetailPage = (props: AppQuoteDetailPageProps) => {
   const {match} = props;
 
-  const [isLoading, setIsloading] = useState(true);
-  const [quote, setQuote] = useState<Quote | null>(null);
-  const [quoteError, setQuoteError] = useState<ParsedAPIErrorType | null>(null);
-
   const customerGID = useContext(CustomerGIDContext);
 
-  useEffect(() => {
-    fetchQuoteDetails();
-  }, []);
-
-  const fetchQuoteDetails = async () => {
-    await getQuoteDetailsFromAPI();
-  };
-
-  const getQuoteDetailsFromAPI = useCallback(async () => {
-    // We don't need this data in redux store for now, so calling API directly
-
-    try {
-      const data = await getQuoteDetails(customerGID, match.params.secret);
-      setQuote(data.data);
-      setQuoteError(null);
-    } catch (apiError) {
-      const error = apiError as {response?: ErrorResponse | undefined};
-      setQuote(null);
-      setQuoteError(parseAPIError(error));
-    } finally {
-      setIsloading(false);
-    }
-  }, [customerGID, match.params.secret]);
+  const {isLoading, quote, quoteError} = useQuoteDetails(customerGID, match.params.secret);
 
   const isInstallerPreview = useMemo(() => {
     return match.params.type === INSTALLER_PREVIEW_SLUG;

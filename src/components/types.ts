@@ -1,10 +1,11 @@
-import {QuoteApproval} from './AppCustomerQuotePage/types';
+import {Customer, QuoteApproval} from './AppCustomerQuotePage/types';
 
 export type HouseType = {
   id: number;
   address: HouseAddress;
   is_hidden?: boolean;
   has_active_order: boolean;
+  customer?: Customer;
 };
 
 export type HouseAddress = {
@@ -49,6 +50,11 @@ export type Quote = {
   total_area: string | null;
   status: QuoteStatus;
   is_scope_change?: boolean;
+  replaced_by_quote?: {
+    secret: string;
+  };
+  previously_approved_total_cost: string;
+  project_total_cost: string;
 };
 
 export type OrderProduct = {
