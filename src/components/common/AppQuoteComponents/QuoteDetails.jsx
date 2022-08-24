@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
 
-import {isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
+import {isQuoteApproved, isQuoteCancelled, isQuoteExpired} from 'utils/app-order';
 import {CARD_TRANSACTION_FEE} from 'website/constants';
 
 import QuoteLines from './QuoteLines';
@@ -183,12 +183,18 @@ export default class QuoteDetails extends React.Component {
       quoteLines,
     } = this.props;
 
+    const showExpiredNotice = (
+      !asPDF &&
+      !isQuoteApproved(quote) &&
+      isQuoteExpired(quote)
+    );
+
     return (
       <div className="quote-details card soft-border spacing after__is-48">
         {!asPDF && isQuoteCancelled(quote) && (
           <div className="quote-details__notification">{this.renderQuoteCancelledMessage()}</div>
         )}
-        {!asPDF && isQuoteExpired(quote) && (
+        {showExpiredNotice && (
           <div className="quote-details__notification">{this.renderQuoteExpiredMessage()}</div>
         )}
         <div className="quote-details__description spacing after__is-24">
@@ -203,7 +209,7 @@ export default class QuoteDetails extends React.Component {
           />
           {this.renderQuoteLinesOnMap()}
         </div>
-        {!asPDF && isQuoteExpired(quote) && (
+        {showExpiredNotice && (
           <Notification mode="embed" type="Information">
             Oops, it looks like your quote has expired. Lumber and Labor prices can fluctuate depending on a number of
             factors throughout the year, therefore our quotes are only good for 15 days. Your quote may not change, but
