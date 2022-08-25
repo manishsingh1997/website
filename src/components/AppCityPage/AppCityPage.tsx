@@ -5,13 +5,11 @@ import {EqualHeight, EqualHeightElement} from 'react-equal-height';
 import isEmpty from 'lodash/isEmpty';
 
 import TellUsForm from '../../containers/TellUsForm';
-import {showUpcomingFeatures} from '../../utils/utils';
 import GetStartedSection from '../HomePage/components/GetStartedSection';
 import UpcomingRemoteFeatures from '../HomePage/components/UpcomingRemoteFeatures';
 import TestimonialBanner from '../HomePage/components/TestimonialBanner';
 import QASection from '../HomePage/QASection';
 
-import MainBanner from './MainBanner';
 import CityReviews from './CityReviews';
 import Regulations from './Regulations';
 import ProjectsCompleted from './ProjectsCompleted';
@@ -42,21 +40,11 @@ const AppCityPage = (props: AppCityPageProps) => {
         <meta content={city.header.bullets.join(' ')} name="description" />
       </Helmet>
       <div className="AppCityPage">
-        {showUpcomingFeatures('ENG-16970') ? (
-          <CityBanner city={city.city} onScrollToLicense={scrollToElement} phone={city.phone} />
-        ) : (
-          <MainBanner bullets={city.header.bullets} phone={city.phone} state={city.state} title={city.header.title} />
-        )}
+        <CityBanner city={city.city} onScrollToLicense={scrollToElement} phone={city.phone} />
 
         <section className="wrapper-1180">
           <TestimonialBanner />
         </section>
-
-        {!showUpcomingFeatures('ENG-16970') && (
-          <section className="mobile-length">
-            <TellUsForm />
-          </section>
-        )}
 
         <CityReviews google={city.review?.Google} yelp={city.review?.Yelp} />
 

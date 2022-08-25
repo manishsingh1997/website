@@ -75,7 +75,6 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
       phone: user?.phone_number || '',
       email: user?.email || '',
       phoneEmail: '',
-      comment: '',
       type_of_fence: '',
       product: selectedProduct,
       raw_address: stringifyAddress(address) || '',
@@ -270,55 +269,28 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
           }}
         />
       </FormField>
-      {/* We donth have the backend yeat */}
-      {showUpcomingFeatures('ENG-16970') && (
-        <FormField>
-          <Controller
-            control={control}
-            name="type_of_fence"
-            render={({field}) => (
-              <Select
-                isDisabled={loading}
-                name="type_of_fence"
-                onChange={field.onChange}
-                options={[
-                  {value: 'wood-fence', label: 'Wood Fence'},
-                  {value: 'chain-link-fence', label: 'Chain Link Fence'},
-                  {value: 'vinyl-fence', label: 'Vinyl Fence'},
-                  {value: 'box-wire-fence', label: 'Box Wire Fence'},
-                ]}
-                placeholder="Type of fence"
-              />
-            )}
-          />
-        </FormField>
-      )}
-      {/* 
-        This is a old field, should render between the backend isn't ready
-        Should delete all this block when the BE task is finished
-      */}
-      {!showUpcomingFeatures('ENG-16970') && (
-        <FormField>
-          <Controller
-            control={control}
-            name="comment"
-            render={({field, fieldState}) => (
-              <Input
-                className="LeadForm-Message spacing after__is-24"
-                isDisabled={loading}
-                isMultiline
-                isValid={isFieldValid(fieldState)}
-                label="Message (Optional)"
-                name="comment"
-                onChange={field.onChange}
-                type="textarea"
-                validationMessage={fieldState.error?.message}
-                value={field.value}
-              />
-            )}
-          />
-        </FormField>
-      )}
+
+      <FormField>
+        <Controller
+          control={control}
+          name="type_of_fence"
+          render={({field}) => (
+            <Select
+              isDisabled={loading}
+              name="type_of_fence"
+              onChange={field.onChange}
+              options={[
+                {value: 'wood-fence', label: 'Wood Fence'},
+                {value: 'chain-link-fence', label: 'Chain Link Fence'},
+                {value: 'vinyl-fence', label: 'Vinyl Fence'},
+                {value: 'box-wire-fence', label: 'Box Wire Fence'},
+              ]}
+              placeholder="Type of fence"
+            />
+          )}
+        />
+      </FormField>
+
       <div className="SimpleForm-actions">
         <Button
           className={classNames('AddressButton', 'spacing after__is-24', {'is-loading': loading})}
