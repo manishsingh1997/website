@@ -34,3 +34,7 @@ type CityRequest = {
 };
 
 export type CityDispatcher = (dispatch: (props: CityRequest) => Action) => void;
+
+type QuoteRequest = unknown;
+
+export type GetQuotesDispatcher = (dispatch: (props: QuoteRequest) => Action) => void;

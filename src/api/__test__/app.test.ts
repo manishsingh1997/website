@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 
-import {addCustomerHouse, editCustomerHouse, getCustomerHouses, removeCustomerHouse} from '../app';
+import {addCustomerHouse, editCustomerHouse, getCustomerHouses, getCustomerQuotes, removeCustomerHouse} from '../app';
 import * as utils from '../utils';
 
 jest.mock('axios');
@@ -110,5 +110,16 @@ describe('api utils', () => {
     });
 
     expect(removeCustomerHouse(customerGIDMock, houseId)).toEqual(response);
+  });
+
+  it('should getCustomerQuotes resolve correclty', async () => {
+    const response = {customerGID: customerGIDMock};
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    jest.spyOn(utils, 'request').mockImplementation((): any => () => {
+      return response;
+    });
+
+    expect(await getCustomerQuotes(customerGIDMock)).toEqual(response);
   });
 });

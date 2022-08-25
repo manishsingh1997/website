@@ -9,6 +9,7 @@ import contactsReducer from './app-contacts';
 import ordersReducer from './app-orders';
 import appointmentsReducer from './app-appointments';
 import housesReducer from './app-houses';
+import quotesReducer from './app-quotes';
 import selectedHouseReducer from './app-selected-house';
 import layoutReducer from './layout';
 import cityReducer from './city';
@@ -22,6 +23,7 @@ const combinedReducers = combineReducers({
   orders: ordersReducer,
   appointments: appointmentsReducer,
   houses: housesReducer,
+  quotes: quotesReducer,
   selectedHouse: selectedHouseReducer,
   layout: layoutReducer,
   city: cityReducer,

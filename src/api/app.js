@@ -36,6 +36,15 @@ export const getQuoteDetails = (customerGID, quoteSecret) => {
   return request(customerGID)(`/quotes/${quoteSecret}/`);
 };
 
+export const getCustomerQuotes = (customerGID) => {
+  // Nothing for now.
+  return new Promise((resolve) => {
+    return resolve({
+      customerGID,
+    });
+  });
+};
+
 export const reviewQuote = (customerGID, quoteSecret) => {
   return request(customerGID)(`/quotes/${quoteSecret}/reviewed/`, {});
 };

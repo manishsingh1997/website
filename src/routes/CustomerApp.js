@@ -12,6 +12,7 @@ import AppOrderDetailPage from '../containers/AppOrderDetailPage';
 import AppOrderListPage from '../containers/AppOrderListPage';
 import AppCustomerQuotePage from '../containers/AppCustomerQuotePage';
 import AppInstallerQuotePage from '../containers/AppInstallerQuotePage';
+import AppQuoteListPage from '../containers/AppQuoteListPage';
 import AppQuoteDetailPage from '../containers/AppQuoteDetailPage';
 import AppNotificationsPage from '../components/AppNotificationsPage';
 import NotFoundPage from '../components/NotFoundPage';
@@ -24,6 +25,7 @@ const CustomerApp = ({match, location}) => (
       <Route component={AppHouseListPage} path={`${match.url}/addresses`} />
       <Route component={AppOrderDetailPage} path={`${match.url}/orders/:orderId`} />
       <Route component={AppOrderListPage} path={`${match.url}/orders`} />
+      <Route component={AppQuoteListPage} exact path={`${match.url}/quotes`} />
       <Route component={AppQuoteDetailPage} exact name="quoteDetail" path={`${match.url}/quotes/:secret`} />
       <Route component={AppQuoteDetailPage} exact name="quoteDirect" path={`${match.url}/quotes/:type/:secret`} />
       <Route
