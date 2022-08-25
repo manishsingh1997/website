@@ -58,7 +58,7 @@
     &-wrapper {
         display: flex;
         justify-content: space-between;
-        padding: $v-124 - $v-16 0;
+        padding: $v-124 - $v-16 $v-48;
 
         @include tablet {
             padding: $v-64 - 8 $h-20 + $h-10;
