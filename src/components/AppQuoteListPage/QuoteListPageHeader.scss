@@ -1,0 +1,24 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.quote-list-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  .icon-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: $v-20;
+
+    .icon-button {
+      cursor: pointer;
+
+      &.active {
+        svg * {
+          fill: $blue-1;
+        }
+      }
+    }
+  }
+}
