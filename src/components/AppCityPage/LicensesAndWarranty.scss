@@ -1,0 +1,63 @@
+@import '~@ergeon/core-components/src/components/variables';
+
+.LicensesAndWarranty {
+  align-items: center;
+
+  &-row {
+    margin: 0 $h-40;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      text-align: center;
+    }
+  }
+
+  .StateLicense {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      align-items: center;
+      margin-top: $v-12;
+    }
+
+    &-licenseTypes {
+      height: $v-64 + 10;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+
+      @include tablet {
+        margin-top: $v-12;
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+    border-radius: $v-12;
+  }
+}
+
+.IconWithText {
+  align-items: center;
+  display: flex;
+  padding: $v-6 0;
+
+  a {
+    color: inherit;
+    font-weight: normal;
+  }
+
+  .is-LicenseIcon {
+    svg {
+      display: flex;
+      height: $v-24;
+      margin-right: $h-10;
+      width: $v-24;
+    }
+  }
+}

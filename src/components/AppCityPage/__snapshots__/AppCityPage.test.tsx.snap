@@ -244,7 +244,7 @@ exports[`AppCityPage Should render city banner 1`] = `
           </div>
         </div>
         <h3
-          class="h6 CityBanner-desc-license"
+          class="h6 CityBanner-desc-license-desktop"
         >
           See License & warranty information
         </h3>
@@ -259,6 +259,11 @@ exports[`AppCityPage Should render city banner 1`] = `
       class="CityBanner-form"
     >
       Tell Us Form
+      <h3
+        class="h6 CityBanner-desc-license-mobile"
+      >
+        See License & warranty information
+      </h3>
     </section>
   </section>
 </section>
@@ -432,7 +437,7 @@ exports[`AppCityPage should render 1`] = `
               </div>
             </div>
             <h3
-              class="h6 CityBanner-desc-license"
+              class="h6 CityBanner-desc-license-desktop"
             >
               See License & warranty information
             </h3>
@@ -447,6 +452,11 @@ exports[`AppCityPage should render 1`] = `
           class="CityBanner-form"
         >
           Tell Us Form
+          <h3
+            class="h6 CityBanner-desc-license-mobile"
+          >
+            See License & warranty information
+          </h3>
         </section>
       </section>
     </section>
@@ -1582,6 +1592,140 @@ exports[`AppCityPage should render 1`] = `
               View more
             </span>
           </a>
+        </div>
+      </div>
+    </section>
+    <section
+      class="wrapper-1180"
+    >
+      <div
+        class="LicensesAndWarranty flex-wrapper Regulations-container"
+      >
+        <div
+          class="flex-spacer LicensesAndWarranty-row"
+        >
+          <h2
+            class="h3 spacing after__is-30"
+          >
+            Alameda
+             Licenses & Warranty
+          </h2>
+          <div
+            class="spacing after__is-30"
+          >
+            <h3
+              class="h5 spacing after__is-6"
+            >
+              Alameda
+               License
+            </h3>
+            <p>
+              Alameda
+               contractors/business license for fence installation is not required.
+            </p>
+          </div>
+          <div
+            class="StateLicense spacing after__is-30"
+          >
+            <h3
+              class="h5 spacing after__is-6"
+            >
+              California License
+            </h3>
+            <p>
+              California state License #1040925
+            </p>
+            <div
+              class="StateLicense-licenseTypes"
+            >
+              <div
+                class="IconWithText"
+              >
+                <div
+                  class="is-LicenseIcon"
+                >
+                  <div>
+                    <div
+                      data-src="icon-verified-small.svg"
+                      src=""
+                    />
+                  </div>
+                </div>
+                <a
+                  class="LicenseWithLink"
+                  href="https://www2.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1040925"
+                  target="__blank"
+                >
+                  C13 - Fencing
+                </a>
+              </div>
+              <div
+                class="IconWithText"
+              >
+                <div
+                  class="is-LicenseIcon"
+                >
+                  <div>
+                    <div
+                      data-src="icon-verified-small.svg"
+                      src=""
+                    />
+                  </div>
+                </div>
+                <a
+                  class="LicenseWithLink"
+                  href="https://www2.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1040925"
+                  target="__blank"
+                >
+                  C27 - Landscaping
+                </a>
+              </div>
+              <div
+                class="IconWithText"
+              >
+                <div
+                  class="is-LicenseIcon"
+                >
+                  <div>
+                    <div
+                      data-src="icon-verified-small.svg"
+                      src=""
+                    />
+                  </div>
+                </div>
+                <a
+                  class="LicenseWithLink"
+                  href="https://www2.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1040925"
+                  target="__blank"
+                >
+                  C8 - Concrete
+                </a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="spacing after__is-30"
+          >
+            <h3
+              class="h5 spacing after__is-6"
+            >
+              Ergeon Warranty
+            </h3>
+            <a
+              class="spacing after__is-30"
+              href="https://api-ergeon-in.s3.amazonaws.com/products/fence-replacement/CA/contracts/Ergeon_California_Construction_Contract_2022.pdf"
+              target="__blank"
+            >
+              California fence installation contract & associated warranties, assurances, terms and conditions.
+            </a>
+          </div>
+        </div>
+        <div
+          class="flex-spacer LicensesAndWarranty-row"
+        >
+          <img
+            src="licenses-and-warranties.jpg"
+          />
         </div>
       </div>
     </section>

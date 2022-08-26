@@ -44,7 +44,7 @@ const CityBanner = (props: CityBannerProps) => {
             <BannerRating />
 
             {showUpcomingFeatures('ENG-17224') && (
-              <h3 className="h6 CityBanner-desc-license" onClick={onScrollToLicense}>
+              <h3 className="h6 CityBanner-desc-license-desktop" onClick={onScrollToLicense}>
                 See License & warranty information
               </h3>
             )}
@@ -53,6 +53,11 @@ const CityBanner = (props: CityBannerProps) => {
         <p className="is-tablet">or</p>
         <section className="CityBanner-form">
           <TellUsForm />
+          {showUpcomingFeatures('ENG-17224') && (
+            <h3 className="h6 CityBanner-desc-license-mobile" onClick={onScrollToLicense}>
+              See License & warranty information
+            </h3>
+          )}
         </section>
       </section>
     </section>

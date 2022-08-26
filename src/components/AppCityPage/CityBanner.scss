@@ -1,277 +1,305 @@
 @import '~@ergeon/core-components/src/components/variables';
 
 .CityBanner {
-    $form-desktop-max-width: $h-60 * 6 +$h-20;
-    $form-mobile-top: 520px;
-    $logo-menu-bar-size: $v-64;
-    $logo-menu-bar-size-mobile: $v-48;
-    $bottom-margin-mobile: ($v-64 + 5) * 4;
-    $wrapper-max-height-mobile: 719px;
-    $content-max-width: 650px;
+  $form-desktop-max-width: $h-60 * 6 + $h-20;
+  $form-mobile-top: 520px;
+  $logo-menu-bar-size: $v-64;
+  $logo-menu-bar-size-mobile: $v-48;
+  $bottom-margin-mobile: ($v-88 + 5) * 4;
+  $wrapper-max-height-mobile: 719px;
+  $content-max-width: 650px;
 
-    @mixin form-background {
-        border-radius: $corner-soft;
-        background-color: $gray-6;
-        border: 1px solid $gray-4;
-        padding: 0;
+  @mixin form-background {
+    border-radius: $corner-soft;
+    background-color: $gray-6;
+    border: 1px solid $gray-4;
+    padding: 0;
+  }
+
+  @mixin font-appearance() {
+    background-color: $white;
+    border-radius: $corner-soft;
+    padding: 0;
+  }
+
+  @mixin color-icon($color: $white) {
+    svg path {
+      fill: $color;
+    }
+  }
+
+  @mixin icon-dimension($width, $height, $margin: 0) {
+    svg {
+      width: $width;
+      height: $height;
+      margin: $margin;
+    }
+  }
+
+  @mixin break-text-mobile {
+    br {
+      display: none;
+
+      @include phone {
+        display: unset;
+      }
+    }
+  }
+
+  opacity: 1;
+  background: linear-gradient(rgba(1, 64, 169, 1) 0%, rgba(42, 144, 229, 1) 52%, rgba(156, 177, 244, 1) 100%);
+  color: $white;
+  margin-top: $logo-menu-bar-size;
+
+  @include phone {
+    margin: $logo-menu-bar-size-mobile 0 $bottom-margin-mobile 0;
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: $v-124 - $v-16 $v-48;
+
+    @include tablet {
+      padding: $v-64 - 8 $h-20 + $h-10;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
     }
 
-    @mixin font-appearance() {
-        background-color: $white;
-        border-radius: $corner-soft;
-        padding: 0;
+    @include tablet {
+      padding: $v-64 - 8 $h-20 + $h-10;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
     }
-
-    @mixin color-icon($color: $white) {
-        svg path {
-            fill: $color;
-        }
-    }
-
-    @mixin icon-dimension($width, $height, $margin: 0) {
-        svg {
-            width: $width;
-            height: $height;
-            margin: $margin;
-        }
-    }
-
-    @mixin break-text-mobile {
-        br {
-            display: none;
-
-            @include phone {
-                display: unset;
-            }
-        }
-    }
-
-    opacity: 1;
-    background: linear-gradient(rgba(1, 64, 169, 1) 0%, rgba(42, 144, 229, 1) 52%, rgba(156, 177, 244, 1) 100%);
-    color: $white;
-    margin-top: $logo-menu-bar-size;
 
     @include phone {
-        margin: $logo-menu-bar-size-mobile 0 $bottom-margin-mobile 0;
+      max-height: $wrapper-max-height-mobile;
+      height: 100%;
+      padding: $v-48 $h-20 + $h-10;
+    }
+  }
+
+  &-content {
+    max-width: $content-max-width;
+  }
+
+  &-desc {
+    margin-top: $v-42 + 2;
+
+    @include tablet {
+      text-align: center;
+      margin-top: 0;
     }
 
-    &-wrapper {
-        display: flex;
-        justify-content: space-between;
-        padding: $v-124 - $v-16 $v-48;
+    &-license-desktop {
+      color: $white;
+      font-weight: 500;
+      margin-top: $v-42;
+      cursor: pointer;
 
-        @include tablet {
-            padding: $v-64 - 8 $h-20 + $h-10;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-        }
-
-        @include phone {
-            max-height: $wrapper-max-height-mobile;
-            height: 100%;
-            padding: $v-48 $h-20 + $h-10;
-        }
-    }
-
-    &-content {
-        max-width: $content-max-width;
-    }
-
-    &-desc {
-        margin-top: $v-42 + 2;
-
-        @include tablet {
-            text-align: center;
-            margin-top: 0;
-        }
-
-        &-license {
-            color: $white;
-            font-weight: 500;
-            margin-top: $v-42;
-            cursor: pointer;
-        }
-    }
-
-    &-info {
-        .h2 {
-            margin: $v-12 0;
-            max-width: $h-40 * 11;
-            width: 100%;
-            font-weight: 700;
-            @include tablet {
-                margin: $v-12 0 $v-20;
-                max-width: unset;
-                line-height: $h4-line-height;
-                font-weight: 700;
-                font-size: $h4-size;
-            }
-        }
-
-        .h4 {
-            font-weight: 500;
-            @include tablet {
-                font-size: $font-regular-size;
-            }
-        }
-
-        .h2,
-        .h4 {
-            @include break-text-mobile();
-            color: inherit;
-        }
-
-        h3.h4 {
-            @include tablet {
-                font-size: $h6-size;
-            }
-        }
-
-        h3:last-child {
-            @include phone {
-                margin-top: $v-12;
-            }
-        }
-    }
-
-    &-call {
-        $icon-size: $v-16;
-        $icon-margin: 0 $h-5 + 2 0;
-
+      @include tablet {
         display: none;
-
-        @include tablet {
-            @include color-icon($white);
-            @include icon-dimension($icon-size, $icon-size, $icon-margin);
-            max-width: $h-40 * 7;
-            width: 100%;
-            display: block;
-            margin: $v-30 + 4 auto 0;
-        }
-
-        @include phone {
-            margin-top: $v-24;
-        }
-
-        button {
-            width: 100%;
-        }
+      }
     }
 
+    &-license-mobile {
+      display: none;
 
-    .BannerRating {
-        @include tablet {
-            max-width: 184px;
-            width: 100%;
-            margin: $v-24 auto;
-            font-size: $font-mobile-size;
-            line-height: 1.42;
-            text-align: center;
-        }
+      @include tablet {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: $v-30 0;
+        color: $white;
+        font-weight: 600;
+        cursor: pointer;
+      }
 
-        .stars-group {
-            @include tablet {
-                margin-top: $v-6;
-            }
-        }
+      @include phone {
+        color: $blue-1;
+        padding: $v-24 0;
+      }
+    }
+  }
 
-        &-stars,
-        &-ratingText {
-            @include tablet {
-                justify-content: center;
-                align-items: center;
-
-                .star,
-                .star svg {
-                    // important is used here to overwrite core-components important
-                    width: $h-20 + 3 !important;
-                    height: $v-24 - 2 !important;
-                }
-            }
-        }
+  &-info {
+    .h2 {
+      margin: $v-12 0;
+      max-width: $h-40 * 11;
+      width: 100%;
+      font-weight: 700;
+      @include tablet {
+        margin: $v-12 0 $v-20;
+        max-width: unset;
+        line-height: $h4-line-height;
+        font-weight: 700;
+        font-size: $h4-size;
+      }
     }
 
-    p.is-tablet {
-        @include tablet {
-            margin-bottom: $v-30;
-        }
-
-        @include phone {
-            margin-bottom: $v-24;
-        }
+    .h4 {
+      font-weight: 500;
+      @include tablet {
+        font-size: $font-regular-size;
+      }
     }
 
-    &-form {
-        max-width: $form-desktop-max-width;
+    .h2,
+    .h4 {
+      @include break-text-mobile();
+      color: inherit;
+    }
+
+    h3.h4 {
+      @include tablet {
+        font-size: $h6-size;
+      }
+    }
+
+    h3:last-child {
+      @include phone {
+        margin-top: $v-12;
+      }
+    }
+  }
+
+  &-call {
+    $icon-size: $v-16;
+    $icon-margin: 0 $h-5 + 2 0;
+
+    display: none;
+
+    @include tablet {
+      @include color-icon($white);
+      @include icon-dimension($icon-size, $icon-size, $icon-margin);
+      max-width: $h-40 * 7;
+      width: 100%;
+      display: block;
+      margin: $v-30 + 4 auto 0;
+    }
+
+    @include phone {
+      margin-top: $v-24;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .BannerRating {
+    @include tablet {
+      max-width: 184px;
+      width: 100%;
+      margin: $v-24 auto;
+      font-size: $font-mobile-size;
+      line-height: 1.42;
+      text-align: center;
+    }
+
+    .stars-group {
+      @include tablet {
+        margin-top: $v-6;
+      }
+    }
+
+    &-stars,
+    &-ratingText {
+      @include tablet {
+        justify-content: center;
+        align-items: center;
+
+        .star,
+        .star svg {
+          // important is used here to overwrite core-components important
+          width: $h-20 + 3 !important;
+          height: $v-24 - 2 !important;
+        }
+      }
+    }
+  }
+
+  p.is-tablet {
+    @include tablet {
+      margin-bottom: $v-30;
+    }
+
+    @include phone {
+      margin-bottom: $v-24;
+    }
+  }
+
+  &-form {
+    max-width: $form-desktop-max-width;
+    width: 100%;
+
+    @include tablet {
+      max-width: $h-40 * 8;
+    }
+
+    @include phone {
+      position: absolute;
+      margin: auto;
+      top: $form-mobile-top;
+      left: $h-20 + $h-10;
+      right: $h-20 + $h-10;
+    }
+
+    .TellUsForm {
+      @include form-background();
+
+      .react-select__indicator-separator {
+        display: none;
+      }
+
+      .erg-input--text {
+        background-color: $white;
+      }
+
+      &-Wrapper {
+        padding: $v-24;
         width: 100%;
+      }
 
-        @include tablet {
-            max-width: $h-40 * 8;
-        }
+      h3 {
+        font-size: $h4-size;
+        line-height: $h4-line-height;
+        text-align: left;
+      }
 
-        @include phone {
-            position: absolute;
-            margin: auto;
-            top: $form-mobile-top;
-            left: $h-20 + $h-10;
-            right: $h-20 + $h-10;
+      &-Text {
+        font-size: $font-mobile-size;
+        line-height: $line-height-mobile;
+        text-align: left;
+        padding: 0;
+      }
 
-        }
+      &-Success {
+        @include form-background();
+        padding: $v-24;
+        margin: 0;
+        width: 100%;
+      }
+    }
+  }
 
-        .TellUsForm {
-            @include form-background();
-
-            .react-select__indicator-separator {
-                display: none;
-            }
-
-            .erg-input--text {
-                background-color: $white;
-            }
-
-            &-Wrapper {
-                padding: $v-24;
-                width: 100%;
-            }
-
-            h3 {
-                font-size: $h4-size;
-                line-height: $h4-line-height;
-                text-align: left;
-            }
-
-            &-Text {
-                font-size: $font-mobile-size;
-                line-height: $line-height-mobile;
-                text-align: left;
-                padding: 0;
-            }
-
-            &-Success {
-                @include form-background();
-                padding: $v-24;
-                margin: 0;
-                width: 100%;
-            }
-        }
+  .is {
+    &-grey {
+      opacity: 0.75;
     }
 
-    .is {
-        &-grey {
-            opacity: 0.75;
-        }
-
-        &-action {
-            background-color: $orange-action;
-        }
-
-        &-tablet {
-            display: none;
-
-            @include tablet {
-                display: block;
-            }
-        }
+    &-action {
+      background-color: $orange-action;
     }
+
+    &-tablet {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+  }
 }

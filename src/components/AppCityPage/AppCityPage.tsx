@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 
 import {Helmet} from 'react-helmet';
 import {EqualHeight, EqualHeightElement} from 'react-equal-height';
@@ -9,6 +9,7 @@ import GetStartedSection from '../HomePage/components/GetStartedSection';
 import UpcomingRemoteFeatures from '../HomePage/components/UpcomingRemoteFeatures';
 import TestimonialBanner from '../HomePage/components/TestimonialBanner';
 import QASection from '../HomePage/QASection';
+import {showUpcomingFeatures} from '../../utils/utils';
 
 import CityReviews from './CityReviews';
 import Regulations from './Regulations';
@@ -16,7 +17,7 @@ import ProjectsCompleted from './ProjectsCompleted';
 import {City} from './types';
 import {getAsset} from './utils';
 import CityBanner from './CityBanner';
-import useScrollToElement from './useScrollToElement';
+import LicensesAndWarranty from './LicensesAndWarranty';
 
 import './AppCityPage.scss';
 
@@ -31,7 +32,9 @@ const AppCityPage = (props: AppCityPageProps) => {
 
   const licenseSectionRef = useRef<HTMLDivElement>(null);
 
-  const {scrollToElement} = useScrollToElement(licenseSectionRef.current?.offsetTop);
+  const onScrollToLicense = useCallback(() => {
+    licenseSectionRef.current?.scrollIntoView({behavior: 'smooth', block: 'center'});
+  }, [licenseSectionRef]);
 
   return (
     <>
@@ -40,7 +43,7 @@ const AppCityPage = (props: AppCityPageProps) => {
         <meta content={city.header.bullets.join(' ')} name="description" />
       </Helmet>
       <div className="AppCityPage">
-        <CityBanner city={city.city} onScrollToLicense={scrollToElement} phone={city.phone} />
+        <CityBanner city={city.city} onScrollToLicense={onScrollToLicense} phone={city.phone} />
 
         <section className="wrapper-1180">
           <TestimonialBanner />
@@ -100,7 +103,7 @@ const AppCityPage = (props: AppCityPageProps) => {
           <UpcomingRemoteFeatures />
         </section>
 
-        <section className="wrapper-1180" ref={licenseSectionRef}>
+        <section className="wrapper-1180">
           <GetStartedSection />
         </section>
 
@@ -126,6 +129,12 @@ const AppCityPage = (props: AppCityPageProps) => {
             </EqualHeight>
           </div>
         </section>
+
+        {showUpcomingFeatures('ENG-17226') && (
+          <section className="wrapper-1180" ref={licenseSectionRef}>
+            <LicensesAndWarranty cityItem={city} />
+          </section>
+        )}
 
         <section className="mobile-length">
           <TellUsForm />
