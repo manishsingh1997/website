@@ -59,9 +59,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /(\@ergeon).+(js|jsx)$/, // take source maps for @ergeon modules only
         enforce: 'pre',
-        loader: ['source-map-loader'],
+        loader: 'source-map-loader',
       },
       {
         test: /\.(js|jsx|ts|tsx)$/,
@@ -90,7 +90,13 @@ module.exports = {
       },
     ],
   },
+  ignoreWarnings: [/Failed to parse source map/],
   resolve: {
+    fallback: {
+      querystring: require.resolve('querystring-es3'),
+      fs: false,
+      crypto: false,
+    },
     roots: [path.resolve('./src')],
     modules: ['./node_modules'],
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -99,9 +105,6 @@ module.exports = {
       react: path.resolve('./node_modules/react'),
       'react-dom': path.resolve('./node_modules/react-dom'),
     },
-  },
-  node: {
-    fs: 'empty',
   },
   devtool: 'source-map',
   plugins: [
@@ -131,28 +134,35 @@ module.exports = {
       defaults: `./.env.${process.env.NODE_ENV}`,
       expand: true,
     }),
-    new CopyPlugin([
+    new CopyPlugin({ patterns: [
       {
         from: './node_modules/@ergeon/core-components/dist/assets',
         to: 'assets',
       },
-    ]),
-    new CopyPlugin([
+    ]}),
+    new CopyPlugin({ patterns: [
       {from: './node_modules/@ergeon/3d-lib/assets/3d-data', to: '3d-data'},
-      {from: './node_modules/@ergeon/3d-lib/assets', to: 'assets', ignore: ['3d-data/*']},
-    ]),
-    new CopyPlugin([{from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`}]),
-    new CopyPlugin([
+      {
+        from: './node_modules/@ergeon/3d-lib/assets',
+        to: 'assets',
+        globOptions: {
+          ignore: ['3d-data/*']
+        },
+      },
+    ]}),
+    new CopyPlugin({ patterns: [
+      {from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`}]
+    }),
+    new CopyPlugin({patterns: [
       // SEO
       {from: robotsPath, to: `${BUILD_DIR}/robots.txt`, force: true},
       {from: './src/data/sitemap.xml', to: `${BUILD_DIR}/`, force: true},
       {from: './src/data/gallery/sitemap.xml', to: `${BUILD_DIR}/gallery/`, force: true},
       {from: './src/data/help/sitemap.xml', to: `${BUILD_DIR}/help/`, force: true},
-    ]),
-    new CopyPlugin([
+    ]}),
+    new CopyPlugin({patterns: [
       {from: './src/manifest.webmanifest', to: `${BUILD_DIR}/`},
-      {from: './src/assets/ergeon-logo.png', to: `${BUILD_DIR}/`},
-    ]),
+    ]}),
     new MiniCssExtractPlugin({
       filename: IS_DEVELOPMENT ? '[name].css' : '[name]-[contenthash].css',
       chunkFilename: IS_DEVELOPMENT ? '[id].css' : '[id]-[contenthash].css',

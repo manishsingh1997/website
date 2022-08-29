@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {cards as CARDS} from '../../home-data.json';
+import homeData from '../../home-data.json';
 import PaneSwitcher from '../PaneSwitcher';
 import './ProjectsSection.scss';
 
@@ -20,7 +20,7 @@ const ProjectsSection = () => {
       <p>We provide installation services for residential and commercial properties</p>
       <PaneSwitcher defaultPane={0}>
         <div className="projects-section__project-cards" data-name="Fences and Gates">
-          {CARDS.map((card, idx) => (
+          {homeData.cards.map((card, idx) => (
             <div className="card padding-20 soft-border" key={`${card.title}-${idx}`}>
               <div className="card__img-container">
                 <a href={card.link}>

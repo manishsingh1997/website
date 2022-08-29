@@ -5,8 +5,8 @@ import {Button, Input, Spinner} from '@ergeon/core-components';
 import {calcUtils, CatalogType} from '@ergeon/3d-lib';
 import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
+import iconPlus from '@ergeon/core-components/src/assets/icon-plus.svg';
 
-import iconPlus from '../../assets/icon-plus.svg';
 import {getFencequotingURL} from '../../utils/urls';
 import LoadingErrorModal from '../common/ErroredLoadingModal';
 

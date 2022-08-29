@@ -1,4 +1,4 @@
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const commonConfig = require('./webpack/webpack.common');
 const productionConfig = require('./webpack/webpack.prod');
 const stagingConfig = require('./webpack/webpack.staging');

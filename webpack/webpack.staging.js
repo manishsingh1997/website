@@ -11,7 +11,7 @@ module.exports = {
   },
   plugins: [
     new CompressionPlugin({
-      filename: '[path].gz[query]',
+      filename: '[path][base].gz',
       algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
@@ -22,7 +22,6 @@ module.exports = {
     flagIncludedChunks: true,
     mergeDuplicateChunks: true,
     moduleIds: 'hashed',
-    occurrenceOrder: true,
     removeAvailableModules: true,
     removeEmptyChunks: true,
     minimize: true,

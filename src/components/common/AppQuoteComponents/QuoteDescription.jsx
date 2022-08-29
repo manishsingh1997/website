@@ -20,8 +20,7 @@ import iconPhotoPlaceholder from '@ergeon/core-components/src/assets/icon-photo-
 import iconSave from '@ergeon/core-components/src/assets/icon-save.svg';
 import iconInfo from '@ergeon/core-components/src/assets/icon-info.svg';
 import iconEmail from '@ergeon/core-components/src/assets/icon-email.svg';
-
-import ImgBack from 'assets/icon-arrow-left.svg';
+import ImgBack from '@ergeon/core-components/src/assets/icon-arrow-left.svg';
 
 import {isPDFMode,getExpiresAtTitle} from '../../../utils/utils';
 import {formatDateAndTime} from '../../../utils/date';
