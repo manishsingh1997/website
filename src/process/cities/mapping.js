@@ -137,10 +137,22 @@ const mapping = {
     neighboring_county: ['to_county'],
     neighboring_state: ['to_state'],
   },
+  // Licenses and Warranty
+  licenses: {
+    city: ['city'],
+    county: ['county'],
+    state: ['state'],
+    'City License 1': ['license', 'description'],
+    'State license': ['license', 'state_number'],
+    number: ['license', 'city_number'],
+    'State License Image': ['license', 'img'],
+    'State License PDF': ['license', 'pdf'],
+  },
 };
 
 // Images and PDFs
-const assets = values({...mapping.city, ...mapping.product})
-  .filter(p => p.includes('img') || p.includes('pdf') || p.includes('url'));
+const assets = values({...mapping.city, ...mapping.product, ...mapping.licenses}).filter(
+  (p) => p.includes('img') || p.includes('pdf') || p.includes('url')
+);
 
-module.exports = { ...mapping, assets };
+module.exports = {...mapping, assets};

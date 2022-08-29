@@ -1,0 +1,6 @@
+{
+  "CA": "https://api-ergeon-in.s3.amazonaws.com/products/fence-replacement/CA/contracts/Ergeon_California_Construction_Contract_2022.pdf",
+  "TX": "https://api-ergeon-in.s3.amazonaws.com/products/fence-replacement/TX/contracts/TEXAS_-_Fence_Construction_Contract_2022_1.pdf",
+  "GA": "https://api-ergeon-in.s3.amazonaws.com/products/fence-replacement/GA/contracts/GEORGIA_-_Fence_Contract.pdf",
+  "PA": "https://api-ergeon-in.s3.amazonaws.com/products/fence-replacement/PA/contracts/PA_Fence_Contract_Fixed.pdf"
+}
