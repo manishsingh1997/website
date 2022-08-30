@@ -7,6 +7,8 @@ export type City = {
     | 'IL' | 'IN' | 'IA' | 'KS' | 'KY' | 'LA' | 'ME' | 'MD' | 'MA' | 'MI' | 'MN' | 'MS' | 'MO'
     | 'MT' | 'NE' | 'NV' | 'NH' | 'NJ' | 'NM' | 'NY' | 'NC' | 'ND' | 'OH' | 'OK' | 'OR' | 'PA'
     | 'RI' | 'SC' | 'SD' | 'TN' | 'TX' | 'UT' | 'VT' | 'VA' | 'WA' | 'WV' | 'WI' | 'WY',
+  state_full_name: string,
+  warranty: string,
   address?: string,
   phone: string,
   header: {
@@ -20,8 +22,13 @@ export type City = {
       description: string,
     }>,
   },
-  license: {
+  license?: {
     url?: string,
+    city_number: string,
+    description?: string,
+    state_number?: string,
+    img?: string,
+    pdf?: string,
   },
   licenses?: string[],
   packages: {

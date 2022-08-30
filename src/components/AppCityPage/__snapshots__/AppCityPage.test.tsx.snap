@@ -1620,8 +1620,7 @@ exports[`AppCityPage should render 1`] = `
                License
             </h3>
             <p>
-              Alameda
-               contractors/business license for fence installation is not required.
+              Alameda contractors/business license for fence installation is not required.
             </p>
           </div>
           <div
@@ -1630,7 +1629,8 @@ exports[`AppCityPage should render 1`] = `
             <h3
               class="h5 spacing after__is-6"
             >
-              California License
+              California
+               License
             </h3>
             <p>
               California state License #1040925
@@ -1716,16 +1716,23 @@ exports[`AppCityPage should render 1`] = `
               href="https://api-ergeon-in.s3.amazonaws.com/products/fence-replacement/CA/contracts/Ergeon_California_Construction_Contract_2022.pdf"
               target="__blank"
             >
-              California fence installation contract & associated warranties, assurances, terms and conditions.
+              California
+               fence installation contract & associated warranties, assurances, terms and conditions.
             </a>
           </div>
         </div>
         <div
           class="flex-spacer LicensesAndWarranty-row"
         >
-          <img
-            src="licenses-and-warranties.jpg"
-          />
+          <a
+            class="LicenseWithLink"
+            href="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1Zd_e_5uAfE2B7SRKlAFxpRBhlmSEMn90.pdf"
+            target="__blank"
+          >
+            <img
+              src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/16bPGxP5NLqJTx-Y8FCcsxtHZZ2oHVpIQ.jpeg"
+            />
+          </a>
         </div>
       </div>
     </section>
