@@ -4,7 +4,6 @@ import {isQuoteDetailURL, isUnsubscribeURL} from '../../utils/urls';
 
 import {AnonymousUser, SideBar, UserError, LayoutView} from './components';
 import {AppLayoutProps} from './types';
-import {initSmartLook} from './utils';
 import BreadCrumbs from './components/BreadCrumbs';
 
 import './AppLayout.scss';
@@ -40,10 +39,6 @@ const AppLayout = (props: AppLayoutProps) => {
       getHouses(user?.gid as unknown as number);
     }
   }, [user?.gid]);
-
-  useEffect(() => {
-    initSmartLook();
-  }, []);
 
   if (!isLoading && !user && requiresAuthentication) {
     if (userError) {

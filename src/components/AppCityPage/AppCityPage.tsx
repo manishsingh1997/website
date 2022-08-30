@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 
 import {Helmet} from 'react-helmet';
 import {EqualHeight, EqualHeightElement} from 'react-equal-height';
@@ -10,6 +10,7 @@ import UpcomingRemoteFeatures from '../HomePage/components/UpcomingRemoteFeature
 import TestimonialBanner from '../HomePage/components/TestimonialBanner';
 import QASection from '../HomePage/QASection';
 import {showUpcomingFeatures} from '../../utils/utils';
+import {initSmartLook} from '../AppLayout/utils';
 
 import CityReviews from './CityReviews';
 import Regulations from './Regulations';
@@ -35,6 +36,10 @@ const AppCityPage = (props: AppCityPageProps) => {
   const onScrollToLicense = useCallback(() => {
     licenseSectionRef.current?.scrollIntoView({behavior: 'smooth', block: 'center'});
   }, [licenseSectionRef]);
+
+  useEffect(() => {
+    initSmartLook();
+  }, []);
 
   return (
     <>
