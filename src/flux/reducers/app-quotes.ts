@@ -1,14 +1,15 @@
+import {Quotes} from '../../components/AppQuoteListPage/types';
 import {ParsedAPIErrorType} from '../../utils/types';
 import {QuoteActionTypes} from '../actions/app-quotes';
 
 export type QuotesReducerState = {
-  data: unknown[] | null;
+  data: Quotes[] | null;
   isListLoading: boolean;
   listError: ParsedAPIErrorType | null;
 };
 
 export type QuoteReducerAction = {
-  data: unknown[];
+  data: Quotes[];
   error: ParsedAPIErrorType;
   type: keyof typeof QuoteActionTypes;
 };

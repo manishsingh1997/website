@@ -1,0 +1,21 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.quote-list-page-content {
+  display: grid;
+
+  &.content-grid-view {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: $v-16 + 2;
+    place-content: center;
+    place-items: center;
+
+    @include tablet() {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: $v-6 + 2;
+    }
+
+    @include phone() {
+      grid-gap: $corner-default / 2;
+    }
+  }
+}

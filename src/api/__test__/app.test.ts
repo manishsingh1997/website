@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 
 import {addCustomerHouse, editCustomerHouse, getCustomerHouses, getCustomerQuotes, removeCustomerHouse} from '../app';
 import * as utils from '../utils';
+import quoteMock from '../../components/AppQuoteListPage/__mock__/quoteList';
 
 jest.mock('axios');
 
@@ -113,7 +114,9 @@ describe('api utils', () => {
   });
 
   it('should getCustomerQuotes resolve correclty', async () => {
-    const response = {customerGID: customerGIDMock};
+    const response = {
+      data: quoteMock,
+    };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     jest.spyOn(utils, 'request').mockImplementation((): any => () => {

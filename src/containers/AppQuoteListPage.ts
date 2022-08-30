@@ -6,9 +6,10 @@ import {getQuotes} from '../flux/actions/app-quotes';
 import AppQuoteListPage from '../components/AppQuoteListPage';
 import {GetQuotesDispatcher} from '../flux/actions/types';
 import {Action} from '../flux/store';
+import {Quotes} from '../components/AppQuoteListPage/types';
 
 export type QuotesProps = {
-  data: unknown[]; // TODO: sync with BE the response format
+  data: Quotes[];
   isListLoading: boolean;
   listError: null | [];
 };
