@@ -59,6 +59,13 @@
     .user-full-name {
       white-space: nowrap;
       max-width: $h-120;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      @include phone {
+        overflow: unset;
+        text-overflow: unset;
+      }
     }
     .link {
       height: $v-36;
