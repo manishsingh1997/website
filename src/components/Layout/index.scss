@@ -58,8 +58,6 @@
     }
     .user-full-name {
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       max-width: $h-120;
     }
     .link {
