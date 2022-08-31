@@ -4,7 +4,6 @@ import {fireEvent, render, waitFor, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import AppNotificationsPage from '../AppNotificationsPage';
-import * as axios from '../__mocks__/axios';
 
 jest.mock('../__mocks__/axios');
 
@@ -27,16 +26,4 @@ describe('App notifications page', () => {
       expect(successMessage).toBeInTheDocument();
     });
   });
-
-  it('Should return error interface', () => {
-    // @ts-ignore
-    axios.default = null;
-    const consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation();
-    render(<AppNotificationsPage location={mockLocation} />);
-
-    const error = screen.queryByTestId('error');
-    expect(error).toBeInTheDocument();
-    consoleWarnMock.mockRestore();
-  });
-
 });

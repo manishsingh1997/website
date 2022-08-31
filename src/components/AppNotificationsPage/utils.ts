@@ -2,12 +2,11 @@ import {Dispatch} from 'react';
 
 import find from 'lodash/find';
 
-import {updateNotificationPreferences} from '../../api/app';
-
 import {Action, ActionType} from './appNotificationPageReducer';
 import {COMPANY_NEWS_NOTIFICATION_TYPE} from './constant';
 import {NotificationPreference} from './types';
-import {updateNotificationPreferencesOnLocal} from './actions';
+import {updateNotificationPreferencesOnLocal, updateNotificationPreferencesOnServer} from './actions';
+import {getNotificationPreference} from './actions/updateNotificationPreferencesOnLocal';
 
 export const getNotificationPreferenceFromResponse = (
   response: {
@@ -27,28 +26,27 @@ export const shouldUnsubscribe = (subscribeParameter: string | null, unsubscribe
 }
 
 export const fetchData = async (
-    customerGID: string, 
+    customerGID: string,
     dispatch: Dispatch<Action>,
-    notificationPreference: NotificationPreference | null,
     unsubscribeAutomatically: boolean
   ) => {
     await updateNotificationPreferencesOnLocal(customerGID, dispatch, location);
-    await unsubscribeIfSubscribed(customerGID, dispatch, notificationPreference, unsubscribeAutomatically);
+    await unsubscribeIfSubscribed(customerGID, dispatch, unsubscribeAutomatically);
   }
 
 export const unsubscribeIfSubscribed = async (
-  customerGID: string, 
+  customerGID: string,
   dispatch: Dispatch<Action>,
-  notificationPreference: NotificationPreference | null,
   unsubscribeAutomatically: boolean
 ) => {
   if (unsubscribeAutomatically) {
-    let newState: NotificationPreference;
+    const notificationPreference = await getNotificationPreference(customerGID, location);
     if (notificationPreference) {
+      let newState: NotificationPreference;
       dispatch({type: ActionType.UPDATE_IS_INITIAL_LOADING, isInitialLoading: true});
       newState = {...notificationPreference};
       newState.is_email_newsletter_ok = false;
-      await updateNotificationPreferences(customerGID, dispatch, [newState]);
+      await updateNotificationPreferencesOnServer(customerGID, dispatch, [newState]);
     }
   }
 }

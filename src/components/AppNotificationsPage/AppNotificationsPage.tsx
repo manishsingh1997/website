@@ -67,7 +67,7 @@ const AppNotificationsPage = (props: AppNotificationsProps) => {
     <AppPage
       className="notifications-page"
       error={initialError}
-      fetchData={() => fetchData(customerGID, dispatch, notificationPreference, unsubscribeAutomatically)}
+      fetchData={() => fetchData(customerGID, dispatch, unsubscribeAutomatically)}
       isLoading={isInitialLoading}
       renderContent={() =>
         <Content
