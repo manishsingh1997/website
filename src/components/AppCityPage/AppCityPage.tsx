@@ -46,6 +46,7 @@ const AppCityPage = (props: AppCityPageProps) => {
       <Helmet>
         <title>{city.header.title} | Ergeon.com</title>
         <meta content={city.header.bullets.join(' ')} name="description" />
+        <link href={`${process.env.HOME_PAGE}/fences/cities/${city.slug}`} rel="canonical" />
       </Helmet>
       <div className="AppCityPage">
         <CityBanner city={city.city} onScrollToLicense={onScrollToLicense} phone={city.phone} />
