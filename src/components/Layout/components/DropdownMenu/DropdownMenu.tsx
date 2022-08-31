@@ -10,10 +10,11 @@ import '../../index.scss';
 
 interface DropdownMenuProps {
   auth: Partial<AuthState>;
+  onGetQuoteClick?(): void;
 }
 
 const DropdownMenu = (props: DropdownMenuProps) => {
-  const {isAuthLoading, isUserLoading, user} = props.auth;
+  const {auth: {isAuthLoading, isUserLoading, user}, onGetQuoteClick} = props;
 
   if (isUserLoading || isAuthLoading) {
     return <LoadingDropdownMenu />;
@@ -23,7 +24,7 @@ const DropdownMenu = (props: DropdownMenuProps) => {
     return <MainDropdownMenu user={user} />;
   }
 
-  return <AuthDropdownMenu />;
+  return <AuthDropdownMenu onGetQuoteClick={onGetQuoteClick} />;
 };
 
 export default DropdownMenu;

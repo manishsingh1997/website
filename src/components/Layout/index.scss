@@ -282,6 +282,40 @@
   }
 }
 
+.SimpleTopPanel {
+  .QuoteButton.desktop-length {
+    display: none;
+  }
+
+  .PhoneButton-alt {
+    @include phone() {
+      display: none;
+    }
+
+    svg path {
+      fill: $orange-action;
+    }
+  }
+
+  .QuoteButton-alt {
+    margin: 0 $h-10;
+    white-space: nowrap;
+
+    @include phone() {
+      display: none;
+    }
+  }
+
+  & &-phone {
+    display: none;
+    margin-right: $h-20;
+
+    @include phone() {
+      display: flex;
+    }
+  }
+}
+
 .SimpleFooter {
   margin-top: 0 !important;
 }

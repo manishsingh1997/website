@@ -1,5 +1,7 @@
 export const DEFAULT_SOURCE_VALUE = 'website';
 
+export const ERGEON1_PHONE = '+18883743661';
+
 // LS CONSTANTS
 export const LS_ERGEON_LOCATION_DATA = 'LS_ERGEON_LOCATION_DATA';
 export const LS_ERGEON_CART_DATA = 'LS_ERGEON_CART_DATA';

@@ -87,8 +87,12 @@ const Layout = (props: LayoutProps) => {
     );
   }, [utils]);
 
+  const onGetQuoteClick = useCallback(() => {
+    return history.push('/request-quote');
+  }, [history]);
+
   const dropdownMenu = useMemo(() => {
-    return <DropdownMenu auth={auth} />;
+    return <DropdownMenu {...{auth, onGetQuoteClick}} />;
   }, [auth]);
 
   const headerWrapperClass = useMemo(() => {
@@ -102,10 +106,6 @@ const Layout = (props: LayoutProps) => {
   const showFooter = useMemo(() => {
     return !isNoFooterTemplate;
   }, [isNoFooterTemplate]);
-
-  const onGetQuoteClick = useCallback(() => {
-    return history.push('/request-quote');
-  }, [history]);
 
   return (
     <div className="app-layout">
