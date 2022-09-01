@@ -104,9 +104,12 @@
     "node-sass": "^4.12.0",
     "node-xlsx": "^0.21.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "os-browserify": "^0.3.0",
     "path": "^0.12.7",
+    "path-browserify": "^1.0.1",
     "png-to-jpeg": "^1.0.1",
     "prettier": "2.6.2",
+    "process": "^0.11.10",
     "puppeteer": "^15.4.0",
     "raw-loader": "^2.0.0",
     "react-equal-height": "^1.2.2",
@@ -128,7 +131,7 @@
     "xlsx": "^0.18.5"
   },
   "dependencies": {
-    "@ergeon/3d-lib": "9.31.4",
+    "@ergeon/3d-lib": "9.31.5",
     "@ergeon/core-components": "4.17.0",
     "@ergeon/draw-map": "4.5.4",
     "@ergeon/erg-customer-auth": "0.4.0",

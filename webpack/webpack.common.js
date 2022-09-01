@@ -96,6 +96,8 @@ module.exports = {
       querystring: require.resolve('querystring-es3'),
       fs: false,
       crypto: false,
+      os: require.resolve('os-browserify/browser'),
+      path: require.resolve('path-browserify'),
     },
     roots: [path.resolve('./src')],
     modules: ['./node_modules'],
@@ -104,10 +106,14 @@ module.exports = {
       ...srcAliases,
       react: path.resolve('./node_modules/react'),
       'react-dom': path.resolve('./node_modules/react-dom'),
+      process: 'process/browser'
     },
   },
   devtool: 'source-map',
   plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
     new htmlWebpackPlugin({
       template: `${APP_DIR}/index.html`,
       chunks: ['vendors~assets/bundle', 'vendors~assets/bundle~utm/assets/bundle', 'assets/bundle'],
