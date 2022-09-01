@@ -1,3 +1,5 @@
+import {CustomerQuoteViewPreference} from './constants';
+
 export type Quotes = {
   quoteId: number;
   totalPrice: string;
@@ -16,8 +18,13 @@ export type AppQuoteListPageProps = {
 
 export type QuoteListPageContentProps = {
   quotes: Quotes[];
+  customerViewPreference: CustomerQuoteViewPreference;
 };
 
 export type QuoteCardProps = {
-  cardType?: 'grid' | 'lister';
+  cardType: CustomerQuoteViewPreference;
 } & Quotes;
+
+export type QuoteListPageHeaderProps = {
+  handleLocalStorageChange?: (value: CustomerQuoteViewPreference) => void;
+};

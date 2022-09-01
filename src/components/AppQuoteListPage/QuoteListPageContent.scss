@@ -1,6 +1,6 @@
 @import '@ergeon/core-components/src/components/variables.scss';
 
-.quote-list-page-content {
+.quote-page-content {
   display: grid;
 
   &.content-grid-view {
@@ -17,5 +17,31 @@
     @include phone() {
       grid-gap: $corner-default / 2;
     }
+  }
+
+  .table-lister {
+    .table-id {
+      min-width: $h-60 + $v-16;
+    }
+    .table-title {
+      width: 100%;
+      max-width: $h-120 * 2 + $h-10;
+    }
+    .table-price {
+      min-width: $h-60 + $v-12;
+    }
+    .table-info {
+      min-width: $h-80 + $v-12;
+    }
+    .table-date {
+      min-width: $v-88 + $v-6;
+    }
+
+    display: flex;
+    grid-gap: $v-6;
+    padding: 0 $v-16;
+    color: $gray-1;
+    font-size: $font-mobile-size;
+    line-height: $line-height-mobile;
   }
 }

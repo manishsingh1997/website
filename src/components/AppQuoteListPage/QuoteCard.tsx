@@ -10,14 +10,15 @@ import {formatPrice} from '../../utils/app-order';
 
 import {QuoteCardProps} from './types';
 import './QuoteCard.scss';
+import {CustomerQuoteViewPreference} from './constants';
 
 const QuoteCard = (props: QuoteCardProps) => {
-  const {previewUrl, title, cardType = 'grid', status, totalPrice, sentOn} = props;
+  const {previewUrl, title, cardType, status, totalPrice, sentOn, quoteId} = props;
 
   const wrapperClassName = useMemo(() => {
     return classNames('card-wrapper', {
-      'card-grid-view': cardType === 'grid',
-      'card-lister-view': cardType === 'lister',
+      'card-grid-view': cardType === CustomerQuoteViewPreference.Grid,
+      'card-lister-view': cardType === CustomerQuoteViewPreference.Lister,
     });
   }, [cardType]);
 
@@ -32,15 +33,19 @@ const QuoteCard = (props: QuoteCardProps) => {
   return (
     <div className={wrapperClassName}>
       <img alt={title} className="card-img" height={170} loading="lazy" src={previewUrl} width={200} />
+      <h1 className="card-id h6"> {`#${quoteId}`}</h1>
       <h1 className="card-title h6">{title}</h1>
-      {cardType === 'grid' && (
-        <div className="card-info">
-          <div className="card-status">
-            <ReactSVG data-testid={`icon-${status}`} src={statusIcon} />
-            <span className="card-status-text">{`${status} - ${formatPrice(totalPrice)}`}</span>
+      <span className="card-price">{formatPrice(totalPrice)}</span>
+      <div className="card-info">
+        <div className="card-status">
+          <ReactSVG data-testid={`icon-${status}`} src={statusIcon} />
+          <div className="card-info-text">
+            <span className="card-status-label">{status}</span>
+            <span className="card-status-divider">{' - '}</span>
+            <span className="card-status-price">{formatPrice(totalPrice)}</span>
           </div>
         </div>
-      )}
+      </div>
 
       <div className="card-date">{moment(sentOn).format('ll')}</div>
     </div>

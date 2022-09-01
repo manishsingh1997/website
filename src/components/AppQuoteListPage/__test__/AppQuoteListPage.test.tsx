@@ -5,7 +5,7 @@ import {render, screen, waitFor} from '@testing-library/react';
 import {localStorage as ls} from '@ergeon/erg-utils-js';
 
 import AppQuoteListPage from '../AppQuoteListPage';
-import {CustomerQuoteViewPreference, LS_ERGEON_CUSTOMER_MENU_QUOTE_VIEW_PREFERENCE} from '../contraints';
+import {CustomerQuoteViewPreference, LS_ERGEON_CUSTOMER_MENU_QUOTE_VIEW_PREFERENCE} from '../constants';
 import mockList from '../__mock__/quoteList';
 import {Quotes} from '../types';
 
@@ -19,6 +19,7 @@ const props = {
 describe('render AppQuoteListPage', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    jest.restoreAllMocks();
   });
 
   it('should header content to be in the document', () => {
@@ -67,8 +68,10 @@ describe('render AppQuoteListPage', () => {
   });
 
   it('should not render the card when quote is empty', () => {
+    jest.spyOn(ls, 'get').mockImplementation(() => CustomerQuoteViewPreference.Grid);
+
     const {container} = render(<AppQuoteListPage {...props} quotes={[]} />);
-    const wrapper = container.querySelector('.quote-list-page-content');
+    const wrapper = container.querySelector('.quote-page-content');
     expect(wrapper?.firstChild).toBeNull();
   });
 
@@ -123,5 +126,21 @@ describe('render AppQuoteListPage', () => {
 
     expect(iconSuccess).toBeInTheDocument();
     expect(iconError).toBeInTheDocument();
+  });
+
+  it('should render a card grid when local storage is grid', () => {
+    jest.spyOn(ls, 'get').mockImplementation(() => CustomerQuoteViewPreference.Grid);
+
+    const {container} = render(<AppQuoteListPage {...props} />);
+
+    expect(container.querySelector('.card-grid-view')).toBeInTheDocument();
+  });
+
+  it('should render a card lister when local storage is lister', () => {
+    jest.spyOn(ls, 'get').mockImplementation(() => CustomerQuoteViewPreference.Lister);
+
+    const {container} = render(<AppQuoteListPage {...props} />);
+
+    expect(container.querySelector('.card-lister-view')).toBeInTheDocument();
   });
 });

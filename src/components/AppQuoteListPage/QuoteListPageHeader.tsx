@@ -7,23 +7,34 @@ import {localStorage as ls} from '@ergeon/erg-utils-js';
 import classNames from 'classnames';
 
 import './QuoteListPageHeader.scss';
-import {LS_ERGEON_CUSTOMER_MENU_QUOTE_VIEW_PREFERENCE, CustomerQuoteViewPreference} from './contraints';
+import {LS_ERGEON_CUSTOMER_MENU_QUOTE_VIEW_PREFERENCE, CustomerQuoteViewPreference} from './constants';
+import {QuoteListPageHeaderProps} from './types';
 
-const QuoteListPageHeader = () => {
+const QuoteListPageHeader = (props: QuoteListPageHeaderProps) => {
+  const {handleLocalStorageChange} = props;
+
   const [customerViewPreference, setCustomerViewPreference] = useState(CustomerQuoteViewPreference.Grid);
 
-  useEffect(function getCustomerViewPreference() {
-    const storage: CustomerQuoteViewPreference | null = ls.get(LS_ERGEON_CUSTOMER_MENU_QUOTE_VIEW_PREFERENCE);
+  useEffect(
+    function getCustomerViewPreference() {
+      const storage: CustomerQuoteViewPreference | null = ls.get(LS_ERGEON_CUSTOMER_MENU_QUOTE_VIEW_PREFERENCE);
 
-    if (storage) {
-      setCustomerViewPreference(CustomerQuoteViewPreference[storage]);
-    }
-  }, []);
+      if (storage) {
+        setCustomerViewPreference(CustomerQuoteViewPreference[storage]);
+        !!handleLocalStorageChange && handleLocalStorageChange(CustomerQuoteViewPreference[storage]);
+      }
+    },
+    [handleLocalStorageChange]
+  );
 
-  const handleIconClick = useCallback((value) => {
-    setCustomerViewPreference(value);
-    ls.set(LS_ERGEON_CUSTOMER_MENU_QUOTE_VIEW_PREFERENCE, value);
-  }, []);
+  const handleIconClick = useCallback(
+    (value) => {
+      setCustomerViewPreference(value);
+      ls.set(LS_ERGEON_CUSTOMER_MENU_QUOTE_VIEW_PREFERENCE, value);
+      !!handleLocalStorageChange && handleLocalStorageChange(value);
+    },
+    [handleLocalStorageChange]
+  );
 
   return (
     <div className="quote-list-page-header">
