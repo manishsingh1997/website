@@ -58,10 +58,12 @@ const LicensesAndWarranty = (props: LicensesAndWarrantyProps) => {
     return (
       <div className="spacing after__is-30">
         <h3 className="h5 spacing after__is-6">Ergeon Warranty</h3>
-        <a className="spacing after__is-30" href={cityItem.warranty} target="__blank">
-          {cityItem.state_full_name} fence installation contract & associated warranties, assurances, terms and
-          conditions.
-        </a>
+        <p className="spacing after__is-30">
+          Your project is covered by our warranty and assurances.&nbsp;
+          <a href={cityItem.warranty} target="__blank">
+            Learn more
+          </a>
+        </p>
       </div>
     );
   }, [cityItem]);

@@ -1714,14 +1714,17 @@ exports[`AppCityPage should render 1`] = `
               >
                 Ergeon Warranty
               </h3>
-              <a
+              <p
                 class="spacing after__is-30"
-                href="https://api-ergeon-in.s3.amazonaws.com/products/fence-replacement/CA/contracts/Ergeon_California_Construction_Contract_2022.pdf"
-                target="__blank"
               >
-                California
-                 fence installation contract & associated warranties, assurances, terms and conditions.
-              </a>
+                Your project is covered by our warranty and assurances. 
+                <a
+                  href="https://api-ergeon-in.s3.amazonaws.com/products/fence-replacement/CA/contracts/Ergeon_California_Construction_Contract_2022.pdf"
+                  target="__blank"
+                >
+                  Learn more
+                </a>
+              </p>
             </div>
           </div>
           <div
