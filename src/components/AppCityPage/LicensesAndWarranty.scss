@@ -1,7 +1,17 @@
 @import '~@ergeon/core-components/src/components/variables';
 
 .LicensesAndWarranty {
-  align-items: center;
+  .flex-wrapper {
+    @include tablet {
+      flex-direction: row;
+    }
+
+    @include phone {
+      flex-direction: column;
+    }
+
+    align-items: center;
+  }
 
   &-row {
     margin: 0 $h-40;
@@ -10,35 +20,35 @@
     flex-direction: column;
 
     @include tablet {
-      text-align: center;
-    }
-  }
-
-  .StateLicense {
-    display: flex;
-    flex-direction: column;
-
-    @include tablet {
-      align-items: center;
-      margin-top: $v-12;
-    }
-
-    &-licenseTypes {
-      height: $v-64 + 10;
-      width: 90%;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-
-      @include tablet {
-        margin-top: $v-12;
+      .h3 {
+        font-size: $h4-size;
+        line-height: $h4-line-height;
+        font-weight: 600;
+      }
+      p,
+      a {
+        font-size: $font-mobile-size;
+        line-height: $line-height-mobile;
       }
     }
-  }
 
-  img {
-    width: 100%;
-    border-radius: $v-12;
+    .StateLicense {
+      display: flex;
+      flex-direction: column;
+
+      &-licenseTypes {
+        max-height: $v-64 + 10;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+    }
+
+    img {
+      width: 100%;
+      border-radius: $v-12;
+    }
   }
 }
 

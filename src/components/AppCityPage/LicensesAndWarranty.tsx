@@ -75,18 +75,20 @@ const LicensesAndWarranty = (props: LicensesAndWarrantyProps) => {
   }, [cityItem.license?.pdf]);
 
   return (
-    <div className="LicensesAndWarranty flex-wrapper Regulations-container">
-      <div className="flex-spacer LicensesAndWarranty-row">
-        <h2 className="h3 spacing after__is-30">{cityItem.city} Licenses & Warranty</h2>
-        {cityLicense}
-        {stateLicense}
-        {warranty}
-      </div>
+    <div className="LicensesAndWarranty Regulations-container">
+      <div className="flex-wrapper">
+        <div className="flex-spacer LicensesAndWarranty-row">
+          <h2 className="h3 spacing after__is-30">{cityItem.city} Licenses & Warranty</h2>
+          {cityLicense}
+          {stateLicense}
+          {warranty}
+        </div>
 
-      <div className="flex-spacer LicensesAndWarranty-row">
-        <a className="LicenseWithLink" href={licensePdf} target={'__blank'}>
-          <img src={licenseImg} />
-        </a>
+        <div className="flex-spacer LicensesAndWarranty-row">
+          <a className="LicenseWithLink" href={licensePdf} target={'__blank'}>
+            <img src={licenseImg} />
+          </a>
+        </div>
       </div>
     </div>
   );
