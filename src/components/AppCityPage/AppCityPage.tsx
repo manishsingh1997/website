@@ -9,7 +9,6 @@ import GetStartedSection from '../HomePage/components/GetStartedSection';
 import UpcomingRemoteFeatures from '../HomePage/components/UpcomingRemoteFeatures';
 import TestimonialBanner from '../HomePage/components/TestimonialBanner';
 import QASection from '../HomePage/QASection';
-import {showUpcomingFeatures} from '../../utils/utils';
 import {initSmartLook} from '../AppLayout/utils';
 
 import CityReviews from './CityReviews';
@@ -136,11 +135,9 @@ const AppCityPage = (props: AppCityPageProps) => {
           </div>
         </section>
 
-        {showUpcomingFeatures('ENG-17226') && (
-          <section className="wrapper-1180" ref={licenseSectionRef}>
-            <LicensesAndWarranty cityItem={city} />
-          </section>
-        )}
+        <section className="wrapper-1180" ref={licenseSectionRef}>
+          <LicensesAndWarranty cityItem={city} />
+        </section>
 
         <section className="mobile-length">
           <TellUsForm />
