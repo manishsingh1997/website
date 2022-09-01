@@ -3,6 +3,7 @@
 $layout-max-width: 1060px;
 $sidebar-max-width: 260px;
 $content-max-width: 700px;
+$icon-size: $v-16 + 2;
 
 .customer-app-layout {
   max-width: $layout-max-width;
@@ -117,6 +118,11 @@ $content-max-width: 700px;
           margin-right: 10px;
           text-align: center;
 
+          svg {
+            width: $icon-size;
+            height: auto;
+          }
+
           svg path {
             fill: $gray-3;
           }
@@ -125,7 +131,7 @@ $content-max-width: 700px;
 
       .addresses-item {
         svg {
-          width: $v-16 + 2;
+          width: $icon-size;
           height: auto;
         }
       }
