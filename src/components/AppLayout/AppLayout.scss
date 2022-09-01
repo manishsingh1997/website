@@ -127,6 +127,14 @@ $icon-size: $v-16 + 2;
             fill: $gray-3;
           }
         }
+
+        &.orders-item {
+          .menu-icon-wrapper {
+            svg {
+              width: $v-24;
+            }
+          }
+        }
       }
 
       .addresses-item {

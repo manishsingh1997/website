@@ -72,7 +72,7 @@ describe('render AppQuoteListPage', () => {
 
     const {container} = render(<AppQuoteListPage {...props} quotes={[]} />);
     const wrapper = container.querySelector('.quote-page-content');
-    expect(wrapper?.firstChild).toBeNull();
+    expect(wrapper?.firstChild).toBeUndefined();
   });
 
   it('should render the correctly card length', () => {
@@ -142,5 +142,11 @@ describe('render AppQuoteListPage', () => {
     const {container} = render(<AppQuoteListPage {...props} />);
 
     expect(container.querySelector('.card-lister-view')).toBeInTheDocument();
+  });
+
+  it('should render a empty message when quote is empty', () => {
+    render(<AppQuoteListPage {...props} quotes={[]} />);
+
+    expect(screen.getByText('There are no quotes.')).toBeInTheDocument();
   });
 });

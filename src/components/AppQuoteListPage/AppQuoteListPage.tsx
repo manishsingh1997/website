@@ -25,7 +25,11 @@ const AppQuoteListPage = (props: AppQuoteListPageProps) => {
   }, []);
 
   const renderContent = useCallback(() => {
-    return quotes && <QuoteListPageContent customerViewPreference={customerViewPreference} quotes={quotes} />;
+    if (!quotes?.length) {
+      return <div className="center error">There are no quotes.</div>;
+    }
+
+    return <QuoteListPageContent customerViewPreference={customerViewPreference} quotes={quotes} />;
   }, [quotes, customerViewPreference]);
 
   return (
