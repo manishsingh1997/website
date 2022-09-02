@@ -92,7 +92,7 @@ const Layout = (props: LayoutProps) => {
   }, [history]);
 
   const dropdownMenu = useMemo(() => {
-    return <DropdownMenu {...{auth, onGetQuoteClick}} />;
+    return <DropdownMenu {...{auth, onGetQuoteClick: isShowGetAQuoteButton ? onGetQuoteClick : undefined}} />;
   }, [auth]);
 
   const headerWrapperClass = useMemo(() => {
