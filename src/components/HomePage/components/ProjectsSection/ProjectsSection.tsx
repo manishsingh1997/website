@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { OptimizedImage } from '@ergeon/core-components';
+
 import homeData from '../../home-data.json';
 import PaneSwitcher from '../PaneSwitcher';
 import './ProjectsSection.scss';
@@ -24,12 +26,14 @@ const ProjectsSection = () => {
             <div className="card padding-20 soft-border" key={`${card.title}-${idx}`}>
               <div className="card__img-container">
                 <a href={card.link}>
-                  <img src={CARDS_IMAGES[card.link]} />
+                  <OptimizedImage alt={card.title} src={CARDS_IMAGES[card.link]} />
                 </a>
               </div>
               <div className="card__content">
                 <h3 className="additional-header h2 spacing after__is-6">
-                  <a href={card.link} style={{color: 'inherit'}}>{card.title}</a>
+                  <a href={card.link} style={{color: 'inherit'}}>
+                    {card.title}
+                  </a>
                 </h3>
                 <p>{card.content}</p>
                 <a href={card.link}>View more</a>

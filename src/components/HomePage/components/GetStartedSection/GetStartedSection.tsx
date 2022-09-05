@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {OptimizedImage} from '@ergeon/core-components';
+
 import imgGetStarted from '../../../../assets/easy-to-use.jpg';
 
 import './GetStartedSection.scss';
@@ -20,7 +22,12 @@ const GetStartedSection = () => {
           </div>
         </div>
         <div className="GetStarted-ImgContainer">
-          <img className="GetStarted-Image" src={imgGetStarted} />
+          <OptimizedImage
+            alt={'Get Started'}
+            className="GetStarted-Image"
+            isProcessEnvTest={process.env.NODE_ENV === 'test'}
+            src={imgGetStarted}
+          />
         </div>
       </div>
     </div>

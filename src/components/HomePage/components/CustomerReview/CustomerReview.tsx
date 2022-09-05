@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { OptimizedImage } from '@ergeon/core-components';
+
 import Customer from '../../../../assets/customer-linden.png';
 import Quote from '../../../../assets/quote.svg';
 
@@ -9,13 +11,13 @@ const CustomerReview = () => {
   return (
     <div className="CustomerReview">
       <div className="CustomerReview-image ratio-image">
-        <img alt="customer review image" src={Customer} />
+        <OptimizedImage alt="customer review image" src={Customer} />
       </div>
       <div className="CustomerReview-review">
         <div className="CustomerReview-reviewTitle">
           <span className="h4">From the start Ergeon fencing was wonderful to work with!</span>
           <span className="quote-icon ratio-image">
-            <img alt="quote" src={Quote} />
+            <OptimizedImage alt="quote" src={Quote} />
           </span>
         </div>
         <p className="CustomerReview-reviewDescription">

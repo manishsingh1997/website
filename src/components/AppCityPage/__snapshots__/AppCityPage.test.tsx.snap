@@ -471,7 +471,11 @@ exports[`AppCityPage should render 1`] = `
         >
           <img
             alt="testimonial organization"
+            data-optimized="true"
+            height="100%"
+            loading="eager"
             src="thumbtack.svg"
+            width="100%"
           />
           <span
             class="badge--txt is-bold"
@@ -491,7 +495,11 @@ exports[`AppCityPage should render 1`] = `
         >
           <img
             alt="testimonial organization"
+            data-optimized="true"
+            height="100%"
+            loading="eager"
             src="yelp.svg"
+            width="100%"
           />
           <span
             class="badge--txt is-bold"
@@ -511,7 +519,11 @@ exports[`AppCityPage should render 1`] = `
         >
           <img
             alt="testimonial organization"
+            data-optimized="true"
+            height="100%"
+            loading="eager"
             src="google.svg"
+            width="100%"
           />
           <span
             class="badge--txt is-bold"
@@ -531,7 +543,11 @@ exports[`AppCityPage should render 1`] = `
         >
           <img
             alt="testimonial organization"
+            data-optimized="true"
+            height="100%"
+            loading="eager"
             src="angi.svg"
+            width="100%"
           />
           <span
             class="badge--txt is-bold"
@@ -551,7 +567,11 @@ exports[`AppCityPage should render 1`] = `
         >
           <img
             alt="testimonial organization"
+            data-optimized="true"
+            height="100%"
+            loading="eager"
             src="bbb.svg"
+            width="100%"
           />
           <span
             class="badge--txt is-bold"
@@ -580,7 +600,12 @@ exports[`AppCityPage should render 1`] = `
             class="CityReviews-imgContainer"
           >
             <img
+              alt="We had a very positive experience with Ergeon."
+              data-optimized="true"
+              height="100%"
+              loading="eager"
               src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1RGiBpSQtBWBKilzhKyxyY0Oyj8yKRwRw.jpeg"
+              width="100%"
             />
           </div>
           <div>
@@ -627,7 +652,12 @@ exports[`AppCityPage should render 1`] = `
             class="CityReviews-imgContainer"
           >
             <img
+              alt="The fence was completed without a hitch, including cleaning of the work site and removal of all debris as promised."
+              data-optimized="true"
+              height="100%"
+              loading="eager"
               src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1Z2bef-esL7yCGSN6UAvDKGUku_3IkBF0.jpeg"
+              width="100%"
             />
           </div>
           <div>
@@ -689,7 +719,11 @@ exports[`AppCityPage should render 1`] = `
           >
             <img
               alt="Picture Frame Board on Board With Diagonal Lattice Fence"
+              data-optimized="true"
+              height="100%"
+              loading="eager"
               src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1wFU_9_tP1TPxbZ9JcedjQOyxepbulm7a.jpeg"
+              width="100%"
             />
           </a>
           <div
@@ -712,7 +746,11 @@ exports[`AppCityPage should render 1`] = `
           >
             <img
               alt="Nail Up Flat Top With Kickboard Fence"
+              data-optimized="true"
+              height="100%"
+              loading="eager"
               src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1MzuOIgwpmB79RHMcR2D1wym1t1mODuAF.jpeg"
+              width="100%"
             />
           </a>
           <div
@@ -763,8 +801,13 @@ exports[`AppCityPage should render 1`] = `
               class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
+                alt="Premium - Flat Top"
+                data-optimized="true"
                 data-testid="test-image"
+                height="100%"
+                loading="eager"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/14pVDkLbAWrOc5Ns2l7YcZe3MDz23L-Iw.jpeg"
+                width="100%"
               />
               <p
                 class="h5 Packages-title"
@@ -785,8 +828,13 @@ exports[`AppCityPage should render 1`] = `
               class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
+                alt="Nail Up - Horizontal"
+                data-optimized="true"
                 data-testid="test-image"
+                height="100%"
+                loading="eager"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1jZf_yW4Khn05bhT8hDX-nwZTMMB7fN_f.jpeg"
+                width="100%"
               />
               <p
                 class="h5 Packages-title"
@@ -807,8 +855,13 @@ exports[`AppCityPage should render 1`] = `
               class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
+                alt="Picture Frame"
+                data-optimized="true"
                 data-testid="test-image"
+                height="100%"
+                loading="eager"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1FkRFjkguBHCfcLd5THc9ZxlkANuWoCxd.jpeg"
+                width="100%"
               />
               <p
                 class="h5 Packages-title"
@@ -840,8 +893,13 @@ exports[`AppCityPage should render 1`] = `
               class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
+                alt="Standard"
+                data-optimized="true"
                 data-testid="test-image"
+                height="100%"
+                loading="eager"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1Z872D3vqeZSRbrwewkId11qBD2ZaNAqo.jpeg"
+                width="100%"
               />
               <p
                 class="h5 Packages-title"
@@ -862,8 +920,13 @@ exports[`AppCityPage should render 1`] = `
               class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
+                alt="Small Commercial"
+                data-optimized="true"
                 data-testid="test-image"
+                height="100%"
+                loading="eager"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1nzyncXknEpX_w7AVe3a7q-O8O9zHd7qr.jpeg"
+                width="100%"
               />
               <p
                 class="h5 Packages-title"
@@ -884,8 +947,13 @@ exports[`AppCityPage should render 1`] = `
               class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
+                alt="Large Commercial"
+                data-optimized="true"
                 data-testid="test-image"
+                height="100%"
+                loading="eager"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/16hDSZgW4VRMX88J1G7J12Zwv1mUIIhG4.jpeg"
+                width="100%"
               />
               <p
                 class="h5 Packages-title"
@@ -917,8 +985,13 @@ exports[`AppCityPage should render 1`] = `
               class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
+                alt="Deer Fence"
+                data-optimized="true"
                 data-testid="test-image"
+                height="100%"
+                loading="eager"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1A1T9JeaU8p6YYrqqWIUF_aSMKrXXys15.jpeg"
+                width="100%"
               />
               <p
                 class="h5 Packages-title"
@@ -939,8 +1012,13 @@ exports[`AppCityPage should render 1`] = `
               class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
+                alt="Hog Wire"
+                data-optimized="true"
                 data-testid="test-image"
+                height="100%"
+                loading="eager"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1flny4XLVyCYo27jGoO-QagcgFPrZRJ_n.jpeg"
+                width="100%"
               />
               <p
                 class="h5 Packages-title"
@@ -961,8 +1039,13 @@ exports[`AppCityPage should render 1`] = `
               class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
+                alt="Top Deer Fence"
+                data-optimized="true"
                 data-testid="test-image"
+                height="100%"
+                loading="eager"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1wvCXuXpKJyLBOky7iNZqunQNWcIMgW0P.jpeg"
+                width="100%"
               />
               <p
                 class="h5 Packages-title"
@@ -983,8 +1066,13 @@ exports[`AppCityPage should render 1`] = `
               class="card Packages-item-padding soft-border shadow__z0 Packages-item"
             >
               <img
+                alt="T-Post"
+                data-optimized="true"
                 data-testid="test-image"
+                height="100%"
+                loading="eager"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1LbgYXMkI2VjL3ncJCPQ3u9ZkVEbGwboe.jpeg"
+                width="100%"
               />
               <p
                 class="h5 Packages-title"
@@ -1291,7 +1379,12 @@ exports[`AppCityPage should render 1`] = `
             target="__blank"
           >
             <img
+              alt="Regulations"
+              data-optimized="true"
+              height="100%"
+              loading="eager"
               src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/1Y1NEewzmT2dB07yV1wbxSrndJ19h0hdn.jpeg"
+              width="100%"
             />
           </a>
         </div>
@@ -1324,7 +1417,11 @@ exports[`AppCityPage should render 1`] = `
               >
                 <img
                   alt="Video Call for your Onsite Visit"
+                  data-optimized="true"
+                  height="100%"
+                  loading="eager"
                   src="icon-remote-onsite.svg"
+                  width="100%"
                 />
               </div>
               <div
@@ -1367,7 +1464,11 @@ exports[`AppCityPage should render 1`] = `
               >
                 <img
                   alt="Approve your Quote & Pay Online"
+                  data-optimized="true"
+                  height="100%"
+                  loading="eager"
                   src="icon-pay-online.svg"
+                  width="100%"
                 />
               </div>
               <div
@@ -1410,7 +1511,11 @@ exports[`AppCityPage should render 1`] = `
               >
                 <img
                   alt="Stay Inside While We Install Your Fence"
+                  data-optimized="true"
+                  height="100%"
+                  loading="eager"
                   src="icon-no-contact-install.svg"
+                  width="100%"
                 />
               </div>
               <div
@@ -1495,8 +1600,13 @@ exports[`AppCityPage should render 1`] = `
             class="GetStarted-ImgContainer"
           >
             <img
+              alt="Get Started"
               class="GetStarted-Image"
+              data-optimized="true"
+              height="100%"
+              loading="eager"
               src="easy-to-use.jpg"
+              width="100%"
             />
           </div>
         </div>
@@ -1736,7 +1846,12 @@ exports[`AppCityPage should render 1`] = `
               target="__blank"
             >
               <img
+                alt="Licenses And Warranty"
+                data-optimized="true"
+                height="100%"
+                loading="eager"
                 src="https://s3.us-west-2.amazonaws.com/dev.ergeon.com/cities_photos/16bPGxP5NLqJTx-Y8FCcsxtHZZ2oHVpIQ.jpeg"
+                width="100%"
               />
             </a>
           </div>

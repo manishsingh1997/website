@@ -2,6 +2,7 @@ import React, {useMemo} from 'react';
 
 import {ReactSVG} from 'react-svg';
 import iconVerified from '@ergeon/core-components/src/assets/icon-verified-small.svg';
+import {OptimizedImage} from '@ergeon/core-components';
 
 import licensesAndWarrantiesImg from '../../assets/licenses-and-warranties.jpg';
 
@@ -88,7 +89,11 @@ const LicensesAndWarranty = (props: LicensesAndWarrantyProps) => {
 
         <div className="flex-spacer LicensesAndWarranty-row">
           <a className="LicenseWithLink" href={licensePdf} target={'__blank'}>
-            <img src={licenseImg} />
+            <OptimizedImage
+              alt="Licenses And Warranty"
+              isProcessEnvTest={process.env.NODE_ENV === 'test'}
+              src={licenseImg}
+            />
           </a>
         </div>
       </div>

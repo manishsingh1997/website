@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {RatingsData} from '@ergeon/core-components';
+import {RatingsData, OptimizedImage} from '@ergeon/core-components';
 
 import yelpLogo from '../../../../assets/testimonial-icons/yelp.svg';
 import googleLogo from '../../../../assets/testimonial-icons/google.svg';
@@ -13,7 +13,7 @@ import './TestimonialBanner.scss';
 type BadgeProps = {
   rating: number | string;
   icon: string;
-  reviews?: number,
+  reviews?: number;
 };
 
 const TestimonialBanner = () => {
@@ -24,12 +24,13 @@ const TestimonialBanner = () => {
 
     return (
       <div className="TestimonialBanner-badge">
-        <img alt="testimonial organization" src={icon} />
+        <OptimizedImage alt="testimonial organization" isProcessEnvTest={process.env.NODE_ENV === 'test'} src={icon} />
         <span className="badge--txt is-bold">{rating} rating</span>
-        {reviews
-          ? <span className="badge--txt is-grey">{reviews} REVIEWS</span>
-          : <span className="badge--txt is-grey">ACCREDITED</span>
-        }
+        {reviews ? (
+          <span className="badge--txt is-grey">{reviews} REVIEWS</span>
+        ) : (
+          <span className="badge--txt is-grey">ACCREDITED</span>
+        )}
       </div>
     );
   };

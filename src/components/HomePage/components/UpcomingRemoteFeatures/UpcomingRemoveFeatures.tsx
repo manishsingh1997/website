@@ -1,32 +1,35 @@
 import React, {useCallback, useState} from 'react';
 
-import {Button} from '@ergeon/core-components';
+import {Button, OptimizedImage} from '@ergeon/core-components';
 
 import imgRemoteOnsite from '../../../../assets/remote-features/icon-remote-onsite.svg';
 import imgRemoteQuote from '../../../../assets/remote-features/icon-pay-online.svg';
 import imgContactless from '../../../../assets/remote-features/icon-no-contact-install.svg';
 import VideoPopup from '../../VideoPopup';
-
 import './UpcomingRemoteFeatures.scss';
 
 const RemoteFeatures = () => {
   const [videoUrl, setVideoUrl] = useState('');
   const [showVideoPopup, setShowVideoPopup] = useState(false);
 
-  const showVideo = useCallback((link: string) => {
+  const showVideo = useCallback(
+    (link: string) => {
       setShowVideoPopup(true);
       setVideoUrl(link);
-    }, [setVideoUrl, setShowVideoPopup]);
+    },
+    [setVideoUrl, setShowVideoPopup]
+  );
 
   const hideVideo = useCallback(() => {
     setShowVideoPopup(false);
   }, [setVideoUrl]);
 
-  const renderCard = useCallback(({title, desc, img, link, videoLink}) => {
+  const renderCard = useCallback(
+    ({title, desc, img, link, videoLink}) => {
       return (
         <div className="remote-features-card">
           <div className="remote-features-card-img">
-            <img alt={title} src={img} />
+            <OptimizedImage alt={title} isProcessEnvTest={process.env.NODE_ENV === 'test'} src={img} />
           </div>
           <div className="remote-features-card-details">
             <div className="remote-features-card-info">
@@ -59,7 +62,9 @@ const RemoteFeatures = () => {
           </div>
         </div>
       );
-    }, [showVideo]);
+    },
+    [showVideo]
+  );
 
   return (
     <div className="remote-features">

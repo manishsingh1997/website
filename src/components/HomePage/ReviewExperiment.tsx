@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Rating} from '@ergeon/core-components';
+import {Rating, OptimizedImage} from '@ergeon/core-components';
 import classNames from 'classnames';
 
 type ReviewExperimentTypes = {
@@ -28,7 +28,7 @@ const ReviewExperiment = (props: ReviewExperimentTypes) => {
                 {rating} / {reviewCount} Verified Reviews
               </div>
             </div>
-            <img className={classNames(classLogo)} src={logo} />
+            <OptimizedImage alt="Customer reviews" className={classNames(classLogo)} src={logo} />
           </div>
         </a>
       </div>

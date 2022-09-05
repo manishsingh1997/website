@@ -3,6 +3,7 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {Helmet} from 'react-helmet';
 import {EqualHeight, EqualHeightElement} from 'react-equal-height';
 import isEmpty from 'lodash/isEmpty';
+import {OptimizedImage} from '@ergeon/core-components';
 
 import TellUsForm from '../../containers/TellUsForm';
 import GetStartedSection from '../HomePage/components/GetStartedSection';
@@ -80,8 +81,10 @@ const AppCityPage = (props: AppCityPageProps) => {
                     {data?.map((pckg) => (
                       <EqualHeightElement key={pckg.title} name={title}>
                         <div className="card Packages-item-padding soft-border shadow__z0 Packages-item">
-                          <img
+                          <OptimizedImage
+                            alt={pckg.title}
                             data-testid="test-image"
+                            isProcessEnvTest={process.env.NODE_ENV === 'test'}
                             onLoad={() => setLoadPckgImage(pckg.img)}
                             src={getAsset(pckg.img, 'jpeg')}
                           />

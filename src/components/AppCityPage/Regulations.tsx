@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback } from 'react';
 
-import { Collapsible } from '@ergeon/core-components';
+import { Collapsible, OptimizedImage } from '@ergeon/core-components';
 
 import RegulationsImg from '../../assets/regulations.jpeg';
 
@@ -108,11 +108,12 @@ const Regulations = (props: RegulationsProps) => {
         <div className="flex-spacer Regulations-row desktop-length">
           {pdf &&
             <a href={getAsset(pdf, 'pdf')} target="__blank">
-              {img && <img src={getAsset(img, 'jpeg')} />}
-              {!img && <img src={RegulationsImg} />}
+              {img && <OptimizedImage alt={'Regulations'} 
+                isProcessEnvTest={process.env.NODE_ENV === 'test'} src={getAsset(img, 'jpeg')} />}
+              {!img && <OptimizedImage alt={'Regulations PDF Image'} src={RegulationsImg} />}
             </a>
           }
-          {!pdf && <img src={RegulationsImg} />}
+          {!pdf && <OptimizedImage alt={'Regulations Image'} src={RegulationsImg} />}
         </div>
       </div>
     </section>

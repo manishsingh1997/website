@@ -18,10 +18,20 @@ jest.mock('../../containers/TellUsForm', () => () => <>Tell Us Form</>);
 const CITY_BANNER_PHONE = '(543) 094 5738';
 
 describe('AppCityPage', () => {
+  beforeEach(() => {
+    const intersectionObserverMock = () => ({
+      observe: jest.fn(),
+      unobserve: jest.fn(),
+    });
+    window.IntersectionObserver = jest.fn().mockImplementation(intersectionObserverMock);
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   it('should render', () => {
-    const {container, getAllByTestId} = render(
-      <AppCityPage city={cities[0] as unknown as City} />
-    );
+    const {container, getAllByTestId} = render(<AppCityPage city={cities[0] as unknown as City} />);
 
     const images = getAllByTestId('test-image');
     const image = images[0] as HTMLImageElement;
@@ -32,18 +42,18 @@ describe('AppCityPage', () => {
 
   it('Should render city banner', () => {
     const city = 'Coruscant';
-    render(<CityBanner city={city} phone={CITY_BANNER_PHONE}/>);
+    render(<CityBanner city={city} phone={CITY_BANNER_PHONE} />);
 
     const cityName = screen.getByText(new RegExp(city, 'ig'));
     const cityBanner = screen.getByTestId(/city-banner/);
     expect(cityName).toBeInTheDocument();
     expect(cityBanner).toMatchSnapshot();
-  })
+  });
 
   it('Should render Main city banner', () => {
-    render(<MainBanner bullets={['one', 'two']} phone='+1234' state='CA' title='California' />);
+    render(<MainBanner bullets={['one', 'two']} phone="+1234" state="CA" title="California" />);
 
     const cityBanner = screen.getByTestId(/main-banner/);
     expect(cityBanner).toMatchSnapshot();
-  })
+  });
 });
