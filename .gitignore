@@ -84,8 +84,9 @@ typings/
 
 # Sitemaps
 src/data/sitemap.xml
-src/data/gallery/sitemap.xml
-src/data/help/sitemap.xml
+src/data/sitemap-index.xml
+src/data/gallery-sitemap.xml
+src/data/help-sitemap.xml
 
 # Google API auth
 .google

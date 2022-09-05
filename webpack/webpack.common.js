@@ -162,9 +162,10 @@ module.exports = {
     new CopyPlugin({patterns: [
       // SEO
       {from: robotsPath, to: `${BUILD_DIR}/robots.txt`, force: true},
+      {from: './src/data/sitemap-index.xml', to: `${BUILD_DIR}/`, force: true},
       {from: './src/data/sitemap.xml', to: `${BUILD_DIR}/`, force: true},
-      {from: './src/data/gallery/sitemap.xml', to: `${BUILD_DIR}/gallery/`, force: true},
-      {from: './src/data/help/sitemap.xml', to: `${BUILD_DIR}/help/`, force: true},
+      {from: './src/data/gallery-sitemap.xml', to: `${BUILD_DIR}/`, force: true},
+      {from: './src/data/help-sitemap.xml', to: `${BUILD_DIR}/`, force: true},
     ]}),
     new CopyPlugin({patterns: [
       {from: './src/manifest.webmanifest', to: `${BUILD_DIR}/`},

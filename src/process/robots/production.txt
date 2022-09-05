@@ -1,10 +1,5 @@
 User-agent: *
 Disallow: /app/
 
-Sitemap: https://www.ergeon.com/sitemap.xml
-Sitemap: https://www.ergeon.com/help/sitemap.xml
-Sitemap: https://www.ergeon.com/gallery/sitemap.xml
-Sitemap: https://www.ergeon.com/projects-gallery/sitemap.xml
-Sitemap: https://www.ergeon.com/blog/sitemap.xml
-Sitemap: https://www.ergeon.com/catalog/sitemap.xml
+Sitemap: https://www.ergeon.com/sitemap-index.xml
 Sitemap: https://store.ergeon.com/sitemap.xml

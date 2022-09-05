@@ -23,21 +23,30 @@ dotenvConfig({
 const HOME_PAGE_URL = process.env.HOME_PAGE;
 
 const sitemapXMLTemplate = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset
+<{{templateType}}
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 {{urls}}
-</urlset>
+</{{templateType}}>
 `;
+
+const SITEMAP_FILE_LIST = [
+  'sitemap.xml',
+  'gallery-sitemap.xml',
+  'help-sitemap.xml',
+  'projects-gallery/sitemap.xml',
+  'blog/sitemap.xml',
+  'catalog/sitemap.xml',
+];
 
 /**
  * Pre-process URLs.
  * @param {string[]} urls
  */
 const processURLs = (urls) => {
-  return sortBy(urls).map(url => {
+  return sortBy(urls).map((url) => {
     if (/\/$/.test(url)) return url;
     return `${url}/`;
   });
@@ -46,14 +55,17 @@ const processURLs = (urls) => {
 /**
  * Get XML-tags from string URLs array.
  * @param {string[]} urls
+ * @param {url|sitemap} tag
  */
-const generateSitemap = (urls) => {
+const generateSitemap = (urls, tag = 'url') => {
+  const lastMod = new Date().toISOString()
   const urlsAsXMLTags = reduce(
     urls,
     (xml, url) => `${xml}
-      <url>
+      <${tag}>
         <loc>${url}</loc>
-      </url>`,
+        <lastmod>${lastMod}</lastmod>
+      </${tag}>`,
     ''
   );
   return urlsAsXMLTags;
@@ -73,6 +85,15 @@ const getSitemapUrls = (routes) => {
 
 const getCitiesURLs = () => {
   return citiesMinData.map(({slug}) => `${HOME_PAGE_URL}${CITIES_PAGE_PATH}/${slug}`);
+};
+
+/**
+ * Get the index sitemap.
+ */
+export const generateIndexSitemap = async () => {
+  const urls = SITEMAP_FILE_LIST.map((url) => `${HOME_PAGE_URL}/${url}`);
+
+  return generateSitemap(urls, 'sitemap');
 };
 
 /**
@@ -127,10 +148,7 @@ export const generateGallerySitemap = async () => {
  */
 export const generateHelpSitemap = async () => {
   const helpNodeURLs = await getHelpNodesURLs();
-  const urls = processURLs([
-    ...getSitemapUrls(helpRoutes),
-    ...helpNodeURLs,
-  ]);
+  const urls = processURLs([...getSitemapUrls(helpRoutes), ...helpNodeURLs]);
   return generateSitemap(urls);
 };
 
@@ -138,9 +156,10 @@ export const generateHelpSitemap = async () => {
  * Save a sitemap into a file.
  * @param {string[]} urls
  * @param {string} filePath
+ * @param {urlset|sitemapindex} templateType
  */
-const writeSiteMap = (urls, filePath) => {
-  const siteMapContent = sitemapXMLTemplate.replace('{{urls}}', urls);
+const writeSiteMap = (urls, filePath, templateType = 'urlset') => {
+  const siteMapContent = sitemapXMLTemplate.replace('{{urls}}', urls).replace(/{{templateType}}/g, templateType);
   createDirIfNotExists(filePath);
   fs.writeFile(filePath, siteMapContent, (err) => {
     if (err) throw err;
@@ -154,8 +173,12 @@ if (typeof jest !== 'undefined') {
 } else {
   // Generate all sitemaps
   (async () => {
-    writeSiteMap(await generateErgeonSitemap(), './src/data/sitemap.xml');
-    writeSiteMap(await generateGallerySitemap(), './src/data/gallery/sitemap.xml');
-    writeSiteMap(await generateHelpSitemap(), './src/data/help/sitemap.xml');
+    // Extract the first three values from the array
+    const [base, gallery, help] = SITEMAP_FILE_LIST;
+
+    writeSiteMap(await generateErgeonSitemap(), `./src/data/${base}`);
+    writeSiteMap(await generateGallerySitemap(), `./src/data/${gallery}`);
+    writeSiteMap(await generateHelpSitemap(), `./src/data/${help}`);
+    writeSiteMap(await generateIndexSitemap(), './src/data/sitemap-index.xml', 'sitemapindex');
   })();
 }
