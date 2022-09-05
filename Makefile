@@ -114,8 +114,8 @@ s3upload-sitemap:
 	@if [ -z "$(S3_BUCKET)" ]; then >&2 echo S3_BUCKET must be supplied; exit 1; fi;
 	# don't use cache for sitemaps
 	$(AWS_CLI) s3 cp $(DIST_PATH)/sitemap.xml s3://$(S3_BUCKET)/ --cache-control max-age=0
-	$(AWS_CLI) s3 cp $(DIST_PATH)/help/sitemap.xml s3://$(S3_BUCKET)/help/ --cache-control max-age=0
-	$(AWS_CLI) s3 cp $(DIST_PATH)/gallery/sitemap.xml s3://$(S3_BUCKET)/gallery/ --cache-control max-age=0
+	$(AWS_CLI) s3 cp $(DIST_PATH)/help-sitemap.xml s3://$(S3_BUCKET)/ --cache-control max-age=0
+	$(AWS_CLI) s3 cp $(DIST_PATH)/gallery-sitemap.xml s3://$(S3_BUCKET)/ --cache-control max-age=0
 
 invalidate-cloudfront:
 	@if [ -z "$(DOMAIN)" ]; then >&2 echo DOMAIN must be supplied; exit 1; fi;
