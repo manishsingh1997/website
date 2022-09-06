@@ -138,9 +138,9 @@ const LeadForm = (props: LeadFormProps) => {
 
   const handleCheckChange = useCallback(
     (value: boolean) => {
-      setFormData({...formData, is_subscribed_to_news: value});
+      setFormData(prevState => ({...prevState, is_subscribed_to_news: value}));
     },
-    [formData]
+    []
   );
 
   const getOrder = useCallback(() => {
