@@ -1,6 +1,6 @@
 import {Dispatch, FormEvent, useCallback, useMemo} from 'react';
 
-import {createValidator, email as validatorEmail, internalUrl, required} from '../../utils/validation';
+import {createValidator, email as validatorEmail, required} from '../../utils/validation';
 
 import {AuthSignInErrors} from './types';
 import useRequestSignIn from './useRequestSignIn';
@@ -25,7 +25,7 @@ const useHandleSubmit = ({email, next, setLoading, setErrors, setIsFormSuccess}:
 
     let errors = validator({email}) as AuthSignInErrors;
     if (!errors) {
-      errors = await requestSignIn(email, internalUrl(next) ? next : undefined);
+      errors = await requestSignIn(email, next ? `${process.env.HOME_PAGE}${next}` : undefined);
     }
     if (errors) {
       setErrors(errors);
