@@ -9,7 +9,7 @@ import InvalidLockIcon from '@ergeon/core-components/src/assets/icon-link-is-not
 import SingleCard from '../../components/common/SingleCard';
 import Success from '../../components/common/Success';
 import {AuthState} from '../../flux/reducers/auth';
-import {getAuthOTPCode} from '../../utils/auth';
+import {getAuthOTPCode, getNextRedirectValue} from '../../utils/auth';
 
 import AuthConfirmSignInError from './components/AuthConfirmSignInError';
 import AuthConfirmSignInLoader from './components/AuthConfirmSignInLoader';
@@ -26,7 +26,9 @@ export type AuthConfirmSignInPageProps = {
 
 const AuthConfirmSignInPage = (props: AuthConfirmSignInPageProps) => {
   const {auth, authenticateUserWithCode, location, resendLink} = props;
+
   const otpCode = useMemo(() => getAuthOTPCode(location.search), [location.search]);
+  const next = useMemo(() => getNextRedirectValue(location.search), [location.search]);
 
   const authConfirmationStep = useAuthConfirmationStep(auth);
   const [redirect, setRedirect] = useState(false);
@@ -61,7 +63,7 @@ const AuthConfirmSignInPage = (props: AuthConfirmSignInPageProps) => {
       if (!redirect) {
         return <Success header="Thanks for email confirmation!" text="You'll be redirected shortly" />;
       }
-      return <Redirect to={`/app/${auth.user.gid}/orders`} />;
+      return <Redirect to={next ?? `/app/${auth.user.gid}/orders`} />;
 
     case AuthConfirmationStep.Verifying:
       return <AuthConfirmSignInLoader>Verifying the link, please wait</AuthConfirmSignInLoader>;

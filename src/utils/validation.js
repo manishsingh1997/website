@@ -44,6 +44,8 @@ export const zipcode = (value) => {
   return null;
 };
 
+export const internalUrl = (value) => /^\//.test(value);
+
 export const createValidator = (rules) => {
   return (values = {}) => {
     const errors = {};

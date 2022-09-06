@@ -14,7 +14,7 @@ declare module '@ergeon/erg-customer-auth' {
   };
 
   export default class ErgCustomerAuthService {
-    requestOTP(identifier: string, identifierType: string);
+    requestOTP(identifier: string, identifierType: string, next?: string);
     constructor(options: AuthServiceOptions) {} // eslint-disable-line
   }
 }

@@ -1,0 +1,59 @@
+@import '@ergeon/core-components/src/components/variables.scss';
+
+.signin-form {
+  button {
+    width: 100%;
+  }
+
+  .erg-form-field {
+    margin-bottom: 0;
+  }
+
+  .signin-form-actions {
+    position: relative;
+    margin-top: $v-24;
+  }
+
+  .signin-form-error {
+    font-size: $font-label-size;
+    color: $red;
+    font-family: $font-content;
+    letter-spacing: 0;
+    line-height: $line-height-label;
+    text-align: left;
+  }
+
+  .signin-form-footer {
+    margin-top: $v-6;
+    font-size: $font-label-size;
+    color: $gray-1;
+  }
+
+  .signin-skip {
+    $skip-color: $gray-1;
+
+    align-items: center;
+    color: $skip-color;
+    display: flex;
+    font-size: $font-label-size;
+    justify-content: center;
+    margin-top: $v-12;
+
+    svg {
+      height: $font-label-size;
+      margin-left: $h-10;
+      transform: scale(-1);
+      width: $font-label-size;
+
+      path {
+        fill: $skip-color;
+      }
+    }
+  }
+
+  @include phone-small {
+    input {
+      height: $v-48;
+    }
+  }
+}

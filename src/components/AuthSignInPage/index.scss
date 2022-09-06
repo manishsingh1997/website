@@ -1,6 +1,16 @@
 @import '@ergeon/core-components/src/components/variables.scss';
 
 .signin-page {
+  margin: $v-124 0 $v-64;
+
+  @include phone() {
+    margin: $v-88 0 $v-124;
+
+    .card {
+      border: none;
+    }
+  }
+
   .icon-lock {
     width: 20px;
   }
@@ -14,43 +24,6 @@
 
     @include phone() {
       padding: 25px;
-    }
-  }
-}
-
-.signin-form {
-  button {
-    width: 100%;
-  }
-
-  .signin-form-actions {
-    margin-top: 30px;
-    position: relative;
-  }
-  .signin-form-error {
-    margin-top: 4px;
-    font-size: $font-label-size;
-    color: $red;
-    font-family: $font-content;
-    letter-spacing: 0;
-    line-height: $line-height-label;
-    text-align: left;
-  }
-  .signin-form-footer {
-    font-size: 12px;
-    color: $gray-1;
-  }
-
-  @include phone-small {
-    h1 {
-      font-size: 6vw;
-    }
-    input {
-      height: 48px;
-    }
-
-    .signin-form-actions {
-      margin-top: 24px;
     }
   }
 }

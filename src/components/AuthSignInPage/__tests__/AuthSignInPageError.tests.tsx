@@ -26,8 +26,8 @@ describe('Rendering of Auth Sign In Page', () => {
       </BrowserRouter>
     );
 
-    const submitButton = screen.getByText('Sign in with email');
-    const input = screen.getByLabelText('Email');
+    const submitButton = screen.getByText('Submit');
+    const input = screen.getByLabelText('Please enter your email');
     fireEvent.change(input, {target: {value: 'test@ergeon.com'}});
     fireEvent.click(submitButton);
 

@@ -22,8 +22,8 @@ describe('Rendering of Auth Sign In Page', () => {
       </BrowserRouter>
     );
 
-    const submitButton = screen.getByText('Sign in with email');
-    const input = screen.getByLabelText('Email');
+    const submitButton = screen.getByText('Submit');
+    const input = screen.getByLabelText('Please enter your email');
     fireEvent.change(input, {target: {value: 'test@ergeon.com'}});
     fireEvent.click(submitButton);
 
@@ -42,14 +42,30 @@ describe('Rendering of Auth Sign In Page', () => {
 
     const signInText = screen.getByText('Sign in to Ergeon');
     const quoteLink = screen.getByText('Request a quote');
-    const emailInput = screen.getByLabelText('Email');
-    const signInButton = screen.getByText('Sign in with email');
-    const footerText = screen.getByText('We will send you an email with a link for sign in');
+    const emailInput = screen.getByLabelText('Please enter your email');
+    const signInButton = screen.getByText('Submit');
+    const footerText = screen.getByText('We will send you an email with a verification link');
 
     expect(signInText).toBeInTheDocument();
     expect(quoteLink).toBeInTheDocument();
     expect(emailInput).toBeInTheDocument();
     expect(signInButton).toBeInTheDocument();
     expect(footerText).toBeInTheDocument();
+  });
+
+  it('should render sign in with next param', () => {
+    window.history.pushState({}, '', '/app/sign-in/?next=/')
+
+    render(
+      <BrowserRouter>
+        <AuthSignInPage />
+      </BrowserRouter>
+    );
+
+    const signInText = screen.getByText('Looks like you’re not authenticated');
+    const alternText = screen.getByText('View as guest');
+
+    expect(signInText).toBeInTheDocument();
+    expect(alternText).toBeInTheDocument();
   });
 });

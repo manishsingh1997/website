@@ -25,3 +25,10 @@ export const getAuthOTPCode = (querystring: string) => {
   const parsedQuery = queryString.parse(querystring);
   return parsedQuery.code as string;
 };
+
+export const getNextRedirectValue = (querystring: string) => {
+  const parsedQuery = queryString.parse(querystring);
+  if (!parsedQuery.next) return;
+  // Strip domain for safety
+  return (parsedQuery.next as string).match(/(https?:\/\/)?([\w\.]+)?(.+)/i)?.[3];
+};
