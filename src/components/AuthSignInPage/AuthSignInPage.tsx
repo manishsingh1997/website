@@ -1,6 +1,5 @@
 import React, {useMemo, useState} from 'react';
 
-import queryString from 'query-string';
 import {useLocation} from 'react-router';
 import {Link} from 'react-router-dom';
 import {ReactSVG} from 'react-svg';
@@ -8,6 +7,7 @@ import LogoutIcon from '@ergeon/core-components/src/assets/icon-logout-solid.svg
 
 import SingleCardOrig from '../common/SingleCard';
 import Success from '../common/Success';
+import {getNextRedirectValue} from '../../utils/auth';
 
 import AuthSignInPageForm from './Form';
 
@@ -21,7 +21,7 @@ const AuthSignInPage = () => {
   const location = useLocation();
   const [isFormSuccess, setIsFormSuccess] = useState(false);
 
-  const {next} = useMemo(() => queryString.parse(location.search) as {next?: string}, [location]);
+  const next = useMemo(() => getNextRedirectValue(location.search), [location.search]);
   const title = useMemo(() => (
     next ? 'Looks like you’re not authenticated' : 'Sign in to Ergeon'
   ), [next]);
