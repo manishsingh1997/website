@@ -160,3 +160,8 @@ export type Lead = {
   productAvailability?: ProductAvailability;
   zipcode?: string;
 };
+
+export enum EngineType {
+  LIST = 'list-based',
+  RULES = 'rules-based',
+}

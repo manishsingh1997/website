@@ -6,6 +6,7 @@ import {tawk} from '@ergeon/erg-utms';
 
 import PopUp from '../PopUp';
 import './StyleBrowserWrapper.scss';
+import { EngineType } from '../../../types';
 
 type StyleBrowserWrapperProps = {
   doneButtonText: string;
@@ -51,6 +52,7 @@ const StyleBrowserWrapper = (props: StyleBrowserWrapperProps) => {
           </div>
           <StyleBrowser
             doneButtonText={doneButtonText}
+            engineFromProps={EngineType.LIST}
             model={initialSchemaCode ?? constants.defaultFenceCode}
             onComplete={(model) => handleSelectionCompleted(model)}
             shouldUpdateUrl={false}
