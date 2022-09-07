@@ -1,5 +1,76 @@
 @import '~@ergeon/core-components/src/components/variables';
 
+@mixin billing-small() {
+  display: block;
+  border-radius: 0;
+  padding: $h-20;
+  margin-top: 0;
+  margin-bottom: $v-30;
+
+  .billing-form__content {
+    display: block;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .billing-form__information {
+    padding-right: 0;
+    border: 0;
+
+    &:after {
+      display: none;
+    }
+  }
+
+  .billing-form__actions {
+    width: 100%;
+    margin-top: $v-30;
+    border-top: 1px solid $gray-4;
+    padding-top: $v-20;
+    text-align: left;
+  }
+
+  .billing-form__total-pay {
+    display: inline-block;
+    height: $v-64;
+  }
+
+  .billing-form__approve {
+    float: right;
+    margin-top: $v-6;
+  }
+
+  .billing-form__request-changes,
+  .billing-form__terms {
+    display: block;
+    text-align: left;
+    margin-top: $v-6;
+  }
+
+  .billing-form__terms {
+    display: flex;
+  }
+
+  .billing-form__title-section {
+    flex-wrap: wrap;
+  }
+
+  .billing-form__fields {
+    display: block;
+  }
+
+  .billing-form__card-number {
+    width: 100%;
+    margin-bottom: $v-30;
+  }
+
+  .billing-form__expiration-date,
+  .billing-form__cvc {
+    margin-bottom: $v-6;
+    display: inline-block;
+  }
+}
+
 .billing-form {
   background-color: white;
   border: 1px solid $gray-4;
@@ -9,74 +80,12 @@
   margin-top: $v-30;
   margin-bottom: $v-48;
 
-  @include phone() {
-    display: block;
-    border-radius: 0;
-    padding: $h-20;
-    margin-top: 0;
-    margin-bottom: $v-30;
-
-    .billing-form__content {
-      display: block;
-      border-radius: 0;
-      padding: 0;
-    }
-
-    .billing-form__information {
-      padding-right: 0;
-      border: 0;
-
-      &:after {
-        display: none;
-      }
-    }
-
-    .billing-form__actions {
-      width: 100%;
-      margin-top: $v-30;
-      border-top: 1px solid $gray-4;
-      padding-top: $v-20;
-      text-align: left;
-    }
-
-    .billing-form__total-pay {
-      display: inline-block;
-      height: $v-64;
-    }
-
-    .billing-form__approve {
-      float: right;
-      margin-top: $v-6;
-    }
-
-    .billing-form__request-changes,
-    .billing-form__terms {
-      display: block;
-      text-align: left;
-      margin-top: $v-6;
-    }
-
-    .billing-form__terms {
-      display: flex;
-    }
-
-    .billing-form__title-section {
-      flex-wrap: wrap;
-    }
-
-    .billing-form__fields {
-      display: block;
-    }
-
-    .billing-form__card-number {
-      width: 100%;
-      margin-bottom: $v-30;
-    }
-
-    .billing-form__expiration-date,
-    .billing-form__cvc {
-      margin-bottom: $v-6;
-      display: inline-block;
+  &.form-small {
+    @include billing-small();
+  }
+  &:not(&.form-small) {
+    @include phone() {
+      @include billing-small();
     }
   }
 

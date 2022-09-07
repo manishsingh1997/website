@@ -26,7 +26,7 @@ import '../common/AppQuoteComponents/index.scss';
 
 const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
 
-  const {match, auth, layout, setPDFHeaderPhoneAction} = props
+  const {match, auth, layout, setPDFHeaderPhoneAction, quoteFallback} = props
 
   const location = useLocation();
   const history = useHistory();
@@ -159,7 +159,7 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
   }
 
   if (!quoteApproval) {
-    return null;
+    return quoteFallback || null;
   }
 
   if (quoteApprovalError || !isQuoteAddressValid(quoteApproval.quote)) {

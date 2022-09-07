@@ -2,6 +2,7 @@ import {CustomerQuoteViewPreference} from './constants';
 
 export type Quotes = {
   quoteId: number;
+  quoteSecret: string;
   totalPrice: string;
   title: string;
   status: string;

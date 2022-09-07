@@ -49,6 +49,10 @@ export const isQuoteDetailURL = (url: string) => {
   ]);
 };
 
+export const isQuoteMenuURL = (url: string) => {
+  return url.match(/^\/app\/[^\/]+\/quotes\/(\d+$)?.*/)
+}
+
 export const isUnsubscribeURL = (urlPathname: string, urlSearch: string): boolean => {
   const unsubscribeCode = getUnsubscribeCodeFromQuery(urlSearch);
   return Boolean(urlPathname.match(/^\/app\/[^\/]+\/settings\/?/g) !== null && unsubscribeCode);

@@ -34,6 +34,7 @@ export default class BillingForm extends React.Component {
     paymentMethod: PropTypes.object,
     quoteId: PropTypes.number,
     total: PropTypes.string,
+    isSmall: PropTypes.bool,
   };
 
   state = {
@@ -52,6 +53,7 @@ export default class BillingForm extends React.Component {
       cvc: '',
     },
     validate: {},
+    isSmall: false,
   };
 
   isQuoteApproved() {
@@ -280,11 +282,12 @@ export default class BillingForm extends React.Component {
   render() {
     const {form, errors, isLoading} = this.state;
     const {termsAccepted} = form;
-    const {paymentMethod, quoteId, contractUrl, total, isScopeChange} = this.props;
+    const {paymentMethod, quoteId, contractUrl, total, isScopeChange, isSmall} = this.props;
     const classes = {
       'billing-form': true,
       'billing-form--with-payment-method-details': this.isQuoteApproved(),
       'billing-form--loading': isLoading,
+      'form-small': isSmall
     };
 
     const totalPayText = isScopeChange ? 'New total pay' : 'Total pay';

@@ -14,7 +14,7 @@ export default class AppPage extends React.Component {
     fetchData: PropTypes.func,
     isLoading: PropTypes.bool.isRequired,
     renderContent: PropTypes.func.isRequired,
-    renderHeader: PropTypes.func.isRequired,
+    renderHeader: PropTypes.func,
   };
 
   state = {
@@ -63,7 +63,9 @@ export default class AppPage extends React.Component {
 
     return (
       <div className={classNames({'app-page': true, [className]: !!className})}>
-        <h4 className="flex-row align-center">{renderHeader()}</h4>
+        {!!renderHeader && (
+          <h4 className="flex-row align-center">{renderHeader()}</h4>
+        )}
         <div>{this.renderContent()}</div>
       </div>
     );

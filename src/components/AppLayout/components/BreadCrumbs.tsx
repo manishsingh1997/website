@@ -1,13 +1,13 @@
-import React, { useMemo } from 'react';
+import React, {useMemo} from 'react';
 
-import { useLocation } from 'react-router-dom';
-import { ReactSVG } from 'react-svg';
+import {useLocation} from 'react-router-dom';
+import {ReactSVG} from 'react-svg';
 import classNames from 'classnames';
 import profileIcon from '@ergeon/core-components/src/assets/icon-profile.svg';
 import homeIcon from '@ergeon/core-components/src/assets/icon-home-black.svg';
 
-import { getSingularLevelFromPath } from './utils';
-import { MY_ACCOUNT_PATHS, MY_PROJECTS_PATHS } from './constants';
+import {getSingularLevelFromPath} from './utils';
+import {MY_ACCOUNT_PATHS, MY_PROJECTS_PATHS} from './constants';
 
 import './BreadCrumbs.scss';
 
@@ -32,20 +32,19 @@ const BreadCrumbs = () => {
   }, [isMyAccount, isMyProjects]);
 
   const secondLevel = useMemo(() => {
-    return getSingularLevelFromPath(pathname, 'orders');
+    const secLevel = getSingularLevelFromPath(pathname, 'orders') || getSingularLevelFromPath(pathname, 'quotes');
+    return secLevel;
   }, [pathname]);
 
   const firstLevelClass = useMemo(() => {
-    return classNames({ 'is-active': !secondLevel });
+    return classNames({'is-active': !secondLevel});
   }, [secondLevel]);
 
   return (
     <div className="CustomerApp-BreadCrumbs">
       {icon}
       <p className="is-Separator">/</p>
-      <p className={firstLevelClass}>
-        {firstLevel}
-      </p>
+      <p className={firstLevelClass}>{firstLevel}</p>
       {secondLevel && (
         <>
           <p className="is-Separator">/</p>

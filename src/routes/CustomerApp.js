@@ -16,6 +16,7 @@ import AppQuoteListPage from '../containers/AppQuoteListPage';
 import AppQuoteDetailPage from '../containers/AppQuoteDetailPage';
 import AppNotificationsPage from '../components/AppNotificationsPage';
 import NotFoundPage from '../components/NotFoundPage';
+import AppMenuCustomerQuotePage from '../containers/AppMenuCustomerQuotePage';
 
 const CustomerApp = ({match, location}) => (
   <AppLayout location={location} match={match}>
@@ -26,6 +27,7 @@ const CustomerApp = ({match, location}) => (
       <Route component={AppOrderDetailPage} path={`${match.url}/orders/:orderId`} />
       <Route component={AppOrderListPage} path={`${match.url}/orders`} />
       <Route component={AppQuoteListPage} exact path={`${match.url}/quotes`} />
+      <Route component={AppMenuCustomerQuotePage} path={`${match.url}/:secret/quotes/:quoteId`} />
       <Route component={AppQuoteDetailPage} exact name="quoteDetail" path={`${match.url}/quotes/:secret`} />
       <Route component={AppQuoteDetailPage} exact name="quoteDirect" path={`${match.url}/quotes/:type/:secret`} />
       <Route

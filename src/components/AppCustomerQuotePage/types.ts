@@ -1,3 +1,5 @@
+import {ReactElement} from 'react';
+
 // eslint-disable-next-line import/named
 import {match} from 'react-router-dom';
 
@@ -8,9 +10,10 @@ type Layout = {
   phoneNumber: string;
 };
 
-type Params = {
+export type Params = {
   secret: string;
   path: string;
+  quoteId?: string;
 };
 
 type BasePageProps = {
@@ -84,6 +87,7 @@ export interface QuoteApproval {
 export type AppCustomerQuotePageProps = {
   setPDFHeaderPhoneAction: (value: number) => void;
   layout: Layout;
+  quoteFallback?: ReactElement;
 } & BasePageProps;
 
 export type QuoteBodyProps = {

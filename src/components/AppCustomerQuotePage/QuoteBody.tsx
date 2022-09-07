@@ -1,7 +1,7 @@
 import React, {useCallback, useMemo} from 'react';
 
 import {isEmpty} from 'lodash';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 
 import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
 import {prepareQuoteApprovalLines} from '../common/AppQuoteComponents/utils';
@@ -20,9 +20,9 @@ import {
   isQuoteApprovalApproved,
   isScopeChange,
 } from './utils';
-import {QuoteBodyProps} from './types';
+import {Params, QuoteBodyProps} from './types';
 import ProjectSignOff from './ProjectSignOff/ProjectSignOff';
-import { ProjectSignOffProps } from './ProjectSignOff/types';
+import {ProjectSignOffProps} from './ProjectSignOff/types';
 
 const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
   const {
@@ -38,7 +38,9 @@ const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
     shouldShowSignoffComponents,
     signedDate,
   } = props;
+
   const history = useHistory();
+  const params: Params = useParams();
 
   const contractUrl = useMemo(() => quoteApproval.contract_pdf, [quoteApproval]);
   const customer = useMemo(() => quoteApproval.customer, [quoteApproval]);
@@ -49,9 +51,12 @@ const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
   const houseId = useMemo(() => quoteApproval.quote.order.house.id, [quoteApproval]);
   const quoteType = useMemo(() => quoteApproval.quote.order.product.name, [quoteApproval]);
   const isMultiPartyQuote = useMemo(() => !isEmpty(otherQuoteApprovals), [otherQuoteApprovals, isEmpty]);
+  const isBillingFormSmall = useMemo(() => {
+    return !!params?.quoteId;
+  }, [params?.quoteId]);
 
   const quoteLines = useMemo(() => {
-    return prepareQuoteApprovalLines(quoteApprovalLines, quoteApproval.quote)
+    return prepareQuoteApprovalLines(quoteApprovalLines, quoteApproval.quote);
   }, [quoteApproval, quoteApprovalLines, prepareQuoteApprovalLines]);
 
   const newQuoteApprovalLink = useMemo(() => {
@@ -64,9 +69,12 @@ const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
 
   const asPDF = useMemo(() => isPDFMode(), []);
 
-  const onBuildDetailsClick = useCallback((configID: string, label: string) => {
+  const onBuildDetailsClick = useCallback(
+    (configID: string, label: string) => {
       history.push(`${location.pathname.replace(/\/$/, '')}/config/${configID}`, {label});
-    }, [location]);
+    },
+    [location]
+  );
 
   const shouldShowBillingForm = useCallback(() => {
     return (
@@ -112,6 +120,7 @@ const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
           houseId={houseId}
           isApproved={isQuoteApprovalApproved(quoteApproval.quote)}
           isScopeChange={isScopeChange(quoteApproval)}
+          isSmall={isBillingFormSmall}
           onSubmit={handleBillingSubmit}
           paymentMethod={paymentMethod}
           quoteId={quoteApproval.quote.id}
@@ -119,13 +128,7 @@ const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
         />
       )}
       {isMultiPartyQuote && <AdditionalApprovalsList additionalQuoteApprovals={otherQuoteApprovals} />}
-      {shouldShowSignoffComponents && (
-          <ProjectSignOff
-            isSigned={isSigned}
-            pdfURL={pdfURL}
-            signedDate={signedDate}
-          />
-        )}
+      {shouldShowSignoffComponents && <ProjectSignOff isSigned={isSigned} pdfURL={pdfURL} signedDate={signedDate} />}
       <ExplanationSection asPDF={asPDF} contractUrl={contractUrl} quoteType={quoteType} />
     </>
   );

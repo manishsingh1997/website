@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo} from 'react';
 
-import {isQuoteDetailURL, isUnsubscribeURL} from '../../utils/urls';
+import {isQuoteDetailURL, isQuoteMenuURL, isUnsubscribeURL} from '../../utils/urls';
 
 import {AnonymousUser, SideBar, UserError, LayoutView} from './components';
 import {AppLayoutProps} from './types';
@@ -23,6 +23,7 @@ const AppLayout = (props: AppLayoutProps) => {
   const isLoading = isAuthLoading || isUserLoading;
 
   const isQuotePage = useMemo(() => isQuoteDetailURL(location.pathname), [location.pathname]);
+  const isQuoteMenuPage = useMemo(() => isQuoteMenuURL(location.pathname), [location.pathname]);
 
   const requiresAuthentication = useMemo(() => {
     // Unsubscribe page is special case - authentication not needed
@@ -50,7 +51,7 @@ const AppLayout = (props: AppLayoutProps) => {
 
   return (
     <div className="customer-app-layout">
-      {isQuotePage ? (
+      {isQuotePage && !isQuoteMenuPage ? (
         <LayoutView isLoading={isLoading} match={match}>
           {children}
         </LayoutView>
