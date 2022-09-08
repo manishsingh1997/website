@@ -22,6 +22,7 @@ const props = {
   grade: 0,
   isMobileWidth: false,
   propertySchemaCodeUrl: 'property_schema=1,2&property_code=DY,DRY',
+  previewImage: null,
   schemaCodeUrl: `schema=3,4,5,6,7,8,9,10,11,12,13,14,15
   ,16,17,18,20,21,22,32,47,48,49,130,144,220,221,222,223,
   226&code=F6,NU,SL8,SS,DE,PK6,RC,ZPO,PT4,PPT,PD2,PH8,PRZ,KPT,

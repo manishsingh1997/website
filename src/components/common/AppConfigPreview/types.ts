@@ -37,6 +37,7 @@ export type PreviewImageProps = {
 } & PreviewProps;
 
 export type AppConfigPreviewProps = {
+  previewImage?: string | null;
   additionalClassNames: string;
   configType?: string;
   fenceSideLength?: number;

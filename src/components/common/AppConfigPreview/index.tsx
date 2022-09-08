@@ -18,6 +18,7 @@ const DEFAULT_FENCE_SIDE_LENGTH = 6;
 const DEFAULT_GRADE = 0;
 
 const AppConfigPreview = ({
+  previewImage: initPreviewImage,
   additionalClassNames,
   fenceSideLength,
   fenceSideSlopePercent,
@@ -30,7 +31,7 @@ const AppConfigPreview = ({
   zipCode,
 }: AppConfigPreviewProps) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [previewImage, setPreviewImage] = useState(previewPlaceholderIcon);
+  const [previewImage, setPreviewImage] = useState(initPreviewImage || previewPlaceholderIcon);
   let isMounted = true;
   const currentFenceSideLength = useMemo(() => fenceSideLength || DEFAULT_FENCE_SIDE_LENGTH, [fenceSideLength]);
   const currentGrade = useMemo(() => fenceSideSlopePercent || DEFAULT_GRADE, [fenceSideSlopePercent]);
@@ -51,6 +52,8 @@ const AppConfigPreview = ({
       return;
     } else if (!schemaCodeUrl) {
       setPreviewImage(previewPlaceholderIcon);
+      return;
+    } else if (previewImage !== previewPlaceholderIcon) {
       return;
     }
     setIsLoading(isEmpty(images));

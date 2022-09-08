@@ -2,11 +2,11 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import {CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE} from 'website/constants';
+import { CALC_AREA_TYPE, CALC_GATE_TYPE, CALC_SIDE_TYPE } from 'website/constants';
 
 import AppConfigPreview from '../../AppConfigPreview';
 
-import {useIsMobileWidth} from './customHooks';
+import { useIsMobileWidth } from './customHooks';
 
 /**
  * Process props data and sends to AppConfigPreview as props to render it
@@ -20,7 +20,8 @@ import {useIsMobileWidth} from './customHooks';
  * }} props
  */
 export default function QuoteLinePreview(props) {
-  const {quantity, grade, quote, quoteLine, type, useNoPreviewIcon = false, usePlaceHolder = false, images} = props;
+  const { quantity, grade, quote, quoteLine, type, useNoPreviewIcon = false, usePlaceHolder = false, images } = props;
+  const { preview_image: previewImage } = quoteLine;
   // check if address exists, in rare cases in can be null
   const zipCode = quote.order.house.address
     ? quote.order.house.address['zip_code']
@@ -44,6 +45,7 @@ export default function QuoteLinePreview(props) {
       fenceSideSlopePercent={currentGrade}
       images={images}
       isMobileWidth={isMobileWidth}
+      previewImage={previewImage}
       propertySchemaCodeUrl={propertySchemaCodeUrl}
       schemaCodeUrl={usePlaceHolder ? null : schemaCodeUrl}
       useNoPreviewIcon={useNoPreviewIcon}
