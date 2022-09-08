@@ -95,7 +95,7 @@ const RemoteFeatures = () => {
           {renderCard({
             title: 'Stay Inside While We Install Your Fence',
             // eslint-disable-next-line max-len
-            desc: 'Our Delivery team is ready with all construction details to perform a hassle-free installation..',
+            desc: 'Our Delivery team is ready with all construction details to perform a hassle-free installation.',
             img: imgContactless,
             link: `${process.env.BLOG_HOST}/post/contactless-fence-installation`,
           })}
