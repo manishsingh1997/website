@@ -27,6 +27,7 @@ export default class QuoteDetails extends React.Component {
     isMultiPartyQuote: PropTypes.bool,
     isPrimaryQuoteApproval: PropTypes.bool,
     newQuoteLink: PropTypes.string,
+    lastApprovedProjectRevisionQuoteApprovalLink: PropTypes.string,
     onBuildDetailsClick: PropTypes.func,
     quote: PropTypes.object,
     quoteLines: PropTypes.arrayOf(PropTypes.object),
@@ -95,6 +96,20 @@ export default class QuoteDetails extends React.Component {
         This quote is expired. Call <a data-track-call="true" href={`tel:${PHONE_NUMBER}`}>
           {utils.formatPhoneNumber(PHONE_NUMBER)}
         </a> to request a new quote revision.
+      </Notification>
+    );
+  }
+
+  renderLastApprovedProjectRevisionQuoteApprovalExistsMessage() {
+    const {lastApprovedProjectRevisionQuoteApprovalLink} = this.props;
+
+    return (
+      <Notification mode="embed" type="Warning">
+        This quote has an approved project revision. Click
+        <Link className="link" rel="noopener" target={'_blank'} to={lastApprovedProjectRevisionQuoteApprovalLink}>
+          &nbsp;here
+        </Link>{' '}
+        to display the new revision.
       </Notification>
     );
   }
@@ -178,6 +193,7 @@ export default class QuoteDetails extends React.Component {
       isInstallerPreview,
       isMultiPartyQuote,
       isPrimaryQuoteApproval,
+      lastApprovedProjectRevisionQuoteApprovalLink,
       onBuildDetailsClick,
       quote,
       quoteLines,
@@ -191,6 +207,11 @@ export default class QuoteDetails extends React.Component {
 
     return (
       <div className="quote-details card soft-border spacing after__is-48">
+        {!asPDF && lastApprovedProjectRevisionQuoteApprovalLink && (
+          <div className="quote-details__notification">
+            {this.renderLastApprovedProjectRevisionQuoteApprovalExistsMessage()}
+          </div>
+        )}
         {!asPDF && isQuoteCancelled(quote) && (
           <div className="quote-details__notification">{this.renderQuoteCancelledMessage()}</div>
         )}

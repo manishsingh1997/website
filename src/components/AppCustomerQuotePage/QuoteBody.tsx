@@ -67,6 +67,18 @@ const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
     return location.pathname.replace(match.params.secret, newQuoteApproval.secret);
   }, [location, match, quoteApproval]);
 
+  const lastApprovedProjectRevisionQuoteApprovalLink = useMemo(() => {
+    const lastApprovedProjectRevisionQuoteApproval = quoteApproval?.last_approved_project_revision_quote_approval;
+    if (
+      !lastApprovedProjectRevisionQuoteApproval ||
+      // Current quote-approval is already the latest approved one
+      lastApprovedProjectRevisionQuoteApproval.secret === match.params.secret
+    ) {
+      return null;
+    }
+    return location.pathname.replace(match.params.secret, lastApprovedProjectRevisionQuoteApproval.secret);
+  }, [location, match, quoteApproval]);
+
   const asPDF = useMemo(() => isPDFMode(), []);
 
   const onBuildDetailsClick = useCallback(
@@ -103,6 +115,7 @@ const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
         isInstallerPreview={false}
         isMultiPartyQuote={isMultiPartyQuote}
         isPrimaryQuoteApproval={isPrimaryQuoteApproval}
+        lastApprovedProjectRevisionQuoteApprovalLink={lastApprovedProjectRevisionQuoteApprovalLink}
         newQuoteLink={newQuoteApprovalLink}
         onBuildDetailsClick={onBuildDetailsClick}
         quote={quoteApproval.quote}

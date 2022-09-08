@@ -73,6 +73,7 @@ export interface QuoteApproval {
   payment_method: unknown;
   other_quote_approvals: unknown[];
   new_quote_approval: Quote | null;
+  last_approved_project_revision_quote_approval: Quote | null;
   customer_pdf: string;
   contract_pdf: string;
   merged_customer_pdf: string;
