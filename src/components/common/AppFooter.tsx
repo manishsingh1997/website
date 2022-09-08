@@ -5,7 +5,7 @@ import {SimpleFooter, LocationsFooter} from '@ergeon/core-components';
 
 import {City} from '../AppCityPage/types';
 import {formatFooterLicenses, makePhoneLink} from '../AppCityPage/utils';
-import {CA_LICENSE_URL, GA_LICENSE_URL} from '../AppCityPage/constants';
+import {LICENSES} from '../AppCityPage/constants';
 
 type LocationsList = {
   text: string;
@@ -46,26 +46,14 @@ const AppFooter = ({city, locationsList, ...footerProps}: AppFooterProps) => {
       <a className="LicenseWithLink" data-track-call="true" href={makePhoneLink(city.phone)}>
         {city.phone}
       </a>
-    )
+    );
   }, [city]);
 
   switch (urlMatch) {
     case FooterView.Home:
       return (
         <>
-          <SimpleFooter
-            {...footerProps}
-            licenses={[
-              {
-                name: 'License #: 1040925, C13-Fencing, C27-Landscaping, C8-Concrete',
-                url: CA_LICENSE_URL,
-              },
-              {
-                name: 'License #: RBQA007338',
-                url: GA_LICENSE_URL,
-              },
-            ]}
-          />
+          <SimpleFooter {...footerProps} licenses={LICENSES} />
           <LocationsFooter listArray={locationsList} listTitle="Locations" />
         </>
       );
