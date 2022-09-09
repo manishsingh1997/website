@@ -23,15 +23,20 @@ const HomePage = () => {
       <div className="wrapper-1180">
         <CustomerReview />
         <ProjectsSection />
+      </div>
+      <div className="desktop-length">
+        <TellUsForm centerText />
+      </div>
+      <div className="wrapper-1180">
         <UpcomingRemoteFeatures />
         <GetStartedSection />
         <FenceCalculatorPromo />
       </div>
-      <div className="desktop-length tablet-length">
+      <div className="tablet-length">
         <TellUsForm />
       </div>
     </>
   );
-}
+};
 
 export default HomePage;

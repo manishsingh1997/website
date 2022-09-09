@@ -1,6 +1,11 @@
 @import '~@ergeon/core-components/src/components/variables.scss';
 .projects-section {
-  margin-top: 60px;
+  margin: 60px 0;
+
+  @include tablet() {
+    margin-bottom: unset;
+  }
+
   h2 {
     @include tablet {
       font-size: $h4-size;

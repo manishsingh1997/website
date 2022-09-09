@@ -1,7 +1,8 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useMemo} from 'react';
 
 import {ReactSVG} from 'react-svg';
 import IconCheckMark from '@ergeon/core-components/src/assets/icon-check-mark.svg';
+import classNames from 'classnames';
 
 import Success from '../../common/Success';
 import AppLoader from '../../common/AppLoader';
@@ -25,6 +26,7 @@ type TellUsFormProps = {
     address: Address;
   };
   configs: [];
+  centerText: boolean;
 };
 
 const TellUsForm = (props: TellUsFormProps) => {
@@ -34,6 +36,7 @@ const TellUsForm = (props: TellUsFormProps) => {
     product,
     lead,
     configs,
+    centerText,
   } = props;
 
   const [showThankYou, setShowThankYou] = useState(false);
@@ -45,11 +48,23 @@ const TellUsForm = (props: TellUsFormProps) => {
     setShowThankYou(true);
   }, []);
 
+  const headerClassName = useMemo(() => {
+    return classNames('h3 TellUsForm-Header', {
+      'is-centerHeader': centerText,
+    });
+  }, [centerText]);
+
+  const footerClassName = useMemo(() => {
+    return classNames('TellUsForm-Footer', {
+      'is-centerFooter': centerText,
+    });
+  }, [centerText]);
+
   const ContactForm = useCallback(() => {
     return (
       <section className="TellUsForm">
         <div className="TellUsForm-Wrapper">
-          <h2 className="h3 TellUsForm-Header">Let’s talk about <br/>your fence project</h2>
+          <h2 className={headerClassName}>Let’s talk about <br/>your fence project</h2>
           <div>
             <SimpleLeadForm
               configs={configs}
@@ -60,7 +75,7 @@ const TellUsForm = (props: TellUsFormProps) => {
               user={user}
             />
           </div>
-          <div className="TellUsForm-Footer">
+          <div className={footerClassName}>
             <div className="highlight">
               <ReactSVG className="highlight-icon" src={IconCheckMark} />
               <span>No commitment</span>

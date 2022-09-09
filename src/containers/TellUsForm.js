@@ -5,7 +5,7 @@ import TellUsForm from 'components/RequestQuotePage/TellUsForm';
 import { updateLead, updateProduct, updateLeadFromAddress, openAddressUpdatePopup } from '../flux/actions/address';
 import { addConfig, addConfigFromSchema } from '../flux/actions/cart';
 
-const mapStateToProps = ({ address, cart, auth }) => {
+const mapStateToProps = ({ address, cart, auth }, {centerText = false}) => {
   return {
     address: address.address,
     auth,
@@ -13,6 +13,7 @@ const mapStateToProps = ({ address, cart, auth }) => {
     product: address.product,
     zipcode: address.zipcode,
     configs: cart.configs,
+    centerText
   };
 };
 

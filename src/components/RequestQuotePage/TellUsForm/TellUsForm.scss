@@ -2,13 +2,13 @@
 
 .TellUsForm {
   @mixin break-text-tablet {
-      br {
-        display: none;
-        @include tablet {
-          display: unset;
-        }
+    br {
+      display: none;
+      @include tablet {
+        display: unset;
       }
     }
+  }
 
   display: flex;
   background-color: $gray-5;
@@ -18,8 +18,8 @@
   padding: $h-60 0;
 
   &-Wrapper {
-    width: 30%;
-    @include phone{
+    width: 38%;
+    @include phone {
       width: 100%;
     }
 
@@ -30,7 +30,7 @@
       }
     }
 
-    .TellUsForm-Header{
+    .TellUsForm-Header {
       @include break-text-tablet();
     }
 
@@ -50,13 +50,21 @@
     }
   }
 
+  .is-centerHeader {
+    text-align: center;
+  }
+
   .TellUsForm-Header {
     font-weight: 600;
     margin-bottom: $v-12;
-    text-align: start;
+
     @include tablet() {
       text-align: center;
     }
+  }
+
+  .is-centerFooter {
+    place-items: center;
   }
 
   .TellUsForm-Footer {
