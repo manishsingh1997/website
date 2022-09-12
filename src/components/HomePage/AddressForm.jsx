@@ -48,6 +48,7 @@ class AddressForm extends React.Component {
     return (
       <div>
         <AddressInput
+          buttonFlavor="action"
           getCheckedZIP={getCheckedZIP}
           onChange={this.handleOnchange.bind(this)}
           onSubmit={this.handleAddressSubmit.bind(this)}

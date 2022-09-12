@@ -1,11 +1,15 @@
 import React from 'react';
 
+import {ReactSVG} from 'react-svg';
 import ClassNames from 'classnames';
 import {utils} from '@ergeon/core-components';
-import {PHONE_NUMBER,FENCE_SLUG} from '@ergeon/core-components/src/constants';
+import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 
 import AddressForm from 'containers/AddressForm';
 import {isChristmasTime} from 'utils/utils';
+
+import phoneIcon from '../../assets/icon-phone.svg';
+import {ERGEON1_PHONE} from '../../website/constants';
 
 import Slider from './Slider';
 
@@ -38,17 +42,20 @@ class SliderHero extends React.Component {
     return (
       <div className={slideClasses}>
         <span className="title-wrapper">
-          <h1 className="h0 white center">{data.title}</h1>
+          <h1 className="h1 white center">{data.title}</h1>
           <span className="subheader h2 white center">
-          Servicing Northern California, Southern California, Dallas, Fort Worth, Houston, and Atlanta.
+            Servicing Northern California, Southern California, Dallas, Fort Worth, Houston, and Atlanta.
           </span>
         </span>
 
         <div className="form-wrapper">
           <AddressForm onChange={this.handleAddressInput.bind(this)} product={product} value={this.state.lead} />
         </div>
-        <a className="phone-link white" href={`tel:${PHONE_NUMBER}`}>
-          {utils.formatPhoneNumber(PHONE_NUMBER)}
+        <a className="phone-link white" href={`tel:${ERGEON1_PHONE}`}>
+          <div className="phone-link-icon">
+            <ReactSVG src={phoneIcon} />
+          </div>
+          1-888-ERGEON1&nbsp;<span>(1-{utils.formatPhoneNumber(ERGEON1_PHONE)})</span>
         </a>
       </div>
     );
