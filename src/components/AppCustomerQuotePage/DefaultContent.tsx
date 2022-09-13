@@ -22,8 +22,8 @@ const DefaultContent = (props: DefaultContentProps) => {
     isSignLoading,
     match,
     onSubmitSignature,
-    paymentMethod,
-    paymentMethodError,
+    approvalPayMethod,
+    approvalPayMethodError,
     quoteApproval,
     signatureData,
   } = props
@@ -46,13 +46,13 @@ const DefaultContent = (props: DefaultContentProps) => {
       </Route>
       <div className="quote-detail-page">
         <QuoteBody
+          approvalPayMethod={approvalPayMethod}
+          approvalPayMethodError={approvalPayMethodError}
           approveQuoteApproval={approveQuoteApproval}
           auth={auth}
           customerGID={customerGID}
           isSigned={isCustomerSigned}
           match={match}
-          paymentMethod={paymentMethod}
-          paymentMethodError={paymentMethodError}
           pdfURL={signatureData?.signedPDF}
           quoteApproval={quoteApproval}
           shouldShowSignoffComponents={shouldShowSignoffComponents}

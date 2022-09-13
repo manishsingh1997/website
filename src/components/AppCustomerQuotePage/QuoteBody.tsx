@@ -26,12 +26,12 @@ import {ProjectSignOffProps} from './ProjectSignOff/types';
 
 const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
   const {
+    approvalPayMethod,
+    approvalPayMethodError,
     approveQuoteApproval,
     auth,
     customerGID,
     match,
-    paymentMethod,
-    paymentMethodError,
     quoteApproval,
     isSigned,
     pdfURL,
@@ -128,14 +128,14 @@ const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
       <CustomerDetails customer={customer} quote={quoteApproval.quote} />
       {shouldShowBillingForm() && (
         <BillingForm
+          approvalPayMethod={approvalPayMethod}
           contractUrl={contractUrl}
-          error={paymentMethodError}
+          error={approvalPayMethodError}
           houseId={houseId}
           isApproved={isQuoteApprovalApproved(quoteApproval.quote)}
           isScopeChange={isScopeChange(quoteApproval)}
           isSmall={isBillingFormSmall}
           onSubmit={handleBillingSubmit}
-          paymentMethod={paymentMethod}
           quoteId={quoteApproval.quote.id}
           total={formatPrice(getProjectTotalPrice(quoteApproval))}
         />

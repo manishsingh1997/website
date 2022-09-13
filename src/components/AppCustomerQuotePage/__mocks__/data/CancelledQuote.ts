@@ -2315,7 +2315,7 @@ export default {
         percentage: '0.00',
       },
     ],
-    payment_method: null,
+    approval_paymethod: null,
     other_quote_approvals: [],
     new_quote_approval: null,
     parent_quote_approval: null,
@@ -2327,4 +2327,3 @@ export default {
     previously_approved_price: '0.00',
     project_total_price: '8083.00',
   };
-  

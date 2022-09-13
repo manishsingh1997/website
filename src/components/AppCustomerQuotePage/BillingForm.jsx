@@ -31,7 +31,7 @@ export default class BillingForm extends React.Component {
     isApproved: PropTypes.bool,
     isScopeChange: PropTypes.bool,
     onSubmit: PropTypes.func,
-    paymentMethod: PropTypes.object,
+    approvalPayMethod: PropTypes.object,
     quoteId: PropTypes.number,
     total: PropTypes.string,
     isSmall: PropTypes.bool,
@@ -260,9 +260,9 @@ export default class BillingForm extends React.Component {
     );
   }
 
-  renderPaymentMethodDetails() {
-    const {paymentMethod} = this.props;
-    const lastDigits = paymentMethod && paymentMethod['card_last_digits'];
+  renderApprovalPayMethodDetails() {
+    const {approvalPayMethod} = this.props;
+    const lastDigits = approvalPayMethod && approvalPayMethod['card_last_digits'];
     return (
       <div className="billing-form__payment-method-details">
         <div className="billing-form__payment-method-details-item">
@@ -272,7 +272,7 @@ export default class BillingForm extends React.Component {
         <div className="billing-form__payment-method-details-item">
           <div className="billing-form__payment-method-details-item-name">Exp. date</div>
           <div className="billing-form__payment-method-details-item-value">
-            {paymentMethod && paymentMethod['card_expiration_date_short']}
+            {approvalPayMethod && approvalPayMethod['card_expiration_date_short']}
           </div>
         </div>
       </div>
@@ -282,7 +282,7 @@ export default class BillingForm extends React.Component {
   render() {
     const {form, errors, isLoading} = this.state;
     const {termsAccepted} = form;
-    const {paymentMethod, quoteId, contractUrl, total, isScopeChange, isSmall} = this.props;
+    const {approvalPayMethod, quoteId, contractUrl, total, isScopeChange, isSmall} = this.props;
     const classes = {
       'billing-form': true,
       'billing-form--with-payment-method-details': this.isQuoteApproved(),
@@ -308,7 +308,7 @@ export default class BillingForm extends React.Component {
               </div>
             </div>
             {!this.isQuoteApproved() && this.renderFormFields()}
-            {this.isQuoteApproved() && paymentMethod && this.renderPaymentMethodDetails()}
+            {this.isQuoteApproved() && approvalPayMethod && this.renderApprovalPayMethodDetails()}
             <div className="billing-form__card-disclaimer">
               <img className="billing-form__card-disclaimer-icon" src={IconCardSecure} />
               <div className="billing-form__card-disclaimer-text">

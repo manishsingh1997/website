@@ -54,7 +54,7 @@ export type Customer = {
   main_address: Address;
 };
 
-export type PaymentMethod = {
+export type ApprovalPayMethod = {
   card_last_digits: string;
   card_expiration_date: string;
   card_expiration_date_short: string;
@@ -70,7 +70,7 @@ export interface QuoteApproval {
   secret: string;
   quote: Quote;
   quote_approval_lines: QuoteLine[];
-  payment_method: unknown;
+  approval_paymethod: unknown;
   other_quote_approvals: unknown[];
   new_quote_approval: Quote | null;
   last_approved_project_revision_quote_approval: Quote | null;
@@ -94,8 +94,8 @@ export type AppCustomerQuotePageProps = {
 export type QuoteBodyProps = {
   approveQuoteApproval: (stripeToken: string) => void;
   customerGID: string;
-  paymentMethod: PaymentMethod | null;
-  paymentMethodError: string | null;
+  approvalPayMethod: ApprovalPayMethod | null;
+  approvalPayMethodError: string | null;
   quoteApproval: QuoteApproval;
   shouldShowSignoffComponents?: boolean;
 } & BasePageProps;

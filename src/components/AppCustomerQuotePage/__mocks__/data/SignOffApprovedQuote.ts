@@ -250,7 +250,7 @@ export default {
       percentage: '100.00',
     },
   ],
-  payment_method: null,
+  approval_paymethod: null,
   other_quote_approvals: [],
   new_quote_approval: null,
   customer_pdf: 'https://apidev-ergeon-in.s3.amazonaws.com/sample/example.pdf',

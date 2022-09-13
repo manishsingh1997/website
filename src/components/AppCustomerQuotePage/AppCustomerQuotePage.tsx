@@ -16,7 +16,7 @@ import {ErrorResponse} from '../../utils/types';
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
 
 import {getSignatureData, isDirectPreview, isQuoteApprovalReviewed, isSignOffPDFView} from './utils';
-import {OrderData, AppCustomerQuotePageProps, PaymentMethod, QuoteApproval, SignatureData} from './types';
+import {OrderData, AppCustomerQuotePageProps, ApprovalPayMethod, QuoteApproval, SignatureData} from './types';
 import DefaultContent from './DefaultContent';
 import QuoteApprovalError from './QuoteApprovalError';
 import SignOffPdf from './ProjectSignOff/SignOffPdf';
@@ -34,8 +34,8 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [quoteApproval, setQuoteApproval] = useState<QuoteApproval | null>(null);
   const [quoteApprovalError, setQuoteApprovalError] = useState<string | null>(null);
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod | null>(null);
-  const [paymentMethodError, setPaymentMethodError] = useState<string | null>(null);
+  const [approvalPayMethod, setApprovalPayMethod] = useState<ApprovalPayMethod | null>(null);
+  const [approvalPayMethodError, setApprovalPayMethodError] = useState<string | null>(null);
   const [isSignLoading, setIsSignLoading] = useState(false);
   const [isCustomerSigned, setIsCustomerSigned] = useState(false);
   const [signatureData, setSignatureData] = useState<SignatureData | null>(null);
@@ -60,10 +60,10 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
       };
 
       getSignOffData(data?.data);
-      setQuoteApproval(data.data);
       setCustomerSignOffData(orderData);
+      setQuoteApproval(data.data);
       setQuoteApprovalError(null);
-      setPaymentMethodError(null);
+      setApprovalPayMethodError(null);
 
       const {market_phone_number: phoneNumber} = data.data.quote;
 
@@ -94,14 +94,14 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
     try {
       const data = await approveQuoteApprovalAPI(customerGID, match.params.secret, stripeToken);
       const updatedQuoteApproval = data.data;
+      setApprovalPayMethod(updatedQuoteApproval['approval_paymethod']);
+      setApprovalPayMethodError(null);
       setQuoteApproval(updatedQuoteApproval);
-      setPaymentMethod(updatedQuoteApproval['payment_method']);
-      setPaymentMethodError(null);
     } catch (err) {
       const errorResponse = err as {response: ErrorResponse};
       const error = parseAPIError(errorResponse).nonFieldErrors.join('\n');
-      setPaymentMethod(null);
-      setPaymentMethodError(error);
+      setApprovalPayMethod(null);
+      setApprovalPayMethodError(error);
     }
   };
 
@@ -188,6 +188,8 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
 
   return (
     <DefaultContent
+      approvalPayMethod={approvalPayMethod}
+      approvalPayMethodError={approvalPayMethodError}
       approveQuoteApproval={approveQuoteApproval}
       auth={auth}
       customerGID={customerGID}
@@ -196,8 +198,6 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
       isSignLoading={isSignLoading}
       match={match}
       onSubmitSignature={onSubmitSignature}
-      paymentMethod={paymentMethod}
-      paymentMethodError={paymentMethodError}
       quoteApproval={quoteApproval}
       signatureData={signatureData as SignatureData}
     />
