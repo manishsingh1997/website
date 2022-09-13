@@ -147,14 +147,8 @@ module.exports = {
       },
     ]}),
     new CopyPlugin({ patterns: [
-      {from: './node_modules/@ergeon/3d-lib/assets/3d-data', to: '3d-data'},
-      {
-        from: './node_modules/@ergeon/3d-lib/assets',
-        to: 'assets',
-        globOptions: {
-          ignore: ['3d-data/*']
-        },
-      },
+      {from: './node_modules/@ergeon/cad-3d-data/data', to: '3d-data'},
+      {from: './node_modules/@ergeon/3d-lib/dist/assets', to: 'assets'},
     ]}),
     new CopyPlugin({ patterns: [
       {from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`}]
