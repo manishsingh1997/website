@@ -108,8 +108,7 @@ const Regulations = (props: RegulationsProps) => {
         <div className="flex-spacer Regulations-row desktop-length">
           {pdf &&
             <a href={getAsset(pdf, 'pdf')} target="__blank">
-              {img && <OptimizedImage alt={'Regulations'} 
-                isProcessEnvTest={process.env.NODE_ENV === 'test'} src={getAsset(img, 'jpeg')} />}
+              {img && <OptimizedImage alt={'Regulations'} src={getAsset(img, 'jpeg')} />}
               {!img && <OptimizedImage alt={'Regulations PDF Image'} src={RegulationsImg} />}
             </a>
           }

@@ -18,14 +18,6 @@ jest.mock('../../containers/TellUsForm', () => () => <>Tell Us Form</>);
 const CITY_BANNER_PHONE = '(543) 094 5738';
 
 describe('AppCityPage', () => {
-  beforeEach(() => {
-    const intersectionObserverMock = () => ({
-      observe: jest.fn(),
-      unobserve: jest.fn(),
-    });
-    window.IntersectionObserver = jest.fn().mockImplementation(intersectionObserverMock);
-  });
-
   afterEach(() => {
     jest.restoreAllMocks();
   });

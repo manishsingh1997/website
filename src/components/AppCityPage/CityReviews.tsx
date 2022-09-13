@@ -34,13 +34,7 @@ const CityReviews = (props: MainBannerProps) => {
         {reviews.map((review) => (
           <div className="CityReviews-review" key={review.type}>
             <div className="CityReviews-imgContainer">
-              {review.img && (
-                <OptimizedImage
-                  alt={review.title}
-                  isProcessEnvTest={process.env.NODE_ENV === 'test'}
-                  src={getAsset(review.img, 'jpeg')}
-                />
-              )}
+              {review.img && <OptimizedImage alt={review.title} src={getAsset(review.img, 'jpeg')} />}
             </div>
             <div>
               <p className="h5">{review.title}</p>

@@ -22,12 +22,7 @@ const GetStartedSection = () => {
           </div>
         </div>
         <div className="GetStarted-ImgContainer">
-          <OptimizedImage
-            alt={'Get Started'}
-            className="GetStarted-Image"
-            isProcessEnvTest={process.env.NODE_ENV === 'test'}
-            src={imgGetStarted}
-          />
+          <OptimizedImage alt={'Get Started'} className="GetStarted-Image" src={imgGetStarted} />
         </div>
       </div>
     </div>

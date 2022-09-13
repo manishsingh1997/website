@@ -18,11 +18,7 @@ const ProjectsCompleted = (props: ProjectsCompletedProps) => {
     return (
       <div className="flex-spacer RecentProjects-project" key={`project-${idx}`}>
         <a href={projectURL}>
-          <OptimizedImage
-            alt={project.label}
-            isProcessEnvTest={process.env.NODE_ENV === 'test'}
-            src={getAsset(project.img, 'jpeg')}
-          />
+          <OptimizedImage alt={project.label} src={getAsset(project.img, 'jpeg')} />
         </a>
         <div className="RecentProjects-projectCaption">
           <a href={projectURL}>

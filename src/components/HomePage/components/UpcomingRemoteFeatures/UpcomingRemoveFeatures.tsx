@@ -29,7 +29,7 @@ const RemoteFeatures = () => {
       return (
         <div className="remote-features-card">
           <div className="remote-features-card-img">
-            <OptimizedImage alt={title} isProcessEnvTest={process.env.NODE_ENV === 'test'} src={img} />
+            <OptimizedImage alt={title} src={img} />
           </div>
           <div className="remote-features-card-details">
             <div className="remote-features-card-info">

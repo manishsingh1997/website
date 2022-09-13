@@ -89,11 +89,7 @@ const LicensesAndWarranty = (props: LicensesAndWarrantyProps) => {
 
         <div className="flex-spacer LicensesAndWarranty-row">
           <a className="LicenseWithLink" href={licensePdf} target={'__blank'}>
-            <OptimizedImage
-              alt="Licenses And Warranty"
-              isProcessEnvTest={process.env.NODE_ENV === 'test'}
-              src={licenseImg}
-            />
+            <OptimizedImage alt="Licenses And Warranty" src={licenseImg} />
           </a>
         </div>
       </div>

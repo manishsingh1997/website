@@ -84,7 +84,6 @@ const AppCityPage = (props: AppCityPageProps) => {
                           <OptimizedImage
                             alt={pckg.title}
                             data-testid="test-image"
-                            isProcessEnvTest={process.env.NODE_ENV === 'test'}
                             onLoad={() => setLoadPckgImage(pckg.img)}
                             src={getAsset(pckg.img, 'jpeg')}
                           />
