@@ -29,7 +29,7 @@ describe('ConfigCart', () => {
     expect(fenceTile).toHaveTextContent('Fence');
 
     const fencePrice = screen.queryByTestId(`config-price-${fence.id}`);
-    expect(fencePrice).toHaveTextContent(`~${Math.round(Number(fence.price))}/ft`);
+    expect(fencePrice).toHaveTextContent(`~$${Math.round(Number(fence.price))}/ft`);
 
     const fenceDescription = screen.queryByTestId(`config-description-${fence.id}`);
     expect(fenceDescription).toHaveTextContent(fence.description);
@@ -40,7 +40,7 @@ describe('ConfigCart', () => {
     expect(gateTile).toHaveTextContent('Gate');
 
     const gatePrice = screen.queryByTestId(`config-price-${gate.id}`);
-    expect(gatePrice).toHaveTextContent(`~${Math.round(Number(gate.price))}`);
+    expect(gatePrice).toHaveTextContent(`~$${Math.round(Number(gate.price))}`);
 
     const gateDescription = screen.queryByTestId(`config-description-${gate.id}`);
     expect(gateDescription).toHaveTextContent(gate.description);

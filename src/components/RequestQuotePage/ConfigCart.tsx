@@ -151,8 +151,8 @@ class ConfigCart extends React.Component<ConfigCartProps, ConfigCartState> {
     const isGateConfig = this.isItGate(config);
     const length = (config?.units || DEFAULT_FENCE_SIDE_LENGTH).toString();
     const priceText = isGateConfig
-      ? `~${Math.round(parseInt(config.price, 10))}`
-      : `~${Math.round(parseInt(config.price, 10))}/ft`;
+      ? `~$${Math.round(parseInt(config.price, 10))}`
+      : `~$${Math.round(parseInt(config.price, 10))}/ft`;
 
     return (
       <div data-testid={`config-${config.id}`} key={config.id}>
