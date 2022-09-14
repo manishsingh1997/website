@@ -16,6 +16,7 @@ mockedCalcUtils.mockImplementation(() => {
 });
 
 const props = {
+  cadSupport: true,
   additionalClassNames: 'quote-line-preview',
   configType: 'Side',
   fenceSideLength: 6,

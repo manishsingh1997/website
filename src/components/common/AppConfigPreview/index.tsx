@@ -3,6 +3,7 @@ import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {isNil, isEmpty} from 'lodash';
 import classNames from 'classnames';
 import previewPlaceholderIcon from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
+import notCadSupportPreviewIcon from '@ergeon/core-components/src/assets/no-cad-support.jpg';
 import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {Spinner} from '@ergeon/core-components';
 
@@ -19,6 +20,7 @@ const DEFAULT_GRADE = 0;
 
 const AppConfigPreview = ({
   previewImage: initPreviewImage,
+  cadSupport,
   additionalClassNames,
   fenceSideLength,
   fenceSideSlopePercent,
@@ -49,6 +51,9 @@ const AppConfigPreview = ({
   const fetchQuotePreview = useCallback(async () => {
     if (useNoPreviewIcon) {
       setPreviewImage(noPreviewIcon);
+      return;
+    } else if (!cadSupport) {
+      setPreviewImage(notCadSupportPreviewIcon);
       return;
     } else if (!schemaCodeUrl) {
       setPreviewImage(previewPlaceholderIcon);
