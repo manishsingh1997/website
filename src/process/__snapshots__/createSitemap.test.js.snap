@@ -440,9 +440,6 @@ exports[`Sitemap should generate for website 1`] = `
         <loc>http://ergeon.local:6600/fences/cities/yolo-county-woodland-ca</loc>
       </url>
       <url>
-        <loc>http://ergeon.local:6600/licenses-warranties</loc>
-      </url>
-      <url>
         <loc>http://ergeon.local:6600/request-quote</loc>
       </url>
       <url>

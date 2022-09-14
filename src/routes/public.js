@@ -8,7 +8,6 @@ import HelpPage from 'components/HelpPage';
 import HomePage from 'components/HomePage';
 import PhotoGallery from 'components/PhotoGallery';
 import RequestQuotePage from 'containers/RequestQuotePage';
-import WarrantiesPage from 'components/WarrantiesPage';
 
 import FencesHomePage from '../components/HomePage/FencesHome';
 import CareersPage from '../components/CareersPage';
@@ -49,11 +48,6 @@ export const basicRoutes = [
     component: FAQPage,
     exact: true,
     path: '/faq',
-  },
-  {
-    component: WarrantiesPage,
-    exact: true,
-    path: '/licenses-warranties',
   },
   {
     component: RequestQuotePage,

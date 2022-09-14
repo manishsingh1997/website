@@ -475,7 +475,7 @@
   },
   {
     "from": "licenses",
-    "to": "/licenses-warranties",
+    "to": "/",
     "active": true,
     "ensureFromTrailingSlash": false
   },
@@ -727,7 +727,7 @@
   },
   {
     "from": "warranty",
-    "to": "/licenses-warranties",
+    "to": "/",
     "active": true,
     "ensureFromTrailingSlash": false
   },
