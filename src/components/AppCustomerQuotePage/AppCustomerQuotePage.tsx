@@ -106,7 +106,7 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
   };
 
   const getSignOffData = (data: QuoteApproval) => {
-    let newSignatureData = null;
+    let newSignatureData: SignatureData | null = null;
     const {signoff_img, signoff_at, signoff_pdf} = data || {};
     if (signoff_at) {
       newSignatureData = {
@@ -116,7 +116,7 @@ const AppCustomerQuotePage = (props: AppCustomerQuotePageProps) => {
         signedPDF: signoff_pdf,
       };
     }
-    setSignatureData(newSignatureData as SignatureData);
+    setSignatureData(newSignatureData);
     setIsCustomerSigned(!!signoff_pdf || !!signoff_at);
   };
 

@@ -16,5 +16,6 @@ module.exports = {
     historyApiFallback: true,
     host: 'ergeon.local',
     port: 6600,
+    hot: true,
   },
 }

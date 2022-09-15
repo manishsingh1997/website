@@ -1,7 +1,9 @@
 import {ParsedAPIErrorType} from '../../utils/types';
 
+import {AuthSignInErrors} from './types';
+
 export const handleSignInError = (signInError: ParsedAPIErrorType) => {
-  let errors = null;
+  let errors: AuthSignInErrors | null = null;
   // TODO: move response formatting to erg-customer-auth-js
   const response = (signInError).response;
   if (

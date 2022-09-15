@@ -5,7 +5,6 @@ const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const {buildIncludeRegexp, checkModules} = require('are-you-es5');
 const {BUILD_DIR, APP_DIR} = require('./constants');
 
 const SENTRY_DSN = 'https://f0fe1cc5aa2e4422bec8bbd637bba091@o147577.ingest.sentry.io/1794736';
@@ -22,31 +21,15 @@ if (!fs.existsSync(robotsPath)) {
   robotsPath = `${APP_DIR}/process/robots/default.txt`;
 }
 
-const modules = checkModules({
-  path: './',
-  checkAllNodeModules: true,
-  ignoreBabelAndWebpackPackages: true,
-});
-
-const nonES5 = [
-  // some dependencies cannot be automatically detected by are-you-es5
-  // so we need to manually add them to the array
-  '@ergeon',
-  '@react-spring',
-  'google-maps',
-  '@googlemaps/js-api-loader',
-  'redux',
-  ...modules.es6Modules,
-];
-
-const includeModules = buildIncludeRegexp(nonES5);
-
 const srcAliases = {};
 fs.readdirSync('./src', {withFileTypes: true})
   .filter(dir => dir.isDirectory())
   .forEach(dir => srcAliases[dir.name] = path.resolve(`./src/${dir.name}`));
 
 module.exports = {
+  experiments: {
+    topLevelAwait: true,
+  },
   entry: {
     'assets/bundle': `${APP_DIR}/index.js`,
     'utm/assets/bundle': `${APP_DIR}/utm/index.js`,
@@ -65,7 +48,6 @@ module.exports = {
       },
       {
         test: /\.(js|jsx|ts|tsx)$/,
-        include: [APP_DIR, includeModules],
         use: ['babel-loader'],
       },
       {
@@ -82,7 +64,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: IS_DEVELOPMENT ? '[name].[ext]' : '[name]-[contenthash].[ext]',
+              name: '[name]-[contenthash].[ext]',
               outputPath: 'assets',
             },
           },
@@ -147,8 +129,8 @@ module.exports = {
       },
     ]}),
     new CopyPlugin({ patterns: [
-      {from: './node_modules/@ergeon/cad-3d-data/data', to: '3d-data'},
-      {from: './node_modules/@ergeon/3d-lib/dist/assets', to: 'assets'},
+        {from: './node_modules/@ergeon/cad-3d-data/data', to: '3d-data'},
+        {from: './node_modules/@ergeon/3d-lib/src/assets', to: 'assets'}
     ]}),
     new CopyPlugin({ patterns: [
       {from: `${APP_DIR}/monitoring/newrelic.js`, to: `${BUILD_DIR}/assets/`}]

@@ -59,6 +59,7 @@ class RequestQuotePage extends React.Component<RequestQuotePageProps, RequestQuo
     // automatically redirect the user to our home page
     if (this.state.showThankYou) {
       setTimeout(() => {
+        // @ts-ignore
         this.props.history.push('/');
       }, REDIRECT_TIMEOUT);
     }

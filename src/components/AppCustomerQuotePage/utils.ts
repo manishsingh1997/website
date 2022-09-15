@@ -57,7 +57,7 @@ export const getSignatureData = async (
   });
   const {signoff_img, signoff_at, signoff_pdf} = data || {};
 
-  let newSignatureData = null;
+  let newSignatureData: SignatureData | null = null;
 
   if (signoff_img) {
     newSignatureData = {
@@ -68,7 +68,7 @@ export const getSignatureData = async (
     };
   }
 
-  return newSignatureData as SignatureData | null;
+  return newSignatureData;
 };
 
 export const getIsQuoteStatusApprovedOrCompleted = (quoteApproval: QuoteApproval) => {

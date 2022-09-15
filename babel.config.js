@@ -1,10 +1,16 @@
 module.exports = {
-  presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+  presets: [
+    ['@babel/preset-env', {'corejs': '2', 'useBuiltIns': 'entry'}],
+    '@babel/preset-react',
+    '@babel/preset-typescript'
+  ],
   plugins: [
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-transform-block-scoping',
-    '@babel/plugin-transform-classes',
+    ['@babel/plugin-transform-classes', {
+      'loose': true,
+    }],
     'lodash',
     [
       'module-resolver',

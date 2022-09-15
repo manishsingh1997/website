@@ -1,4 +1,4 @@
-import {CatalogType, ProductConfigType} from '@ergeon/3d-lib';
+import {CatalogType} from '@ergeon/3d-lib';
 // eslint-disable-next-line import/named
 import {RouteComponentProps} from 'react-router-dom';
 
@@ -15,6 +15,28 @@ export interface Address {
   formatted_address: string;
   raw_address: string;
   place_types: string[];
+}
+
+// Duplicated type from 3d-lib
+export interface Value {
+  capRail?: boolean;
+  code: string;
+  deleted?: boolean;
+  image?: string;
+  imageThumbnail?: string;
+  nominalSize?: number[];
+  fullFrame?: boolean;
+  postCapOption?: boolean;
+  size?: number[];
+  slug: string;
+  steelPost?: boolean;
+  title: string;
+  future?: boolean;
+}
+
+// Duplicated type from 3d-lib
+export interface ProductConfigType {
+  [index: number]: Value;
 }
 
 export interface Config {

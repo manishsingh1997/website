@@ -1,22 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
-    "outDir": "./build",
+    "target": "es2017",
+    "module": "es2022",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "noImplicitAny": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "preserve",
+    "lib": ["es2021", "dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
     "noEmit": true
   },
   "include": ["./src", "./src/@types/files.d.ts"]
