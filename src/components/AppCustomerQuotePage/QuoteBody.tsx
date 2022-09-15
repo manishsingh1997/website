@@ -1,12 +1,14 @@
-import React, {useCallback, useMemo} from 'react';
+import React, { useCallback, useMemo } from 'react';
 
-import {isEmpty} from 'lodash';
-import {useHistory, useParams} from 'react-router-dom';
+import { isEmpty } from 'lodash';
+import { useHistory, useParams } from 'react-router-dom';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 import QuoteDetails from '../common/AppQuoteComponents/QuoteDetails';
-import {prepareQuoteApprovalLines} from '../common/AppQuoteComponents/utils';
-import {formatPrice, isQuoteCancelled, isQuoteExpired, isQuoteReplaced} from '../../utils/app-order';
-import {isPDFMode} from '../../utils/utils';
+import { prepareQuoteApprovalLines } from '../common/AppQuoteComponents/utils';
+import { formatPrice, isQuoteCancelled, isQuoteExpired, isQuoteReplaced } from '../../utils/app-order';
+import { isPDFMode } from '../../utils/utils';
 
 import AdditionalApprovalsList from './AdditionalApprovalsList';
 import BillingForm from './BillingForm';
@@ -20,9 +22,12 @@ import {
   isQuoteApprovalApproved,
   isScopeChange,
 } from './utils';
-import {Params, QuoteBodyProps} from './types';
+import { Params, QuoteBodyProps } from './types';
 import ProjectSignOff from './ProjectSignOff/ProjectSignOff';
-import {ProjectSignOffProps} from './ProjectSignOff/types';
+import { ProjectSignOffProps } from './ProjectSignOff/types';
+import { StripeOptions } from './StripeOptions';
+
+const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY as string);
 
 const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
   const {
@@ -48,7 +53,6 @@ const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
   const quoteApprovalLines = useMemo(() => quoteApproval.quote_approval_lines, [quoteApproval]);
   const otherQuoteApprovals = useMemo(() => quoteApproval.other_quote_approvals, [quoteApproval]);
   const mergedCustomerPDF = useMemo(() => quoteApproval.merged_customer_pdf, [quoteApproval]);
-  const houseId = useMemo(() => quoteApproval.quote.order.house.id, [quoteApproval]);
   const quoteType = useMemo(() => quoteApproval.quote.order.product.name, [quoteApproval]);
   const isMultiPartyQuote = useMemo(() => !isEmpty(otherQuoteApprovals), [otherQuoteApprovals, isEmpty]);
   const isBillingFormSmall = useMemo(() => {
@@ -83,7 +87,7 @@ const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
 
   const onBuildDetailsClick = useCallback(
     (configID: string, label: string) => {
-      history.push(`${location.pathname.replace(/\/$/, '')}/config/${configID}`, {label});
+      history.push(`${location.pathname.replace(/\/$/, '')}/config/${configID}`, { label });
     },
     [location]
   );
@@ -98,7 +102,7 @@ const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
   }, [quoteApproval, asPDF]);
 
   const handleBillingSubmit = useCallback(
-    async (data: {[key: string]: string}) => {
+    async (data: { [key: string]: string }) => {
       await approveQuoteApproval(data['stripe_token']);
     },
     [approveQuoteApproval]
@@ -127,18 +131,19 @@ const QuoteBody = (props: QuoteBodyProps & ProjectSignOffProps) => {
       <ProjectNotes quote={quoteApproval.quote} />
       <CustomerDetails customer={customer} quote={quoteApproval.quote} />
       {shouldShowBillingForm() && (
-        <BillingForm
-          approvalPayMethod={approvalPayMethod}
-          contractUrl={contractUrl}
-          error={approvalPayMethodError}
-          houseId={houseId}
-          isApproved={isQuoteApprovalApproved(quoteApproval.quote)}
-          isScopeChange={isScopeChange(quoteApproval)}
-          isSmall={isBillingFormSmall}
-          onSubmit={handleBillingSubmit}
-          quoteId={quoteApproval.quote.id}
-          total={formatPrice(getProjectTotalPrice(quoteApproval))}
-        />
+        <Elements options={StripeOptions} stripe={stripePromise}>
+          <BillingForm
+            approvalPayMethod={approvalPayMethod}
+            contractUrl={contractUrl}
+            error={approvalPayMethodError}
+            isApproved={isQuoteApprovalApproved(quoteApproval.quote)}
+            isScopeChange={isScopeChange(quoteApproval)}
+            isSmall={isBillingFormSmall}
+            onSubmit={handleBillingSubmit}
+            quoteId={quoteApproval.quote.id}
+            total={formatPrice(getProjectTotalPrice(quoteApproval))}
+          />
+        </Elements>
       )}
       {isMultiPartyQuote && <AdditionalApprovalsList additionalQuoteApprovals={otherQuoteApprovals} />}
       {shouldShowSignoffComponents && <ProjectSignOff isSigned={isSigned} pdfURL={pdfURL} signedDate={signedDate} />}

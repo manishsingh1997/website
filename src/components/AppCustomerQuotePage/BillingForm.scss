@@ -354,7 +354,6 @@
   }
 
   .Form-error {
-    position: absolute;
     font-size: $font-label-size;
     color: $red-1;
     line-height: $line-height-label;
@@ -364,5 +363,41 @@
     top: 100%;
     margin-top: $v-6;
     left: 0;
+  }
+
+  .StripeCardElement {
+    background: $gray-6;
+    border: 1px solid rgba($gray-4, 0.75);
+    border-radius: $corner-default;
+    font-size: $font-mobile-size;
+    height: $v-36;
+    line-height: $line-height-mobile;
+    padding: $h-10;
+    transition: all 200ms ease;
+    width: 100%;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:hover {
+      border: 1px solid rgba($gray-3, 0.5);
+    }
+
+    &:focus {
+      background: $white;
+      border: 1px solid rgba($black-3, 0.5);
+      box-shadow: 0 0 0 3px rgba($black-3, 0.2);
+      outline: 0;
+
+      &::placeholder {
+        color: $gray-1;
+      }
+    }
+
+    &.StripeElement--invalid {
+      background-color: $red-3;
+      border: 1px solid $red-1;
+    }
   }
 }
