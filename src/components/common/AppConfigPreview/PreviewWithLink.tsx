@@ -44,6 +44,16 @@ const PreviewWithLink = ({
     />;
   }
 
+  if (!cadSupport) {
+    return <PreviewImage
+      cadSupport={cadSupport}
+      handleLoad={handleLoad}
+      isLoading={false}
+      isPlaceholder={false}
+      previewImage={previewImage}
+    />
+  }
+
   return (
     <a href={linkToFencequoting} rel="noopener noreferrer" target="_blank">
       <PreviewImage
