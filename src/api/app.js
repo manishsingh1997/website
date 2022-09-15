@@ -1,6 +1,3 @@
-// mock for now, after ENG-17257 will be removed
-import quoteMock from '../components/AppQuoteListPage/__mock__/quoteList';
-
 import {request} from './utils';
 
 export const getCustomerContacts = (customerGID) => {
@@ -39,12 +36,8 @@ export const getQuoteDetails = (customerGID, quoteSecret) => {
   return request(customerGID)(`/quotes/${quoteSecret}/`);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const getCustomerQuotes = (customerGID) => {
-  // will be removed after ENG-17257
-  return new Promise((resolve) => {
-    return resolve({data: quoteMock});
-  });
+export const getCustomerQuotes = (quoteSecret) => {
+  return request()(`/${quoteSecret}/quote-approvals`);
 };
 
 export const reviewQuote = (customerGID, quoteSecret) => {

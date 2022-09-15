@@ -55,6 +55,8 @@ export type Quote = {
   };
   previously_approved_total_cost: string;
   project_total_cost: string;
+  send_to_customer?: string;
+  preview_image?: string;
 };
 
 export type OrderProduct = {

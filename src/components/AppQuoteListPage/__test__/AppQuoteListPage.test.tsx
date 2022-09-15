@@ -8,13 +8,15 @@ import {localStorage as ls} from '@ergeon/erg-utils-js';
 import AppQuoteListPage from '../AppQuoteListPage';
 import {CustomerQuoteViewPreference, LS_ERGEON_CUSTOMER_MENU_QUOTE_VIEW_PREFERENCE} from '../constants';
 import mockList from '../__mock__/quoteList';
-import {Quotes} from '../types';
+import {CustomerQuoteResponseProps} from '../types';
+import {HouseType} from '../../types';
 
 const props = {
   isLoading: false,
   listError: null,
-  quotes: mockList as unknown as Quotes[],
-  getQuotes: jest.fn,
+  quotes: mockList as unknown as CustomerQuoteResponseProps[],
+  selectedHouse: mockList[0].quote.order.house as unknown as HouseType,
+  getQuotes: jest.fn(),
 };
 
 describe('render AppQuoteListPage', () => {
@@ -102,8 +104,9 @@ describe('render AppQuoteListPage', () => {
         <AppQuoteListPage {...props} />
       </BrowserRouter>
     );
+
     const cardList = container.querySelectorAll('.card-wrapper');
-    expect(cardList).toHaveLength(4);
+    expect(cardList).toHaveLength(3);
   });
 
   it('should render a card with status approved', () => {
@@ -139,7 +142,7 @@ describe('render AppQuoteListPage', () => {
         <AppQuoteListPage {...props} quotes={[cardApprovedMock]} />
       </BrowserRouter>
     );
-    const icon = screen.getByTestId(`icon-${cardApprovedMock.status}`);
+    const icon = screen.getByTestId(`icon-${cardApprovedMock.quote.status.label}`);
 
     expect(icon).toBeInTheDocument();
   });
@@ -151,7 +154,7 @@ describe('render AppQuoteListPage', () => {
         <AppQuoteListPage {...props} quotes={[cardCancelledMock]} />
       </BrowserRouter>
     );
-    const icon = screen.getByTestId(`icon-${cardCancelledMock.status}`);
+    const icon = screen.getByTestId(`icon-${cardCancelledMock.quote.status.label}`);
 
     expect(icon).toBeInTheDocument();
   });
@@ -166,8 +169,8 @@ describe('render AppQuoteListPage', () => {
       </BrowserRouter>
     );
 
-    const iconSuccess = screen.getByTestId(`icon-${cardApprovedMock.status}`);
-    const iconError = screen.getByTestId(`icon-${cardCancelledMock.status}`);
+    const iconSuccess = screen.getByTestId(`icon-${cardApprovedMock.quote.status.label}`);
+    const iconError = screen.getByTestId(`icon-${cardCancelledMock.quote.status.label}`);
 
     expect(iconSuccess).toBeInTheDocument();
     expect(iconError).toBeInTheDocument();

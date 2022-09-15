@@ -9,12 +9,12 @@ export enum QuoteActionTypes {
   GET_QUOTES_ERROR = 'GET_QUOTES_ERROR',
 }
 
-export const getQuotes = (customerGID: number) => {
+export const getQuotes = (quoteSecret: string) => {
   const dispatcher: GetQuotesDispatcher = (dispatch) => {
     dispatch({
       type: QuoteActionTypes.GET_QUOTES_START,
     });
-    const response = getCustomerQuotes(customerGID);
+    const response = getCustomerQuotes(quoteSecret);
     response
       .then((axiosResponse) => {
         dispatch({

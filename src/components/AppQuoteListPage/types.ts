@@ -1,7 +1,10 @@
+import {HouseType, Quote} from '../types';
+
 import {CustomerQuoteViewPreference} from './constants';
 
-export type Quotes = {
+export type CustomerQuoteProps = {
   quoteId: number;
+  houseId: number;
   quoteSecret: string;
   totalPrice: string;
   title: string;
@@ -13,19 +16,26 @@ export type Quotes = {
 export type AppQuoteListPageProps = {
   isListLoading?: boolean;
   listError?: Error[] | null;
-  quotes: Quotes[];
-  getQuotes: (customerGID: number) => void;
+  quotes: CustomerQuoteResponseProps[];
+  getQuotes: (quoteSecret: string) => void;
+  selectedHouse?: HouseType;
 };
 
 export type QuoteListPageContentProps = {
-  quotes: Quotes[];
+  quotes: CustomerQuoteProps[];
   customerViewPreference: CustomerQuoteViewPreference;
 };
 
 export type QuoteCardProps = {
   cardType: CustomerQuoteViewPreference;
-} & Quotes;
+} & CustomerQuoteProps;
 
 export type QuoteListPageHeaderProps = {
   handleLocalStorageChange?: (value: CustomerQuoteViewPreference) => void;
+};
+
+export type CustomerQuoteResponseProps = {
+  id: string;
+  secret: string;
+  quote: Quote;
 };

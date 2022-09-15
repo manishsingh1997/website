@@ -1,15 +1,15 @@
-import {Quotes} from '../../components/AppQuoteListPage/types';
+import {CustomerQuoteResponseProps} from '../../components/AppQuoteListPage/types';
 import {ParsedAPIErrorType} from '../../utils/types';
 import {QuoteActionTypes} from '../actions/app-quotes';
 
 export type QuotesReducerState = {
-  data: Quotes[] | null;
+  data: CustomerQuoteResponseProps[] | null;
   isListLoading: boolean;
   listError: ParsedAPIErrorType | null;
 };
 
 export type QuoteReducerAction = {
-  data: Quotes[];
+  data: CustomerQuoteResponseProps[];
   error: ParsedAPIErrorType;
   type: keyof typeof QuoteActionTypes;
 };
