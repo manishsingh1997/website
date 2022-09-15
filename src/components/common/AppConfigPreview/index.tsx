@@ -85,6 +85,7 @@ const AppConfigPreview = ({
     <div className={configPreviewClassNames}>
       {isLoading && <Spinner active borderWidth={0.15} color="blue" size={64} />}
       <PreviewContent
+        cadSupport={cadSupport}
         fenceSideLength={currentFenceSideLength}
         fenceSideSlopePercent={currentGrade}
         handleLoad={() => setIsLoading(false)}

@@ -7,6 +7,7 @@ import PreviewWithLink from './PreviewWithLink';
 import {PreviewContentProps} from './types';
 
 const PreviewContent = ({
+  cadSupport,
   previewImage,
   handleLoad,
   withLink,
@@ -33,6 +34,7 @@ const PreviewContent = ({
     return (
       <div className="quote-line-images-wrapper">
         <PreviewWithLink
+          cadSupport={cadSupport}
           fenceSideLength={fenceSideLength}
           fenceSideSlopePercent={fenceSideSlopePercent}
           handleLoad={handleLoad}
@@ -53,6 +55,7 @@ const PreviewContent = ({
   if (withLinkAndSchemaUrl) {
     return (
       <PreviewWithLink
+        cadSupport={cadSupport}
         fenceSideLength={fenceSideLength}
         fenceSideSlopePercent={fenceSideSlopePercent}
         handleLoad={handleLoad}

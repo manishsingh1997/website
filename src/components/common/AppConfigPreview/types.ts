@@ -26,6 +26,7 @@ type ContentProps = {
 export type PreviewWithLinkProps = {
   fenceSideLength: number;
   fenceSideSlopePercent: number;
+  cadSupport?: boolean;
 } & PreviewProps &
   QuoteProps;
 
@@ -34,6 +35,7 @@ export type PreviewContentProps = ContentProps & PreviewWithLinkProps;
 export type PreviewImageProps = {
   isPlaceholder: boolean;
   isLoading: boolean;
+  cadSupport?: boolean;
 } & PreviewProps;
 
 export type AppConfigPreviewProps = {

@@ -5,7 +5,12 @@ import preview3DIcon from '@ergeon/core-components/src/assets/icon-3d.svg';
 
 import {PreviewImageProps} from './types';
 
-const PreviewImage = ({previewImage, isPlaceholder, isLoading, handleLoad}: PreviewImageProps) => {
+const PreviewImage = ({
+  previewImage,
+  isPlaceholder,
+  isLoading,
+  handleLoad,
+  cadSupport}: PreviewImageProps) => {
   const previewImageClassNames = useMemo(
     () =>
       classNames({
@@ -13,13 +18,13 @@ const PreviewImage = ({previewImage, isPlaceholder, isLoading, handleLoad}: Prev
         'preview-placeholder': isPlaceholder,
         'hidden-img': isLoading,
       }),
-    [isPlaceholder, isLoading]
+    [isPlaceholder, isLoading, cadSupport]
   );
 
   return (
     <div className="preview-box">
       <img className={previewImageClassNames} onLoad={handleLoad} src={previewImage} />
-      {!isPlaceholder && <img className="preview-3d" src={preview3DIcon} />}
+      {!isPlaceholder && cadSupport && <img className="preview-3d" src={preview3DIcon} />}
     </div>
   );
 };
