@@ -148,6 +148,7 @@ const BillingForm = (props: BillingFormProps) => {
       <div className="billing-form__fields">
         <div className="billing-form__card-number">
           <CardNumberElement
+            id="cardNumber"
             onChange={handleFieldChange}
             options={{
               classes: {
@@ -163,6 +164,7 @@ const BillingForm = (props: BillingFormProps) => {
         </div>
         <div className="billing-form__expiration-date">
           <CardExpiryElement
+            id="expDate"
             onChange={handleFieldChange}
             options={{
               classes: {
@@ -178,6 +180,7 @@ const BillingForm = (props: BillingFormProps) => {
         </div>
         <div className="billing-form__cvc">
           <CardCvcElement
+            id="cvc"
             onChange={handleFieldChange}
             options={{
               classes: {
