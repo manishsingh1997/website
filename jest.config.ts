@@ -2,6 +2,7 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
+  setupFilesAfterEnv: ['./jest.setup.js'],
 
   // The test environment that will be used for testing
   testEnvironment: 'jsdom',

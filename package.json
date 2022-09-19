@@ -130,7 +130,7 @@
     "xlsx": "^0.18.5"
   },
   "dependencies": {
-    "@ergeon/3d-lib": "11.1.2",
+    "@ergeon/3d-lib": "12.0.0",
     "@ergeon/cad-3d-data": "^1.10.0",
     "@ergeon/core-components": "4.19.4",
     "@ergeon/draw-map": "4.5.4",
