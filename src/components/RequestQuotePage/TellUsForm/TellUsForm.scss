@@ -10,6 +10,9 @@
     }
   }
 
+  $tawk-z-index: 2000000000;
+  z-index: $tawk-z-index + 1;
+  position: relative;
   display: flex;
   background-color: $gray-5;
   flex-flow: column;
