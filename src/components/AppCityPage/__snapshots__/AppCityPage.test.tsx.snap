@@ -1863,6 +1863,19 @@ exports[`AppCityPage should render 1`] = `
     >
       Tell Us Form
     </section>
+    <div
+      class="mobile-bottom-panel__wrapper"
+    >
+      <div
+        class="mobile-bottom-panel__content"
+      >
+        <button
+          class="button button--action button--size__large taste__solid"
+        >
+          Get a FREE Quote
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 `;

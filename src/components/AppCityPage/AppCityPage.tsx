@@ -3,7 +3,7 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {Helmet} from 'react-helmet';
 import {EqualHeight, EqualHeightElement} from 'react-equal-height';
 import isEmpty from 'lodash/isEmpty';
-import {OptimizedImage} from '@ergeon/core-components';
+import {OptimizedImage, Button} from '@ergeon/core-components';
 
 import TellUsForm from '../../containers/TellUsForm';
 import GetStartedSection from '../HomePage/components/GetStartedSection';
@@ -11,6 +11,7 @@ import UpcomingRemoteFeatures from '../HomePage/components/UpcomingRemoteFeature
 import TestimonialBanner from '../HomePage/components/TestimonialBanner';
 import QASection from '../HomePage/QASection';
 import {initSmartLook} from '../AppLayout/utils';
+import useScrollPosition from '../Layout/useScrollPosition';
 
 import CityReviews from './CityReviews';
 import Regulations from './Regulations';
@@ -19,7 +20,8 @@ import {City} from './types';
 import {getAsset} from './utils';
 import CityBanner from './CityBanner';
 import LicensesAndWarranty from './LicensesAndWarranty';
-
+import usePinBottomPanel from './components/BottomPinnedPanel/usePinBottomPanel';
+import BottomPinnedPanel from './components/BottomPinnedPanel';
 import './AppCityPage.scss';
 
 export type AppCityPageProps = {
@@ -33,9 +35,19 @@ const AppCityPage = (props: AppCityPageProps) => {
 
   const licenseSectionRef = useRef<HTMLDivElement>(null);
 
+  const leadFormRef = useRef<HTMLDivElement>(null);
+
+  const scrollPosition = useScrollPosition();
+
+  const isBottomPanelPinned = usePinBottomPanel(scrollPosition, leadFormRef);
+
   const onScrollToLicense = useCallback(() => {
     licenseSectionRef.current?.scrollIntoView({behavior: 'smooth', block: 'center'});
   }, [licenseSectionRef]);
+
+  const onScrollToTopLeadForm = useCallback(() => {
+    leadFormRef.current?.scrollIntoView({behavior: 'smooth', block: 'center'});
+  }, [leadFormRef]);
 
   useEffect(() => {
     initSmartLook();
@@ -49,7 +61,12 @@ const AppCityPage = (props: AppCityPageProps) => {
         <link href={`${process.env.HOME_PAGE}/fences/cities/${city.slug}`} rel="canonical" />
       </Helmet>
       <div className="AppCityPage">
-        <CityBanner city={city.city} onScrollToLicense={onScrollToLicense} phone={city.phone} />
+        <CityBanner
+          city={city.city}
+          leadFormRef={leadFormRef}
+          onScrollToLicense={onScrollToLicense}
+          phone={city.phone}
+        />
 
         <section className="wrapper-1180">
           <TestimonialBanner />
@@ -144,6 +161,11 @@ const AppCityPage = (props: AppCityPageProps) => {
         <section className="mobile-length">
           <TellUsForm />
         </section>
+        <BottomPinnedPanel showBottomPanel={isBottomPanelPinned}>
+          <Button flavor="action" onClick={onScrollToTopLeadForm} size="large" taste="solid">
+            Get a FREE Quote
+          </Button>
+        </BottomPinnedPanel>
       </div>
     </>
   );

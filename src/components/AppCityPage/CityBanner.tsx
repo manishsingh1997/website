@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {RefObject} from 'react';
 
 import {ReactSVG} from 'react-svg';
 import {Button} from '@ergeon/core-components';
@@ -14,10 +14,11 @@ type CityBannerProps = {
   city: string;
   phone: string;
   onScrollToLicense?: () => void;
+  leadFormRef?: RefObject<HTMLElement>;
 };
 
 const CityBanner = (props: CityBannerProps) => {
-  const {city, phone, onScrollToLicense} = props;
+  const {city, phone, onScrollToLicense, leadFormRef} = props;
   return (
     <section className="CityBanner" data-testid="city-banner">
       <section className="CityBanner-wrapper wrapper-1180">
@@ -47,7 +48,7 @@ const CityBanner = (props: CityBannerProps) => {
           </aside>
         </section>
         <p className="is-tablet">or</p>
-        <section className="CityBanner-form">
+        <section className="CityBanner-form" ref={leadFormRef}>
           <TellUsForm />
           <h3 className="h6 CityBanner-desc-license-mobile" onClick={onScrollToLicense}>
             See License & warranty information
