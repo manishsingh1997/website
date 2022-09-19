@@ -65,6 +65,7 @@
     "@types/react-signature-canvas": "^1.0.2",
     "@types/redux": "^3.6.0",
     "@types/redux-logger": "^3.0.9",
+    "@types/three": "^0.141.0",
     "@types/validator": "^13.7.2",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
@@ -129,7 +130,7 @@
     "xlsx": "^0.18.5"
   },
   "dependencies": {
-    "@ergeon/3d-lib": "11.0.0",
+    "@ergeon/3d-lib": "11.1.2",
     "@ergeon/cad-3d-data": "^1.10.0",
     "@ergeon/core-components": "4.19.4",
     "@ergeon/draw-map": "4.5.4",
