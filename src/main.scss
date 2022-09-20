@@ -35,3 +35,47 @@
   justify-content: flex-end;
   align-items: flex-start;
 }
+
+.mobile-length {
+  display: none;
+
+  @include tablet() {
+    display: none;
+  }
+
+  @include phone() {
+    display: block;
+  }
+}
+
+.desktop-length {
+  display: block;
+
+  @include tablet() {
+    display: none;
+  }
+
+  @include phone() {
+    display: none;
+  }
+}
+
+.tablet-length {
+  display: none;
+
+  @include tablet() {
+    display: block;
+  }
+
+  @include phone() {
+    display: none;
+  }
+}
+
+.desktop-tablet-length {
+  display: block;
+
+  @include phone() {
+    display: none;
+  }
+}

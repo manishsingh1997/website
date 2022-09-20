@@ -9,6 +9,7 @@ import HomePage from 'components/HomePage';
 import PhotoGallery from 'components/PhotoGallery';
 import RequestQuotePage from 'containers/RequestQuotePage';
 
+import ArtificialGrassHome from '../components/HomePage/ArtificialGrassHome';
 import FencesHomePage from '../components/HomePage/FencesHome';
 import CareersPage from '../components/CareersPage';
 import AboutPage from '../components/AboutPage';
@@ -23,6 +24,11 @@ export const basicRoutes = [
     exact: true,
     sitemap: false,
     path: '/',
+  },
+  {
+    component: ArtificialGrassHome,
+    exact: true,
+    path: '/artificial-grass',
   },
   {
     component: FencesHomePage,

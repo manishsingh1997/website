@@ -1,4 +1,4 @@
-import {Customer, QuoteApproval} from './AppCustomerQuotePage/types';
+import { Customer, QuoteApproval } from './AppCustomerQuotePage/types';
 
 export type HouseType = {
   id: number;
@@ -130,7 +130,7 @@ export type Visits = {
   estimated_start_time: string;
 };
 
-export type Product = 'fence-replacement' | 'driveway-installation';
+export type Product = 'fence-replacement' | 'driveway-installation' | 'landscaping-design';
 
 export type Address = {
   primary_number: string;

@@ -60,6 +60,7 @@
   .TellUsForm-Header {
     font-weight: 600;
     margin-bottom: $v-12;
+    text-align: center;
 
     @include tablet() {
       text-align: center;
@@ -71,9 +72,8 @@
   }
 
   .TellUsForm-Footer {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: $corner-default;
+    display: flex;
+    justify-content: center;
 
     @include tablet() {
       place-items: center;

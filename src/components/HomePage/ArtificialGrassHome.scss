@@ -1,0 +1,38 @@
+@import '~@ergeon/core-components/src/components/variables.scss';
+
+.ArtificialGrassHome {
+  .card {
+    $icon-size: 75px;
+    $icons-count: 3;
+
+    .card__img-additional-icon {
+      position: absolute;
+      bottom: $v-20;
+      left: $h-20;
+      height: $icon-size;
+      width: $icon-size;
+      background: url(../../assets/promo-projects/art-grass-icons-sprite.jpg) no-repeat;
+      background-size: #{$icon-size * $icons-count} #{$icon-size};
+
+      @include phone() {
+        display: none;
+      }
+    }
+
+    &.card-1 .card__img-additional-icon {
+      background-position: #{-1 * $icon-size} 0;
+    }
+
+    &.card-2 .card__img-additional-icon {
+      background-position: #{-1 * $icon-size} 0;
+    }
+
+    &.card-3 .card__img-additional-icon {
+      background-position: #{-2 * $icon-size} 0;
+    }
+
+    &.card-4 .card__img-additional-icon {
+      background-position: 0 0;
+    }
+  }
+}

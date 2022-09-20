@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Customer from '../../assets/customer-linden.jpg';
 import TellUsForm from '../../containers/TellUsForm';
 
 import FenceCalculatorPromo from './components/FenceCalculatorPromo';
@@ -9,6 +10,7 @@ import TestimonialBanner from './components/TestimonialBanner';
 import UpcomingRemoteFeatures from './components/UpcomingRemoteFeatures';
 import CustomerReview from './components/CustomerReview';
 import MainTopBanner from './components/MainTopBanner';
+import {fenceCards} from './components/ProjectsSection/data';
 
 const HomePage = () => {
   return (
@@ -21,8 +23,8 @@ const HomePage = () => {
         <TellUsForm />
       </div>
       <div className="wrapper-1180">
-        <CustomerReview />
-        <ProjectsSection />
+        <CustomerReview image={Customer} title="From the start Ergeon fencing was wonderful to work with!" />
+        <ProjectsSection cards={fenceCards} />
       </div>
       <div className="desktop-length">
         <TellUsForm centerText />

@@ -8,6 +8,13 @@ import {googleIntegration} from '@ergeon/core-components';
 import {mockProps, mockAddress} from '../__mocks__/mockData';
 import SimpleLeadForm from '../SimpleLeadForm';
 
+jest.mock('@ergeon/core-components', () => ({
+  ...jest.requireActual('@ergeon/core-components'),
+  useGooglePlacesAutocomplete: jest.fn(() => ({
+    placeData: mockAddress,
+  })),
+}));
+
 describe('SimpleLeadForm tests', () => {
   beforeAll(() => {
     const {initGoogleLoader, ADDRESS_INPUT_LIBRARIES} = googleIntegration;

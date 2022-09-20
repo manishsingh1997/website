@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Customer from '../../assets/customer-linden.jpg';
 import TellUsForm from '../../containers/TellUsForm';
 
 import FenceCalculatorPromo from './components/FenceCalculatorPromo';
@@ -8,12 +9,18 @@ import GetStartedSection from './components/GetStartedSection';
 import TestimonialBanner from './components/TestimonialBanner';
 import UpcomingRemoteFeatures from './components/UpcomingRemoteFeatures';
 import CustomerReview from './components/CustomerReview';
-import SliderHero from './SliderHero';
+import {fenceCards} from './components/ProjectsSection/data';
+import SliderHero, {Slide} from './SliderHero';
 
 const FencesHomePage = () => {
   return (
     <>
-      <SliderHero />
+      <SliderHero>
+        <Slide
+          name="fence"
+          subtitle="Servicing Northern California, Southern California, Dallas, Fort Worth, Houston, and Atlanta."
+          title="Fence Installation Service" />
+      </SliderHero>
       <div className="wrapper-1180">
         <TestimonialBanner />
       </div>
@@ -21,8 +28,8 @@ const FencesHomePage = () => {
         <TellUsForm />
       </div>
       <div className="wrapper-1180">
-        <CustomerReview />
-        <ProjectsSection />
+        <CustomerReview image={Customer} title="From the start Ergeon fencing was wonderful to work with!" />
+        <ProjectsSection cards={fenceCards} />
         <UpcomingRemoteFeatures />
         <GetStartedSection />
         <FenceCalculatorPromo />

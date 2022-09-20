@@ -1,6 +1,7 @@
 import React, {ChangeEvent, useState, useCallback, useMemo, useRef, useEffect} from 'react';
 
 import classNames from 'classnames';
+import stubTrue from 'lodash/stubTrue';
 import * as Sentry from '@sentry/browser';
 import {CatalogType} from '@ergeon/3d-lib';
 import {Button, FormField, Spinner, Input, useGooglePlacesAutocomplete, utils, Select} from '@ergeon/core-components';
@@ -30,13 +31,21 @@ const EMAIL_REGEX =
 
 const MAX_CHARACTERS_PHONE_EMAIL = 256; // max allowed for email, regex checks will complain for phone
 
-type SimpleLeadFormProps = {
+export enum SimpleLeadFormFieldName {
+  Name = 'name',
+  PhoneEmail = 'phoneEmail',
+  Address = 'raw_address',
+  FenceType = 'type_of_fence',
+};
+
+export type SimpleLeadFormProps = {
   configs: Config[];
   lead: {
     address?: Address;
   };
-  onProductChange: (product: CatalogType) => void;
-  onSubmit: (lead?: Record<string, unknown>) => void;
+  onFieldDisplay?(fieldName: SimpleLeadFormFieldName): boolean;
+  onProductChange(product: CatalogType): void;
+  onSubmit(lead?: Record<string, unknown>): void;
   product: string;
   user: User;
 };
@@ -54,7 +63,7 @@ type SimpleLeadFormProps = {
  * raw_address {string}
  */
 const SimpleLeadForm = (props: SimpleLeadFormProps) => {
-  const {lead, user, onSubmit, product, configs} = props;
+  const {lead, user, onFieldDisplay = stubTrue, onSubmit, product, configs} = props;
   const {address} = lead;
 
   const [loading, setLoading] = useState(false);
@@ -71,13 +80,13 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
   const {control, handleSubmit, setValue, setError, clearErrors} = useForm({
     defaultValues: {
       address: address || {}, // check if we have lead.address already
-      name: user?.full_name || '',
+      [SimpleLeadFormFieldName.Name]: user?.full_name || '',
       phone: user?.phone_number || '',
       email: user?.email || '',
-      phoneEmail: '',
-      type_of_fence: '',
+      [SimpleLeadFormFieldName.PhoneEmail]: '',
+      [SimpleLeadFormFieldName.FenceType]: '',
       product: selectedProduct,
-      raw_address: stringifyAddress(address) || '',
+      [SimpleLeadFormFieldName.Address]: stringifyAddress(address) || '',
       is_subscribed_to_news: true,
     },
   });
@@ -172,7 +181,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
         if (isMinimumValidAddress(placeData)) {
           clearErrors('raw_address');
           setValue('address', placeData); // assign to our address object
-          setValue('raw_address', placeData.formatted_address);
+          setValue('raw_address', placeData.formatted_address as never);
           return;
         }
         triggerAddressError();
@@ -183,114 +192,120 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
 
   return (
     <form className="SimpleForm LeadForm" onSubmit={handleSubmit(submit)}>
-      <FormField>
-        <Controller
-          control={control}
-          defaultValue={user?.full_name ?? ''}
-          name="name"
-          render={({field, fieldState}) => (
-            <Input
-              isDisabled={loading}
-              isValid={isFieldValid(fieldState)}
-              label="Name"
-              name="name"
-              onChange={field.onChange}
-              placeholder="Your name"
-              type="text"
-              validationMessage={fieldState.error?.message}
-              value={field.value}
-            />
-          )}
-          rules={{
-            required: {
-              value: true,
-              message: 'Please enter your name',
-            },
-          }}
-        />
-      </FormField>
-      <FormField>
-        <Controller
-          control={control}
-          defaultValue={user?.full_name ?? ''}
-          name="phoneEmail"
-          render={({field, fieldState}) => (
-            <Input
-              isDisabled={loading}
-              isValid={isFieldValid(fieldState)}
-              label="Phone or email"
-              name="phoneEmail"
-              onChange={(e: ChangeEvent<HTMLInputElement>) => handlePhoneEmailField(e, field.onChange)}
-              placeholder="Your phone or email"
-              type="text"
-              validationMessage={fieldState.error?.message}
-              value={field.value}
-            />
-          )}
-          rules={{
-            required: {
-              value: true,
-              message: 'Please enter your phone or email',
-            },
-            pattern: {
-              value: new RegExp(`${PHONE_REGEX.source}|${EMAIL_REGEX.source}`),
-              message: 'Please enter a valid phone or email',
-            },
-            maxLength: {
-              value: MAX_CHARACTERS_PHONE_EMAIL,
-              message: 'Please enter a valid phone or email',
-            },
-          }}
-        />
-      </FormField>
-      <FormField>
-        <Controller
-          control={control}
-          name="raw_address"
-          render={({field, fieldState}) => (
-            <Input
-              isDisabled={loading}
-              isValid={isFieldValid(fieldState)}
-              label="Address"
-              name="raw_address"
-              onChange={field.onChange}
-              placeholder="Your address or zipcode"
-              ref={googlePlacesInputRef}
-              type="textarea"
-              validationMessage={fieldState.error?.message}
-              value={field.value}
-            />
-          )}
-          rules={{
-            required: {
-              value: true,
-              message: 'Please enter your address',
-            },
-          }}
-        />
-      </FormField>
-
-      <FormField>
-        <Controller
-          control={control}
-          name="type_of_fence"
-          render={({field}) => (
-            <Select
-              isDisabled={loading}
-              name="type_of_fence"
-              onChange={field.onChange}
-              options={[
-                {value: 'wood-fence', label: 'Wood Fence'},
-                {value: 'chain-link-fence', label: 'Chain Link Fence'},
-                {value: 'vinyl-fence', label: 'Vinyl Fence'},
-                {value: 'box-wire-fence', label: 'Box Wire Fence'},
-              ]}
-              placeholder="Type of fence"
-            />
-          )}
-        />
-      </FormField>
-
+      {onFieldDisplay(SimpleLeadFormFieldName.Name) &&
+        <FormField>
+          <Controller
+            control={control}
+            defaultValue={user?.full_name ?? ''}
+            name={SimpleLeadFormFieldName.Name}
+            render={({field, fieldState}) => (
+              <Input
+                isDisabled={loading}
+                isValid={isFieldValid(fieldState)}
+                label="Name"
+                name={SimpleLeadFormFieldName.Name}
+                onChange={field.onChange}
+                placeholder="Your name"
+                type="text"
+                validationMessage={fieldState.error?.message}
+                value={field.value}
+              />
+            )}
+            rules={{
+              required: {
+                value: true,
+                message: 'Please enter your name',
+              },
+            }}
+          />
+        </FormField>
+      }
+      {onFieldDisplay(SimpleLeadFormFieldName.PhoneEmail) &&
+        <FormField>
+          <Controller
+            control={control}
+            defaultValue={user?.full_name ?? ''}
+            name={SimpleLeadFormFieldName.PhoneEmail}
+            render={({field, fieldState}) => (
+              <Input
+                isDisabled={loading}
+                isValid={isFieldValid(fieldState)}
+                label="Phone or email"
+                name={SimpleLeadFormFieldName.PhoneEmail}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => handlePhoneEmailField(e, field.onChange)}
+                placeholder="Your phone or email"
+                type="text"
+                validationMessage={fieldState.error?.message}
+                value={field.value}
+              />
+            )}
+            rules={{
+              required: {
+                value: true,
+                message: 'Please enter your phone or email',
+              },
+              pattern: {
+                value: new RegExp(`${PHONE_REGEX.source}|${EMAIL_REGEX.source}`),
+                message: 'Please enter a valid phone or email',
+              },
+              maxLength: {
+                value: MAX_CHARACTERS_PHONE_EMAIL,
+                message: 'Please enter a valid phone or email',
+              },
+            }}
+          />
+        </FormField>
+      }
+      {onFieldDisplay(SimpleLeadFormFieldName.Address) &&
+        <FormField>
+          <Controller
+            control={control}
+            name={SimpleLeadFormFieldName.Address}
+            render={({field, fieldState}) => (
+              <Input
+                isDisabled={loading}
+                isValid={isFieldValid(fieldState)}
+                label="Address"
+                name={SimpleLeadFormFieldName.Address}
+                onChange={field.onChange}
+                placeholder="Your address or zipcode"
+                ref={googlePlacesInputRef}
+                type="textarea"
+                validationMessage={fieldState.error?.message}
+                value={field.value}
+              />
+            )}
+            rules={{
+              required: {
+                value: true,
+                message: 'Please enter your address',
+              },
+            }}
+          />
+        </FormField>
+      }
+      {onFieldDisplay(SimpleLeadFormFieldName.FenceType) &&
+        <FormField>
+          <Controller
+            control={control}
+            name={SimpleLeadFormFieldName.FenceType}
+            render={({field}) => (
+              <Select
+                isDisabled={loading}
+                name={SimpleLeadFormFieldName.FenceType}
+                onChange={field.onChange}
+                options={[
+                  {value: 'wood-fence', label: 'Wood Fence'},
+                  {value: 'chain-link-fence', label: 'Chain Link Fence'},
+                  {value: 'vinyl-fence', label: 'Vinyl Fence'},
+                  {value: 'box-wire-fence', label: 'Box Wire Fence'},
+                ]}
+                placeholder="Type of fence"
+              />
+            )}
+          />
+        </FormField>
+      }
       <div className="SimpleForm-actions">
         <Button
           className={classNames('AddressButton', 'spacing after__is-24', {'is-loading': loading})}

@@ -1,8 +1,11 @@
 @import '~@ergeon/core-components/src/components/variables.scss';
 
+$max-width: 500px;
 $select-arrow-margin-top: -2px;
 
 .SimpleForm {
+  max-width: $max-width;
+  margin: auto;
   margin-block-end: unset;
   button {
     width: unset;

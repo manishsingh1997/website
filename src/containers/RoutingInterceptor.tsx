@@ -7,7 +7,7 @@ import isUndefined from 'lodash/isUndefined';
 import AppLoader from '../components/common/AppLoader';
 import { City } from '../components/AppCityPage/types';
 import { CitiesJSONData } from '../components/HomePage/components/CitySearch/consts';
-import { getCityPath, getExistingCitySlug } from '../components/HomePage/components/CitySearch/utils';
+import { getCityPath, getExistingCitySlug, SupportedState } from '../components/HomePage/components/CitySearch/utils';
 
 import { useLocationSearchOmit } from './utils';
 
@@ -46,7 +46,7 @@ export const GeoTargetRoutingInterceptor = ({ children }: RoutingInterceptorProp
     try {
       const citySlug = getExistingCitySlug(
         geoTargetCity?.city,
-        geoTargetCity?.state as GeoTargetCity['state'],
+        geoTargetCity?.state as SupportedState,
         CitiesJSONData,
       );
       if (!citySlug) return;

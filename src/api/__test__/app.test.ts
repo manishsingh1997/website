@@ -1,8 +1,29 @@
 import '@testing-library/jest-dom';
 
-import {addCustomerHouse, editCustomerHouse, getCustomerHouses, getCustomerQuotes, removeCustomerHouse} from '../app';
+import {
+  addCustomerHouse,
+  editCustomerHouse,
+  getCustomerContacts,
+  getCustomerHouses,
+  getCustomerQuotes,
+  getQuoteDetails,
+  removeCustomerHouse,
+  getCustomerOrders,
+  getCustomerOrderDetails,
+  getCustomerAppointments,
+  reviewQuote,
+  reviewQuoteApproval,
+  approveQuoteApproval,
+  updateCustomerSignOffRequirement,
+  updateCustomerContacts,
+} from '../app';
 import * as utils from '../utils';
 import quoteMock from '../../components/AppQuoteListPage/__mock__/quoteList';
+import { mockFirstOrderId, mockOrders } from '../../components/AppOrderDetailPage/__mocks__/mockOrders';
+import {
+  mockPastAppointment,
+  mockUpcomingAppointmentId,
+} from '../../components/AppAppointmentsListPage/__mocks__/mockAppointments';
 
 jest.mock('axios');
 
@@ -124,5 +145,168 @@ describe('api utils', () => {
     });
 
     expect(await getCustomerQuotes(customerGIDMock)).toEqual(response);
+  });
+
+  it('should get Quote Details when called', async () => {
+    const quoteSecret = quoteMock[0].secret;
+    const response = {
+      data: quoteMock[0].secret,
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    jest.spyOn(utils, 'request').mockImplementation((): any => () => {
+      return response;
+    });
+
+    expect(await getQuoteDetails(customerGIDMock, quoteSecret)).toEqual(response);
+  });
+
+  it('should get Customer Contact when called', async () => {
+    const contact = {
+      id: 0,
+      full_name: 'Alberto Cook',
+      primary_email: 'alberto.cook@test.com',
+      primary_phone: '920-360-0653',
+      is_primary: true,
+    };
+    const response = {
+      data: contact,
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    jest.spyOn(utils, 'request').mockImplementation((): any => () => {
+      return response;
+    });
+
+    expect(await getCustomerContacts(customerGIDMock)).toEqual(response);
+  });
+
+  it('should get Customer Orders when called', async () => {
+    const response = {
+      data: mockOrders,
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    jest.spyOn(utils, 'request').mockImplementation((): any => () => {
+      return response;
+    });
+
+    expect(await getCustomerOrders(customerGIDMock)).toEqual(response);
+  });
+
+  it('should get Customer Order details when called', async () => {
+    const response = {
+      data: mockOrders[mockFirstOrderId],
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    jest.spyOn(utils, 'request').mockImplementation((): any => () => {
+      return response;
+    });
+
+    expect(await getCustomerOrderDetails(customerGIDMock, mockFirstOrderId)).toEqual(response);
+  });
+
+  it('should get Customer Appointments when called', async () => {
+    const response = {
+      data: [mockPastAppointment, mockUpcomingAppointmentId],
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    jest.spyOn(utils, 'request').mockImplementation((): any => () => {
+      return response;
+    });
+
+    expect(await getCustomerAppointments(customerGIDMock)).toEqual(response);
+  });
+
+  it('should Review quote when reviewQuote is called', async () => {
+    const quoteSecret = quoteMock[0].secret;
+    const response = {
+      data: null,
+      status: 200,
+      statusText: 'OK',
+      headers: '',
+      config: {},
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    jest.spyOn(utils, 'request').mockImplementation((): any => () => {
+      return response;
+    });
+
+    expect(await reviewQuote(customerGIDMock, quoteSecret)).toEqual(response);
+  });
+
+  it('should Review quote when reviewQuoteApproval is called', async () => {
+    const quoteSecret = quoteMock[0].secret;
+    const response = {
+      data: '',
+      status: 200,
+      statusText: 'OK',
+      headers: '',
+      config: {},
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    jest.spyOn(utils, 'request').mockImplementation((): any => () => {
+      return response;
+    });
+
+    expect(await reviewQuoteApproval(customerGIDMock, quoteSecret)).toEqual(response);
+  });
+
+  it('should approve quote when approveQuoteApproval is called', async () => {
+    const quoteSecret = quoteMock[0].secret;
+    const response = {
+      data: '',
+      status: 200,
+      statusText: 'OK',
+      headers: '',
+      config: {},
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    jest.spyOn(utils, 'request').mockImplementation((): any => () => {
+      return response;
+    });
+
+    expect(await approveQuoteApproval(customerGIDMock, quoteSecret)).toEqual(response);
+  });
+
+  it('should Update Customer Signoff requirement when updateCustomerSignOffRequirement is called', async () => {
+    const quoteSecret = quoteMock[0].secret;
+    const response = {
+      data: {
+        signoff_img: '',
+        signoff_by: '1',
+        signoff_at: new Date().toDateString(),
+        signoff_pdf: '',
+      },
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    jest.spyOn(utils, 'request').mockImplementation((): any => () => {
+      return response;
+    });
+
+    expect(await updateCustomerSignOffRequirement(customerGIDMock, quoteSecret)).toEqual(response);
+  });
+
+  it('should update Customer Contacts when updateCustomerContacts is called', async () => {
+    const response = {
+      data: '',
+      status: 200,
+      statusText: 'OK',
+      headers: '',
+      config: {},
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    jest.spyOn(utils, 'request').mockImplementation((): any => () => {
+      return response;
+    });
+
+    expect(await updateCustomerContacts(customerGIDMock, {})).toEqual(response);
   });
 });
