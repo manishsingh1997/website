@@ -6,6 +6,7 @@ import {ReactSVG} from 'react-svg';
 import moment from 'moment';
 import IconError from '@ergeon/core-components/src/assets/icon-error.svg';
 import IconSuccess from '@ergeon/core-components/src/assets/icon-success.svg';
+import noPreviewFallback from '@ergeon/core-components/src/assets/no-preview-fallback.svg';
 
 import {formatPrice} from '../../utils/app-order';
 import CustomerGIDContext from '../../context-providers/CustomerGIDContext';
@@ -41,7 +42,11 @@ const QuoteCard = (props: QuoteCardProps) => {
   return (
     <Link to={linkTo}>
       <div className={wrapperClassName}>
-        <img alt={title} className="card-img" height={170} loading="lazy" src={previewUrl} width={200} />
+        {previewUrl ? (
+          <img alt={title} className="card-img" height={170} loading="lazy" src={previewUrl} width={200} />
+        ) : (
+          <ReactSVG className="card-img-fallback" src={noPreviewFallback} />
+        )}
         <h1 className="card-id h6"> {`#${quoteId}`}</h1>
         <h1 className="card-title h6">{title}</h1>
         <span className="card-price">{formatPrice(totalPrice)}</span>

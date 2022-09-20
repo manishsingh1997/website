@@ -6,7 +6,6 @@ import appointmentsIcon from '@ergeon/core-components/src/assets/icon-appointmen
 import preferencesIcon from '@ergeon/core-components/src/assets/icon-preference.svg';
 
 import {UNSUBSCRIBE_CODE_QUERY_NAME} from '../utils/app-notifications';
-import {showUpcomingFeatures} from '../utils/utils';
 
 export const getMenuItems = (basePath: string, unsubscribeCode: string | null) => {
   const notificationsSearchQuery = unsubscribeCode ? `?${UNSUBSCRIBE_CODE_QUERY_NAME}=${unsubscribeCode}` : '';
@@ -21,7 +20,7 @@ export const getMenuItems = (basePath: string, unsubscribeCode: string | null) =
       title: 'Quotes',
       iconSVG: quoteIcon,
       className: 'quotes-item',
-      active: showUpcomingFeatures('ENG-17268'),
+      active: true,
     },
     {
       path: `${basePath}/orders`,
@@ -73,7 +72,7 @@ export const getMyProjectsMenuItems = (basePath: string) => {
       title: 'Quotes',
       iconSVG: quoteIcon,
       className: 'quotes-item',
-      active: showUpcomingFeatures('ENG-17268'),
+      active: true,
     },
     {
       path: `${basePath}/orders`,

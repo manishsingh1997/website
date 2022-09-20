@@ -13,7 +13,8 @@
   overflow: hidden;
   cursor: pointer;
 
-  .card-img {
+  .card-img,
+  .card-img-fallback {
     grid-area: img;
   }
 
@@ -91,6 +92,15 @@
       width: 100%;
     }
 
+    .card-img-fallback {
+      background: $gray-5;
+      height: $v-124 + $v-24 - 2;
+      width: calc(100% - #{$v-24});
+      margin: $v-12 auto;
+      display: grid;
+      place-content: center;
+    }
+
     .card-title {
       -webkit-line-clamp: 2;
       height: $h-40;
@@ -155,7 +165,8 @@
       }
     }
 
-    .card-img {
+    .card-img,
+    .card-img-fallback {
       display: none;
     }
 
