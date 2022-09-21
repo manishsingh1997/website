@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState, useCallback, useMemo, useRef, useEffect} from 'react';
+import React, {ChangeEvent, useState, useCallback, useRef, useEffect} from 'react';
 
 import classNames from 'classnames';
 import stubTrue from 'lodash/stubTrue';
@@ -70,13 +70,6 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
   const googlePlacesInputRef = useRef<HTMLInputElement>(null);
   const {placeData} = useGooglePlacesAutocomplete(googlePlacesInputRef);
 
-  const selectedProduct = useMemo(() => {
-    return {
-      label: 'Fences & Gates',
-      value: FENCE_SLUG,
-    };
-  }, []);
-
   const {control, handleSubmit, setValue, setError, clearErrors} = useForm({
     defaultValues: {
       address: address || {}, // check if we have lead.address already
@@ -85,7 +78,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
       email: user?.email || '',
       [SimpleLeadFormFieldName.PhoneEmail]: '',
       [SimpleLeadFormFieldName.FenceType]: '',
-      product: selectedProduct,
+      product,
       [SimpleLeadFormFieldName.Address]: stringifyAddress(address) || '',
       is_subscribed_to_news: true,
     },
@@ -110,7 +103,7 @@ const SimpleLeadForm = (props: SimpleLeadFormProps) => {
       const newData = {
         ...fieldsData,
         type_of_fence: fieldsData.type_of_fence.value,
-        product: fieldsData.product.value,
+        product,
         phone: utils.formatPhoneNumber(fieldsData.phone) || '',
       };
       delete newData.phoneEmail; // remove as we have phone/email fields
