@@ -15,7 +15,8 @@ const CitySearch = () => {
   const [error, setError] = useState<string | null>();
 
   const goToCityPage = useCallback((citySlug: string) => {
-    history.push(getCityPath(citySlug));
+    const path = `${getCityPath(citySlug)}/`
+    history.push(path);
   }, [history]);
 
   const goToFencesPage = useCallback(() => {
