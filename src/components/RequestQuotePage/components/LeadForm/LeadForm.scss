@@ -82,6 +82,25 @@
   button {
     width: 100%;
   }
+  .product-radio-list {
+    display: flex;
+    border-bottom: 1px solid $gray-4;
+    padding-bottom: $v-12;
+    flex-wrap: wrap;
+    @include tablet() {
+      padding-bottom: $v-12;
+    }
+    .radio-button {
+      font-size: $font-mobile-size;
+      line-height: $line-height-mobile;
+      &:first-child {
+        margin-right: $h-20;
+        @include phone() {
+          margin-right: $h-10;
+        }
+      }
+    }
+  }
   .Form-action-links {
     margin-top: $v-24;
     .action-link {

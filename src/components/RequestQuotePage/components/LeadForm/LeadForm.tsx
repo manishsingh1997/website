@@ -3,7 +3,8 @@ import React, {useCallback, useMemo, useState} from 'react';
 import classNames from 'classnames';
 import * as Sentry from '@sentry/browser';
 import {constants, calcUtils, CatalogType} from '@ergeon/3d-lib';
-import {Button, Checkbox, FormField, PhoneInput, Spinner, Input} from '@ergeon/core-components';
+import {RadioGroup} from 'react-radio-group';
+import {Button, Checkbox, FormField, PhoneInput, Spinner, Input, RadioButton} from '@ergeon/core-components';
 import {UPCOMING_FEATURES_PARAM} from '@ergeon/erg-utils-js';
 // @ts-ignore
 import {getBaseEventData} from '@ergeon/erg-utms';
@@ -13,7 +14,7 @@ import {FENCE_SLUG} from '@ergeon/core-components/src/constants';
 import {submitLeadArrived} from '../../../../api/lead';
 import {identify, track, trackError, trackTawkLeadEvent} from '../../../../utils/analytics';
 import {CUSTOMER_LEAD_CREATED} from '../../../../utils/events';
-import {DEFAULT_SOURCE_VALUE, LEAD_FULL_NAME_MAX_LENGTH} from '../../../../website/constants';
+import {DEFAULT_SOURCE_VALUE, GRASS_PRODUCT, LEAD_FULL_NAME_MAX_LENGTH} from '../../../../website/constants';
 import {parseError, showUpcomingFeatures, getAdvancedEditorUrl} from '../../../../utils/utils';
 import AddNote from '../AddNote';
 import {Address} from '../../types';
@@ -136,6 +137,10 @@ const LeadForm = (props: LeadFormProps) => {
     [formData, validateOnChange, product, lead]
   );
 
+  const handleProductChange = (value: string) => {
+    handleFieldChange({} as React.FormEvent<HTMLInputElement>, 'product', value);
+  }
+
   const handleCheckChange = useCallback(
     (value: boolean) => {
       setFormData(prevState => ({...prevState, is_subscribed_to_news: value}));
@@ -180,6 +185,19 @@ const LeadForm = (props: LeadFormProps) => {
   return (
     <form className="Form LeadForm" data-testid="lead-form" onSubmit={handleSubmit}>
       {mobileAddressField && mobileAddressField}
+      <label className="label">Ergeon service:</label>
+      <FormField>
+        <RadioGroup
+          name="ergeon-service"
+          onChange={handleProductChange}
+          selectedValue={product}
+        >
+          <ul className="product-radio-list no-padding">
+            <RadioButton value={FENCE_SLUG}>Fences Installation</RadioButton>
+            <RadioButton value={GRASS_PRODUCT}>Artificial Grass</RadioButton>
+          </ul>
+        </RadioGroup>
+      </FormField>
       <FormField>
         <Input
           isDisabled={isLoading}
