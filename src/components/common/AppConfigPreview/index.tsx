@@ -7,7 +7,7 @@ import notCadSupportPreviewIcon from '@ergeon/core-components/src/assets/no-cad-
 import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {Spinner} from '@ergeon/core-components';
 
-import {isPDFMode} from '../../../utils/utils';
+import {isPDFMode, showUpcomingFeatures} from '../../../utils/utils';
 
 import {getPreviewImage, isPlaceholderImage} from './utils';
 import PreviewPDF from './PreviewPDF';
@@ -52,7 +52,7 @@ const AppConfigPreview = ({
     if (useNoPreviewIcon) {
       setPreviewImage(noPreviewIcon);
       return;
-    } else if (!cadSupport) {
+    } else if (showUpcomingFeatures('ENG-18304') && !cadSupport) {
       setPreviewImage(notCadSupportPreviewIcon);
       return;
     } else if (!schemaCodeUrl) {
