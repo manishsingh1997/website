@@ -5,7 +5,7 @@ import find from 'lodash/find';
 import {PhotoGalleryProps} from '.';
 
 import NotFoundPage from '../NotFoundPage';
-import {FencePhotoData, GatePhotoData} from '../../data/photo-gallery';
+import {FencePhotoData, GatePhotoData, GrassPhotoData} from '../../data/photo-gallery';
 
 import GalleryPartners, {Partners} from './GalleryPartners';
 import GalleryPhotos from './GalleryPhotos';
@@ -19,6 +19,7 @@ import GalleryModal from './GalleryModal';
 const PRODUCTS = {
   FENCE: 'fence',
   GATE: 'gate',
+  GRASS: 'artificial-grass',
 };
 
 export type Photo = {
@@ -51,6 +52,7 @@ const GalleryContent = ({match, history}: PhotoGalleryProps) => {
     const productGalleryNames = {
       [PRODUCTS.FENCE]: 'Fence Photos',
       [PRODUCTS.GATE]: 'Gate Photos',
+      [PRODUCTS.GRASS]: 'Application Photos',
     };
 
     return productGalleryNames[productSlug];
@@ -60,6 +62,7 @@ const GalleryContent = ({match, history}: PhotoGalleryProps) => {
     const dataByProduct = {
       [PRODUCTS.FENCE]: FencePhotoData,
       [PRODUCTS.GATE]: GatePhotoData,
+      [PRODUCTS.GRASS]: GrassPhotoData,
     };
     return dataByProduct[productSlug] || dataByProduct[PRODUCTS.FENCE];
   }, [productSlug]);

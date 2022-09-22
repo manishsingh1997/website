@@ -14,9 +14,11 @@ const GalleryPreview = () => (
     <div className="header-border spacing after__is-24"></div>
     <div className="wrapper-1180">
       <div className="cards two-columns">
-        {[GALLERY_BANNERS.FENCE_BANNER, GALLERY_BANNERS.GATE_BANNER].map((banner, index) => (
-          <GalleryBanner key={index} {...banner} />
-        ))}
+        {[GALLERY_BANNERS.GRASS_BANNER, GALLERY_BANNERS.FENCE_BANNER, GALLERY_BANNERS.GATE_BANNER].map(
+          (banner, index) => (
+            <GalleryBanner key={index} {...banner} />
+          )
+        )}
       </div>
     </div>
   </div>

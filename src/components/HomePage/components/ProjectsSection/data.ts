@@ -49,21 +49,21 @@ export const artificialGrassCards = [
   {
     title: 'Landscape Package',
     image: require('assets/promo-projects/art-grass-promo-1.jpg'),
-    // link: '/gallery/artificial-grass'
+    link: '/gallery/artificial-grass/landscaping'
   },
   {
     title: 'Kidscape Package',
     image: require('assets/promo-projects/art-grass-promo-2.jpg'),
-    // link: '/gallery/artificial-grass'
+    link: '/gallery/artificial-grass/kidscape'
   },
   {
     title: 'Petscape Package',
     image: require('assets/promo-projects/art-grass-promo-3.jpg'),
-    // link: '/gallery/artificial-grass'
+    link: '/gallery/artificial-grass/petscape'
   },
   {
     title: 'Putting Green Package',
     image: require('assets/promo-projects/art-grass-promo-4.jpg'),
-    // link: '/gallery/artificial-grass'
+    link: '/gallery/artificial-grass/putting-green'
   },
 ];

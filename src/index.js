@@ -13,7 +13,7 @@ import {googleIntegration, UpcomingFeaturesHandler} from '@ergeon/core-component
 import {DRAW_MAP_GOOGLE_LIBRARIES} from '@ergeon/draw-map';
 import {ERG_MAP_COMPONENT_LIBRARIES} from '@ergeon/map-component';
 
-import {FencePhotoData, GatePhotoData} from 'data/photo-gallery';
+import {FencePhotoData, GatePhotoData, GrassPhotoData} from 'data/photo-gallery';
 import customScripts from 'website/custom-scripts';
 import ErrorBoundary from 'components/ErrorBoundary';
 import Layout from 'containers/Layout';
@@ -76,6 +76,7 @@ const App = () => (
                 <Switch>
                   {FencePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'fence'))}
                   {GatePhotoData.map(renderPhotoGalleryRedirect.bind(this, 'gate'))}
+                  {GrassPhotoData.map(renderPhotoGalleryRedirect.bind(this, 'artifical-grass'))}
                   {publicRoutes.map((props) => (
                     <Route key={props.path} {...omit(props, 'sitemap')} />
                   ))}
@@ -88,7 +89,8 @@ const App = () => (
                     <Redirect
                       from={route.from}
                       key={route.from}
-                      to={{pathname: route.to, search: window.location.search}} />
+                      to={{pathname: route.to, search: window.location.search}}
+                    />
                   ))}
                   <Route component={CustomerApp} path="/app/:customerGid" />
                   <Route component={Cities} path={CITIES_PAGE_PATH} />
@@ -106,15 +108,7 @@ const App = () => (
 );
 
 if (document.querySelector('#root > *')) {
-  hydrate(
-    <App />,
-    document.getElementById('root'),
-    customScripts()
-  );
+  hydrate(<App />, document.getElementById('root'), customScripts());
 } else {
-  render(
-    <App />,
-    document.getElementById('root'),
-    customScripts()
-  );
+  render(<App />, document.getElementById('root'), customScripts());
 }

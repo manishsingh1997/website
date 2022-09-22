@@ -689,52 +689,60 @@ export const FencePhotoData = [
       {
         caption: 'Nail Up with Single Trim Board on Board with Western Red Cedar Picket',
         url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/165889_02.jpeg',
-        slug: slugify('Nail Up with Single Trim Board on Board with Western Red Cedar Picket')
+        slug: slugify('Nail Up with Single Trim Board on Board with Western Red Cedar Picket'),
       },
       {
-        caption: 'Nail Up Dog Ear Side by Side with Cedar Pickets and Pressure Treated Pine Posts with Alternating Panels',
+        caption:
+          'Nail Up Dog Ear Side by Side with Cedar Pickets and Pressure Treated Pine Posts with Alternating Panels',
         url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/186619_01.jpeg',
-        slug: slugify('Nail Up Dog Ear Side by Side with Cedar Pickets and Pressure Treated Pine Posts with Alternating Panels')
+        slug: slugify(
+          'Nail Up Dog Ear Side by Side with Cedar Pickets and Pressure Treated Pine Posts with Alternating Panels'
+        ),
       },
       {
-        caption: 'Nail Up Dog Ear Side by Side with Western Red Cedar Pickets and Pressure Treated Pine Posts with Alternating Panels',
+        caption:
+          'Nail Up Dog Ear Side by Side with Western Red Cedar Pickets and Pressure Treated Pine Posts with Alternating Panels',
         url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/190063_03.jpeg',
-        slug: slugify('Nail Up Dog Ear Side by Side with Western Red Cedar Pickets and Pressure Treated Pine Posts with Alternating Panels')
+        slug: slugify(
+          'Nail Up Dog Ear Side by Side with Western Red Cedar Pickets and Pressure Treated Pine Posts with Alternating Panels'
+        ),
       },
       {
         caption: 'Nail Up Dog Ear Board on Board with Cedar Pickets and Round Steel Posts',
         url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/187041_NailUp02.jpeg',
-        slug: slugify('Nail Up Dog Ear Board on Board with Cedar Pickets and Round Steel Posts')
+        slug: slugify('Nail Up Dog Ear Board on Board with Cedar Pickets and Round Steel Posts'),
       },
       {
         caption: 'Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts',
         url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/184026_02.jpg',
-        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts')
+        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts'),
       },
       {
         caption: 'Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts',
         url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/156713_03.jpg',
-        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts 2')
+        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts 2'),
       },
       {
         caption: 'Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Posts with Alternating Panels',
         url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/192242_03.jpg',
-        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Posts with Alternating Panels')
+        slug: slugify(
+          'Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Posts with Alternating Panels'
+        ),
       },
       {
         caption: 'Cap and Rail Flat Top Side by Side with Pressure Treated Pine Pickets and Posts',
         url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/197396_CapAndRail04.jpg',
-        slug: slugify('Cap and Rail Flat Top Side by Side with Pressure Treated Pine Pickets and Posts')
-      },      
+        slug: slugify('Cap and Rail Flat Top Side by Side with Pressure Treated Pine Pickets and Posts'),
+      },
       {
         caption: 'Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Posts',
         url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/194844_NailUp03.jpg',
-        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Posts')
-      },  
+        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Posts'),
+      },
       {
         caption: 'Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts',
         url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/fence/189300_NailUp02.jpeg',
-        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts')
+        slug: slugify('Nail Up Dog Ear Side by Side with Pressure Treated Pine Pickets and Round Steel Posts'),
       },
       {
         caption: 'Redwood Con Heart Nail Up Flat Top Side by Side ',
@@ -1261,6 +1269,62 @@ export const GatePhotoData = [
         caption: 'Sliding Gate Chain Link',
         url: 'https://ergeon-photo-gallery.s3-us-west-1.amazonaws.com/gate/6+(15).jpeg',
         slug: slugify('Sliding Gate Chain Link 2'),
+      },
+    ],
+  },
+];
+
+export const GrassPhotoData = [
+  {
+    categoryName: 'Landscaping',
+    categorySlug: slugify('Landscaping'),
+    categoryPhotos: [
+      {
+        caption: 'Landscaping 1',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/artificial-grass/IMG_3686.webp',
+        slug: slugify('Landscaping 1'),
+      },
+      {
+        caption: 'Landscaping 2',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/artificial-grass/IMG_6620.webp',
+        slug: slugify('Landscaping 2'),
+      },
+      {
+        caption: 'Landscaping 3',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/artificial-grass/IMG_6641.webp',
+        slug: slugify('Landscaping 3'),
+      },
+      {
+        caption: 'Landscaping 4',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/artificial-grass/Omar+2+After+(No+Before+Avail).webp',
+        slug: slugify('Landscaping 4'),
+      },
+      {
+        caption: 'Landscaping 5',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/artificial-grass/Home+1+After.webp',
+        slug: slugify('Landscaping 5'),
+      },
+    ],
+  },
+  {
+    categoryName: 'Kidscape',
+    categorySlug: slugify('Kidscape'),
+    categoryPhotos: [
+      {
+        caption: 'Kidscape',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/artificial-grass/IMG_3055.webp',
+        slug: slugify('Kidscape'),
+      },
+    ],
+  },
+  {
+    categoryName: 'Petscape',
+    categorySlug: slugify('Petscape'),
+    categoryPhotos: [
+      {
+        caption: 'Petscape',
+        url: 'https://ergeon-photo-gallery.s3.us-west-1.amazonaws.com/artificial-grass/Turf+installation+-++Ergeon+-+Redwood+City+California+-+2.webp',
+        slug: slugify('Petscape'),
       },
     ],
   },
