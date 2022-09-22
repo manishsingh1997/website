@@ -600,7 +600,7 @@ exports[`AppCityPage should render 1`] = `
             class="CityReviews-imgContainer"
           >
             <img
-              alt="We had a very positive experience with Ergeon."
+              alt="We had a very positive experience with Ergeon. Highly recommend them!"
               data-optimized="true"
               height="100%"
               loading="eager"
@@ -612,7 +612,7 @@ exports[`AppCityPage should render 1`] = `
             <p
               class="h5"
             >
-              We had a very positive experience with Ergeon.
+              We had a very positive experience with Ergeon. Highly recommend them!
             </p>
             <p
               class="CityReviews-description"
@@ -652,7 +652,7 @@ exports[`AppCityPage should render 1`] = `
             class="CityReviews-imgContainer"
           >
             <img
-              alt="The fence was completed without a hitch, including cleaning of the work site and removal of all debris as promised."
+              alt="The fence was completed without a hitch!"
               data-optimized="true"
               height="100%"
               loading="eager"
@@ -664,7 +664,7 @@ exports[`AppCityPage should render 1`] = `
             <p
               class="h5"
             >
-              The fence was completed without a hitch, including cleaning of the work site and removal of all debris as promised.
+              The fence was completed without a hitch!
             </p>
             <p
               class="CityReviews-description"
