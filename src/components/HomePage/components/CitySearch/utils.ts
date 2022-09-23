@@ -20,6 +20,12 @@ export const getExistingCitySlug = (
   state: SupportedState,
   citiesData: CitiesJSONData | null,
 ) => {
+  // License in DC is not yet verified,
+  // So we need to hide the page(ENG-18124)
+  if ((state as never) === 'DC') {
+    throw new Error('Cannot find city for state: DC');
+  }
+
   const cityPage = citiesData?.cities.find(c => c.city === city && c.state === state);
   if (cityPage) {
     return cityPage.slug;

@@ -1,8 +1,8 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useCallback, useEffect, useMemo} from 'react';
 
 import {ThunkActionDispatch} from 'redux-thunk';
 
-import {useLocation} from 'react-router';
+import {useLocation, useHistory} from 'react-router';
 import {connect} from 'react-redux';
 
 import AppLoader from '../components/common/AppLoader';
@@ -26,12 +26,18 @@ type CityPageStateProps = {
 };
 
 const AppCityPageContainer = (props: AppCityPageContainerProps) => {
+  const history = useHistory();
   const location = useLocation();
   const citySlug = useMemo(() => location.pathname.match(/([^\/]+)\/?$/i)?.[1], [location.pathname]);
 
   const {city, error, isLoading, getCity, resetCity} = props;
 
   useEffect(function loadCity() {
+    // License in DC is not yet verified,
+    // So we need to hide the page(ENG-18124)
+    if (location.pathname?.includes('washington')) {
+      return goToFencesPage()
+    }
     if (citySlug) {
       getCity(citySlug);
     }
@@ -40,6 +46,10 @@ const AppCityPageContainer = (props: AppCityPageContainerProps) => {
   useEffect(function onUnload() {
     return () => resetCity();
   }, []);
+
+  const goToFencesPage = useCallback(() => {
+    history.push('/fences');
+  }, [history]);
 
   if (error) {
     throw new Error(`Failed to import non-existing "data/city/${citySlug}.json"`);
