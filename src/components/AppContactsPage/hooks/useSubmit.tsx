@@ -56,7 +56,7 @@ const useSubmit = (props: UseSubmitProps) => {
     } finally {
       setLoading(false);
     }
-  }, [additionalContacts]);
+  }, [additionalContacts, initialContact, updateContacts, updateUser, updateEdit, onError]);
 
   useEffect( function watchEdit(){
       if (editing) {
