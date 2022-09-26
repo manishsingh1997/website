@@ -5,7 +5,8 @@
 $img-wrapper-min-width: 512px;
 
 .popup--container {
-  
+  overflow-y: auto;
+
   .popup__cross-icon {
     right: unset;
     top: unset;
@@ -17,27 +18,30 @@ $img-wrapper-min-width: 512px;
 
   .popup__img-wrapper img {
     min-width: $img-wrapper-min-width;
+    @include phone {
+      min-width: unset;
+      width: 90%;
+    }
   }
 
 }
 
 .BuildSpecs-popup {
   $icon-container-size: $v-48;
-
-  &.popup--container {
-    // Tawk chat icon has inline styles `z-index: 2000000000 !important`
-    $tawk-z-index: 2000000000;
-
-    align-items: flex-start;
-    justify-content: center;
-    z-index: $tawk-z-index + 1;
-    margin: 0 auto;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
   }
 
   .popup--wrapper {
     width: 100%;
     max-width: $screen-sm;
     padding-bottom: 0;
+
+    @include phone {
+      width: 100%;
+    }
   }
 
   .popup--content {
@@ -63,6 +67,7 @@ $img-wrapper-min-width: 512px;
     .popup--content {
       padding-top: $v-48; // top panel height
       padding-bottom: 0;
+      width: 100%;
     }
 
     .popup--cross-icon {
@@ -74,8 +79,9 @@ $img-wrapper-min-width: 512px;
     }
   }
 
-  .BuildSpecs-card {
+  .BuildSpecs-card.padding-60.soft-border {
     background-color: $white;
+    width: 100%;
 
     @include phone() {
       min-height: 100vh;
@@ -88,7 +94,7 @@ $img-wrapper-min-width: 512px;
 
   .BuildSpecs-table {
     @include phone() {
-      padding-bottom: $v-24;
+      padding: 0 $v-20 $v-24 $v-20;
     }
   }
 
@@ -132,8 +138,12 @@ $img-wrapper-min-width: 512px;
     width: $icon-container-size;
     height: $icon-container-size;
 
-    > img {
+    svg {
       height: $font-mobile-size;
+
+      path {
+        fill: $gray-1;
+      }
     }
   }
 }

@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 
 import {useHistory, useLocation, useParams} from 'react-router';
+import { ReactSVG } from 'react-svg';
 import {connect} from 'react-redux';
 import {PopUp, SpecificationTable, TopPanelMobile} from '@ergeon/core-components';
 import IconArrowLeft from '@ergeon/core-components/src/assets/icon-arrow-left.svg';
@@ -109,7 +110,7 @@ const BuildSpecsPopup = () => {
       <TopPanelMobile className="BuildSpecs-topPanel">
         <TopPanelMobile.Left>
           <button className="BuildSpecs-backBtn" onClick={onHide}>
-            <img src={IconArrowLeft} />
+            <ReactSVG src={IconArrowLeft}/>
           </button>
         </TopPanelMobile.Left>
         <TopPanelMobile.Center>
