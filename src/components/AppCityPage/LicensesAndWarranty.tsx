@@ -44,7 +44,8 @@ const LicensesAndWarranty = (props: LicensesAndWarrantyProps) => {
             {cityItem.licenses?.map((item, index) => (
               <div className="IconWithText" key={`${item}-${index}`}>
                 <ReactSVG className="is-LicenseIcon" src={iconVerified} />
-                <a className="LicenseWithLink" href={cityItem.license?.url} target={'__blank'}>
+                <a aria-label={`Visit the license of ${cityItem.city}`} 
+                    className="LicenseWithLink" href={cityItem.license?.url} target={'__blank'}>
                   {item}
                 </a>
               </div>
@@ -61,7 +62,7 @@ const LicensesAndWarranty = (props: LicensesAndWarrantyProps) => {
         <h3 className="h5 spacing after__is-6">Ergeon Warranty</h3>
         <p className="spacing after__is-30">
           Your project is covered by our warranty and assurances.&nbsp;
-          <a href={cityItem.warranty} target="__blank">
+          <a aria-label="Lean more about our warranty and assurances" href={cityItem.warranty} target="__blank">
             Learn more
           </a>
         </p>

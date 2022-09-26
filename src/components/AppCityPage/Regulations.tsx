@@ -42,8 +42,10 @@ const Regulations = (props: RegulationsProps) => {
       <ul className="unordered spacing after__is-24">
         {faqItems.map(({ title, content }, idx) => (
           <li className="spacing after__is-12" key={`faq-${idx}`}>
-            <b>{title}</b> <br />
-            {content}
+            <h3 className='regulation-faq-title'>{title}</h3>
+            <p>
+              {content}
+            </p>
           </li>
         ))}
       </ul>
@@ -100,7 +102,8 @@ const Regulations = (props: RegulationsProps) => {
           {tabletView}
           {mobileView}
           {url &&
-            <p>Learn more about <a href={getAsset(url, 'pdf')} target="__blank">
+            <p>Learn more about <a aria-label={`Learn more about ${city} regulations`} 
+              href={getAsset(url, 'pdf')} target="__blank">
               {city} – City Regulations</a>.
             </p>
           }

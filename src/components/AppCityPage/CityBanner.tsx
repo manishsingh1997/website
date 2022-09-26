@@ -42,9 +42,9 @@ const CityBanner = (props: CityBannerProps) => {
               </Button>
             </a>
             <BannerRating />
-            <h3 className="h6 CityBanner-desc-license-desktop" onClick={onScrollToLicense}>
+            <h4 className="h6 CityBanner-desc-license-desktop" onClick={onScrollToLicense}>
               See License & warranty information
-            </h3>
+            </h4>
           </aside>
         </section>
         <p className="is-tablet">or</p>

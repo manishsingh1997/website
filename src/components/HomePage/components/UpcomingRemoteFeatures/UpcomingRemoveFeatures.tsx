@@ -38,6 +38,7 @@ const RemoteFeatures = () => {
             </div>
             {videoLink && (
               <Button
+                ariaLabel={`Learn more about ${title}`}
                 className="remote-features-card-button"
                 flavor="primary"
                 onClick={() => showVideo(videoLink)}
@@ -49,6 +50,7 @@ const RemoteFeatures = () => {
             )}
             {link && (
               <Button
+                ariaLabel={`Learn more about ${title}`}
                 asAnchor
                 className="remote-features-card-button"
                 flavor="primary"

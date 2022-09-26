@@ -37,12 +37,12 @@ const CityReviews = (props: MainBannerProps) => {
               {review.img && <OptimizedImage alt={review.title} src={getAsset(review.img, 'jpeg')} />}
             </div>
             <div>
-              <p className="h5">{review.title}</p>
+              <h3 className="h5">{review.title}</h3>
               <p className="CityReviews-description">{review.description}</p>
               <p className="small-text">{review.name}</p>
               <address className="small-text">{review.address}</address>
               <p className="small-text">
-                <a href={review.url} rel="nofollow">
+                <a aria-label={`Read the review of ${review.name} on ${review.type}`} href={review.url} rel="nofollow">
                   Read this review
                 </a>
                 <span> on {review.type}</span>

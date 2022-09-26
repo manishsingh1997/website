@@ -243,11 +243,11 @@ exports[`AppCityPage Should render city banner 1`] = `
             </div>
           </div>
         </div>
-        <h3
+        <h4
           class="h6 CityBanner-desc-license-desktop"
         >
           See License & warranty information
-        </h3>
+        </h4>
       </aside>
     </section>
     <p
@@ -436,11 +436,11 @@ exports[`AppCityPage should render 1`] = `
                 </div>
               </div>
             </div>
-            <h3
+            <h4
               class="h6 CityBanner-desc-license-desktop"
             >
               See License & warranty information
-            </h3>
+            </h4>
           </aside>
         </section>
         <p
@@ -609,11 +609,11 @@ exports[`AppCityPage should render 1`] = `
             />
           </div>
           <div>
-            <p
+            <h3
               class="h5"
             >
               We had a very positive experience with Ergeon. Highly recommend them!
-            </p>
+            </h3>
             <p
               class="CityReviews-description"
             >
@@ -633,6 +633,7 @@ exports[`AppCityPage should render 1`] = `
               class="small-text"
             >
               <a
+                aria-label="Read the review of Michelle Y. on Yelp"
                 href="https://www.yelp.com/biz/ergeon-oakland-3?hrid=juKC2GkzK9KoYpOgs19SXg&utm_campaign=www_review_share_popup&utm_medium=copy_link&utm_source=(direct)"
                 rel="nofollow"
               >
@@ -661,11 +662,11 @@ exports[`AppCityPage should render 1`] = `
             />
           </div>
           <div>
-            <p
+            <h3
               class="h5"
             >
               The fence was completed without a hitch!
-            </p>
+            </h3>
             <p
               class="CityReviews-description"
             >
@@ -685,6 +686,7 @@ exports[`AppCityPage should render 1`] = `
               class="small-text"
             >
               <a
+                aria-label="Read the review of Craig C. on Google"
                 href="https://g.page/r/CS57QC7cBRZXEBA"
                 rel="nofollow"
               >
@@ -1113,52 +1115,62 @@ exports[`AppCityPage should render 1`] = `
               <li
                 class="spacing after__is-12"
               >
-                <b>
+                <h3
+                  class="regulation-faq-title"
+                >
                   What height of the fence can I put up in my front yard?
-                </b>
-                 
-                <br />
-                3 feet, 4 feet (3 feet +2 feet 50% open top), 5 feet with a Planning Permit
+                </h3>
+                <p>
+                  3 feet, 4 feet (3 feet +2 feet 50% open top), 5 feet with a Planning Permit
+                </p>
               </li>
               <li
                 class="spacing after__is-12"
               >
-                <b>
+                <h3
+                  class="regulation-faq-title"
+                >
                   How high can a side fence be?
-                </b>
-                 
-                <br />
-                6 feet solid fence, 8 feet (6 feet + 2 feet 50% open lattice)
+                </h3>
+                <p>
+                  6 feet solid fence, 8 feet (6 feet + 2 feet 50% open lattice)
+                </p>
               </li>
               <li
                 class="spacing after__is-12"
               >
-                <b>
+                <h3
+                  class="regulation-faq-title"
+                >
                   What is the maximum height of a backyard fence?
-                </b>
-                 
-                <br />
-                6 feet solid fence,  8 feet (6 feet + 2 feet 50% open lattice)
+                </h3>
+                <p>
+                  6 feet solid fence,  8 feet (6 feet + 2 feet 50% open lattice)
+                </p>
               </li>
               <li
                 class="spacing after__is-12"
               >
-                <b>
+                <h3
+                  class="regulation-faq-title"
+                >
                   How close to the property line can I build a fence?
-                </b>
-                 
-                <br />
-                no setbacks specific to fence
+                </h3>
+                <p>
+                  no setbacks specific to fence
+                </p>
               </li>
               <li
                 class="spacing after__is-12"
               >
-                <b>
+                <h3
+                  class="regulation-faq-title"
+                >
                   What is the maximum height of a fence if my property is located on a corner lot?
-                </b>
-                 
-                <br />
-                3 feet Max 20 feet Visibility Triangle Area.
+                </h3>
+                <p>
+                  3 feet Max 20 feet Visibility Triangle Area.
+                </p>
               </li>
             </ul>
           </div>
@@ -1171,52 +1183,62 @@ exports[`AppCityPage should render 1`] = `
               <li
                 class="spacing after__is-12"
               >
-                <b>
+                <h3
+                  class="regulation-faq-title"
+                >
                   What height of the fence can I put up in my front yard?
-                </b>
-                 
-                <br />
-                3 feet, 4 feet (3 feet +2 feet 50% open top), 5 feet with a Planning Permit
+                </h3>
+                <p>
+                  3 feet, 4 feet (3 feet +2 feet 50% open top), 5 feet with a Planning Permit
+                </p>
               </li>
               <li
                 class="spacing after__is-12"
               >
-                <b>
+                <h3
+                  class="regulation-faq-title"
+                >
                   How high can a side fence be?
-                </b>
-                 
-                <br />
-                6 feet solid fence, 8 feet (6 feet + 2 feet 50% open lattice)
+                </h3>
+                <p>
+                  6 feet solid fence, 8 feet (6 feet + 2 feet 50% open lattice)
+                </p>
               </li>
               <li
                 class="spacing after__is-12"
               >
-                <b>
+                <h3
+                  class="regulation-faq-title"
+                >
                   What is the maximum height of a backyard fence?
-                </b>
-                 
-                <br />
-                6 feet solid fence,  8 feet (6 feet + 2 feet 50% open lattice)
+                </h3>
+                <p>
+                  6 feet solid fence,  8 feet (6 feet + 2 feet 50% open lattice)
+                </p>
               </li>
               <li
                 class="spacing after__is-12"
               >
-                <b>
+                <h3
+                  class="regulation-faq-title"
+                >
                   How close to the property line can I build a fence?
-                </b>
-                 
-                <br />
-                no setbacks specific to fence
+                </h3>
+                <p>
+                  no setbacks specific to fence
+                </p>
               </li>
               <li
                 class="spacing after__is-12"
               >
-                <b>
+                <h3
+                  class="regulation-faq-title"
+                >
                   What is the maximum height of a fence if my property is located on a corner lot?
-                </b>
-                 
-                <br />
-                3 feet Max 20 feet Visibility Triangle Area.
+                </h3>
+                <p>
+                  3 feet Max 20 feet Visibility Triangle Area.
+                </p>
               </li>
             </ul>
           </div>
@@ -1367,6 +1389,7 @@ exports[`AppCityPage should render 1`] = `
           <p>
             Learn more about 
             <a
+              aria-label="Learn more about Alameda regulations"
               href="https://library.municode.com/ca/alameda/codes/code_of_ordinances?nodeId=CHXXXDERE_ARTIZODIRE_30-5GEPREX_30-5.14BAFE"
               target="__blank"
             >
@@ -1447,6 +1470,7 @@ exports[`AppCityPage should render 1`] = `
                   </p>
                 </div>
                 <a
+                  aria-label="Learn more about Video Call for your Onsite Visit"
                   class="button button--primary button--size__medium taste__line remote-features-card-button"
                   href="https://dev.ergeon.com/blog/post/a-walk-through-of-our-remote-experience"
                 >
@@ -1494,6 +1518,7 @@ exports[`AppCityPage should render 1`] = `
                   </p>
                 </div>
                 <a
+                  aria-label="Learn more about Approve your Quote & Pay Online"
                   class="button button--primary button--size__medium taste__line remote-features-card-button"
                   href="https://dev.ergeon.com/blog/post/how-our-remote-quoting-works"
                 >
@@ -1541,6 +1566,7 @@ exports[`AppCityPage should render 1`] = `
                   </p>
                 </div>
                 <a
+                  aria-label="Learn more about Stay Inside While We Install Your Fence"
                   class="button button--primary button--size__medium taste__line remote-features-card-button"
                   href="https://dev.ergeon.com/blog/post/contactless-fence-installation"
                 >
@@ -1770,6 +1796,7 @@ exports[`AppCityPage should render 1`] = `
                     </div>
                   </div>
                   <a
+                    aria-label="Visit the license of Alameda"
                     class="LicenseWithLink"
                     href="https://www2.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1040925"
                     target="__blank"
@@ -1791,6 +1818,7 @@ exports[`AppCityPage should render 1`] = `
                     </div>
                   </div>
                   <a
+                    aria-label="Visit the license of Alameda"
                     class="LicenseWithLink"
                     href="https://www2.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1040925"
                     target="__blank"
@@ -1812,6 +1840,7 @@ exports[`AppCityPage should render 1`] = `
                     </div>
                   </div>
                   <a
+                    aria-label="Visit the license of Alameda"
                     class="LicenseWithLink"
                     href="https://www2.cslb.ca.gov/OnlineServices/CheckLicenseII/LicenseDetail.aspx?LicNum=1040925"
                     target="__blank"
@@ -1834,6 +1863,7 @@ exports[`AppCityPage should render 1`] = `
               >
                 Your project is covered by our warranty and assurances. 
                 <a
+                  aria-label="Lean more about our warranty and assurances"
                   href="https://api-ergeon-in.s3.amazonaws.com/products/fence-replacement/CA/contracts/Ergeon_California_Construction_Contract_2022.pdf"
                   target="__blank"
                 >

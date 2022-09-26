@@ -99,7 +99,7 @@ class QASection extends React.Component {
           </div>
           <p>
             Read our FAQs&nbsp;
-            <Link to="/help/201900004">here</Link>
+            <Link aria-label="Click here and go to the help center" to="/help/201900004">here</Link>
           </p>
         </div>
       </div>
