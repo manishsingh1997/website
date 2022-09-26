@@ -2,6 +2,7 @@ import React, {useMemo} from 'react';
 
 import classNames from 'classnames';
 import preview3DIcon from '@ergeon/core-components/src/assets/icon-3d.svg';
+import noPreview from '@ergeon/core-components/src/assets/no-cad-support.svg';
 
 import {PreviewImageProps} from './types';
 
@@ -23,8 +24,17 @@ const PreviewImage = ({
 
   return (
     <div className="preview-box">
-      <img className={previewImageClassNames} onLoad={handleLoad} src={previewImage} />
-      {!isPlaceholder && cadSupport && <img className="preview-3d" src={preview3DIcon} />}
+      {
+        previewImage &&
+        <img className={previewImageClassNames} onLoad={handleLoad} src={previewImage} />
+      }
+      {
+        !isPlaceholder &&
+        cadSupport !== false &&
+        previewImage !== noPreview &&
+        previewImage &&
+        <img className="preview-3d" src={preview3DIcon} />
+      }
     </div>
   );
 };

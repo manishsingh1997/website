@@ -3,7 +3,6 @@ import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {isNil, isEmpty} from 'lodash';
 import classNames from 'classnames';
 import previewPlaceholderIcon from '@ergeon/core-components/src/assets/icon-photo-placeholder.svg';
-import notCadSupportPreviewIcon from '@ergeon/core-components/src/assets/no-cad-support.jpg';
 import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {Spinner} from '@ergeon/core-components';
 
@@ -52,8 +51,8 @@ const AppConfigPreview = ({
     if (useNoPreviewIcon) {
       setPreviewImage(noPreviewIcon);
       return;
-    } else if (showUpcomingFeatures('ENG-18304') && !cadSupport) {
-      setPreviewImage(notCadSupportPreviewIcon);
+    } else if (showUpcomingFeatures('ENG-18304') && cadSupport === false) {
+      setPreviewImage('');
       return;
     } else if (!schemaCodeUrl) {
       setPreviewImage(previewPlaceholderIcon);

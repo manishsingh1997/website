@@ -1,5 +1,7 @@
 import React, {useMemo} from 'react';
 
+import noPreview from '@ergeon/core-components/src/assets/no-cad-support.svg';
+
 import {getFencequotingURL} from '../../../utils/urls';
 
 import PreviewImage from './PreviewImage';
@@ -44,7 +46,7 @@ const PreviewWithLink = ({
     />;
   }
 
-  if (!cadSupport) {
+  if (cadSupport === false || previewImage === noPreview) {
     return <PreviewImage
       cadSupport={cadSupport}
       handleLoad={handleLoad}

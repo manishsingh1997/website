@@ -2,6 +2,7 @@ import previewPlaceholderIcon from '@ergeon/core-components/src/assets/icon-phot
 import noPreviewIcon from '@ergeon/core-components/src/assets/no-preview.svg';
 import {calcUtils} from '@ergeon/3d-lib';
 import isEqual from 'lodash/isEqual';
+import noPreview from '@ergeon/core-components/src/assets/no-cad-support.svg';
 
 import {Image} from './types';
 
@@ -18,7 +19,7 @@ export const getPreviewImage = async (schemaCodeUrl: string) => {
       width: DEFAULT_PREVIEW_WIDTH,
     });
   } catch {
-    return previewPlaceholderIcon;
+    return noPreview;
   }
 };
 
