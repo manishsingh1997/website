@@ -1238,6 +1238,7 @@ exports[`AppCityPage should render 1`] = `
                     What height of the fence can I put up in my front yard?
                   </p>
                   <img
+                    alt="DropDown icon"
                     class="Collapsible-icon"
                     src="/assets/d5aec93f50f5220b65b98b278d58594e.svg"
                   />
@@ -1265,6 +1266,7 @@ exports[`AppCityPage should render 1`] = `
                     How high can a side fence be?
                   </p>
                   <img
+                    alt="DropDown icon"
                     class="Collapsible-icon"
                     src="/assets/d5aec93f50f5220b65b98b278d58594e.svg"
                   />
@@ -1292,6 +1294,7 @@ exports[`AppCityPage should render 1`] = `
                     What is the maximum height of a backyard fence?
                   </p>
                   <img
+                    alt="DropDown icon"
                     class="Collapsible-icon"
                     src="/assets/d5aec93f50f5220b65b98b278d58594e.svg"
                   />
@@ -1319,6 +1322,7 @@ exports[`AppCityPage should render 1`] = `
                     How close to the property line can I build a fence?
                   </p>
                   <img
+                    alt="DropDown icon"
                     class="Collapsible-icon"
                     src="/assets/d5aec93f50f5220b65b98b278d58594e.svg"
                   />
@@ -1346,6 +1350,7 @@ exports[`AppCityPage should render 1`] = `
                     What is the maximum height of a fence if my property is located on a corner lot?
                   </p>
                   <img
+                    alt="DropDown icon"
                     class="Collapsible-icon"
                     src="/assets/d5aec93f50f5220b65b98b278d58594e.svg"
                   />

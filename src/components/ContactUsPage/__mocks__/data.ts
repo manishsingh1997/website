@@ -9,7 +9,7 @@ export const pageText = [
   {text: 'Email:'},
   {text: 'contact@ergeon.com'},
   {text: 'Phone:'},
-  {text: '650-300-4854'},
+  {text: '1-888-374-3661'},
 ];
 
 export const inputFields = {

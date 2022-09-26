@@ -18,7 +18,7 @@ describe('FAQPage', () => {
 
   it('should show correct phone number', () => {
     const phone = screen.getByRole('link', {name: 'call us'});
-    expect(phone).toHaveAttribute('href', 'tel:+16503004854');
+    expect(phone).toHaveAttribute('href', 'tel:+18883743661');
   });
 
   it('should render all questions correctly', () => {
