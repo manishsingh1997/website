@@ -46,7 +46,7 @@ const PreviewWithLink = ({
     />;
   }
 
-  if (cadSupport === false || previewImage === noPreview) {
+  if (cadSupport !== true || previewImage === noPreview) {
     return <PreviewImage
       cadSupport={cadSupport}
       handleLoad={handleLoad}

@@ -51,7 +51,7 @@ const AppConfigPreview = ({
     if (useNoPreviewIcon) {
       setPreviewImage(noPreviewIcon);
       return;
-    } else if (showUpcomingFeatures('ENG-18304') && cadSupport === false) {
+    } else if (showUpcomingFeatures('ENG-18304') && cadSupport !== true) {
       setPreviewImage('');
       return;
     } else if (!schemaCodeUrl) {

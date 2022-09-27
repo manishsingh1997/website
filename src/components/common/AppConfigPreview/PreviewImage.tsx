@@ -30,7 +30,7 @@ const PreviewImage = ({
       }
       {
         !isPlaceholder &&
-        cadSupport !== false &&
+        cadSupport &&
         previewImage !== noPreview &&
         previewImage &&
         <img className="preview-3d" src={preview3DIcon} />
