@@ -24,7 +24,7 @@ const TestimonialBanner = () => {
 
     return (
       <div className="TestimonialBanner-badge">
-        <OptimizedImage alt="testimonial organization" src={icon} />
+        <OptimizedImage alt="testimonial organization" className="testimonial-image" src={icon} />
         <span className="badge--txt is-bold">{rating} rating</span>
         {reviews ? (
           <span className="badge--txt is-grey">{reviews} REVIEWS</span>
