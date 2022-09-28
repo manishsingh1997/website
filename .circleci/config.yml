@@ -10,6 +10,7 @@ jobs:
   build:
     docker:
       - image: cimg/python:3.8.12-browsers
+    resource_class: medium+
 
     steps:
       - browser-tools/install-chrome
