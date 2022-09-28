@@ -20,15 +20,7 @@
     padding: $h-20;
   }
 
-  .testimonial-image {
-    max-height: $v-48 + 2;
-
-    @include phone {
-      max-height: ($v-48 + 2) / 2;
-    }
-  }
-
-  &-Badge {
+  &-badge {
     display: flex;
     flex-direction: column;
     max-width: $h-80 * 2 + $h-40;

@@ -471,7 +471,6 @@ exports[`AppCityPage should render 1`] = `
         >
           <img
             alt="testimonial organization"
-            class="testimonial-image"
             data-optimized="true"
             height="100%"
             loading="eager"
@@ -496,7 +495,6 @@ exports[`AppCityPage should render 1`] = `
         >
           <img
             alt="testimonial organization"
-            class="testimonial-image"
             data-optimized="true"
             height="100%"
             loading="eager"
@@ -521,7 +519,6 @@ exports[`AppCityPage should render 1`] = `
         >
           <img
             alt="testimonial organization"
-            class="testimonial-image"
             data-optimized="true"
             height="100%"
             loading="eager"
@@ -546,7 +543,6 @@ exports[`AppCityPage should render 1`] = `
         >
           <img
             alt="testimonial organization"
-            class="testimonial-image"
             data-optimized="true"
             height="100%"
             loading="eager"
@@ -571,7 +567,6 @@ exports[`AppCityPage should render 1`] = `
         >
           <img
             alt="testimonial organization"
-            class="testimonial-image"
             data-optimized="true"
             height="100%"
             loading="eager"
