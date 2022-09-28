@@ -1,0 +1,7 @@
+/* eslint-disable max-len */
+export default {
+  quote: {
+    description_html:
+      '<ul><li><div><b>Why choose us?</b><br></div><div><b><br></b></div><ul><li>We guarantee the quality of our work through our industry leading warranty and source high quality materials to ensure a long lasting construction.&nbsp;</li><li>You will have an assigned project manager to coordinate your installation and our customer service desk will be available to assist Monday through Sunday.</li></ul><div><br></div><div><b>Important things to Consider:<br><br></b></div><ul><li>All lumber sizes are stated in nominal dimensions not actual measurements, this is part of the industry standard, please allow a small tolerance in case there is a few inches difference in the final measurements or fence height.</li></ul><div><br></div><ul><li>As part of our due diligence we request a dig clearance to identify underground public utility pipes, avoiding any unwanted incidents.<br>Please make sure to verify and point out property boundaries, buried private lines (gas, water or electric) or objects and sprinklers.</li></ul><div><br></div><ul><li>Lastly, please, arrange a 2ft clearance is provided along the fence line (cutting back vegetation and removing objects such as: household articles, river rocks, mulch among others) otherwise the project may be delayed causing additional charges.</li></ul></li></ul><div><br>',
+  },
+};

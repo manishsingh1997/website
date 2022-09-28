@@ -114,3 +114,26 @@ export type SignOffPdfProps = {
   asPDF: boolean;
   quoteApproval: QuoteApproval;
 } & SignOffCommonProps;
+
+type customerTypes = {
+  full_name: string;
+  approved_at: string;
+  id: number;
+};
+
+export interface quoteApprovalList {
+  id: number;
+  customer: customerTypes;
+}
+
+export interface ExplanationSectionProps {
+  asPDF: boolean;
+  contractUrl: string | null;
+  quoteType: string;
+}
+
+export interface ProjectDetailsProps {
+  quote: {
+    description_html: string;
+  };
+}
