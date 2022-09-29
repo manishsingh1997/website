@@ -20,7 +20,7 @@
     padding: $h-20;
   }
 
-  &-badge {
+  .TestimonialBanner-badge {
     display: flex;
     flex-direction: column;
     max-width: $h-80 * 2 + $h-40;
@@ -49,12 +49,10 @@
     white-space: nowrap;
   }
 
-  .is {
-    &-grey {
-      color: $gray-2;
-    }
-    &-bold {
-      font-weight: 600;
-    }
+  .is-grey {
+    color: $gray-2;
+  }
+  .is-bold {
+    font-weight: 600;
   }
 }
