@@ -1,6 +1,6 @@
 import {isChristmasTime as baseIsChristmasTime} from '@ergeon/core-components';
 import {AxiosError} from 'axios';
-import {CatalogType} from '@ergeon/3d-lib/';
+import {CatalogType} from '@ergeon/3d-lib';
 import {isUpcomingFeaturesEnabled} from '@ergeon/erg-utils-js';
 
 import {trackError} from './analytics';
