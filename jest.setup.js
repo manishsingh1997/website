@@ -25,11 +25,7 @@ const mockCatalogTypeData = {
     },
   ]
 }
-jest.mock('@ergeon/cad/node_modules/@ergeon/erg-catalog-rules/dist/attribute-calculator/catalogTypesAPI', () => {
-  return {
-    getApiData: () => mockCatalogTypeData,
-  };
-});
+
 jest.mock('@ergeon/erg-catalog-rules/dist/attribute-calculator/catalogTypesAPI', () => {
   return {
     getApiData: () => mockCatalogTypeData,
