@@ -52,6 +52,10 @@
     padding: $v-6 $image-container-h-offset;
     background: $white;
 
+    &.is-empty {
+      visibility: hidden;
+    }
+
     img {
       width: $image-container-max-width - $image-container-h-offset * 2;
     }

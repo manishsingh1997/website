@@ -123,7 +123,7 @@ const AppCityPage = (props: AppCityPageProps) => {
           url={city.regulations.url}
         />
 
-        <section>
+        <section className="wrapper-1180">
           <UpcomingRemoteFeatures />
         </section>
 

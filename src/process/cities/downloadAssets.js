@@ -52,10 +52,21 @@ async function downloadAssets() {
       continue;
     }
 
-    const {data, headers: {'content-type': contentType}} = await drive.files.get(
-      {fileId: file, alt: 'media'},
-      {responseType: 'arraybuffer'},
-    );
+    let data, contentType;
+
+    try {
+      const response = await drive.files.get(
+        {fileId: file, alt: 'media'},
+        {responseType: 'arraybuffer'},
+      );
+      data = response.data;
+      contentType = response.headers['content-type'];
+    } catch(error) {
+      console.log(`ERROR retrieving ${file}`);
+      console.warn(error);
+      continue;
+    }
+
     let ext = contentType.toLowerCase().split('/')[1];
 
     try {
@@ -80,7 +91,7 @@ async function downloadAssets() {
 
       console.log(`${file}.${ext} saved`);
     } catch(error) {
-      console.log(`ERROR ${file}.${ext}`);
+      console.log(`ERROR processing ${file}.${ext}`);
       console.warn(error);
     }
   }

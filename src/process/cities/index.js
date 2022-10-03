@@ -11,7 +11,7 @@ const mapping = require('./mapping');
 const {getCitySlug, parseSheet} = require('./parsing');
 const {addWarrantyAndFullNameToCities} = require('./utils');
 
-const CITIES_END_ROW_IDX = 108;
+const CITIES_END_ROW_IDX = 109;
 const REDIRECTS_END_ROW_IDX = 1241;
 
 const SHEET_ID = '14w3hviutTV0xMgiamxqIPTsSMUWR01jCUdpJJsA3j3Q';

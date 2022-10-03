@@ -216,6 +216,8 @@ exports[`Routes Cities endpoints 1`] = `
    
   Route to /fences/cities/philadelphia-county-philadelphia-pa
    
+  Route to /fences/cities/arlington-county-arlington-va
+   
   Route to /fences/cities/alameda-county-albany-ca
    
   Redirect to /fences/cities/alameda-county-berkeley-ca for

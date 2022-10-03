@@ -1418,7 +1418,9 @@ exports[`AppCityPage should render 1`] = `
         </div>
       </div>
     </section>
-    <section>
+    <section
+      class="wrapper-1180"
+    >
       <div
         class="remote-features"
       >

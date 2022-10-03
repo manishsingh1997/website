@@ -1,5 +1,6 @@
 import React, {useMemo} from 'react';
 
+import classNames from 'classnames';
 import {OptimizedImage} from '@ergeon/core-components';
 
 import {City} from './types';
@@ -33,7 +34,7 @@ const CityReviews = (props: MainBannerProps) => {
       <div className="CityReviews-container">
         {reviews.map((review) => (
           <div className="CityReviews-review" key={review.type}>
-            <div className="CityReviews-imgContainer">
+            <div className={classNames('CityReviews-imgContainer', {'is-empty': !review.img})}>
               {review.img && <OptimizedImage alt={review.title} src={getAsset(review.img, 'jpeg')} />}
             </div>
             <div>
