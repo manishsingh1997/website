@@ -510,8 +510,16 @@
     }
   }
 
+  .heading-md-text {
+    color: $black-2;
+    font-family: $font-title;
+    font-size: $h4-size;
+    font-weight: bold;
+    line-height: $h4-line-height;
+  }
+
   .button-back {
-    padding-left: 0 !important;
+    padding-left: 0;
     padding-right: $h-10;
     &:hover {
       background-color: $gray-5 !important;

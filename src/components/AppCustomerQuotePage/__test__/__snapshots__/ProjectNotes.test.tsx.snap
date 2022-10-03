@@ -5,13 +5,14 @@ exports[`Project Notes Should match heading and snapshot 1`] = `
   <div
     class="quote-notes card padding-40 spacing after__is-30 page-break"
   >
-    <h4>
+    <div
+      class="heading-md-text"
+    >
       Project notes
-    </h4>
+    </div>
     <div
       class="quote-projects-notes"
     >
-       
       <div>
         <ul>
           <li>

@@ -137,3 +137,27 @@ export interface ProjectDetailsProps {
     description_html: string;
   };
 }
+
+type QuoteApprovalProps = {
+  id: number;
+  customer: {
+    full_name: string;
+  };
+  approved_at: Date;
+};
+
+export interface QuoteApprovalProp {
+  quoteApproval: QuoteApprovalProps;
+  idx: number;
+}
+
+export type mockExplanationConstantType = {
+  heading: string;
+  svgUrl: string;
+  description: string;
+};
+
+export interface ContractBlockProps {
+  contractUrl: string | null;
+  quoteType: string;
+}
