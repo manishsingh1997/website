@@ -48,22 +48,30 @@ export const fenceCards: ProjectCard[] = [
 export const artificialGrassCards = [
   {
     title: 'Landscape Package',
+    // eslint-disable-next-line max-len
+    content: 'Recommended for moderate foot traffic areas of your garden or yard. A mix of field and olive green colors with a brown thatch layer creating a lush natural look. Non-toxic, lead-free, fast draining and fade resistant. Choose from 1.75” to 2.50” pile height.',
     image: require('assets/promo-projects/art-grass-promo-1.jpg'),
     link: '/gallery/artificial-grass/landscaping'
   },
   {
     title: 'Kidscape Package',
+    // eslint-disable-next-line max-len
+    content: 'Recommended for occasional heavy foot traffic areas such as a children’s play area. This kid-friendly option can be installed over a jump padding layer for extra cushioning. Non-toxic, lead-free,fast draining and fade resistant. Choose from 1.75” to 1.85” pile height.',
     image: require('assets/promo-projects/art-grass-promo-2.jpg'),
     link: '/gallery/artificial-grass/kidscape'
   },
   {
     title: 'Petscape Package',
+    // eslint-disable-next-line max-len
+    content: 'Recommended for high traffic areas. This pet friendly option is installed over a layer of zeolite to contain odors. A mix of field and olive green colors with a brown thatch layer creating a lush natural look. Non-toxic, lead free, fast draining and fade resistant. 1.375” pile height.',
     image: require('assets/promo-projects/art-grass-promo-3.jpg'),
     link: '/gallery/artificial-grass/petscape'
   },
   {
     title: 'Putting Green Package',
+    // eslint-disable-next-line max-len
+    content: 'Recommended for golf enthusiasts. The short textured blades replicate the natural grass putting surface. The ½” pile height facilitates the action of pitch and chip hitting. Non-toxic, lead-free,fast draining and fade resistant.',
     image: require('assets/promo-projects/art-grass-promo-4.jpg'),
-    link: '/gallery/artificial-grass/putting-green'
+    link: '/gallery/artificial-grass/landscaping'
   },
 ];

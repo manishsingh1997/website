@@ -3,6 +3,14 @@
     "title": "Ergeon Fence Contractors Installation and Repair",
     "description": "Ergeon Fence Installation and Repair Company. We build High-Quality wooden fences, and gates. Get a free quote."
   },
+  "/fences": {
+    "title": "Ergeon | Fence Installation and Repair",
+    "description": "Ergeon is a trusted company for fence installation. We build High-Quality wooden fences, and gates. Get a free quote for your project."
+  },
+  "/artificial-grass": {
+    "title": "Ergeon | Artificial Grass Installation | Synthetic Turf Installation",
+    "description": "Ergeon is a trusted company for artificial grass installation. Servicing East Bay and South Bay California. Get a free quote for your artificial turf project."
+  },
   "/about-ergeon": {
     "title": "Learn About Us, Our Mission, and Values | Ergeon.com",
     "description": "Ergeon Company. With proprietary technology coupled with operational excellence we are building the largest, most customer-friendly construction company in the world."
@@ -184,8 +192,8 @@
     "description": "Find our Ergeon locations. We provide service to over 4.3 million households in the Bay Area, Sacramento and Fresno."
   },
   "/request-quote": {
-    "title": "Request A Free Quote For Your Fence | Ergeon.com",
-    "description": "Request A Free Quote For Your Fence Installation. Ergeon is the #1 contractor in the Bay Area."
+    "title": "Request A Free Quote | Ergeon.com",
+    "description": "Request a free quote for your fence installation and artificial grass. Ergeon is the #1 fence contractor in California, Florida, Georgia, Maryland, Pennsylvania, Virginia."
   },
   "/app/sign-in": {
     "title": "Ergeon Sign-in",
