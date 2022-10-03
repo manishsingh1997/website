@@ -18,7 +18,7 @@ const FencesHomePage = () => {
       <SliderHero>
         <Slide
           name="fence"
-          subtitle="Servicing Northern California, Southern California, Dallas, Fort Worth, Houston, and Atlanta."
+          subtitle="Servicing cities in California, Texas, Georgia, Virginia, Maryland, Pennsylvania, and Florida"
           title="Fence Installation Service" />
       </SliderHero>
       <div className="wrapper-1180">
