@@ -77,7 +77,7 @@ const Layout = (props: LayoutProps) => {
   const locationsList = useMemo(() => (
     sortBy(cities, 'city').map((city) => ({
       text: city.city,
-      url: `${CITIES_PAGE_PATH}/${city.slug}`,
+      url: `${CITIES_PAGE_PATH}/${city.slug}/`,
     }))
   ), [cities]);
 
