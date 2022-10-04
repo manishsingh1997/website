@@ -1,7 +1,7 @@
 import React from 'react';
 
 import '@testing-library/jest-dom';
-import {render, screen, fireEvent, waitForElementToBeRemoved} from '@testing-library/react';
+import {render, screen, fireEvent} from '@testing-library/react';
 import {Router, MemoryRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {createBrowserHistory} from 'history';
@@ -145,7 +145,6 @@ describe('Layout', () => {
   });
 
   test('When on city pages, top panel phone number is not show', async () => {
-
     window.innerWidth = 360;
     window.dispatchEvent(new Event('resize'));
 
@@ -167,7 +166,6 @@ describe('Layout', () => {
     );
 
     const phoneNumber = await screen.queryByText(/1-888-ERGEON1/);
-    await waitForElementToBeRemoved(phoneNumber);
     expect(phoneNumber).not.toBeInTheDocument();
   });
 });
