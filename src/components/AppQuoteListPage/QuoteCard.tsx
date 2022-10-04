@@ -6,6 +6,8 @@ import {ReactSVG} from 'react-svg';
 import moment from 'moment';
 import IconError from '@ergeon/core-components/src/assets/icon-error.svg';
 import IconSuccess from '@ergeon/core-components/src/assets/icon-success.svg';
+import IconDraft from '@ergeon/core-components/src/assets/icon-draft.svg';
+import IconSent from '@ergeon/core-components/src/assets/icon-sent.svg';
 import noPreviewFallback from '@ergeon/core-components/src/assets/no-preview-fallback.svg';
 
 import {formatPrice} from '../../utils/app-order';
@@ -30,6 +32,10 @@ const QuoteCard = (props: QuoteCardProps) => {
   const statusIcon = useMemo(() => {
     if (status === 'Approved') {
       return IconSuccess;
+    } else if (status === 'Draft') {
+      return IconDraft;
+    } else if (status === 'Sent') {
+      return IconSent;
     }
 
     return IconError;

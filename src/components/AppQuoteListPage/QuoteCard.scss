@@ -89,14 +89,17 @@
 
     .card-img {
       margin-left: auto;
+      margin-top: $v-12;
+      object-fit: cover;
       width: 100%;
     }
 
     .card-img-fallback {
       background: $gray-5;
-      height: $v-124 + $v-24 - 2;
+      height: $h-120 + $h-40 + $h-10;
       width: calc(100% - #{$v-24});
-      margin: $v-12 auto;
+      margin: auto;
+      margin-top: $v-12;
       display: grid;
       place-content: center;
     }
@@ -126,7 +129,7 @@
     .card-date {
       font-size: $font-mobile-size;
       line-height: $line-height-mobile;
-
+      font-weight: 400;
       @include phone() {
         font-size: $font-label-size;
         line-height: $line-height-label;
