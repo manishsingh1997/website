@@ -4,7 +4,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import classNames from 'classnames';
 import sortBy from 'lodash/sortBy';
-import { NavLinkContext, Notification, SimpleTopPanel, utils } from '@ergeon/core-components';
+import { NavLinkContext, Notification, utils } from '@ergeon/core-components';
 
 // TODO: AddressUpdatePopup can be potentially moved to RequestQuotePage. Need investigation.
 import AddressUpdatePopup from '../../containers/AddressUpdatePopup';
@@ -19,6 +19,7 @@ import phoneIcon from '../../assets/icon-phone.svg';
 import DropdownMenu from './components/DropdownMenu';
 import { checkRouteList } from './utils';
 import useScrollPosition from './useScrollPosition';
+import TopPanelRender from './components/TopPanelRender';
 
 import './index.scss';
 
@@ -122,19 +123,18 @@ const Layout = (props: LayoutProps) => {
         </div>
       )}
       <NavLinkContext.Provider value={NavLink}>
-        <header className={classNames('app-header', { asPDF })}>
+        <header className={classNames('app-header', {asPDF})}>
           <div className={headerWrapperClass}>
-            <SimpleTopPanel
-              customerMenu={dropdownMenu}
-              ergeonUrl="/"
-              fencequotingUrl={`${process.env.FENCEQUOTING_HOST}/`}
-              onGetQuoteClick={isShowGetAQuoteButton && onGetQuoteClick}
+            <TopPanelRender
+              asPDF={asPDF}
+              dropdownMenu={dropdownMenu}
+              isChristmasTime={isChristmasTime}
+              isShowGetAQuoteButton={isShowGetAQuoteButton}
+              isShowPricingButton={isShowPricingButton}
+              onGetQuoteClick={onGetQuoteClick}
               pdfDetails={pdfDetails}
-              pdfMode={asPDF}
-              showChristmasHat={isChristmasTime}
-              showDisplayPricing={isShowPricingButton}
               widthClass={widthClass}
-            ></SimpleTopPanel>
+            />
           </div>
         </header>
         <main>{children}</main>

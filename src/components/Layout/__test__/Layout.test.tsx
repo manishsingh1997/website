@@ -1,7 +1,7 @@
 import React from 'react';
 
 import '@testing-library/jest-dom';
-import {render, screen, fireEvent} from '@testing-library/react';
+import {render, screen, fireEvent, waitForElementToBeRemoved} from '@testing-library/react';
 import {Router, MemoryRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {createBrowserHistory} from 'history';
@@ -142,5 +142,32 @@ describe('Layout', () => {
 
     const pathnameHasSignIn = history.location.pathname.includes('app/sign-in');
     expect(pathnameHasSignIn).toBeTruthy();
+  });
+
+  test('When on city pages, top panel phone number is not show', async () => {
+
+    window.innerWidth = 360;
+    window.dispatchEvent(new Event('resize'));
+
+    const props = {
+      ...layoutProps,
+      auth: {
+        ...mockNotLoggedInAuth,
+        isAuthLoading: true,
+        isUserLoading: true,
+      },
+    };
+
+    render(
+      <Provider store={newStore}>
+        <MemoryRouter initialEntries={['/fences/cities/sacramento-county-sacramento-ca/']}>
+          <Layout {...props}>{CHILD}</Layout>
+        </MemoryRouter>
+      </Provider>
+    );
+
+    const phoneNumber = await screen.queryByText(/1-888-ERGEON1/);
+    await waitForElementToBeRemoved(phoneNumber);
+    expect(phoneNumber).not.toBeInTheDocument();
   });
 });

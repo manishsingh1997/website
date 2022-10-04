@@ -6,6 +6,7 @@ $img-wrapper-min-width: 512px;
 
 .popup--container {
   overflow-y: auto;
+  z-index: $z-index-super-top;
 
   .popup__cross-icon {
     right: unset;
@@ -28,6 +29,7 @@ $img-wrapper-min-width: 512px;
 
 .BuildSpecs-popup {
   $icon-container-size: $v-48;
+
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
   &::-webkit-scrollbar {
