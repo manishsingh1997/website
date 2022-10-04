@@ -6,6 +6,10 @@ version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@1.4.0
   coveralls: ergeon/coveralls-orb@1.1.1
+parameters:
+  build_type:
+    default: "full-build"
+    type: string
 jobs:
   build:
     docker:
@@ -21,6 +25,11 @@ jobs:
       - restore_cache:
           keys:
           - v3-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Print parameters
+          command: |
+            echo "build_type=<< pipeline.parameters.build_type >>"
 
       - run:
           name: Install Dependencies
@@ -39,7 +48,7 @@ jobs:
 
       - when:
           condition:
-            equal: [ "$BUILD_TYPE", "sitemap-only" ]
+            equal: [ "sitemap-only", << pipeline.parameters.build_type >> ]
 
           steps:
             - run:
@@ -50,7 +59,7 @@ jobs:
 
       - unless:
           condition:
-            equal: [ "$BUILD_TYPE", "sitemap-only" ]
+            equal: [ "sitemap-only", << pipeline.parameters.build_type >> ]
 
           steps:
             - run:
