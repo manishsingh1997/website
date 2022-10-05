@@ -55,6 +55,9 @@
     .user-name-menu-item {
       display: flex;
       align-items: center;
+      @include phone {
+        margin-left: $v-20 - 5;
+      }
     }
     .user-full-name {
       white-space: nowrap;
@@ -81,14 +84,14 @@
         }
       }
       img {
-        height: $h-20;
+        height: $v-24;
         margin-right: $h-5;
-        width: $h-20;
+        width: $v-24;
       }
 
       .dropdown-menu--icon {
         @include phone() {
-          display: none;
+          display: block;
         }
       }
     }
@@ -108,6 +111,7 @@
       width: inherit;
       margin-right: 0;
       padding-right: $h-20;
+      border-top: 0;
 
       &--title {
         color: $gray-1;
@@ -145,11 +149,23 @@
       }
     }
 
+    .logout-menu-title {
+      display: flex;
+      align-items: center;
+      margin-left: $v-6 + 1;
+      svg {
+        height: $v-24;
+        width: $v-24;
+      }
+    }
+    .menu-item-content {
+      margin-left: $v-6 - 1;
+    }
+
     @include phone() {
       background: $white;
       min-width: $h-20 * 10;
       left: 0;
-      margin-top: $v-6;
       margin-right: 0;
 
       .menu-item {
@@ -169,6 +185,14 @@
       .notifications-item {
         margin-left: $v-24;
       }
+    }
+  }
+
+  .menu:nth-child(2) {
+    @include phone() {
+      width: 100%;
+      border-top: 1px solid $gray-4;
+      border-radius: 0;
     }
   }
 
@@ -297,6 +321,12 @@
     }
   }
 
+  .SimpleTopPanel {
+    .burger:hover {
+      background-color: none;
+    }
+  }
+
   .QuoteButton-alt {
     margin: 0 $h-10;
     white-space: nowrap;
@@ -311,7 +341,7 @@
     margin-right: $h-20;
 
     @include phone() {
-      display: flex;
+      display: none;
     }
   }
 }
@@ -325,5 +355,26 @@
 
   @include phone {
     margin-left: 0;
+  }
+}
+
+.app-header-wrapper {
+  .top-panel__content__logo-wrapper {
+    @include phone-small {
+      margin: auto;
+      justify-content: center;
+    }
+    @include phone {
+      margin: auto;
+      justify-content: center;
+    }
+  }
+}
+
+.SimpleTopPanel .top-panel__right {
+  .SimpleTopPanel-phone.phone-link {
+    @include phone {
+      display: none;
+    }
   }
 }

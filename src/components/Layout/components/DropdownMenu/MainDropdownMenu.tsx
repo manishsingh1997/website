@@ -48,13 +48,13 @@ const MainDropdownMenu = (props: MainDropdownMenuProps) => {
   }, [user.gid]);
 
   const isMobileWidth = useIsMobileWidth();
+  const menuItemsForMobileView = menuItems.slice(0, -2);
 
   return (
     // [ENG-16361] Refactor DropdownMenu in core-components so it can render <Link to=""> instead of <a href="">
     // @ts-ignore
     <WebsiteDropdownMenu
-      alwaysOpen={isMobileWidth}
-      items={menuItems}
+      items={isMobileWidth ? menuItemsForMobileView : menuItems}
       key="dropp-user"
       title={
         <span key="dropp-user-icon">

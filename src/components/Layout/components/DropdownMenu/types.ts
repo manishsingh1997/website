@@ -1,4 +1,4 @@
-import { AuthUser } from '../../../../flux/reducers/auth';
+import {AuthUser} from '../../../../flux/reducers/auth';
 
 export interface MenuItem {
   content: string;
@@ -12,4 +12,14 @@ export interface MenuItem {
 
 export interface user extends AuthUser {
   full_name?: string;
+}
+
+export type MenuItemProp = {
+  href: string;
+  iconSVG: string;
+  content: string;
+};
+
+export interface MobileLogoutAndHelpSectionProps {
+  menuItem: MenuItemProp;
 }
